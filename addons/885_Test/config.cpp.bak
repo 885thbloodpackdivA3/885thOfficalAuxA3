@@ -142,7 +142,7 @@ class CfgVehicles
         author = "115th + 885th Blood Pack Division";
         scope = 2;
         scopeCurator = 2;
-        displayName = "Bacta Grenade";
+        displayName = "[885th] Bacta Grenade";
         descriptionShort = "Bacta Grenade";
         picture = "885_Test\data\icon_bacta_1rnd_CA.paa";
         pictureWire = "885_Test\data\icon_grenade_bacta_F_W_ca.paa";
