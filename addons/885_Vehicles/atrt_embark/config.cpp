@@ -1021,7 +1021,7 @@ class CfgVehicles
 		side=1;
 		faction="885th_Faction";
 		genericNames="885thATRTNames";
-		editorSubcategory="Sub885thTransports";
+		editorSubcategory="Sub885thRecon";
 		portrait="";
 		picture="";
 		icon="iconMan";
@@ -1195,7 +1195,7 @@ class CfgVehicles
 				};
 			};
 		};
-		armor=20;
+		armor=35;
 		armorStructural=20;
 		explosionShielding=20;
 		class EventHandlers;
