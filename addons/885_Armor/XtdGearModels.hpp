@@ -130,6 +130,7 @@ class XtdGearModels
                 values[]=
                 {
                     "Pilot",
+					"Pilot V2",
                     "Sen.Pilot",
                     "Officer"
                 };
@@ -649,17 +650,17 @@ class XtdGearInfos
 			rank="Medic";
         };
 		//Pilot Helmets
-        class 885th_Nightsingers_P1_Pilot_Helm
+        class 885th_Nightsingers_P2_Pilot_Helm
         { 
             model="Trooper_Pilot_Helmets";
 			rank="Pilot";
         };
-        class 885th_Nightsingers_Senior_Pilot_Helm
+        class 885th_Nightsingers_P2_Pilot_Senior_Helm
         {
             model="Trooper_Pilot_Helmets";
 			rank="Sen.Pilot";
         };
-        class 885th_Nightsingers_Officer_Pilot_Helm
+        class 885th_Nightsingers_P2_Pilot_Officer_Helm
         {
             model="Trooper_Pilot_Helmets";
 			rank="Officer";
@@ -676,7 +677,7 @@ class XtdGearInfos
 			rank="Advisor";
         };
 		//Najax ARF Helmets
-		class 885th_Najax_Recruit_ARF_Helm
+		class 885th_Najax_ARF_P2_Recruit_Helm
 		{
 			model="Trooper_ARF_Helmets";
 			rank="Cadet";
@@ -691,7 +692,7 @@ class XtdGearInfos
 			model="Trooper_ARF_Helmets";
 			rank="ARF";
 		};
-		class 885th_Najax_P1_ARF_Camo_Helm
+		class 885th_Najax_ARF_P2_Camo_Helm
 		{
 			model="Trooper_ARF_Helmets";
 			rank="Spec Ops";
