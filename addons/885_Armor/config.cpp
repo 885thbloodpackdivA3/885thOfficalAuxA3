@@ -1255,6 +1255,7 @@ class CfgWeapons
 	};
 	class 885th_Smith_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
 	{
+		scope=2;
 		author="885th Bloodpack Division";
 		displayName="[885th] Smith's Pilot Helm";
 		picture="";
@@ -1273,6 +1274,7 @@ class CfgWeapons
 	};
 	class 885th_Warden_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
 	{
+		scope=2;
 		author="885th Bloodpack Division";
 		displayName="[885th] Warden's Pilot Helm";
 		picture="";
@@ -1297,6 +1299,7 @@ class CfgWeapons
 	};
 	class 885th_TopSnipe_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
 	{
+		scope=2;
 		author="885th Bloodpack Division";
 		displayName="[885th] Topsnipe Pilot Helm";
 		picture="";
@@ -1315,6 +1318,7 @@ class CfgWeapons
 	};
 	class 885th_Owl_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
 	{
+		scope=2;
 		author="885th Bloodpack Division";
 		displayName="[885th] Owl's Pilot Helm";
 		picture="";
@@ -1726,6 +1730,7 @@ class CfgWeapons
     };
 	class 885th_Screwball_P1_ARF_Helm: 885th_Najax_P1_ARF_Helm
 	{
+		scope=2;
 		author="885th Bloodpack Division";
 		displayName="[885th] Screwball's Custom ARF Helm";
 
@@ -1744,6 +1749,7 @@ class CfgWeapons
 	};
 	class 885th_Thunder_P1_ARF_Helm: 885th_Najax_P1_ARF_Helm
 	{
+		scope=2;
 		author="885th Bloodpack Division";
 		displayName="[885th] Thunder Custom ARF Helm";
 		picture="";
@@ -1762,6 +1768,7 @@ class CfgWeapons
 	};
 	class 885th_Sushi_P1_ARF_Helm: 885th_Najax_P1_ARF_Helm
 	{
+		scope=2;
 		author="885th Bloodpack Division";
 		displayName="[885th] Sushi's Custom ARF Helm";
 		picture="";
@@ -1780,6 +1787,7 @@ class CfgWeapons
 	};
 	class 885th_Crimz_ARF_Helm: 885th_Najax_P1_ARF_Helm
 	{
+		scope=2;
 		author="885th Bloodpack Division";
 		displayName="[885th] Crimz's Custom ARF Helm";
 		picture="";
