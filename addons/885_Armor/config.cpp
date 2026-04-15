@@ -3,7 +3,7 @@ class Cfgpatches
     class 885th_Armor
     {
         author = "885th Bloodpack Div";
-        requiredAddons[] = {"A3_Data_F","A3_Weapons_F","A3_Characters_F"};
+        requiredAddons[] = {"A3_Data_F","A3_Weapons_F","A3_Characters_F","ls_characters_clone_legacy"};
         requiredVersion = 0.1;
         units[] = {
 			"885th_Vornskr_Trooper",
@@ -67,6 +67,9 @@ class Cfgpatches
 			"885th_Medic_P2_Helm",
 			"885th_Nexu_Medic_P2_Helm",
 			"885th_Nightsingers_P1_Pilot_Helm",
+			"885th_Nightsingers_P2_Pilot_Helm",
+			"885th_Nightsingers_P2_Pilot_Senior_Helm",
+			"885th_Nightsingers_P2_Pilot_Officer_Helm",
 			"885th_Nightsingers_Senior_Pilot_Helm",
 			"885th_Nightsingers_Officer_Pilot_Helm",
 			"885th_Nightsingers_Armor_Crew_Helmet",
@@ -84,7 +87,9 @@ class Cfgpatches
 			"885th_Najax_P1_ARF_Camo_Helm",
 			"885th_Najax_Scout_P2_Helm_Base",
 			"885th_Najax_Scout_P2_Helm",
+			"885th_Najax_ARF_P2_Recruit_Helm",
 			"885th_Najax_ARF_P2_Helm",
+			"885th_Najax_ARF_P2_Camo_Helm",
 			"885th_Thunder_P1_ARF_Helm",
 			"885th_BARC_Helm",
 			"885th_Kusak_Katarn_Helmet",
@@ -984,6 +989,7 @@ class CfgWeapons
     };
 	class 885th_Nightsingers_P1_Pilot_Helm: LSEA_Helmet_Pilot_P1_Base
 	{
+		scope=1;
 		author="885th Bloodpack Division";
 		displayName="[885th] Nightsingers Pilot Helm";
 		picture="";
@@ -1034,6 +1040,7 @@ class CfgWeapons
 	};
 	class 885th_Nightsingers_Senior_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
 	{
+		scope=1;
 		author="885th Bloodpack Division";
 		displayName="[885th] Nightsingers Senior Pilot Helm";
 		picture="";
@@ -1052,6 +1059,7 @@ class CfgWeapons
 	};
 	class 885th_Nightsingers_Officer_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
 	{
+		scope=1;
 		author="885th Bloodpack Division";
 		displayName="[885th] Nightsingers Officer Pilot Helm";
 		picture="";
@@ -1137,8 +1145,117 @@ class CfgWeapons
 			};
 		};
 	};
+	class 885th_Nightsingers_P2_Pilot_Helm_Base: H_HelmetO_ViperSP_hex_F
+	{
+		scope=0;
+        author="885th Bloodpack Division";
+        hiddenSelections[]=
+        {
+            "camo1",
+            "visor"
+        };
+        picture="";
+        model = "\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\ls_gar_phase2Pilot_helmet.p3d";
+        subItems[] = {"Integrated_NVG_TI_0_F"};
+        ace_hearing_lowerVolume=0;
+        ace_hearing_protection=1;
+        class ItemInfo: HeadgearItem
+        {
+            mass=12;
+            uniformModel = "\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\ls_gar_phase2Pilot_helmet.p3d";
+            hiddenSelections[]=
+            {
+                "camo1",
+                "visor"
+            };
+            allowedSlots[]={801,901,701,605};
+            modelSides[]={6};
+            class HitpointsProtectionInfo
+            {
+                class Head
+                {
+                    hitpointName="HitHead";
+                    armor=20;
+                    passThrough=0.5;
+                };
+				class Face
+				{
+					hitpointName="HitFace";
+					armor=13;
+					passThrough=0.7;
+				};
+            };
+        };
+	};
+	class 885th_Nightsingers_P2_Pilot_Helm: 885th_Nightsingers_P2_Pilot_Helm_Base
+	{
+		scope=2;
+        author="885th Bloodpack Division";
+		displayName= "[885th] Nightsingers P2 Pilot Helm";
+        picture="";
+		model = "\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\ls_gar_phase2Pilot_helmet.p3d";
+		hiddenSelections[]=
+		{
+			"camo1",
+			"visor"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"\885_Armor\885_Armor\Nightsingers\Nightsingers_P2_Pilot_Helmet_co.paa",
+			"\ls_armor_bluefor\helmet\gar\phase2Pilot\data\visor_co.paa"
+		};
+		hiddenSelectionsMaterials[] = {
+    	"\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\ls_gar_phase2Pilot_helmet.rvmat", // The standard Clone material
+    	"\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\visor.rvmat" // The standard visor material
+		};
+	};
+	class 885th_Nightsingers_P2_Pilot_Senior_Helm: 885th_Nightsingers_P2_Pilot_Helm_Base
+	{
+		scope=2;
+        author="885th Bloodpack Division";
+		displayName= "[885th] Nightsingers P2 Pilot Senior Helm";
+        picture="";
+		model = "\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\ls_gar_phase2Pilot_helmet.p3d";
+		hiddenSelections[]=
+		{
+			"camo1",
+			"visor"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Nightsingers\Senior\Nightsingers_P2_Pilot_Senior_Helmet_co.paa",
+			"\ls_armor_bluefor\helmet\gar\phase2Pilot\data\visor_co.paa"
+		};
+		hiddenSelectionsMaterials[] = {
+    	"\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\ls_gar_phase2Pilot_helmet.rvmat", // The standard Clone material
+    	"\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\visor.rvmat" // The standard visor material
+		};
+	};
+	class 885th_Nightsingers_P2_Pilot_Officer_Helm: 885th_Nightsingers_P2_Pilot_Helm_Base
+	{
+		scope=2;
+        author="885th Bloodpack Division";
+		displayName= "[885th] Nightsingers P2 Pilot Officer Helm";
+        picture="";
+		model = "\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\ls_gar_phase2Pilot_helmet.p3d";
+		hiddenSelections[]=
+		{
+			"camo1",
+			"visor"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Nightsingers\Officer\Nightsingers_P2_Pilot_Officer_Helmet_co.paa",
+			"\ls_armor_bluefor\helmet\gar\phase2Pilot\data\visor_co.paa"
+		};
+		hiddenSelectionsMaterials[] = {
+    	"\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\ls_gar_phase2Pilot_helmet.rvmat", // The standard Clone material
+    	"\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\visor.rvmat" // The standard visor material
+		};
+	};
 	class 885th_Smith_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
 	{
+		scope=2;
 		author="885th Bloodpack Division";
 		displayName="[885th] Smith's Pilot Helm";
 		picture="";
@@ -1157,6 +1274,7 @@ class CfgWeapons
 	};
 	class 885th_Warden_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
 	{
+		scope=2;
 		author="885th Bloodpack Division";
 		displayName="[885th] Warden's Pilot Helm";
 		picture="";
@@ -1181,6 +1299,7 @@ class CfgWeapons
 	};
 	class 885th_TopSnipe_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
 	{
+		scope=2;
 		author="885th Bloodpack Division";
 		displayName="[885th] Topsnipe Pilot Helm";
 		picture="";
@@ -1199,6 +1318,7 @@ class CfgWeapons
 	};
 	class 885th_Owl_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
 	{
+		scope=2;
 		author="885th Bloodpack Division";
 		displayName="[885th] Owl's Pilot Helm";
 		picture="";
@@ -1354,6 +1474,7 @@ class CfgWeapons
 	class SEA_Helmet_ARF_Base;
 	class 885th_Najax_P1_ARF_Helm: SEA_Helmet_ARF_Base
 	{
+		scope=1;
 		author="885th Bloodpack Division";
 		displayName="[885th] Najax ARF Helm";
 		picture="";
@@ -1404,6 +1525,7 @@ class CfgWeapons
 	};
 	class 885th_Najax_Recruit_ARF_Helm: 885th_Najax_P1_ARF_Helm
 	{
+		scope=1;
 		author="885th Bloodpack Division";
 		displayName="[885th] Najax Recruit ARF Helm";
 		hiddenSelections[]=
@@ -1421,6 +1543,7 @@ class CfgWeapons
 	};
 	class 885th_Najax_P1_ARF_Camo_Helm: 885th_Najax_P1_ARF_Helm
 	{
+		scope=1;
 		author="885th Bloodpack Division";
 		displayName="[885th] Najax ARF Spec Ops Helm";
 		hiddenSelections[]=
@@ -1501,7 +1624,6 @@ class CfgWeapons
     {
         scope=0;
         author="885th Bloodpack Division + Legion Studios";
-        displayName="[885th] Najax ARF Helm V2";
         model="\ls\core\addons\characters_clone_legacy\helmets\arf\ls_gar_arf_helmet.p3d";
         hiddenSelections[]=
         {
@@ -1549,7 +1671,26 @@ class CfgWeapons
 			};
         };
     };
-    class 885th_Najax_ARF_P2_Helm: 885th_Najax_ARF_P2_Helm_Base
+    class 885th_Najax_ARF_P2_Recruit_Helm: 885th_Najax_ARF_P2_Helm_Base
+    {
+        author="885th Bloodpack Division";
+        displayName="[885th] Najax Cadet ARF P2 Helm";
+        scope=2;
+        picture="";
+        hiddenSelections[]=
+        {
+            "camo1",
+            "camo2",
+            "visor"
+        };
+        hiddenSelectionsTextures[]=
+        {
+            "885_Armor\885_Armor\Najax\Recruit\885th_Najax_ARF_P2_Cadet_Helm_co.paa",
+            "",
+            "\ls\core\addons\characters_clone_legacy\helmets\arf\data\helmet_co.paa"
+        };
+    };
+	class 885th_Najax_ARF_P2_Helm: 885th_Najax_ARF_P2_Helm_Base
     {
         author="885th Bloodpack Division";
         displayName="[885th] Najax ARF P2 Helm";
@@ -1568,8 +1709,28 @@ class CfgWeapons
             "\ls\core\addons\characters_clone_legacy\helmets\arf\data\helmet_co.paa"
         };
     };
+	class 885th_Najax_ARF_P2_Camo_Helm: 885th_Najax_ARF_P2_Helm_Base
+    {
+        author="885th Bloodpack Division";
+        displayName="[885th] Najax Spec Ops ARF P2 Helm";
+        scope=2;
+        picture="";
+        hiddenSelections[]=
+        {
+            "camo1",
+            "camo2",
+            "visor"
+        };
+        hiddenSelectionsTextures[]=
+        {
+            "885_Armor\885_Armor\Najax\Camo\885th_Najax_ARF_P2_Camo_Helm_co.paa",
+            "",
+            "\ls\core\addons\characters_clone_legacy\helmets\arf\data\helmet_co.paa"
+        };
+    };
 	class 885th_Screwball_P1_ARF_Helm: 885th_Najax_P1_ARF_Helm
 	{
+		scope=2;
 		author="885th Bloodpack Division";
 		displayName="[885th] Screwball's Custom ARF Helm";
 
@@ -1588,6 +1749,7 @@ class CfgWeapons
 	};
 	class 885th_Thunder_P1_ARF_Helm: 885th_Najax_P1_ARF_Helm
 	{
+		scope=2;
 		author="885th Bloodpack Division";
 		displayName="[885th] Thunder Custom ARF Helm";
 		picture="";
@@ -1606,6 +1768,7 @@ class CfgWeapons
 	};
 	class 885th_Sushi_P1_ARF_Helm: 885th_Najax_P1_ARF_Helm
 	{
+		scope=2;
 		author="885th Bloodpack Division";
 		displayName="[885th] Sushi's Custom ARF Helm";
 		picture="";
@@ -1624,6 +1787,7 @@ class CfgWeapons
 	};
 	class 885th_Crimz_ARF_Helm: 885th_Najax_P1_ARF_Helm
 	{
+		scope=2;
 		author="885th Bloodpack Division";
 		displayName="[885th] Crimz's Custom ARF Helm";
 		picture="";
@@ -11015,7 +11179,7 @@ class CfgVehicles
 	class 885th_Najax_Trooper : 885th_Vornskr_Trooper {
 		faction="885th_Faction";
 		editorSubcategory="Sub885thTroopers";
-		camouflage = 0.5;
+		camouflage = 0.3;
 		uniformClass = "885th_Najax_Uniform";
 		hiddenSelections[] = {"Camo1","Camo2"};
 		hiddenSelectionsTextures[] = {
@@ -11027,7 +11191,7 @@ class CfgVehicles
 	class 885th_Najax_Recruit : 885th_Vornskr_Trooper {
 		faction="885th_Faction";
 		editorSubcategory="Sub885thTroopers";
-		camouflage = 0.5;
+		camouflage = 0.3;
 		uniformClass = "885th_Najax_Recruit_Uniform";
 		hiddenSelections[] = {"Camo1","Camo2"};
 		hiddenSelectionsTextures[] = {
@@ -11039,7 +11203,7 @@ class CfgVehicles
 	class 885th_Najax_Camo_Trooper : 885th_Vornskr_Trooper {
 		faction="885th_Faction";
 		editorSubcategory="Sub885thTroopers";
-		camouflage = 0.3;
+		camouflage = 0.2;
 		uniformClass = "885th_Najax_Camo_Uniform";
 		hiddenSelections[] = {"Camo1","Camo2"};
 		hiddenSelectionsTextures[] = {
@@ -11054,7 +11218,7 @@ class CfgVehicles
 		scope=1;
 		author="885th Bloodpack Division";
 		displayName="[885th] Scout Trooper Uniform";
-		camouflage = 0.5;
+		camouflage = 0.3;
 		uniformClass="885th_Najax_Scout_Uniform";
 		nakedUniform="885th_Najax_Scout_Trooper_undersuit";
 		model="\ls\core\addons\characters_clone\uniforms\scout\ls_uniform_clone_scout.p3d";
@@ -11086,7 +11250,7 @@ class CfgVehicles
 		scope=1;
 		author="885th Bloodpack Division";
 		displayName="[885th] Adv Recon Trooper Uniform";
-		camouflage = 0.6;
+		camouflage = 0.3;
 		uniformClass="885th_AdvRecon_Uniform";
 		nakedUniform="885th_AdvRecon_Scout_Trooper_undersuit";
 		model="\ls\core\addons\characters_clone\uniforms\scout\ls_uniform_clone_scout.p3d";

@@ -46,6 +46,10 @@ class CFgEditorSubcategories
 	{
 		displayName = "Tanks";
 	};
+	class Sub885thRecon
+	{
+		displayName = "Recon"
+	};
 };
 class CfgAmmo
 {
@@ -772,7 +776,7 @@ class CfgVehicles
 		displayname = "[885th] Light Support Vehicle";
 		side = 1;
 		faction = "885th_Faction";
-		editorSubcategory = "Sub885thTransports";
+		editorSubcategory = "Sub885thRecon";
 		armor = 100;
 		armorStructural = 5;
 		accuracy = 0.25;
