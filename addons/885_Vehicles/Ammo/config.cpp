@@ -1,31 +1,31 @@
-CfgPatches
+class CfgPatches
 {
-    class 885th_VehiclesWeapons
+    class 885th_VehiclesWeapons 
     {
-		author="$STR_3as_Studio";
-		requiredAddons[]=
-		{
-			"A3_Data_F_Tank_Loadorder",
-			"3AS_Weapons",
-			"3AS_Main"
-		};
-		requiredVersion=0.1;
-		units[]=
-		{
-			"Tank_885th_AP_Round",
+        author="885th Bloodpack Division";
+        requiredAddons[]=
+        {
+            "A3_Data_F_Tank_Loadorder",
+            "3AS_Weapons",
+            "3AS_Main"
+        };
+        requiredVersion=0.1;
+        units[]=
+        {
+            "Tank_885th_AP_Round",
             "Air_885th_AP_Round",
             "Tank_885th_HEAT",
-			"Tank_885th_AT",
+            "Tank_885th_AT",
             "Tank_885th_HE",
-            "Air_885th_Light"
+            "Air_885th_Light",
             "Air_885th_Med",
             "Air_885th_Heavy",
             "Air_885th_Concussion_Missile",
             "Air_885th_Discord_Missile"
-		};
+        };
         weapons[]=
-		{
-			"885th_SaberCannons_Base",
+        {
+            "885th_SaberCannons_Base",
             "885th_SaberCannons",
             "885th_Saber_HE_Rocketpods",
             "885th_Saber_HEAT_Missiles",
@@ -36,22 +36,20 @@ CfgPatches
             "885th_Fighter_AMRAAM",
             "885th_Fighter_AGM",
             "885th_ATRT_Cannon",
-            "885th_ATRT_Launcher",
-		};
-        magazines=[]
+            "885th_ATRT_Launcher"
+        };
+        magazines[]=
         {
-            "885th_100rd_Saber_Mag",
-            "885th_500rd_SaberOC_Mag",
-            "885th_2500rd_Saber_Laser_Mag",
-            "885th_20rd_Saber_Rocket_Mag",
-            "885th_6rd_Saber_Missiles_Mag",
-            "885th_500rd_Saber_APMG_Mag",
-            "885th_10rd_SAM_AMRAAM",
-            "885th_10rd_AGM",
-            "885th_1000rd_LowEnergy_Cannons",
-            "885th_750rd_HighEnergy_Cannons",
-            "885th_5000rd_MedEnergy_Battery",
-            "885th_6rd_ATRT_HE_Launcher"
+            "885th_Saber_AP_Mag",
+            "885th_Saber_HE_Mag",
+            "885th_Saber_HEAT_Mag",
+            "885th_Saber_Laser_Battery",
+            "885th_Fighter_20mm_Mag",
+            "885th_Fighter_30mm_Mag",
+            "885th_Fighter_AMRAAM_Mag",
+            "885th_Fighter_AGM_Mag",
+            "885th_ATRT_Cannon_Mag",
+            "885th_ATRT_Launcher_Mag"
         };
         ammo[]=
         {
@@ -401,7 +399,6 @@ class CfgAmmo
     {
 		initTime=0.40000001;
 		cost=10;
-		proxyShape="\A3\Weapons_F\Ammo\Missile_AA_02_F.p3d";
 		model="\A3\Weapons_F\Ammo\Missile_AT_02_fly_F";
 		effectsMissile="3AS_Rocket_effect_Purple_fly";
         proxyShape = "\A3\Weapons_F\Ammo\Missile_AA_04_F";
@@ -1012,9 +1009,48 @@ class CfgWeapons
 			maxRangeProbab=0.1;
 		};
 	};
+    class 885th_Saber_AP_Turret: CannonCore
+    {
+        scope = 2;
+        displayName = "[885th]Saber Battle Tank MG";
+        magazines[]=
+        {
+            "885th_500rd_Saber_APMG_Mag"
+        };
+        selectionFireAnim = "zasleh";      // The standard 3AS/Vanilla flash location
+        flash = "flare";                   // Clean, light flare (not "gunfire")
+        flashSize = 1;                     // Size of the flare
+        fireLightDuration = 0.05;
+        fireLightIntensity = 1;
+        ballisticsComputer = 1;      
+        canLock = 2;                 
+        weaponLockSystem = "2 + 4";
+        modes[] = {"FullAuto", "Close"};
+
+        class FullAuto: Mode_FullAuto {
+            displayName = "Rapid Pulse";
+            reloadTime = 0.08;       
+            dispersion = 0.001;
+            soundContinuous= 0;
+            sounds[] = {"StandardSound"};
+            class StandardSound 
+            {
+                weaponSoundEffect = "DefaultRifle";
+                begin1[] = {"3AS\3AS_Sounds\Weapons\Blaster\Saber_Repeaters_1.wss", 1.5, 1.1, 1500};
+                soundBegin[] = {"begin1", 1};
+            };
+        };
+        class Close: FullAuto 
+        {
+            aiRateOfFire = 0.5;
+            aiRateOfFireDistance = 50;
+            showToPlayer = 0;
+        };
+    };
     class 885th_ATRT_Launcher: GMG_20mm
     {
-		displayName="[885th]ATRT HE GL";
+		scope=2;
+        displayName="[885th]ATRT HE GL";
 		Magazines[]=
 		{
 			"885th_6rd_ATRT_HE_Launcher"
@@ -1022,7 +1058,7 @@ class CfgWeapons
 		magazineReloadTime=4;
         modes[]=
         {
-            "manual";
+            "manual",
             "close",
             "short",
             "medium",
@@ -1033,133 +1069,71 @@ class CfgWeapons
             displayName = "Semi";
             reloadTime = 0.3;
             sounds[] = {"StandardSound"};
-        };
+        
+        // The sound MUST be inside the fire mode to play correctly
         class StandardSound
-		{
-			"StandardSound"
-		};
-		class BaseSoundModeType;
-		class StandardSound: BaseSoundModeType
-			{
-				weaponSoundEffect="";
-				begin1[]=
-				{
-					"885_Sounds\885th_UGL_Sound.ogg",
-					3.1622777,
-					1,
-					400
-				};
-				soundBegin[]=
-				{
-					"begin1",
-					0.1
-				};
-			};
-		};
-    };
-    class 885th_Saber_AP_Turret: CannonCore
-    {
-        scope = 2;
-        displayName = "[885th]Saber Battle Tank MG";
-        magazines[]=
         {
-            "885th_500rd_Saber_APMG_Mag"
-        };
-        ballisticsComputer = 1;      
-        canLock = 2;                 
-        weaponLockSystem = "2 + 4";
-        modes[] = {"FullAuto", "Close"};
-
-        class FullAuto: CannonCore {
-            displayName = "Rapid Pulse";
-            reloadTime = 0.08;       
-            dispersion = 0.0015;
-            sounds[] = {"StandardSound"};
-            class StandardSound {
-                begin1[] = {"A3\Sounds_F\weapons\Cannons\cannon_20mm", 1.8, 1.1, 1500};
-                soundBegin[] = {"begin1", 1};
-            };
-        };
-        class Close: FullAuto {
-            aiRateOfFire = 0.5;
-            aiRateOfFireDistance = 50;
-            showToPlayer = 0;
-        };
-    };
-    class 885th_Saber_Laser_Turret: CannonCore {
-    scope = 2;
-    displayName = "[885th]Saber Battle Tank Laser";
-    magazines[] =
-    {
-        "885th_500rd_Saber_APMG_Mag"
-    };
-    ballisticsComputer = 1;      
-    canLock = 2;                 
-    weaponLockSystem = "2 + 4";
-    modes[] = 
-    {
-        "FullAuto", 
-        "Close"
-    };
-    class FullAuto: CannonCore {
-        displayName = "Rapid Pulse";
-        reloadTime = 0.1;        
-        dispersion = 0.0012;
-        sounds[] = {"StandardSound"};
-        class StandardSound 
-        {
-            begin1[] = {"A3\Sounds_F\weapons\Cannons\cannon_20mm", 1.8, 1.5, 1500};
+            weaponSoundEffect = "";
+            begin1[] = {"885_Sounds\885th_UGL_Sound.ogg", 3.1622777, 1, 400};
             soundBegin[] = {"begin1", 1};
         };
     };
-    class Close: FullAuto 
-    {
-        aiRateOfFire = 0.2;
-        aiRateOfFireDistance = 100;
-        showToPlayer = 0;
+
+    class close: manual { showToPlayer = 0; };
+    class short: close {};
+    class medium: close {};
+    class far: close {};
     };
     class 885th_Saber_HE_Rocketpods: RocketPods
     {
-		class gunClouds
-		{
-		};
-		displayName="";
-		magazines[]=
-		{
-			"885th_20rd_Saber_Rocket_Mag"
-		};
-		sounds[]=
-		{
-			"StandardSound"
-		};
-		class BaseSoundModeType;
-		class StandardSound: BaseSoundModeType
-		{
-			soundSetShot[]=
-			{
-				"3AS_missle_SoundSet"
-			};
-		};
-		modes[]=
-		{
-			"Close",
-			"Medium",
-			"Far",
-			"Full"
-		};
-		class GunParticles
-		{
-			class FirstEffect
-			{
-				effectName="";
-				positionName="efecto_2_pos";
-				directionName="efecto_2_dir";
-			};
-		};
-	};
-};
+        scope = 2;
+        displayName = "[885th] Saber HE Rocket Pods";
+        canLock = 0;              
+        weaponLockSystem = 0;     
+        cursorAim = "EmptyCursor"; 
+        magazines[] = {"885th_20rd_Saber_Rocket_Mag"};
+        modes[] = {"Full", "Close", "Medium", "Far"};
+    };
+    class Full: RocketPods 
+    {
+        displayName = "Full Auto";
+        reloadTime = 0.2;
+        autoReload = 1;
+        sounds[] = {"StandardSound"};
+        
+        class StandardSound
+        {
+            soundSetShot[] = {"3AS_missle_SoundSet"}; 
+        };
+    }; // Closes Full
 
-    
+    // These MUST be inside the 885th_Saber_HE_Rocketpods braces
+    class Close: Full
+    {
+        showToPlayer = 0;
+        aiRateOfFire = 1;
+        aiRateOfFireDistance = 500;
+    };
 
+    class Medium: Close
+    {
+        aiRateOfFire = 2;
+        aiRateOfFireDistance = 1000;
+    };
 
+    class Far: Close
+    {
+        aiRateOfFire = 3;
+        aiRateOfFireDistance = 2000;
+    };
 
+    class GunParticles
+    {
+        class FirstEffect
+        {
+            effectName = "RocketBackblastRPGNT";
+            positionName = "efecto_2_pos";
+            directionName = "efecto_2_dir";
+        };
+    };
+}; // Closes 885th_Saber_HE_Rocketpods

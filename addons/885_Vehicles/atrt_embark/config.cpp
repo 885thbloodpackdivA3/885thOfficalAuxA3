@@ -5711,11 +5711,16 @@ class CfgVehicles
 		backpack="885th_ATRT_SaddleBags";
 		weapons[]=
 		{
-			"3AS_ATRT_Weapon_F"
+			"3AS_ATRT_Weapon_F",
+			"885th_ATRT_Launcher"
 		};
 		magazines[]=
 		{
-			"3AS_9999Rnd_ATRT_Mag"
+			"3AS_9999Rnd_ATRT_Mag",
+			"885th_6rd_ATRT_HE_Launcher",
+			"885th_6rd_ATRT_HE_Launcher",
+			"885th_6rd_ATRT_HE_Launcher",
+			"885th_6rd_ATRT_HE_Launcher",
 		};
 		linkedItems[]=
 		{
