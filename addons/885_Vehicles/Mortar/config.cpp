@@ -172,7 +172,7 @@ class CfgVehicles
 	{
 		faction="3AS_REP";
 		model="\3as\3as_static\Mortar\model\mortarpack.p3d";
-		author="885th bloodpack division";
+		author="885th Bloodpack Division";
 		_generalMacro="B_Mortar_01_weapon_F";
 		scope=2;
 		editorCategory="EdCat_Equipment";
