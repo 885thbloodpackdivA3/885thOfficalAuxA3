@@ -6,8 +6,10 @@ class CfgPatches
         requiredAddons[]=
         {
             "A3_Data_F_Tank_Loadorder",
+			"A3_Weapons_F",
             "3AS_Weapons",
-            "3AS_Main"
+            "3AS_Main",
+			"885th_Weapons"
         };
         requiredVersion=0.1;
         units[]=
@@ -27,6 +29,7 @@ class CfgPatches
         {
             "885th_SaberCannons_Base",
             "885th_SaberCannons",
+			"885th_SaberCannonsOC",
             "885th_Saber_HE_Rocketpods",
             "885th_Saber_HEAT_Missiles",
             "885th_Saber_AP_Turret",
@@ -57,12 +60,14 @@ class CfgPatches
             "885th_RocketBase",
             "885th_MissileBase",
             "885th_Saber_HE",
+			"885th_Saber_OC30mm",
             "885th_Saber_HEAT",
             "885th_Saber_OC",
             "885th_Saber_AP",
             "885th_Saber_OGMG",
             "885th_Ammo_AMRAAM",
             "885th_Ammo_AGM",
+			"885th_Ammo_Rocket",
             "885th_Fighter_LowEnergy_Shell",
             "885th_Fighter_HighEnergy_Shell",
             "885th_Interceptor_LowEnergy_Shell",
@@ -261,23 +266,139 @@ class CfgAmmo
 		hit=605;
 		indirecthit=5;
 		indirecthitrange=1;
-		warheadName="AT";
+		warheadName="HEAT";
 		submunitionAmmo="ammo_Penetrator_120mm";
 		submunitionDirectionType="SubmunitionModelDirection";
 		caliber=35;
 		explosive=0.2;
 		effectFly="3AS_PlasmaBolt_Medium_Blue_Fly";
 	};
-    class 885th_Saber_OC: 885th_Saber_HE
+	class 885th_Saber_OC30mm: 885th_PlasmaBase
     {
-		hit=800;
-		indirecthit=5;
-		indirecthitrange=1;
+		soundFly[]=
+		{
+			"",
+			1,
+			1,
+			50
+		};
+		soundHit1[]=
+		{
+			"A3\Sounds_F\arsenal\explosives\shells\30mm40mm_shell_explosion_01",
+			1.7782794,
+			1,
+			1600
+		};
+		soundHit2[]=
+		{
+			"A3\Sounds_F\arsenal\explosives\shells\30mm40mm_shell_explosion_02",
+			1.7782794,
+			1,
+			1600
+		};
+		soundHit3[]=
+		{
+			"A3\Sounds_F\arsenal\explosives\shells\30mm40mm_shell_explosion_03",
+			1.7782794,
+			1,
+			1600
+		};
+		soundHit4[]=
+		{
+			"A3\Sounds_F\arsenal\explosives\shells\30mm40mm_shell_explosion_04",
+			1.7782794,
+			1,
+			1600
+		};
+		multiSoundHit[]=
+		{
+			"soundHit1",
+			0.25,
+			"soundHit2",
+			0.25,
+			"soundHit3",
+			0.25,
+			"soundHit4",
+			0.25
+		};
+		explosionSoundEffect="DefaultExplosion";
+		hit=600;
+		indirectHit=25;
+		indirectHitRange=5;
+		warheadName="AT";
+		submunitionAmmo="ammo_Penetrator_120mm";
+		submunitionDirectionType="SubmunitionModelDirection";
+		caliber=20;
+		explosive=0.80000001;
+		craterEffects="ExploAmmoCrater";
+		cartridge="";
+		visibleFire=32;
+		audibleFire=200;
+		visibleFireTime=3;
+		dangerRadiusBulletClose=20;
+		dangerRadiusHit=60;
+		suppressionRadiusBulletClose=10;
+		suppressionRadiusHit=14;
+		model="3as\3as_weapons\data\tracer_shell_blue.p3d";
+		cost=40;
+		fuseDistance=3;
+		typicalSpeed=990;
+		tracerStartTime=9.9999997e-005;
+		tracerScale=2;
+		tracerEndTime=10;
+		aiAmmoUsageFlags="64 + 128 + 512";
+		effectFly="3AS_PlasmaBolt_Medium_Blue_Fly";
+		class CamShakeExplode
+		{
+			power=3.8;
+			duration=0.80000001;
+			frequency=20;
+			distance=50.871201;
+		};
+		class CamShakeHit
+		{
+			power=19;
+			duration=0.40000001;
+			frequency=20;
+			distance=1;
+		};
+		class CamShakeFire
+		{
+			power=2.0878;
+			duration=0.80000001;
+			frequency=20;
+			distance=34.871201;
+		};
+		class CamShakePlayerFire
+		{
+			power=0.0099999998;
+			duration=0.1;
+			frequency=20;
+			distance=1;
+		};
+		ace_frag_enabled=1;
+		ace_frag_metal=450;
+		ace_frag_charge=18;
+		ace_frag_gurney_c=2377;
+		ace_frag_gurney_k="1/2";
+		ace_frag_classes[]=
+		{
+			"ACE_frag_tiny_HD",
+			"ACE_frag_tiny"
+		};
+		ace_frag_skip=0;
+		ace_frag_force=1;
+	};
+    class 885th_Saber_OC: 885th_Saber_OC30mm
+    {
+		hit=600;
+		indirectHit=25;
+		indirectHitRange=5;
 		warheadName="AT";
 		submunitionAmmo="ammo_Penetrator_120mm";
 		submunitionDirectionType="SubmunitionModelDirection";
 		caliber=35;
-		explosive=0.4;
+		explosive=0.5;
 		effectFly="3AS_PlasmaBolt_Medium_Blue_Fly";
 	};
     class B_127x99_Ball;
@@ -288,7 +409,7 @@ class CfgAmmo
 		indirecthitrange=1;
 		warheadName="AP";
 		caliber=3.5;
-		explosive=0.1;
+		explosive=0.0;
 		effectFly="3AS_PlasmaBolt_Medium_Blue_Fly";
 	};
     class 885th_Saber_OGMG: BulletBase
@@ -476,16 +597,17 @@ class CfgAmmo
 			distance=1;
 		};
 	};
-    class 885th_Saber_HE_Rocketpods: RocketBase
+    class 885th_Ammo_Rocket: RocketBase
     {
-        model = "\A3\Weapons_F\Ammo\Rocket_04_HE_F";
-        hit = 100;                                  
+		hit = 200;                                  
         indirectHit = 50;                           
         indirectHitRange = 10;                      
         cost = 200;
         maxSpeed = 600;                             
         thrustTime = 1.5;                           
         thrust = 400;
+		model = "\A3\Weapons_F\Ammo\Rocket_04_f.p3d"; 
+    	proxyShape = "\A3\Weapons_F\Ammo\Rocket_04_f.p3d";
         sideAirFriction = 0.05;
         effectsRocket = "missile4";                 
         explosive = 0.8;                            
@@ -637,8 +759,8 @@ class CfgMagazines
         author="885th Bloodpack Division";
 		scope=2;
         displayName="20Rnd HE Saber Rocket Pods";
-		displayNameShort="HE-RP";
-		ammo="885th_Saber_HE_Rocketpods";
+		displayNameShort="HE-Pods";
+		ammo="885th_Ammo_Rocket";
 		count=20;
 		initSpeed=50;
 		maxLeadSpeed=83.333298;
@@ -665,7 +787,7 @@ class CfgMagazines
         author = "885th Bloodpack Division";
         scope = 2;
         displayName = "6rd ATRT HE Launcher";
-        displayNameShort = "40mm GL";
+        displayNameShort = "OG GL";
         ammo = "885th_Recon_HE_Launcher";
         count = 6;
         initSpeed = 120; 
@@ -894,7 +1016,8 @@ class CfgWeapons
 		displayName="Sabre Cannons";
 		magazines[]=
 		{
-			"885th_100rd_Saber_Mag"
+			"885th_100rd_Saber_Mag",
+			"885th_500rd_SaberOC_Mag"
 		};
         magazineReloadTime=3;
 		modes[]=
@@ -918,7 +1041,7 @@ class CfgWeapons
 		displayNameShort="HEAT";
 		class manual: MGun
 		{
-			displayName="$STR_A3_LMG_RCWS0";
+			displayName="885th Bloodpack Division";
 			sounds[]=
 			{
 				"StandardSound"
@@ -1009,6 +1132,107 @@ class CfgWeapons
 			maxRangeProbab=0.1;
 		};
 	};
+	class 885th_SaberCannonsOC: MGun
+	{
+    class GunClouds {};
+    
+    // 30mm Shell Casing Sounds
+    bullet1[] = {"A3\sounds_f\weapons\shells\30mm\Shellcase_30mm_Metal_01", 0.2818383, 1, 10};
+    bullet2[] = {"A3\sounds_f\weapons\shells\30mm\Shellcase_30mm_Metal_02", 0.2818383, 1, 10};
+    bullet3[] = {"A3\sounds_f\weapons\shells\30mm\Shellcase_30mm_Metal_03", 0.2818383, 1, 10};
+    bullet4[] = {"A3\sounds_f\weapons\shells\30mm\Shellcase_30mm_Metal_04", 0.2818383, 1, 10};
+    bullet5[] = {"A3\sounds_f\weapons\shells\30mm\Shellcase_30mm_Dirt_01", 0.2818383, 1, 10};
+    bullet6[] = {"A3\sounds_f\weapons\shells\30mm\Shellcase_30mm_Dirt_02", 0.2818383, 1, 10};
+    bullet7[] = {"A3\sounds_f\weapons\shells\30mm\Shellcase_30mm_Dirt_03", 0.2818383, 1, 10};
+    bullet8[] = {"A3\sounds_f\weapons\shells\30mm\Shellcase_30mm_Dirt_04", 0.2818383, 1, 10};
+    bullet9[] = {"A3\sounds_f\weapons\shells\30mm\Shellcase_30mm_Grass_01", 0.2818383, 1, 10};
+    bullet10[] = {"A3\sounds_f\weapons\shells\30mm\Shellcase_30mm_Grass_02", 0.2818383, 1, 10};
+    bullet11[] = {"A3\sounds_f\weapons\shells\30mm\Shellcase_30mm_Grass_03", 0.2818383, 1, 10};
+    bullet12[] = {"A3\sounds_f\weapons\shells\30mm\Shellcase_30mm_Grass_04", 0.2818383, 1, 10};
+    soundBullet[] = {
+        "bullet1", 0.08, "bullet2", 0.08, "bullet3", 0.08, "bullet4", 0.08,
+        "bullet5", 0.09, "bullet6", 0.09, "bullet7", 0.07, "bullet8", 0.07,
+        "bullet9", 0.08, "bullet10", 0.08, "bullet11", 0.08, "bullet12", 0.08
+    };
+    class GunParticles {
+        class Effect1 {
+            effectName = "AutoCannonCloud"; // Heavier smoke for 30mm
+            positionName = "usti hlavne"; // Standard muzzle point
+        };
+    };
+    scope = 2; // Set to 2 to make it visible in editor/garage
+    displayName = "Sabre Cannon 30mm - OC";
+    displayNameShort = "OC 30mm";
+    magazines[] = {"885th_500rd_SaberOC_Mag"};
+    magazineReloadTime = 6; 
+    modes[] = {"FullAuto", "close", "medium", "far"};
+    canLock = 0;
+    ballisticsComputer = "2 + 16";
+    FCSMaxLeadSpeed = 100; // Allows lead calculation for moving targets
+    FCSZeroingDelay = 0.5;
+    maxZeroing = 3000;
+    // Recoil and Shake (Crucial for the "Cannon" feel)
+    recoil = "recoil_auto_cannon_30mm"; 
+    recoilProne = "recoil_auto_cannon_30mm";
+    // ACE Overpressure
+    ace_overpressure_angle = 60; 
+    ace_overpressure_range = 10;  
+    ace_overpressure_damage = 0.8; 
+    class FullAuto: Mode_FullAuto {
+        displayName = "Full Auto";
+		reloadTime = 0.18; // ~400 RPM - standard for autocannons like the Bushmaster II
+        dispersion = 0.0008; // High precision for a long-barrel cannon
+        minRange = 0;
+        minRangeProbab = 0.9;
+        midRange = 1000;
+        midRangeProbab = 0.7;
+        maxRange = 2500;
+        maxRangeProbab = 0.1;
+        sounds[] = {"StandardSound"};
+        class StandardSound 
+		{
+       		weaponSoundEffect = "DefaultRifle"; // This is often the missing "trigger"
+            begin1[]={"885_Sounds\Z8Blastercannon.ogg",1.9952624,1,900};
+            soundBegin[] = {"begin1", 1};
+        };
+    };
+    class close: FullAuto 
+	{
+        showToPlayer = 0;
+        aiRateOfFire = 0.25;
+        aiRateOfFireDistance = 400;
+        minRange = 0;
+        minRangeProbab = 0.05;
+        midRange = 200;
+        midRangeProbab = 0.7;
+        maxRange = 500;
+        maxRangeProbab = 0.2;
+    };
+    class medium: FullAuto 
+	{
+        showToPlayer = 0;
+        aiRateOfFire = 1;
+        aiRateOfFireDistance = 900;
+        minRange = 400;
+        minRangeProbab = 0.05;
+        midRange = 800;
+        midRangeProbab = 0.7;
+        maxRange = 1500;
+        maxRangeProbab = 0.1;
+    };
+    class far: FullAuto 
+	{
+        showToPlayer = 0;
+        aiRateOfFire = 2;
+        aiRateOfFireDistance = 2000;
+        minRange = 1000;
+        minRangeProbab = 0.05;
+        midRange = 2000;
+        midRangeProbab = 0.5;
+        maxRange = 3500;
+        maxRangeProbab = 0.01;
+    };
+};
     class 885th_Saber_AP_Turret: CannonCore
     {
         scope = 2;
@@ -1036,95 +1260,45 @@ class CfgWeapons
             class StandardSound 
             {
                 weaponSoundEffect = "DefaultRifle";
-                begin1[] = {"3AS\3AS_Sounds\Weapons\Blaster\Saber_Repeaters_1.wss", 1.5, 1.1, 1500};
+                begin1[]={"885_Sounds\Z8Blastercannon.ogg",1.9952624,1,900};
                 soundBegin[] = {"begin1", 1};
             };
         };
-        class Close: FullAuto 
-        {
-            aiRateOfFire = 0.5;
-            aiRateOfFireDistance = 50;
-            showToPlayer = 0;
-        };
-    };
-    class 885th_ATRT_Launcher: GMG_20mm
-    {
-		scope=2;
-        displayName="[885th]ATRT HE GL";
-		Magazines[]=
-		{
-			"885th_6rd_ATRT_HE_Launcher"
-		};
-		magazineReloadTime=4;
-        modes[]=
-        {
-            "manual",
-            "close",
-            "short",
-            "medium",
-            "far"
-        };
-        class manual: GMG_20mm
-        {
-            displayName = "Semi";
-            reloadTime = 0.3;
-            sounds[] = {"StandardSound"};
-        
-        // The sound MUST be inside the fire mode to play correctly
-        class StandardSound
-        {
-            weaponSoundEffect = "";
-            begin1[] = {"885_Sounds\885th_UGL_Sound.ogg", 3.1622777, 1, 400};
-            soundBegin[] = {"begin1", 1};
-        };
-    };
-
-    class close: manual { showToPlayer = 0; };
-    class short: close {};
-    class medium: close {};
-    class far: close {};
     };
     class 885th_Saber_HE_Rocketpods: RocketPods
-    {
-        scope = 2;
-        displayName = "[885th] Saber HE Rocket Pods";
-        canLock = 0;              
-        weaponLockSystem = 0;     
-        cursorAim = "EmptyCursor"; 
-        magazines[] = {"885th_20rd_Saber_Rocket_Mag"};
-        modes[] = {"Full", "Close", "Medium", "Far"};
-    };
-    class Full: RocketPods 
-    {
-        displayName = "Full Auto";
-        reloadTime = 0.2;
-        autoReload = 1;
-        sounds[] = {"StandardSound"};
-        
-        class StandardSound
-        {
-            soundSetShot[] = {"3AS_missle_SoundSet"}; 
-        };
-    }; // Closes Full
+	{
+    	scope = 2;
+    	displayName = "[885th] Saber HE Rocket Pods";
+    	canLock = 0;              
+    	weaponLockSystem = 0;     
+    	cursorAim = "EmptyCursor"; 
+    	magazines[] = {"885th_20rd_Saber_Rocket_Mag"};
+    	modes[] = {"Full", "Close", "Medium", "Far"};
 
-    // These MUST be inside the 885th_Saber_HE_Rocketpods braces
-    class Close: Full
-    {
-        showToPlayer = 0;
-        aiRateOfFire = 1;
-        aiRateOfFireDistance = 500;
-    };
-
-    class Medium: Close
-    {
-        aiRateOfFire = 2;
-        aiRateOfFireDistance = 1000;
-    };
-
-    class Far: Close
-    {
-        aiRateOfFire = 3;
-        aiRateOfFireDistance = 2000;
+    	class Full: Mode_FullAuto
+    	{
+        	displayName = "Full Auto";
+        	reloadTime = 0.2;
+        	autoReload = 1;
+        	sounds[] = {"StandardSound"};
+        	class StandardSound
+        	{
+            	weaponSoundEffect = "DefaultRifle";
+            	soundSetShot[] = 
+				{
+                	"Rocket_DAR_Launcher_Shot_SoundSet", 
+                	"Rocket_DAR_Launcher_Tail_SoundSet", 
+                	"Rocket_DAR_Launcher_Interior_SoundSet"
+            	};
+        	};
+		};
+        // Range logic for the player/AI
+        minRange = 10;
+        minRangeProbab = 0.9;
+        midRange = 400;
+        midRangeProbab = 0.7;
+        maxRange = 1000;
+        maxRangeProbab = 0.1;
     };
 
     class GunParticles
@@ -1132,8 +1306,8 @@ class CfgWeapons
         class FirstEffect
         {
             effectName = "RocketBackblastRPGNT";
-            positionName = "efecto_2_pos";
-            directionName = "efecto_2_dir";
+            positionName = "efecto_2_pos"; // Ensure this exists in your P3D
+            directionName = "efecto_2_dir"; // Ensure this exists in your P3D
         };
     };
-}; // Closes 885th_Saber_HE_Rocketpods
+}; // This bracket closes the entire weapon class

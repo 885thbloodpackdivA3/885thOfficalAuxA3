@@ -5716,11 +5716,7 @@ class CfgVehicles
 		};
 		magazines[]=
 		{
-			"3AS_9999Rnd_ATRT_Mag",
-			"885th_6rd_ATRT_HE_Launcher",
-			"885th_6rd_ATRT_HE_Launcher",
-			"885th_6rd_ATRT_HE_Launcher",
-			"885th_6rd_ATRT_HE_Launcher",
+			"3AS_9999Rnd_ATRT_Mag"
 		};
 		linkedItems[]=
 		{
