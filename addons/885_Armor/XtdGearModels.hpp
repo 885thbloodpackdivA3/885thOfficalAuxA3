@@ -571,7 +571,7 @@ class XtdGearModels
 					"Officer",
 					"Command",
 					"Hazard",
-					"Hazard CO"
+					"Hazard CO",
 					"Mortar"
 				};
 			};
