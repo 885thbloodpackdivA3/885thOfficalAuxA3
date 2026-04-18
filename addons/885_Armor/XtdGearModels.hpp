@@ -571,7 +571,8 @@ class XtdGearModels
 					"Officer",
 					"Command",
 					"Hazard",
-					"Hazard CO"
+					"Hazard CO",
+					"Mortar"
 				};
 			};
 		};
@@ -1568,6 +1569,11 @@ class XtdGearInfos
 		{
 			model="Vornskr_Backpacks";
 			backpack="Hazard CO";
+		};
+		class 885th_Republic_Mortar_Bag
+		{
+			model="Vornskr_Backpacks";
+			backpack="Mortar";
 		};
 		//Detachment Backpacks
 		class 885th_Nightsingers_Clone_Radiopack
