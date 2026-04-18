@@ -13,7 +13,6 @@ class Cfgpatches
 			"885th_Charhound_Trooper",
 			"885th_Charhound_VCT_Trooper",
 			"885th_Charhound_Officer_Trooper",
-			"885th_Vornskr_Femme_Trooper",
 			"885th_Lotho_Trooper",
 			"885th_Recruit_Trooper",
 			"885th_Medic_Trooper",
@@ -117,7 +116,6 @@ class Cfgpatches
 			"885th_Charhound_Uniform",
 			"885th_Charhound_VCT_Uniform",
 			"885th_Charhound_Officer_Uniform",
-			"885th_Vornskr_Femme_Uniform",
 			"885th_Lotho_Uniform",
 			"885th_Recruit_Uniform",
 			"885th_Medic_Uniform",
@@ -3324,32 +3322,6 @@ class CfgWeapons
 		{
 			uniformModel = "";
 			uniformClass = "885th_Vornskr_Officer_Trooper";
-			containerClass = "Supply300";
-			mass = 40;
-		};
-	};
-    class 885th_Vornskr_Femme_Uniform: GR_Femclone_dirty_armor_uniform
-	{
-		scope = 2;
-		displayName = "[885th] Vornskr Femme P2 Armor";
-		class ItemInfo: UniformItem
-		{
-			uniformModel = "";
-			uniformClass = "885th_Vornskr_Femme_Trooper";
-			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
-			containerClass = "Supply200";
-			mass = 40;
-		};
-	};
-    class 885th_Lotho_Uniform: 885th_Vornskr_Femme_Uniform
-	{
-		scope = 0;
-		displayName = "[885th] Lotho's P2 Armor";
-		class ItemInfo: UniformItem
-		{
-			uniformModel = "";
-			uniformClass = "885th_Lotho_Trooper";
-			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
 			containerClass = "Supply300";
 			mass = 40;
 		};
@@ -11099,34 +11071,6 @@ class CfgVehicles
 		};
 	};
 
-	class 885th_Vornskr_Femme_Trooper : GR_Femclone_dirty_armor_body {
-		scope=1;
-		scopeCurator=1;
-		scopeArsenal=2;
-		side=1;
-		faction="885th_Faction";
-		editorSubcategory="Sub885thTroopers";
-		uniformClass = "885th_Vornskr_Femme_Uniform";
-		hiddenSelections[] = {"Camo1"};
-		hiddenSelectionsTextures[] = {
-			"\885_Armor\885_Armor\Vornskr\Omega\885th_Fem_P2_Armor_co.paa"
-		};
-	};
-
-	class 885th_Lotho_Trooper : GR_Femclone_dirty_armor_body {
-		scope=1;
-		scopeCurator=1;
-		scopeArsenal=2;
-		side=1;
-		faction="885th_Faction";
-		editorSubcategory="Sub885thTroopers";
-		uniformClass = "885th_Lotho_Uniform";
-		hiddenSelections[] = {"Camo1"};
-		hiddenSelectionsTextures[] = {
-			"\885_Armor\885_Armor\Customs\Lotho\Lotho_P2_Armor_co.paa"
-		};
-	};
-
 	class 885th_Recruit_Trooper : 885th_Vornskr_Trooper {
 		faction="885th_Faction";
 		editorSubcategory="Sub885thTroopers";
@@ -11497,6 +11441,7 @@ class CfgVehicles
 		scopeCurator=1;
 		scopeArsenal=2;
 		side=1;
+		camouflage = 0.3;
 		uniformClass = "885th_Crimz_Uniform";
 		hiddenSelections[] = {"Camo1","Camo2"};
 		hiddenSelectionsTextures[] = {
@@ -11582,6 +11527,7 @@ class CfgVehicles
 		scopeCurator=1;
 		scopeArsenal=2;
 		side=1;
+		camouflage = 0.3;
 		uniformClass = "885th_Screwball_Uniform";
 		hiddenSelections[] = {"Camo1","Camo2"};
 		hiddenSelectionsTextures[] = {
@@ -11594,6 +11540,7 @@ class CfgVehicles
 		scopeCurator=1;
 		scopeArsenal=2;
 		side=1;
+		camouflage=0.3;
 		uniformClass = "885th_Thunder_Uniform";
 		hiddenSelections[] = {"Camo1","Camo2"};
 		hiddenSelectionsTextures[] = {

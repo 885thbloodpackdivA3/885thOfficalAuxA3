@@ -378,8 +378,7 @@ class XtdGearModels
 					"Hazard",
 					"Hazard Vet",
 					"Hazard CO",
-					"Adv.Recon",
-					"Omega"
+					"Adv.Recon"
 				};
 			};
 			class variant
@@ -389,14 +388,13 @@ class XtdGearModels
 				{
 					"EOD",
                     "Hazard",
-					"Adv.Recon",
-					"Omega"
+					"Adv.Recon"
 				};
 			};
             	class camo
             {
 				label="Variant";
-                values[] = {"EOD","Hazard","Adv.Recon","Omega"}; // Always computed, do not acebi
+                values[] = {"EOD","Hazard","Adv.Recon"}; // Always computed, do not acebi
                 alwaysSelectable=1;
             };
 		};
@@ -415,7 +413,6 @@ class XtdGearModels
 					"Bandit",
 					"Crimz",
 					"Crow",
-					"Lotho",
 					"Nightfall",
 					"ONI",
 					"Outcast",
@@ -1216,13 +1213,6 @@ class XtdGearInfos
 			rank="Adv.Recon";
 			variant="Adv.Recon";
 			camo="Adv.Recon";
-		};
-		class 885th_Vornskr_Femme_Uniform
-		{
-			model="Specialized_Uniforms";
-			rank="Omega";
-			variant="Omega";
-			camo="Omega";
 		};
 		//Customs Uniforms
 		class 885th_Bandit_Uniform
