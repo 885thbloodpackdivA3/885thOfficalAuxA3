@@ -1785,23 +1785,29 @@ class CfgWeapons
 			"885_Armor\885_Armor\Najax\Najax_Visor_co.paa"
 		};
 	};
-	class 885th_Crimz_ARF_Helm: 885th_Najax_P1_ARF_Helm
+	class 885th_Crimz_ARF_Helm: 885th_Najax_ARF_P2_Helm
 	{
 		scope=2;
 		author="885th Bloodpack Division";
 		displayName="[885th] Crimz's Custom ARF Helm";
 		picture="";
-		hiddenSelections[]=
+		 hiddenSelections[]=
+        {
+            "camo1",
+            "camo2",
+            "visor"
+        };
+        hiddenSelectionsTextures[]=
+        {
+            "885_Armor\885_Armor\Customs\Crimz\885th_Crimz_ARF_co.paa",
+            "",
+            "885_Armor\885_Armor\Customs\Crimz\visor_co.paa"
+        };
+		hiddenSelectionsMaterials[] = 
 		{
-			"camo1",
-			"camo2",
-			"visor"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Crimz\885th_Crimz_ARF_Helm_co.paa",
-			"885_Armor\885_Armor\Najax\Najax_Plates_co.paa",
-			"885_Armor\885_Armor\Najax\Najax_Visor_co.paa"
+			"",
+			"",
+			"\a3\characters_f_bootcamp\common\data\vrarmoremmisive.rvmat"
 		};
 	};
 	class 885th_BARC_Helm: IDA_BARC_Helmet
