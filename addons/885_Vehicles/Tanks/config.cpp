@@ -17554,6 +17554,7 @@ class CfgVehicles
 					"3AS_Saber_80Rnd_autocannon_30mm_Mag",
 					"3AS_Saber_80Rnd_autocannon_30mm_Mag",
 					"3AS_Saber_80Rnd_autocannon_30mm_Mag",
+					"3AS_Saber_80Rnd_autocannon_30mm_Mag",
 					"SmokeLauncherMag",
 					"4Rnd_120mm_LG_cannon_Missiles",
 					"4Rnd_120mm_LG_cannon_Missiles",
