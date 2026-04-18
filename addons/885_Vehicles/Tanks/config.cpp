@@ -16544,27 +16544,19 @@ class CfgVehicles
 				};
 				weapons[]=
 				{
-					"3AS_Sabre_Cannons",
-					"3as_Z95_Heavy_Cannon",
+					"885th_SaberCannons",
+					"885th_SaberCannonsOC",
 					"SmokeLauncher",
 					"Missiles_DAGR"
 				};
 				magazines[]=
 				{
-					"3AS_50Rnd_Sabre_Mag",
-					"3AS_50Rnd_Sabre_Mag",
-					"3AS_50Rnd_Sabre_Mag",
-					"3AS_50Rnd_Sabre_Mag",
-					"3AS_50Rnd_Sabre_Mag",
-					"3AS_50Rnd_Sabre_Mag",
-					"3AS_50Rnd_Sabre_Mag",
-					"3AS_50Rnd_Sabre_Mag",
-					"3AS_50Rnd_Sabre_Mag",
-					"3AS_50Rnd_Sabre_Mag",
-					"3AS_50Rnd_Sabre_Mag",
-					"3AS_50Rnd_Sabre_Mag",
-					"3AS_PylonWeapon_Z95_240Rnd_Heavy_Shells",
-					"3AS_PylonWeapon_Z95_240Rnd_Heavy_Shells",
+					"885th_100rd_Saber_Mag",
+					"885th_100rd_Saber_Mag",
+					"885th_100rd_Saber_Mag",
+					"885th_100rd_Saber_Mag",
+					"885th_100rd_Saber_Mag",
+					"885th_500rd_SaberOC_Mag",
 					"12Rnd_PG_Missiles",
 					"12Rnd_PG_Missiles",
 					"12Rnd_PG_Missiles",
@@ -16750,16 +16742,16 @@ class CfgVehicles
 				weapons[]=
 				{
 					"3AS_ATAP_PD_Turret",
+					"885th_Saber_AP_Turret",
 					"SmokeLauncher"
 				};
 				magazines[]=
 				{
 	
 					"3AS_500Rnd_ATAP_PD_Mag",
-					"3AS_500Rnd_ATAP_PD_Mag",
-					"3AS_500Rnd_ATAP_PD_Mag",
-					"3AS_500Rnd_ATAP_PD_Mag",
-					"3AS_500Rnd_ATAP_PD_Mag",
+					"885th_500rd_Saber_APMG_Mag",
+					"885th_500rd_Saber_APMG_Mag",
+					"885th_500rd_Saber_APMG_Mag",
 					"SmokeLauncherMag"
 				};
 				memoryPointGunnerOptics="gunnerview";
