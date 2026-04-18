@@ -6210,7 +6210,7 @@ class CfgWeapons
 					"ShdwCmpny_Optic_LEScope_DC15A_mk2",
 					"ShdwCmpny_Optic_LEScope_DC15A",
 					"ShadwCmpany_Hybrid_Magnifier_Holo",
-					"ShadwCmpany_Hybrid_Magnifier_Magnified",
+					
 					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
 					"ShadwCmpany_773_Hybrid_Magnifier_Magnified"
 					
@@ -6910,7 +6910,7 @@ class CfgWeapons
 				iconPosition[]={0.44999999,0.28};
 				iconScale=0.2;
 				linkProxy="\A3\data_f\proxies\weapon_slots\TOP";
-				compatibleItems[]={"ShadwCmpany_optic_Acog","ShdwCmpny_Optic_LEScope_DC15A","3AS_optic_DC15L_F","optic_MRCO","ShdwCmpny_Optic_Valken","ShadwCmpany_optic_Reflex_Mk1_Alt2","ShadwCmpany_Hybrid_Magnifier_Holo","ShadwCmpany_Hybrid_Magnifier_Magnified","ShadwCmpany_773_Hybrid_Magnifier_Holo","ShadwCmpany_773_Hybrid_Magnifier_Magnified"};
+				compatibleItems[]={"ShadwCmpany_optic_Acog","ShdwCmpny_Optic_LEScope_DC15A","3AS_optic_DC15L_F","optic_MRCO","ShdwCmpny_Optic_Valken","ShadwCmpany_optic_Reflex_Mk1_Alt2","ShadwCmpany_Hybrid_Magnifier_Holo","ShadwCmpany_773_Hybrid_Magnifier_Holo"};
 			};
 			class PointerSlot: PointerSlot_Rail
 			{
@@ -8147,7 +8147,7 @@ class CfgWeapons
 					"ShadwCmpany_optic_Acog",
 					"ShdwCmpny_Optic_Scope_WestarM5",
 					"ShadwCmpany_Hybrid_Magnifier_Holo",
-					"ShadwCmpany_Hybrid_Magnifier_Magnified",
+					
 					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
 					"ShadwCmpany_773_Hybrid_Magnifier_Magnified"
 				};
@@ -9481,7 +9481,7 @@ class CfgWeapons
 			mass = 75;
 			class CowsSlot : CowsSlot
 			{
-				compatibleItems[] = {"885th_Optic_Scope_WestarM5","ShdwCmpny_Optic_LEScope_DC15A_mk2","ShadwCmpany_773_Hybrid_Magnifier_Holo","ShadwCmpany_773_Hybrid_Magnifier_Magnified"};
+				compatibleItems[] = {"885th_Optic_Scope_WestarM5","ShdwCmpny_Optic_LEScope_DC15A_mk2","ShadwCmpany_773_Hybrid_Magnifier_Holo"};
 			};
 			class MuzzleSlot : MuzzleSlot
 			{	
@@ -10186,7 +10186,7 @@ class CfgWeapons
 			class CowsSlot: CowsSlot
 			{	
 				linkProxy="\A3\data_f\proxies\weapon_slots\TOP";
-				compatibleItems[]={"ShdwCmpny_Optic_LEScope_DC15A","ShadwCmpany_optic_Acog","ShadwCmpany_optic_Reflex_Mk1","ShadwCmpany_optic_Reflex_Mk1_Alt1","ShadwCmpany_optic_Reflex_Mk1_Alt2","ShadwCmpany_optic_e11","ShdwCmpny_Optic_Scope_WestarM5","ShadwCmpany_Hybrid_Magnifier_Holo","ShadwCmpany_Hybrid_Magnifier_Magnified","ShadwCmpany_773_Hybrid_Magnifier_Holo","ShadwCmpany_773_Hybrid_Magnifier_Magnified"};
+				compatibleItems[]={"ShdwCmpny_Optic_LEScope_DC15A","ShadwCmpany_optic_Acog","ShadwCmpany_optic_Reflex_Mk1","ShadwCmpany_optic_Reflex_Mk1_Alt1","ShadwCmpany_optic_Reflex_Mk1_Alt2","ShadwCmpany_optic_e11","ShdwCmpny_Optic_Scope_WestarM5","ShadwCmpany_Hybrid_Magnifier_Holo","ShadwCmpany_773_Hybrid_Magnifier_Holo"};
 			};
 			class MuzzleSlot : MuzzleSlot
 			{	
@@ -12115,7 +12115,7 @@ class CfgWeapons
 					"ShadwCmpany_optic_Reflex_Mk1_Alt1",
 					"ShadwCmpany_optic_Reflex_Mk1_Alt2",
 					"ShadwCmpany_Hybrid_Magnifier_Holo",
-					"ShadwCmpany_Hybrid_Magnifier_Magnified",
+					
 					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
 					"ShadwCmpany_773_Hybrid_Magnifier_Magnified",
 					"ShadwCmpany_Electroscope",
@@ -12848,7 +12848,7 @@ class CfgWeapons
 					"ShadwCmpany_optic_Reflex_Mk1_Alt1",
 					"ShadwCmpany_optic_Reflex_Mk1_Alt2",
 					"ShadwCmpany_Hybrid_Magnifier_Holo",
-					"ShadwCmpany_Hybrid_Magnifier_Magnified",
+					
 					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
 					"ShadwCmpany_773_Hybrid_Magnifier_Magnified",
 					"ShadwCmpany_Electroscope",
