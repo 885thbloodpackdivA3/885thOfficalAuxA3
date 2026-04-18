@@ -59,6 +59,7 @@ class Cfgpatches
 			"885th_Sunshine_P2_Helm",
 			"885th_Stormer_P2_Helmet",
 			"885th_Charge_BARC_Helm",
+			"885th_Nero_BARC_Helm",
 			"885th_Wrath_P2_Helmet",
 			"885th_Recruit_P2_Helm",
 			"885th_Nightfall_P2_Helmet",
@@ -139,6 +140,7 @@ class Cfgpatches
 			"885th_Smith_Uniform",
 			"885th_Thunder_Uniform",
 			"885th_Outcast_Uniform",
+			"885th_Bleach_Uniform",
 			"885th_Hazard_Trooper_Uniform",
 			"885th_Hazard_Veteran_Uniform",
 			"885th_Hazard_COM_Uniform",
@@ -1911,6 +1913,26 @@ class CfgWeapons
         {
 			"",
             "885_Armor\885_Armor\Customs\Charge\Charge_BARC_Helmet_Visor.rvmat",
+        };
+	};
+	class 885th_Nero_BARC_Helm: 885th_BARC_Helm
+	{
+		author="885th Bloodpack Division";
+		displayName="[885th] Nero's BARC Helmet";
+		hiddenselections[]=
+		{
+			"Camo",
+			"visor"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Nero\Nero_BARC_Helmet_co.paa",
+			"885_Armor\885_Armor\Customs\Nero\Nero_BARC_Helmet_co.paa",
+		};
+        hiddenSelectionsMaterials[]=
+        {
+			"",
+            "885_Armor\885_Armor\Customs\Nero\Nero_BARC_Helmet_Visor.rvmat",
         };
 	};
 	class 885th_AB_Helm: IDA_AB_Helmet
@@ -3765,6 +3787,18 @@ class CfgWeapons
 		{
 			uniformModel = "";
 			uniformClass = "885th_Outcast_Trooper";
+			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
+			containerClass = "Supply300";
+			mass = 40;
+		};
+	};
+	class 885th_Bleach_Uniform: 885th_Vornskr_Uniform
+	{
+		displayName = "[885th] Bleach Custom P2 Armor";
+		class ItemInfo: UniformItem
+		{
+			uniformModel = "";
+			uniformClass = "885th_Bleach_Trooper";
 			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
 			containerClass = "Supply300";
 			mass = 40;
@@ -11843,6 +11877,18 @@ class CfgVehicles
 		hiddenSelectionsTextures[] = {
 			"885_Armor\885_Armor\Customs\Outcast\Outcast_P2_Upper_co.paa",
 			"885_Armor\885_Armor\Customs\Outcast\Outcast_P2_Lower_co.paa"
+		};
+	};
+	class 885th_Bleach_Trooper : 885th_Vornskr_Trooper {
+		scope=1;
+		scopeCurator=1;
+		scopeArsenal=2;
+		side=1;
+		uniformClass = "885th_Bleach_Uniform";
+		hiddenSelections[] = {"Camo1","Camo2"};
+		hiddenSelectionsTextures[] = {
+			"885_Armor\885_Armor\Customs\Bleach\Bleach_P2_Upper_co.paa",
+			"885_Armor\885_Armor\Customs\Bleach\Bleach_P2_Lower_co.paa"
 		};
 	};
 };

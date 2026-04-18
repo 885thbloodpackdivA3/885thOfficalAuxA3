@@ -175,6 +175,7 @@ class XtdGearModels
 					"Lotho",
 					"Nightfall",
 					"Nightmare",
+					"Nero",
 					"Mayday",
 					"ONI",
 					"Outcast",
@@ -411,6 +412,7 @@ class XtdGearModels
 				values[]=
 				{
 					"Bandit",
+					"Bleach",
 					"Crimz",
 					"Crow",
 					"Nightfall",
@@ -914,6 +916,13 @@ class XtdGearInfos
 			variant="Engineer";
 			camo="Engineer";
 		};
+		class 885th_Nero_BARC_Helm
+		{
+			model="Trooper_Custom_Helmets";
+			rank="Nero";
+			variant="BARC";
+			camo="BARC";
+		};
 		class 885th_Mayday_P2_Helm
 		{
 			model="Trooper_Custom_Helmets";
@@ -1222,6 +1231,11 @@ class XtdGearInfos
 		{
 			model="Custom_Uniforms";
 			rank="Bandit";
+		};
+		class 885th_Bleach_Uniform
+		{
+			model="Custom_Uniforms";
+			rank="Bleach";
 		};
 		class 885th_Crimz_Uniform
 		{
