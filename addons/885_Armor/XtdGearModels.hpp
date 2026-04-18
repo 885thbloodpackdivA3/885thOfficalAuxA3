@@ -531,6 +531,7 @@ class XtdGearModels
 				values[]=
 				{
 					"Bandit",
+					"Bleach",
 					"Crimz",
 					"Outcast",
 					"ONI",
@@ -609,8 +610,10 @@ class XtdGearModels
 				values[]=
 				{
 					"Bandit",
+					"Bleach",
 					"Outcast",
 					"Rios",
+					"Syxer",
 					"Thunder"
 				};
 			};
@@ -1456,6 +1459,11 @@ class XtdGearInfos
 			model="Custom_Vest";
 			vest="Bandit";
 		};
+		class 885th_Cust_VestV4_Rig_Bleach
+		{
+			model="Custom_Vest";
+			vest="Bleach";
+		};
 		class 885th_Cust_VestV4_Rig_Crimz
 		{
 			model="Custom_Vest";
@@ -1612,6 +1620,11 @@ class XtdGearInfos
 			model="Custom_Backpacks";
 			backpack="Bandit";
 		};
+		class 885th_Bleach_Surgeon_Backpack
+		{
+			model="Custom_Backpacks";
+			backpack="Bleach";
+		};
 		class 885th_Cust_RTO_Buttbag2_Outcast
 		{
 			model="Custom_Backpacks";
@@ -1621,6 +1634,11 @@ class XtdGearInfos
 		{
 			model="Custom_Backpacks";
 			backpack="Rios";
+		};
+		class 885th_Cust_Breach_Backpack_Syxer
+		{
+			model="Custom_Backpacks";
+			backpack="Syxer";
 		};
 		class 885th_Cust_RTO_Buttbag2_Thunder
 		{

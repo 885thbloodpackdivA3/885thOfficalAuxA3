@@ -9035,6 +9035,214 @@ class CfgWeapons
 			};
 		};
 	};
+	class 885th_Cust_VestV4_Rig_Bleach: Vest_Camo_Base
+	{
+		author="Antauri + 885th Bloodpack Division";
+		scope=2;
+		displayName="[885th] Bleach Custom Rig";
+		picture="\SWLB_clones\data\ui\icon_SWLB_clone_uniform_ca.paa";
+		model="\ShadowLegion_Aux\Data\CustomVests\V4\models\VESTV4_VestRig_HolsterSingle.p3d";
+		hiddenSelections[]=
+		{
+	/*1*/	"VibrobladeLeft",
+	/*2*/	"VibrobladeRight",
+	/*3*/	"Grenades",
+	/*4*/	"RigLower",
+	/*5*/	"ShoulderPouches",
+	/*6*/	"ShoulderAntennaRight",
+	/*7*/	"ShoulderAntennaLeft",
+	/*8*/	"HolsterRight",
+	/*9*/	"HolsterLeft",
+	/*10*/	"CartridgesTopRight",
+	/*11*/	"ArmPouchLeft",
+	/*12*/	"ArmCatridgesRight",
+	/*13*/	"SuspenderPouchesFront",
+	/*14*/	"SuspenderPouchesBack",
+	/*15*/	"ARCPlating",
+	/*16*/	"ARCBracers",
+	/*17*/	"KamaPouches",
+	/*18*/	"ARCKama",
+	/*19*/	"ARCPauldronLeft",
+	/*20*/	"ARCPauldronRight",
+	/*21*/	"JetpackKama",
+	/*22*/	"NCOPauldronLeft",
+	/*23*/	"NCOPauldronSmallRight",
+	/*24*/	"PauldronBase",
+	/*25*/	"SuspenderLeft",
+	/*26*/	"SuspenderCross",
+	/*27*/	"SuspenderRight",
+	/*28*/	"ArmStrapLeft",
+	/*29*/	"ArmStrapRight",
+	/*30*/	"AirbornePieces",
+	/*31*/	"AirborneBag",
+	/*32*/	"CorporalPauldron",
+	/*33*/	"Buttbag",
+	/*34*/	"LRpack",
+	/*35*/	"CorporalPauldron2",
+	/*36*/	"CrossClip",
+	/*37*/	"ChestGuard"
+		};
+		hiddenSelectionsTextures[]=
+		{
+	/*1*/	"",
+	/*2*/	"",
+	/*3*/	"",
+	/*4*/	"",
+	/*5*/	"",
+	/*6*/	"",
+	/*7*/	"",
+	/*8*/	"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\RIG_co.paa",
+	/*9*/	"",
+	/*10*/	"",
+	/*11*/	"",
+	/*12*/	"",
+	/*13*/	"",
+	/*14*/	"",
+	/*15*/	"",
+	/*16*/	"",
+	/*17*/	"",
+	/*18*/	"",
+	/*19*/	"",
+	/*20*/	"",
+	/*21*/	"885_Armor\885_Armor\Customs\Bleach\Bleach_Custom_Kama2_co.paa",
+	/*22*/	"885_Armor\885_Armor\Customs\Bleach\Bleach_Custom_NCOPauldron_co.paa",
+	/*23*/	"885_Armor\885_Armor\Customs\Bleach\Bleach_Custom_NCOPauldron_co.paa",
+	/*24*/	"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\NCOPauldron_co.paa",
+	/*25*/	"",
+	/*26*/	"",
+	/*27*/	"",
+	/*28*/	"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\Suspenders&Straps_co.paa",
+	/*29*/	"",
+	/*30*/	"",
+	/*31*/	"885_Armor\885_Armor\Customs\Bleach\Bleach_Custom_AirborneBag_co.paa",
+	/*32*/	"",
+	/*33*/	"",
+	/*34*/	"",
+	/*35*/	"",
+	/*36*/	"",
+	/*37*/	""
+		};
+		hiddenSelectionsMaterials[]=
+		{
+	/*1*/	"",
+	/*2*/	"",
+	/*3*/	"",
+	/*4*/	"",
+	/*5*/	"",
+	/*6*/	"",
+	/*7*/	"",
+	/*8*/	"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\RIG.rvmat",
+	/*9*/	"",
+	/*10*/	"",
+	/*11*/	"",
+	/*12*/	"",
+	/*13*/	"",
+	/*14*/	"",
+	/*15*/	"",
+	/*16*/	"",
+	/*17*/	"",
+	/*18*/	"",
+	/*19*/	"",
+	/*20*/	"",
+	/*21*/	"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\Kama2.rvmat",
+	/*22*/	"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\NCOPauldron.rvmat",
+	/*23*/	"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\NCOPauldron.rvmat",
+	/*24*/  "\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\NCOPauldron.rvmat",
+	/*25*/	"",
+	/*26*/	"",
+	/*27*/	"",
+	/*28*/	"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\Suspenders&Straps.rvmat",
+	/*29*/	"",
+	/*30*/	"",
+	/*31*/	"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\AirborneBag.rvmat",
+	/*32*/	"",
+	/*33*/	"",
+	/*34*/	"",
+	/*35*/	"",
+	/*36*/	"",
+	/*37*/	""
+		};
+		class ItemInfo: VestItem
+		{
+			uniformModel="\ShadowLegion_Aux\Data\CustomVests\V4\models\VESTV4_VestRig_HolsterSingle.p3d";
+			hiddenSelections[]=
+			{
+				"VibrobladeLeft",
+				"VibrobladeRight",
+				"Grenades",
+				"RigLower",
+				"ShoulderPouches",
+				"ShoulderAntennaRight",
+				"ShoulderAntennaLeft",
+				"HolsterRight",
+				"HolsterLeft",
+				"CartridgesTopRight",
+				"ArmPouchLeft",
+				"ArmCatridgesRight",
+				"SuspenderPouchesFront",
+				"SuspenderPouchesBack",
+				"ARCPlating",
+				"ARCBracers",
+				"KamaPouches",
+				"ARCKama",
+				"ARCPauldronLeft",
+				"ARCPauldronRight",
+				"JetpackKama",
+				"NCOPauldronLeft",
+				"NCOPauldronSmallRight",
+				"PauldronBase",
+				"SuspenderLeft",
+				"SuspenderCross",
+				"SuspenderRight",
+				"ArmStrapLeft",
+				"ArmStrapRight",
+				"AirbornePieces",
+				"AirborneBag",
+				"CorporalPauldron",
+				"Buttbag",
+				"LRpack",
+				"CorporalPauldron2",
+				"CrossClip",
+				"ChestGuard"
+			};
+			vestType="Rebreather";
+			containerClass="Supply250";
+			mass=65;
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					HitpointName="HitChest";
+					armor=16;
+					PassThrough=0.30000001;
+				};
+				class Diaphragm
+				{
+					HitpointName="HitDiaphragm";
+					armor=16;
+					PassThrough=0.30000001;
+				};
+				class Abdomen
+				{
+					hitpointName="HitAbdomen";
+					armor=16;
+					passThrough=0.30000001;
+				};
+				class Body
+				{	
+					hitpointName="HitBody";
+					armor=16;
+					passThrough=0.30000001;
+				};
+				class Legs
+				{
+					hitpointName="HitLegs";
+					armor=6;
+					passThrough=0.30000001;
+				};
+			};
+		};
+	};
 };
 class CfgGlasses
 {	
@@ -10465,6 +10673,7 @@ class CfgVehicles
 	class IDA_Clone_Radiopack;
 	class IDA_Clone_ScoutPack;
 	class IDA_Clone_RadioAntenna;
+	class ShdwCmpny_Clone_Breacherbag_White;
 	class IDA_Clone_DC15S;
 	class SEA_Clone_GM_DC15A;
 	class SEA_GM_Base_Plastic;
@@ -10873,6 +11082,51 @@ class CfgVehicles
 		tf_subtype="digital_lr";
 		mass=22;
 	};
+	class ls_cloneBackpack_standard;
+	class 885th_Bleach_Surgeon_Backpack: ls_cloneBackpack_standard
+	{
+		author="885th Bloodpack Division";
+		scope=2;
+		displayName="[885th] Bleach Surgeon Backpack";
+		model="\ls\core\addons\characters_clone\backpacks\standard\ls_backpack_clone_standard.p3d";
+		hiddenSelections[]= 
+		{
+			"backpack",
+			"cloth",
+			"radio",
+			"rockets",
+			"medic",
+			"bacta",
+			"ammo",
+			"heavy",
+			"supplies",
+			"lower_supplies",
+			"canister",
+			"grenade"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Bleach\Bleach_custom_Backpack_CO.paa",
+			"\ls\core\addons\characters_clone\backpacks\standard\data\backpack_co.paa",
+			"",
+			"",
+			"885_Armor\885_Armor\Customs\Bleach\Bleach_custom_Middle_PackPouchesC_CO.paa",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"885_Armor\885_Armor\Customs\Bleach\Bleach_custom_Lower_PackCylinderB_CO.paa"
+		};
+		maximumload=400;
+		tf_dialog="JLTS_clone_lr_programmer_radio_dialog";
+		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
+		tf_encryptionCode="tf_west_radio_code";
+		tf_hasLRradio=1;
+		tf_range=40000;
+		tf_subtype="digital_lr";
+		mass=22;
+	};
 	//20th Gear
 	class 885th_Cust_RTO_Buttbag2_Bandit: B_AssaultPack_blk
 	{
@@ -11012,6 +11266,37 @@ class CfgVehicles
 			"",
 			"885_Armor\885_Armor\Customs\Rios\LRBag.rvmat",
 			"885_Armor\885_Armor\Customs\Rios\LRBag.rvmat"
+		};
+		maximumload=350;
+		tf_dialog="JLTS_clone_lr_programmer_radio_dialog";
+		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
+		tf_encryptionCode="tf_west_radio_code";
+		tf_hasLRradio=1;
+		tf_range=40000;
+		tf_subtype="digital_lr";
+		mass=22;
+	};
+	class 885th_Cust_Breach_Backpack_Syxer: B_AssaultPack_blk
+	{
+		author="Antauri + 885thBPD";
+		scope=2;
+		picture="\MRC\JLTS\characters\CloneArmor\data\ui\Clone_backpack_ui_ca.paa";
+		displayName="[885th] Syxer Breacher Backpack";
+		model="\ShadowLegion_Aux\Data\AssaultBackpacks\model\Assalt_BAG_RTO_V2.p3d";
+		hiddenSelections[]=
+		{
+			"camo",
+			"camo1"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Syxer\Syxer_breacher_backpack_co.paa",
+			"885_Armor\885_Armor\Customs\Syxer\Syxer_breacher_backpack_Screen_co.paa"
+		};
+		hiddenSelectionsMaterials[]=
+		{
+			"\ShadowLegion_Aux\Data\AssaultBackpacks\Textures\Standard\Backpack.rvmat",
+			"\ShadowLegion_Aux\Data\AssaultBackpacks\Textures\Standard\Screen.rvmat"
 		};
 		maximumload=350;
 		tf_dialog="JLTS_clone_lr_programmer_radio_dialog";
