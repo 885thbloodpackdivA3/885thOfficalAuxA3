@@ -55,7 +55,7 @@ class Cfgpatches
 			"885th_Screwball_P1_ARF_Helm",
 			"885th_Lotho_P2_Helm",
 			"885th_Lotho_Secret_Helm",
-			"885th_Sushi_P1_ARF_Helm",
+			"885th_Sushi_P2_ARF_Helm",
 			"885th_Sunshine_P2_Helm",
 			"885th_Stormer_P2_Helmet",
 			"885th_Charge_BARC_Helm",
@@ -1764,25 +1764,25 @@ class CfgWeapons
 			"885_Armor\885_Armor\Najax\Najax_Visor_co.paa"
 		};
 	};
-	class 885th_Sushi_P1_ARF_Helm: 885th_Najax_P1_ARF_Helm
+	class 885th_Sushi_P2_ARF_Helm: 885th_Najax_ARF_P2_Helm
 	{
-		scope=2;
-		author="885th Bloodpack Division";
-		displayName="[885th] Sushi's Custom ARF Helm";
-		picture="";
-		hiddenSelections[]=
-		{
-			"camo1",
-			"camo2",
-			"visor"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Sushi\885th_ARF_Helmet_Sushi_co.paa",
-			"885_Armor\885_Armor\Najax\Najax_Plates_co.paa",
-			"885_Armor\885_Armor\Najax\Najax_Visor_co.paa"
-		};
-	};
+        author="885th Bloodpack Division";
+        displayName="[885th] Sushi's ARF P2 Helm";
+        scope=2;
+        picture="";
+        hiddenSelections[]=
+        {
+            "camo1",
+            "camo2",
+            "visor"
+        };
+        hiddenSelectionsTextures[]=
+        {
+            "885_Armor\885_Armor\Customs\Sushi\885th_Sushi_P2_ARF_Helm_co.paa",
+            "",
+            "\ls\core\addons\characters_clone_legacy\helmets\arf\data\helmet_co.paa"
+        };
+    };
 	class 885th_Crimz_ARF_Helm: 885th_Najax_ARF_P2_Helm
 	{
 		scope=2;

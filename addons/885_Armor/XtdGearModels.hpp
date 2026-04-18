@@ -995,7 +995,7 @@ class XtdGearInfos
 			variant="P2";
 			camo="P2";
 		};
-		class 885th_Sushi_P1_ARF_Helm
+		class 885th_Sushi_P2_ARF_Helm
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Sushi";
