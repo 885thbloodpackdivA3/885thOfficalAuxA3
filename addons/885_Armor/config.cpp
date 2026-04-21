@@ -626,8 +626,8 @@ class CfgWeapons
         };
         hiddenSelectionsTextures[]=
         {
-            "885_Armor\885_Armor\Customs\ONI\P2_Helmet_co.paa",
-			"885_Armor\885_Armor\Customs\ONI\P2_Helmet_co.paa",
+            "885_Armor\885_Armor\Customs\ONI\ONI_P2_Helmet_co.paa",
+			"885_Armor\885_Armor\Customs\ONI\ONI_P2_Helmet_co.paa",
 
         };
         hiddenSelectionsMaterials[]=
@@ -7609,7 +7609,7 @@ class CfgWeapons
 	{
 		author="Antauri + 885th Bloodpack Division";
 		scope=2;
-		displayName="[885th] ONI's Command Rig";
+		displayName="[885th] ONI's Commander Pauldron";
 		picture="\SWLB_clones\data\ui\icon_SWLB_clone_uniform_ca.paa";
 		model="\ShadowLegion_Aux\Data\CustomVests\V4\models\VESTV4_VestRig_HolsterSingle.p3d";
 		hiddenSelections[]=
@@ -7656,8 +7656,8 @@ class CfgWeapons
 		{
 	/*1*/	"",
 	/*2*/	"",
-	/*3*/	"",
-	/*4*/	"885_Armor\885_Armor\Customs\ONI\RIG_co.paa",
+	/*3*/	"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\RIG_co.paa",
+	/*4*/	"",
 	/*5*/	"885_Armor\885_Armor\Customs\ONI\RIG_co.paa",
 	/*6*/	"",
 	/*7*/	"",
@@ -7667,20 +7667,20 @@ class CfgWeapons
 	/*11*/	"885_Armor\885_Armor\Customs\ONI\RIG_co.paa",
 	/*12*/	"",
 	/*13*/	"",
-	/*14*/	"885_Armor\885_Armor\Customs\ONI\RIG_co.paa",
+	/*14*/	"",
 	/*15*/	"",
 	/*16*/	"885_Armor\885_Armor\Customs\ONI\ONI_ARCVest_co.paa",
-	/*17*/	"",
+	/*17*/	"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\ARCVest_co.paa",
 	/*18*/	"",
-	/*19*/	"885_Armor\885_Armor\Customs\ONI\ARCPauldron_co.paa",
-	/*20*/	"885_Armor\885_Armor\Customs\ONI\ARCPauldron_co.paa",
+	/*19*/	"",
+	/*20*/	"",
 	/*21*/	"885_Armor\885_Armor\Customs\ONI\Kama2_co.paa",
-	/*22*/	"",
-	/*23*/	"",
-	/*24*/	"885_Armor\885_Armor\Customs\Screwball\NCOPauldron_co.paa",
+	/*22*/	"885_Armor\885_Armor\Customs\ONI\NCOPauldron_co.paa",
+	/*23*/	"885_Armor\885_Armor\Customs\ONI\NCOPauldron_co.paa",
+	/*24*/	"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\NCOPauldron_co.paa",
 	/*25*/	"885_Armor\885_Armor\Customs\ONI\Suspenders&Straps_co.paa",
-	/*26*/	"885_Armor\885_Armor\Customs\ONI\Suspenders&Straps_co.paa",
-	/*27*/	"885_Armor\885_Armor\Customs\ONI\Suspenders&Straps_co.paa",
+	/*26*/	"",
+	/*27*/	"",
 	/*28*/	"885_Armor\885_Armor\Customs\ONI\Suspenders&Straps_co.paa",
 	/*29*/	"885_Armor\885_Armor\Customs\ONI\Suspenders&Straps_co.paa",
 	/*30*/	"",
@@ -7696,9 +7696,9 @@ class CfgWeapons
 		{
 	/*1*/	"",
 	/*2*/	"",
-	/*3*/	"",
-	/*4*/	"885_Armor\885_Armor\Customs\ONI\RIG.rvmat",
-	/*5*/	"",
+	/*3*/	"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\RIG.rvmat",
+	/*4*/	"",
+	/*5*/	"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\RIG.rvmat",
 	/*6*/	"",
 	/*7*/	"",
 	/*8*/	"885_Armor\885_Armor\Customs\ONI\RIG.rvmat",
@@ -7707,20 +7707,20 @@ class CfgWeapons
 	/*11*/	"885_Armor\885_Armor\Customs\ONI\RIG.rvmat",
 	/*12*/	"",
 	/*13*/	"",
-	/*14*/	"885_Armor\885_Armor\Customs\ONI\RIG.rvmat",
+	/*14*/	"",
 	/*15*/	"",
 	/*16*/	"885_Armor\885_Armor\Customs\ONI\ARCPlating.rvmat",
-	/*17*/	"",
+	/*17*/	"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\ARCVest.rvmat",
 	/*18*/	"",
-	/*19*/	"885_Armor\885_Armor\Customs\ONI\ARCPauldron.rvmat",
-	/*20*/	"885_Armor\885_Armor\Customs\ONI\ARCPauldron.rvmat",
+	/*19*/	"",
+	/*20*/	"",
 	/*21*/	"885_Armor\885_Armor\Customs\ONI\Kama2.rvmat",
-	/*22*/	"",
-	/*23*/	"",
-	/*24*/  "885_Armor\885_Armor\Vests\Command\NCOPauldron.rvmat",
+	/*22*/	"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\NCOPauldron.rvmat",
+	/*23*/	"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\NCOPauldron.rvmat",
+	/*24*/  "\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\NCOPauldron.rvmat",
 	/*25*/	"885_Armor\885_Armor\Customs\ONI\Suspenders&Straps.rvmat",
-	/*26*/	"885_Armor\885_Armor\Customs\ONI\Suspenders&Straps.rvmat",
-	/*27*/	"885_Armor\885_Armor\Customs\ONI\Suspenders&Straps.rvmat",
+	/*26*/	"",
+	/*27*/	"",
 	/*28*/	"885_Armor\885_Armor\Customs\ONI\Suspenders&Straps.rvmat",
 	/*29*/	"885_Armor\885_Armor\Customs\ONI\Suspenders&Straps.rvmat",
 	/*30*/	"",
