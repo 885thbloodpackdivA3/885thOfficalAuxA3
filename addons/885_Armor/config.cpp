@@ -1782,7 +1782,7 @@ class CfgWeapons
         {
             "885_Armor\885_Armor\Customs\Sushi\885th_Sushi_P2_ARF_Helm_co.paa",
             "",
-            "\ls\core\addons\characters_clone_legacy\helmets\arf\data\helmet_co.paa"
+            "885_Armor\885_Armor\Customs\Sushi\sushi_visor_co.paa"
         };
     };
 	class 885th_Crimz_ARF_Helm: 885th_Najax_ARF_P2_Helm
