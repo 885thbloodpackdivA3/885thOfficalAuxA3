@@ -75,7 +75,6 @@ class Cfgpatches
 			"885th_Nightsingers_Armor_Crew_Helmet",
 			"885th_Smith_Pilot_Helm",
 			"885th_Kit_P2_Helm",
-			"885th_TopSnipe_Pilot_Helm",
 			"885th_Owl_Pilot_Helm",
 			"885th_Mayday_P2_Helm",
 			"885th_Warden_Pilot_Helm",
@@ -148,7 +147,6 @@ class Cfgpatches
 			"885th_AB_Helm",
 			"885th_Medic_AB_Helm",
 			"885th_Nexu_P2_Helm",
-			"885th_Strawberry_P2_Helmet",
 			"885th_Crimz_ARF_Helm",
 			"885th_Wyrm_P2_Helm",
 			"885th_Rios_ARF_Helm",
@@ -802,28 +800,6 @@ class CfgWeapons
         {
         	"885_Armor\885_Armor\Customs\Mayday\885th_Mayday_P2_Helm_co.paa",
 			"885_Armor\885_Armor\Customs\Mayday\885th_Mayday_P2_Helm_co.paa",
-        };
-    };
-	class 885th_Strawberry_P2_Helmet: 885th_P2_V2_Helmet
-    {
-        author="885th Bloodpack Division";
-		scope=0;
-        displayName="[885th] Strawberry's Custom P2 Helmet";
-        hiddenselections[]=
-        {
-            "Camo", 
-            "Visor",
-        };
-        hiddenSelectionsTextures[]=
-        {
-            "885_Armor\885_Armor\Customs\Strawberry\Strawberry_P2_Helmet_co.paa",
-			"885_Armor\885_Armor\Customs\Strawberry\Strawberry_P2_Helmet_co.paa",
-
-        };
-        hiddenSelectionsMaterials[]=
-        {
-            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
-            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet_Visor.rvmat",
         };
     };
 	class 885th_Rios_P2_Helmet: 885th_P2_V2_Helmet
@@ -11141,7 +11117,7 @@ class CfgVehicles
 		hiddenSelectionsTextures[]=
 		{
 			"885_Armor\885_Armor\Customs\Bleach\Bleach_custom_Backpack_CO.paa",
-			"\ls\core\addons\characters_clone\backpacks\standard\data\backpack_co.paa",
+			"885_Armor\885_Armor\Customs\Bleach\Bleach_custom_Backpack_CO.paa",
 			"",
 			"",
 			"885_Armor\885_Armor\Customs\Bleach\Bleach_custom_Middle_PackPouchesC_CO.paa",

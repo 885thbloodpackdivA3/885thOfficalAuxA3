@@ -186,13 +186,10 @@ class XtdGearModels
 					"Syxer",
 					"Smith",
 					"Sunshine",
-					"Strawberry",
 					"Stormer",
 					"Sushi",
-					"Teal",
 					"Thunder",
 					"Titan",
-					"Top Snipe",
 					"Warden",
 					"Wyrm",
 					"Wrath"
@@ -424,8 +421,7 @@ class XtdGearModels
 					"Smith",
 					"Syxer",
 					"Thunder",
-					"Titan",
-					"Teal"
+					"Titan"
 				};
 			};
 		};
@@ -540,8 +536,7 @@ class XtdGearModels
 					"Rios",
 					"Screwball",
 					"Syxer",
-					"Thunder",
-					"Teal"
+					"Thunder"
 				};
 			};
 		};
@@ -993,13 +988,6 @@ class XtdGearInfos
 			variant="P2";
 			camo="P2";
 		};
-		class 885th_Strawberry_P2_Helmet
-		{
-			model="Trooper_Custom_Helmets";
-			rank="Strawberry";
-			variant="P2";
-			camo="P2";
-		};
 		class 885th_Stormer_P2_Helmet
 		{
 			model="Trooper_Custom_Helmets";
@@ -1014,13 +1002,6 @@ class XtdGearInfos
 			variant="ARF";
 			camo="ARF";
 		};
-		class 885th_Teal_P1_Advisor_Helm
-		{
-			model="Trooper_Custom_Helmets";
-			rank="Teal";
-			variant="P1";
-			camo="P1";
-		};
 		class 885th_Thunder_P1_ARF_Helm
 		{
 			model="Trooper_Custom_Helmets";
@@ -1034,13 +1015,6 @@ class XtdGearInfos
 			rank="Titan";
 			variant="RC";
 			camo="RC";
-		};
-		class 885th_TopSnipe_Pilot_Helm
-		{
-			model="Trooper_Custom_Helmets";
-			rank="Top Snipe";
-			variant="Pilot";
-			camo="Pilot";
 		};
 		class 885th_Warden_Pilot_Helm 
 		{
@@ -1297,11 +1271,6 @@ class XtdGearInfos
 			model="Custom_Uniforms";
 			rank="Thunder";
 		};
-		class 885th_Teal_Uniform
-		{
-			model="Custom_Uniforms";
-			rank="Teal";
-		};
 		class 885th_Titan_Katarn_Uniform
 		{
 			model="Custom_Uniforms";
@@ -1512,11 +1481,6 @@ class XtdGearInfos
 		{
 			model="Custom_Vest";
 			vest="Thunder";
-		};
-		class 885th_Cust_VestV4_Rig_Teal
-		{
-			model="Custom_Vest";
-			vest="Teal";
 		};
 	};
 	class CfgVehicles
