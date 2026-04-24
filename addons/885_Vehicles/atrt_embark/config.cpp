@@ -5711,8 +5711,7 @@ class CfgVehicles
 		backpack="885th_ATRT_SaddleBags";
 		weapons[]=
 		{
-			"3AS_ATRT_Weapon_F",
-			"885th_ATRT_Launcher"
+			"3AS_ATRT_Weapon_F"
 		};
 		magazines[]=
 		{
