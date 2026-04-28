@@ -1723,25 +1723,31 @@ class CfgWeapons
 			"885_Armor\885_Armor\Customs\Screwball\885th_Screwball_ARF_Visor_co.paa"
 		};
 	};
-	class 885th_Thunder_P1_ARF_Helm: 885th_Najax_P1_ARF_Helm
+	class 885th_Thunder_P1_ARF_Helm: 885th_Najax_ARF_P2_Helm
 	{
 		scope=2;
 		author="885th Bloodpack Division";
-		displayName="[885th] Thunder Custom ARF Helm";
-		picture="";
-		hiddenSelections[]=
+		displayName="[885th] Thunder's ARF P2 Helm";
+        picture="";
+        hiddenSelections[]=
+        {
+            "camo1",
+            "camo2",
+            "visor"
+        };
+        hiddenSelectionsTextures[]=
+        {
+            "885_Armor\885_Armor\Customs\Thunder\885th_Thunder_ARF_Helm.co.paa",
+            "",
+            "885_Armor\885_Armor\Customs\Thunder\visor_co.paa"
+        };
+		hiddenSelectionsMaterials[] = 
 		{
-			"camo1",
-			"camo2",
-			"visor"
+			"",
+			"",
+			"885_Armor\885_Armor\Customs\Thunder\visor.rvmat"
 		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Thunder\885th_Thunder_ARF_Helm.co.paa",
-			"885_Armor\885_Armor\Najax\Najax_Plates_co.paa",
-			"885_Armor\885_Armor\Najax\Najax_Visor_co.paa"
-		};
-	};
+    };
 	class 885th_Sushi_P2_ARF_Helm: 885th_Najax_ARF_P2_Helm
 	{
         author="885th Bloodpack Division";
@@ -1783,7 +1789,7 @@ class CfgWeapons
 		{
 			"",
 			"",
-			"\a3\characters_f_bootcamp\common\data\vrarmoremmisive.rvmat"
+			"885_Armor\885_Armor\Customs\Crimz\visor.rvmat"
 		};
 	};
 	class 885th_BARC_Helm: IDA_BARC_Helmet
