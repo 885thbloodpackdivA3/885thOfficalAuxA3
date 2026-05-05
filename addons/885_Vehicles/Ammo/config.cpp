@@ -1192,7 +1192,7 @@ class CfgWeapons
         class StandardSound 
 		{
        		weaponSoundEffect = "DefaultRifle"; // This is often the missing "trigger"
-            begin1[]={"885_Sounds\Z8Blastercannon.ogg",1.9952624,1,900};
+            begin1[]={"885_Sounds\TX130OC.ogg",1.9952624,1,900};
             soundBegin[] = {"begin1", 1};
         };
     };
