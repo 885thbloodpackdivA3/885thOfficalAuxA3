@@ -179,14 +179,14 @@ class XtdGearModels
 					"Nightmare",
 					"Nero",
 					"Mayday",
-					"Maverick"
+					"Maverick",
 					"ONI",
 					"Outcast",
 					"Owl",
 					"Phantom",
 					"Rios",
 					"Screwball",
-					"Sytha"
+					"Sytha",
 					"Syxer",
 					"Smith",
 					"Sunshine",
