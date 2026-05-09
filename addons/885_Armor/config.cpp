@@ -1763,7 +1763,7 @@ class CfgWeapons
         {
             "885_Armor\885_Armor\Customs\Ares\885th_Ares_P2_ARF_Helm_co.paa",
             "885_Armor\885_Armor\Customs\Ares\Ares_flaps_co.paa",
-            ""
+            "885_Armor\885_Armor\Customs\Ares\visor_co.paa"
         };
 		hiddenSelectionsMaterials[] = 
 		{
