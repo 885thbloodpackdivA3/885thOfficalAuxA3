@@ -3,7 +3,7 @@ class Cfgpatches
 	class 885th_Vehicles
 	{
 		author = "885th Bloodpack Div";
-		requiredAddons[] = {"A3_Data_F", "A3_Weapons_F", "A3_Characters_F", "3AS_LAAT", "3AS_ARC_170", "3AS_ITT", "ls_core"};
+		requiredAddons[] = {"A3_Data_F", "A3_Weapons_F", "A3_Characters_F", "3AS_LAAT", "3AS_ARC_170", "3AS_Republic_Heli_LAS", "3AS_ITT", "ls_core"};
 		requiredVersion = 0.1;
 		units[] = {
 			"885th_LSV_base_F",
@@ -19,6 +19,9 @@ class Cfgpatches
 			"885th_ARC170_Base",
 			"885th_ARC170",
 			"885th_VWING",
+			"885th_LAS_Base",
+			"885th_LAS_F",
+        	"885th_LAS_Z6_F",
 			"885th_LAAT_C"};
 		weapons[] = {
 			"885th_Main_Turret",
@@ -541,6 +544,212 @@ class CfgVehicles
 			"885_Vehicles\textures\LAATC\885_LAAT_C_Wings_co.paa",
 			"885_Vehicles\textures\LAATC\885_LAAT_C_Top_co.paa",
 			"885_Vehicles\textures\LAATC\LAAT_C_Detail_Front_co.paa",
+		};
+	};
+	class 3AS_Rep_LAS_F;
+	class 885th_LAS_Base_F: 3AS_Rep_LAS_F
+	{
+		scope = 0;
+		class TextureSources
+		{
+			class 885th_LC
+			{
+				displayName="";
+				author="885th Bloodpack Division";
+				textures[]=
+				{
+					"\885_Vehicles\texture\LAS\885th_LAS_Exterior_co.paa",
+			        "\3AS\3AS_Republic_Heli\LAS\data\3AS_LAS_Interior_co.paa",
+			        "\885_Vehicles\texture\LAS\885th_LAS_Wings_co.paa"
+				};
+				factions[] = {
+					"885th_Faction"};
+			};
+		};
+		class UserActions {};
+	};
+
+	class 885th_LAS_F: 885th_LAS_Base_F
+	{
+		class EventHandlers
+		{
+			postInit = "[(_this select 0),""yes""] execVM '\FIR_AirWeaponSystem_US\Script\init\init.sqf';";
+		};
+		class UserActions : UserActions
+		{
+			class ls_impulsor_impulse
+			{
+				displayName="Impulse";
+				position="pilotview";
+				radius=5;
+				onlyForPlayer=0;
+				condition="ls_player == currentPilot this and {this call ls_impulsor_fnc_canImpulse}";
+				statement="[this, 1] call ls_impulsor_fnc_impulse";
+			};
+			class ls_impulsor_repulse: ls_impulsor_impulse
+			{
+				displayName="Repulse";
+				statement="[this, -1] call ls_impulsor_fnc_impulse";
+			};
+		};
+		class ls_impulsor: ls_impulsor_base
+		{
+		};
+		ls_hasImpulse = 1;
+		ls_impulsor_impulseSpeed = 60;
+        ls_impulsor_impulseCooldown = 3;
+		author = "ONIBushido";
+		scope = 2;
+		scopeCurator = 2;
+		ace_cargo_hasCargo = 1;
+		ace_cargo_space = 10;
+		displayname = "[885th] LAS QRF Mk 1";
+		side = 1;
+		faction = "885th_Faction";
+		crew = "885th_Pilot";
+		editorSubcategory = "Sub885thAir";
+		camouflage = 4.5;
+		armor = 155;
+		armorLights = 0.6;
+		armorStructural = 1.6;
+		armorFuel = 2.0;
+		armorEngine = 2.5;
+		armorAvionics = 2.2;
+		hiddenSelections[] = 
+		{
+			"camo0",
+			"camo1",
+			"camo2"
+		};
+		hiddenSelectionsTextures[] = 
+		{
+			"885_Vehicles\textures\LAS\885th_LAS_Exterior_co.paa",
+			"\3AS\3AS_Republic_Heli\LAS\data\3AS_LAS_Interior_co.paa",
+			"885_Vehicles\textures\LAS\885th_LAS_Wings_co.paa"
+		};
+		typicalcargo[]=
+		{
+			"885th_Pilot"
+		};
+		weapons[]=
+		{
+			"3AS_LAS_Energy_Cannons",
+			"CMFlareLauncher"
+		};
+		magazines[]=
+		{
+			"3AS_LAS_30mm_MP_shells",
+			"3AS_LAS_30mm_MP_shells",
+			"3AS_LAS_30mm_MP_shells",
+			"240Rnd_CMFlare_Chaff_Magazine",
+			"240Rnd_CMFlare_Chaff_Magazine",
+			"240Rnd_CMFlare_Chaff_Magazine",
+			"240Rnd_CMFlare_Chaff_Magazine"
+		};
+	};
+
+	class 3AS_Rep_LAS_Z6_F;
+	class 885th_LAS_Z6_Base_F: 3AS_Rep_LAS_Z6_F
+	{
+		scope = 0;
+		class TextureSources
+		{
+			class 885th_LC
+			{
+				displayName="";
+				author="885th Bloodpack Division";
+				textures[]=
+				{
+					"\885_Vehicles\texture\LAS\885th_LAS_Exterior2_co.paa",
+			        "\3AS\3AS_Republic_Heli\LAS\data\3AS_LAS_Interior_co.paa",
+			        "\885_Vehicles\texture\LAS\885th_LAS_Wings2_co.paa"
+				};
+				factions[] = {
+					"885th_Faction"};
+			};
+		};
+		class UserActions {};
+	};
+
+	class 885th_LAS_Z6_F: 885th_LAS_Z6_Base_F
+	{
+		class EventHandlers
+		{
+			postInit = "[(_this select 0),""yes""] execVM '\FIR_AirWeaponSystem_US\Script\init\init.sqf';";
+		};
+		class UserActions : UserActions
+		{
+			class ls_impulsor_impulse
+			{
+				displayName="Impulse";
+				position="pilotview";
+				radius=5;
+				onlyForPlayer=0;
+				condition="ls_player == currentPilot this and {this call ls_impulsor_fnc_canImpulse}";
+				statement="[this, 1] call ls_impulsor_fnc_impulse";
+			};
+			class ls_impulsor_repulse: ls_impulsor_impulse
+			{
+				displayName="Repulse";
+				statement="[this, -1] call ls_impulsor_fnc_impulse";
+			};
+		};
+		class ls_impulsor: ls_impulsor_base
+		{
+		};
+		ls_hasImpulse = 1;
+		ls_impulsor_impulseSpeed = 60;
+        ls_impulsor_impulseCooldown = 3;
+		author = "ONIBushido";
+		scope = 2;
+		scopeCurator = 2;
+		ace_cargo_hasCargo = 1;
+		ace_cargo_space = 10;
+		incomingMissileDetectionSystem="1 + 2 + 4 + 8 + 16";
+		LockDetectionSystem="1 + 2 + 4 + 8 + 16";
+		weaponLockSystem="1 + 2 + 4 + 8 + 16";
+		displayname = "[885th] LAS QRF Mk 2";
+		side = 1;
+		faction = "885th_Faction";
+		crew = "885th_Pilot";
+		editorSubcategory = "Sub885thAir";
+		camouflage = 4.5;
+		armor = 165;
+		armorLights = 0.6;
+		armorStructural = 1.8;
+		armorFuel = 2.5;
+		armorEngine = 2.5;
+		armorAvionics = 2.2;
+		hiddenSelections[] = 
+		{
+			"camo0",
+			"camo1",
+			"camo2"
+		};
+		hiddenSelectionsTextures[] = 
+		{
+			"885_Vehicles\textures\LAS\885th_LAS_Exterior2_co.paa",
+			"\3AS\3AS_Republic_Heli\LAS\data\3AS_LAS_Interior_co.paa",
+			"885_Vehicles\textures\LAS\885th_LAS_Wings2_co.paa"
+		};
+		typicalcargo[]=
+		{
+			"885th_Pilot"
+		};
+		weapons[]=
+		{
+			"3AS_LAS_Energy_Cannons",
+			"CMFlareLauncher"
+		};
+		magazines[]=
+		{
+			"3AS_LAS_30mm_MP_shells",
+			"3AS_LAS_30mm_MP_shells",
+			"3AS_LAS_30mm_MP_shells",
+			"240Rnd_CMFlare_Chaff_Magazine",
+			"240Rnd_CMFlare_Chaff_Magazine",
+			"240Rnd_CMFlare_Chaff_Magazine",
+			"240Rnd_CMFlare_Chaff_Magazine"
 		};
 	};
 
