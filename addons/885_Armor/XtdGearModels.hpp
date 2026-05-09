@@ -179,14 +179,14 @@ class XtdGearModels
 					"Nightmare",
 					"Nero",
 					"Mayday",
-					"Maverick"
+					"Maverick",
 					"ONI",
 					"Outcast",
 					"Owl",
 					"Phantom",
 					"Rios",
 					"Screwball",
-					"Sytha"
+					"Sytha",
 					"Syxer",
 					"Smith",
 					"Sunshine",
@@ -1035,12 +1035,12 @@ class XtdGearInfos
 			variant="ARF";
 			camo="ARF";
 		};
-		class 885th_Thunder_P1_ARF_Helm
+		class 885th_Thunder_P2_BARC_Helm
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Thunder";
-			variant="ARF";
-			camo="ARF";
+			variant="BARC";
+			camo="BARC";
 		};
 		class Titan_Kusak_Katarn_Helm
 		{
