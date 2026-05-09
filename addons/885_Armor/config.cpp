@@ -31,7 +31,6 @@ class Cfgpatches
 			"885th_Crimz_Trooper",
 			"885th_Rios_Trooper",
 			"885th_Crow_RC_Trooper",
-			"885th_Titan_RC_Trooper",
 			"885th_Phantom_RC_Trooper",
 			"885th_Smith_Trooper",
 			"885th_Thunder_Trooper",
@@ -95,7 +94,6 @@ class Cfgpatches
 			"885th_Kusak_Katarn_Helmet",
 			"885th_Bandit_BARC_Helm",
 			"885th_Crow_Kusak_Helm",
-			"Titan_Kusak_Katarn_Helm",
 			"Phantom_Kusak_Katarn_Helm",
 			"885th_Syxer_BARC_Helm",
 			"885th_Vornskr_Engineer_Helm",
@@ -129,7 +127,6 @@ class Cfgpatches
 			"885th_Najax_Scout_Uniform",
 			"885th_Kusak_Katarn_Uniform",
 			"885th_Crow_Katarn_Uniform",
-			"885th_Titan_Katarn_Uniform",
 			"885th_Phantom_Katarn_Uniform",
 			"885th_Rios_Uniform",
 			"885th_ONI_Uniform",
@@ -1708,44 +1705,56 @@ class CfgWeapons
             "\ls\core\addons\characters_clone_legacy\helmets\arf\data\helmet_co.paa"
         };
     };
-	class 885th_Screwball_P1_ARF_Helm: 885th_Najax_P1_ARF_Helm
+	class 885th_Screwball_P2_ARF_Helm: 885th_Najax_ARF_P2_Helm
 	{
-		scope=2;
-		author="885th Bloodpack Division";
-		displayName="[885th] Screwball's Custom ARF Helm";
-
-		hiddenSelections[]=
+        author="885th Bloodpack Division";
+        displayName="[885th] Screwball's ARF P2 Helm";
+        scope=2;
+        picture="";
+        hiddenSelections[]=
+        {
+            "camo1",
+            "camo2",
+            "visor"
+        };
+        hiddenSelectionsTextures[]=
+        {
+            "885_Armor\885_Armor\Customs\Screwball\885th_Screwball_P2_ARF_Helm_co.paa",
+            "",
+            "885_Armor\885_Armor\Customs\Screwball\Screwball_visor_co.paa"
+        };
+		hiddenSelectionsMaterials[] = 
 		{
-			"camo1",
-			"camo2",
-			"visor"
+			"",
+			"",
+			"885_Armor\885_Armor\Customs\Screwball\visor.rvmat"
 		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Screwball\885th_Screwball_ARF_Helm_co.paa",
-			"885_Armor\885_Armor\Customs\Screwball\885th_Screwball_ARF_Plates_co.paa",
-			"885_Armor\885_Armor\Customs\Screwball\885th_Screwball_ARF_Visor_co.paa"
-		};
-	};
-	class 885th_Thunder_P1_ARF_Helm: 885th_Najax_P1_ARF_Helm
+    };
+	class 885th_Ares_P2_ARF_Helm: 885th_Najax_ARF_P2_Helm
 	{
-		scope=2;
-		author="885th Bloodpack Division";
-		displayName="[885th] Thunder Custom ARF Helm";
-		picture="";
-		hiddenSelections[]=
+        author="885th Bloodpack Division";
+        displayName="[885th] Ares's ARF P2 Helm";
+        scope=2;
+        picture="";
+        hiddenSelections[]=
+        {
+            "camo1",
+            "camo2",
+            "visor"
+        };
+        hiddenSelectionsTextures[]=
+        {
+            "885_Armor\885_Armor\Customs\Ares\885th_Ares_P2_ARF_Helm_co.paa",
+            "885_Armor\885_Armor\Customs\Ares\Ares_flaps_co.paa",
+            ""
+        };
+		hiddenSelectionsMaterials[] = 
 		{
-			"camo1",
-			"camo2",
-			"visor"
+			"",
+			"",
+			""
 		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Thunder\885th_Thunder_ARF_Helm.co.paa",
-			"885_Armor\885_Armor\Najax\Najax_Plates_co.paa",
-			"885_Armor\885_Armor\Najax\Najax_Visor_co.paa"
-		};
-	};
+    };
 	class 885th_Sushi_P2_ARF_Helm: 885th_Najax_ARF_P2_Helm
 	{
         author="885th Bloodpack Division";
@@ -1764,6 +1773,12 @@ class CfgWeapons
             "",
             "885_Armor\885_Armor\Customs\Sushi\sushi_visor_co.paa"
         };
+		hiddenSelectionsMaterials[] = 
+		{
+			"",
+			"",
+			"885_Armor\885_Armor\Customs\Sushi\visor.rvmat"
+		};
     };
 	class 885th_Crimz_ARF_Helm: 885th_Najax_ARF_P2_Helm
 	{
@@ -1895,6 +1910,26 @@ class CfgWeapons
             "885_Armor\885_Armor\Customs\Charge\Charge_BARC_Helmet_Visor.rvmat",
         };
 	};
+	class 885th_Sytha_BARC_Helm: 885th_BARC_Helm
+	{
+		author="885th Bloodpack Division";
+		displayName="[885th] Sytha's BARC Helmet";
+		hiddenselections[]=
+		{
+			"Camo",
+			"visor"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Sytha\Sytha_BARC_Helmet_co.paa",
+			"885_Armor\885_Armor\Customs\Sytha\Sytha_BARC_Helmet_co.paa",
+		};
+        hiddenSelectionsMaterials[]=
+        {
+			"",
+            "885_Armor\885_Armor\Customs\Sytha\Sytha_BARC_Helmet_Visor.rvmat",
+        };
+	};
 	class 885th_Nero_BARC_Helm: 885th_BARC_Helm
 	{
 		author="885th Bloodpack Division";
@@ -1913,6 +1948,26 @@ class CfgWeapons
         {
 			"",
             "885_Armor\885_Armor\Customs\Nero\Nero_BARC_Helmet_Visor.rvmat",
+        };
+	};
+	class 885th_Maverick_BARC_Helm: 885th_BARC_Helm
+	{
+		author="885th Bloodpack Division";
+		displayName="[885th] Maverick's BARC Helmet";
+		hiddenselections[]=
+		{
+			"Camo",
+			"visor"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Maverick\Maverick_BARC_Helmet_co.paa",
+			"885_Armor\885_Armor\Customs\Maverick\Maverick_BARC_Helmet_co.paa",
+		};
+        hiddenSelectionsMaterials[]=
+        {
+			"",
+            "885_Armor\885_Armor\Customs\Maverick\Maverick_BARC_Helmet_Visor.rvmat",
         };
 	};
 	class 885th_AB_Helm: IDA_AB_Helmet
@@ -2267,46 +2322,6 @@ class CfgWeapons
 		{
 			"885_Armor\885_Armor\Customs\Crow\Crow_Katarn_Helm_co.paa",
 			"885_Armor\885_Armor\Customs\Crow\Crow_Katarn_Helm_co.paa"
-		};
-		class ItemInfo: HeadgearItem
-		{
-			mass=10;
-			uniformModel="\3AS\3AS_Characters\Commando\3AS_Katarn_Helmet.p3d";
-			modelSides[]={3,1};
-			ace_hearing_lowerVolume = 0;
-			ace_hearing_protection = 1;
-			hiddenSelections[]=
-			{
-				"camo",
-				"camo1"
-			};
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName="HitHead";
-					armor=20;
-					passThrough=0.2;
-				};
-			};
-		};
-	};
-	class Titan_Kusak_Katarn_Helm: 885th_Kusak_Katarn_Helmet
-	{
-		author="885th Bloodpack Division";
-		scope=2;
-		displayName="[885th] RC Titan Kusak' Helm";
-		picture="3AS\3AS_Characters\Commando\data\UI\Katarn_Helmet_Unmarked_UI_ca.paa";
-		model="\3AS\3AS_Characters\Commando\3AS_Katarn_Helmet.p3d";
-		hiddenSelections[]=
-		{
-			"camo",
-			"camo1"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Titan\Titan_Katarn_Helmet_co.paa",
-			"885_Armor\885_Armor\Customs\Titan\Titan_Katarn_Helmet_co.paa"
 		};
 		class ItemInfo: HeadgearItem
 		{
@@ -3522,21 +3537,6 @@ class CfgWeapons
 		{
 			uniformModel = "-";
 			uniformClass = "885th_Crow_RC_Trooper";
-			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
-			containerClass = "Supply400";
-			mass = 40;
-		};
-	};
-	class 885th_Titan_Katarn_Uniform: 885th_Kusak_Katarn_Uniform
-	{
-		scope = 2;
-		displayName = "[885th] RC Titan Katarn Armor";
-		picture = "";
-		model = "\3AS\3AS_Characters\Commando\3AS_Katarn_Armor.p3d";
-		class ItemInfo: ItemInfo
-		{
-			uniformModel = "-";
-			uniformClass = "885th_Titan_RC_Trooper";
 			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
 			containerClass = "Supply400";
 			mass = 40;
@@ -11607,21 +11607,6 @@ class CfgVehicles
 		hiddenSelections[] = {"Camo","Camo1"};
 		hiddenSelectionsTextures[] = {
 			"885_Armor\885_Armor\Customs\Crow\Crow_Katarn_Armor_co.paa",
-			"3AS\3AS_Characters\Commando\data\Katarn_Undersuit_CO.paa"
-		};
-	};
-	
-	class 885th_Titan_RC_Trooper : 885th_Kusak_RC_Trooper {
-		scope=1;
-		scopeCurator=1;
-		scopeArsenal=2;
-		side=1;
-		faction="885th_Faction";
-		editorSubcategory="Sub885thTroopers";
-		uniformClass = "885th_Titan_Katarn_Uniform";
-		hiddenSelections[] = {"Camo","Camo1"};
-		hiddenSelectionsTextures[] = {
-			"885_Armor\885_Armor\Customs\Titan\Titan_Katarn_Armor_co.paa",
 			"3AS\3AS_Characters\Commando\data\Katarn_Undersuit_CO.paa"
 		};
 	};

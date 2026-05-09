@@ -165,6 +165,7 @@ class XtdGearModels
                 label="Customs";
                 values[]=
                 {
+					"Ares",
                     "Bandit",
 					"Bleach",
 					"Charge",
@@ -178,12 +179,14 @@ class XtdGearModels
 					"Nightmare",
 					"Nero",
 					"Mayday",
+					"Maverick"
 					"ONI",
 					"Outcast",
 					"Owl",
 					"Phantom",
 					"Rios",
 					"Screwball",
+					"Sytha"
 					"Syxer",
 					"Smith",
 					"Sunshine",
@@ -842,6 +845,13 @@ class XtdGearInfos
 			camo="1-2";
 		};
 		//Custom Helmets
+		class 885th_Ares_ARF_Helm
+		{
+			model="Trooper_Custom_Helmets";
+			rank="Ares";
+			variant="ARF";
+			camo="ARF";
+		};
 		class 885th_Bandit_BARC_Helm
 		{
 			model="Trooper_Custom_Helmets";
@@ -926,6 +936,13 @@ class XtdGearInfos
 			variant="BARC";
 			camo="BARC";
 		};
+		class 885th_Maverick_BARC_Helm
+		{
+			model="Trooper_Custom_Helmets";
+			rank="Maverick";
+			variant="BARC";
+			camo="BARC";
+		};
 		class 885th_Mayday_P2_Helm
 		{
 			model="Trooper_Custom_Helmets";
@@ -968,12 +985,19 @@ class XtdGearInfos
 			variant="P2";
 			camo="P2";
 		};
-		class 885th_Screwball_P1_ARF_Helm
+		class 885th_Screwball_P2_ARF_Helm
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Screwball";
 			variant="ARF";
 			camo="ARF";
+		};
+		class 885th_Sytha_BARC_Helm
+		{
+			model="Trooper_Custom_Helmets";
+			rank="Sytha";
+			variant="BARC";
+			camo="BARC";
 		};
 		class 885th_Syxer_BARC_Helm
 		{
