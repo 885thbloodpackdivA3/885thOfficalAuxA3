@@ -196,7 +196,8 @@ class XtdGearModels
 					"Titan",
 					"Warden",
 					"Wyrm",
-					"Wrath"
+					"Wrath",
+					"Vergil"
                 };
             };
             class variant
@@ -1066,6 +1067,13 @@ class XtdGearInfos
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Wrath";
+			variant="P2";
+			camo="P2";
+		};
+		class 885th_Vergil_P2_Helm
+		{
+			model="Trooper_Custom_Helmets";
+			rank="Vergil";
 			variant="P2";
 			camo="P2";
 		};

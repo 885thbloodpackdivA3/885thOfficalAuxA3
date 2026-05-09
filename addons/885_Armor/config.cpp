@@ -62,6 +62,7 @@ class Cfgpatches
 			"885th_Wrath_P2_Helmet",
 			"885th_Recruit_P2_Helm",
 			"885th_Nightfall_P2_Helmet",
+			"885th_Vergil_P2_Helm",
 			"885th_EOD_Helm",
 			"885th_Medic_P2_Helm",
 			"885th_Nexu_Medic_P2_Helm",
@@ -898,6 +899,22 @@ class CfgWeapons
         {
             "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat", //Currently pathed to IDA for your convenience
             "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet_Visor.rvmat",
+        };
+    };
+	class 885th_Vergil_P2_Helm: 885th_P2_V2_Helmet
+	{
+		author="885th Bloodpack Division";
+		displayName="[885th] Vergil Custom P2 Helm";
+		picture="";
+		hiddenSelections[]=
+		{
+			"Camo",
+			"Visor",
+        };
+        hiddenSelectionsTextures[]=
+        {
+			"885_Armor\885_Armor\Customs\Vergil\885th_Vergil_P2_Helm_co.paa",
+			"885_Armor\885_Armor\Customs\Vergil\885th_Vergil_P2_Helm_co.paa",
         };
     };
 	class 885th_EOD_Helm: 885th_P2_V2_Helmet
