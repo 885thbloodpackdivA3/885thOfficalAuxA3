@@ -78,6 +78,7 @@ class Cfgpatches
 			"885th_Owl_Pilot_Helm",
 			"885th_Mayday_P2_Helm",
 			"885th_Warden_Pilot_Helm",
+			"885th_Cerberus_P2_Pilot_Helm",
 			"885th_Vornskr_P1_RTO_Helm",
 			"885th_Outcast_RTO_Helm",
 			"885th_Vornskr_P1_Advisor_Helm",
@@ -1273,25 +1274,6 @@ class CfgWeapons
             "885_Armor\885_Armor\Customs\Warden\Warden_P1_Pilot_Helm_Visor.rvmat",
         };
 	};
-	class 885th_TopSnipe_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
-	{
-		scope=2;
-		author="885th Bloodpack Division";
-		displayName="[885th] Topsnipe Pilot Helm";
-		picture="";
-		hiddenSelections[]=
-		{
-			"camo1",
-			"camo2",
-			"visor"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Topsnipe\Topsnipe_Pilot_Helm_co.paa",
-			"885_Armor\885_Armor\Customs\Topsnipe\Topsnipe_LifeSupport_co.paa",
-			"885_Armor\885_Armor\Customs\Topsnipe\Topsnipe_Pilot_Helm_co.paa"
-		};
-	};
 	class 885th_Owl_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
 	{
 		scope=2;
@@ -1309,6 +1291,28 @@ class CfgWeapons
 			"885_Armor\885_Armor\Customs\Owl\885th_Owl_Pilot_Helm_co.paa",
 			"885_Armor\885_Armor\Customs\Owl\885th_Owl_LifesSupport_co.paa",
 			"885_Armor\885_Armor\Customs\Owl\885th_Owl_Pilot_Helm_co.paa"
+		};
+	};
+	class 885th_Cerberus_P2_Pilot_Helm: 885th_Nightsingers_P2_Pilot_Helm
+	{
+		scope=2;
+        author="885th Bloodpack Division";
+		displayName= "[885th] Cerberus P2 Pilot Helm";
+        picture="";
+		model = "\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\ls_gar_phase2Pilot_helmet.p3d";
+		hiddenSelections[]=
+		{
+			"camo1",
+			"visor"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Cerberus\885th_Cerberus_P2_Pilot_Helm_co.paa",
+			"885_Armor\885_Armor\Customs\Cerberus\885th_Cerberus_P2_Pilot_Visor_co.paa"
+		};
+		hiddenSelectionsMaterials[] = {
+    	"\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\ls_gar_phase2Pilot_helmet.rvmat", // The standard Clone material
+    	"\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\visor.rvmat" // The standard visor material
 		};
 	};
 	class 885th_Vornskr_P1_RTO_Helm: SEA_Helmet_SpecOps_SR_Base
@@ -11137,6 +11141,50 @@ class CfgVehicles
 		tf_subtype="digital_lr";
 		mass=22;
 	};
+	class ls_cloneBackpack_radio;
+	class 885th_Outcast_JTAC_Backpack: ls_cloneBackpack_radio
+	{
+		author="885th Bloodpack Division";
+		scope=2;
+		displayName="[885th] Outcast JTAC Backpack";
+		model="\ls\core\addons\characters_clone\backpacks\standard\ls_backpack_clone_standard.p3d";
+		hiddenSelections[]= 
+		{
+			"backpack",
+			"cloth",
+			"radio",
+			"rockets",
+			"medic",
+			"bacta",
+			"ammo",
+			"heavy",
+			"supplies",
+			"lower_supplies",
+			"canister",
+			"grenade"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Outcast\885th_Outcast_Backpack_co.paa",
+			"",
+			"885_Armor\885_Armor\Customs\Outcast\885th_Outcast_JTAC_Radio_co.paa",
+			"",
+			"",
+			"\ls\core\addons\characters_clone\backpacks\standard\data\bacta_CO.paa",
+			"",
+			"\ls\core\addons\characters_clone\backpacks\standard\data\heavy_CO.paa",
+			"",
+			"ls_core_characters_clone\backpacks\standard\data\Lower_PackPouchA_CO.paa"
+		};
+		maximumload=400;
+		tf_dialog="JLTS_clone_lr_programmer_radio_dialog";
+		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
+		tf_encryptionCode="tf_west_radio_code";
+		tf_hasLRradio=1;
+		tf_range=40000;
+		tf_subtype="digital_lr";
+		mass=22;
+	};
 	//20th Gear
 	class 885th_Cust_RTO_Buttbag2_Bandit: B_AssaultPack_blk
 	{
@@ -11212,43 +11260,6 @@ class CfgVehicles
 		tf_subtype="digital_lr";
 		mass=22;
 	};
-	class 885th_Cust_RTO_Buttbag2_Outcast: B_AssaultPack_blk
-	{
-		author="Antauri + 885thBPD";
-		scope=2;
-		picture="\MRC\JLTS\characters\CloneArmor\data\ui\Clone_RTO_pack_ui_ca.paa";
-		displayName="[885th] Outcast Buttbag and LR Pack";
-		model = "\ShadowLegion_Aux\Data\CustomVests\V5\models\VESTV5_LR_Backpack.p3d";
-		hiddenSelections[]=
-		{
-			"KamaPouches",
-			"AirborneBag",
-			"Buttbag",
-			"LRpack"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"",
-			"",
-			"885_Armor\885_Armor\Customs\Outcast\LRBag_co.paa",
-			"885_Armor\885_Armor\Customs\Outcast\LRBag_co.paa"
-		};
-		hiddenSelectionsMaterials[]=
-		{
-			"",
-			"",
-			"885_Armor\885_Armor\Customs\Outcast\LRBag.rvmat",
-			"885_Armor\885_Armor\Customs\Outcast\LRBag.rvmat"
-		};
-		maximumload=350;
-		tf_dialog="JLTS_clone_lr_programmer_radio_dialog";
-		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
-		tf_encryptionCode="tf_west_radio_code";
-		tf_hasLRradio=1;
-		tf_range=40000;
-		tf_subtype="digital_lr";
-		mass=22;
-	};
 	class 885th_Cust_RTO_Buttbag2_Rios: B_AssaultPack_blk
 	{
 		author="Antauri + 885thBPD";
@@ -11308,7 +11319,7 @@ class CfgVehicles
 			"\ShadowLegion_Aux\Data\AssaultBackpacks\Textures\Standard\Backpack.rvmat",
 			"\ShadowLegion_Aux\Data\AssaultBackpacks\Textures\Standard\Screen.rvmat"
 		};
-		maximumload=350;
+		maximumload=400;
 		tf_dialog="JLTS_clone_lr_programmer_radio_dialog";
 		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
 		tf_encryptionCode="tf_west_radio_code";

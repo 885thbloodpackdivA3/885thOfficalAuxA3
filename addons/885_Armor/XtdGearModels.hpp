@@ -168,6 +168,7 @@ class XtdGearModels
                     "Bandit",
 					"Bleach",
 					"Charge",
+					"Cerberus",
 					"Crimz",
 					"Crow",
 					"Gooner",
@@ -854,6 +855,13 @@ class XtdGearInfos
 			rank="Bleach";
 			variant="P2";
 			camo="P2";
+		};
+		class  885th_Cerberus_P2_Pilot_Helm
+		{
+			model="Trooper_Custom_Helmets";
+			rank="Cerberus";
+			variant="Pilot";
+			camo="Pilot";
 		};
 		class  885th_Charge_BARC_Helm
 		{
@@ -1603,7 +1611,7 @@ class XtdGearInfos
 			model="Custom_Backpacks";
 			backpack="Bleach";
 		};
-		class 885th_Cust_RTO_Buttbag2_Outcast
+		class 885th_Outcast_JTAC_Backpack
 		{
 			model="Custom_Backpacks";
 			backpack="Outcast";
