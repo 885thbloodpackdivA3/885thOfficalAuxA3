@@ -90,7 +90,7 @@ class Cfgpatches
 			"885th_Najax_ARF_P2_Recruit_Helm",
 			"885th_Najax_ARF_P2_Helm",
 			"885th_Najax_ARF_P2_Camo_Helm",
-			"885th_Thunder_P1_ARF_Helm",
+			"885th_Thunder_P2_BARC_Helm",
 			"885th_BARC_Helm",
 			"885th_Kusak_Katarn_Helmet",
 			"885th_Bandit_BARC_Helm",
@@ -1986,6 +1986,27 @@ class CfgWeapons
 			"",
             "885_Armor\885_Armor\Customs\Maverick\Maverick_BARC_Helmet_Visor.rvmat",
         };
+	};
+	class 885th_Thunder_P2_BARC_Helm: 885th_BARC_Helm
+	{
+		scope=2;
+		author="885th Bloodpack Division";
+		displayName="[885th] Thunder Custom BARC Helm";
+		picture="";
+		hiddenselections[]=
+		{
+			"Camo",
+			"visor"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Thunder\885th_Thunder_BARC_Helm.co.paa",
+			"885_Armor\885_Armor\Customs\Thunder\885th_Thunder_BARC_Helm.co.paa"
+		};
+       hiddenSelectionsMaterials[] = 
+		{
+			"\Indecisive_Armoury_units\REPUBLIC\Clone_BARC_Helmet\IDA_BARC_Helmet.rvmat",
+		};
 	};
 	class 885th_AB_Helm: IDA_AB_Helmet
 	{
