@@ -846,7 +846,7 @@ class XtdGearInfos
 			camo="1-2";
 		};
 		//Custom Helmets
-		class 885th_Ares_ARF_Helm
+		class 885th_Ares_P2_ARF_Helm
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Ares";
