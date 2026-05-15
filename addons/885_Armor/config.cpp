@@ -1346,27 +1346,27 @@ class CfgWeapons
 		};
 		hiddenSelectionsTextures[]=
 		{
-			"885_Armor\885_Armor\Nightsingers\Phase 3\Data\Ranks\885th_P3_Pilot_Helm_co.paa",
-			"885_Armor\885_Armor\Nightsingers\Phase 3\Data\Ranks\885th_P3_Pilot_Helm_co.paa",
-			"885_Armor\885_Armor\Nightsingers\Phase 3\Data\Ranks\885th_LifeSupport_co.paa",
-			"885_Armor\885_Armor\Nightsingers\Phase 3\Data\Ranks\885th_P3_Pilot_Helm_co.paa"
+			"885_Armor\885_Armor\Nightsingers\Phase 3\Ranks\885th_P3_Pilot_Helm_co.paa",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\Ranks\885th_P3_Pilot_Helm_co.paa",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\Ranks\885th_LifeSupport_co.paa",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\Ranks\885th_P3_Pilot_Helm_co.paa"
 		};
 		hiddenSelectionsMaterials[]=
 		{
-			"885_Armor\885_Armor\Nightsingers\Phase 3\Data\ClonePilot\Textures\Standard\Helmet.rvmat",
-			"885_Armor\885_Armor\Nightsingers\Phase 3\Data\ClonePilot\Textures\Standard\Visor.rvmat",
-			"885_Armor\885_Armor\Nightsingers\Phase 3\Data\ClonePilot\Textures\Standard\LifeSupport.rvmat",
-			"885_Armor\885_Armor\Nightsingers\Phase 3\Data\ClonePilot\Textures\Standard\Lights.rvmat"
+			"885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\Textures\Standard\Helmet.rvmat",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\Textures\Standard\Visor.rvmat",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\Textures\Standard\LifeSupport.rvmat",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\Textures\Standard\Lights.rvmat"
 		};
-		picture="885_Armor\885_Armor\Nightsingers\Phase 3\Data\ClonePilot\P3ClonePilotHelmet_UI.paa";
-		model="885_Armor\885_Armor\Nightsingers\Phase 3\Data\ClonePilot\model\ClonePilotHelmet.p3d";
+		picture="885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\P3ClonePilotHelmet_UI.paa";
+		model="885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\model\ClonePilotHelmet.p3d";
 		subItems[] = {"Integrated_NVG_TI_0_F"};
 		ace_hearing_lowerVolume=0;
 		ace_hearing_protection=1;
 		class ItemInfo: HeadgearItem
 		{
 			mass=10;
-			uniformModel="885_Armor\885_Armor\Nightsingers\Phase 3\Data\ClonePilot\model\ClonePilotHelmet.p3d";
+			uniformModel="885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\model\ClonePilotHelmet.p3d";
 			hiddenSelections[]=
 			{
 				"Helmet",
