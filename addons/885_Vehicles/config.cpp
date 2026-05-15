@@ -37,21 +37,25 @@ class cfgFactionClasses
 };
 class CFgEditorSubcategories
 {
-	class Sub885thAir
+	class Sub885thNS
 	{
-		displayName = "Nightsingers";
+		displayName = "Nightsingers - Multi-Role";
 	};
-	class Sub885thTransports
+	class Sub885thKraytLogi
 	{
-		displayName = "Ground Transport";
+		displayName = "Krayt - Logistics";
 	};
-	class Sub885thArmor
+	class Sub885thKraytArmor
 	{
-		displayName = "Tanks";
+		displayName = "Krayt - Armored";
+	};
+	class Sub885thLWFighters
+	{
+		displayName = "LothWulf - Fighters";
 	};
 	class Sub885thRecon
 	{
-		displayName = "Recon"
+		displayName = "Najax Recon Assets"
 	};
 };
 class CfgAmmo
@@ -314,7 +318,7 @@ class CfgVehicles
 		enableRadio = 1;
 		side = 1;
 		faction = "885th_Faction";
-		editorSubcategory = "Sub885thAir";
+		editorSubcategory = "Sub885thNS";
 		gearDown[] = {"gearDownInt", "gearDownExt"};
 		gearDownExt[] = {"3AS\3as_Laat\sounds\LaatdoorOPEN.ogg", 1, 1, 1000};
 		gearDownInt[] = {"3AS\3as_Laat\sounds\LaatdoorOPEN.ogg", 1, 1, 100};
@@ -430,7 +434,7 @@ class CfgVehicles
 		enableRadio = 1;
 		side = 1;
 		faction = "885th_Faction";
-		editorSubcategory = "Sub885thAir";
+		editorSubcategory = "Sub885thNS";
 		gearDown[] = {"gearDownInt", "gearDownExt"};
 		gearDownExt[] = {"3AS\3as_Laat\sounds\LaatdoorOPEN.ogg", 1, 1, 1000};
 		gearDownInt[] = {"3AS\3as_Laat\sounds\LaatdoorOPEN.ogg", 1, 1, 100};
@@ -524,7 +528,7 @@ class CfgVehicles
 		displayname = "[885th] LAAT/C";
 		side = 1;
 		faction = "885th_Faction";
-		editorSubcategory = "Sub885thAir";
+		editorSubcategory = "Sub885thKraytLogi";
 		camouflage = 6.0;
 		armor = 180;
 		armorLights = 0.4;
@@ -607,7 +611,7 @@ class CfgVehicles
 		side = 1;
 		faction = "885th_Faction";
 		crew = "885th_Pilot";
-		editorSubcategory = "Sub885thAir";
+		editorSubcategory = "Sub885thKraytLogi";
 		camouflage = 4.5;
 		armor = 155;
 		armorLights = 0.6;
@@ -712,7 +716,7 @@ class CfgVehicles
 		side = 1;
 		faction = "885th_Faction";
 		crew = "885th_Pilot";
-		editorSubcategory = "Sub885thAir";
+		editorSubcategory = "Sub885thKraytLogi";
 		camouflage = 4.5;
 		armor = 165;
 		armorLights = 0.6;
@@ -817,7 +821,7 @@ class CfgVehicles
 		displayname = "[885th] ARC-170 Mk.1";
 		side = 1;
 		faction = "885th_Faction";
-		editorSubcategory = "Sub885thAir";
+		editorSubcategory = "Sub885thLWFighters";
 		camouflage = 6.0;
 		ejectSpeed[] = { 0, 60, 0 };
 		magazines[] ={"3as_Z95_1000Rnd_Light_shells","3as_Z95_1000Rnd_Light_shells","3AS_PylonWeapon_Z95_240Rnd_Heavy_Shells","3AS_PylonWeapon_Z95_240Rnd_Heavy_Shells","3AS_PylonWeapon_Z95_240Rnd_Heavy_Shells","120Rnd_CMFlare_Chaff_Magazine","Laserbatteries","120Rnd_CMFlare_Chaff_Magazine","120Rnd_CMFlare_Chaff_Magazine","120Rnd_CMFlare_Chaff_Magazine","120Rnd_CMFlare_Chaff_Magazine"};
@@ -873,7 +877,7 @@ class CfgVehicles
 		displayname = "[885th] AT-TE Mk.1";
 		side = 1;
 		faction = "885th_Faction";
-		editorSubcategory = "Sub885thTransports";
+		editorSubcategory = "Sub885thKraytArmor";
 		camouflage = 8.0;
 		ace_cargo_hasCargo = 1;
 		ace_cargo_space = 20;
@@ -931,7 +935,7 @@ class CfgVehicles
 		displayname = "[885th] V-WING Mk.1";
 		side = 1;
 		faction = "885th_Faction";
-		editorSubcategory = "Sub885thAir";
+		editorSubcategory = "Sub885thLWFighters";
 		camouflage = 6.0;
 		ejectSpeed[] = { 0, 60, 0 };
 		magazines[] ={"3AS_Vwing_700Rnd_Medium_shells","3AS_Vwing_700Rnd_Medium_shells","3as_Z95_1000Rnd_Light_shells","3as_Z95_1000Rnd_Light_shells","3AS_LAAT_8Rnd_Missile_AGM","120Rnd_CMFlare_Chaff_Magazine","3AS_PylonMissile_ARC_2Rnd_Missile_AA","3AS_PylonMissile_ARC_2Rnd_Missile_AA","3AS_PylonMissile_ARC_2Rnd_Missile_AA","3AS_PylonMissile_ARC_2Rnd_Missile_AA","3AS_PylonMissile_ARC_2Rnd_Missile_AA","3AS_PylonMissile_ARC_2Rnd_Missile_AA","PylonRack_Missile_AMRAAM_C_x2","PylonRack_Missile_AMRAAM_C_x2","PylonRack_Missile_AMRAAM_C_x2","PylonRack_Missile_AMRAAM_C_x2","120Rnd_CMFlare_Chaff_Magazine","120Rnd_CMFlare_Chaff_Magazine","120Rnd_CMFlare_Chaff_Magazine","120Rnd_CMFlare_Chaff_Magazine"};
@@ -1113,7 +1117,7 @@ class CfgVehicles
 		author = "3rd Army Studios + 885th Bloodpack Div";
 		side = 1;
 		faction = "885th_Faction";
-		editorSubcategory = "Sub885thTransports";
+		editorSubcategory = "Sub885thKraytLogi";
 		crew = "885th_Pilot";
 		cost = 800;
 		hiddenSelections[] = {"camo1", "camo2", "camo3", "camo4", "camo5", "camo6", "camo7"};

@@ -17102,6 +17102,7 @@ class CfgVehicles
 		side=1;
 		faction="885th_Faction";
 		crew="885th_Pilot";
+		editorSubcategory = "Sub885thKraytArmor";
 		typicalCargo[]=
 		{
 			"885th_Pilot"
@@ -17273,6 +17274,7 @@ class CfgVehicles
 		side=1;
 		faction="885th_Faction";
 		crew="885th_Pilot";
+		editorSubcategory = "Sub885thKraytArmor";
 		typicalCargo[]=
 		{
 			"885th_Pilot"
@@ -17345,6 +17347,7 @@ class CfgVehicles
 		side=1;
 		faction="885th_Faction";
 		crew="885th_Pilot";
+		editorSubcategory = "Sub885thKraytArmor";
 		typicalCargo[]=
 		{
 			"885th_Pilot"
@@ -17714,6 +17717,7 @@ class CfgVehicles
 		side=1;
 		faction="885th_Faction";
 		crew="885th_Pilot";
+		editorSubcategory = "Sub885thKraytArmor";
 		camouflage=0.5;
 		displayname="[885th] TX-130 Recon";
 		hiddenSelections[]=
