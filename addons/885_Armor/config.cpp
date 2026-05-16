@@ -72,6 +72,9 @@ class Cfgpatches
 			"885th_Nightsingers_P2_Pilot_Officer_Helm",
 			"885th_Nightsingers_Senior_Pilot_Helm",
 			"885th_Nightsingers_Officer_Pilot_Helm",
+			"885th_Nightsingers_P3_Pilot_Helm",
+			"885th_Nightsingers_P3_Senior_Pilot_Helm",
+			"885th_Nightsingers_P3_Officer_Pilot_Helm",
 			"885th_Nightsingers_Armor_Crew_Helmet",
 			"885th_Smith_Pilot_Helm",
 			"885th_Kit_P2_Helm",
@@ -1327,6 +1330,67 @@ class CfgWeapons
 		hiddenSelectionsMaterials[] = {
     	"\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\ls_gar_phase2Pilot_helmet.rvmat", // The standard Clone material
     	"\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\visor.rvmat" // The standard visor material
+		};
+	};
+	class 885th_Nightsingers_P3_Pilot_Helm: H_HelmetO_ViperSP_hex_F
+	{
+		scope=2;
+		author="Antauri + Wess";
+		displayName="[885th] P3 Prototype Clone Pilot Helm";
+		hiddenSelections[]=
+		{
+			"Helmet",
+			"visor",
+			"LifeSupport",
+			"Ligths"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Nightsingers\Phase 3\Ranks\885th_P3_Pilot_Helm_co.paa",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\Ranks\885th_P3_Pilot_Helm_co.paa",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\Ranks\885th_LifeSupport_co.paa",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\Ranks\885th_P3_Pilot_Helm_co.paa"
+		};
+		hiddenSelectionsMaterials[]=
+		{
+			"885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\Textures\Standard\Helmet.rvmat",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\Textures\Standard\Visor.rvmat",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\Textures\Standard\LifeSupport.rvmat",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\Textures\Standard\Lights.rvmat"
+		};
+		picture="885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\P3ClonePilotHelmet_UI.paa";
+		model="885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\model\ClonePilotHelmet.p3d";
+		subItems[] = {"Integrated_NVG_TI_0_F"};
+		ace_hearing_lowerVolume=0;
+		ace_hearing_protection=1;
+		class ItemInfo: HeadgearItem
+		{
+			mass=10;
+			uniformModel="885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\model\ClonePilotHelmet.p3d";
+			hiddenSelections[]=
+			{
+				"Helmet",
+				"visor",
+				"LifeSupport",
+				"Ligths"
+			};
+			allowedSlots[]={801,901,701,605};
+			modelSides[]={6};
+			class HitpointsProtectionInfo
+			{
+				class Head
+				{
+					hitpointName="HitHead";
+					armor=15;
+					passThrough=0.5;
+				};
+				class Face
+				{
+					hitpointName="HitFace";
+					armor=13;
+					passThrough=0.7;
+				};
+			};
 		};
 	};
 	class 885th_Vornskr_P1_RTO_Helm: SEA_Helmet_SpecOps_SR_Base
