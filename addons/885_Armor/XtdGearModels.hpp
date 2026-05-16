@@ -130,7 +130,24 @@ class XtdGearModels
                 values[]=
                 {
                     "Pilot",
-					"Pilot V2",
+                    "Sen.Pilot",
+                    "Officer"
+                };
+            };
+		};
+		class Trooper_Pilot_Fighter_Helmets
+        {
+            options[]=
+            {
+                "rank"
+            };
+            label="LothWulf Pilot Helmets";
+            class rank
+            {
+                label="Rank";
+                values[]=
+                {
+                    "Pilot",
                     "Sen.Pilot",
                     "Officer"
                 };
@@ -199,7 +216,8 @@ class XtdGearModels
 					"Warden",
 					"Wyrm",
 					"Wrath",
-					"Vergil"
+					"Vergil",
+					"Vulkan"
                 };
             };
             class variant
@@ -670,6 +688,22 @@ class XtdGearInfos
             model="Trooper_Pilot_Helmets";
 			rank="Officer";
         };
+		// LothWulf Pilot Helmets
+		class 885th_Nightsingers_P3_Pilot_Helm
+		{
+			 model="Trooper_Pilot_Fighter_Helmets";
+			rank="Pilot";
+		};
+		class 885th_Nightsingers_P3_Senior_Pilot_Helm
+		{
+			 model="Trooper_Pilot_Fighter_Helmets";
+			rank="Sen.Pilot";
+		};
+		class 885th_Nightsingers_P3_Officer_Pilot_Helm
+		{
+			 model="Trooper_Pilot_Fighter_Helmets";
+			rank="Officer";
+		};
 		//RTO Helmets
         class 885th_Vornskr_P1_RTO_Helm
         {
@@ -869,7 +903,7 @@ class XtdGearInfos
 			variant="P2";
 			camo="P2";
 		};
-		class  885th_Cerberus_P2_Pilot_Helm
+		class  885th_Cerberus_P3_Pilot_Helm
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Cerberus";
@@ -1090,6 +1124,13 @@ class XtdGearInfos
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Vergil";
+			variant="P2";
+			camo="P2";
+		};
+		class 885th_Vulkan_P2_Helm
+		{
+			model="Trooper_Custom_Helmets";
+			rank="Vulkan";
 			variant="P2";
 			camo="P2";
 		};

@@ -63,6 +63,7 @@ class Cfgpatches
 			"885th_Recruit_P2_Helm",
 			"885th_Nightfall_P2_Helmet",
 			"885th_Vergil_P2_Helm",
+			"885th_Vulkan_P2_Helm",
 			"885th_EOD_Helm",
 			"885th_Medic_P2_Helm",
 			"885th_Nexu_Medic_P2_Helm",
@@ -83,7 +84,7 @@ class Cfgpatches
 			"885th_Mayday_P2_Helm",
 			"885th_Crusader_P2_Helm",
 			"885th_Warden_Pilot_Helm",
-			"885th_Cerberus_P2_Pilot_Helm",
+			"885th_Cerberus_P3_Pilot_Helm",
 			"885th_Vornskr_P1_RTO_Helm",
 			"885th_Outcast_RTO_Helm",
 			"885th_Vornskr_P1_Advisor_Helm",
@@ -938,6 +939,22 @@ class CfgWeapons
 			"885_Armor\885_Armor\Customs\Crusader\Crusader_P2_Helm_co.paa",
         };
 	};
+	class 885th_Vulkan_P2_Helm: 885th_P2_V2_Helmet
+	{
+		author="885th Bloodpack Division";
+		displayName="[885th] Vulkan Custom P2 Helm";
+		picture="";
+		hiddenSelections[]=
+		{
+			"Camo",
+			"Visor",
+        };
+        hiddenSelectionsTextures[]=
+        {
+			"885_Armor\885_Armor\Customs\Vulkan\Vulkan_P2_Helm_co.paa",
+			"885_Armor\885_Armor\Customs\Vulkan\Vulkan_P2_Helm_co.paa",
+        };
+	};
 	class 885th_Oxlong_P2_Helm: 885th_P2_V2_Helmet
 	{
 		author="885th Bloodpack Division";
@@ -954,6 +971,7 @@ class CfgWeapons
 			"885_Armor\885_Armor\Customs\Oxlong\Oxlong_P2_Helm_co.paa",
         };
 	};
+
 	class 885th_EOD_Helm: 885th_P2_V2_Helmet
 	{
 		author="885th Bloodpack Division";
@@ -1344,31 +1362,9 @@ class CfgWeapons
 			"885_Armor\885_Armor\Customs\Owl\885th_Owl_Pilot_Helm_co.paa"
 		};
 	};
-	class 885th_Cerberus_P2_Pilot_Helm: 885th_Nightsingers_P2_Pilot_Helm
-	{
-		scope=2;
-        author="885th Bloodpack Division";
-		displayName= "[885th] Cerberus P2 Pilot Helm";
-        picture="";
-		model = "\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\ls_gar_phase2Pilot_helmet.p3d";
-		hiddenSelections[]=
-		{
-			"camo1",
-			"visor"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Cerberus\885th_Cerberus_P2_Pilot_Helm_co.paa",
-			"885_Armor\885_Armor\Customs\Cerberus\885th_Cerberus_P2_Pilot_Visor_co.paa"
-		};
-		hiddenSelectionsMaterials[] = {
-    	"\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\ls_gar_phase2Pilot_helmet.rvmat", // The standard Clone material
-    	"\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\visor.rvmat" // The standard visor material
-		};
-	};
 	class 885th_Nightsingers_P3_Pilot_Helm: H_HelmetO_ViperSP_hex_F
 	{
-		scope=2;
+		scope=0;
 		author="Antauri + Wess";
 		displayName="[885th] P3 Prototype Clone Pilot Helm";
 		hiddenSelections[]=
@@ -1425,6 +1421,87 @@ class CfgWeapons
 					passThrough=0.7;
 				};
 			};
+		};
+	};
+	class 885th_Nightsingers_P3_Senior_Pilot_Helm : 885th_Nightsingers_P3_Pilot_Helm
+	{
+		scope=0;
+		author="Antauri + Wess";
+		displayName="[885th] P3 Prototype Clone Senior Pilot Helm";
+		hiddenSelections[]=
+		{
+			"Helmet",
+			"visor",
+			"LifeSupport",
+			"Ligths"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Nightsingers\Phase 3\Ranks\885th_P3_Pilot_Senior_Helm_co.paa",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\Ranks\885th_P3_Pilot_Senior_Helm_co.paa",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\Ranks\885th_LifeSupport_co.paa",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\Ranks\885th_P3_Pilot_Senior_Helm_co.paa"
+		};
+		hiddenSelectionsMaterials[]=
+		{
+			"885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\Textures\Standard\Helmet.rvmat",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\Textures\Standard\Visor.rvmat",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\Textures\Standard\LifeSupport.rvmat",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\Textures\Standard\Lights.rvmat"
+		};
+	};
+	class 885th_Nightsingers_P3_Officer_Pilot_Helm: 885th_Nightsingers_P3_Pilot_Helm
+	{
+		scope=0;
+		author="Antauri + Wess";
+		displayName="[885th] P3 Prototype Clone Pilot Officer Helm";
+		hiddenSelections[]=
+		{
+			"Helmet",
+			"visor",
+			"LifeSupport",
+			"Ligths"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Nightsingers\Phase 3\Ranks\885th_P3_Pilot_Officer_Helm_co.paa",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\Ranks\885th_P3_Pilot_Officer_Helm_co.paa",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\Ranks\885th_LifeSupport_co.paa",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\Ranks\885th_P3_Pilot_Officer_Helm_co.paa"
+		};
+		hiddenSelectionsMaterials[]=
+		{
+			"885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\Textures\Standard\Helmet.rvmat",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\Textures\Standard\Visor.rvmat",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\Textures\Standard\LifeSupport.rvmat",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\Textures\Standard\Lights.rvmat"
+		};
+	};
+	class 885th_Cerberus_P3_Pilot_Helm: 885th_Nightsingers_P3_Pilot_Helm
+	{
+		scope=2;
+		author="Antauri + Wess";
+		displayName="[885th] Cerberus P3 Pilot Helm";
+		hiddenSelections[]=
+		{
+			"Helmet",
+			"visor",
+			"LifeSupport",
+			"Ligths"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Cerberus\Cerberus_P3_Pilot_Helm_co.paa",
+			"885_Armor\885_Armor\Customs\Cerberus\Cerberus_P3_Pilot_Helm_co.paa",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\Ranks\885th_LifeSupport_co.paa",
+			"885_Armor\885_Armor\Customs\Cerberus\Cerberus_P3_Pilot_Helm_co.paa"
+		};
+		hiddenSelectionsMaterials[]=
+		{
+			"885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\Textures\Standard\Helmet.rvmat",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\Textures\Standard\Visor.rvmat",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\Textures\Standard\LifeSupport.rvmat",
+			"885_Armor\885_Armor\Nightsingers\Phase 3\ClonePilot\Textures\Standard\Lights.rvmat"
 		};
 	};
 	class 885th_Vornskr_P1_RTO_Helm: SEA_Helmet_SpecOps_SR_Base
