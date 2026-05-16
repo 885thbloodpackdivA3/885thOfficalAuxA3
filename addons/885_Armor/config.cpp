@@ -717,6 +717,26 @@ class CfgWeapons
             "885_Armor\885_Armor\Customs\Bleach\885th_Bleach_P2_Helm.co.paa",
         };
     };
+	class 885th_Jackson_P2_Helmet: 885th_P2_V2_Helmet
+    {
+        author="885th Bloodpack Division"; 
+        displayName="[885th] Jackson's P2 Helmet";
+        hiddenselections[]=
+        {
+            "Camo", 
+            "visor",
+        };
+        hiddenSelectionsTextures[]=
+        {
+            "885_Armor\885_Armor\Customs\Jackson\885th_Jackson_P2_Helm.co.paa",
+            "885_Armor\885_Armor\Customs\Jackson\885th_Jackson_P2_Helm.co.paa",
+        };
+		hiddenSelectionsMaterials[]=
+        {
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
+            "885_Armor\885_Armor\Customs\Jackson\Jackson_P2_Helmet_Visor.rvmat",
+        };
+    };
 	class 885th_Nightmare_Engineer_Helm: 885th_Vornskr_Engineer_Helm
 	{
 		author="885th Bloodpack Division";
@@ -1875,8 +1895,14 @@ class CfgWeapons
         {
             "885_Armor\885_Armor\Najax\885th_Najax_ARF_P2_Helm_co.paa",
             "",
-            "\ls\core\addons\characters_clone_legacy\helmets\arf\data\helmet_co.paa"
+            "885_Armor\885_Armor\Najax\visor_co.paa"
         };
+		hiddenSelectionsMaterials[] = 
+		{
+			"885_Armor\885_Armor\Najax\885TH_ARF_P2_Helmet.rvmat",
+			"",
+			"885_Armor\885_Armor\Najax\885TH_ARF_P2_Visor.rvmat"
+		};
     };
 	class 885th_Najax_ARF_P2_Camo_Helm: 885th_Najax_ARF_P2_Helm_Base
     {
@@ -1917,7 +1943,7 @@ class CfgWeapons
         };
 		hiddenSelectionsMaterials[] = 
 		{
-			"",
+			"885_Armor\885_Armor\Najax\885TH_ARF_P2_Helmet.rvmat",
 			"",
 			"885_Armor\885_Armor\Customs\Screwball\visor.rvmat"
 		};
@@ -1942,9 +1968,9 @@ class CfgWeapons
         };
 		hiddenSelectionsMaterials[] = 
 		{
+			"885_Armor\885_Armor\Najax\885TH_ARF_P2_Helmet.rvmat",
 			"",
-			"",
-			""
+			"885_Armor\885_Armor\Najax\885TH_ARF_P2_Visor.rvmat"
 		};
     };
 	class 885th_Sushi_P2_ARF_Helm: 885th_Najax_ARF_P2_Helm
@@ -1967,7 +1993,7 @@ class CfgWeapons
         };
 		hiddenSelectionsMaterials[] = 
 		{
-			"",
+			"885_Armor\885_Armor\Najax\885TH_ARF_P2_Helmet.rvmat",
 			"",
 			"885_Armor\885_Armor\Customs\Sushi\visor.rvmat"
 		};
@@ -1992,7 +2018,7 @@ class CfgWeapons
         };
 		hiddenSelectionsMaterials[] = 
 		{
-			"",
+			"885_Armor\885_Armor\Najax\885TH_ARF_P2_Helmet.rvmat",
 			"",
 			"\a3\characters_f_bootcamp\common\data\vrarmoremmisive.rvmat"
 		};

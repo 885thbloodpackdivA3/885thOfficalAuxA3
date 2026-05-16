@@ -191,6 +191,7 @@ class XtdGearModels
 					"Crusader",
 					"Crow",
 					"Gooner",
+					"Jackson",
 					"Kit",
 					"Lotho",
 					"Nightfall",
@@ -935,6 +936,13 @@ class XtdGearInfos
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Gooner";
+			variant="P2";
+			camo="P2";
+		};
+		class 885th_Jackson_P2_Helmet
+		{
+			model="Trooper_Custom_Helmets";
+			rank="Jackson";
 			variant="P2";
 			camo="P2";
 		};
