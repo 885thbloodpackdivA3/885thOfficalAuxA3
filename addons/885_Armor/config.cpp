@@ -76,7 +76,9 @@ class Cfgpatches
 			"885th_Smith_Pilot_Helm",
 			"885th_Kit_P2_Helm",
 			"885th_Owl_Pilot_Helm",
+			"885th_Oxlong_P2_Helm",
 			"885th_Mayday_P2_Helm",
+			"885th_Crusader_P2_Helm",
 			"885th_Warden_Pilot_Helm",
 			"885th_Cerberus_P2_Pilot_Helm",
 			"885th_Vornskr_P1_RTO_Helm",
@@ -917,6 +919,38 @@ class CfgWeapons
 			"885_Armor\885_Armor\Customs\Vergil\885th_Vergil_P2_Helm_co.paa",
         };
     };
+	class 885th_Crusader_P2_Helm: 885th_P2_V2_Helmet
+	{
+		author="885th Bloodpack Division";
+		displayName="[885th] Crusader Custom P2 Helm";
+		picture="";
+		hiddenSelections[]=
+		{
+			"Camo",
+			"Visor",
+        };
+        hiddenSelectionsTextures[]=
+        {
+			"885_Armor\885_Armor\Customs\Crusader\Crusader_P2_Helm_co.paa",
+			"885_Armor\885_Armor\Customs\Crusader\Crusader_P2_Helm_co.paa",
+        };
+	};
+	class 885th_Oxlong_P2_Helm: 885th_P2_V2_Helmet
+	{
+		author="885th Bloodpack Division";
+		displayName="[885th] Oxlong Custom P2 Helm";
+		picture="";
+		hiddenSelections[]=
+		{
+			"Camo",
+			"Visor",
+        };
+        hiddenSelectionsTextures[]=
+        {
+			"885_Armor\885_Armor\Customs\Oxlong\Oxlong_P2_Helm_co.paa",
+			"885_Armor\885_Armor\Customs\Oxlong\Oxlong_P2_Helm_co.paa",
+        };
+	};
 	class 885th_EOD_Helm: 885th_P2_V2_Helmet
 	{
 		author="885th Bloodpack Division";

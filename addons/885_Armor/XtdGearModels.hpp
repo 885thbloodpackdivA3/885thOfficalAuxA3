@@ -171,6 +171,7 @@ class XtdGearModels
 					"Charge",
 					"Cerberus",
 					"Crimz",
+					"Crusader",
 					"Crow",
 					"Gooner",
 					"Kit",
@@ -183,6 +184,7 @@ class XtdGearModels
 					"ONI",
 					"Outcast",
 					"Owl",
+					"Oxlong",
 					"Phantom",
 					"Rios",
 					"Screwball",
@@ -888,6 +890,13 @@ class XtdGearInfos
 			variant="ARF";
 			camo="ARF";
 		};
+		class 885th_Crusader_P2_Helm
+		{
+			model="Trooper_Custom_Helmets";
+			rank="Crusader";
+			variant="P2";
+			camo="P2";
+		};
 		class 885th_Gooner_P2_Helmet
 		{
 			model="Trooper_Custom_Helmets";
@@ -971,6 +980,13 @@ class XtdGearInfos
 			rank="Owl";
 			variant="Pilot";
 			camo="Pilot";
+		};
+		class 885th_Oxlong_P2_Helm
+		{
+			model="Trooper_Custom_Helmets";
+			rank="Oxlong";
+			variant="P2";
+			camo="P2";
 		};
 		class Phantom_Kusak_Katarn_Helm
 		{
