@@ -18,6 +18,7 @@ class CfgPatches
 			"885th_DC15LMKII_F",
 			"885th_DCP90",
 			"885th_DC15LE",
+			"885th_DC15LEHB_F",
 			"885th_DC15LEMKII",
 			"885th_DC15LEMKII_HE",
 			"885th_DW32S",
@@ -29,6 +30,8 @@ class CfgPatches
 			"885th_DC15_Vintage", 
 			"885th_DC17",
 			"885th_DC17A",
+			"885th_DC15P",
+			"885th_DCFG",
 			"885th_DC21", 
 			"885th_DC15HR",
 			"885th_DC19",
@@ -53,7 +56,10 @@ class CfgPatches
 			"885th_WestarM5MKII_F",
 			"885th_Westar35", 
 			"885th_DC17M",
+			"885th_DC15C_F",
+			"885th_DC15C_GL",
 			"885th_DC15CMK2",
+			"885th_DC15CMK2_GL",
 			"885th_Valken38XMKII",
 			"885th_Valken38A_F",
 			"885th_T15LIR",
@@ -108,6 +114,24 @@ class CfgPatches
 			"885th_cell_green_pistol",
 			"885th_cell_green_high",
 			"885th_DW32S_cell",
+			"885th_1rnd_40mm_HE_mag",
+			"885th_1rnd_40mm_AP_mag",
+			"885th_1rnd_40mm_whitesmoke_mag",
+			"885th_1rnd_40mm_redsmoke_mag",
+			"885th_1rnd_40mm_greensmoke_mag",
+			"885th_1rnd_40mm_yellowsmoke_mag",
+			"885th_1rnd_40mm_purplesmoke_mag",
+			"885th_1rnd_40mm_bluesmoke_mag",
+			"885th_1rnd_40mm_orangesmoke_mag",
+			"885th_3rnd_40mm_HE_mag",
+			"885th_3rnd_40mm_AP_mag",
+			"885th_3rnd_40mm_whitesmoke_mag",
+			"885th_3rnd_40mm_redsmoke_mag",
+			"885th_3rnd_40mm_greensmoke_mag",
+			"885th_3rnd_40mm_yellowsmoke_mag",
+			"885th_3rnd_40mm_purplesmoke_mag",
+			"885th_3rnd_40mm_bluesmoke_mag",
+			"885th_3rnd_40mm_orangesmoke_mag",
 			"885th_MPL_3rnd_HE_Grenade",
 			"885th_MPL_3rnd_Cluster_Grenade",
 			"885th_MPL_3rnd_AP_Micro_Rocket",
@@ -2454,6 +2478,148 @@ class CfgAmmo
 		caliber = 45;
 		coefGravity = 0;
 	};
+	//885th UGL AMMO
+	class 885th_Ugl_40mm_HE: GrenadeBase
+	{
+		explosionSoundEffect="DefaultExplosion";
+		simulation="shotShell";
+		model="Indecisive_Armoury_Ammos\Data\40mm_Grenade\IDA_40mm_Grenade.p3d";
+		hit=80;
+		indirectHit=8;
+		indirectHitRange=6;
+		effectflare="FlareShell";
+		effectfly="IDA_BlasterBoltGlow_Blue_Fly";
+		warheadName="HE";
+		visibleFire=1;
+		audibleFire=30;
+		visibleFireTime=3;
+		dangerRadiusHit=60;
+		suppressionRadiusHit=24;
+		explosive=1;
+		cost=10;
+		deflecting=5;
+		airFriction=-0.001;
+		fuseDistance=15;
+		whistleDist=16;
+		typicalSpeed=185;
+		caliber=2;
+		soundHit1[]=
+		{
+			"A3\Sounds_F\arsenal\explosives\Grenades\Explosion_gng_grenades_01",
+			3.1622777,
+			1,
+			1500
+		};
+		soundHit2[]=
+		{
+			"A3\Sounds_F\arsenal\explosives\Grenades\Explosion_gng_grenades_02",
+			3.1622777,
+			1,
+			1500
+		};
+		soundHit3[]=
+		{
+			"A3\Sounds_F\arsenal\explosives\Grenades\Explosion_gng_grenades_03",
+			3.1622777,
+			1,
+			1500
+		};
+		soundHit4[]=
+		{
+			"A3\Sounds_F\arsenal\explosives\Grenades\Explosion_gng_grenades_04",
+			3.1622777,
+			1,
+			1500
+		};
+		multiSoundHit[]=
+		{
+			"soundHit1",
+			0.25,
+			"soundHit2",
+			0.25,
+			"soundHit3",
+			0.25,
+			"soundHit4",
+			0.25
+		};
+		class CamShakeExplode
+		{
+			power=8;
+			duration=1.2;
+			frequency=20;
+			distance=74.596397;
+		};
+		class CamShakeHit
+		{
+			power=20;
+			duration=0.40000001;
+			frequency=20;
+			distance=1;
+		};
+		class CamShakeFire
+		{
+			power=0;
+			duration=0.2;
+			frequency=20;
+			distance=0;
+		};
+		class CamShakePlayerFire
+		{
+			power=0;
+			duration=0.1;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_Ugl_40mm_AP: 885th_Ugl_40mm_HE
+	{
+		hit=100;
+		indirectHit=6;
+		indirectHitRange=4;
+		caliber=3;
+		warheadName="HEAT";
+		class CamShakeHit
+		{
+			power=30;
+			duration=0.40000001;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_Ugl_40mm_Smoke: SmokeShell
+	{
+		model="\A3\weapons_f\Ammo\UGL_slug";
+	};
+	class 885th_Ugl_40mm_Smoke_Red: 885th_Ugl_40mm_Smoke
+	{
+		smokeColor[]={0.84380001,0.1383,0.1353,1};
+		effectsSmoke="SmokeShellRedEffect";
+	};
+	class 885th_Ugl_40mm_Smoke_Green: 885th_Ugl_40mm_Smoke
+	{
+		smokeColor[]={0.21250001,0.62580001,0.48909998,1};
+		effectsSmoke="SmokeShellGreenEffect";
+	};
+	class 885th_Ugl_40mm_Smoke_Yellow: 885th_Ugl_40mm_Smoke
+	{
+		smokeColor[]={0.98830003,0.86059999,0.071900003,1};
+		effectsSmoke="SmokeShellYellowEffect";
+	};
+	class 885th_Ugl_40mm_Smoke_Purple: 885th_Ugl_40mm_Smoke
+	{
+		smokeColor[]={0.4341,0.1388,0.41439998,1};
+		effectsSmoke="SmokeShellPurpleEffect";
+	};
+	class 885th_Ugl_40mm_Smoke_Blue: 885th_Ugl_40mm_Smoke
+	{
+		smokeColor[]={0.1183,0.1867,1,1};
+		effectsSmoke="SmokeShellBlueEffect";
+	};
+	class 885th_Ugl_40mm_Smoke_Orange: 885th_Ugl_40mm_Smoke
+	{
+		smokeColor[]={0.66970003,0.22750001,0.10053,1};
+		effectsSmoke="SmokeShellOrangeEffect";
+	};
 	//885th MPL AMMO
 	class 885th_MPL_25mm_HE: GrenadeBase
 	{
@@ -3541,7 +3707,7 @@ class CfgMagazines
 		initSpeed = 2000;
 		mass = 20;
 	};
-	// GL Mags
+	// Base GL Mags
 	class 885th_mag_40mm_Base: CA_Magazine
 	{
 		author="885th";
@@ -3551,6 +3717,198 @@ class CfgMagazines
 		ammo="885th_ammo_40mm_HE_Base";
 		count=1;
 		initspeed=80;
+	};
+	// UGL Mags
+	class 885th_1rnd_40mm_HE_mag: CA_Magazine
+	{
+		scope=2;
+		author="885th";
+		displayName="[885th] UGL 1rnd HE Grenade";
+		displayNameShort="HE";
+		descriptionShort="High-explosive grenade used by various underbarrel grenade launchers";
+		ammo="885th_Ugl_40mm_HE";
+		count=1;
+		initspeed=80;
+	};
+	class 885th_1rnd_40mm_AP_mag: 885th_1rnd_40mm_HE_mag
+	{
+		scope=2;
+		author="885th";
+		displayName="[885th] UGL 1rnd AP Grenade";
+		displayNameShort="AP";
+		descriptionShort="Armor-piercing grenade used by various underbarrel grenade launchers";
+		ammo="885th_Ugl_40mm_AP";
+		count=1;
+		initspeed=80;
+	};
+	class 885th_1rnd_40mm_whitesmoke_mag: CA_Magazine 
+	{
+		scope=2;
+		author="885th";
+		displayName="[885th] UGL 1Rnd White Smoke";
+		displayNameShort="White Smoke";
+		picture="";
+		ammo="885th_Ugl_40mm_Smoke";
+		initspeed=80;
+	};
+	class 885th_1rnd_40mm_redsmoke_mag: 885th_1rnd_40mm_whitesmoke_mag 
+	{
+		scope=2;
+		author="885th";
+		displayName="[885th] UGL 1Rnd Red Smoke";
+		displayNameShort="Red Smoke";
+		picture="";
+		ammo="885th_Ugl_40mm_Smoke_Red";
+	};
+	class 885th_1rnd_40mm_greensmoke_mag: 885th_1rnd_40mm_whitesmoke_mag 
+	{
+		scope=2;
+		author="885th";
+		displayName="[885th] UGL 1Rnd Green Smoke";
+		displayNameShort="green Smoke";
+		picture="";
+		ammo="885th_Ugl_40mm_Smoke_Green";
+	};
+	class 885th_1rnd_40mm_yellowsmoke_mag: 885th_1rnd_40mm_whitesmoke_mag 
+	{
+		scope=2;
+		author="885th";
+		displayName="[885th] UGL 1Rnd Yellow Smoke";
+		displayNameShort="Yellow Smoke";
+		picture="";
+		ammo="885th_Ugl_40mm_Smoke_Yellow";
+	};
+	class 885th_1rnd_40mm_purplesmoke_mag: 885th_1rnd_40mm_whitesmoke_mag 
+	{
+		scope=2;
+		author="885th";
+		displayName="[885th] UGL 1Rnd Purple Smoke";
+		displayNameShort="Purple Smoke";
+		picture="";
+		ammo="885th_Ugl_40mm_Smoke_Purple";
+	};
+	class 885th_1rnd_40mm_bluesmoke_mag: 885th_1rnd_40mm_whitesmoke_mag 
+	{
+		scope=2;
+		author="885th";
+		displayName="[885th] UGL 1Rnd Blue Smoke";
+		displayNameShort="Blue Smoke";
+		picture="";
+		ammo="885th_Ugl_40mm_Smoke_Blue";
+	};
+	class 885th_1rnd_40mm_orangesmoke_mag: 885th_1rnd_40mm_whitesmoke_mag 
+	{
+		scope=2;
+		author="885th";
+		displayName="[885th] UGL 1Rnd Orange Smoke";
+		displayNameShort="Orange Smoke";
+		picture="";
+		ammo="885th_Ugl_40mm_Smoke_Orange";
+	};
+	class 885th_3rnd_40mm_HE_mag: CA_Magazine
+	{
+		scope=2;
+		author="885th";
+		displayName="[885th] UGL 3rnd HE Grenade";
+		displayNameShort="HE";
+		descriptionShort="High-explosive grenade used by various underbarrel grenade launchers";
+		ammo="885th_Ugl_40mm_HE";
+		count=3;
+		initspeed=80;
+	};
+	class 885th_3rnd_40mm_AP_mag: 885th_3rnd_40mm_HE_mag
+	{
+		scope=2;
+		author="885th";
+		displayName="[885th] UGL 3rnd AP Grenade";
+		displayNameShort="AP";
+		descriptionShort="Armor-piercing grenade used by various underbarrel grenade launchers";
+		ammo="885th_Ugl_40mm_AP";
+		count=3;
+		initspeed=80;
+	};
+	class 885th_3rnd_40mm_whitesmoke_mag: CA_Magazine 
+	{
+		scope=2;
+		author="885th";
+		displayName="[885th] UGL 3Rnd White Smoke"; 
+		displayNameShort="White Smoke";
+		picture="";
+		ammo="885th_Ugl_40mm_Smoke";
+		count=3;
+		initspeed=80;
+	};
+	class 885th_3rnd_40mm_redsmoke_mag: 885th_3rnd_40mm_whitesmoke_mag 
+	{
+		scope=2;
+		author="885th";
+		displayName="[885th] UGL 3Rnd Red Smoke";
+		displayNameShort="Red Smoke";
+		picture="";
+		ammo="885th_Ugl_40mm_Smoke_Red";
+	};
+	class 885th_3rnd_40mm_greensmoke_mag: 885th_3rnd_40mm_whitesmoke_mag 
+	{
+		scope=2;
+		author="885th";
+		displayName="[885th] UGL 3Rnd Green Smoke";
+		displayNameShort="green Smoke";
+		picture="";
+		ammo="885th_Ugl_40mm_Smoke_Green";
+	};
+	class 885th_3rnd_40mm_yellowsmoke_mag: 885th_3rnd_40mm_whitesmoke_mag 
+	{
+		scope=2;
+		author="885th";
+		displayName="[885th] UGL 3Rnd Yellow Smoke";
+		displayNameShort="Yellow Smoke";
+		picture="";
+		ammo="885th_Ugl_40mm_Smoke_Yellow";
+	};
+	class 885th_3rnd_40mm_purplesmoke_mag: 885th_3rnd_40mm_whitesmoke_mag 
+	{
+		scope=2;
+		author="885th";
+		displayName="[885th] UGL 3Rnd Purple Smoke";
+		displayNameShort="Purple Smoke";
+		picture="";
+		ammo="885th_Ugl_40mm_Smoke_Purple";
+	};
+	class 885th_3rnd_40mm_bluesmoke_mag: 885th_3rnd_40mm_whitesmoke_mag 
+	{
+		scope=2;
+		author="885th";
+		displayName="[885th] UGL 3Rnd Blue Smoke";
+		displayNameShort="Blue Smoke";
+		picture="";
+		ammo="885th_Ugl_40mm_Smoke_Blue";
+	};
+	class 885th_3rnd_40mm_orangesmoke_mag: 885th_3rnd_40mm_whitesmoke_mag 
+	{
+		scope=2;
+		author="885th";
+		displayName="[885th] UGL 3Rnd Orange Smoke";
+		displayNameShort="Orange Smoke";
+		picture="";
+		ammo="885th_Ugl_40mm_Smoke_Orange";
+	};
+	class 885th_6Rnd_HE_Grenade_shell: CA_Magazine
+	{
+		author="885th";
+		scope=2;
+		type=16;
+		displayName="[885th] 6 Rnd Westar Grenades";
+		displayNameShort="[885th] HE Grenades";
+		picture="";
+		ammo="G_40mm_HE";
+		initSpeed=80;
+		count=6;
+		nameSound="";
+		descriptionShort="Westar Grenades";
+		mass=16;
+		modelSpecial="\a3\Weapons_F\MagazineProxies\mag_40x36_HE_1rnd.p3d";
+		modelSpecialIsProxy=1;
+		deleteIfEmpty=0;
 	};
 	// MPL Mags
 	class 885th_MPL_3rnd_HE_Grenade: 885th_mag_40mm_Base
@@ -3678,6 +4036,19 @@ class CfgMagazines
 		ammo = "885th_blasterbolt_bHigh";
 		tracersEvery = 1;
 		mass = 30;
+	};
+	class 885th_DC15P_High_Blue: 885th_cell
+	{
+		author="885th Bloodapack Division";
+		scope=2;
+		displayName="[885th] DC-15P 15rnd High Powered Cell";
+		ammo="885th_blasterbolt_blue";
+		count=15;
+		mass=4;
+		initSpeed=800;
+		tracersEvery=1;
+		lastRoundsTracer=5;
+		descriptionShort="Standard energy cartridge for the DC-15P Blaster.";
 	};
 	class 885th_battery_amp_blue : 885th_cell
 	{
@@ -3837,6 +4208,51 @@ class CfgMagazines
 		mass=8;
 		tracersEvery=1;
 		descriptionShort="60 round capacity, modified blaster bolts used by the DC15C MK II.";
+	};
+	class 885th_DC15LEHB_battery_low_blue: CA_Magazine
+	{
+		author="885th Bloodpack Division + SL Mod Dev Team";
+		scope=2;
+		displayName="[885th] DC15LE Heavy Blaster 500rnd Low-Power Energy Cell";
+		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
+		modelSpecial="\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
+		modelSpecialIsProxy=1;
+		ammo="885th_blasterbolt_blue";
+		count=500;
+		mass=25;
+		tracersEvery=1;
+		lastRoundsTracer=25;
+		descriptionShort="Low-Power Energy Cell Used Only For The DC15LE Heavy Blaster.";
+	};
+	class 885th_DC15LEHB_battery_high_blue: CA_Magazine
+	{
+		author="885th Bloodpack Division + SL Mod Dev Team";
+		scope=2;
+		displayName="[885th] DC15LE Heavy Blaster 300rnd High-Power Energy Cell";
+		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
+		modelSpecial="\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
+		modelSpecialIsProxy=1;
+		ammo="885th_blasterbolt_bHigh";
+		count=300;
+		mass=30;
+		tracersEvery=1;
+		lastRoundsTracer=25;
+		descriptionShort="High-Power Energy Cell Used Only For The DC15LE Heavy Blaster.";
+	};
+	class 885th_DC15LEHB_battery_amp_blue: CA_Magazine
+	{
+		author="885th Bloodpack Division + SL Mod Dev Team";
+		scope=2;
+		displayName="[885th] DC15LE Heavy Blaster 250rnd Amplified Energy Cell";
+		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
+		modelSpecial="\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
+		modelSpecialIsProxy=1;
+		ammo="885th_blasterbolt_bAmp";
+		count=250;
+		mass=35;
+		tracersEvery=1;
+		lastRoundsTracer=25;
+		descriptionShort="Amplified Energy Cell Used Only For The DC15LE MKII.";
 	};
 	class 885th_DC15LEMKII_battery_high_blue: CA_Magazine
 	{
@@ -4257,6 +4673,36 @@ class CfgMagazineWells
 		};
 		BI_Magazines[] = {};
 	};
+	class 885th_UGL_1Rnd_MagWell
+	{
+		885th_Magazines[]=
+		{
+			"885th_1rnd_40mm_HE_mag",
+			"885th_1rnd_40mm_AP_mag",
+			"885th_1rnd_40mm_whitesmoke_mag",
+			"885th_1rnd_40mm_redsmoke_mag",
+			"885th_1rnd_40mm_greensmoke_mag",
+			"885th_1rnd_40mm_yellowsmoke_mag",
+			"885th_1rnd_40mm_purplesmoke_mag",
+			"885th_1rnd_40mm_bluesmoke_mag",
+			"885th_1rnd_40mm_orangesmoke_mag"
+		};
+	};
+	class 885th_UGL_3Rnd_MagWell
+	{
+		885th_Magazines[]=
+		{
+			"885th_3rnd_40mm_HE_mag",
+			"885th_3rnd_40mm_AP_mag",
+			"885th_3rnd_40mm_whitesmoke_mag",
+			"885th_3rnd_40mm_redsmoke_mag",
+			"885th_3rnd_40mm_greensmoke_mag",
+			"885th_3rnd_40mm_yellowsmoke_mag",
+			"885th_3rnd_40mm_purplesmoke_mag",
+			"885th_3rnd_40mm_bluesmoke_mag",
+			"885th_3rnd_40mm_orangesmoke_mag"
+		};
+	};
 	class 885th_MPL_MagWell
 	{
 		885th_Magazines[]=
@@ -4307,11 +4753,14 @@ class CfgWeapons
 	class Pistol_Base_F;
 	class Rifle_Base_F;
 	class Rifle_Long_Base_F;
+	class hgun_Pistol_Heavy_01_F;
 	class UGL_40x36;
 	class SMG_03C_TR_Khaki
 	{
 		class WeaponSlotsInfo;
 	};
+	class 3AS_MuzzleSlot_DC15C;
+	class 3AS_CowsSlot_DC15C;
 	class 3as_Valken38x_F;
 	class 3AS_DC15A_Base_F;
 	class 3as_DC15C_Base_F;
@@ -4964,6 +5413,228 @@ class CfgWeapons
 			};
 		};
 	};
+	class 885th_DC15P: hgun_Pistol_Heavy_01_F
+	{
+		ace_overheating_mrbs=40000;
+		ace_overheating_slowdownFactor=0;
+		ace_overheating_allowSwapBarrel=0;
+		ace_overheating_dispersion=1;
+		ace_overheating_closedBolt=0;
+		ace_overheating_barrelMass=1;
+		author="885th Bloodpack Division";
+		displayName="DC-15P Blaster Pistol";
+		descriptionShort="";
+		scope=2;
+		inertia=0;
+		canShootInWater=1;
+		baseWeapon="885th_DC15P";
+		picture="Indecisive_Armoury_Weapons_REPUBLIC\Data\DC15P\DC15P_ui.paa";
+		model="Indecisive_Armoury_Weapons_REPUBLIC\Data\DC15P\Model\IDA_DC15P.p3d";
+		hiddenSelections[]=
+		{
+			"camo"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"Indecisive_Armoury_Weapons_REPUBLIC\Data\DC15P\Textures\dc15P_co.paa"
+		};
+		magazines[]=
+		{
+			"885th_DC15P_High_Blue"
+		};
+		ace_clearJamAction="";
+		reloadAction="GestureReload_IDA_Reload_BlasterPistol";
+		recoil="IDA_recoil_BlasterPistol";
+		magazineWell[]={};
+		fireLightDiffuse[]={0.1,0.25,1};
+		drySound[]=
+		{
+			"\Indecisive_Armoury_Sounds\weapon_dry.ogg",
+			5,
+			1,
+			10
+		};
+		reloadMagazineSound[]=
+		{
+			"\Indecisive_Armoury_Sounds\Blaster_reload_Vent.ogg",
+			5,
+			1,
+			100
+		};
+		muzzles[]={"this","Stun"};
+		class Stun : 885th_Stun_pistol
+		{
+		};
+		class Single : Mode_SemiAuto
+		{
+			sounds[] = {"StandardSound"};
+			class BaseSoundModeType
+			{
+				weaponSoundEffect = "";
+				closure1[] = {};
+				closure2[] = {};
+				soundClosure[] = {};
+			};
+			class StandardSound : BaseSoundModeType
+			{
+				weaponSoundEffect = "";
+				begin1[] = {"885_Sounds\DC-15P_Fire.ogg", 1.25, 1, 1800};
+				begin2[] = {"885_Sounds\DC-15P_Fire.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Sounds\DC-15P_Fire.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Sounds\DC-15P_Fire.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Sounds\DC-15P_Fire.ogg", 1.25, 0.995, 1800};
+				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
+				beginwater1[] = {"885_Sounds\DC-15P_Fire.ogg", 1, 1, 400};
+				soundBeginWater[] = {"beginwater1", 1};
+			};
+			reloadTime = 0.20;
+			dispersion = 0.00040;
+			minRange = 0;
+			minRangeProbab = 0.6;
+			midRange = 100;
+			midRangeProbab = 0.4;
+			maxRange = 300;
+			maxRangeProbab = 0.2;
+		};
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			mass=20;
+			class CowsSlot: CowsSlot
+			{
+				compatibleItems[]={};
+			};
+			class PointerSlot: PointerSlot
+			{
+				compatibleItems[]={};
+			};
+			class MuzzleSlot: MuzzleSlot
+			{
+				linkProxy="\A3\data_f\proxies\weapon_slots\MUZZLE";
+				compatibleItems[]={};
+				iconPosition[]={0.23999999,0.34999999};
+				iconScale=0.2;
+			};
+			class UnderBarrelSlot: UnderBarrelSlot
+			{
+				compatibleItems[]={};
+			};
+		};
+	};
+	class 885th_DCFG: hgun_Pistol_Heavy_01_F
+	{
+		author="885th Bloodpack Division";
+		displayName="DC-FG launcher Pistol";
+		descriptionShort="";
+		scope=2;
+		canShootInWater=1;
+		inertia=9.9999999e-009;
+		baseWeapon="885th_DCFG";
+		picture="Indecisive_Armoury_Weapons_REPUBLIC\Data\DCFG\DCFG_ui.paa";
+		model="Indecisive_Armoury_Weapons_REPUBLIC\Data\DCFG\Model\IDA_DCFG.p3d";
+		hiddenSelections[]=
+		{
+			"camo"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"Indecisive_Armoury_Weapons_REPUBLIC\Data\DCFG\Textures\DCFG_co.paa"
+		};
+		magazines[]=
+		{
+			"ACE_40mm_Flare_Red",
+			"ACE_40mm_Flare_White",
+			"ACE_HuntIR_M203"
+		};
+		ace_clearJamAction="";
+		reloadAction="GestureReloadPistolHeavy02";
+		reloadMagazineSound[]=
+		{
+			"A3\Sounds_F\arsenal\weapons\Pistols\Zubr\reload_Zubr",
+			1.5,
+			1,
+			100
+		};
+		recoil="IDA_recoil_BlasterPistol";
+		magazineWell[]={};
+		fireLightDiffuse[]={0.1,0.25,1};
+		drySound[]=
+		{
+			"\Indecisive_Armoury_Sounds\weapon_dry.ogg",
+			5,
+			1,
+			10
+		};
+		muzzles[]=
+		{
+			"this"
+		};
+		class Single: Mode_SemiAuto
+		{
+			sounds[]=
+			{
+				"StandardSound"
+			};
+			class BaseSoundModeType
+			{
+				weaponSoundEffect="";
+				closure1[]={};
+				closure2[]={};
+				soundClosure[]={};
+			};
+			class StandardSound: BaseSoundModeType
+			{
+				weaponSoundEffect="";
+					begin1[]=
+					{
+						"885_Sounds\885th_UGL_Sound.ogg",
+						3.1622777,
+						1,
+						400
+					};
+					soundBegin[]=
+					{
+						"begin1",
+						0.1
+					};
+				soundSetShot[]=
+				{
+					"UGL_shot_SoundSet",
+					"UGL_Tail_SoundSet",
+					"UGL_InteriorTail_SoundSet"
+				};
+			};
+			reloadTime=0.60000002;
+			burst=1;
+			dispersion=0;
+			minRange=2;
+			minRangeProbab=0.5;
+			midRange=100;
+			midRangeProbab=0.075000003;
+			maxRange=10000;
+			maxRangeProbab=0.30000001;
+		};
+		class WeaponSlotsInfo
+		{
+			mass=20;
+			holsterScale=0.75;
+			class CowsSlot: CowsSlot
+			{
+				compatibleItems[]={};
+			};
+			class PointerSlot: PointerSlot
+			{
+				compatibleItems[]={};
+			};
+			class MuzzleSlot: MuzzleSlot
+			{
+				compatibleItems[]={};
+			};
+			class UnderBarrelSlot: UnderBarrelSlot
+			{
+				compatibleItems[]={};
+			};
+		};
+	};
 	class 885th_DC21 : Pistol_Base_F
 	{
 		author = "885th Bloodpack Division";
@@ -5423,11 +6094,9 @@ class CfgWeapons
 					"ShadwCmpany_optic_e11",
 					"ShdwCmpny_Optic_Valken",
 					"optic_mrco",
-					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
 					"ShadwCmpany_773_Hybrid_Magnifier_Magnified",
 					"ShdwCmpny_Optic_LEScope_DC15A_mk2",
 					"ShdwCmpny_Optic_LEScope_DC15A",
-					"ShadwCmpany_Hybrid_Magnifier_Holo",
 					"ShadwCmpany_Hybrid_Magnifier_Magnified"
 					
 				};
@@ -5533,12 +6202,12 @@ class CfgWeapons
 			};
 			magazines[]=
 			{
-				"3AS_1UGL_MK54_HE_shell"
+				"885th_1rnd_40mm_HE_mag"
 			};
 			magazineWell[]=
 			{
 				"UGL_40x36",
-				"3AS_1UGL_Magwell"
+				"885th_UGL_1Rnd_MagWell"
 			};
 			cameraDir="OP_look";
 			discreteDistance[]={50,75,100,150,200,250,300,350,400};
@@ -5577,11 +6246,9 @@ class CfgWeapons
 					"ShadwCmpany_optic_e11",
 					"ShdwCmpny_Optic_Valken",
 					"optic_mrco",
-					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
 					"ShadwCmpany_773_Hybrid_Magnifier_Magnified",
 					"ShdwCmpny_Optic_LEScope_DC15A_mk2",
 					"ShdwCmpny_Optic_LEScope_DC15A",
-					"ShadwCmpany_Hybrid_Magnifier_Holo",
 					"ShadwCmpany_Hybrid_Magnifier_Magnified"
 					
 				};
@@ -5770,12 +6437,12 @@ class CfgWeapons
 			useExternalOptic=0;
 			magazines[]=
 			{
-				"3AS_1UGL_MK54_HE_shell"
+				"885th_1rnd_40mm_HE_mag"
 			};
 			magazineWell[]=
 			{
 				"UGL_40x36",
-				"3AS_1UGL_Magwell"
+				"885th_UGL_1Rnd_MagWell"
 			};
 			modes[]=
 			{
@@ -5972,7 +6639,7 @@ class CfgWeapons
 		recoil = "885_recoil_dc15a";
 		magazines[] = {"885th_dc_cell_blue"};
 		magazineWell[] = {"DC_energycells"};
-		modes[] = {"Single", "FullAuto"};
+		modes[] = {"Single"};
 		fireLightDiffuse[] = {0.1, 0.25, 1};
 		drySound[] = {"\Indecisive_Armoury_Sounds\weapon_dry.ogg", 5, 1, 10};
 		muzzles[] = {"this", "Stun"};
@@ -6209,9 +6876,7 @@ class CfgWeapons
 					"ShdwCmpny_Optic_A280Scope",
 					"ShdwCmpny_Optic_LEScope_DC15A_mk2",
 					"ShdwCmpny_Optic_LEScope_DC15A",
-					"ShadwCmpany_Hybrid_Magnifier_Holo",
-					
-					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
+					"ShadwCmpany_Hybrid_Magnifier_Magnified",
 					"ShadwCmpany_773_Hybrid_Magnifier_Magnified"
 					
 				};
@@ -6230,7 +6895,9 @@ class CfgWeapons
 					"acc_flashlight",
 					"acc_pointer_IR",
 					"ace_acc_pointer_red",
-					"ace_acc_pointer_green"
+					"ace_acc_pointer_green",
+					"ShdwCmpny_Light_MPD",
+					"ShdwCmpny_IR_MPD"
 				};
 			};
 			class UnderBarrelSlot: UnderBarrelSlot
@@ -6238,10 +6905,7 @@ class CfgWeapons
 				iconPosition[]={0.2,0.80000001};
 				iconScale=0.30000001;
 				linkProxy="\A3\data_f_mark\proxies\weapon_slots\UNDERBARREL";
-				compatibleItems[]=
-				{
-					"ShdwCmpny_Bipod_Valken"
-				};
+				compatibleItems[]={};
 			};
 		};
 		class GunParticles
@@ -6270,6 +6934,7 @@ class CfgWeapons
 		aimTransitionSpeed=0.80000001;
 		dexterity=1.4;
 		initSpeed=-1;
+		fireLightDiffuse[] = {0.1, 0.25, 1};
 		class GunParticles: GunParticles
 		{
 		};
@@ -6296,7 +6961,7 @@ class CfgWeapons
 		distanceZoomMax=300;
 		descriptionShort="";
 		handAnim[]={"OFP2_ManSkeleton","3as\3AS_Weapons\Republic\DC15A\Data\Anim\New_DC15a_Handanim.rtm"};
-		modes[]={"Single","single_medium_optics1","single_far_optics2"};
+		modes[]={"Single","FullAuto","single_medium_optics1","single_far_optics2"};
 		class Burst: Mode_Burst
 		{
 			burst=3;
@@ -6369,6 +7034,42 @@ class CfgWeapons
 				beginwater1[]={"\ShadowLegion_Weapons\data\Underwater_Firing.ogg",1,1,200};
 				soundBeginWater[]={"beginwater1",0.5};
 			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			sounds[]=
+			{
+				"StandardSound",
+				"SilencedSound"
+			};
+			class BaseSoundModeType;
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[]=
+				{
+					"3AS_DC15A_Shot_SoundSet"
+				};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				begin1[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				begin2[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				begin3[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				begin4[]={"ShadowLegion_Weapons\data\surpressed_2.ogg",1,1,100};
+				begin5[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				begin6[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				soundBegin[]={"begin1",0.5,"begin2",0.5,"begin3",0.5,"begin4",0.5,"begin5",0.5,"begin6",0.5};
+				beginwater1[]={"\ShadowLegion_Weapons\data\Underwater_Firing.ogg",1,1,200};
+				soundBeginWater[]={"beginwater1",0.5};
+			};
+			reloadTime=0.0923;
+			dispersion=0.00135;
+			minRange=2;
+			minRangeProbab=0.5;
+			midRange=100;
+			midRangeProbab=0.69999999;
+			maxRange=10000;
+			maxRangeProbab=0.30000001;
 		};
 		class Burst_medium: Burst
 		{
@@ -6449,13 +7150,12 @@ class CfgWeapons
 			};
 			magazines[]=
 			{
-				"3AS_3UGL_MK54_HE_shell"
+				"885th_3rnd_40mm_HE_mag"
 			};
 			magazineWell[]=
 			{
-				"UGL_40x36",
 				"3UGL_40x36",
-				"3AS_3UGL_Magwell"
+				"885th_UGL_3Rnd_MagWell"
 			};
 			cameraDir="OP_look";
 			discreteDistance[]={50,75,100,150,200,250,300,350,400};
@@ -6740,8 +7440,8 @@ class CfgWeapons
 		{
 			displayName="Amplified High Explosive Launcher";
 			descriptionShort="Amp. HEL";
-			magazines[] = {"885th_coil_blue_high","885th_MPL_3rnd_HE_Grenade"};
-			magazineWell[] = {};
+			magazines[] = {"885th_coil_blue_high","885th_3rnd_40mm_HE_mag"};
+			magazineWell[] = {"885th_UGL_3Rnd_MagWell"};
 			useModelOptics=0;
 			useExternalOptic=0;
 			modes[]=
@@ -6910,7 +7610,7 @@ class CfgWeapons
 				iconPosition[]={0.44999999,0.28};
 				iconScale=0.2;
 				linkProxy="\A3\data_f\proxies\weapon_slots\TOP";
-				compatibleItems[]={"ShadwCmpany_optic_Acog","ShdwCmpny_Optic_LEScope_DC15A","3AS_optic_DC15L_F","optic_MRCO","ShdwCmpny_Optic_Valken","ShadwCmpany_optic_Reflex_Mk1_Alt2","ShadwCmpany_Hybrid_Magnifier_Holo","ShadwCmpany_773_Hybrid_Magnifier_Holo"};
+				compatibleItems[]={"ShadwCmpany_optic_Acog","ShdwCmpny_Optic_LEScope_DC15A","3AS_optic_DC15L_F","optic_MRCO","ShdwCmpny_Optic_Valken","ShadwCmpany_optic_Reflex_Mk1_Alt2","ShadwCmpany_Hybrid_Magnifier_Magnified","ShadwCmpany_773_Hybrid_Magnifier_Magnified"};
 			};
 			class PointerSlot: PointerSlot_Rail
 			{
@@ -6922,7 +7622,9 @@ class CfgWeapons
 					"acc_flashlight",
 					"acc_pointer_IR",
 					"ace_acc_pointer_red",
-					"ace_acc_pointer_green"
+					"ace_acc_pointer_green",
+					"ShdwCmpny_Light_MPD",
+					"ShdwCmpny_IR_MPD"
 				};
 			};
 		};
@@ -7384,6 +8086,7 @@ class CfgWeapons
 		initSpeed=-1;
 		maxZeroing=100;
 		canShootInWater=1;
+		fireLightDiffuse[] = {0.1, 0.25, 1};
 		class OpticsModes
 		{
 			class Ironsights
@@ -7446,7 +8149,6 @@ class CfgWeapons
 					"ShadwCmpany_optic_e11",
 					"3AS_Imp_Optic_2",
 					"3AS_Imp_Optic_3",
-					"ShadwCmpany_Hybrid_Magnifier_Holo",
 					"ShadwCmpany_Hybrid_Magnifier_Magnified"
 				};
 			};
@@ -7727,6 +8429,7 @@ class CfgWeapons
 		initSpeed=-1;
 		maxZeroing=100;
 		canShootInWater=1;
+		fireLightDiffuse[] = {0.1, 0.25, 1};
 		class OpticsModes
 		{
 			class Ironsights
@@ -7789,7 +8492,6 @@ class CfgWeapons
 					"ShadwCmpany_optic_e11",
 					"3AS_Imp_Optic_2",
 					"3AS_Imp_Optic_3",
-					"ShadwCmpany_Hybrid_Magnifier_Holo",
 					"ShadwCmpany_Hybrid_Magnifier_Magnified"
 				};
 			};
@@ -8015,11 +8717,11 @@ class CfgWeapons
 			useExternalOptic=0;
 			magazines[]=
 			{
-				"3AS_6Rnd_HE_Grenade_shell"
+				"885th_6Rnd_HE_Grenade_shell"
 			};
 			magazineWell[]=
 			{
-				"3AS_3UGL_Magwell"
+				"885th_UGL_3Rnd_MagWell"
 			};
 			modes[]=
 			{
@@ -8127,6 +8829,7 @@ class CfgWeapons
 		initSpeed=-1;
 		maxZeroing=100;
 		canShootInWater=1;
+		fireLightDiffuse[] = {0.1, 0.25, 1};
 		class GunParticles: GunParticles
 		{
 			class SecondEffect
@@ -8146,9 +8849,7 @@ class CfgWeapons
 					"ShadwCmpany_optic_Reflex_Mk1_Alt2",
 					"ShadwCmpany_optic_Acog",
 					"ShdwCmpny_Optic_Scope_WestarM5",
-					"ShadwCmpany_Hybrid_Magnifier_Holo",
-					
-					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
+					"ShadwCmpany_Hybrid_Magnifier_Magnified",
 					"ShadwCmpany_773_Hybrid_Magnifier_Magnified"
 				};
 			};
@@ -8510,6 +9211,234 @@ class CfgWeapons
 			};
 		};
 	};
+	class 885th_DC15LEHB_Base: Rifle_Base_F
+	{
+		scope=0;
+		author="885th Bloodpack Division + SL Mod Dev Team";
+		model="\ShadowLegion_Weapons\data\DC15\DC15LE\Model\DC15_LE.p3d";
+		magazines[] = {
+			"885th_DC15LEHB_battery_low_blue",
+			"885th_DC15LEHB_battery_high_blue",
+			"885th_DC15LEHB_battery_amp_blue"};
+		magazineWell[] = {};
+		handAnim[]=
+		{
+			"OFP2_ManSkeleton",
+			"\ShadowLegion_Weapons\data\DC15\DC15A\Anim\ReloadBASE_DC15A.rtm"
+		};
+		reloadAction="GestureReload_JLTS_DC15A";
+		reloadMagazineSound[]=
+		{
+			"\ShadowLegion_Weapons\data\reloads\sounds\Reload_1.ogg",
+			5,
+			1,
+			30
+		};
+		magazineReloadSwitchPhase=0.40000001;
+		discreteDistanceInitIndex=0;
+		recoil="IDA_recoil_BlasterRifle";
+		canShootInWater=1;
+		maxRecoilSway=0.0125;
+		swayDecaySpeed=1.25;
+		inertia=0.69999999;
+		dexterity=1.5;
+		initSpeed=-1;
+		maxZeroing=100;
+		fireLightDiffuse[] = {0.1, 0.25, 1};
+		class GunParticles: GunParticles
+		{
+			class SecondEffect
+			{
+				positionName="Nabojnicestart";
+				directionName="Nabojniceend";
+				effectName="CaselessAmmoCloud";
+			};
+		};
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			class MuzzleSlot: MuzzleSlot
+			{
+				linkProxy="\A3\data_f\proxies\weapon_slots\MUZZLE";
+				compatibleItems[]=
+				{
+					"ShdwCmpny_Muzzle_LE_DC15A_Unsur"
+				};
+				iconPosition[]={0,0.44999999};
+				iconScale=0.2;
+			};
+			class CowsSlot: CowsSlot
+			{
+				linkProxy="\A3\data_f\proxies\weapon_slots\TOP";
+				compatibleItems[]=
+				{
+					"ShdwCmpny_Optic_LEScope_DC15A",
+					"ShadwCmpany_optic_Acog",
+					"ShadwCmpany_Hybrid_Magnifier_Holo",
+					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
+				};
+			};
+			class PointerSlot: PointerSlot
+			{
+				linkProxy="\A3\data_f\proxies\weapon_slots\SIDE";
+				compatibleItems[]=
+				{
+					"ShdwCmpny_Light_MPD",
+					"ShdwCmpny_IR_MPD"
+				};
+			};
+			class UnderBarrelSlot: UnderBarrelSlot
+			{
+				linkProxy="\A3\data_f_mark\proxies\weapon_slots\UNDERBARREL";
+				compatibleItems[]=
+				{
+					"ShdwCmpny_Bipod_Valken"
+				};
+			};
+		};
+		optics=1;
+		useModelOptics=1;
+		class OpticsModes
+		{
+			class DC15A_IronSights
+			{
+				opticsID=1;
+				useModelOptics=0;
+				opticsZoomMin=0.25;
+				opticsZoomMax=1.25;
+				opticsZoomInit=0.75;
+				memoryPointCamera="eye";
+				opticsFlare=0;
+				opticsDisablePeripherialVision=0;
+				distanceZoomMin=200;
+				distanceZoomMax=200;
+				cameraDir="";
+				visionMode[]={};
+				opticsPPEffects[]=
+				{
+					"Default"
+				};
+			};
+			class DC15A_Scope
+			{
+				opticsID=2;
+				useModelOptics=0;
+				opticsPPEffects[]=
+				{
+					"OpticsRadialBlur1",
+					"OpticsBlur1"
+				};
+				opticsFlare=1;
+				opticsDisablePeripherialVision=0;
+				opticsZoomMin=0.22499999;
+				opticsZoomMax=0.22499999;
+				opticsZoomInit=0.22499999;
+				memoryPointCamera="eye";
+				visionMode[]={};
+				distanceZoomMin=200;
+				distanceZoomMax=200;
+			};
+		};
+		descriptionShort="DC-15LE";
+		selectionFireAnim="zasleh";
+		flash="gunfire";
+		flashSize=3;
+		modes[]=
+		{
+			"FullAuto",
+			"fullauto_medium"
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			reloadTime = 0.08;
+			dispersion = 0.0020;
+			minRange=2;
+			minRangeProbab = 1.0;
+			midRange=500;
+			midRangeProbab = 0.8;
+			maxRange=1000;
+			maxRangeProbab = 0.6; 
+			soundContinuous=0;
+			soundBurst=0;
+			sounds[]=
+			{
+				"StandardSound",
+				"SilencedSound"
+			};
+			class BaseSoundModeType;
+			class StandardSound: BaseSoundModeType
+			{
+				weaponSoundEffect = "";
+				begin1[] = {"\Indecisive_Armoury_Sounds\Republic\DC15LE.ogg",1.25,1,1800};
+				begin2[] = {"\Indecisive_Armoury_Sounds\Republic\DC15LE.ogg",1.25,1.025,1800};
+				begin3[] = {"\Indecisive_Armoury_Sounds\Republic\DC15LE.ogg",1.25,0.95,1800};
+				begin4[] = {"\Indecisive_Armoury_Sounds\Republic\DC15LE.ogg",1.25,1.05,1800};
+				begin5[] = {"\Indecisive_Armoury_Sounds\Republic\DC15LE.ogg",1.25,0.9,1800};
+				soundBegin[] = {"begin1",0.2,"begin2",0.2,"begin3",0.2,"begin4",0.2,"begin5",0.2};
+				beginwater1[] = {"\Indecisive_Armoury_Sounds\Republic\DC15LE.ogg",1,1,400};
+				soundBeginWater[] = {"beginwater1",1};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				begin1[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				begin2[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				begin3[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				begin4[]={"ShadowLegion_Weapons\data\surpressed_2.ogg",1,1,100};
+				begin5[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				begin6[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				soundBegin[]={"begin1",0.5,"begin2",0.5,"begin3",0.5,"begin4",0.5,"begin5",0.5,"begin6",0.5};
+				beginwater1[]={"\ShadowLegion_Weapons\data\Underwater_Firing.ogg",1,1,200};
+				soundBeginWater[]={"beginwater1",0.5};
+			};
+		}; 
+		class fullauto_medium: FullAuto
+		{
+			showToPlayer=0;
+			burst=3;
+			minRange=2;
+			minRangeProbab=0.5;
+			midRange=50;
+			midRangeProbab=0.69999999;
+			maxRange=100;
+			maxRangeProbab=0.050000001;
+			aiRateOfFire=2;
+		};
+		aiDispersionCoefY=6;
+		aiDispersionCoefX=4;
+		caseless[]=
+		{
+			"",
+			1,
+			1,
+			1
+		};
+		soundBullet[]=
+		{
+			"caseless",
+			1
+		};
+		drySound[]=
+		{
+			"\ShadowLegion_Weapons\data\reloads\sounds\Empty_1.ogg",
+			5,
+			1,
+			20
+		};
+		ace_overheating_mrbs=3000;
+		ace_overheating_slowdownFactor=1;
+		ace_overheating_allowSwapBarrel=0;
+		ace_overheating_dispersion=0.75;
+	};
+	class 885th_DC15LEHB_F: 885th_DC15LEHB_Base
+	{
+		author="885th Bloodpack Division + Antauri";
+		scope=2;
+		_generalMacro="ShdwCmpny_DC15LE_F";
+		displayName="[885th] DC-15LE Heavy Blaster";
+		descriptionShort="";
+		picture="\ShadowLegion_Weapons\data\DC15\DC15A\UI\DC15A_UI.paa";
+		UiPicture="\ShadowLegion_Weapons\data\DC15\DC15A\UI\DC15A_UI.paa";
+		muzzles[]={"this"};
+	};
 	class 885th_DC15LEMKII : Rifle_Base_F
 	{
 		ace_overheating_mrbs = 40000;
@@ -8650,7 +9579,7 @@ class CfgWeapons
 			showToPlayer=0;
 			minRange=2;
 			minRangeProbab=0.050000001;
-			midRange=2  00;
+			midRange=200;
 			midRangeProbab=0.80000001;
 			maxRange=500;
 			maxRangeProbab=0.0099999998;
@@ -8894,7 +9823,9 @@ class CfgWeapons
 					"acc_flashlight",
 					"acc_pointer_IR",
 					"ace_acc_pointer_red",
-					"ace_acc_pointer_green"
+					"ace_acc_pointer_green",
+					"ShdwCmpny_Light_MPD",
+					"ShdwCmpny_IR_MPD"
 				};
 			};
 			class UnderBarrelSlot: UnderBarrelSlot
@@ -9006,7 +9937,7 @@ class CfgWeapons
 				beginwater1[] = {"885_Sounds\DW32S.ogg", 1, 1, 400};
 				soundBeginWater[] = {"beginwater1", 1};
 			};
-			reloadTime = 0.45;
+			reloadTime = 0.20;
 			dispersion = 0.00060;
 			minRange = 0;
 			minRangeProbab = 0.8;
@@ -9136,6 +10067,7 @@ class CfgWeapons
 		dexterity=1.5;
 		initSpeed=-1;
 		maxZeroing=100;
+		fireLightDiffuse[] = {0.1, 0.25, 1};
 		class GunParticles: GunParticles
 		{
 			class SecondEffect
@@ -9178,7 +10110,9 @@ class CfgWeapons
 					"acc_flashlight",
 					"acc_pointer_IR",
 					"ace_acc_pointer_red",
-					"ace_acc_pointer_green"
+					"ace_acc_pointer_green",
+					"ShdwCmpny_Light_MPD",
+					"ShdwCmpny_IR_MPD"
 				};
 			};
 			class UnderBarrelSlot: UnderBarrelSlot
@@ -9481,7 +10415,7 @@ class CfgWeapons
 			mass = 75;
 			class CowsSlot : CowsSlot
 			{
-				compatibleItems[] = {"885th_Optic_Scope_WestarM5","ShdwCmpny_Optic_LEScope_DC15A_mk2","ShadwCmpany_773_Hybrid_Magnifier_Holo"};
+				compatibleItems[] = {"885th_Optic_Scope_WestarM5","ShdwCmpny_Optic_LEScope_DC15A_mk2","ShadwCmpany_773_Hybrid_Magnifier_Holo","ShadwCmpany_773_Hybrid_Magnifier_Magnified"};
 			};
 			class MuzzleSlot : MuzzleSlot
 			{	
@@ -9626,7 +10560,9 @@ class CfgWeapons
 					"acc_flashlight",
 					"acc_pointer_IR",
 					"ace_acc_pointer_red",
-					"ace_acc_pointer_green"
+					"ace_acc_pointer_green",
+					"ShdwCmpny_Light_MPD",
+					"ShdwCmpny_IR_MPD"
 				};
 			};
 			class UnderBarrelSlot: UnderBarrelSlot
@@ -9674,6 +10610,7 @@ class CfgWeapons
 		opticsPPEffects[]={};
 		opticsFlare=1;
 		opticsDisablePeripherialVision=1;
+		fireLightDiffuse[] = {0.1, 0.25, 1};
 		class GunParticles: GunParticles
 		{
 			class SecondEffect
@@ -9734,7 +10671,9 @@ class CfgWeapons
 					"acc_flashlight",
 					"acc_pointer_IR",
 					"ace_acc_pointer_red",
-					"ace_acc_pointer_green"
+					"ace_acc_pointer_green",
+					"ShdwCmpny_Light_MPD",
+					"ShdwCmpny_IR_MPD"
 				};
 			};
 			class UnderBarrelSlot: UnderBarrelSlot
@@ -10028,7 +10967,7 @@ class CfgWeapons
 			class PointerSlot : PointerSlot
 			{	
 				linkProxy="\A3\data_f\proxies\weapon_slots\SIDE";
-				compatibleItems[] = {"acc_flashlight","acc_pointer_IR","ace_acc_pointer_red","ace_acc_pointer_green","3AS_Imp_Laser_E11"};
+				compatibleItems[] = {"acc_flashlight","acc_pointer_IR","ace_acc_pointer_red","ace_acc_pointer_green","ShdwCmpny_Light_MPD","ShdwCmpny_IR_MPD"};
 			};
 			class UnderBarrelSlot : UnderBarrelSlot
 			{
@@ -10056,6 +10995,361 @@ class CfgWeapons
 		muzzles[] = {"this","Stun"};
 		class Stun : 885th_Stun_rifle
 		{
+		};
+	};
+	class 885th_DC15C_Base_F: Rifle_Base_F
+	{
+		author="885th Bloodpack Division";
+		magazines[] = {"885th_dc_cell_blue"};
+		magazineWell[] = {"DC_energycells"};
+		magazineReloadSwitchPhase=0.5;
+		reloadAction="GestureReloadMX";
+		recoil="3AS_recoil_DC15C";
+		maxZeroing=800;
+		discreteDistanceInitIndex=0;
+		maxRecoilSway=0.0125;
+		swayDecaySpeed=1.25;
+		inertia=0.60000002;
+		aimTransitionSpeed=0.80000001;
+		dexterity=1.4;
+		initSpeed=-1;
+		fireLightDiffuse[] = {0.1, 0.25, 1};
+		class GunParticles: GunParticles
+		{
+		};
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			mass=70;
+			class MuzzleSlot: 3AS_MuzzleSlot_DC15C
+			{
+				iconPosition[]={0,0.44999999};
+				iconScale=0.2;
+			};
+			class CowsSlot: 3AS_CowsSlot_DC15C
+			{
+				iconPosition[]={0.5,0.34999999};
+				iconScale=0.2;
+			};
+		};
+		distanceZoomMin=300;
+		distanceZoomMax=300;
+		descriptionShort="$STR_3AS_Weapons_Republic_DC15C_DesShort";
+		handAnim[]=
+		{
+			"OFP2_ManSkeleton",
+			"3as\3AS_Weapons\Republic\DC15C\Data\Anim\New_DC15C_Handanim.rtm"
+		};
+		modes[]=
+		{
+			"FullAuto",
+			"Single",
+			"single_medium_optics1",
+			"single_far_optics2"
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			sounds[]=
+			{
+				"StandardSound",
+				"SilencedSound"
+			};
+			class BaseSoundModeType;
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[]=
+				{
+					"3AS_DC15C_Shot_SoundSet"
+				};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[]=
+				{
+					"3AS_DC15C_Shot_SoundSet"
+				};
+			};
+			reloadTime=0.12;
+			dispersion=0.00106;
+			minRange=0;
+			minRangeProbab=0.89999998;
+			midRange=15;
+			midRangeProbab=0.69999999;
+			maxRange=50;
+			maxRangeProbab=0.050000001;
+			aiRateOfFire=1e-006;
+		};
+		class Single: Mode_SemiAuto
+		{
+			reloadTime=0.12;
+			dispersion=0.00106;
+			minRange=2;
+			minRangeProbab=0.5;
+			midRange=150;
+			midRangeProbab=0.69999999;
+			maxRange=350;
+			maxRangeProbab=0.30000001;
+			soundContinuous=0;
+			soundBurst=0;
+			sounds[]=
+			{
+				"StandardSound",
+				"SilencedSound"
+			};
+			class BaseSoundModeType;
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[]=
+				{
+					"3AS_DC15C_Shot_SoundSet"
+				};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[]=
+				{
+					"3AS_DC15C_Shot_SoundSet"
+				};
+			};
+		};
+		class single_medium_optics1: Single
+		{
+			requiredOpticType=1;
+			showToPlayer=0;
+			minRange=5;
+			minRangeProbab=0.2;
+			midRange=300;
+			midRangeProbab=0.69999999;
+			maxRange=450;
+			maxRangeProbab=0.2;
+			aiRateOfFire=6;
+			aiRateOfFireDistance=500;
+		};
+		class single_far_optics2: Single
+		{
+			requiredOpticType=2;
+			showToPlayer=0;
+			minRange=100;
+			minRangeProbab=0.2;
+			midRange=400;
+			midRangeProbab=0.69999999;
+			maxRange=600;
+			maxRangeProbab=0.050000001;
+			aiRateOfFire=8;
+			aiRateOfFireDistance=800;
+		};
+		class GL_3GL_F: UGL_F
+		{
+			displayName="[885th] DC15 Underbarrel";
+			descriptionShort="DC15CGL";
+			useModelOptics=0;
+			useExternalOptic=0;
+			modes[]=
+			{
+				"Fire"
+			};
+			class Fire: Mode_SemiAuto
+			{
+				sounds[]=
+				{
+					"StandardSound"
+				};
+				class BaseSoundModeType
+				{
+					weaponSoundEffect="";
+					closure1[]={};
+					closure2[]={};
+					soundClosure[]={};
+				};
+				class StandardSound: BaseSoundModeType
+				{
+					weaponSoundEffect="";
+					begin1[]=
+					{
+						"885_Sounds\885th_UGL_Sound.ogg",
+						3.1622777,
+						1,
+						400
+					};
+					soundBegin[]=
+					{
+						"begin1",
+						0.1
+					};
+				};
+			};
+			magazines[]=
+			{
+				"885th_3rnd_40mm_HE_mag"
+			};
+			magazineWell[]=
+			{
+				"3UGL_40x36",
+				"885th_UGL_3Rnd_MagWell"
+			};
+			cameraDir="OP_look";
+			discreteDistance[]={50,75,100,150,200,250,300,350,400};
+			discreteDistanceCameraPoint[]=
+			{
+				"OP_eye_50",
+				"OP_eye_75",
+				"OP_eye_100",
+				"OP_eye_150",
+				"OP_eye_200",
+				"OP_eye_250",
+				"OP_eye_300",
+				"OP_eye_350",
+				"OP_eye_400"
+			};
+			discreteDistanceInitIndex=1;
+			reloadAction="GestureReloadMXUGL";
+			reloadMagazineSound[]=
+			{
+				"A3\Sounds_F\arsenal\weapons\Rifles\MX\Mx_UGL_reload",
+				1,
+				1,
+				10
+			};
+		};
+		aiDispersionCoefY=6;
+		aiDispersionCoefX=4;
+		class OpticsModes
+		{
+			class Ironsights
+			{
+				opticsID=1;
+				useModelOptics=0;
+				opticsFlare=0;
+				opticsPPEffects[]=
+				{
+					"Default"
+				};
+				opticsDisablePeripherialVision=0;
+				opticsZoomMin=0.25;
+				opticsZoomMax=1.25;
+				opticsZoomInit=0.75;
+				memoryPointCamera="eye";
+				visionMode[]={};
+				distanceZoomMin=100;
+				distanceZoomMax=100;
+			};
+		};
+		caseless[]=
+		{
+			"",
+			1,
+			1,
+			1
+		};
+		soundBullet[]=
+		{
+			"caseless",
+			1
+		};
+		drySound[]=
+		{
+			"\3AS\3AS_Main\Sounds\Blaster_empty",
+			2,
+			1,
+			20
+		};
+		reloadMagazineSound[]=
+		{
+			"\3AS\3AS_Main\Sounds\Old\Blaster_reload.wss",
+			1,
+			1,
+			30
+		};
+		hiddenSelections[]=
+		{
+			"holo_reticle"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"\3AS\3AS_Weapons\Republic\DC15C\Data\reticle_DC15C_ca.paa"
+		};
+		ace_overheating_mrbs=3000;
+		ace_overheating_slowdownFactor=1;
+		ace_overheating_allowSwapBarrel=0;
+		ace_overheating_dispersion=0.75;
+	};
+	class 885th_DC15C_F: 885th_DC15C_Base_F
+	{
+		author="885th Bloodpack Division";
+		baseWeapon="885th_DC15C_F";
+		scope=2;
+		displayName="[885th] DC-15C";
+		model="\3AS\3AS_Weapons\Republic\DC15C\3AS_DC15C_F.p3d";
+		picture="\3AS\3AS_Weapons\Republic\DC15C\Data\UI\3as_dc15c.paa";
+		UiPicture="\A3\weapons_f\data\UI\icon_regular_CA.paa";
+		muzzles[] = {"this", "Stun"};
+		class Stun : 885th_Stun_rifle
+		{
+		};
+		class WeaponSlotsInfo : WeaponSlotsInfo
+		{
+			mass = 75;
+			class CowsSlot: CowsSlot
+			{	
+				linkProxy="\A3\data_f\proxies\weapon_slots\TOP";
+				compatibleItems[]={"3AS_optic_DC15C_F","3AS_Imp_Optic_E11","3AS_optic_DC15L_F","885th_Optic_Scope_WestarM5"};
+			};
+			class MuzzleSlot : MuzzleSlot
+			{	
+				iconPosition[]={0,0.44999999};
+				iconScale=0.2;
+				linkProxy="\A3\data_f\proxies\weapon_slots\MUZZLE";
+				compatibleItems[] = {};
+			};
+			class PointerSlot : PointerSlot
+			{	
+				linkProxy="\A3\data_f\proxies\weapon_slots\SIDE";
+				compatibleItems[] = {};
+			};
+			class UnderBarrelSlot : UnderBarrelSlot
+			{
+				compatibleItems[] = {};
+			};
+		};
+	};
+	class 885th_DC15C_GL: 885th_DC15C_Base_F
+	{
+		author="885th Bloodpack Division";
+		baseWeapon="885th_DC15C_GL";
+		scope=2;
+		displayName="[885th] DC-15C GL";
+		model="\3AS\3AS_Weapons\Republic\DC15C\3AS_DC15C_GL.p3d";
+		picture="\3AS\3AS_Weapons\Republic\DC15C\Data\UI\3as_dc15cgl.paa";
+		UiPicture="\A3\weapons_f\data\UI\icon_regular_CA.paa";
+		muzzles[]={"this","GL_3GL_F"};
+		handAnim[]=
+		{
+			"OFP2_ManSkeleton",
+			"3as\3AS_Weapons\Republic\DC15C\Data\Anim\New_DC15CGL_Handanim.rtm"
+		};
+		class WeaponSlotsInfo : WeaponSlotsInfo
+		{
+			mass = 75;
+			class CowsSlot: CowsSlot
+			{	
+				linkProxy="\A3\data_f\proxies\weapon_slots\TOP";
+				compatibleItems[]={"3AS_optic_DC15C_F","3AS_Imp_Optic_E11","3AS_optic_DC15L_F","885th_Optic_Scope_WestarM5"};
+			};
+			class MuzzleSlot : MuzzleSlot
+			{	
+				iconPosition[]={0,0.44999999};
+				iconScale=0.2;
+				linkProxy="\A3\data_f\proxies\weapon_slots\MUZZLE";
+				compatibleItems[] = {};
+			};
+			class PointerSlot : PointerSlot
+			{	
+				linkProxy="\A3\data_f\proxies\weapon_slots\SIDE";
+				compatibleItems[] = {};
+			};
+			class UnderBarrelSlot : UnderBarrelSlot
+			{
+				compatibleItems[] = {};
+			};
 		};
 	};
 	class 885th_DC15CMK2 : arifle_MX_Base_F
@@ -10186,7 +11480,7 @@ class CfgWeapons
 			class CowsSlot: CowsSlot
 			{	
 				linkProxy="\A3\data_f\proxies\weapon_slots\TOP";
-				compatibleItems[]={"ShdwCmpny_Optic_LEScope_DC15A","ShadwCmpany_optic_Acog","ShadwCmpany_optic_Reflex_Mk1","ShadwCmpany_optic_Reflex_Mk1_Alt1","ShadwCmpany_optic_Reflex_Mk1_Alt2","ShadwCmpany_optic_e11","ShdwCmpny_Optic_Scope_WestarM5","ShadwCmpany_Hybrid_Magnifier_Holo","ShadwCmpany_773_Hybrid_Magnifier_Holo"};
+				compatibleItems[]={"ShdwCmpny_Optic_LEScope_DC15A","ShadwCmpany_optic_Acog","ShadwCmpany_optic_Reflex_Mk1","ShadwCmpany_optic_Reflex_Mk1_Alt1","ShadwCmpany_optic_Reflex_Mk1_Alt2","ShadwCmpany_optic_e11","ShdwCmpny_Optic_Scope_WestarM5","ShadwCmpany_Hybrid_Magnifier_Holo","ShadwCmpany_Hybrid_Magnifier_Magnified","ShadwCmpany_773_Hybrid_Magnifier_Holo","ShadwCmpany_773_Hybrid_Magnifier_Magnified"};
 			};
 			class MuzzleSlot : MuzzleSlot
 			{	
@@ -10198,11 +11492,11 @@ class CfgWeapons
 			class PointerSlot : PointerSlot
 			{	
 				linkProxy="\A3\data_f\proxies\weapon_slots\SIDE";
-				compatibleItems[] = {"acc_flashlight","acc_pointer_IR","ace_acc_pointer_red","ace_acc_pointer_green"};
+				compatibleItems[] = {"acc_flashlight","acc_pointer_IR","ace_acc_pointer_red","ace_acc_pointer_green","ShdwCmpny_Light_MPD","ShdwCmpny_IR_MPD"};
 			};
 			class UnderBarrelSlot : UnderBarrelSlot
 			{
-				compatibleItems[] = {"ShdwCmpny_Bipod_Valken"};
+				compatibleItems[] = {};
 			};
 		};
 		class GunParticles: GunParticles
@@ -10213,6 +11507,140 @@ class CfgWeapons
 				directionName="Nabojniceend";
 				effectName="CaselessAmmoCloud";
 			};
+		};
+	};
+	class 885th_DC15CMK2_GL: 885th_DC15CMK2
+	{
+		scope=2;
+		displayName="[885th] DC-15C MKII GL";
+		model="\ShadowLegion_Weapons\data\DC15\DC15C\model\DC15_C_GL.p3d";
+		picture="\ShadowLegion_Weapons\data\DC15\DC15C\UI\DC15C_GL_UI.paa";
+		UiPicture="\ShadowLegion_Weapons\data\DC15\DC15C\UI\DC15C_GL_UI.paa";
+		weaponInfoType="RscWeaponZeroing";
+		muzzles[]=
+		{
+			"this",
+			"885th_15CGL"
+		};
+		handAnim[]=
+		{
+			"OFP2_ManSkeleton",
+			"\ShadowLegion_Weapons\data\DC15\DC15C\anim\ReloadBASE_DC15C_GL.rtm"
+		};
+		class OpticsModes
+		{
+			class Ironsights
+			{
+				opticsID=1;
+				useModelOptics=0;
+				opticsFlare="true";
+				opticsPPEffects[]=
+				{
+					"OpticsCHAbera5",
+					"OpticsBlur5"
+				};
+				opticsDisablePeripherialVision=0.67000002;
+				opticsZoomMin=0.375;
+				opticsZoomMax=1.1;
+				opticsZoomInit=0.75;
+				memoryPointCamera="eye";
+				visionMode[]={};
+				distanceZoomMin=100;
+				distanceZoomMax=100;
+			};
+			class Scope: Ironsights
+			{
+				opticsID=2;
+				useModelOptics=0;
+				opticsPPEffects[]=
+				{
+					"OpticsRadialBlur1",
+					"OpticsBlur1"
+				};
+				opticsFlare=1;
+				opticsDisablePeripherialVision=0;
+				opticsZoomMin=0.22499999;
+				opticsZoomMax=0.22499999;
+				opticsZoomInit=0.22499999;
+				memoryPointCamera="eye";
+				visionMode[]={};
+				distanceZoomMin=200;
+				distanceZoomMax=200;
+			};
+		};
+		class 885th_15CGL: UGL_F
+		{
+			displayName="DC15C MKII Underbarrel";
+			descriptionShort="DC15CMKIIGL";
+			useModelOptics=0;
+			useExternalOptic=0;
+			magazines[]=
+			{
+				"885th_3rnd_40mm_HE_mag"
+			};
+			magazineWell[]=
+			{
+				"UGL_40x36",
+				"885th_UGL_3Rnd_MagWell"
+			};
+			modes[]=
+			{
+				"Fire"
+			};
+			class Fire: Mode_SemiAuto
+			{
+				sounds[]=
+				{
+					"StandardSound"
+				};
+				class BaseSoundModeType
+				{
+					weaponSoundEffect="";
+					closure1[]={};
+					closure2[]={};
+					soundClosure[]={};
+				};
+				class StandardSound: BaseSoundModeType
+				{
+					weaponSoundEffect="";
+					begin1[]=
+					{
+						"885_Sounds\885th_UGL_Sound.ogg",
+						3.1622777,
+						1,
+						400
+					};
+					soundBegin[]=
+					{
+						"begin1",
+						0.1
+					};
+				};
+			};
+			cameraDir="OP_look";
+			discreteDistance[]={50,75,100,150,200,250};
+			discreteDistanceCameraPoint[]=
+			{
+				"OP_eye_50",
+				"OP_eye_75",
+				"OP_eye_100",
+				"OP_eye_150",
+				"OP_eye_200",
+				"OP_eye_250",
+			};
+			discreteDistanceInitIndex=1;
+			reloadAction="GestureReloadMXUGL";
+			reloadMagazineSound[]=
+			{
+				"A3\Sounds_F\arsenal\weapons\Rifles\MX\Mx_UGL_reload",
+				1,
+				1,
+				10
+			};
+		};
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			mass=60;
 		};
 	};
 	class JLTS_DC15X;
@@ -10999,7 +12427,7 @@ class CfgWeapons
 			};
 			class PointerSlot : PointerSlot
 			{
-				compatibleItems[] = {"acc_flashlight"};
+				compatibleItems[] = {"acc_flashlight","ShdwCmpny_Light_MPD","ShdwCmpny_IR_MPD"};
 			};
 			class UnderBarrelSlot : UnderBarrelSlot
 			{
@@ -11078,7 +12506,7 @@ class CfgWeapons
 			};
 			class PointerSlot : PointerSlot
 			{
-				compatibleItems[] = {"acc_flashlight"};
+				compatibleItems[] = {"acc_flashlight","ShdwCmpny_Light_MPD","ShdwCmpny_IR_MPD"};
 			};
 			class UnderBarrelSlot : UnderBarrelSlot
 			{
@@ -11355,6 +12783,7 @@ class CfgWeapons
 		aimTransitionSpeed=0.60000002;
 		dexterity=1.4;
 		initSpeed=-1;
+		fireLightDiffuse[] = {0.1, 0.25, 1};
 		deployedPivot="bipod";
 		hasBipod=1;
 		soundBipodDown[]=
@@ -12114,9 +13543,7 @@ class CfgWeapons
 					"ShadwCmpany_optic_Reflex_Mk1",
 					"ShadwCmpany_optic_Reflex_Mk1_Alt1",
 					"ShadwCmpany_optic_Reflex_Mk1_Alt2",
-					"ShadwCmpany_Hybrid_Magnifier_Holo",
-					
-					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
+					"ShadwCmpany_Hybrid_Magnifier_Magnified",
 					"ShadwCmpany_773_Hybrid_Magnifier_Magnified",
 					"ShadwCmpany_Electroscope",
 					"ShadwCmpany_Electroscope_Standalone",
@@ -12325,6 +13752,7 @@ class CfgWeapons
 		inertia=1.2;
 		aimTransitionSpeed=0.5;
 		dexterity=1;
+		fireLightDiffuse[] = {0.1, 0.25, 1};
 		modes[] = {"Single","Burst"}; 
 		magazines[] = {"885th_dc_cell_blue_high","885th_dc_cell_blue_over","885th_25Rnd_Tracerless_Cell"};
 		muzzles[] = {"this", "Stun"};
@@ -12419,6 +13847,7 @@ class CfgWeapons
 		inertia=0.80000001;
 		aimTransitionSpeed=0.80000001;
 		dexterity=1;
+		fireLightDiffuse[] = {0.1, 0.25, 1};
 		recoil="recoil_spar_dmr";
 		magazines[]=
 		{
@@ -12552,6 +13981,7 @@ class CfgWeapons
 		inertia=0.80000001;
 		aimTransitionSpeed=0.80000001;
 		dexterity=1;
+		fireLightDiffuse[] = {0.1, 0.25, 1};
 		recoil="recoil_spar_dmr";
 		magazines[]=
 		{
@@ -12847,9 +14277,7 @@ class CfgWeapons
 					"ShadwCmpany_optic_Reflex_Mk1",
 					"ShadwCmpany_optic_Reflex_Mk1_Alt1",
 					"ShadwCmpany_optic_Reflex_Mk1_Alt2",
-					"ShadwCmpany_Hybrid_Magnifier_Holo",
-					
-					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
+					"ShadwCmpany_Hybrid_Magnifier_Magnified",
 					"ShadwCmpany_773_Hybrid_Magnifier_Magnified",
 					"ShadwCmpany_Electroscope",
 					"ShadwCmpany_Electroscope_Standalone",
@@ -12916,6 +14344,7 @@ class CfgWeapons
 		inertia=0.5;
 		aimTransitionSpeed=1;
 		dexterity=1;
+		fireLightDiffuse[] = {0.1, 0.25, 1};
 		magazines[]=
 		{
 			"885th_dc_cell_blue",
@@ -13128,6 +14557,7 @@ class CfgWeapons
 		inertia=0.5;
 		aimTransitionSpeed=1;
 		dexterity=1;
+		fireLightDiffuse[] = {0.1, 0.25, 1};
 		magazines[]=
 		{
 			"885th_dc_cell_blue",
