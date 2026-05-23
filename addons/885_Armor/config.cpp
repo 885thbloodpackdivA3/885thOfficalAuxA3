@@ -153,7 +153,7 @@ class Cfgpatches
 			"885th_Medic_AB_Helm",
 			"885th_Nexu_P2_Helm",
 			"885th_Crimz_ARF_Helm",
-			"885th_Wyrm_P2_Helm",
+			"885th_Wyrm_BARC_Helm",
 			"885th_Rios_ARF_Helm",
 			"885th_Nexu_P2_Uniform",
 			"885th_Nexu_Vct_P2_Helm",
@@ -899,27 +899,6 @@ class CfgWeapons
         {
 			"885_Armor\885_Armor\CR\885th_Vornskr_Recruit_Helm_co.paa",
 			"885_Armor\885_Armor\CR\885th_Vornskr_Recruit_Helm_co.paa",
-        };
-        hiddenSelectionsMaterials[]=
-        {
-            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat", //Currently pathed to IDA for your convenience
-            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet_Visor.rvmat",
-        };
-    };
-	class 885th_Wyrm_P2_Helm: 885th_P2_V2_Helmet
-	{
-		author="885th Bloodpack Division";
-		displayName="[885th] Wyrm's Custom P2 Helm";
-		picture="";
-		hiddenSelections[]=
-		{
-			"Camo",
-			"Visor",
-        };
-        hiddenSelectionsTextures[]=
-        {
-			"885_Armor\885_Armor\Customs\Wyrm\885th_Wyrm_P2_Helm.co.paa",
-			"885_Armor\885_Armor\Customs\Wyrm\885th_Wyrm_P2_Helm.co.paa",
         };
         hiddenSelectionsMaterials[]=
         {
@@ -2239,6 +2218,27 @@ class CfgWeapons
 			};
 		};
 	};
+	class 885th_Wyrm_BARC_Helm: 885th_BARC_Helm
+	{
+		author="885th Bloodpack Division";
+		displayName="[885th] Wyrm's Custom BARC Helm";
+		picture="";
+		hiddenSelections[]=
+		{
+			"Camo",
+			"visor"
+        };
+        hiddenSelectionsTextures[]=
+        {
+			"885_Armor\885_Armor\Customs\Wyrm\885th_Wyrm_BARC_Helmet_co.paa",
+			"885_Armor\885_Armor\Customs\Wyrm\885th_Wyrm_BARC_Helmet_co.paa"
+        };
+        hiddenSelectionsMaterials[]=
+        {
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_BARC_Helmet\IDA_BARC_Helmet.rvmat", //Currently pathed to IDA for your convenience
+            
+        };
+    };
 	class 885th_AB_Helm: IDA_AB_Helmet
 	{
 		author = "885th Bloodpack Division";
