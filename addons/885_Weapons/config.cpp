@@ -10067,7 +10067,6 @@ class CfgWeapons
 		dexterity=1.5;
 		initSpeed=-1;
 		maxZeroing=100;
-		fireLightDiffuse[] = {0.1, 0.25, 1};
 		class GunParticles: GunParticles
 		{
 			class SecondEffect
@@ -10161,13 +10160,13 @@ class CfgWeapons
 			class StandardSound : BaseSoundModeType
 			{
 				weaponSoundEffect = "";
-				begin1[] = {"\Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 1, 1800};
-				begin2[] = {"\Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 1.015, 1800};
-				begin3[] = {"\Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 0.985, 1800};
-				begin4[] = {"\Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 1.01, 1800};
-				begin5[] = {"\Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 0.995, 1800};
+				begin1[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 1, 1800};
+				begin2[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 0.995, 1800};
 				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
-				beginwater1[] = {"\Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1, 1, 400};
+				beginwater1[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1, 1, 400};
 				soundBeginWater[] = {"beginwater1", 1};
 			};
 			class SilencedSound: BaseSoundModeType
@@ -10179,7 +10178,7 @@ class CfgWeapons
 				begin5[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
 				begin6[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
 				soundBegin[]={"begin1",0.5,"begin2",0.5,"begin3",0.5,"begin4",0.5,"begin5",0.5,"begin6",0.5};
-				beginwater1[]={"\ShadowLegion_Weapons\data\Underwater_Firing.ogg",1,1,200};
+				beginwater1[]={\"ShadowLegion_Weapons\data\Underwater_Firing.ogg",1,1,200};
 				soundBeginWater[]={"beginwater1",0.5};
 			};
 		};
@@ -10200,13 +10199,13 @@ class CfgWeapons
 			class StandardSound : BaseSoundModeType
 			{
 				weaponSoundEffect = "";
-				begin1[] = {"\Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 1, 1800};
-				begin2[] = {"\Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 1.015, 1800};
-				begin3[] = {"\Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 0.985, 1800};
-				begin4[] = {"\Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 1.01, 1800};
-				begin5[] = {"\Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 0.995, 1800};
+				begin1[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 1, 1800};
+				begin2[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 0.995, 1800};
 				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
-				beginwater1[] = {"\Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1, 1, 400};
+				beginwater1[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1, 1, 400};
 				soundBeginWater[] = {"beginwater1", 1};
 			};
 			class SilencedSound: BaseSoundModeType
@@ -10218,7 +10217,7 @@ class CfgWeapons
 				begin5[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
 				begin6[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
 				soundBegin[]={"begin1",0.5,"begin2",0.5,"begin3",0.5,"begin4",0.5,"begin5",0.5,"begin6",0.5};
-				beginwater1[]={"\ShadowLegion_Weapons\data\Underwater_Firing.ogg",1,1,200};
+				beginwater1[]={\"ShadowLegion_Weapons\data\Underwater_Firing.ogg",1,1,200};
 				soundBeginWater[]={"beginwater1",0.5};
 			};
 		};
