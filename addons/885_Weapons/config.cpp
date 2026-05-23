@@ -5299,10 +5299,11 @@ class CfgWeapons
 		access = 0;
 		scope = 2;
 		scopeArsenal = 2;
-		picture = "\Indecisive_Armoury_Weapons_REPUBLIC\Data\DC17\DC17_ui.paa";
-		model = "Indecisive_Armoury_Weapons_REPUBLIC\Data\DC17\Model\IDA_DC17.p3d";
+		model="\ShadowLegion_Weapons\data\DC17Pistol\model\DC17Pistol.p3d";
+		picture="\ShadowLegion_Weapons\data\DC17Pistol\UI\DC17.paa";
+		UiPicture="\ShadowLegion_Weapons\data\DC17Pistol\UI\DC17.paa";
 		displayName = "[885th] DC-17A Blaster Pistol";
-		descriptionShort = "Standard Full Auto Pistol.";
+		descriptionShort = "A Modified DC-17 Blaster Pistol.";
 		drySound[] = {"\Indecisive_Armoury_Sounds\weapon_dry.ogg", 5, 1, 10};
 		magazines[] = {"885th_dc_cell_blue_pistol_extended"};
 		magazineWell[] = {};
@@ -5311,8 +5312,10 @@ class CfgWeapons
 		optics = 1;
 		primary = 10;
 		recoil = "885_recoil_DC17";
-		reloadAction = "GestureReload_IDA_Reload_BlasterPistol";
 		reloadMagazineSound[] = {"\Indecisive_Armoury_Sounds\Blaster_reload_Vent.ogg", 1.5, 1, 100};
+		maxRecoilSway=0.064999998;
+		swayDecaySpeed=2;
+		inertia=0.050000001;
 		reloadSound[] = {"", 1, 1};
 		reloadTime = 1;
 		caseless[]={"",1,1,1};
@@ -5383,35 +5386,41 @@ class CfgWeapons
 			aiRateOfFire=1e-006;
 			aiRateOfFireDistance=50;
 		};
-		class WeaponSlotsInfo : WeaponSlotsInfo
+		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
-			mass = 35;
-			class CowsSlot : CowsSlot
+			class MuzzleSlot: MuzzleSlot_65
 			{
-				compatibleItems[] = {};
+				iconPosition[]={0,0.44999999};
+				iconScale=0.2;
+				linkProxy="\A3\data_f\proxies\weapon_slots\MUZZLE";
+				compatibleItems[]=
+				{
+					"ShadwCmpany_Suppresor_Module_DC19"
+				};
 			};
-			class MuzzleSlot : MuzzleSlot
+			class CowsSlot: CowsSlot
 			{
-				compatibleItems[] = {};
+				linkProxy="\A3\data_f\proxies\weapon_slots\TOP";
+				compatibleItems[]=
+				{
+					""
+				};
 			};
-			class PointerSlot : PointerSlot
+			class PointerSlot: PointerSlot
 			{
-				compatibleItems[] = {};
+				linkProxy="\A3\data_f\proxies\weapon_slots\SIDE";
+				compatibleItems[]=
+				{
+					"acc_flashlight_pistol"
+				};
 			};
-			class UnderBarrelSlot : UnderBarrelSlot
+			class UnderBarrelSlot: UnderBarrelSlot
 			{
-				compatibleItems[] = {};
+				linkProxy="\A3\data_f_mark\proxies\weapon_slots\UNDERBARREL";
+				compatibleItems[]={};
 			};
 		};
-		class GunParticles
-		{
-			class FirstEffect
-			{
-				directionName = "Konec hlavne";
-				effectName = "RifleAssaultCloud";
-				positionName = "Usti hlavne";
-			};
-		};
+		dexterity=1.5;
 	};
 	class 885th_DC15P: hgun_Pistol_Heavy_01_F
 	{
