@@ -2069,26 +2069,6 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_Bandit_BARC_Helm: 885th_BARC_Helm
-	{
-		author="885th Bloodpack Division";
-		displayName="[885th] Bandit's BARC Helmet";
-		hiddenselections[]=
-		{
-			"Camo",
-			"visor"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Bandit\Bandit_BARC_Helmet_co.paa",
-			"885_Armor\885_Armor\Customs\Bandit\Bandit_BARC_Helmet_co.paa",
-		};
-        hiddenSelectionsMaterials[]=
-        {
-			"",
-            "885_Armor\885_Armor\Customs\Bandit\Bandit_BARC_Helmet_Visor.rvmat",
-        };
-	};
 	class 885th_Syxer_BARC_Helm: 885th_BARC_Helm
 	{
 		displayName="[885th] Syxer's BARC Helm";
@@ -2192,7 +2172,7 @@ class CfgWeapons
 	{
 		scope=2;
 		author="885th Bloodpack Division";
-		displayName="[885th] Thunder Custom BARC Helm";
+		displayName="[885th] Thunder's Custom BARC Helmet";
 		picture="";
 		hiddenselections[]=
 		{
@@ -2207,6 +2187,56 @@ class CfgWeapons
        hiddenSelectionsMaterials[] = 
 		{
 			"\Indecisive_Armoury_units\REPUBLIC\Clone_BARC_Helmet\IDA_BARC_Helmet.rvmat",
+		};
+	};
+	class H_HelmetB_black;
+	class 885th_Bandit_BARC2_Helm: H_HelmetB_black
+	{
+		scope=2;
+		author="885th Bloodpack Division";
+		displayName="[885th] Bandit's Modified BARC Helmet";
+		model="\ls\core\addons\characters_clone_legacy\helmets\barc\ls_helmet_clone_barc.p3d";
+		hiddenselections[]=
+		{
+			"camo1",
+			"visor"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Bandit\Bandit_BARC2_Helmet_co.paa",
+			"885_Armor\885_Armor\Customs\Bandit\Bandit_BARC2_Helmet_Visor_co.paa"
+		};
+        hiddenSelectionsMaterials[]=
+        {
+			"885_Armor\885_Armor\Customs\Bandit\Bandit_BARC2_Helmet.rvmat",
+            "885_Armor\885_Armor\Customs\Bandit\Bandit_BARC2_Helmet_Visor.rvmat"
+        };
+		picture="\ls\core\addons\characters_clone_legacy\_ui\barc_helmet_ui_ca.paa";
+		ace_hearing_lowerVolume=0;
+		ace_hearing_protection=1;
+		class ItemInfo: ItemInfo
+		{
+			uniformModel="\ls\core\addons\characters_clone_legacy\helmets\barc\ls_helmet_clone_barc.p3d";
+			hiddenSelections[]=
+			{
+				"camo1",
+				"visor"
+			};
+			class HitpointsProtectionInfo
+			{
+				class Head
+				{
+					hitpointName="HitHead";
+					armor=17;
+					passThrough=0.2;
+				};
+				class Face
+				{
+					hitpointName="HitFace";
+					armor=10;
+					passThrough=0.2;
+				};
+			};
 		};
 	};
 	class 885th_AB_Helm: IDA_AB_Helmet
@@ -3532,21 +3562,48 @@ class CfgWeapons
 			hiddenSelections[] = {"camo1"};
 		};
 	};
-    class 885th_Vornskr_Uniform: IDA_Clone_Uniform
+	class Uniform_Base;
+	class 885th_Clone_Undersuit;
+	class 885th_CloneUndersuit: Uniform_Base
 	{
-		scope = 2;
-		displayName = "[885th] Vornskr Base P2 Armor";
-		picture = "";
+		author="885th Bloodpack Division + Indecisive Armoury Team";
+		scope=1;
+		picture="\A3\characters_f\data\ui\icon_U_BasicBody_ca.paa";
+		model="\A3\Characters_F\Common\Suitpacks\suitpack_civilian_F.p3d";
+		displayName="[885th] Clone Undersuit";
+		hiddenSelections[]=
+		{
+			"camo"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"\A3\Characters_F\Common\Data\basicbody_black_co.paa"
+		};
 		class ItemInfo: UniformItem
 		{
-			uniformModel = "";
-			uniformClass = "885th_Vornskr_Trooper";
-			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
-			containerClass = "Supply200";
-			mass = 40;
+			uniformModel="";
+			uniformClass="885th_Clone_Undersuit";
+			containerClass="Supply0";
+			mass=5;
 		};
 	};
-    class 885th_Vornskr_EOD_Uniform: IDA_Clone_Uniform
+    class 885th_Vornskr_Uniform: U_I_CombatUniform
+	{
+		author="885th Bloodpack Division + Indecisive Armoury Team";
+		scope = 2;
+		displayName = "[885th] Vornskr Base P2 Armor";
+		picture="\Indecisive_Armoury_Units\REPUBLIC\Clone_Uniform\Clone_Armour_ui.paa";
+		model="\Indecisive_Armoury_units\REPUBLIC\Clone_Uniform\IDA_Clone_Uniform.p3d";
+		class ItemInfo: UniformItem
+		{
+			uniformModel="";
+			uniformClass="885th_Vornskr_Trooper";
+			uniformType="Neopren";
+			containerClass="Supply200";
+			mass=40;
+		};
+	};
+    class 885th_Vornskr_EOD_Uniform: 885th_Vornskr_Uniform
 	{
 		scope = 2;
 		displayName = "[885th] Vornskr EOD P2 Armor";
@@ -3582,7 +3639,7 @@ class CfgWeapons
 			mass = 40;
 		};
 	};
-	class 885th_Recruit_Uniform: IDA_Clone_Uniform
+	class 885th_Recruit_Uniform: 885th_Vornskr_Uniform
 	{
 		scope = 2;
 		displayName = "[885th] Recruit Base P2 Armor";
@@ -4981,7 +5038,7 @@ class CfgWeapons
 			"",
 			"",
 			"",
-			"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\RIG.rvmat",
+			"885_Armor\885_Armor\Vests\WO\RIG.rvmat",
 			"",
 			"",
 			"",
@@ -4997,7 +5054,7 @@ class CfgWeapons
 			"885_Armor\885_Armor\Vests\WO\Kama2.rvmat",
 			"885_Armor\885_Armor\Vests\WO\NCOPauldron.rvmat",
 			"",
-			"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\NCOPauldron.rvmat",
+			"885_Armor\885_Armor\Vests\WO\NCOPauldron.rvmat",
 			"",
 			"",
 			"",
@@ -5188,7 +5245,7 @@ class CfgWeapons
 			"",
 			"",
 			"",
-			"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\RIG.rvmat",
+			"885_Armor\885_Armor\Vests\WO\RIG.rvmat",
 			"",
 			"",
 			"",
@@ -5204,7 +5261,7 @@ class CfgWeapons
 			"885_Armor\885_Armor\Vests\WO\Kama2.rvmat",
 			"885_Armor\885_Armor\Vests\WO\NCOPauldron.rvmat",
 			"",
-			"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\NCOPauldron.rvmat",
+			"885_Armor\885_Armor\Vests\WO\NCOPauldron.rvmat",
 			"",
 			"",
 			"",
@@ -5395,7 +5452,7 @@ class CfgWeapons
 			"",
 			"",
 			"",
-			"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\RIG.rvmat",
+			"885_Armor\885_Armor\Vests\WO\RIG.rvmat",
 			"",
 			"",
 			"",
@@ -5411,7 +5468,7 @@ class CfgWeapons
 			"885_Armor\885_Armor\Vests\WO\Kama2.rvmat",
 			"885_Armor\885_Armor\Vests\WO\NCOPauldron.rvmat",
 			"",
-			"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\NCOPauldron.rvmat",
+			"885_Armor\885_Armor\Vests\WO\NCOPauldron.rvmat",
 			"",
 			"",
 			"",
@@ -5602,7 +5659,7 @@ class CfgWeapons
 			"",
 			"",
 			"",
-			"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\RIG.rvmat",
+			"885_Armor\885_Armor\Vests\WO\RIG.rvmat",
 			"",
 			"",
 			"",
@@ -5618,7 +5675,7 @@ class CfgWeapons
 			"885_Armor\885_Armor\Vests\WO\Kama2.rvmat",
 			"885_Armor\885_Armor\Vests\WO\NCOPauldron.rvmat",
 			"",
-			"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\NCOPauldron.rvmat",
+			"885_Armor\885_Armor\Vests\WO\NCOPauldron.rvmat",
 			"",
 			"",
 			"",
@@ -5809,7 +5866,7 @@ class CfgWeapons
 			"",
 			"",
 			"",
-			"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\RIG.rvmat",
+			"885_Armor\885_Armor\Vests\WO\RIG.rvmat",
 			"",
 			"",
 			"",
@@ -5825,7 +5882,7 @@ class CfgWeapons
 			"885_Armor\885_Armor\Vests\WO\Kama2.rvmat",
 			"885_Armor\885_Armor\Vests\WO\NCOPauldron.rvmat",
 			"",
-			"\ShadowLegion_Aux\Data\CustomVests\V4\Texture\standard\NCOPauldron.rvmat",
+			"885_Armor\885_Armor\Vests\WO\NCOPauldron.rvmat",
 			"",
 			"",
 			"",
@@ -6427,11 +6484,11 @@ class CfgWeapons
 	/*2*/	"",
 	/*3*/	"",
 	/*4*/	"",
-	/*5*/	"",
+	/*5*/	"885_Armor\885_Armor\Vests\Command\RIG.rvmat",
 	/*6*/	"",
 	/*7*/	"",
 	/*8*/	"885_Armor\885_Armor\Vests\Command\RIG.rvmat",
-	/*9*/	"",
+	/*9*/	"885_Armor\885_Armor\Vests\Command\RIG.rvmat",
 	/*10*/	"",
 	/*11*/	"",
 	/*12*/	"",
@@ -6634,11 +6691,11 @@ class CfgWeapons
 	/*2*/	"",
 	/*3*/	"",
 	/*4*/	"",
-	/*5*/	"",
-	/*6*/	"",
+	/*5*/	"885_Armor\885_Armor\Vests\Command\RIG.rvmat",
+	/*6*/	"885_Armor\885_Armor\Vests\Command\RIG.rvmat",
 	/*7*/	"",
 	/*8*/	"885_Armor\885_Armor\Vests\Command\RIG.rvmat",
-	/*9*/	"",
+	/*9*/	"885_Armor\885_Armor\Vests\Command\RIG.rvmat",
 	/*10*/	"",
 	/*11*/	"",
 	/*12*/	"",
@@ -6841,11 +6898,11 @@ class CfgWeapons
 	/*2*/	"",
 	/*3*/	"",
 	/*4*/	"",
-	/*5*/	"",
+	/*5*/	"885_Armor\885_Armor\Vests\Command\RIG.rvmat",
 	/*6*/	"",
 	/*7*/	"",
 	/*8*/	"885_Armor\885_Armor\Vests\Command\RIG.rvmat",
-	/*9*/	"",
+	/*9*/	"885_Armor\885_Armor\Vests\Command\RIG.rvmat",
 	/*10*/	"",
 	/*11*/	"",
 	/*12*/	"",
@@ -7577,37 +7634,36 @@ class CfgWeapons
 		};
 	};
 	//Custom Rigs
-	class 885th_Bandit_MCVisor: NVGoggles
+	class 885th_bandit_tanker_nvg: NVGoggles
 	{
-		author = "Antauri + 885th Bloodpack Division";
-		displayName = "[885th] Bandit's Visor";
-		modelOptics="";
-		model="\ShadowLegion_Aux\Data\Accessory\MCVisor\model\Clone_officer_visor.p3d";
-		picture="\MRC\JLTS\characters\CloneArmor\data\ui\Clone_nvg_ui_ca.paa";
-		hiddenSelections[] = {
-			"camo"
-		};
-		hiddenSelectionsTextures[] = {
-			"885_Armor\885_Armor\Customs\Bandit\Visor_co.paa"
-		};
-        hiddenSelectionsMaterials[]=
-        {
-            "885_Armor\885_Armor\Customs\Bandit\Visor.rvmat"
-        };
-		visionMode[] = {"Normal","NVG","TI"};
-		thermalMode[] = {3,6};
-		ace_nightvision_border = "";
-		ace_nightvision_bluRadius = 0;
-		ace_nightvision_colorPreset[] = {0,{0,0,0,0},{1.3,1.2,0,0.9},{6,1,1,0}};
-		ace_nightvision_eyeCups = 1;
-		ace_nightvision_generation = 4;
-		class ItemInfo
+		scope=2;
+		author="885th Bloodpack Division + Legion Studios";
+		displayName="Bandit's Armored Plating";
+		model="\ls\core\addons\characters_clone_legacy\equipment\nvgs\tanker\lsd_gar_tanker_nvg.p3d";
+		modelOptics="\ls\core\addons\characters\equipment\nvg\ls_optic_dummy.p3d";
+		ace_nightvision_border="\ls\core\addons\characters_clone_legacy\equipment\nvgs\rangefinder\data\optic_ca.paa";
+		picture="\ls\core\addons\characters_clone_legacy\_ui\icon_cloneVisor_ca.paa";
+		hiddenSelections[]=
 		{
-			type=616;
-			uniformModel="\ShadowLegion_Aux\Data\Accessory\MCVisor\model\Clone_officer_visor.p3d";
-			modelOff="\ShadowLegion_Aux\Data\Accessory\MCVisor\model\Clone_officer_visor.p3d";
+			"camo1"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Bandit\Bandit_Tanker_Attachment_co.paa"
+		};
+		 hiddenSelectionsMaterials[]=
+        {
+            "885_Armor\885_Armor\Customs\Bandit\Bandit_Tanker_Attachment.rvmat"
+        };
+		class ItemInfo: ItemInfo
+		{
+			uniformModel="\ls\core\addons\characters_clone_legacy\equipment\nvgs\tanker\lsd_gar_tanker_nvg.p3d";
+			modelOff="\ls\core\addons\characters_clone_legacy\equipment\nvgs\tanker\lsd_gar_tanker_nvg.p3d";
 			mass=20;
-			hiddenSelections[]={"camo"};
+			hiddenSelections[]=
+			{
+				"camo1"
+			};
 		};
 	};
 	class 885th_Cust_VestV4_Rig_Bandit: Vest_Camo_Base
@@ -11568,18 +11624,228 @@ class CfgVehicles
 		mass=22;
 	};
 	// Uniform Characters
-	class 885th_Vornskr_Trooper : IDA_Clone_DC15S {
-		scope=1;
-		scopeCurator=1;
-		scopeArsenal=2;
+	class Underwear_F;
+	class B_Soldier_f;
+	class HitPoints;
+	class 885th_Clone_Undersuit: Underwear_F
+	{
+		author="885th Bloodpack Division + Indecisive Armoury Team";
+		displayName="[885th] Clone Undersuit";
+		uniformClass="885th_CloneUndersuit";
+		class EventHandlers
+		{
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"\A3\Characters_F\Common\Data\basicbody_black_co.paa"
+		};
+	};
+	class 885th_Vornskr_Trooper: B_Soldier_f
+	{
+		author="885th Bloodpack Division + Indecisive Armoury Team";
+		scope=2;
+		scopeCurator=2;
+		scopearsenal=2;
 		side=1;
 		faction="885th_Faction";
 		editorSubcategory="Sub885thTroopers";
-		uniformClass = "885th_Vornskr_Uniform";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {
+		editorPreview="\Indecisive_Armoury_Units\REPUBLIC\Clone_Uniform\Clone_Armour_ui.paa";
+		nakedUniform="885th_Clone_Undersuit";
+		uniformclass="885th_Vornskr_Uniform";
+		model="\Indecisive_Armoury_units\REPUBLIC\Clone_Uniform\IDA_Clone_Uniform.p3d";
+		hiddenSelections[]=
+		{
+			"Camo1",
+			"Camo2"
+		};
+		hiddenSelectionsTextures[]=
+		{
 			"\885_Armor\885_Armor\Vornskr\Vornskr_Upper_co.paa",
 			"\885_Armor\885_Armor\Vornskr\Vornskr_Lower_co.paa"
+		};
+		hiddenSelectionsMaterials[]=
+		{
+			"\Indecisive_Armoury_Units\REPUBLIC\Clone_Uniform\Upper\IDA_BodyUpper.rvmat",
+			"\Indecisive_Armoury_Units\REPUBLIC\Clone_Uniform\Lower\IDA_BodyLower.rvmat"
+		};
+		class HitPoints: HitPoints
+		{
+			class HitFace
+			{
+				armor=1;
+				material=-1;
+				name="face_hub";
+				passThrough=0.80000001;
+				radius=0.079999998;
+				explosionShielding=0.1;
+				minimalHit=0.0099999998;
+			};
+			class HitNeck: HitFace
+			{
+				armor=1;
+				material=-1;
+				name="neck";
+				passThrough=0.80000001;
+				radius=0.1;
+				explosionShielding=0.5;
+				minimalHit=0.0099999998;
+			};
+			class HitHead: HitNeck
+			{
+				armor=1;
+				material=-1;
+				name="head";
+				passThrough=0.80000001;
+				radius=0.2;
+				explosionShielding=0.5;
+				minimalHit=0.0099999998;
+				depends="HitFace max HitNeck";
+			};
+			class HitPelvis: HitHead
+			{
+				armor=8;
+				material=-1;
+				name="pelvis";
+				passThrough=0.80000001;
+				radius=0.23999999;
+				explosionShielding=3;
+				visual="injury_body";
+				minimalHit=0.0099999998;
+				depends="";
+			};
+			class HitAbdomen: HitPelvis
+			{
+				armor=6;
+				material=-1;
+				name="spine1";
+				passThrough=0.80000001;
+				radius=0.16;
+				explosionShielding=3;
+				visual="injury_body";
+				minimalHit=0.0099999998;
+			};
+			class HitDiaphragm: HitAbdomen
+			{
+				armor=6;
+				material=-1;
+				name="spine2";
+				passThrough=0.33000001;
+				radius=0.18000001;
+				explosionShielding=6;
+				visual="injury_body";
+				minimalHit=0.0099999998;
+			};
+			class HitChest: HitDiaphragm
+			{
+				armor=8;
+				material=-1;
+				name="spine3";
+				passThrough=0.33000001;
+				radius=0.18000001;
+				explosionShielding=6;
+				visual="injury_body";
+				minimalHit=0.0099999998;
+			};
+			class HitBody: HitChest
+			{
+				armor=1000;
+				material=-1;
+				name="body";
+				passThrough=1;
+				radius=0;
+				explosionShielding=6;
+				visual="injury_body";
+				minimalHit=0.0099999998;
+				depends="HitPelvis max HitAbdomen max HitDiaphragm max HitChest";
+			};
+			class HitArms: HitBody
+			{
+				armor=6;
+				material=-1;
+				name="arms";
+				passThrough=1;
+				radius=0.1;
+				explosionShielding=3;
+				visual="injury_hands";
+				minimalHit=0.0099999998;
+				depends="0";
+			};
+			class HitHands: HitArms
+			{
+				armor=6;
+				material=-1;
+				name="hands";
+				passThrough=1;
+				radius=0.1;
+				explosionShielding=1;
+				visual="injury_hands";
+				minimalHit=0.0099999998;
+				depends="HitArms";
+			};
+			class HitLegs: HitHands
+			{
+				armor=6;
+				material=-1;
+				name="legs";
+				passThrough=1;
+				radius=0.14;
+				explosionShielding=3;
+				visual="injury_legs";
+				minimalHit=0.0099999998;
+				depends="0";
+			};
+			class Incapacitated: HitLegs
+			{
+				armor=1000;
+				material=-1;
+				name="body";
+				passThrough=1;
+				radius=0;
+				explosionShielding=3;
+				visual="";
+				minimalHit=0;
+				depends="(((Total - 0.25) max 0) + ((HitHead - 0.25) max 0) + ((HitBody - 0.25) max 0)) * 2";
+			};
+			class HitLeftArm
+			{
+				armor=6;
+				material=-1;
+				name="hand_l";
+				passThrough=1;
+				radius=0.079999998;
+				explosionShielding=3;
+				visual="injury_hands";
+				minimalHit=0.0099999998;
+			};
+			class HitRightArm: HitLeftArm
+			{
+				name="hand_r";
+			};
+			class HitLeftLeg
+			{
+				armor=6;
+				material=-1;
+				name="leg_l";
+				passThrough=1;
+				radius=0.1;
+				explosionShielding=3;
+				visual="injury_legs";
+				minimalHit=0.0099999998;
+			};
+			class HitRightLeg: HitLeftLeg
+			{
+				name="leg_r";
+			};
+		};
+		armor=2;
+		armorStructural=4;
+		explosionShielding=0.40000001;
+		minTotalDamageThreshold=0.001;
+		impactDamageMultiplier=0.5;
+		class Wounds
+		{
+			tex[]={};
+			mat[]={};
 		};
 	};
 	

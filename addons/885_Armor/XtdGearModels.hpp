@@ -890,7 +890,7 @@ class XtdGearInfos
 			variant="ARF";
 			camo="ARF";
 		};
-		class 885th_Bandit_BARC_Helm
+		class 885th_Bandit_BARC2_Helm
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Bandit";
