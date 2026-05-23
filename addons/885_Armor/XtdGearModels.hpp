@@ -1114,12 +1114,12 @@ class XtdGearInfos
 			variant="Pilot";
 			camo="Pilot";
 		};
-		class 885th_Wyrm_P2_Helm
+		class 885th_Wyrm_BARC_Helm
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Wyrm";
-			variant="P2";
-			camo="P2";
+			variant="BARC";
+			camo="BARC";
 		};
 		class 885th_Wrath_P2_Helmet
 		{
