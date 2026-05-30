@@ -5487,13 +5487,13 @@ class CfgWeapons
 			class StandardSound : BaseSoundModeType
 			{
 				weaponSoundEffect = "";
-				begin1[] = {"885_Sounds\DC-15P_Fire.ogg", 1.25, 1, 1800};
-				begin2[] = {"885_Sounds\DC-15P_Fire.ogg", 1.25, 1.015, 1800};
-				begin3[] = {"885_Sounds\DC-15P_Fire.ogg", 1.25, 0.985, 1800};
-				begin4[] = {"885_Sounds\DC-15P_Fire.ogg", 1.25, 1.01, 1800};
-				begin5[] = {"885_Sounds\DC-15P_Fire.ogg", 1.25, 0.995, 1800};
+				begin1[] = {"885_Sounds\DC-15P_FireV2.ogg", 1.25, 1, 1800};
+				begin2[] = {"885_Sounds\DC-15P_FireV2.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Sounds\DC-15P_FireV2.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Sounds\DC-15P_FireV2.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Sounds\DC-15P_FireV2.ogg", 1.25, 0.995, 1800};
 				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
-				beginwater1[] = {"885_Sounds\DC-15P_Fire.ogg", 1, 1, 400};
+				beginwater1[] = {"885_Sounds\DC-15P_FireV2.ogg", 1, 1, 400};
 				soundBeginWater[] = {"beginwater1", 1};
 			};
 			reloadTime = 0.20;
@@ -11926,7 +11926,9 @@ class CfgWeapons
 					"acc_flashlight",
 					"acc_pointer_IR",
 					"ace_acc_pointer_red",
-					"ace_acc_pointer_green"
+					"ace_acc_pointer_green",
+					"ShdwCmpny_Light_MPD",
+					"ShdwCmpny_IR_MPD"
 				};
 			};
 		};
