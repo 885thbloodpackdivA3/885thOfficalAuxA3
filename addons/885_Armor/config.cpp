@@ -2167,6 +2167,7 @@ class CfgWeapons
         {
 			"",
             "885_Armor\885_Armor\Customs\Thunder\Thunder_BARC_Helmet_Visor.rvmat",
+        };
 	};
 	class H_HelmetB_black;
 	class 885th_Bandit_BARC2_Helm: H_HelmetB_black
