@@ -1916,13 +1916,13 @@ class CfgWeapons
         };
         hiddenSelectionsTextures[]=
         {
-            "885_Armor\885_Armor\Customs\Screwball\885th_Screwball_P2_ARF_Helm_co.paa",
+            "885_Armor\885_Armor\Customs\Screwball\885th_Screwball_ARF_Helm_co.paa",
             "",
             "885_Armor\885_Armor\Customs\Screwball\Screwball_visor_co.paa"
         };
 		hiddenSelectionsMaterials[] = 
 		{
-			"885_Armor\885_Armor\Najax\885TH_ARF_P2_Helmet.rvmat",
+			"885_Armor\885_Armor\Customs\Screwball\885TH_Screwball_ARF_P2_Helmet.rvmat",
 			"",
 			"885_Armor\885_Armor\Customs\Screwball\visor.rvmat"
 		};
@@ -2163,10 +2163,10 @@ class CfgWeapons
 			"885_Armor\885_Armor\Customs\Thunder\885th_Thunder_BARC_Helm.co.paa",
 			"885_Armor\885_Armor\Customs\Thunder\885th_Thunder_BARC_Helm.co.paa"
 		};
-       hiddenSelectionsMaterials[] = 
-		{
-			"\Indecisive_Armoury_units\REPUBLIC\Clone_BARC_Helmet\IDA_BARC_Helmet.rvmat",
-		};
+		hiddenSelectionsMaterials[]=
+        {
+			"",
+            "885_Armor\885_Armor\Customs\Thunder\Thunder_BARC_Helmet_Visor.rvmat",
 	};
 	class H_HelmetB_black;
 	class 885th_Bandit_BARC2_Helm: H_HelmetB_black
