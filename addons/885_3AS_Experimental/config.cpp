@@ -15,7 +15,6 @@ class CfgPatches
 			"885th_Valken38x_F",
 			"885th_DC17S_F",
 			"885th_RPS6",
-			"885th_PLX1",
 			"885th_Chaingun",
 			"885th_RPS6_Dispo_Base",
 			"885th_RPS6_Dispo",
@@ -1331,13 +1330,6 @@ class CfgWeapons
 		{
 			"CBA_FakeLauncherMagazine"
 		};
-	};
-	
-	class 3AS_PLX1_F;
-	class 885th_PLX1 : 3AS_PLX1_F {
-		baseWeapon = "885th_PLX1";
-		displayName = "[885th] PLX-1 Missile launcher";
-		magazines[] = {"3AS_JLTS_MK43_AT", "3AS_JLTS_MK44_HE", "3AS_JLTS_MK39_AA"};
 	};
 	
 	class 3AS_Chaingun;

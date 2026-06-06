@@ -716,6 +716,11 @@ class CfgWeapons
             "885_Armor\885_Armor\Customs\Bleach\885th_Bleach_P2_Helm.co.paa",
             "885_Armor\885_Armor\Customs\Bleach\885th_Bleach_P2_Helm.co.paa",
         };
+		hiddenSelectionsMaterials[]=
+        {
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
+            "885_Armor\885_Armor\Customs\Bleach\Bleach_P2_Helmet_Visor.rvmat",
+        };
     };
 	class 885th_Jackson_P2_Helmet: 885th_P2_V2_Helmet
     {
@@ -862,6 +867,11 @@ class CfgWeapons
         {
         	"885_Armor\885_Armor\Customs\Nightfall\885th_Nightfall_P2_Helm.co.paa",
 			"885_Armor\885_Armor\Customs\Nightfall\885th_Nightfall_P2_Helm.co.paa",
+        };
+		hiddenSelectionsMaterials[]=
+        {
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
+            "885_Armor\885_Armor\Customs\Nightfall\Nightfall_P2_Helmet_Visor.rvmat",
         };
     };
 	class 885th_Kit_P2_Helm: 885th_P2_V2_Helmet
@@ -1594,46 +1604,53 @@ class CfgWeapons
 		};
 	};
 	
-	class 885th_Outcast_RTO_Helm: SEA_Helmet_SpecOps_LR_Base
+	class SEA_Helmet_SpecOps_LR_IllumBase;
+	class 885th_Outcast_RTO_Helm: SEA_Helmet_SpecOps_LR_IllumBase
 	{
+		scope=2;
 		author="885th Bloodpack Division";
 		displayName="[885th] Outcast's Helm";
-		picture="";
+		model="JLTS_AE\SEA_Helmet_SpecOps_LR.p3d";
 		hiddenSelections[]=
 		{
-			"camo1"
+			"Camo1",
+			"Camo2",
+			"Visor"
 		};
 		hiddenSelectionsTextures[]=
 		{
-			"885_Armor\885_Armor\Customs\Outcast\885th_Outcast_Helm.co.paa"
+			"885_Armor\885_Armor\Customs\Outcast\SpecOpsHelmet_co.paa",
+			"\JLTS_AE\Data\BaseTextures\SpecOps\Antennas\LR_Antenna_co.paa",
+			"885_Armor\885_Armor\Customs\Outcast\SpecOpsHelmet_co.paa"
 		};
-		subItems[] = {"Integrated_NVG_TI_0_F"};
-		ace_hearing_lowerVolume=0;
-		ace_hearing_protection=1;
+		hiddenSelectionsMaterials[]=
+		{
+			"",
+			"",
+			"885_Armor\885_Armor\Customs\Outcast\Visor.rvmat"
+		};
+		subItems[]={"Integrated_NVG_TI_0_F"};
+		ace_hearing_lowerVolume=0.60000002;
+		ace_hearing_protection=0.85000002;
 		class ItemInfo: HeadgearItem
 		{
-			mass=11;
+			mass=10;
 			uniformModel="JLTS_AE\SEA_Helmet_SpecOps_LR.p3d";
-			hiddenSelections[]=
-			{
-				"camo1"
-			};
 			allowedSlots[]={801,901,701,605};
 			modelSides[]={6};
+			hiddenSelections[]=
+			{
+				"Camo1",
+				"Camo2",
+				"Visor"
+			};
 			class HitpointsProtectionInfo
 			{
 				class Head
 				{
 					hitpointName="HitHead";
-					armor=13;
+					armor=8;
 					passThrough=0.5;
-				};
-				class Face
-				{
-					hitpointName = "HitFace";
-					armor = 8;
-					visual = "injury_Head";
-					PassThrough = 0.08975;
 				};
 			};
 		};
