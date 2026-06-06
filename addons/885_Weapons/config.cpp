@@ -307,11 +307,24 @@ class CfgAmmo
 	class FlameRound;
 	class FlameRound_sub;
 	class R_PG32V_F;
-	class M_Titan_AT;
 	class 442_nlaw_AT;
 	class B_40mm_APFSDS;
 	class B_12Gauge_Pellets_Submunition;
 	class SatchelCharge_Remote_Ammo;
+	class MissileCore;
+	class MissileBase: MissileCore
+	{
+		class Components;
+	};
+	class M_Titan_AT: MissileBase
+	{
+		class Components;
+	};
+	class SensorTemplateIR;
+	class SensorTemplateVisual;
+	class SensorTemplateLaser;
+	class SensorTemplateData;
+	class Components;
 	class 885th_blasterbolt: BulletBase
 	{	
 		ACE_damageType="plasma";
@@ -2478,6 +2491,550 @@ class CfgAmmo
 		caliber = 45;
 		coefGravity = 0;
 	};
+	// 885th Launcher Ammo
+	class 885th_Missile_IR_F: MissileBase
+	{
+		model="\ShadowLegion_Weapons\data\PLX\model\PLX_Missile.p3d";
+		hit=500;
+		indirectHit=100;
+		indirectHitRange=5;
+		explosive=1;
+		warheadName="HE";
+		submunitionAmmo="ammo_Penetrator_Titan_AT";
+		submunitionDirectionType="SubmunitionModelDirection";
+		submunitionInitSpeed=1000;
+		submunitionParentSpeedCoef=0;
+		submunitionInitialOffset[]={0,0,-0.2};
+		triggerOnImpact=1;
+		deleteParentWhenTriggered=0;
+		cost=500;
+		aiAmmoUsageFlags="128 + 512";
+		explosionSoundEffect="DefaultExplosion";
+		effectsMissileInit="";
+		muzzleEffect="";
+		effectsMissile="3AS_Rocket_effect_Blue_fly";
+		simulationStep=0.0020000001;
+		initTime=0.25;
+		trackOversteer=1.5;
+		trackLead=0.89999998;
+		timeToLive=22;
+		maneuvrability=20;
+		airFriction=0.085000001;
+		sideAirFriction=1;
+		maxSpeed=180;
+		typicalSpeed=160;
+		thrustTime=5;
+		thrust=45;
+		fuseDistance=50;
+		whistleDist=4;
+		airLock=0;
+		lockType=0;
+		missileLockCone=4.5;
+		missileKeepLockedCone=160;
+		missileLockMaxDistance=2000;
+		missileLockMinDistance=50;
+		missileLockMaxSpeed=35;
+		manualControl=1;
+		missileManualControlCone=45;
+		maxControlRange=2000;
+		weaponLockSystem="1+2+16";
+		cmImmunity=0.40000001;
+		flightProfiles[]=
+		{
+			"Direct",
+			"TopDown"
+		};
+		class Direct
+		{
+		};
+		class TopDown
+		{
+			ascendHeight=150;
+			descendDistance=180;
+			minDistance=180;
+			ascendAngle=30;
+		};
+		class Components: Components
+		{
+			class SensorsManagerComponent
+			{
+				class Components
+				{
+					class IRSensorComponent: SensorTemplateIR
+					{
+						class AirTarget
+						{
+							minRange=50;
+							maxRange=8000;
+							objectDistanceLimitCoef=-1;
+							viewDistanceLimitCoef=1;
+						};
+						class GroundTarget
+						{
+							minRange=50;
+							maxRange=3000;
+							objectDistanceLimitCoef=1;
+							viewDistanceLimitCoef=1;
+						};
+						maxTrackableSpeed=35;
+						angleRangeHorizontal=3.7;
+						angleRangeVertical=2.3;
+						maxTrackableATL=50;
+					};
+				};
+			};
+		};
+		soundFly[]=
+		{
+			"A3\Sounds_F\arsenal\weapons\Launchers\Titan\Fly_Titan",
+			0.63095737,
+			1.5,
+			300
+		};
+		class CamShakeExplode
+		{
+			power=11;
+			duration=1.4;
+			frequency=20;
+			distance=91.329597;
+		};
+		class CamShakeHit
+		{
+			power=110;
+			duration=0.60000002;
+			frequency=20;
+			distance=1;
+		};
+		class CamShakeFire
+		{
+			power=2.78316;
+			duration=1.6;
+			frequency=20;
+			distance=61.967701;
+		};
+		class CamShakePlayerFire
+		{
+			power=3;
+			duration=0.1;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_Missile_Radar_F: MissileBase
+	{
+		model="\ShadowLegion_Weapons\data\PLX\model\PLX_Missile.p3d";
+		hit=80;
+		indirectHit=60;
+		indirectHitRange=6;
+		warheadName="HE";
+		proximityExplosionDistance=10;
+		maneuvrability=15;
+		simulationStep=0.0020000001;
+		trackOversteer=1;
+		trackLead=0.94999999;
+		aiAmmoUsageFlags=256;
+		irLock=1;
+		cost=1000;
+		timeToLive=15;
+		airFriction=0.145;
+		sideAirFriction=0.1;
+		maxSpeed=850;
+		initTime=0.25;
+		thrustTime=2.25;
+		thrust=380;
+		fuseDistance=50;
+		CraterEffects="AAMissileCrater";
+		explosionEffects="AAMissileExplosion";
+		effectsMissileInit="";
+		effectsMissile="3AS_Rocket_effect_Blue_fly";
+		soundHit1[]=
+		{
+			"A3\Sounds_F\arsenal\weapons\Launchers\Titan\Explosion_titan_missile_01",
+			2.5118864,
+			1,
+			1900
+		};
+		soundHit2[]=
+		{
+			"A3\Sounds_F\arsenal\weapons\Launchers\Titan\Explosion_titan_missile_02",
+			2.5118864,
+			1,
+			1900
+		};
+		soundHit3[]=
+		{
+			"A3\Sounds_F\arsenal\weapons\Launchers\Titan\Explosion_titan_missile_03",
+			2.5118864,
+			1,
+			1900
+		};
+		multiSoundHit[]=
+		{
+			"soundHit1",
+			0.34,
+			"soundHit2",
+			0.33000001,
+			"soundHit3",
+			0.33000001
+		};
+		airLock=2;
+		missileLockCone=4;
+		missileKeepLockedCone=75;
+		missileLockMaxDistance=3500;
+		missileLockMinDistance=100;
+		missileLockMaxSpeed=250;
+		weaponLockSystem="2 + 16";
+		cmImmunity=0.89999998;
+		flightProfiles[]=
+		{
+			"Direct",
+			"TopDown"
+		};
+		class Direct
+		{
+		};
+		class TopDown
+		{
+			ascendHeight=150;
+			descendDistance=180;
+			minDistance=180;
+			ascendAngle=30;
+		};
+		class Components: Components
+		{
+			class SensorsManagerComponent
+			{
+				class Components
+				{
+					class ActiveRadarSensorComponent
+					{
+						componentType="ActiveRadarSensorComponent";
+						class AirTarget
+						{
+							minRange=100;
+							maxRange=8000;
+							objectDistanceLimitCoef=-1;
+							viewDistanceLimitCoef=1;
+						};
+						class GroundTarget
+						{
+							minRange=100;
+							maxRange=3000;
+							objectDistanceLimitCoef=1;
+							viewDistanceLimitCoef=1;
+						};
+					};
+					class IRSensorComponent: SensorTemplateIR
+					{
+						class AirTarget
+						{
+							minRange=100;
+							maxRange=8000;
+							objectDistanceLimitCoef=-1;
+							viewDistanceLimitCoef=1;
+						};
+						class GroundTarget
+						{
+							minRange=500;
+							maxRange=2500;
+							objectDistanceLimitCoef=1;
+							viewDistanceLimitCoef=1;
+						};
+						maxTrackableSpeed=250;
+						angleRangeHorizontal=7;
+						angleRangeVertical=4.5;
+						groundNoiseDistanceCoef=0.2;
+						maxGroundNoiseDistance=50;
+					};
+				};
+			};
+		};
+	};
+	class 885th_Missile_Visual_F: MissileBase
+	{
+		model="\ShadowLegion_Weapons\data\PLX\model\PLX_Missile.p3d";
+		hit=500;
+		indirectHit=100;
+		indirectHitRange=5;
+		explosive=1;
+		warheadName="HE";
+		submunitionAmmo="ammo_Penetrator_Titan_AT";
+		submunitionDirectionType="SubmunitionModelDirection";
+		submunitionInitSpeed=1000;
+		submunitionParentSpeedCoef=0;
+		submunitionInitialOffset[]={0,0,-0.2};
+		triggerOnImpact=1;
+		deleteParentWhenTriggered=0;
+		cost=500;
+		aiAmmoUsageFlags="128 + 512";
+		explosionSoundEffect="DefaultExplosion";
+		effectsMissileInit="";
+		muzzleEffect="";
+		simulationStep=0.0020000001;
+		initTime=0.25;
+		trackOversteer=1.5;
+		trackLead=0.49999997;
+		timeToLive=22;
+		maneuvrability=20;
+		airFriction=0.085000001;
+		sideAirFriction=1;
+		maxSpeed=180;
+		typicalSpeed=160;
+		thrustTime=5;
+		thrust=45;
+		fuseDistance=50;
+		effectsMissile="3AS_Rocket_effect_Blue_fly";
+		whistleDist=4;
+		airLock=1;
+		lockType=0;
+		missileLockCone=4.5;
+		missileKeepLockedCone=160;
+		missileLockMaxDistance=2000;
+		missileLockMinDistance=50;
+		missileLockMaxSpeed=35;
+		manualControl=1;
+		missileManualControlCone=45;
+		maxControlRange=2000;
+		weaponLockSystem="8+16";
+		cmImmunity=0.40000001;
+		flightProfiles[]=
+		{
+			"Direct",
+			"TopDown"
+		};
+		class Direct
+		{
+		};
+		class TopDown
+		{
+			ascendHeight=150;
+			descendDistance=180;
+			minDistance=180;
+			ascendAngle=30;
+		};
+		class Components: Components
+		{
+			class SensorsManagerComponent
+			{
+				class Components
+				{
+					class VisualSensorComponent
+					{
+						componentType="VisualSensorComponent";
+						class AirTarget
+						{
+							minRange=10;
+							maxRange=4000;
+							objectDistanceLimitCoef=-1;
+							viewDistanceLimitCoef=1;
+						};
+						class GroundTarget
+						{
+							minRange=10;
+							maxRange=1000;
+							objectDistanceLimitCoef=1;
+							viewDistanceLimitCoef=1;
+						};
+						maxTrackableSpeed=250;
+						angleRangeHorizontal=3.7;
+						angleRangeVertical=2.3;
+						maxTrackableATL=50;
+					};
+				};
+			};
+		};
+		soundFly[]=
+		{
+			"A3\Sounds_F\arsenal\weapons\Launchers\Titan\Fly_Titan",
+			0.63095737,
+			1.5,
+			300
+		};
+		class CamShakeExplode
+		{
+			power=11;
+			duration=1.4;
+			frequency=20;
+			distance=91.329597;
+		};
+		class CamShakeHit
+		{
+			power=110;
+			duration=0.60000002;
+			frequency=20;
+			distance=1;
+		};
+		class CamShakeFire
+		{
+			power=2.78316;
+			duration=1.6;
+			frequency=20;
+			distance=61.967701;
+		};
+		class CamShakePlayerFire
+		{
+			power=3;
+			duration=0.1;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_R_PLX_IR_F: 885th_Missile_IR_F
+	{
+		hit=500;
+		indirectHit=100;
+		indirectHitRange=5;
+		initTime=0.0099999998;
+		weaponLockSystem="1+2+16";
+		airLock=0;
+		lockType=0;
+		irLock=1;
+		manualControl=0;
+		missileLockMaxDistance=8000;
+		missileLockMinDistance=10;
+		missileLockCone=45;
+		missileKeepLockedCone=90;
+		lightcolor[]={255,192,0};
+		soundFly[]=
+		{
+			"\ShadowLegion_Weapons\data\PLX\Missile_Wistle_5.ogg",
+			0.63095737,
+			2,
+			400
+		};
+		class CamShakeExplode
+		{
+			power=11;
+			duration=1.4;
+			frequency=20;
+			distance=91.329597;
+		};
+		class CamShakeHit
+		{
+			power=110;
+			duration=0.60000002;
+			frequency=20;
+			distance=1;
+		};
+		class CamShakeFire
+		{
+			power=2.78316;
+			duration=1.6;
+			frequency=20;
+			distance=61.967701;
+		};
+		class CamShakePlayerFire
+		{
+			power=3;
+			duration=0.1;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_R_PLX_Radar_F: 885th_Missile_Radar_F
+	{
+		hit=500;
+		indirectHit=100;
+		indirectHitRange=5;
+		initTime=0.0099999998;
+		weaponLockSystem="2+16";
+		airLock=2;
+		lockType=0;
+		irLock=1;
+		manualControl=0;
+		missileLockMaxDistance=8000;
+		missileLockMinDistance=10;
+		missileLockCone=45;
+		missileKeepLockedCone=90;
+		lightcolor[]={255,192,0};
+		soundFly[]=
+		{
+			"\ShadowLegion_Weapons\data\PLX\Missile_Wistle_5.ogg",
+			0.63095737,
+			2,
+			400
+		};
+		class CamShakeExplode
+		{
+			power=11;
+			duration=1.4;
+			frequency=20;
+			distance=91.329597;
+		};
+		class CamShakeHit
+		{
+			power=110;
+			duration=0.60000002;
+			frequency=20;
+			distance=1;
+		};
+		class CamShakeFire
+		{
+			power=2.78316;
+			duration=1.6;
+			frequency=20;
+			distance=61.967701;
+		};
+		class CamShakePlayerFire
+		{
+			power=3;
+			duration=0.1;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_R_PLX_Visual_F: 885th_Missile_Visual_F
+	{
+		hit=1400;
+		indirectHit=100;
+		indirectHitRange=5;
+		initTime=0.0099999998;
+		weaponLockSystem="8+16";
+		airLock=1;
+		lockType=0;
+		irLock=1;
+		manualControl=1;
+		missileLockMaxDistance=1000;
+		missileLockMinDistance=10;
+		missileLockCone=45;
+		missileKeepLockedCone=90;
+		lightcolor[]={255,192,0};
+		soundFly[]=
+		{
+			"\ShadowLegion_Weapons\data\PLX\Missile_Wistle_5.ogg",
+			0.63095737,
+			2,
+			400
+		};
+		class CamShakeExplode
+		{
+			power=11;
+			duration=1.4;
+			frequency=20;
+			distance=91.329597;
+		};
+		class CamShakeHit
+		{
+			power=110;
+			duration=0.60000002;
+			frequency=20;
+			distance=1;
+		};
+		class CamShakeFire
+		{
+			power=2.78316;
+			duration=1.6;
+			frequency=20;
+			distance=61.967701;
+		};
+		class CamShakePlayerFire
+		{
+			power=3;
+			duration=0.1;
+			frequency=20;
+			distance=1;
+		};
+	};
 	//885th UGL AMMO
 	class 885th_Ugl_40mm_HE: GrenadeBase
 	{
@@ -4012,6 +4569,85 @@ class CfgMagazines
 		ammo="885th_MPL_25mm_Smoke_Orange";
 		author="885th";
 	};
+	// Launcher Mags
+	class 885th_PLX_AT_IR_F: CA_LauncherMagazine
+	{
+		scope=2;
+		scopeArsenal=2;
+		displayName="[885th] PLX AT IR Missile";
+		picture="\ShadowLegion_Weapons\data\PLX\PLX_Magazine_Red_UI.paa";
+		displaynameshort="PLX AT IR Missile";
+		descriptionShort="Long range IR-Guided Missiles, it doesnt work on cold engines and can be countered by flares";
+		model="\ShadowLegion_Weapons\data\PLX\model\PLX_Magazine.p3d";
+		modelSpecial="\ShadowLegion_Weapons\data\PLX\model\PLX_Magazine.p3d";
+		modelSpecialIsProxy=1;
+		ammo="885th_R_PLX_IR_F";
+		count=3;
+		type="2*		256";
+		mass=50;
+		deleteIfEmpty=0;
+		initSpeed=60;
+		hiddenSelections[]=
+		{
+			"Camo"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"\ShadowLegion_Weapons\data\PLX\Textures\Red\Magazine_co.paa"
+		};
+		hiddenSelectionsMaterials[]=
+		{
+			"\ShadowLegion_Weapons\data\PLX\Textures\Red\Magazine.rvmat"
+		};
+	};
+	class 885th_PLX_AA_Radar_F: CA_LauncherMagazine
+	{
+		scope=2;
+		scopeArsenal=2;
+		displayName="[885th] PLX AA Radar Missile";
+		picture="\ShadowLegion_Weapons\data\PLX\PLX_Magazine_Blue_UI.paa";
+		displaynameshort="PLX AA Radar Missile";
+		descriptionShort="Radar-Guided Missile with good target lead prediction capabilities, it can be countered by chaffs";
+		model="\ShadowLegion_Weapons\data\PLX\model\PLX_Magazine.p3d";
+		modelSpecial="\ShadowLegion_Weapons\data\PLX\model\PLX_Magazine.p3d";
+		modelSpecialIsProxy=1;
+		ammo="885th_R_PLX_Radar_F";
+		count=3;
+		type="2*		256";
+		mass=50;
+		deleteIfEmpty=0;
+		initSpeed=60;
+		hiddenSelections[]=
+		{
+			"Camo"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"\ShadowLegion_Weapons\data\PLX\Textures\Blue\Magazine_co.paa"
+		};
+		hiddenSelectionsMaterials[]=
+		{
+			"\ShadowLegion_Weapons\data\PLX\Textures\Blue\Magazine.rvmat"
+		};
+	};
+	class 885th_PLX_AT_Visual_F: CA_LauncherMagazine
+	{
+		scope=2;
+		scopeArsenal=2;
+		displayName="[885th] PLX Electro-Optic Missile";
+		picture="\ShadowLegion_Weapons\data\PLX\PLX_Magazine_Standard_UI.paa";
+		displaynameshort="PLX Visual Missile";
+		descriptionShort=" Visual/Optic Guided Missile, locks into anything on visual and can be optic guided by the operator, however, the lock on system lacks of range and developed prediction trail system ";
+		model="\ShadowLegion_Weapons\data\PLX\model\PLX_Magazine.p3d";
+		modelSpecial="\ShadowLegion_Weapons\data\PLX\model\PLX_Magazine.p3d";
+		modelSpecialIsProxy=1;
+		ammo="885th_R_PLX_Visual_F";
+		count=3;
+		type="2*		256";
+		mass=50;
+		deleteIfEmpty=0;
+		initSpeed=60;
+	};
 	// Republic Extras
 	class 885th_battery_low_blue : 885th_cell
 	{
@@ -4750,6 +5386,7 @@ class CfgWeapons
 	class WeaponSlotsInfo;
 	class Launcher_Base_F;
 	class launch_B_Titan_Short_F;
+	class launch_O_Titan_short_F;
 	class Pistol_Base_F;
 	class Rifle_Base_F;
 	class Rifle_Long_Base_F;
@@ -16124,6 +16761,98 @@ class CfgWeapons
 				positionName="Usti hlavne";
 			};
 		};
+	};
+	// Launchers
+	class 885th_launch_PLX_Base: launch_O_Titan_short_F
+	{
+		author="885th Bloodpack Division + $STR_A3_Bohemia_Interactive";
+		_generalMacro="launch_Titan_base";
+		scope=0;
+		displayName="[885th] PLX";
+		model="\ShadowLegion_Weapons\data\PLX\model\PLX.p3d";
+		canlock=2;
+		cmImmunity=0.75;
+		nameSound="aalauncher";
+		weaponInfoType="RscOptics_titan";
+		modelOptics="\A3\Weapons_F_Beta\acc\reticle_titan.p3d";
+		class Library
+		{
+			libtextdesc="";
+		};
+		magazineWell[]={};
+		magazines[]=
+		{
+			"885th_PLX_AT_Visual_F",
+			"885th_PLX_AT_IR_F",
+			"885th_PLX_AA_Radar_F"
+		};
+		cursor="missile";
+		handAnim[]=
+		{
+			"OFP2_ManSkeleton",
+			"\A3\Weapons_F_Exp\Launchers\RPG7\Data\Anim\RPG7V.rtm"
+		};
+		reloadAction="ReloadRPG";
+		recoil="recoil_titan_long";
+		autoReload="false";
+		lockingTargetSound[]=
+		{
+			"\ShadowLegion_Weapons\data\PLX\lock_1.ogg",
+			0.31622776,
+			-1
+		};
+		lockedTargetSound[]=
+		{
+			"\ShadowLegion_Weapons\data\PLX\lock_1.ogg",
+			0.31622776,
+			1.15
+		};
+		class OpticsModes
+		{
+			class StepScope
+			{
+				opticsID=1;
+				useModelOptics=1;
+				opticsPPEffects[]=
+				{
+					"OpticsCHAbera1",
+					"OpticsBlur1"
+				};
+				opticsFlare=0;
+				opticsZoomMin=0.083329998;
+				opticsZoomMax=0.041669998;
+				opticsZoomInit=0.083329998;
+				distanceZoomMin=300;
+				distanceZoomMax=300;
+				memoryPointCamera="opticview";
+				cameraDir="look";
+				visionMode[]=
+				{
+					"Normal",
+					"NVG",
+					"Ti"
+				};
+				thermalMode[]={0,1};
+				opticsDisablePeripherialVision=1;
+				discretefov[]={0.083329998,0.041669998};
+				discreteInitIndex=0;
+				nFovLimit=0.083329998;
+			};
+		};
+	};
+	class 885th_launch_PLX_F: 885th_launch_PLX_Base
+	{
+		author="885th Bloodpack Division + Antauri";
+		_generalMacro="ShdwCmpny_launch_PLX_F";
+		scope=2;
+		displayName="[885th] PLX";
+		descriptionShort="Multipurpose missile launcher used by many military organizations even after the clonewars";
+		overviewPicture="\A3\Data_F_Exp\Images\WeaponRPG7_ca.paa";
+		model="\ShadowLegion_Weapons\data\PLX\model\PLX.p3d";
+		picture="\ShadowLegion_Weapons\data\PLX\PLX_Launcher_UI.paa";
+		UiPicture="\ShadowLegion_Weapons\data\PLX\PLX_Launcher_UI.paa";
+		ace_reloadlaunchers_enabled=1;
+		ace_javelin_enabled=1;
 	};
 	//Attachments
 	class InventoryMuzzleItem_Base_F;
