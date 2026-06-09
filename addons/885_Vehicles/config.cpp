@@ -3,7 +3,7 @@ class Cfgpatches
 	class 885th_Vehicles
 	{
 		author = "885th Bloodpack Div";
-		requiredAddons[] = {"A3_Data_F", "A3_Weapons_F", "A3_Characters_F", "3AS_LAAT", "3AS_ARC_170", "3AS_Republic_Heli_LAS", "3AS_ITT", "ls_core"};
+		requiredAddons[] = {"A3_Data_F", "A3_Weapons_F", "A3_Characters_F", "3AS_LAAT", "3AS_ARC_170", "3AS_Republic_Heli_LAS", "3AS_ITT", "TKE_Ext_Core_V", "ls_core"};
 		requiredVersion = 0.1;
 		units[] = {
 			"885th_LSV_base_F",
@@ -12,6 +12,8 @@ class Cfgpatches
 			"885th_Smith_LAAT_Gunship",
 			"885th_ITT_Base",
 			"885th_ITT",
+			"885th_Draco_APC",
+			"885th_Draco_IFV",
 			"885th_ATTE_base",
 			"885th_ATTE",
 			"885th_Saber_Base",
@@ -973,6 +975,36 @@ class CfgVehicles
 					50
 				};
 			};
+		};
+	};
+	class TKE_Ext_Bearcat_Unarmed;
+	class 885th_Draco_APC: TKE_Ext_Bearcat_Unarmed
+	{
+		scope = 2;
+		scopeCurator = 2;
+		author = "885th Bloodpack Divsion";
+		displayName = "[885th] Draco APC";
+		model="\TKE_Ext_APC\data\apc.p3d";
+		picture="TKE_Ext_Core_V\data\ui\apc_pic_ca.paa";
+		icon="TKE_Ext_Core_V\data\ui\apc_map_icon_ca.paa";
+		faction = "885th_Faction";
+		editorSubcategory = "Sub885thKraytLogi";
+		crew = "885th_Pilot";
+		ace_cargo_hasCargo = 1;
+		ace_cargo_space = 12;
+		armor = 450;
+		armorLights = 0.5;
+		armorStructural = 8;
+		armorFuel = 2.0;
+		armorEngine = 1.5;
+		armorWheels= 2.5;
+		explosionShielding = 2;
+		enginePower = 500;
+		fuelCapacity=60;
+		weapons[] = {"TruckHorn2"};
+		magazines[]={};
+		hiddenselections[] = {"camo"};
+		hiddenSelectionsTextures[] = {"885_Vehicles\textures\APC-IFV\885th_apc_white_co.paa"};
 		};
 	};
 
