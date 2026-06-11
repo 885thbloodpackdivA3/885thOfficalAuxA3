@@ -1129,6 +1129,13 @@ class XtdGearInfos
 			variant="BARC";
 			camo="BARC";
 		};
+				class 885th_Cerberus_BARC_Helm
+		{
+			model="Trooper_Custom_Helmets";
+			rank="Cerberus";
+			variant="BARC";
+			camo="BARC";
+		};
 		class 885th_Wrath_P2_Helmet
 		{
 			model="Trooper_Custom_Helmets";

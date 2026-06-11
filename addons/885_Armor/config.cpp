@@ -86,6 +86,7 @@ class Cfgpatches
 			"885th_Horrid_P2_Helm",
 			"885th_Warden_Pilot_Helm",
 			"885th_Cerberus_P3_Pilot_Helm",
+			"885th_Cerberus_BARC_Helm",
 			"885th_Vornskr_P1_RTO_Helm",
 			"885th_Outcast_RTO_Helm",
 			"885th_Vornskr_P1_Advisor_Helm",
@@ -2100,6 +2101,22 @@ class CfgWeapons
 			"",
 			"\a3\characters_f_bootcamp\common\data\vrarmoremmisive.rvmat"
 		};
+	};
+	class 885th_Cerberus_BARC_Helm: 885th_BARC_Helm
+	{
+		author="885th Bloodpack Division";
+		displayName="[885th] Cerberus Custom BARC Helm";
+		picture="";
+		hiddenSelections[]=
+		{
+			"Camo",
+			"Visor",
+        };
+        hiddenSelectionsTextures[]=
+        {
+			"885_Armor\885_Armor\Customs\Cerberus\885th_Cerberus_Barc_Helm_co.paa",
+			"885_Armor\885_Armor\Customs\Cerberus\885th_Cerberus_Barc_Helm_co.paa",
+        };
 	};
 	class 885th_Charge_BARC_Helm: 885th_BARC_Helm
 	{
