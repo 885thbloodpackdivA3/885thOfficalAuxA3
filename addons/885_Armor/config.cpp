@@ -32,6 +32,7 @@ class Cfgpatches
 			"885th_Rios_Trooper",
 			"885th_Crow_RC_Trooper",
 			"885th_Phantom_RC_Trooper",
+			"885th_Scorch_RC_Trooper",
 			"885th_Smith_Trooper",
 			"885th_Thunder_Trooper",
 			"885th_Outcast_Trooper",
@@ -87,7 +88,6 @@ class Cfgpatches
 			"885th_Cerberus_BARC_Helm",
 			"885th_Warden_Pilot_Helm",
 			"885th_Cerberus_P3_Pilot_Helm",
-			"885th_Cerberus_BARC_Helm",
 			"885th_Vornskr_P1_RTO_Helm",
 			"885th_Outcast_RTO_Helm",
 			"885th_Vornskr_P1_Advisor_Helm",
@@ -105,6 +105,7 @@ class Cfgpatches
 			"885th_Bandit_BARC_Helm",
 			"885th_Crow_Kusak_Helm",
 			"Phantom_Kusak_Katarn_Helm",
+			"Scorch_Kusak_Katarn_Helm",
 			"885th_Syxer_BARC_Helm",
 			"885th_Vornskr_Engineer_Helm",
 			"885th_Vornskr_EngineerV2_Helm",
@@ -138,6 +139,7 @@ class Cfgpatches
 			"885th_Kusak_Katarn_Uniform",
 			"885th_Crow_Katarn_Uniform",
 			"885th_Phantom_Katarn_Uniform",
+			"885th_Scorch_Katarn_Uniform",
 			"885th_Rios_Uniform",
 			"885th_ONI_Uniform",
 			"885th_Bandit_Uniform",
@@ -966,6 +968,11 @@ class CfgWeapons
 			"885_Armor\885_Armor\Customs\Horrid\Horrid_Custom_P2_Helm_co.paa",
 			"885_Armor\885_Armor\Customs\Horrid\Horrid_Custom_P2_Helm_co.paa",
         };
+		hiddenSelectionsMaterials[]=
+        {
+            "",
+            "885_Armor\885_Armor\Customs\Horrid\Horrid_P2_Helmet_Visor.rvmat",
+        };
 	};
 
 	class 885th_Vulkan_P2_Helm: 885th_P2_V2_Helmet
@@ -998,6 +1005,11 @@ class CfgWeapons
         {
 			"885_Armor\885_Armor\Customs\Oxlong\Oxlong_P2_Helm_co.paa",
 			"885_Armor\885_Armor\Customs\Oxlong\Oxlong_P2_Helm_co.paa",
+        };
+		hiddenSelectionsMaterials[]=
+        {
+            "",
+            "885_Armor\885_Armor\Customs\Oxlong\Oxlong_P2_Helmet_Visor.rvmat",
         };
 	};
 
@@ -2085,41 +2097,6 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_Syxer_BARC_Helm: 885th_BARC_Helm
-	{
-		displayName="[885th] Syxer's BARC Helm";
-		hiddenSelections[]=
-		{
-			"camo",
-			"visor",
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Syxer\885th_Syxer_BARC_Helm_co.paa",
-			"885_Armor\885_Armor\Customs\Syxer\885th_Syxer_BARC_Helm_co.paa",
-		};
-		hiddenSelectionsMaterials[] =
-		{
-			"",
-			"\a3\characters_f_bootcamp\common\data\vrarmoremmisive.rvmat"
-		};
-	};
-	class 885th_Cerberus_BARC_Helm: 885th_BARC_Helm
-	{
-		author="885th Bloodpack Division";
-		displayName="[885th] Cerberus Custom BARC Helm";
-		picture="";
-		hiddenSelections[]=
-		{
-			"Camo",
-			"Visor",
-        };
-        hiddenSelectionsTextures[]=
-        {
-			"885_Armor\885_Armor\Customs\Cerberus\885th_Cerberus_Barc_Helm_co.paa",
-			"885_Armor\885_Armor\Customs\Cerberus\885th_Cerberus_Barc_Helm_co.paa",
-        };
-	};
 	class 885th_Charge_BARC_Helm: 885th_BARC_Helm
 	{
 		author="885th Bloodpack Division";
@@ -2309,6 +2286,47 @@ class CfgWeapons
             
         };
     };
+	class 885th_Syxer_P2_Helm: H_HelmetB_black
+	{
+		scope=2;
+		author="885th Bloodpack Division + LS";
+		displayName="Syxer's Modified P2 Helmet";
+		model="\ls\core\addons\characters_clone_legacy\helmets\rex\ls_gar_rex_helmet.p3d";
+		hiddenSelections[]=
+		{
+			"camo1",
+			"visor"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Syxer\885th_Syxer_P2_Helm_co.paa",
+			"885_Armor\885_Armor\Customs\Syxer\885th_Syxer_P2_visor_co.paa"
+		};
+		 hiddenSelectionsMaterials[]=
+        {
+			"885_Armor\885_Armor\Customs\Syxer\Syxer_P2_Helmet.rvmat",
+            "885_Armor\885_Armor\Customs\Syxer\Syxer_P2_Helmet_Visor.rvmat"
+        };
+		picture="\ls\core\addons\characters_clone_legacy\_ui\rex_helmet_ui_ca.paa";
+		class ItemInfo: ItemInfo
+		{
+			uniformModel="\ls\core\addons\characters_clone_legacy\helmets\rex\ls_gar_rex_helmet.p3d";
+			hiddenSelections[]=
+			{
+				"camo1",
+				"visor"
+			};
+			class HitpointsProtectionInfo
+			{
+				class Head
+				{
+					hitpointName="HitHead";
+					armor=6;
+					passThrough=0.5;
+				};
+			};
+		};
+	};
 	class 885th_AB_Helm: IDA_AB_Helmet
 	{
 		author = "885th Bloodpack Division";
@@ -2701,6 +2719,46 @@ class CfgWeapons
 		{
 			"885_Armor\885_Armor\Customs\Phantom\Phantom_Katarn_Helmet_co.paa",
 			"885_Armor\885_Armor\Customs\Phantom\Phantom_Katarn_Helmet_co.paa"
+		};
+		class ItemInfo: HeadgearItem
+		{
+			mass=10;
+			uniformModel="\3AS\3AS_Characters\Commando\3AS_Katarn_Helmet.p3d";
+			modelSides[]={3,1};
+			ace_hearing_lowerVolume = 0;
+			ace_hearing_protection = 1;
+			hiddenSelections[]=
+			{
+				"camo",
+				"camo1"
+			};
+			class HitpointsProtectionInfo
+			{
+				class Head
+				{
+					hitpointName="HitHead";
+					armor=20;
+					passThrough=0.2;
+				};
+			};
+		};
+	};
+	class Scorch_Kusak_Katarn_Helm: 885th_Kusak_Katarn_Helmet
+	{
+		author="885th Bloodpack Division";
+		scope=2;
+		displayName="[885th] RC Scorch Kusak' Helm";
+		picture="3AS\3AS_Characters\Commando\data\UI\Katarn_Helmet_Unmarked_UI_ca.paa";
+		model="\3AS\3AS_Characters\Commando\3AS_Katarn_Helmet.p3d";
+		hiddenSelections[]=
+		{
+			"camo",
+			"camo1"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Scorch\Scorch_Katarn_Helm_co.paa",
+			"885_Armor\885_Armor\Customs\Scorch\Scorch_Katarn_Helm_co.paa"
 		};
 		class ItemInfo: HeadgearItem
 		{
@@ -3918,6 +3976,21 @@ class CfgWeapons
 		{
 			uniformModel = "-";
 			uniformClass = "885th_Phantom_RC_Trooper";
+			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
+			containerClass = "Supply400";
+			mass = 40;
+		};
+	};
+	class 885th_Scorch_Katarn_Uniform: 885th_Kusak_Katarn_Uniform
+	{
+		scope = 2;
+		displayName = "[885th] RC Scorch Katarn Armor";
+		picture = "";
+		model = "\3AS\3AS_Characters\Commando\3AS_Katarn_Armor.p3d";
+		class ItemInfo: ItemInfo
+		{
+			uniformModel = "-";
+			uniformClass = "885th_Scorch_RC_Trooper";
 			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
 			containerClass = "Supply400";
 			mass = 40;
@@ -7703,7 +7776,8 @@ class CfgWeapons
 			};
 		};
 	};
-	//Custom Rigs
+	
+	//Custom NVG
 	class 885th_bandit_tanker_nvg: NVGoggles
 	{
 		scope=2;
@@ -7736,6 +7810,48 @@ class CfgWeapons
 			};
 		};
 	};
+	class 885th_Syxer_Visor_nvg: NVGoggles
+	{
+		scope=2;
+		author="885th Bloodpack Division";
+		displayName="Syxer's Visor";
+		model="\ls\core\addons\characters_clone_legacy\equipment\nvgs\commander\lsd_gar_p2Commander_nvg.p3d";
+		hiddenSelections[]=
+		{
+			"camo1",
+			"camo2",
+			"camo3"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Syxer\camo1_co.paa",
+			"885_Armor\885_Armor\Customs\Syxer\camo1_co.paa",
+			""
+		};
+		modelOptics="\ls\core\addons\characters_clone_legacy\equipment\nvgs\commander\lsd_gar_commander_optic.p3d";
+		ace_nightvision_border="\ls\core\addons\characters_clone_legacy\equipment\nvgs\commander\data\optic_ca.paa";
+		picture="\ls\core\addons\characters_clone_legacy\_ui\icon_cloneVisor_cc_ca.paa";
+		visionMode[]=
+		{
+			"Normal",
+			"NVG",
+			"TI"
+		};
+		class ItemInfo: ItemInfo
+		{
+			uniformModel="\ls\core\addons\characters_clone_legacy\equipment\nvgs\commander\lsd_gar_p2Commander_nvg.p3d";
+			modelOff="\ls\core\addons\characters_clone_legacy\equipment\nvgs\commander\lsd_gar_p2Commander_nvg.p3d";
+			mass=5;
+			hiddenSelections[]=
+			{
+				"camo1",
+				"camo2",
+				"camo3"
+			};
+		};
+	};
+	
+	//Custom Rigs
 	class 885th_Cust_VestV4_Rig_Bandit: Vest_Camo_Base
 	{
 		author="Antauri + 885th Bloodpack Division";
@@ -12200,7 +12316,22 @@ class CfgVehicles
 			"3AS\3AS_Characters\Commando\data\Katarn_Undersuit_CO.paa"
 		};
 	};
-
+	
+	class 885th_Scorch_RC_Trooper : 885th_Kusak_RC_Trooper {
+		scope=1;
+		scopeCurator=1;
+		scopeArsenal=2;
+		side=1;
+		faction="885th_Faction";
+		editorSubcategory="Sub885thTroopers";
+		uniformClass = "885th_Scorch_Katarn_Uniform";
+		hiddenSelections[] = {"Camo","Camo1"};
+		hiddenSelectionsTextures[] = {
+			"885_Armor\885_Armor\Customs\Scorch\Scorch_Katarn_Armor_co.paa",
+			"3AS\3AS_Characters\Commando\data\Katarn_Undersuit_CO.paa"
+		};
+	};
+	
 	class 885th_Nexu_Trooper : 885th_Vornskr_Trooper {
 		scope=1;
 		scopeCurator=1;

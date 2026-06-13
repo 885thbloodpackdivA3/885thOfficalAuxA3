@@ -207,6 +207,7 @@ class XtdGearModels
 					"Phantom",
 					"Rios",
 					"Screwball",
+					"Scorch",
 					"Sytha",
 					"Syxer",
 					"Smith",
@@ -926,7 +927,6 @@ class XtdGearInfos
 			variant="BARC";
 			camo="BARC";
 		};
-
 		class 885th_Crimz_ARF_Helm
 		{
 			model="Trooper_Custom_Helmets";
@@ -1067,6 +1067,13 @@ class XtdGearInfos
 			variant="ARF";
 			camo="ARF";
 		};
+		class Scorch_Kusak_Katarn_Helm
+		{
+			model="Trooper_Custom_Helmets";
+			rank="Scorch";
+			variant="RC";
+			camo="RC";
+		};
 		class 885th_Sytha_BARC_Helm
 		{
 			model="Trooper_Custom_Helmets";
@@ -1074,12 +1081,12 @@ class XtdGearInfos
 			variant="BARC";
 			camo="BARC";
 		};
-		class 885th_Syxer_BARC_Helm
+		class 885th_Syxer_P2_Helm
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Syxer";
-			variant="BARC";
-			camo="BARC";
+			variant="P2";
+			camo="P2";
 		};
 		class 885th_Smith_Pilot_Helm
 		{
@@ -1134,13 +1141,6 @@ class XtdGearInfos
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Wyrm";
-			variant="BARC";
-			camo="BARC";
-		};
-				class 885th_Cerberus_BARC_Helm
-		{
-			model="Trooper_Custom_Helmets";
-			rank="Cerberus";
 			variant="BARC";
 			camo="BARC";
 		};
@@ -1383,6 +1383,11 @@ class XtdGearInfos
 		{
 			model="Custom_Uniforms";
 			rank="Screwball";
+		};
+		class 885th_Scorch_Katarn_Uniform
+		{
+			model="Custom_Uniforms";
+			rank="Scorch";
 		};
 		class 885th_Smith_Uniform
 		{
