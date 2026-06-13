@@ -106,7 +106,7 @@ class Cfgpatches
 			"885th_Crow_Kusak_Helm",
 			"Phantom_Kusak_Katarn_Helm",
 			"Scorch_Kusak_Katarn_Helm",
-			"885th_Syxer_BARC_Helm",
+			"885th_Syxer_P2_Helm",
 			"885th_Vornskr_Engineer_Helm",
 			"885th_Vornskr_EngineerV2_Helm",
 			"885th_Charhound_Helm",
