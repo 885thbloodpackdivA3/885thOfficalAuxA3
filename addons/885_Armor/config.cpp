@@ -2747,7 +2747,7 @@ class CfgWeapons
 	{
 		author="885th Bloodpack Division";
 		scope=2;
-		displayName="[885th] RC Scorch Kusak' Helm";
+		displayName="[885th] RC Scorch Kusak Helm";
 		picture="3AS\3AS_Characters\Commando\data\UI\Katarn_Helmet_Unmarked_UI_ca.paa";
 		model="\3AS\3AS_Characters\Commando\3AS_Katarn_Helmet.p3d";
 		hiddenSelections[]=

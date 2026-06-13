@@ -446,6 +446,7 @@ class XtdGearModels
 					"Phantom",
 					"Rios",
 					"Screwball",
+					"Scorch",
 					"Smith",
 					"Syxer",
 					"Thunder",
