@@ -34,6 +34,8 @@ class CfgPatches
             "885th_Saber_HEAT_Missiles",
             "885th_Saber_AP_Turret",
             "885th_Saber_Laser_Turret",
+			"885th_IFV_Cannon",
+			"885th_IFV_Coaxial",
             "885th_Fighter_20mm_Cannon",
             "885th_Fighter_30mm_Cannon",
             "885th_Fighter_AMRAAM",
@@ -47,6 +49,8 @@ class CfgPatches
             "885th_Saber_HE_Mag",
             "885th_Saber_HEAT_Mag",
             "885th_Saber_Laser_Battery",
+			"885th_IFV_HEAT_Mag",
+			"885th_IFV_AP_Mag",
             "885th_Fighter_20mm_Mag",
             "885th_Fighter_30mm_Mag",
             "885th_Fighter_AMRAAM_Mag",
@@ -65,6 +69,7 @@ class CfgPatches
             "885th_Saber_OC",
             "885th_Saber_AP",
             "885th_Saber_OGMG",
+			"885th_IFV_HEAT",
             "885th_Ammo_AMRAAM",
             "885th_Ammo_AGM",
 			"885th_Ammo_Rocket",
@@ -273,6 +278,18 @@ class CfgAmmo
 		explosive=0.2;
 		effectFly="3AS_PlasmaBolt_Medium_Blue_Fly";
 	};
+	class 885th_IFV_HEAT: 885th_Saber_HE
+    {
+		hit=300;
+		indirecthit=6;
+		indirecthitrange=1;
+		warheadName="HEAT";
+		submunitionAmmo="ammo_Penetrator_120mm";
+		submunitionDirectionType="SubmunitionModelDirection";
+		caliber=35;
+		explosive=0.4;
+		effectFly="3AS_PlasmaBolt_Medium_Blue_Fly";
+	};
 	class 885th_Saber_OC30mm: 885th_PlasmaBase
     {
 		soundFly[]=
@@ -403,6 +420,16 @@ class CfgAmmo
 	};
     class B_127x99_Ball;
     class 885th_Saber_AP: B_127x99_Ball
+     {
+		hit=50;
+		indirecthit=5;
+		indirecthitrange=1;
+		warheadName="AP";
+		caliber=3.5;
+		explosive=0.0;
+		effectFly="3AS_PlasmaBolt_Medium_Blue_Fly";
+	};
+	class 885th_IFV_AP: B_127x99_Ball
      {
 		hit=50;
 		indirecthit=5;
@@ -713,7 +740,7 @@ class CfgMagazines
 		muzzleImpulseFactor[]={0.5,0.5};
 	};
     class 885th_500rd_SaberOC_Mag: VehicleMagazine
-     {
+    {
 		author="885th Bloodpack Division";
 		scope=2;
 		displayName="500Rnd Saber Battery";
@@ -726,6 +753,7 @@ class CfgMagazines
 		tracersEvery=1;
 		muzzleImpulseFactor[]={0.5,0.5};
 	};
+
     class 885th_2500rd_Saber_Laser_Mag: VehicleMagazine
     {
         author="885th Bloodpack Division";
@@ -754,8 +782,22 @@ class CfgMagazines
 		nameSound="cannon";
 		muzzleImpulseFactor[]={0.1,0.80000001};
     };
-    class 885th_20rd_Saber_Rocket_Mag: VehicleMagazine
+	class 885th_IFV_AP_Mag: VehicleMagazine
      {
+        author="885th Bloodpack Division";
+		scope=2;
+		displayName="250Rnd Coaxial Anti- Personnel Mag";
+		displayNameShort="APMG";
+		ammo="885th_IFV_AP";
+		count=250;
+		initSpeed=1000;
+		maxLeadSpeed=83.333298;
+		tracersEvery=5;
+		nameSound="cannon";
+		muzzleImpulseFactor[]={0.1,0.80000001};
+	};
+    class 885th_20rd_Saber_Rocket_Mag: VehicleMagazine
+    {
         author="885th Bloodpack Division";
 		scope=2;
         displayName="20Rnd HE Saber Rocket Pods";
@@ -769,7 +811,7 @@ class CfgMagazines
 		muzzleImpulseFactor[]={0.1,0.80000001};
     };
     class 885th_6rd_Saber_Missiles_Mag: VehicleMagazine
-     {
+    {
         author="885th Bloodpack Division";
 		scope=2;
         displayName="6Rnd HE Saber Rocket Pods";
@@ -820,6 +862,20 @@ class CfgMagazines
         nameSound = "missiles";
         muzzleImpulseFactor[] = {0.1, 0.5};
     };
+	class 885th_IFV_HEAT_Mag: VehicleMagazine
+	{
+		author="885th Bloodpack Division";
+		scope=2;
+		displayName="75Rnd HEAT";
+		displayNameShort="75rd HEAT";
+		ammo="885th_IFV_HEAT";
+		count=75;
+		initSpeed=950;
+		maxLeadSpeed=85;
+		tracersEvery=1;
+		nameSound="cannon";
+		muzzleImpulseFactor[]={0.1,0.80000001};
+	};
     class 885th_1000rd_LowEnergy_Cannons: VehicleMagazine
     {
         author="885th Bloodpack Division";
@@ -1261,6 +1317,70 @@ class CfgWeapons
             {
                 weaponSoundEffect = "DefaultRifle";
                 begin1[]={"885_Sounds\Z8Blastercannon.ogg",1.9952624,1,900};
+                soundBegin[] = {"begin1", 1};
+            };
+        };
+    };
+	class 885th_IFV_Cannon: CannonCore
+    {
+        scope = 2;
+        displayName = "[885th]Draco IFV Main Gun";
+        magazines[]=
+        {
+            "885th_IFV_HEAT_Mag"
+        };
+        selectionFireAnim = "zasleh";      // The standard 3AS/Vanilla flash location
+        flash = "flare";                   // Clean, light flare (not "gunfire")
+        flashSize = 1;                     // Size of the flare
+        fireLightDuration = 0.05;
+        fireLightIntensity = 1;
+        ballisticsComputer = 1;      
+        canLock = 2;                 
+        weaponLockSystem = "2 + 4";
+        modes[] = {"FullAuto", "Close"};
+
+        class FullAuto: Mode_FullAuto {
+            displayName = "Rapid Pulse";
+            reloadTime = 0.45;       
+            dispersion = 0.001;
+            soundContinuous= 0;
+            sounds[] = {"StandardSound"};
+            class StandardSound 
+            {
+                weaponSoundEffect = "DefaultRifle";
+                begin1[]={"885_Sounds\Draco Cannon Fire Sound.ogg",1.9952624,1,900};
+                soundBegin[] = {"begin1", 1};
+            };
+        };
+    };
+	class 885th_IFV_Coaxial: CannonCore
+    {
+        scope = 2;
+        displayName = "[885th]Draco Coaxial";
+        magazines[]=
+        {
+            "885th_IFV_AP_Mag"
+        };
+        selectionFireAnim = "zasleh";      // The standard 3AS/Vanilla flash location
+        flash = "flare";                   // Clean, light flare (not "gunfire")
+        flashSize = 1;                     // Size of the flare
+        fireLightDuration = 0.05;
+        fireLightIntensity = 1;
+        ballisticsComputer = 1;      
+        canLock = 2;                 
+        weaponLockSystem = "2 + 4";
+        modes[] = {"FullAuto", "Close"};
+
+        class FullAuto: Mode_FullAuto {
+            displayName = "Rapid Pulse";
+            reloadTime = 0.08;       
+            dispersion = 0.001;
+            soundContinuous= 0;
+            sounds[] = {"StandardSound"};
+            class StandardSound 
+            {
+                weaponSoundEffect = "DefaultRifle";
+                begin1[]={"885_Sounds\draco coaxial gun fire sound.ogg",1.9952624,1,900};
                 soundBegin[] = {"begin1", 1};
             };
         };
