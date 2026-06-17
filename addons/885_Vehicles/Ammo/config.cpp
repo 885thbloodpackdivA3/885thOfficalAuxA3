@@ -35,6 +35,7 @@ class CfgPatches
             "885th_Saber_AP_Turret",
             "885th_Saber_Laser_Turret",
 			"885th_IFV_Cannon",
+			"885th_IFV_Coaxial",
             "885th_Fighter_20mm_Cannon",
             "885th_Fighter_30mm_Cannon",
             "885th_Fighter_AMRAAM",
@@ -49,6 +50,7 @@ class CfgPatches
             "885th_Saber_HEAT_Mag",
             "885th_Saber_Laser_Battery",
 			"885th_IFV_HEAT_Mag",
+			"885th_IFV_AP_Mag",
             "885th_Fighter_20mm_Mag",
             "885th_Fighter_30mm_Mag",
             "885th_Fighter_AMRAAM_Mag",
@@ -427,6 +429,16 @@ class CfgAmmo
 		explosive=0.0;
 		effectFly="3AS_PlasmaBolt_Medium_Blue_Fly";
 	};
+	class 885th_IFV_AP: B_127x99_Ball
+     {
+		hit=50;
+		indirecthit=5;
+		indirecthitrange=1;
+		warheadName="AP";
+		caliber=3.5;
+		explosive=0.0;
+		effectFly="3AS_PlasmaBolt_Medium_Blue_Fly";
+	};
     class 885th_Saber_OGMG: BulletBase
     {
 		hit=65;
@@ -770,8 +782,22 @@ class CfgMagazines
 		nameSound="cannon";
 		muzzleImpulseFactor[]={0.1,0.80000001};
     };
-    class 885th_20rd_Saber_Rocket_Mag: VehicleMagazine
+	class 885th_IFV_AP_Mag: VehicleMagazine
      {
+        author="885th Bloodpack Division";
+		scope=2;
+		displayName="250Rnd Coaxial Anti- Personnel Mag";
+		displayNameShort="APMG";
+		ammo="885th_IFV_AP";
+		count=250;
+		initSpeed=1000;
+		maxLeadSpeed=83.333298;
+		tracersEvery=5;
+		nameSound="cannon";
+		muzzleImpulseFactor[]={0.1,0.80000001};
+	};
+    class 885th_20rd_Saber_Rocket_Mag: VehicleMagazine
+    {
         author="885th Bloodpack Division";
 		scope=2;
         displayName="20Rnd HE Saber Rocket Pods";
@@ -785,7 +811,7 @@ class CfgMagazines
 		muzzleImpulseFactor[]={0.1,0.80000001};
     };
     class 885th_6rd_Saber_Missiles_Mag: VehicleMagazine
-     {
+    {
         author="885th Bloodpack Division";
 		scope=2;
         displayName="6Rnd HE Saber Rocket Pods";
@@ -848,7 +874,7 @@ class CfgMagazines
 		maxLeadSpeed=85;
 		tracersEvery=1;
 		nameSound="cannon";
-		muzzleImpulseFactor[]={0.1,0.80000001}
+		muzzleImpulseFactor[]={0.1,0.80000001};
 	};
     class 885th_1000rd_LowEnergy_Cannons: VehicleMagazine
     {
@@ -1305,7 +1331,7 @@ class CfgWeapons
         };
         selectionFireAnim = "zasleh";      // The standard 3AS/Vanilla flash location
         flash = "flare";                   // Clean, light flare (not "gunfire")
-        flashSize = 2;                     // Size of the flare
+        flashSize = 1;                     // Size of the flare
         fireLightDuration = 0.05;
         fireLightIntensity = 1;
         ballisticsComputer = 1;      
@@ -1322,7 +1348,39 @@ class CfgWeapons
             class StandardSound 
             {
                 weaponSoundEffect = "DefaultRifle";
-                begin1[]={"885_Sounds\Z8Blastercannon.ogg",1.9952624,1,900};
+                begin1[]={"885_Sounds\Draco Cannon Fire Sound.ogg",1.9952624,1,900};
+                soundBegin[] = {"begin1", 1};
+            };
+        };
+    };
+	class 885th_IFV_Coaxial: CannonCore
+    {
+        scope = 2;
+        displayName = "[885th]Draco Coaxial";
+        magazines[]=
+        {
+            "885th_IFV_AP_Mag"
+        };
+        selectionFireAnim = "zasleh";      // The standard 3AS/Vanilla flash location
+        flash = "flare";                   // Clean, light flare (not "gunfire")
+        flashSize = 1;                     // Size of the flare
+        fireLightDuration = 0.05;
+        fireLightIntensity = 1;
+        ballisticsComputer = 1;      
+        canLock = 2;                 
+        weaponLockSystem = "2 + 4";
+        modes[] = {"FullAuto", "Close"};
+
+        class FullAuto: Mode_FullAuto {
+            displayName = "Rapid Pulse";
+            reloadTime = 0.08;       
+            dispersion = 0.001;
+            soundContinuous= 0;
+            sounds[] = {"StandardSound"};
+            class StandardSound 
+            {
+                weaponSoundEffect = "DefaultRifle";
+                begin1[]={"885_Sounds\draco coaxial gun fire sound.ogg",1.9952624,1,900};
                 soundBegin[] = {"begin1", 1};
             };
         };

@@ -1232,7 +1232,7 @@ class CfgVehicles
 		};
 		hiddenSelectionsTextures[]=
 		{
-			"885_Vehicles\textures\APC-IFV\885th_apc_white_co.paa"
+			"885_Vehicles\textures\APC-IFV\885th_IFV_Black_co.paa"
 		};
 		model="\TKE_Ext_APC\data\apc.p3d";
 		picture="TKE_Ext_Core_V\data\ui\apc_pic_ca.paa";
@@ -2011,7 +2011,7 @@ class CfgVehicles
 				author="885TH Bloodpack Division";
 				textures[]=
 				{
-					"885_Vehicles\textures\APC-IFV\885th_apc_white_co.paa"
+					"885_Vehicles\textures\APC-IFV\885th_IFV_Black_co.paa"
 				};
 				factions[]={};
 			};
@@ -2083,6 +2083,7 @@ class CfgVehicles
 		displayName="[885th] Draco APC";
 		editorPreview="";
 		faction = "885th_Faction";
+		editorSubcategory = "Sub885thKraytLogi";
 		crew = "885th_Pilot";
 		weapons[]=
 		{
@@ -2231,6 +2232,7 @@ class CfgVehicles
 		displayName="[885th] Draco IFV";
 		editorPreview="";
 		faction = "885th_Faction";
+		editorSubcategory = "Sub885thKraytLogi";
 		crew = "885th_Pilot";
 		model="\TKE_Ext_APC\data\apc_a.p3d";
 		class Reflectors
@@ -2440,18 +2442,20 @@ class CfgVehicles
 				gunEnd="konec hlavne";
 				weapons[]=
 				{
-					"TKE_Ext_Autocannon_30mm",
-					"TKE_Ext_MG_Coax"
+					"885th_IFV_Cannon",
+					"885th_IFV_Coaxial"
 				};
 				magazines[]=
 				{
-					"TKE_Ext_30mm_AP_200Rnd",
-					"TKE_Ext_30mm_HE_250Rnd",
-					"200Rnd_762x51_Belt_Yellow",
-					"200Rnd_762x51_Belt_Yellow",
-					"200Rnd_762x51_Belt_Yellow",
-					"200Rnd_762x51_Belt_Yellow",
-					"200Rnd_762x51_Belt_Yellow"
+					"885th_IFV_HEAT_Mag",
+					"885th_IFV_HEAT_Mag",
+					"885th_IFV_HEAT_Mag",
+					"885th_IFV_HEAT_Mag",
+					"885th_IFV_AP_Mag",
+					"885th_IFV_AP_Mag",
+					"885th_IFV_AP_Mag",
+					"885th_IFV_AP_Mag",
+					"885th_IFV_AP_Mag"
 				};
 				gunnerForceOptics=1;
 				memoryPointGun="usti hlavne1";
