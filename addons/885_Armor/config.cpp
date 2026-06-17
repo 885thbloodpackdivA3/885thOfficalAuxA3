@@ -7797,14 +7797,14 @@ class CfgWeapons
             "885_Armor\885_Armor\Customs\Bandit\Bandit_Tanker_Attachment.rvmat"
         };
 		modelOptics="\ls\core\addons\characters\equipment\nvg\ls_optic_dummy.p3d";
-		ace_nightvision_border="\ls\core\addons\characters_clone_legacy\equipment\nvgs\rangefinder\data\optic_ca.paa";
 		picture="\ls\core\addons\characters_clone_legacy\_ui\icon_cloneVisor_ca.paa";
-		visionMode[]=
-		{
-			"Normal",
-			"NVG",
-			"TI"
-		};
+		visionMode[] = {"Normal","NVG","TI"};
+		thermalMode[] = {0,1};
+		ace_nightvision_border = "";
+		ace_nightvision_bluRadius = 0;
+		ace_nightvision_colorPreset[] = {0,{0,0,0,0},{1.3,1.2,0,0.9},{6,1,1,0}};
+		ace_nightvision_eyeCups = 1;
+		ace_nightvision_generation = 4;
 		class ItemInfo: ItemInfo
 		{
 			uniformModel="\ls\core\addons\characters_clone_legacy\equipment\nvgs\tanker\lsd_gar_tanker_nvg.p3d";
@@ -7835,14 +7835,14 @@ class CfgWeapons
 			""
 		};
 		modelOptics="\ls\core\addons\characters_clone_legacy\equipment\nvgs\commander\lsd_gar_commander_optic.p3d";
-		ace_nightvision_border="\ls\core\addons\characters_clone_legacy\equipment\nvgs\commander\data\optic_ca.paa";
 		picture="\ls\core\addons\characters_clone_legacy\_ui\icon_cloneVisor_cc_ca.paa";
-		visionMode[]=
-		{
-			"Normal",
-			"NVG",
-			"TI"
-		};
+		visionMode[] = {"Normal","NVG","TI"};
+		thermalMode[] = {0,1};
+		ace_nightvision_border = "";
+		ace_nightvision_bluRadius = 0;
+		ace_nightvision_colorPreset[] = {0,{0,0,0,0},{1.3,1.2,0,0.9},{6,1,1,0}};
+		ace_nightvision_eyeCups = 1;
+		ace_nightvision_generation = 4;
 		class ItemInfo: ItemInfo
 		{
 			uniformModel="\ls\core\addons\characters_clone_legacy\equipment\nvgs\commander\lsd_gar_p2Commander_nvg.p3d";
