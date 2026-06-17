@@ -7784,9 +7784,6 @@ class CfgWeapons
 		author="885th Bloodpack Division + Legion Studios";
 		displayName="Bandit's Armored Plating";
 		model="\ls\core\addons\characters_clone_legacy\equipment\nvgs\tanker\lsd_gar_tanker_nvg.p3d";
-		modelOptics="\ls\core\addons\characters\equipment\nvg\ls_optic_dummy.p3d";
-		ace_nightvision_border="\ls\core\addons\characters_clone_legacy\equipment\nvgs\rangefinder\data\optic_ca.paa";
-		picture="\ls\core\addons\characters_clone_legacy\_ui\icon_cloneVisor_ca.paa";
 		hiddenSelections[]=
 		{
 			"camo1"
@@ -7799,6 +7796,15 @@ class CfgWeapons
         {
             "885_Armor\885_Armor\Customs\Bandit\Bandit_Tanker_Attachment.rvmat"
         };
+		modelOptics="\ls\core\addons\characters\equipment\nvg\ls_optic_dummy.p3d";
+		ace_nightvision_border="\ls\core\addons\characters_clone_legacy\equipment\nvgs\rangefinder\data\optic_ca.paa";
+		picture="\ls\core\addons\characters_clone_legacy\_ui\icon_cloneVisor_ca.paa";
+		visionMode[]=
+		{
+			"Normal",
+			"NVG",
+			"TI"
+		};
 		class ItemInfo: ItemInfo
 		{
 			uniformModel="\ls\core\addons\characters_clone_legacy\equipment\nvgs\tanker\lsd_gar_tanker_nvg.p3d";
