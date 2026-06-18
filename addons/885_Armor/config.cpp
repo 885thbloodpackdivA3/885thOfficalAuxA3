@@ -11201,7 +11201,7 @@ class CfgVehicles
 	class 3AS_B_CloneTrooper_F;
 	class 885th_Vornskr_Backpack_compact: 3AS_B_CloneTrooper_F
 	{
-		displayName = "Vornskr Backpack - Compact";
+		displayName = " [885th] Vornskr Backpack - Compact";
 		picture = "";
 		maximumload = 250;
 		hiddenSelectionsTextures[]=
@@ -11209,10 +11209,21 @@ class CfgVehicles
 			"885_Armor\885_Armor\Backpacks\Vornskr_Backpack_co.paa";
 		};
 	};
+	class 3AS_B_CloneTrooper_Demo;
+	class 885th_Vornskr_EOD_Backpack_compact: 3AS_B_CloneTrooper_Demo
+	{
+		displayName = "[885th] Vornskr EOD Backpack - Compact";
+		picture = "";
+		maximumload = 500;
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Backpacks\EOD_Backpack_co.paa";
+		};
+	};
 	class 3AS_B_CloneTrooper_Heavy_F;
 	class 885th_Vornskr_Heavy_compact: 3AS_B_CloneTrooper_Heavy_F
 	{
-		displayName = "Vornskr Heavy Backpack - Compact";
+		displayName = " [885th] Vornskr Heavy Backpack - Compact";
 		picture = "";
 		maximumload = 350;
 		hiddenSelectionsTextures[]=
@@ -11273,58 +11284,6 @@ class CfgVehicles
 		tf_encryptionCode="tf_west_radio_code";
 		tf_hasLRradio=1;
 		tf_range=40000;
-		tf_subtype="digital_lr";
-	};
-	class 885th_LS_Explosives_Backpack: ls_gar_heavy_backpack
-	{
-		author="885th Bloodpack Division";
-		scope=2;
-		picture="";
-		displayName="[885th] Heavy Explosives Backpack";
-		maximumload = 500;
-
-		hiddenSelections[]=
-		{
-			"backpack",
-			"cover",
-			"pouches",
-			"tube"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Backpacks\885th_Explosives_Backpack_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_Explosives_Cover_Backpack_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_Explosives_Backpack_Pouches_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_Explosives_Backpack_Tube_co.paa"
-		};
-	};
-	class 885th_Medic_Backpack: ls_gar_medic_backpack
-	{
-		author="885th Bloodpack Division";
-		scope=2;
-		picture="";
-		displayName="[885th] LS Vornskr Medic Backpack";
-		maximumload = 400;
-
-		hiddenSelections[]=
-		{
-			"backpack",
-			"cover",
-			"medic1",
-			"medic2"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Backpacks\885th_medic_backpack_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_backpack_cover_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_medic_backpack_bacta_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_medic_backpack_bacta_co.paa"
-		};
-		tf_dialog="JLTS_clone_rto_radio_dialog";
-		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
-		tf_encryptionCode="tf_west_radio_code";
-		tf_hasLRradio=1;
-		tf_range=25000;
 		tf_subtype="digital_lr";
 	};
 	class ls_cloneBackpack_ammo;
@@ -11442,6 +11401,23 @@ class CfgVehicles
 		tf_range=50000;
 		tf_subtype="digital_lr";
 	};
+	class 3AS_B_CloneTrooper_Radio_F;
+	class 885th_Vornskr_RTO_Backpack: 3AS_B_CloneTrooper_Radio_F
+	{
+		displayName = "Vornskr RTO Backpack - Compact";
+		picture = "";
+		maximumload = 300;
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Backpacks\RTO_Backpack_co.paa";
+		};
+		tf_dialog="JLTS_clone_rto_radio_dialog";
+		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
+		tf_encryptionCode="tf_west_radio_code";
+		tf_hasLRradio=1;
+		tf_range=50000;
+		tf_subtype="digital_lr";
+	};
 	class 885th_LR_Attachment_Antenna: IDA_Clone_RadioAntenna
 	{
 		author = "885th Bloodpack Division";
@@ -11482,7 +11458,7 @@ class CfgVehicles
 		tf_range = 60000;
 		tf_subtype = "digital_lr";
 	};
-	class 885th_Wyrwulf_Clone_Radiopack: IDA_Clone_Radiopack
+	class 885th_Command_Clone_Radiopack: IDA_Clone_Radiopack
 	{
 		author = "885th Bloodpack Division";
 		scope = 2;

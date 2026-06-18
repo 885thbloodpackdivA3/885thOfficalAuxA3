@@ -588,7 +588,7 @@ class XtdGearModels
 					"BP Small",
 					"Invis",
 					"AT",
-					"Explosives",
+					"EOD",
 					"Ammobearer",
 					"Heavy Small",
 					"Medic",
@@ -1643,10 +1643,10 @@ class XtdGearInfos
 			model="Vornskr_Backpacks";
 			backpack="AT";
 		};
-		class 885th_LS_Explosives_Backpack
+		class 885th_Vornskr_EOD_Backpack_compact
 		{
 			model="Vornskr_Backpacks";
-			backpack="Explosives";
+			backpack="EOD";
 		};
 		class 885th_Ammo_Backpack
 		{
@@ -1663,7 +1663,7 @@ class XtdGearInfos
 			model="Vornskr_Backpacks";
 			backpack="Medic";
 		};
-		class 885th_RTO_Backpack
+		class 885th_Vornskr_RTO_Backpack
 		{
 			model="Vornskr_Backpacks";
 			backpack="RTO";
@@ -1678,7 +1678,7 @@ class XtdGearInfos
 			model="Vornskr_Backpacks";
 			backpack="Officer";
 		};
-		class 885th_Wyrwulf_Clone_Radiopack
+		class 885th_Command_Clone_Radiopack
 		{
 			model="Vornskr_Backpacks";
 			backpack="Command";
