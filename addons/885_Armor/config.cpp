@@ -11392,6 +11392,50 @@ class CfgVehicles
 		tf_range=100000;
 		tf_subtype="digital_lr";
 	};
+	class 885th_Medical_Backpack: B_kitbag_rgr
+	{
+		author="885th Bloodpack Division";
+		scope=2;
+		displayName="[885th] Medical Backpack";
+		model="\ls\core\addons\characters_clone\backpacks\standard\ls_backpack_clone_standard.p3d";
+		hiddenSelections[]= 
+		{
+			"backpack",
+			"cloth",
+			"radio",
+			"rockets",
+			"medic",
+			"bacta",
+			"ammo",
+			"heavy",
+			"supplies",
+			"lower_supplies",
+			"canister",
+			"grenade"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Medic\Medic_LS_Backpack_CO.paa",
+			"885_Armor\885_Armor\Medic\Medic_LS_Backpack_CO.paa",
+			"",
+			"",
+			"885_Armor\885_Armor\Medic\Medic_LS_Middle_PackPouchesC_CO.paa",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"885_Armor\885_Armor\Medic\Medic_LS_Lower_PackCylinderB_CO.paa"
+		};
+		maximumload=400;
+		tf_dialog="JLTS_clone_lr_programmer_radio_dialog";
+		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
+		tf_encryptionCode="tf_west_radio_code";
+		tf_hasLRradio=1;
+		tf_range=25000;
+		tf_subtype="digital_lr";
+		mass=22;
+	};
 	class 885th_Vornskr_Backpack_invis: B_Kitbag_rgr
 	{
 		author="885th Bloodpack Division";
