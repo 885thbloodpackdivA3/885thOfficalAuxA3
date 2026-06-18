@@ -588,7 +588,6 @@ class XtdGearModels
 					"BP Small",
 					"Invis",
 					"AT",
-					"AT Small",
 					"Explosives",
 					"Ammobearer",
 					"Heavy Small",
@@ -597,6 +596,7 @@ class XtdGearModels
 					"JTAC",
 					"Officer",
 					"Command",
+					"Company",
 					"Hazard",
 					"Hazard CO",
 					"Mortar"
@@ -1638,15 +1638,10 @@ class XtdGearInfos
 			model="Vornskr_Backpacks";
 			backpack="Invis";
 		};
-		class 885th_LS_Rocket_Backpack
-		{
-			model="Vornskr_Backpacks";
-			backpack="AT";
-		};
 		class 885th_Vornskr_AT_Backpack_compact
 		{
 			model="Vornskr_Backpacks";
-			backpack="AT Small";
+			backpack="AT";
 		};
 		class 885th_LS_Explosives_Backpack
 		{
@@ -1687,6 +1682,11 @@ class XtdGearInfos
 		{
 			model="Vornskr_Backpacks";
 			backpack="Command";
+		};
+		class 885th_Wyrwulf_LR_Commslink
+		{
+			model="Vornskr_Backpacks";
+			backpack="Company";
 		};
 		class 885th_Vornskr_Hazard_Backpack
 		{

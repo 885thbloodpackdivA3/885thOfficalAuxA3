@@ -11225,7 +11225,7 @@ class CfgVehicles
 	{
 		displayName = "Vornskr AT Backpack - Compact";
 		picture = "";
-		maximumload = 650;
+		maximumload = 700;
 		hiddenSelectionsTextures[]=
 		{
 			"885_Armor\885_Armor\Backpacks\Rocket_Backpack_co.paa";
@@ -11296,31 +11296,6 @@ class CfgVehicles
 			"885_Armor\885_Armor\Backpacks\885th_Explosives_Cover_Backpack_co.paa",
 			"885_Armor\885_Armor\Backpacks\885th_Explosives_Backpack_Pouches_co.paa",
 			"885_Armor\885_Armor\Backpacks\885th_Explosives_Backpack_Tube_co.paa"
-		};
-	};
-	class 885th_LS_Rocket_Backpack: ls_gar_rocket_backpack
-	{
-		author="885th Bloodpack Division";
-		scope=2;
-		picture="";
-		displayName="[885th] LS Anti-Tank Explosives Backpack";
-		maximumload = 700;
-
-		hiddenSelections[]=
-		{
-			"backpack",
-			"holder",
-			"rocket",
-			"light",
-			"pouches"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"\885_Armor\885_Armor\Backpacks\885th_Explosives_Backpack_co.paa",
-			"\ls\core\addons\characters_clone_legacy\backpacks\standard\data\holder_co.paa",
-			"\ls\core\addons\characters_clone_legacy\backpacks\standard\data\rocket_co.paa",
-			"\ls\core\addons\characters_clone_legacy\backpacks\standard\data\light_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_Explosives_Backpack_Pouches_co.paa"
 		};
 	};
 	class 885th_Medic_Backpack: ls_gar_medic_backpack
@@ -11523,6 +11498,28 @@ class CfgVehicles
 		tf_hasLRradio = 1;
 		tf_range = 50000;
 		tf_subtype = "digital_lr";
+	};
+	class 885th_Wyrwulf_LR_Commslink: B_Kitbag_rgr
+	{
+		author="885th Bloodpack Division";
+		scope=2;
+		picture="";
+		displayName="[885th] Company Commslink";
+		maximumload = 500;
+
+		model="\A3\weapons_f\empty";
+		hiddenSelections[]=
+		{
+		};
+		hiddenSelectionsTextures[]=
+		{
+		};
+		tf_dialog="JLTS_clone_rto_radio_dialog";
+		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
+		tf_encryptionCode="tf_west_radio_code";
+		tf_hasLRradio=1;
+		tf_range=120000;
+		tf_subtype="digital_lr";
 	};
 	class 885th_Najax_ScoutPack: IDA_Clone_ScoutPack
 	{
