@@ -990,6 +990,11 @@ class CfgWeapons
 			"885_Armor\885_Armor\Customs\Vulkan\Vulkan_P2_Helm_co.paa",
 			"885_Armor\885_Armor\Customs\Vulkan\Vulkan_P2_Helm_co.paa",
         };
+		hiddenSelectionsMaterials[]=
+        {
+            "",
+            "885_Armor\885_Armor\Customs\Vulkan\vulkan_P2_Helmet_Visor.rvmat",
+        };
 	};
 	class 885th_Oxlong_P2_Helm: 885th_P2_V2_Helmet
 	{
@@ -7834,15 +7839,9 @@ class CfgWeapons
 			"885_Armor\885_Armor\Customs\Syxer\camo1_co.paa",
 			""
 		};
-		modelOptics="\ls\core\addons\characters_clone_legacy\equipment\nvgs\commander\lsd_gar_commander_optic.p3d";
 		picture="\ls\core\addons\characters_clone_legacy\_ui\icon_cloneVisor_cc_ca.paa";
 		visionMode[] = {"Normal","NVG","TI"};
 		thermalMode[] = {0,1};
-		ace_nightvision_border = "";
-		ace_nightvision_bluRadius = 0;
-		ace_nightvision_colorPreset[] = {0,{0,0,0,0},{1.3,1.2,0,0.9},{6,1,1,0}};
-		ace_nightvision_eyeCups = 1;
-		ace_nightvision_generation = 4;
 		class ItemInfo: ItemInfo
 		{
 			uniformModel="\ls\core\addons\characters_clone_legacy\equipment\nvgs\commander\lsd_gar_p2Commander_nvg.p3d";
