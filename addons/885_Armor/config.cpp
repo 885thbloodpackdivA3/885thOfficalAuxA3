@@ -11198,6 +11198,39 @@ class CfgVehicles
 			"885_Armor\885_Armor\Backpacks\885th_backpack_cover_co.paa"
 		};
 	};
+	class 3AS_B_CloneTrooper_F;
+	class 885th_Vornskr_Backpack_compact: 3AS_B_CloneTrooper_F
+	{
+		displayName = "Vornskr Backpack - Compact";
+		picture = "";
+		maximumload = 250;
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Backpacks\Vornskr_Backpack_co.paa";
+		};
+	};
+	class 3AS_B_CloneTrooper_Heavy_F;
+	class 885th_Vornskr_Heavy_compact: 3AS_B_CloneTrooper_Heavy_F
+	{
+		displayName = "Vornskr Heavy Backpack - Compact";
+		picture = "";
+		maximumload = 350;
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Backpacks\Heavy_Backpack_co.paa";
+		};
+	};
+	class 3AS_B_CloneTrooper_Rocket_F;
+	class 885th_Vornskr_AT_Backpack_compact: 3AS_B_CloneTrooper_Rocket_F
+	{
+		displayName = "Vornskr AT Backpack - Compact";
+		picture = "";
+		maximumload = 650;
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Backpacks\Rocket_Backpack_co.paa";
+		};
+	};
 	class 885th_Vornskr_Hazard_Backpack: B_Kitbag_rgr
 	{
 		author="885th Bloodpack Division";
