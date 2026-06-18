@@ -11290,35 +11290,6 @@ class CfgVehicles
 			"885_Armor\885_Armor\Backpacks\885th_Explosives_Backpack_Pouches_co.paa"
 		};
 	};
-	class 885th_Medic_Backpack: ls_gar_medic_backpack
-	{
-		author="885th Bloodpack Division";
-		scope=2;
-		picture="";
-		displayName="[885th] LS Vornskr Medic Backpack";
-		maximumload = 400;
-
-		hiddenSelections[]=
-		{
-			"backpack",
-			"cover",
-			"medic1",
-			"medic2"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Backpacks\885th_medic_backpack_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_backpack_cover_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_medic_backpack_bacta_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_medic_backpack_bacta_co.paa"
-		};
-		tf_dialog="JLTS_clone_rto_radio_dialog";
-		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
-		tf_encryptionCode="tf_west_radio_code";
-		tf_hasLRradio=1;
-		tf_range=25000;
-		tf_subtype="digital_lr";
-	};
 	class ls_cloneBackpack_ammo;
 	class 885th_Ammo_Backpack: ls_cloneBackpack_ammo
 	{
