@@ -17019,8 +17019,19 @@ class CfgWeapons
 		};
 	};
 	//Melee
-	class ShdwCmpny_VibroLaserknife_Base;
-	class 885th_Vibroblade_r: ShdwCmpny_VibroLaserknife_Base
+	class Knife_m3;
+	class 885th_VibroLaserknife_Base: Knife_m3
+	{
+		scope=0;
+		author="Antauri + 885th Bloodapack Division";
+		picture="\APR_IMS_iconRework\data\UI\WBK_IMS_Wpn_KnifeKukri_X_ca.paa";
+		UiPicture="\APR_IMS_iconRework\data\UI\WBK_IMS_Wpn_KnifeKukri_X_ca.paa";
+		IMS_Melee_Param_Sounds="[""ShwVibro_Empty_1"",""ShwVibro_Empty_2"",""ShwVibro_Empty_3"",""ShwVibro_Empty_4"",""ShwVibro_Empty_5"",""ShwVibro_Empty_1""]";
+		IMS_Melee_Param_SoundsOnHit="[""ShwVibroLaser_Hit_1"",""ShwVibroLaser_Hit_2"",""ShwVibroLaser_Hit_3"",""ShwVibroLaser_Hit_4"",""ShwVibroLaser_Hit_5"",""ShwVibroLaser_Hit_6"",""ShwVibroLaser_Hit_7"",""ShwVibroLaser_Hit_8"",""ShwVibroLaser_Hit_9"",""ShwVibroLaser_Hit_10"",""ShwVibroLaser_Hit_11"",""ShwVibroLaser_Hit_12"",""ShwVibroLaser_Hit_13"",""ShwVibroLaser_Hit_14""]";
+		IMS_Melee_Param_SoundsOnBlock="[""sword_to_sword_1"",""sword_to_sword_2"",""sword_to_sword_3"",""sword_to_sword_4""]";
+		IMS_Melee_Param_SoundOnDraw="ShwVibro_Drawn_1";
+	};
+	class 885th_Vibroblade_r: 885th_VibroLaserknife_Base
 	{
 		scope=2;
 		author="Antauri + 885th Bloodapack Division";
@@ -17028,10 +17039,10 @@ class CfgWeapons
 		displayName="[885th] Vibroblade";
 		picture="\ShadowLegion_Weapons\data\knife\UI\Vibroblade.paa";
 		UiPicture="\ShadowLegion_Weapons\data\knife\UI\Vibroblade.paa";
-		IMS_WeaponEventHandler_Special="[player, 'WBK_survival_weapon_3_r'] spawn WBK_IMS_WeaponAbility_Rotate;";
+		IMS_WeaponEventHandler_Special="[player, 'ShdwCmpny_Vibroblade_rotated_r'] spawn WBK_IMS_WeaponAbility_Rotate;";
 		IMS_Melee_Param_Damage=0.34999999;
 	};
-	class 885th_Vibroblade_rotated_r: ShdwCmpny_VibroLaserknife_Base
+	class 885th_Vibroblade_rotated_r: 885th_VibroLaserknife_Base
 	{
 		scope=2;
 		author="Antauri + 885th Bloodapack Division";
@@ -17040,7 +17051,7 @@ class CfgWeapons
 		picture="\ShadowLegion_Weapons\data\knife\UI\Vibroblade_reverse.paa";
 		UiPicture="\ShadowLegion_Weapons\data\knife\UI\Vibroblade_reverse.paa";
 		IMS_ExecutionType="ReversedKnife";
-		IMS_WeaponEventHandler_Special="[player, 'WBK_survival_weapon_3'] spawn WBK_IMS_WeaponAbility_Rotate;";
+		IMS_WeaponEventHandler_Special="[player, 'ShdwCmpny_Vibroblade_r'] spawn WBK_IMS_WeaponAbility_Rotate;";
 		IMS_Melee_Param_Damage=0.34999999;
 	};
 };
