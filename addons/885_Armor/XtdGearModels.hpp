@@ -585,12 +585,12 @@ class XtdGearModels
 				values[]=
 				{
 					"Backpack",
-					"BP Small",
 					"Invis",
 					"AT",
 					"EOD",
+					"Grenadier",
 					"Ammobearer",
-					"Heavy Small",
+					"Heavy",
 					"Medic",
 					"RTO",
 					"JTAC",
@@ -1623,15 +1623,10 @@ class XtdGearInfos
 	class CfgVehicles
 	{	
 		//Vornskr Backpacks
-		class 885th_Vornskr_Backpack
-		{
-			model="Vornskr_Backpacks";
-			backpack="Backpack";
-		};
 		class 885th_Vornskr_Backpack_compact
 		{
 			model="Vornskr_Backpacks";
-			backpack="BP Small";
+			backpack="Backpack";
 		};
 		class 885th_Vornskr_Backpack_invis
 		{
@@ -1648,6 +1643,11 @@ class XtdGearInfos
 			model="Vornskr_Backpacks";
 			backpack="EOD";
 		};
+		class 885th_Grenadier_Backpack_compact
+		{
+			model="Vornskr_Backpacks";
+			backpack="Grenadier";
+		};
 		class 885th_Ammo_Backpack
 		{
 			model="Vornskr_Backpacks";
@@ -1656,7 +1656,7 @@ class XtdGearInfos
 		class 885th_Vornskr_Heavy_compact
 		{
 			model="Vornskr_Backpacks";
-			backpack="Heavy Small";
+			backpack="Heavy";
 		};
 		class 885th_Medic_Backpack
 		{
