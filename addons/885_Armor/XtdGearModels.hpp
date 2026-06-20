@@ -564,6 +564,7 @@ class XtdGearModels
 					"ONI",
 					"Rios",
 					"Screwball",
+					"Stormer",
 					"Syxer",
 					"Thunder"
 				};
@@ -1605,6 +1606,11 @@ class XtdGearInfos
 		{
 			model="Custom_Vest";
 			vest="Screwball";
+		};
+		class 885th_Cust_VestV4_Rig_Stormer
+		{
+			model="Custom_Vest";
+			vest="Stormer";
 		};
 		class 885th_Cust_VestV4_Rig_Syxer
 		{
