@@ -8,8 +8,8 @@ class Cfgpatches
 		units[] = {
 			"885th_LSV_base_F",
 			"885th_LSV_EWeb",
+			"885th_LAAT_Transport",
 			"885th_LAAT_Gunship",
-			"885th_Smith_LAAT_Gunship",
 			"885th_ITT_Base",
 			"885th_ITT",
 			"885th_Draco_Base",
@@ -488,6 +488,123 @@ class CfgVehicles
 		{
 		};
 	};
+	class 3AS_LAAT_Mk2 : 3AS_laat_Base
+	{
+		class UserActions
+		{
+		};
+	};
+	class 885th_LAAT_Transport : 3AS_LAAT_Mk2
+	{
+		class EventHandlers
+		{
+			postInit = "[(_this select 0),""yes""] execVM '\FIR_AirWeaponSystem_US\Script\init\init.sqf';";
+		};
+		class UserActions : UserActions
+		{
+			class ls_impulsor_impulse
+			{
+				displayName="Impulse";
+				position="pilotview";
+				radius=5;
+				onlyForPlayer=0;
+				condition="ls_player == currentPilot this and {this call ls_impulsor_fnc_canImpulse}";
+				statement="[this, 1] call ls_impulsor_fnc_impulse";
+			};
+			class ls_impulsor_repulse: ls_impulsor_impulse
+			{
+				displayName="Repulse";
+				statement="[this, -1] call ls_impulsor_fnc_impulse";
+			};
+		};
+		class ls_impulsor: ls_impulsor_base
+		{
+		};
+		ls_hasImpulse = 1;
+		_mainBladeCenter = "rotor_center";
+		author = "3rd Army Studios + 885th BPD";
+		acceleration = 500;
+		ace_cargo_hasCargo = 1;
+		ace_cargo_space = 20;
+		ace_fastroping_enabled = 1;
+		ace_interaction_bodyWidth = 3;
+		ace_refuel_canReceive = 1;
+		ace_refuel_flowRate = 8;
+		ace_tagging_canTag = 1;
+		attendant = 1;
+		airBrakeFrictionCoef = 3;
+		airCapacity = 10;
+        maxSpeed = 500;          // Max speed in km/h the AI and SFM will try to achieve
+        rotorBigSpeed = 1.6;     // Multiplier for main rotor speed/force (Default is usually 1.0)
+        enginePower = 1800;      // Engine power in kW. Increase this to accelerate faster.
+        liftFactor = 1.3;        // Increases overall lift generation
+        cyclicalAsideForce = 1.5; // Increases roll/bank authority (helps maintain speed in turns)
+        cyclicalForwardForce = 1.8; // Crucial: Allows the nose to pitch down harder for forward speed
+		armor = 180;
+		armorLights = 0.4;
+		armorStructural = 1.5;
+		armorFuel = 2.0;
+		armorEngine = 1.5;
+		armorAvionics = 2.0;
+		audible = 50;
+		availableforsupporttypes[] = {"CAS_Heli", "Transport", "Drop"};
+		commanderCanSee = 31;					// default
+		gunnerCanSee = 1 + 2 + 4 + 8 + 16 + 32; // default
+		driverCanSee = 2 + 8 + 16 + 32;			// default
+		cost = 3000;
+		camouflage = 10.0;
+		canFloat = 1;
+		crew = "885th_Pilot";
+		crewCrashProtection = 0;
+		crewVulnerable = 1;
+		displayname = "[885th] LAAT/I Mk.1 Transport";
+		driverAction = "LAAT_Pilot";
+		driverCompartments = "Compartment1";
+		editorpreview = "\3AS\3AS_Laat\LAATI\data\editorpreview\3AS_laat.jpg";
+		enableGPS = 1;
+		enableManualFire = 1;
+		enableRadio = 1;
+		side = 1;
+		faction = "885th_Faction";
+		editorSubcategory = "Sub885thNS";
+		gearDown[] = {"gearDownInt", "gearDownExt"};
+		gearDownExt[] = {"3AS\3as_Laat\sounds\LaatdoorOPEN.ogg", 1, 1, 1000};
+		gearDownInt[] = {"3AS\3as_Laat\sounds\LaatdoorOPEN.ogg", 1, 1, 100};
+		gearUp[] = {"gearUpInt", "gearUpExt"};
+		gearUpExt[] = {"3AS\3as_Laat\sounds\LaatdoorOPEN.ogg", 1, 0.8, 1000};
+		gearUpInt[] = {"3AS\3as_Laat\sounds\LaatdoorOPEN.ogg", 1, 1, 100};
+		getOutAction = "GetOutLow";
+		getInRadius = 10;
+		hiddenSelections[] = {"camo", "camo1", "camo2", "camo3", "camo4"};
+		hiddenSelectionsMaterials[] = {};
+		hiddenSelectionsTextures[] = {"885_Vehicles\textures\laat\Transport\Hull_CO.paa", "885_Vehicles\textures\laat\Transport\Wings_CO.paa", "885_Vehicles\textures\laat\Transport\Weapons_CO.paa", "885_Vehicles\textures\laat\Transport\Weapon_Details_CO.paa", "885_Vehicles\textures\laat\Transport\Interior_CO.paa"};
+		hiddenUnderwaterSelections[] = {};
+		hiddenUnderwaterSelectionsTextures[] = {};
+		icon = "\3AS\3AS_Laat\LAATI\data\ui\Map_laat_CA.paa";
+		mainBladeCenter = "rotor_center";
+		LockDetectionSystem = "1 + 2 + 4 + 8 + 16 + 32";
+		magazines[] = {"1000Rnd_20mm_shells", "Laserbatteries", "3AS_PylonMissile_LAAT_8Rnd_Missile_AA", "3AS_PylonMissile_LAAT_8Rnd_Missile_AA", "3AS_PylonMissile_LAAT_8Rnd_Missile_AA", "3AS_LAAT_8Rnd_Missile_AGM", "3AS_LAAT_8Rnd_Missile_AGM", "3AS_LAAT_8Rnd_Missile_AGM", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells"};
+		model = "3as\3AS_laat\LAATi\model\tcw_laat.p3d";
+		nameSound = "veh_helicopter_s";
+		picture = "3AS\3AS_Laat\LAATI\data\ui\LAAT_Profile_ca.paa";
+		receiveRemoteTargets = true;
+		reportRemoteTargets = true;
+		reportOwnPosition = true;
+		showAllTargets = 2;
+		showCrewAim = 4;
+		scope = 2;
+		slingLoadMaxCargoMass = 50000;
+		slingLoadMemoryPoint = "sling";
+		slingLoadMinCargoMass = 0;
+		typicalcargo[] = {"885th_Pilot"};
+		weapons[] = {"3as_LAAT_Medium_Canon", "3AS_LAAT_Missile_AGM", "3AS_LAAT_Missile_AA", "CMFlareLauncher","Laserdesignator_pilotCamera"};
+		weaponsGroup1 = "1 + 2";
+		weaponsGroup2 = 4;
+		weaponsGroup3 = "8 + 	16 + 	32";
+		weaponsGroup4 = "64 + 		128";
+		weaponSlots = 0;
+	};
+
 	class 885th_LAAT_Gunship : 3AS_LAAT_Mk1
 	{
 		class EventHandlers
@@ -531,7 +648,7 @@ class CfgVehicles
 		author = "3rd Army Studios + 885th BPD";
 		acceleration = 450;
 		ace_cargo_hasCargo = 1;
-		ace_cargo_space = 16;
+		ace_cargo_space = 8;
 		ace_fastroping_enabled = 1;
 		ace_interaction_bodyWidth = 3;
 		ace_refuel_canReceive = 1;
@@ -540,12 +657,12 @@ class CfgVehicles
 		attendant = 1;
 		airBrakeFrictionCoef = 3;
 		airCapacity = 10;
-		armor = 180;
-		armorLights = 0.4;
-		armorStructural = 1.5;
-		armorFuel = 2.0;
-		armorEngine = 1.5;
-		armorAvionics = 2.0;
+		armor = 250;
+		armorLights = 0.8;
+		armorStructural = 1.6;
+		armorFuel = 2.5;
+		armorEngine = 1.8;
+		armorAvionics = 2.5;
 		audible = 50;
 		availableforsupporttypes[] = {"CAS_Heli", "Transport", "Drop"};
 		commanderCanSee = 31;					// default
@@ -557,7 +674,7 @@ class CfgVehicles
 		crew = "885th_Pilot";
 		crewCrashProtection = 0;
 		crewVulnerable = 1;
-		displayname = "[885th] LAAT/I Mk.1";
+		displayname = "[885th] LAAT/I Mk.2 Gunship";
 		driverAction = "LAAT_Pilot";
 		driverCompartments = "Compartment1";
 		editorpreview = "\3AS\3AS_Laat\LAATI\data\editorpreview\3AS_laat.jpg";
@@ -577,13 +694,13 @@ class CfgVehicles
 		getInRadius = 10;
 		hiddenSelections[] = {"camo", "camo1", "camo2", "camo3", "camo4"};
 		hiddenSelectionsMaterials[] = {};
-		hiddenSelectionsTextures[] = {"885_Vehicles\textures\laat\Hull_CO.paa", "885_Vehicles\textures\laat\Wings_CO.paa", "885_Vehicles\textures\laat\Weapons_CO.paa", "885_Vehicles\textures\laat\Weapon_Details_CO.paa", "885_Vehicles\textures\laat\Interior_CO.paa"};
+		hiddenSelectionsTextures[] = {"885_Vehicles\textures\laat\Gunship\Hull_CO.paa", "885_Vehicles\textures\laat\Gunship\Wings_CO.paa", "885_Vehicles\textures\laat\Gunship\Weapons_CO.paa", "885_Vehicles\textures\laat\Gunship\Weapon_Details_CO.paa", "885_Vehicles\textures\laat\Gunship\Interior_CO.paa"};
 		hiddenUnderwaterSelections[] = {};
 		hiddenUnderwaterSelectionsTextures[] = {};
 		icon = "\3AS\3AS_Laat\LAATI\data\ui\Map_laat_CA.paa";
 		mainBladeCenter = "rotor_center";
 		LockDetectionSystem = "1 + 2 + 4 + 8 + 16 + 32";
-		magazines[] = {"1000Rnd_20mm_shells", "Laserbatteries", "3AS_PylonMissile_LAAT_8Rnd_Missile_AA", "3AS_LAAT_8Rnd_Missile_AGM", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells"};
+		magazines[] = {"1000Rnd_20mm_shells", "1000Rnd_20mm_shells", "Laserbatteries", "3AS_PylonMissile_LAAT_8Rnd_Missile_AA", "3AS_PylonMissile_LAAT_8Rnd_Missile_AA", "3AS_PylonMissile_LAAT_8Rnd_Missile_AA", "3AS_LAAT_8Rnd_Missile_AGM", "3AS_LAAT_8Rnd_Missile_AGM", "3AS_LAAT_8Rnd_Missile_AGM", "3AS_LAAT_8Rnd_Missile_AGM", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells"};
 		model = "3as\3AS_laat\LAATi\model\tcw_laat.p3d";
 		nameSound = "veh_helicopter_s";
 		picture = "3AS\3AS_Laat\LAATI\data\ui\LAAT_Profile_ca.paa";
