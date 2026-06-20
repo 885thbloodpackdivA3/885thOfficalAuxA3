@@ -1645,7 +1645,7 @@ class XtdGearInfos
 			model="Vornskr_Backpacks";
 			backpack="Ammobearer";
 		};
-		class 885th_Medic_Backpack
+		class 885th_Medical_Backpack
 		{
 			model="Vornskr_Backpacks";
 			backpack="Medic";
