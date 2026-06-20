@@ -7804,7 +7804,7 @@ class CfgWeapons
 		modelOptics="\ls\core\addons\characters\equipment\nvg\ls_optic_dummy.p3d";
 		picture="\ls\core\addons\characters_clone_legacy\_ui\icon_cloneVisor_ca.paa";
 		visionMode[] = {"Normal","NVG","TI"};
-		thermalMode[] = {0,1};
+		thermalMode[]={2,3};
 		ace_nightvision_border = "";
 		ace_nightvision_bluRadius = 0;
 		ace_nightvision_colorPreset[] = {0,{0,0,0,0},{1.3,1.2,0,0.9},{6,1,1,0}};
