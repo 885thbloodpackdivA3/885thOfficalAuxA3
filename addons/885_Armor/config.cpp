@@ -60,6 +60,7 @@ class Cfgpatches
 			"885th_Stormer_P2_Helmet",
 			"885th_Charge_BARC_Helm",
 			"885th_Nero_BARC_Helm",
+			"885th_Rain_P2_Helmet",
 			"885th_Wrath_P2_Helmet",
 			"885th_Recruit_P2_Helm",
 			"885th_Nightfall_P2_Helmet",
@@ -835,6 +836,27 @@ class CfgWeapons
         {
         	"885_Armor\885_Armor\Customs\Mayday\885th_Mayday_P2_Helm_co.paa",
 			"885_Armor\885_Armor\Customs\Mayday\885th_Mayday_P2_Helm_co.paa",
+        };
+    };
+	class 885th_Rain_P2_Helmet: 885th_P2_V2_Helmet
+    {
+        author="885th Bloodpack Division";
+        displayName="[885th] Rain's Custom P2 Helmet";
+        hiddenselections[]=
+        {
+            "Camo", 
+            "Visor",
+        };
+        hiddenSelectionsTextures[]=
+        {
+            "885_Armor\885_Armor\Customs\Rain\P2_Helmet_co.paa",
+			"885_Armor\885_Armor\Customs\Rain\P2_Helmet_co.paa",
+
+        };
+        hiddenSelectionsMaterials[]=
+        {
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
+            "885_Armor\885_Armor\Customs\Rain\Rain_P2_Helmet_Visor.rvmat",
         };
     };
 	class 885th_Rios_P2_Helmet: 885th_P2_V2_Helmet
