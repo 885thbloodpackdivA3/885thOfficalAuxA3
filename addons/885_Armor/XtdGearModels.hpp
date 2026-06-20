@@ -588,13 +588,16 @@ class XtdGearModels
 					"Backpack",
 					"Invis",
 					"AT",
-					"Explosives",
+					"EOD",
+					"Grenadier",
 					"Ammobearer",
+					"Heavy",
 					"Medic",
 					"RTO",
 					"JTAC",
 					"Officer",
 					"Command",
+					"Company",
 					"Hazard",
 					"Hazard CO",
 					"Mortar"
@@ -1628,7 +1631,7 @@ class XtdGearInfos
 	class CfgVehicles
 	{	
 		//Vornskr Backpacks
-		class 885th_Vornskr_Backpack
+		class 885th_Vornskr_Backpack_compact
 		{
 			model="Vornskr_Backpacks";
 			backpack="Backpack";
@@ -1638,15 +1641,20 @@ class XtdGearInfos
 			model="Vornskr_Backpacks";
 			backpack="Invis";
 		};
-		class 885th_LS_Rocket_Backpack
+		class 885th_Vornskr_AT_Backpack_compact
 		{
 			model="Vornskr_Backpacks";
 			backpack="AT";
 		};
-		class 885th_LS_Explosives_Backpack
+		class 885th_Vornskr_EOD_Backpack_compact
 		{
 			model="Vornskr_Backpacks";
-			backpack="Explosives";
+			backpack="EOD";
+		};
+		class 885th_Grenadier_Backpack_compact
+		{
+			model="Vornskr_Backpacks";
+			backpack="Grenadier";
 		};
 		class 885th_Ammo_Backpack
 		{
@@ -1658,7 +1666,7 @@ class XtdGearInfos
 			model="Vornskr_Backpacks";
 			backpack="Medic";
 		};
-		class 885th_RTO_Backpack
+		class 885th_Vornskr_RTO_Backpack
 		{
 			model="Vornskr_Backpacks";
 			backpack="RTO";
@@ -1673,10 +1681,15 @@ class XtdGearInfos
 			model="Vornskr_Backpacks";
 			backpack="Officer";
 		};
-		class 885th_Wyrwulf_Clone_Radiopack
+		class 885th_Command_Clone_Radiopack
 		{
 			model="Vornskr_Backpacks";
 			backpack="Command";
+		};
+		class 885th_Wyrwulf_LR_Commslink
+		{
+			model="Vornskr_Backpacks";
+			backpack="Company";
 		};
 		class 885th_Vornskr_Hazard_Backpack
 		{

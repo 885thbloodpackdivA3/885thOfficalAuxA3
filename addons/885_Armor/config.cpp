@@ -11206,23 +11206,59 @@ class CfgVehicles
 	class ls_clone_unit_base;
 	class 3AS_Rep_Commando_base_F;
 	class GR_Femclone_dirty_armor_body;
-	class 885th_Vornskr_Backpack: ls_gar_standard_backpack
+	class 3AS_B_CloneTrooper_F;
+	class 885th_Vornskr_Backpack_compact: 3AS_B_CloneTrooper_F
 	{
-		author="885th Bloodpack Division";
-		scope=2;
-		picture="";
-		displayName="[885th] LS Vornskr Backpack";
+		displayName = " [885th] Vornskr Backpack";
+		picture = "";
 		maximumload = 300;
-
-		hiddenSelections[]=
-		{
-			"backpack",
-			"cover"
-		};
 		hiddenSelectionsTextures[]=
 		{
-			"885_Armor\885_Armor\Backpacks\885th_backpack_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_backpack_cover_co.paa"
+			"885_Armor\885_Armor\Backpacks\Vornskr_Backpack_co.paa";
+		};
+	};
+	class 3AS_B_CloneTrooper_Demo;
+	class 885th_Vornskr_EOD_Backpack_compact: 3AS_B_CloneTrooper_Demo
+	{
+		displayName = "[885th] Vornskr EOD Backpack";
+		picture = "";
+		maximumload = 400;
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Backpacks\EOD_Backpack_co.paa";
+		};
+	};
+	class 3AS_B_CloneTrooper_Grenadier_F;
+	class 885th_Grenadier_Backpack_compact: 3AS_B_CloneTrooper_Grenadier_F
+	{
+		displayName = "[885th] Vornskr Grenadier Backpack";
+		picture = "";
+		maximumload = 400;
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Backpacks\Grenadier_Backpack_co.paa";
+		};
+	};
+	class 3AS_B_CloneTrooper_Heavy_F;
+	class 885th_Vornskr_Heavy_compact: 3AS_B_CloneTrooper_Heavy_F
+	{
+		displayName = " [885th] Vornskr Heavy Backpack";
+		picture = "";
+		maximumload = 400;
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Backpacks\Heavy_Backpack_co.paa";
+		};
+	};
+	class 3AS_B_CloneTrooper_Rocket_F;
+	class 885th_Vornskr_AT_Backpack_compact: 3AS_B_CloneTrooper_Rocket_F
+	{
+		displayName = "[885th] Vornskr AT Backpack";
+		picture = "";
+		maximumload = 700;
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Backpacks\Rocket_Backpack_co.paa";
 		};
 	};
 	class 885th_Vornskr_Hazard_Backpack: B_Kitbag_rgr
@@ -11243,86 +11279,12 @@ class CfgVehicles
 			"885_Armor\885_Armor\Vornskr\Hazard\Trooper\885th_Vornskr_Hazard_Backpack_Base_co.paa"
 		};
 	};
-	class 885th_Vornskr_Hazard_RTO_Backpack: B_Kitbag_rgr
-	{
-		author="885th Bloodpack Division";
-		scope=2;
-		picture="";
-		displayName="[885th] Vornskr Hazard Officer Backpack";
-		maximumload = 400;
-
-		model="\JLTS_AE_GM\SEA_Backpack_GM_RTO.p3d";
-		hiddenSelections[]=
-		{
-			"camo1",
-			"camo2"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Vornskr\Hazard\Officer\885th_Vornskr_Hazard_RTOPack_COM_co.paa",
-			"885_Armor\885_Armor\Vornskr\Hazard\Officer\885th_Vornskr_Hazard_RTOAttach_COM_co.paa"
-		};
-		tf_dialog="JLTS_clone_rto_radio_dialog";
-		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
-		tf_encryptionCode="tf_west_radio_code";
-		tf_hasLRradio=1;
-		tf_range=40000;
-		tf_subtype="digital_lr";
-	};
-	class 885th_LS_Explosives_Backpack: ls_gar_heavy_backpack
-	{
-		author="885th Bloodpack Division";
-		scope=2;
-		picture="";
-		displayName="[885th] Heavy Explosives Backpack";
-		maximumload = 500;
-
-		hiddenSelections[]=
-		{
-			"backpack",
-			"cover",
-			"pouches",
-			"tube"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Backpacks\885th_Explosives_Backpack_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_Explosives_Cover_Backpack_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_Explosives_Backpack_Pouches_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_Explosives_Backpack_Tube_co.paa"
-		};
-	};
-	class 885th_LS_Rocket_Backpack: ls_gar_rocket_backpack
-	{
-		author="885th Bloodpack Division";
-		scope=2;
-		picture="";
-		displayName="[885th] LS Anti-Tank Explosives Backpack";
-		maximumload = 700;
-
-		hiddenSelections[]=
-		{
-			"backpack",
-			"holder",
-			"rocket",
-			"light",
-			"pouches"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"\885_Armor\885_Armor\Backpacks\885th_Explosives_Backpack_co.paa",
-			"\ls\core\addons\characters_clone_legacy\backpacks\standard\data\holder_co.paa",
-			"\ls\core\addons\characters_clone_legacy\backpacks\standard\data\rocket_co.paa",
-			"\ls\core\addons\characters_clone_legacy\backpacks\standard\data\light_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_Explosives_Backpack_Pouches_co.paa"
-		};
-	};
 	class ls_cloneBackpack_ammo;
 	class 885th_Ammo_Backpack: ls_cloneBackpack_ammo
 	{
 		author="885th Bloodpack Division";
 		scope=2;
-		displayName="[885th] LS Vornskr Ammobearer Backpack";
+		displayName="[885th] Vornskr Ammobearer Backpack";
 		maximumload = 800;
 		model="\ls\core\addons\characters_clone\backpacks\standard\ls_backpack_clone_standard.p3d";
 		hiddenSelections[]= 
@@ -11355,7 +11317,7 @@ class CfgVehicles
 	{
 		author="885th Bloodpack Division";
 		scope=2;
-		displayName="[885th] LS Vornskr JTAC Backpack";
+		displayName="[885th] Vornskr JTAC Backpack";
 		maximumload = 250;
 		model="\ls\core\addons\characters_clone\backpacks\standard\ls_backpack_clone_standard.p3d";
 		hiddenSelections[]= 
@@ -11450,24 +11412,15 @@ class CfgVehicles
 		{
 		};
 	};
-	class 885th_RTO_Backpack: ls_gar_radio_backpack
+	class 3AS_B_CloneTrooper_Radio_F;
+	class 885th_Vornskr_RTO_Backpack: 3AS_B_CloneTrooper_Radio_F
 	{
-		author="885th Bloodpack Division";
-		scope=2;
-		picture="";
-		displayName="[885th] LS Vornskr RTO Backpack";
+		displayName = "[885th] Vornskr RTO Backpack";
+		picture = "";
 		maximumload = 300;
-		hiddenSelections[]=
-		{
-			"backpack",
-			"radio",
-			"screen"
-		};
 		hiddenSelectionsTextures[]=
 		{
-			"885_Armor\885_Armor\Backpacks\885th_backpack_RTO_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_radio_RTO_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_screen_RTO_co.paa"
+			"885_Armor\885_Armor\Backpacks\RTO_Backpack_co.paa";
 		};
 		tf_dialog="JLTS_clone_rto_radio_dialog";
 		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
@@ -11481,7 +11434,7 @@ class CfgVehicles
 		author = "885th Bloodpack Division";
 		scope = 2;
 		displayName = "[885th] Officer Antenna";
-		maximumload = 300;
+		maximumload = 350;
 		picture = "\Indecisive_Armoury_Units\REPUBLIC\Backpacks\radioantenna_ui.paa";
 		hiddenSelectionsTextures[] = 
 		{	
@@ -11496,7 +11449,7 @@ class CfgVehicles
 		tf_dialogUpdate = "call TFAR_fnc_updateLRDialogToChannel;";
 		tf_encryptionCode = "tf_west_radio_code";
 		tf_hasLRradio = 1;
-		tf_range = 40000;
+		tf_range = 45000;
 		tf_subtype = "digital_lr";
 	};
 	class 885th_Nightsingers_Clone_Radiopack: IDA_Clone_Radiopack
@@ -11516,7 +11469,7 @@ class CfgVehicles
 		tf_range = 60000;
 		tf_subtype = "digital_lr";
 	};
-	class 885th_Wyrwulf_Clone_Radiopack: IDA_Clone_Radiopack
+	class 885th_Command_Clone_Radiopack: IDA_Clone_Radiopack
 	{
 		author = "885th Bloodpack Division";
 		scope = 2;
@@ -11532,6 +11485,28 @@ class CfgVehicles
 		tf_hasLRradio = 1;
 		tf_range = 50000;
 		tf_subtype = "digital_lr";
+	};
+	class 885th_Wyrwulf_LR_Commslink: B_Kitbag_rgr
+	{
+		author="885th Bloodpack Division";
+		scope=2;
+		picture="";
+		displayName="[885th] Company Commslink";
+		maximumload = 500;
+
+		model="\A3\weapons_f\empty";
+		hiddenSelections[]=
+		{
+		};
+		hiddenSelectionsTextures[]=
+		{
+		};
+		tf_dialog="JLTS_clone_rto_radio_dialog";
+		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
+		tf_encryptionCode="tf_west_radio_code";
+		tf_hasLRradio=1;
+		tf_range=120000;
+		tf_subtype="digital_lr";
 	};
 	class 885th_Najax_ScoutPack: IDA_Clone_ScoutPack
 	{
