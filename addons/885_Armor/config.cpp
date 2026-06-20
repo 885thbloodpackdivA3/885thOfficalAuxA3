@@ -60,6 +60,7 @@ class Cfgpatches
 			"885th_Stormer_P2_Helmet",
 			"885th_Charge_BARC_Helm",
 			"885th_Nero_BARC_Helm",
+			"885th_Rain_P2_Helmet",
 			"885th_Wrath_P2_Helmet",
 			"885th_Recruit_P2_Helm",
 			"885th_Nightfall_P2_Helmet",
@@ -837,6 +838,27 @@ class CfgWeapons
 			"885_Armor\885_Armor\Customs\Mayday\885th_Mayday_P2_Helm_co.paa",
         };
     };
+	class 885th_Rain_P2_Helmet: 885th_P2_V2_Helmet
+    {
+        author="885th Bloodpack Division";
+        displayName="[885th] Rain's Custom P2 Helmet";
+        hiddenselections[]=
+        {
+            "Camo", 
+            "Visor",
+        };
+        hiddenSelectionsTextures[]=
+        {
+            "885_Armor\885_Armor\Customs\Rain\P2_Helmet_co.paa",
+			"885_Armor\885_Armor\Customs\Rain\P2_Helmet_co.paa",
+
+        };
+        hiddenSelectionsMaterials[]=
+        {
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
+            "885_Armor\885_Armor\Customs\Rain\Rain_P2_Helmet_Visor.rvmat",
+        };
+    };
 	class 885th_Rios_P2_Helmet: 885th_P2_V2_Helmet
     {
         author="885th Bloodpack Division";
@@ -989,6 +1011,11 @@ class CfgWeapons
         {
 			"885_Armor\885_Armor\Customs\Vulkan\Vulkan_P2_Helm_co.paa",
 			"885_Armor\885_Armor\Customs\Vulkan\Vulkan_P2_Helm_co.paa",
+        };
+		hiddenSelectionsMaterials[]=
+        {
+            "",
+            "885_Armor\885_Armor\Customs\Vulkan\vulkan_P2_Helmet_Visor.rvmat",
         };
 	};
 	class 885th_Oxlong_P2_Helm: 885th_P2_V2_Helmet
@@ -7784,9 +7811,6 @@ class CfgWeapons
 		author="885th Bloodpack Division + Legion Studios";
 		displayName="Bandit's Armored Plating";
 		model="\ls\core\addons\characters_clone_legacy\equipment\nvgs\tanker\lsd_gar_tanker_nvg.p3d";
-		modelOptics="\ls\core\addons\characters\equipment\nvg\ls_optic_dummy.p3d";
-		ace_nightvision_border="\ls\core\addons\characters_clone_legacy\equipment\nvgs\rangefinder\data\optic_ca.paa";
-		picture="\ls\core\addons\characters_clone_legacy\_ui\icon_cloneVisor_ca.paa";
 		hiddenSelections[]=
 		{
 			"camo1"
@@ -7799,6 +7823,15 @@ class CfgWeapons
         {
             "885_Armor\885_Armor\Customs\Bandit\Bandit_Tanker_Attachment.rvmat"
         };
+		modelOptics="\ls\core\addons\characters\equipment\nvg\ls_optic_dummy.p3d";
+		picture="\ls\core\addons\characters_clone_legacy\_ui\icon_cloneVisor_ca.paa";
+		visionMode[] = {"Normal","NVG","TI"};
+		thermalMode[]={2,3};
+		ace_nightvision_border = "";
+		ace_nightvision_bluRadius = 0;
+		ace_nightvision_colorPreset[] = {0,{0,0,0,0},{1.3,1.2,0,0.9},{6,1,1,0}};
+		ace_nightvision_eyeCups = 1;
+		ace_nightvision_generation = 4;
 		class ItemInfo: ItemInfo
 		{
 			uniformModel="\ls\core\addons\characters_clone_legacy\equipment\nvgs\tanker\lsd_gar_tanker_nvg.p3d";
@@ -7828,15 +7861,9 @@ class CfgWeapons
 			"885_Armor\885_Armor\Customs\Syxer\camo1_co.paa",
 			""
 		};
-		modelOptics="\ls\core\addons\characters_clone_legacy\equipment\nvgs\commander\lsd_gar_commander_optic.p3d";
-		ace_nightvision_border="\ls\core\addons\characters_clone_legacy\equipment\nvgs\commander\data\optic_ca.paa";
 		picture="\ls\core\addons\characters_clone_legacy\_ui\icon_cloneVisor_cc_ca.paa";
-		visionMode[]=
-		{
-			"Normal",
-			"NVG",
-			"TI"
-		};
+		visionMode[] = {"Normal","NVG","TI"};
+		thermalMode[] = {0,1};
 		class ItemInfo: ItemInfo
 		{
 			uniformModel="\ls\core\addons\characters_clone_legacy\equipment\nvgs\commander\lsd_gar_p2Commander_nvg.p3d";
@@ -11252,32 +11279,6 @@ class CfgVehicles
 			"885_Armor\885_Armor\Vornskr\Hazard\Trooper\885th_Vornskr_Hazard_Backpack_Base_co.paa"
 		};
 	};
-	class 885th_Vornskr_Hazard_RTO_Backpack: B_Kitbag_rgr
-	{
-		author="885th Bloodpack Division";
-		scope=2;
-		picture="";
-		displayName="[885th] Vornskr Hazard Officer Backpack";
-		maximumload = 400;
-
-		model="\JLTS_AE_GM\SEA_Backpack_GM_RTO.p3d";
-		hiddenSelections[]=
-		{
-			"camo1",
-			"camo2"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Vornskr\Hazard\Officer\885th_Vornskr_Hazard_RTOPack_COM_co.paa",
-			"885_Armor\885_Armor\Vornskr\Hazard\Officer\885th_Vornskr_Hazard_RTOAttach_COM_co.paa"
-		};
-		tf_dialog="JLTS_clone_rto_radio_dialog";
-		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
-		tf_encryptionCode="tf_west_radio_code";
-		tf_hasLRradio=1;
-		tf_range=40000;
-		tf_subtype="digital_lr";
-	};
 	class ls_cloneBackpack_ammo;
 	class 885th_Ammo_Backpack: ls_cloneBackpack_ammo
 	{
@@ -11350,6 +11351,50 @@ class CfgVehicles
 		tf_hasLRradio=1;
 		tf_range=100000;
 		tf_subtype="digital_lr";
+	};
+	class 885th_Medical_Backpack: B_kitbag_rgr
+	{
+		author="885th Bloodpack Division";
+		scope=2;
+		displayName="[885th] Medical Backpack";
+		model="\ls\core\addons\characters_clone\backpacks\standard\ls_backpack_clone_standard.p3d";
+		hiddenSelections[]= 
+		{
+			"backpack",
+			"cloth",
+			"radio",
+			"rockets",
+			"medic",
+			"bacta",
+			"ammo",
+			"heavy",
+			"supplies",
+			"lower_supplies",
+			"canister",
+			"grenade"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Medic\Medic_LS_Backpack_CO.paa",
+			"885_Armor\885_Armor\Medic\Medic_LS_Backpack_CO.paa",
+			"",
+			"",
+			"885_Armor\885_Armor\Medic\Medic_LS_Middle_PackPouchesC_CO.paa",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"885_Armor\885_Armor\Medic\Medic_LS_Lower_PackCylinderB_CO.paa"
+		};
+		maximumload=400;
+		tf_dialog="JLTS_clone_lr_programmer_radio_dialog";
+		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
+		tf_encryptionCode="tf_west_radio_code";
+		tf_hasLRradio=1;
+		tf_range=25000;
+		tf_subtype="digital_lr";
+		mass=22;
 	};
 	class 885th_Vornskr_Backpack_invis: B_Kitbag_rgr
 	{

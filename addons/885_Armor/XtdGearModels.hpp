@@ -205,6 +205,7 @@ class XtdGearModels
 					"Owl",
 					"Oxlong",
 					"Phantom",
+					"Rain",
 					"Rios",
 					"Screwball",
 					"Scorch",
@@ -1057,6 +1058,13 @@ class XtdGearInfos
 			variant="RC";
 			camo="RC";
 		};
+		class  885th_Rain_P2_Helmet
+		{
+			model="Trooper_Custom_Helmets";
+			rank="Rain";
+			variant="P2";
+			camo="P2";
+		};
 		class 885th_Rios_P2_Helmet
 		{
 			model="Trooper_Custom_Helmets";
@@ -1653,12 +1661,7 @@ class XtdGearInfos
 			model="Vornskr_Backpacks";
 			backpack="Ammobearer";
 		};
-		class 885th_Vornskr_Heavy_compact
-		{
-			model="Vornskr_Backpacks";
-			backpack="Heavy";
-		};
-		class 885th_Medic_Backpack
+		class 885th_Medical_Backpack
 		{
 			model="Vornskr_Backpacks";
 			backpack="Medic";
