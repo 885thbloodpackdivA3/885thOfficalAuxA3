@@ -15,6 +15,8 @@ class Cfgpatches
 			"885th_Draco_Base",
 			"885th_Draco_Unarmed",
 			"885th_Draco_Autocannon",
+			"885th_Reaver_Base",
+			"885th_Reaver",
 			"885th_ATTE_base",
 			"885th_ATTE",
 			"885th_Saber_Base",
@@ -224,7 +226,11 @@ class CfgVehicles
 	class AnimationSources;
 	class Eventhandlers;
 	class HitPoints;
+	class HitEngine;
+	class HitLTrack;
+	class HitRTrack;
 	class HitHull;
+	class HitFuel;
 	class MarkerLights;
 	class ViewPilot;
 
@@ -1244,6 +1250,11 @@ class CfgVehicles
 		acceleration=17;
 		enableRadio=1;
 		enableGPS=1;
+		ace_cargo_hasCargo = 1;
+		ace_cargo_space = 16;
+		ace_repair_canRepair=1;
+		ace_repair_spareTracks=2;
+		ace_repair_spareWheels=4;
 		crewCrashProtection=1.35;
 		crewExplosionProtection=0.99000001;
 		crewVulnerable=0;
@@ -1720,7 +1731,7 @@ class CfgVehicles
 		thrustDelay=0.25;
 		brakeIdleSpeed=1.78;
 		maxSpeed=105;
-		fuelCapacity=45;
+		fuelCapacity=50;
 		wheelCircumference=3.8050001;
 		waterLeakiness=2.5;
 		normalSpeedForwardCoef=0.54000002;
@@ -2600,6 +2611,7 @@ class CfgVehicles
 		};
 	};
 
+
 	class NewTurret;
 	class Optics_Armored;
 	class Optics_Gunner_APC_01 : Optics_Armored
@@ -2631,5 +2643,608 @@ class CfgVehicles
 		hiddenSelections[] = {"camo1", "camo2", "camo3", "camo4", "camo5", "camo6", "camo7"};
 		hiddenSelectionsTextures[] = {"885_Vehicles\textures\ITT\885_ITT_CO.paa", "3as\3as_itt\data\glass_co.paa", "3as\3as_itt\data\itt_int_back_co.paa", "3as\3as_itt\data\itt_door_co.paa", "3as\3as_itt\data\itt_int_front_co.paa", "3as\3as_itt\data\itt_emiss_co.paa", "3as\3as_itt\data\itt_turret_co.paa"};
 		editorPreview = "3AS\3as_ITT\data\ui\ITT_Side_ca.paa";
+	};
+	class 3AS_PX10_REP_R3;
+	class 885th_Reaver_Base: 3AS_PX10_REP_R3
+	{
+		
+		scope=1;
+		scopeCurator=1;
+		author="885th Bloodpack Division";
+		displayName="[885th] Reaver BASE";
+		side=1;
+		faction = "885th_Faction";
+		crew = "885th_Pilot";
+		fuelCapacity=100;
+		brakeIdleSpeed=2.78;
+		maxSpeed=100;
+		cost=2500000;
+		threat[]={0.80000001,1,0.30000001};
+		icon="3as\3AS_Rebel_Armor\PX10_Cav\data\ui\px10cav_top_ca.paa";
+		picture="3as\3AS_Rebel_Armor\PX10_Cav\data\ui\px10cav_side_ca.paa";
+		memoryPointTaskMarker="TaskMarker_1_pos";
+		armor=150;
+		armorStructural=7;
+		crewExplosionProtection=0.99989998;
+		damageResistance=0.0054700002;
+		crewVulnerable=0;
+		epeImpulseDamageCoef=18;
+		ace_cookoff_probability=0.5;
+		class HitPoints: HitPoints
+		{
+			class HitHull: HitHull
+			{
+				armor=5.0;
+				material=-1;
+				name="telo";
+				visual="zbytek";
+				passThrough=1;
+				minimalHit=0.2;
+				explosionShielding=0.4;
+				radius=0.12;
+			};
+			class HitEngine: HitEngine
+			{
+				armor=0.75;
+				material=-1;
+				name="motor";
+				convexComponent="Hit_engine";
+				passThrough=0.2;
+				minimalHit=0.23999999;
+				explosionShielding=0.3;
+				radius=0.33000001;
+			};
+			class HitLTrack: HitLTrack
+			{
+				armor=1.0;
+				material=-1;
+				name="pas_L";
+				passThrough=0;
+				minimalHit=0.079999998;
+				explosionShielding=1.4400001;
+				radius=0.30000001;
+			};
+			class HitRTrack: HitRTrack
+			{
+				armor=1.0;
+				material=-1;
+				name="pas_P";
+				convexComponent="Hit_Fuel";
+				passThrough=0;
+				minimalHit=0.079999998;
+				explosionShielding=1.4400001;
+				radius=0.30000001;
+			};
+			class HitFuel: HitFuel
+			{
+				armor=2.0;
+				material=-1;
+				name="palivo";
+				passThrough=0.1;
+				minimalHit=0.1;
+				explosionShielding=0.7;
+				radius=0.25;
+			};
+		};
+		class CargoTurret;
+		class Turrets: Turrets
+		{
+			class MainTurret: MainTurret
+			{
+				class ViewGunner;
+				class Turrets
+				{
+				};
+				memoryPointGun="usti hlavne";
+				gunBeg="usti hlavne";
+				gunEnd="konec hlavne";
+				weapons[]=
+				{
+					"885th_IFV_Coaxial",
+					"SmokeLauncher"
+				};
+				magazines[]=
+				{
+					"885th_IFV_AP_Mag",
+					"885th_IFV_AP_Mag",
+					"885th_IFV_AP_Mag",
+					"885th_IFV_AP_Mag",
+					"885th_IFV_AP_Mag",
+					"SmokeLauncherMag"
+				};
+				animationSourceBody="Mainturret";
+				animationSourceGun="MainGun";
+				body="Mainturret";
+				gun="MainGun";
+				minElev=-10;
+				maxElev=20;
+				initElev=0;
+				maxTurn=360;
+				minTurn=-360;
+				initTurn=0;
+				soundServo[]=
+				{
+					"A3\Sounds_F\vehicles\armor\noises\servo_best",
+					"db-40",
+					1,
+					50
+				};
+				soundServoVertical[]=
+				{
+					"A3\Sounds_F\vehicles\armor\noises\servo_armor_gunner_vertical",
+					0.56234133,
+					1,
+					50
+				};
+				startEngine=0;
+				stabilizedInAxes=3;
+				minOutElev=0;
+				maxOutElev=0;
+				initOutElev=0;
+				minOutTurn=0;
+				maxOutTurn=0;
+				initOutTurn=0;
+				turretInfoType="RscWeaponRangeZeroing";
+				discreteDistance[]={100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500};
+				selectionFireAnim="zasleh";
+				discreteDistanceInitIndex=5;
+				memoryPointGunnerOptics="gunnerview";
+				gunnerOutOpticsModel="";
+				gunnerOutOpticsEffect[]={};
+				gunnerOpticsEffect[]={};
+				gunnerForceOptics=0;
+				visionMode[]=
+				{
+					"Normal"
+				};
+				thermalMode[]={};
+				class OpticsIn: Optics_Gunner_APC_01
+				{
+					class Wide: Wide
+					{
+						initFov = 0.25;
+						minFov = 0.25;
+						maxFov = 0.25;
+						visionMode[]= {"Normal", "NVG", "Ti"};
+						thermalMode[] = {0, 1}; // WHOT and BHOT
+        				gunnerOpticsModel = "\A3\weapons_f\reticle\Optics_Gunner_02_F";
+					};
+					class Medium: Medium
+					{
+						initFov = 0.05;
+        				minFov = 0.05;
+        				maxFov = 0.05;
+        				visionMode[] = {"Normal", "NVG", "Ti"};
+        				thermalMode[] = {0, 1};
+        				gunnerOpticsModel = "\A3\weapons_f\reticle\Optics_Gunner_02_F";
+					};
+					class Narrow: Narrow
+					{
+						initFov = 0.0125;
+        				minFov = 0.0125;
+        				maxFov = 0.0125;
+        				visionMode[] = {"Normal", "NVG", "Ti"};
+        				thermalMode[] = {0, 1};
+        				gunnerOpticsModel = "\A3\weapons_f\reticle\Optics_Gunner_02_F";
+					};
+				};
+				class Components: Components
+				{
+					class VehicleSystemsDisplayManagerLeft: VehicleSystemsTemplateLeftGunner
+					{
+						defaultDisplay="EmptyDisplay";
+						class components: components
+						{
+							class EmptyDisplay
+							{
+								componentType="EmptyDisplayComponent";
+							};
+							class MinimapDisplay
+							{
+								componentType="MinimapDisplayComponent";
+								resource="RscCustomInfoMiniMap";
+							};
+							class UAVDisplay
+							{
+								componentType="UAVFeedDisplayComponent";
+							};
+							class SensorDisplay
+							{
+								componentType="SensorsDisplayComponent";
+								range[]={800,400,200,1600};
+								resource="RscCustomInfoSensors";
+							};
+						};
+					};
+					class VehicleSystemsDisplayManagerRight: VehicleSystemsTemplateRightGunner
+					{
+						defaultDisplay="EmptyDisplay";
+						class components: components
+						{
+							class EmptyDisplay
+							{
+								componentType="EmptyDisplayComponent";
+							};
+							class MinimapDisplay
+							{
+								componentType="MinimapDisplayComponent";
+								resource="RscCustomInfoMiniMap";
+							};
+							class UAVDisplay
+							{
+								componentType="UAVFeedDisplayComponent";
+							};
+							class SensorDisplay
+							{
+								componentType="SensorsDisplayComponent";
+								range[]={800,400,200,1600};
+								resource="RscCustomInfoSensors";
+							};
+						};
+					};
+				};
+				usepip=2;
+				gunnerAction="gunner_01_VTOL_01_armed";
+				forceHideGunner=1;
+				outGunnerMayFire=1;
+				gunnerInAction="PX10_Gunner";
+				gunnerRightHandAnimName="";
+				gunnerLeftHandAnimName="";
+				gunnerFireAlsoInInternalCamera=1;
+				gunnerOutFireAlsoInInternalCamera=1;
+				proxyIndex=1;
+				viewGunnerInExternal=0;
+				gunnerName="Gunner";
+				proxytype="CPGunner";
+				isPersonTurret=0;
+				inGunnerMayFire=1;
+				class HitPoints
+				{
+					class HitTurret
+					{
+						armor=0.80000001;
+						material=-1;
+						name="mainturret_hit";
+						visual="vez";
+						passThrough=0;
+						minimalHit=0.02;
+						explosionShielding=1;
+						radius=0.15000001;
+					};
+					class HitGun
+					{
+						armor=0.75;
+						material=-1;
+						name="maingun_hit";
+						visual="";
+						passThrough=0;
+						minimalHit=0;
+						explosionShielding=1;
+						radius=0.15000001;
+					};
+				};
+			};
+			class CargoTurret_01: CargoTurret
+			{
+				gunnerAction="vehicle_coshooter_1";
+				canHideGunner=0;
+				gunnerCompartments="Compartment2";
+				memoryPointsGetInGunner="pos cargo";
+				memoryPointsGetInGunnerDir="pos cargo dir";
+				gunnerName="Exterior Gunner (Right 1)";
+				proxyIndex=5;
+				soundAttenuationTurret="HeliAttenuationGunner";
+				isPersonTurret=1;
+				ejectDeadGunner=1;
+				class dynamicViewLimits
+				{
+					CargoTurret_04[]={-65,95};
+				};
+				playerPosition=4;
+				gunnerGetInAction="GetInHeli_Light_01bench";
+			};
+			class CargoTurret_02: CargoTurret_01
+			{
+				gunnerAction="vehicle_coshooter_1";
+				gunnerCompartments="Compartment2";
+				memoryPointsGetInGunner="pos cargo";
+				memoryPointsGetInGunnerDir="pos cargo dir";
+				gunnerName="Exterior Gunner (Left 1)";
+				proxyIndex=6;
+				class dynamicViewLimits
+				{
+					CargoTurret_03[]={-65,95};
+				};
+			};
+			class CargoTurret_03: CargoTurret_02
+			{
+				gunnerAction="passenger_inside_3";
+				gunnerCompartments="Compartment2";
+				gunnerName="Exterior Gunner (Left 2)";
+				memoryPointsGetInGunner="pos cargo";
+				memoryPointsGetInGunnerDir="pos cargo dir";
+				proxyIndex=7;
+				class dynamicViewLimits
+				{
+					CargoTurret_02[]={-95,65};
+				};
+			};
+			class CargoTurret_04: CargoTurret_01
+			{
+				gunnerAction="passenger_inside_3";
+				gunnerCompartments="Compartment2";
+				gunnerName="Exterior Gunner (Right 2)";
+				memoryPointsGetInGunner="pos cargo";
+				memoryPointsGetInGunnerDir="pos cargo dir";
+				proxyIndex=8;
+				class dynamicViewLimits
+				{
+					CargoTurret_01[]={-95,65};
+				};
+			};
+		};
+		smokeLauncherGrenadeCount=8;
+		smokeLauncherVelocity=14;
+		smokeLauncherOnTurret=1;
+		smokeLauncherAngle=120;
+		class Components: Components
+		{
+			class VehicleSystemsDisplayManagerLeft: VehicleSystemsTemplateLeftDriver
+			{
+				defaultDisplay="EmptyDisplay";
+				class components
+				{
+					class EmptyDisplay
+					{
+						componentType="EmptyDisplayComponent";
+					};
+					class MinimapDisplay
+					{
+						componentType="MinimapDisplayComponent";
+						resource="RscCustomInfoMiniMap";
+					};
+					class UAVDisplay
+					{
+						componentType="UAVFeedDisplayComponent";
+					};
+					class SensorDisplay
+					{
+						componentType="SensorsDisplayComponent";
+						range[]={800,400,200,1600};
+						resource="RscCustomInfoSensors";
+					};
+				};
+			};
+			class VehicleSystemsDisplayManagerRight: VehicleSystemsTemplateRightDriver
+			{
+				defaultDisplay="EmptyDisplay";
+				class components
+				{
+					class EmptyDisplay
+					{
+						componentType="EmptyDisplayComponent";
+					};
+					class MinimapDisplay
+					{
+						componentType="MinimapDisplayComponent";
+						resource="RscCustomInfoMiniMap";
+					};
+					class UAVDisplay
+					{
+						componentType="UAVFeedDisplayComponent";
+					};
+					class SensorDisplay
+					{
+						componentType="SensorsDisplayComponent";
+						range[]={800,400,200,1600};
+						resource="RscCustomInfoSensors";
+					};
+				};
+			};
+			class SensorsManagerComponent
+			{
+				class Components
+				{
+					class DataLinkSensorComponent: SensorTemplateDataLink
+					{
+					};
+					class ManSensorComponent: SensorTemplateMan
+					{
+						maxTrackableSpeed=15;
+						angleRangeHorizontal=51;
+						angleRangeVertical=37;
+						animDirection="mainGun";
+						aimDown=-0.5;
+					};
+					class IRSensorComponent: SensorTemplateIR
+					{
+						class AirTarget
+						{
+							minRange=0;
+							maxRange=500;
+							objectDistanceLimitCoef=-1;
+							viewDistanceLimitCoef=1;
+						};
+						class GroundTarget
+						{
+							minRange=0;
+							maxRange=250;
+							objectDistanceLimitCoef=1;
+							viewDistanceLimitCoef=1;
+						};
+						maxTrackableSpeed=35;
+						angleRangeHorizontal=51;
+						angleRangeVertical=37;
+						animDirection="mainGun";
+						aimDown=-0.5;
+					};
+					class VisualSensorComponent: SensorTemplateVisual
+					{
+						class AirTarget
+						{
+							minRange=0;
+							maxRange=1000;
+							objectDistanceLimitCoef=-1;
+							viewDistanceLimitCoef=1;
+						};
+						class GroundTarget
+						{
+							minRange=0;
+							maxRange=500;
+							objectDistanceLimitCoef=1;
+							viewDistanceLimitCoef=1;
+						};
+						maxTrackableSpeed=35;
+						angleRangeHorizontal=90;
+						angleRangeVertical=90;
+						animDirection="mainGun";
+						aimDown=-0.5;
+					};
+				};
+			};
+		};
+		class Exhausts
+		{
+			class Exhaust_1
+			{
+				position="Exhaust_1_pos";
+				direction="Exhaust_1_dir";
+				effect="ExhaustsEffectHeliBig";
+			};
+			class Exhaust_2
+			{
+				position="Exhaust_2_pos";
+				direction="Exhaust_2_dir";
+				effect="ExhaustsEffectHeliBig";
+			};
+		};
+		class Eventhandlers: Eventhandlers
+		{
+			postInit="if (local (_this select 0)) then { [(_this select 0), """", [], false] call BIS_fnc_initVehicle; };";
+		};
+		class AnimationSources: AnimationSources
+		{
+			class Muzzle_flash
+			{
+				source="ammorandom";
+				weapon="3AS_MK4ES_Medium_Cannon";
+			};
+			class HideAttachmentDozer
+			{
+				displayName="Hide Bulldozer";
+				author="$STR_3AS_Studio";
+				source="HideAttachmentDozer";
+				initPhase=1;
+				mass=-150;
+			};
+			class HideAttachmentFuel
+			{
+				displayName="Hide Fuel";
+				author="$STR_3AS_Studio";
+				source="user";
+				initPhase=1;
+				mass=-50;
+				animPeriod=0.001;
+				lockCargoAnimationPhase=0;
+				lockCargo[]={4,5,6,7};
+				onPhaseChanged="_this call TAS_fnc_handleRefuel;";
+			};
+			class HideAttachmentPlate
+			{
+				displayName="Hide Plate Armor";
+				author="$STR_3AS_Studio";
+				source="HideAttachmentPlate";
+				initPhase=1;
+				mass=-100;
+			};
+			class HideAttachmentRepair
+			{
+				displayName="Hide Repair Kit";
+				author="$STR_3AS_Studio";
+				source="HideAttachmentRepair";
+				initPhase=1;
+				lockCargoAnimationPhase=0;
+				lockCargo[]={4,5,6,7};
+				mass=-250;
+				onPhaseChanged="_this call TAS_fnc_handleRepair;_this call TAS_fnc_handleRearm;";
+			};
+			class Moveplow
+			{
+				source="user";
+				animPeriod=3;
+				initPhase=0;
+				soundPosition="plow_sound";
+				sound="PlowSound";
+			};
+		};
+		animationList[]=
+		{
+			"HideAttachmentDozer",
+			0,
+			"HideAttachmentFuel",
+			0,
+			"HideAttachmentPlate",
+			1,
+			"HideAttachmentRepair",
+			0
+		};
+		ace_repair_canRepair=1;
+		ace_repair_spareTracks=2;
+		ace_repair_spareWheels=4;
+		ace_rearm_defaultSupply=2000;
+		ace_cargo_space=20;
+		ace_refuel_fuelCargo=5000;
+		ace_refuel_hooks[]=
+		{
+			{0.5,-3,-0.5},
+			{-0.40000001,-3,-0.75}
+		};
+	};
+	class CfgFunctions
+	{
+		class TAS
+		{
+			class PX10Fncs
+			{
+				file="\3as\3AS_Rebel_Armor\PX10_Cav\functions";
+				class handleRearm
+				{
+				};
+				class handleRefuel
+				{
+				};
+				class handleRepair
+				{
+				};
+			};
+		};
+	};
+	class 885th_Reaver: 885th_Reaver_Base
+	{
+		scope=2;
+		scopeCurator=2;
+		author="885th Bloodpack Division";
+		displayName="[885th] Reaver Techincal";
+		side=1;
+		editorPreview="";
+		faction = "885th_Faction";
+		editorSubcategory = "Sub885thKraytLogi";
+		crew = "885th_Pilot";
+		hiddenSelections[]=
+		{
+			"Camo",
+			"camo2",
+			"camo3",
+			"camo_Fuel",
+			"camo_repair"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Vehicles\textures\REAVER\885th_Reaver_Hull_co.paa",
+			"3as\3as_rebel_armor\px10_cav\textures\px10cavintback_co.paa",
+			"3as\3as_rebel_armor\px10_cav\textures\px10cavintfront_co.paa",
+			"885_Vehicles\textures\REAVER\885th_Reaver_Fuel_co.paa",
+			"885_Vehicles\textures\REAVER\885th_Reaver_Crane_co.paa"
+		};
 	};
 };
