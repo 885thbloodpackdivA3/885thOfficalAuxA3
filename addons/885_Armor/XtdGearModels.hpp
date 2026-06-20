@@ -1667,6 +1667,11 @@ class XtdGearInfos
 			model="Vornskr_Backpacks";
 			backpack="Ammobearer";
 		};
+		class 885th_Vornskr_Heavy_compact
+		{
+			model="Vornskr_Backpacks";
+			backpack="Heavy";
+		};
 		class 885th_Medical_Backpack
 		{
 			model="Vornskr_Backpacks";

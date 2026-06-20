@@ -11487,6 +11487,32 @@ class CfgVehicles
 			"885_Armor\885_Armor\Vornskr\Hazard\Trooper\885th_Vornskr_Hazard_Backpack_Base_co.paa"
 		};
 	};
+	class 885th_Vornskr_Hazard_RTO_Backpack: B_Kitbag_rgr
+	{
+		author="885th Bloodpack Division";
+		scope=2;
+		picture="";
+		displayName="[885th] Vornskr Hazard Officer Backpack";
+		maximumload = 400;
+
+		model="\JLTS_AE_GM\SEA_Backpack_GM_RTO.p3d";
+		hiddenSelections[]=
+		{
+			"camo1",
+			"camo2"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Vornskr\Hazard\Officer\885th_Vornskr_Hazard_RTOPack_COM_co.paa",
+			"885_Armor\885_Armor\Vornskr\Hazard\Officer\885th_Vornskr_Hazard_RTOAttach_COM_co.paa"
+		};
+		tf_dialog="JLTS_clone_rto_radio_dialog";
+		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
+		tf_encryptionCode="tf_west_radio_code";
+		tf_hasLRradio=1;
+		tf_range=40000;
+		tf_subtype="digital_lr";
+	};
 	class ls_cloneBackpack_ammo;
 	class 885th_Ammo_Backpack: ls_cloneBackpack_ammo
 	{
