@@ -12653,9 +12653,14 @@ class CfgVehicles
 		uniformClass = "885th_Bandit_Uniform";
 		hiddenSelections[] = {"Camo1","Camo2"};
 		hiddenSelectionsTextures[] = {
-			"\885_Armor\885_Armor\Customs\Bandit\Bandit_Armor_Upper_co.paa",
-			"\885_Armor\885_Armor\Customs\Bandit\Bandit_Armor_Lower_co.paa"
+			"\885_Armor\885_Armor\Customs\Bandit\P2_BodyUpper_co.paa",
+			"\885_Armor\885_Armor\Customs\Bandit\P2_BodyLower_co.paa"
 		};
+		 hiddenSelectionsMaterials[]=
+        {
+			"885_Armor\885_Armor\Customs\Bandit\P2_BodyUpper.rvmat",
+            "885_Armor\885_Armor\Customs\Bandit\P2_Bodylower.rvmat"
+        };
 	};
 	
 	class 885th_Nightfall_Trooper : 885th_Vornskr_Trooper {
