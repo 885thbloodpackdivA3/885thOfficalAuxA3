@@ -185,6 +185,7 @@ class XtdGearModels
 					"Ares",
                     "Bandit",
 					"Bleach",
+					"Bright",
 					"Charge",
 					"Cerberus",
 					"Crimz",
@@ -912,6 +913,13 @@ class XtdGearInfos
 			variant="P2";
 			camo="P2";
 		};
+		class 885th_Bright_P2_Helmet
+		{
+			model="Trooper_Custom_Helmets";
+			rank="Bright";
+			variant="P2";
+			camo="P2";
+		};
 		class  885th_Cerberus_P3_Pilot_Helm
 		{
 			model="Trooper_Custom_Helmets";
@@ -1101,12 +1109,12 @@ class XtdGearInfos
 			variant="P2";
 			camo="P2";
 		};
-		class 885th_Smith_Pilot_Helm
+		class 885th_Smith_EngineerV2_Helm
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Smith";
-			variant="Pilot";
-			camo="Pilot";
+			variant="Engineer";
+			camo="Engineer";
 		};
 		class 885th_Sunshine_P2_Helm
 		{

@@ -52,6 +52,7 @@ class Cfgpatches
 			"885th_P2_MG_Helmet",
 			"885th_ONI_P2_Helmet",
 			"885th_Bleach_P2_Helm",
+			"885th_Bright_P2_Helmet",
 			"885th_Screwball_P1_ARF_Helm",
 			"885th_Lotho_P2_Helm",
 			"885th_Lotho_Secret_Helm",
@@ -728,6 +729,27 @@ class CfgWeapons
             "885_Armor\885_Armor\Customs\Bleach\Bleach_P2_Helmet_Visor.rvmat",
         };
     };
+	class 885th_Bright_P2_Helmet: 885th_P2_V2_Helmet
+    {
+		Scope=0;
+        author="885th Bloodpack Division"; 
+        displayName="[885th] Bright's P2 Helmet";
+        hiddenselections[]=
+        {
+            "Camo", 
+            "visor",
+        };
+        hiddenSelectionsTextures[]=
+        {
+            "885_Armor\885_Armor\Customs\Bright\885th_Bright_P2_Helm.co.paa",
+            "885_Armor\885_Armor\Customs\Bright\885th_Bright_P2_Helm.co.paa",
+        };
+		hiddenSelectionsMaterials[]=
+        {
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
+            "885_Armor\885_Armor\Customs\Bright\Bright_P2_Helmet_Visor.rvmat",
+        };
+    };
 	class 885th_Jackson_P2_Helmet: 885th_P2_V2_Helmet
     {
         author="885th Bloodpack Division"; 
@@ -762,50 +784,59 @@ class CfgWeapons
 			"885_Armor\885_Armor\Customs\Nightmare\Nightmare_Engineer_Helmet_co.paa"
 		};
 	};
-	class 885th_Lotho_P2_Helm: 885th_P2_V2_Helmet
+	class 885th_Smith_EngineerV2_Helm: H_HelmetO_ViperSP_hex_F
 	{
 		author="885th Bloodpack Division";
-		scope=0;
-		displayName="[885th] Lotho's P2 Custom Helm";
-		picture="";
+		weaponPoolAvailable=1;
+		scope=2;
+		displayName="[885th] Smith Engineer Helm V2";
+		picture="\A3\characters_f\Data\UI\icon_H_helmet_plain_ca.paa";
+		model="\3AS\3AS_Republic_Characters\Headgear\3AS_Clonetrooper_Engineer_Helmet.p3d";
 		hiddenSelections[]=
 		{
-			"Camo",
-			"Visor",
-        };
-        hiddenSelectionsTextures[]=
-        {
-        	"885_Armor\885_Armor\Customs\Lotho\Lotho_P2_Helmet_co.paa",
-			"885_Armor\885_Armor\Customs\Lotho\Lotho_P2_Helmet_co.paa",
-        };
-        hiddenSelectionsMaterials[]=
-        {
-            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
-			"\a3\characters_f_bootcamp\common\data\vrarmoremmisive.rvmat",
-        };
-    };
-	class 885th_Lotho_Secret_Helm: 885th_P2_V2_Helmet
-	{
-		author="885th Bloodpack Division";
-		scope=0;
-		displayName="[885th] Lotho's Secret Helmet";
-		picture="";
-		hiddenSelections[]=
+			"Helmet",
+			"Visor"
+		};
+		hiddenSelectionsTextures[]=
 		{
-			"Camo",
-			"Visor",
-        };
-        hiddenSelectionsTextures[]=
-        {
-        	"885_Armor\885_Armor\Customs\Lotho\Lotho_P2_Helmet2_co.paa",
-			"885_Armor\885_Armor\Customs\Lotho\Lotho_P2_Helmet2_co.paa",
-        };
-        hiddenSelectionsMaterials[]=
-        {
-            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
-			"\a3\characters_f_bootcamp\common\data\vrarmoremmisive.rvmat",
-        };
-    };
+			"885_Armor\885_Armor\Customs\Smith\885th_Smith_Engi_Helmet_Custom.paa",
+			"885_Armor\885_Armor\Customs\Smith\885th_Smith_Engi_Helmet_Custom.paa"
+		};
+		hiddenSelectionsMaterials[]=
+		{
+			"\3AS\3AS_Republic_Characters\Headgear\data\Clonetrooper_Engineer_Helmet\Clonetrooper_Engineer_Helmet.rvmat",
+			"\3AS\3AS_Republic_Characters\Headgear\data\Clonetrooper_Engineer_Helmet\Clonetrooper_Engineer_Helmet_Visor.rvmat"
+		};
+		subItems[] = {"Integrated_NVG_TI_0_F"};
+			ace_hearing_lowerVolume=0;
+		ace_hearing_protection=1;
+		class ItemInfo: HeadgearItem
+		{
+			mass=30;
+			uniformModel="\3AS\3AS_Republic_Characters\Headgear\3AS_Clonetrooper_Engineer_Helmet.p3d";
+			modelSides[]={1};
+			hiddenSelections[]=
+			{
+				"Helmet",
+				"Visor"
+			};
+			class HitpointsProtectionInfo
+			{
+				class Head
+				{
+					hitpointName="HitHead";
+					armor=17;
+					passThrough=0.5;
+				};
+				class Face
+				{
+					hitpointName="HitFace";
+					armor=12;
+					passThrough=0.5;
+				};
+			};
+		};
+	};
 	class 885th_Sunshine_P2_Helm: 885th_P2_V2_Helmet
 	{
 		author="885th Bloodpack Division";
@@ -1365,25 +1396,6 @@ class CfgWeapons
 		hiddenSelectionsMaterials[] = {
     	"\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\ls_gar_phase2Pilot_helmet.rvmat", // The standard Clone material
     	"\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\visor.rvmat" // The standard visor material
-		};
-	};
-	class 885th_Smith_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
-	{
-		scope=2;
-		author="885th Bloodpack Division";
-		displayName="[885th] Smith's Pilot Helm";
-		picture="";
-		hiddenSelections[]=
-		{
-			"camo1",
-			"camo2",
-			"visor"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Smith\Smith_PilotHelmet_co.paa",
-			"885_Armor\885_Armor\Customs\Smith\Smith_LifeSupport_co.paa",
-			"885_Armor\885_Armor\Customs\Smith\Smith_PilotHelmet_co.paa"
 		};
 	};
 	class 885th_Warden_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
