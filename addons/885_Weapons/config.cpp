@@ -8711,6 +8711,21 @@ class CfgWeapons
 				iconScale=0.30000001;
 			};
 		};
+		hiddenSelections[]=
+		{
+			"camo1",
+			"camo2"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Weapons\DX36C\Textures\Main_co.paa",
+			"885_Weapons\DX36C\Textures\lights_co.paa"
+		};
+		hiddenSelectionsMaterials[]=
+		{
+			"885_Weapons\DX36C\Textures\Main.rvmat",
+			"885_Weapons\DX36C\Textures\lights.rvmat"
+		};
 	};	
 	class 885th_WestarM5_F: Rifle_Base_F
 	{	
