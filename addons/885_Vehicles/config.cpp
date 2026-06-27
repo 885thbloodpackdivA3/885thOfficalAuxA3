@@ -1368,18 +1368,19 @@ class CfgVehicles
 		enableRadio=1;
 		enableGPS=1;
 		ace_cargo_hasCargo = 1;
-		ace_cargo_space = 16;
+		ace_cargo_space = 10;
 		ace_repair_canRepair=1;
-		ace_repair_spareTracks=2;
 		ace_repair_spareWheels=4;
-		crewCrashProtection=1.35;
-		crewExplosionProtection=0.99000001;
+		crewCrashProtection=0.6;
+		crewExplosionProtection=0.01;
 		crewVulnerable=0;
-		damageResistance=0.0040000002;
+		damageResistance=0.02;
 		armorGlass=0.5;
-		armorWheels=0.33000001;
-		armor=300;
-		armorStructural=5;
+		armorWheels=0.5;
+		armor=450;
+		armorStructural=10;
+		explosiveResistance = 15
+		fuelExplosionPower= 0;
 		cost=600000;
 		transportMaxBackpacks=4;
 		transportSoldier=8;
@@ -1478,7 +1479,7 @@ class CfgVehicles
 				material=-1;
 				passThrough=0.5;
 				minimalHit=0.2;
-				explosionShielding=0.60000002;
+				explosionShielding=0.8;
 				radius=0.25;
 			};
 			class HitEngine: HitEngine
@@ -1510,8 +1511,8 @@ class CfgVehicles
 			};
 			class HitLFWheel: HitLFWheel
 			{
-				armor=0.5;
-				explosionShielding=4;
+				armor=10;
+				explosionShielding=6;
 				radius=0.33000001;
 				passThrough=0;
 				material=-1;
@@ -1522,8 +1523,8 @@ class CfgVehicles
 			};
 			class HitLF2Wheel: HitLF2Wheel
 			{
-				armor=0.5;
-				explosionShielding=4;
+				armor=10;
+				explosionShielding=6;
 				radius=0.33000001;
 				passThrough=0;
 				material=-1;
@@ -1534,8 +1535,8 @@ class CfgVehicles
 			};
 			class HitLF3Wheel: HitLF2Wheel
 			{
-				armor=0.5;
-				explosionShielding=4;
+				armor=10;
+				explosionShielding=6;
 				radius=0.33000001;
 				passThrough=0;
 				material=-1;
@@ -1546,8 +1547,8 @@ class CfgVehicles
 			};
 			class HitRFWheel: HitRFWheel
 			{
-				armor=0.5;
-				explosionShielding=4;
+				armor=10;
+				explosionShielding=6;
 				radius=0.33000001;
 				passThrough=0;
 				material=-1;
@@ -1558,8 +1559,8 @@ class CfgVehicles
 			};
 			class HitRF2Wheel: HitRF2Wheel
 			{
-				armor=0.5;
-				explosionShielding=4;
+				armor=10;
+				explosionShielding=6;
 				radius=0.33000001;
 				passThrough=0;
 				material=-1;
@@ -1570,8 +1571,8 @@ class CfgVehicles
 			};
 			class HitRF3Wheel: HitRF2Wheel
 			{
-				armor=0.5;
-				explosionShielding=4;
+				armor=10;
+				explosionShielding=6;
 				radius=0.33000001;
 				passThrough=0;
 				material=-1;
@@ -1847,8 +1848,8 @@ class CfgVehicles
 		};
 		thrustDelay=0.25;
 		brakeIdleSpeed=1.78;
-		maxSpeed=105;
-		fuelCapacity=50;
+		maxSpeed=110;
+		fuelCapacity=60;
 		wheelCircumference=3.8050001;
 		waterLeakiness=2.5;
 		normalSpeedForwardCoef=0.54000002;
@@ -2455,6 +2456,7 @@ class CfgVehicles
 						};
 						magazines[]=
 						{
+							"SmokeLauncherMag",
 							"SmokeLauncherMag"
 						};
 						soundServo[]=
@@ -2867,6 +2869,7 @@ class CfgVehicles
 					"885th_IFV_AP_Mag",
 					"885th_IFV_AP_Mag",
 					"885th_IFV_AP_Mag",
+					"SmokeLauncherMag",
 					"SmokeLauncherMag"
 				};
 				animationSourceBody="Mainturret";
