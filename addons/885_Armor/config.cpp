@@ -77,7 +77,7 @@ class Cfgpatches
 			"885th_Nightsingers_P3_Senior_Pilot_Helm",
 			"885th_Nightsingers_P3_Officer_Pilot_Helm",
 			"885th_Nightsingers_Armor_Crew_Helmet",
-			"885th_Smith_Pilot_Helm",
+			"885th_Smith_Engi_Helm",
 			"885th_Kit_P2_Helm",
 			"885th_Owl_Pilot_Helm",
 			"885th_Oxlong_P2_Helm",
@@ -1317,23 +1317,21 @@ class CfgWeapons
     	"\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\visor.rvmat" // The standard visor material
 		};
 	};
-	class 885th_Smith_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
+	class 885th_Smith_Engi_Helm: 885th_Vornskr_EngineerV2_Helm
 	{
 		scope=2;
 		author="885th Bloodpack Division";
-		displayName="[885th] Smith's Pilot Helm";
+		displayName="[885th] Smith's Engineer Helm";
 		picture="";
 		hiddenSelections[]=
 		{
-			"camo1",
-			"camo2",
-			"visor"
+			"Helmet",
+			"Visor"
 		};
 		hiddenSelectionsTextures[]=
 		{
-			"885_Armor\885_Armor\Customs\Smith\Smith_PilotHelmet_co.paa",
-			"885_Armor\885_Armor\Customs\Smith\Smith_LifeSupport_co.paa",
-			"885_Armor\885_Armor\Customs\Smith\Smith_PilotHelmet_co.paa"
+			"885_Armor\885_Armor\Customs\Smith\885th_Smith_Engi_Helm.paa",
+			"885_Armor\885_Armor\Customs\Smith\885th_Smith_Engi_Helm.paa"
 		};
 	};
 	class 885th_Warden_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
@@ -11029,6 +11027,7 @@ class CfgVehicles
 	class ls_clone_unit_base;
 	class 3AS_Rep_Commando_base_F;
 	class GR_Femclone_dirty_armor_body;
+	class 3AS_B_CloneTrooper_Rocket_F;
 	class 885th_Vornskr_Backpack: ls_gar_standard_backpack
 	{
 		author="885th Bloodpack Division";
@@ -11138,6 +11137,23 @@ class CfgVehicles
 			"\ls\core\addons\characters_clone_legacy\backpacks\standard\data\rocket_co.paa",
 			"\ls\core\addons\characters_clone_legacy\backpacks\standard\data\light_co.paa",
 			"885_Armor\885_Armor\Backpacks\885th_Explosives_Backpack_Pouches_co.paa"
+		};
+	};
+	class 885th_3as_Charge_Backpack: 3AS_B_CloneTrooper_Rocket_F
+	{
+		author="885th Bloodpack Division";
+		scope=2;
+		picture="";
+		displayName="[885th] Charge Anti-Tank Backpack";
+		maximumload = 700;
+
+		hiddenSelections[]=
+		{
+			"Backpack"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"\885_Armor\885_Armor\Customs\Charge\Charge_AT_Backpack.paa"
 		};
 	};
 	class 885th_Medic_Backpack: ls_gar_medic_backpack

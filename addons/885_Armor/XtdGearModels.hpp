@@ -635,10 +635,12 @@ class XtdGearModels
 				{
 					"Bandit",
 					"Bleach",
+					"Charge",
 					"Outcast",
 					"Rios",
 					"Syxer",
 					"Thunder"
+
 				};
 			};
 		};
@@ -1081,12 +1083,12 @@ class XtdGearInfos
 			variant="BARC";
 			camo="BARC";
 		};
-		class 885th_Smith_Pilot_Helm
+		class 885th_Smith_Engi_Helm
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Smith";
-			variant="Pilot";
-			camo="Pilot";
+			variant="Engineer";
+			camo="Engineer";
 		};
 		class 885th_Sunshine_P2_Helm
 		{
@@ -1723,6 +1725,11 @@ class XtdGearInfos
 		{
 			model="Custom_Backpacks";
 			backpack="Bleach";
+		};
+		class 885th_3as_Charge_Backpack
+		{
+			model="Custom_Backpacks";
+			backpack="Charge";
 		};
 		class 885th_Outcast_JTAC_Backpack
 		{
