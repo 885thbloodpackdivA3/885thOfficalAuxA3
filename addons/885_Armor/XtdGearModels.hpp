@@ -647,10 +647,12 @@ class XtdGearModels
 					"Ares",
 					"Bandit",
 					"Bleach",
+					"Charge",
 					"Outcast",
 					"Rios",
 					"Syxer",
 					"Thunder"
+
 				};
 			};
 		};
@@ -1800,6 +1802,11 @@ class XtdGearInfos
 		{
 			model="Custom_Backpacks";
 			backpack="Bleach";
+		};
+		class 885th_3as_Charge_Backpack
+		{
+			model="Custom_Backpacks";
+			backpack="Charge";
 		};
 		class 885th_Outcast_JTAC_Backpack
 		{
