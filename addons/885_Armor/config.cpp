@@ -449,6 +449,7 @@ class CfgWeapons
 	class 3AS_Katarn_Vest_Team_Leader;
 	class 3AS_Katarn_Vest_Sniper;
 	class 3AS_V_Katarn_Vest_Demo;
+	class 3AS_N_CloneP2_MedicalScanner_F;
 	class 885th_P2_V2_Helmet: IDA_P2_Helmet
     {
         author="885th Bloodpack Division - ONI"; 
