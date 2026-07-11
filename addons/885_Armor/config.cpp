@@ -449,6 +449,7 @@ class CfgWeapons
 	class 3AS_Katarn_Vest_Sniper;
 	class 3AS_V_Katarn_Vest_Demo;
 	class GR_Femclone_dirty_armor_uniform;
+	class 3AS_N_CloneP2_MedicalScanner_F;
 	class 885th_P2_V2_Helmet: IDA_P2_Helmet
     {
         author="885th Bloodpack Division - ONI"; 
@@ -3574,6 +3575,23 @@ class CfgWeapons
 			mass = 5;
 			hiddenSelections[] = {"camo"};
 		};
+	};
+
+	class 885th_Base_MedScanner: 3AS_N_CloneP2_MedicalScanner_F
+	{
+		author = "885th Bloodpack Division + 3as Devs";
+		displayName = "[885th] Medical Scanner ";
+		modelOptics = "";
+		hiddenSelections[] = {"Visor"};
+		hiddenSelectionsTextures[] = {"885_Armor\885_Armor\NVG\885th_NVG_Med_co.paa"};
+	};
+	class 885th_Bleach_MedScanner: 3AS_N_CloneP2_MedicalScanner_F
+	{
+		author = "885th Bloodpack Division + 3as Devs";
+		displayName = "[885th] Bleach Medical Scanner ";
+		modelOptics = "";
+		hiddenSelections[] = {"Visor"};
+		hiddenSelectionsTextures[] = {"885_Armor\885_Armor\NVG\885th_NVG_Bleach_co.paa"};
 	};
 	class 885th_Hazard_Veteran_Rangefinder: JLTS_CloneNVGRange
 	{
