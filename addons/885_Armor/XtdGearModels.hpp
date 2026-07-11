@@ -558,15 +558,18 @@ class XtdGearModels
 			{
 				label="Vest";
 				values[]=
-				{
+				{	
+					"Ares",
 					"Bandit",
 					"Bleach",
 					"Crimz",
 					"Outcast",
+					"Mayday",
 					"ONI",
 					"Rios",
 					"Screwball",
 					"Stormer",
+					"Sytha",
 					"Syxer",
 					"Thunder"
 				};
@@ -640,7 +643,8 @@ class XtdGearModels
 			{
 				label="Backpack";
 				values[]=
-				{
+				{	
+					"Ares",
 					"Bandit",
 					"Bleach",
 					"Outcast",
@@ -1591,6 +1595,11 @@ class XtdGearInfos
 			vest="WO5";
 		};
 		//Custom Vests
+		class 885th_Cust_VestV4_Rig_Ares
+		{
+			model="Custom_Vest";
+			vest="Ares";
+		};
 		class 885th_Cust_VestV4_Rig_Bandit
 		{
 			model="Custom_Vest";
@@ -1611,6 +1620,11 @@ class XtdGearInfos
 			model="Custom_Vest";
 			vest="Outcast";
 		};
+		class 885th_Cust_VestV4_Rig_Mayday
+		{
+			model="Custom_Vest";
+			vest="Mayday";
+		};
 		class 885th_Cust_VestV4_Rig_ONI
 		{
 			model="Custom_Vest";
@@ -1630,6 +1644,11 @@ class XtdGearInfos
 		{
 			model="Custom_Vest";
 			vest="Stormer";
+		};
+		class 885th_Cust_VestV4_Rig_Sytha
+		{
+			model="Custom_Vest";
+			vest="Sytha";
 		};
 		class 885th_Cust_VestV4_Rig_Syxer
 		{
@@ -1767,6 +1786,11 @@ class XtdGearInfos
 			backpack="ARC Pack";
 		};
 		//Custom Backpacks
+		class 885th_Cust_RTO_Buttbag2_Ares
+		{
+			model="Custom_Backpacks";
+			backpack="Ares";
+		};
 		class 885th_Cust_RTO_Buttbag2_Bandit
 		{
 			model="Custom_Backpacks";

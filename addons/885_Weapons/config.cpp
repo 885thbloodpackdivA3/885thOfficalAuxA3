@@ -4772,7 +4772,7 @@ class CfgMagazines
 		lastRoundsTracer=200;
 		descriptionShort="Z8 Experimental Blaster Cannon High Powered Battery";
 		mass=40;
-		initSpeed=1800;
+		initSpeed=660;
 	};
 	class 885th_Z8_Experimental_50rnd_HE_battery_blue: 885th_cell
 	{
@@ -4784,7 +4784,7 @@ class CfgMagazines
 		lastRoundsTracer=200;
 		descriptionShort="Z8 Experimental Blaster Cannon High Powered Battery";
 		mass=40;
-		initSpeed=1800;
+		initSpeed=560;
 	};
 	class 885th_DX36C_battery_yellow_high : 885th_cell
 	{
@@ -10736,8 +10736,8 @@ class CfgWeapons
 		discreteDistanceInitIndex=0;
 		maxRecoilSway=0.0125;
 		swayDecaySpeed=1.25;
-		inertia=1.1;
-		dexterity=1.5;
+		inertia=0.8;
+		dexterity=1.1;
 		initSpeed=-1;
 		maxZeroing=100;
 		class GunParticles: GunParticles
@@ -10819,12 +10819,12 @@ class CfgWeapons
 		class FullAuto_1: Mode_FullAuto
 		{
 			reloadTime=0.12;
-			dispersion=0.00056000001;
+			dispersion=0.00025;
 			minRange=100;
 			minRangeProbab=0.89999998;
 			midRange=700;
 			midRangeProbab=0.69999999;
-			maxRange=1000;
+			maxRange=2000;
 			maxRangeProbab=0.1;
 			soundContinuous=0;
 			soundBurst=0;
@@ -10857,13 +10857,13 @@ class CfgWeapons
 		};
 		class FullAuto_2: Mode_FullAuto
 		{
-			reloadTime=0.067000002;
+			reloadTime=0.05;
 			dispersion=0.00056000001;
-			minRange=0;
+			minRange=100;
 			minRangeProbab=0.89999998;
 			midRange=700;
 			midRangeProbab=0.69999999;
-			maxRange=1000;
+			maxRange=2000;
 			maxRangeProbab=0.1;
 			soundContinuous=0;
 			soundBurst=0;
@@ -11016,7 +11016,7 @@ class CfgWeapons
 		};
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
-			mass=60;
+			mass=190;
 		};
 		ace_overheating_mrbs=3000;
 		ace_overheating_slowdownFactor=1;
