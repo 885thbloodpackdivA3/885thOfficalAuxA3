@@ -7040,7 +7040,7 @@ class CfgWeapons
 		displayname="DK10 Tablet";
 		picture="\cTab\img\icon_dk10.paa";
 		model="\ctab\data\itemDK10.p3d";
-		scope=0;
+		scope=2;
 		author="Gundy-Riouken-Raspu";
 		simulation="Weapon";
 		class ItemInfo: CBA_MiscItem_ItemInfo
@@ -7052,7 +7052,7 @@ class CfgWeapons
 	{
 		descriptionshort="SoroSuub Imagecaster";
 		descriptionuse="";
-		displayname="Personal Holoprojector";
+		displayname="[885th] Personal Holoprojector";
 		picture="\cTab\img\icon_Android.paa";
 		model="\MRC\JLTS\contraband\Intel\holo.p3d";
 		scope=2;
@@ -7069,7 +7069,7 @@ class CfgWeapons
 		displayname="MicroDAGR";
 		picture="\cTab\img\icon_MicroDAGR.paa";
 		model="\ctab\data\itemMicroDAGR.p3d";
-		scope=0;
+		scope=2;
 		class ItemInfo: CBA_MiscItem_ItemInfo
 		{
 			mass=2;
@@ -7082,7 +7082,7 @@ class CfgWeapons
 		descriptionuse="<t color='#9cf953'>Use: </t>Used to record and stream video";
 		displayname="Helmet Camera";
 		picture="\cTab\img\cTab_helmetCam_ico.paa";
-		scope=0;
+		scope=2;
 		author="Gundy-Riouken-Raspu";
 		simulation="Weapon";
 		class ItemInfo: CBA_MiscItem_ItemInfo
