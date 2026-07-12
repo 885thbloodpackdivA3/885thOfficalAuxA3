@@ -110,7 +110,7 @@ class CfgMagazines
         displayName = "[885th] Bacta Grenade";
 		displayNameShort = "Bacta Grenade";
         descriptionShort = "Bacta Grenade";
-        picture = "885_bacta_grenade\data\icon_bacta_1rnd_CA.paa";
+        picture = "885_bacta_grenade\data\icon_bacta_1rnd_ca.paa";
         pictureWire = "885_bacta_grenade\data\icon_grenade_bacta_F_W_ca.paa";
         model = "885_bacta_grenade\bacta grenade.p3d";
         ammo = "bacta_nade_ammo";
@@ -144,7 +144,7 @@ class CfgVehicles
         scopeCurator = 2;
         displayName = "[885th] Bacta Grenade";
         descriptionShort = "Bacta Grenade";
-        picture = "885_bacta_grenade\data\icon_bacta_1rnd_CA.paa";
+        picture = "885_bacta_grenade\data\icon_bacta_1rnd_ca.paa";
         pictureWire = "885_bacta_grenade\data\icon_grenade_bacta_F_W_ca.paa";
         editorCategory = "";
         editorSubcategory = "";
