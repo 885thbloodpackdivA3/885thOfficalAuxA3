@@ -4,7 +4,7 @@ class CfgPatches
 	{
 		author = "885th Bloodpack Division + Indecisive Armoury Team";
 		name = "885th REP Weapons";
-		requiredAddons[] = {"A3_data_F", "A3_anims_F", "A3_weapons_F", "A3_characters_F", "A3_Characters_F_Proxies"};
+		requiredAddons[] = {"A3_data_F", "A3_anims_F", "A3_weapons_F", "A3_characters_F", "A3_Characters_F_Proxies", "CBA_XEH"};
 		units[] = {};
 		weapons[] = {
 			"885th_A180", 
@@ -16,7 +16,6 @@ class CfgPatches
 			"885th_DC15A_LE",
 			"885th_DC15C", 
 			"885th_DC15LMKII_F",
-			"885th_DCP90",
 			"885th_DC15LE",
 			"885th_DC15LEHB_F",
 			"885th_DC15LEMKII",
@@ -55,7 +54,9 @@ class CfgPatches
 			"885th_WestarM5_GL",
 			"885th_WestarM5MKII_F",
 			"885th_Westar35", 
-			"885th_DC17M",
+			"885th_DC17M_F",
+			"885th_DC17M_Sniper_F",
+			"885th_DC17M_Launcher_F",
 			"885th_DC15C_F",
 			"885th_DC15C_GL",
 			"885th_DC15CMK2",
@@ -104,9 +105,6 @@ class CfgPatches
 			"885th_mando_cell_yellow",
 			"885th_mando_cell_yellow_pistol",
 			"885th_mando_cell_yellow_high",
-			"885_dc_cell_AP",
-			"885_dc_cell_sniper",
-			"885th_RC_AAD",
 			"885th_DX36C_battery_yellow_high",
 			"885th_DX36C_he_battery_yellow",
 			"885th_mando_cell_yellow_amp",
@@ -114,6 +112,9 @@ class CfgPatches
 			"885th_cell_green_pistol",
 			"885th_cell_green_high",
 			"885th_DW32S_cell",
+			"885th_60Rnd_mag_DC17M",
+			"885th_5Rnd_mag_DC17M_Sniper",
+			"885th_AAD_DC17M",
 			"885th_1rnd_40mm_HE_mag",
 			"885th_1rnd_40mm_AP_mag",
 			"885th_1rnd_40mm_whitesmoke_mag",
@@ -5193,43 +5194,49 @@ class CfgMagazines
 		tracersEvery = 1;
 		mass = 10;
 	};
-	class IDA_Blaster_Clip_Power2_60Rnd_Blue;
-	class 885_dc_cell_AP : IDA_Blaster_Clip_Power2_60Rnd_Blue
+	class 885th_60Rnd_mag_DC17M: CA_Magazine
 	{
-		count = 60;
-		displayName = "[885th] 60-Round Armor-Piercing Energy Cell";
-		displayNameShort = "HP AP Cell";
-		descriptionShort = "60 round capacity, AP blaster bolts.";
-		ammo = "885th_blasterbolt_bApex";
-		tracersEvery = 1;
-		mass = 10;
+		author="Antauri + 885th Bloodpack Divison";
+		scope=2;
+		displayName="[885th] DC17M 60 Round Mag ";
+		picture="\ShadowLegion_Weapons\data\Magazines\DC15\UI\Magazine_DC15_UI_L_Blue";
+		ammo="885th_blasterbolt_bApex";
+		count=60;
+		mass=8;
+		initSpeed=417;
+		tracersEvery=1;
+		lastRoundsTracer=50;
+		descriptionShort="DC17m Blaster Magazine.";
 	};
-	class IDA_Blaster_Clip_Power4_5Rnd_Blue;
-	class 885_dc_cell_sniper : IDA_Blaster_Clip_Power4_5Rnd_Blue
+	class 885th_5Rnd_mag_DC17M_Sniper: CA_Magazine
 	{
-		count = 5;
-		displayName = "[885th] 5-Round Armor-Piercing Energy Cell";
-		displayNameShort = "HP AP Cell";
-		descriptionShort = "5 round capacity, AP blaster bolts.";
-		ammo = "885th_blasterbolt_DC17MSnip";
-		initSpeed =2000;
-		tracersEvery = 1;
-		mass = 10;
+		author="Antauri + 885th Bloodpack Divison";
+		scope=2;
+		displayName="[885th] DC17M Sniper 5rnd HighPowered Mag";
+		picture="\ShadowLegion_Weapons\data\Magazines\DC15\UI\Magazine_DC15_UI_M_Blue";
+		ammo="885th_blasterbolt_DC17MSnip";
+		count=5;
+		mass=8;
+		initSpeed=872;
+		tracersEvery=1;
+		lastRoundsTracer=5;
+		descriptionShort="DC17m Sniper Blaster Magazine..";
 	};
-	class IDA_Blaster_Clip_Grenade;
-	class 885th_RC_AAD: IDA_Blaster_Clip_Grenade
+	class 885th_AAD_DC17M: CA_Magazine
 	{
-		count = 1;
-		displayName = "[885th] T-31 Anti-Armor Det";
+		author="Antauri + 885th Bloodpack Divison";
+		scope=2;
+		displayName="[885th] DC17M T-31 Anti-Armor Det";
 		displayNameShort = " T-31 AAD";
 		descriptionShort = "1 round capacity, High-Powered thermal detonator.";
-		model = "\MRC\JLTS\weapons\EPL2\EPL2_mag.p3d";
-		picture = "\MRC\JLTS\weapons\EPL2\data\ui\EPL2_mag_ui_ca.paa";
-		ammo = "885th_thermalshell_high";
-		initSpeed = 450;
-		tracersEvery = 1;
-		mass = 30;
-		type = 16;
+		picture="\a3\Weapons_F_Tank\Launchers\MRAWS\Data\UI\icon_rocket_MRAWS_HEAT_F_ca.paa";
+		initSpeed=350;
+		count=1;
+		tracersEvery=1;
+		lastRoundsTracer=1;
+		ammo="885th_thermalshell_high";
+		type=16;
+		mass=8;
 	};
 	class 885th_mando_cell_yellow_amp : 885th_mando_cell_yellow
 	{
@@ -5308,6 +5315,15 @@ class CfgMagazineWells
 			"885th_dc_cell_blue_over"
 		};
 		BI_Magazines[] = {};
+	};
+	class 885th_DC17M_MagWell
+	{
+		885th_Magazines[]=
+		{
+			"885th_60Rnd_mag_DC17M",
+			"885th_5Rnd_mag_DC17M_Sniper",
+			"885th_AAD_DC17M"
+		};
 	};
 	class 885th_UGL_1Rnd_MagWell
 	{
@@ -16611,46 +16627,194 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_DC17M: arifle_MX_Base_F
+	class 885th_DC17M_Base: Rifle_Base_F
 	{
-		ace_overheating_mrbs=40000;
-		ace_overheating_slowdownFactor=0;
-		ace_overheating_allowSwapBarrel=0;
-		ace_overheating_dispersion=1;
-		ace_overheating_closedBolt=0;
-		ace_overheating_barrelMass=1;
-		author="885th Bloodpack Division + Indecisive Armoury Team";
-		scope=2;
-		inertia=0;
+		scope=0;
 		canShootInWater=1;
-		baseWeapon="885th_DC17M";
-		displayName="[885th] DC-17M Interchangeable Weapon System";
+		author="Antauri & Leppy + 885th Bloodpack Divison";
+		_generalMacro="885th_DC17M_Base";
 		descriptionShort="";
-		picture="\3AS\3AS_Weapons\DC17M\data\UI\3as_dc17m.paa";
-		model="3AS\3AS_Weapons\DC17M\3AS_DC17M_f.p3d";
-		handAnim[]={"OFP2_ManSkeleton","\A3\Weapons_F_beta\Rifles\MK20\Data\Anim\mk20G.rtm"};
-		ace_clearJamAction="";
-		reloadAction="3AS_GestureReload_DC17M";
-		reloadMagazineSound[]={"885_Sounds\DC17MReload.ogg",2,1,30};
-		recoil="IDA_recoil_BlasterCarbine";
-		magazines[] = {"885_dc_cell_AP", "885_dc_cell_sniper", "885th_RC_AAD"};
-		magazineWell[]={};
-		muzzles[] = {"this", "Stun"};
-		modes[]={"FullAuto","Single"};
-		fireLightDiffuse[]={0.1,0.25,1};
-		drySound[]={"\Indecisive_Armoury_Sounds\weapon_dry.ogg",5,1,10};
+		inertia=0.80000001;
+		dexterity=0.89999998;
+		handAnim[]=
+		{
+			"OFP2_ManSkeleton",
+			"\ShadowLegion_Weapons\data\DC15\DC15A\Anim\ReloadBASE_DC15A.rtm"
+		};
+		reloadAction="ReloadMagazine";
+		fireLightDiffuse[]={0,0,1};
+		drySound[]=
+		{
+			"\ShadowLegion_Weapons\data\reloads\sounds\Empty_1.ogg",
+			5,
+			1,
+			10
+		};
+		reloadMagazineSound[]=
+		{
+			"\ShadowLegion_Weapons\data\reloads\sounds\Reload_1.ogg",
+			2,
+			1,
+			30
+		};
+		optics=1;
+		useModelOptics=1;
+		class OpticsModes
+		{
+			class DC17M_IronSights
+			{
+				opticsID=1;
+				useModelOptics=0;
+				opticsZoomMin=0.25;
+				opticsZoomMax=1.25;
+				opticsZoomInit=0.75;
+				memoryPointCamera="eye";
+				opticsFlare=0;
+				opticsDisablePeripherialVision=0;
+				distanceZoomMin=200;
+				distanceZoomMax=200;
+				cameraDir="";
+				visionMode[]={};
+				opticsPPEffects[]=
+				{
+					"Default"
+				};
+			};
+			class DC17M_Scope
+			{
+				opticsID=2;
+				useModelOptics=0;
+				opticsPPEffects[]=
+				{
+					"OpticsRadialBlur1",
+					"OpticsBlur1"
+				};
+				opticsFlare=1;
+				opticsDisablePeripherialVision=0;
+				opticsZoomMin=0.22499999;
+				opticsZoomMax=0.22499999;
+				opticsZoomInit=0.22499999;
+				memoryPointCamera="eye";
+				visionMode[]={};
+				distanceZoomMin=200;
+				distanceZoomMax=200;
+			};
+		};
 		class Stun : 885th_Stun_rifle
 		{
 		};
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			mass=97;
+			class CowsSlot: CowsSlot
+			{
+				compatibleItems[]=
+				{
+					"ShadwCmpany_dc17m_Hybrid_Combat",
+					"ShadwCmpany_dc17m_Hybrid_Sniper",
+					"ShadwCmpany_dc17m_Hybrid_Launcher",
+					"ShadwCmpany_optic_Reflex_Mk1",
+					"ShadwCmpany_optic_Reflex_Mk1_Alt1",
+					"ShadwCmpany_optic_Reflex_Mk1_Alt2",
+					"ShadwCmpany_optic_Acog",
+					"ShadwCmpany_optic_E5",
+					"ShadwCmpany_Hybrid_Magnifier_Holo",
+					"ShadwCmpany_Hybrid_Magnifier_Magnified",
+					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
+					"ShadwCmpany_773_Hybrid_Magnifier_Magnified",
+					"ShadwCmpany_Electroscope",
+					"ShadwCmpany_Electroscope_Standalone",
+					"ShadwCmpany_optic_e11",
+					"ShdwCmpny_Optic_Valken",
+					"ShadwCmpany_optic_DH17Scope",
+					"ShdwCmpny_Optic_A280Scope",
+					"optic_mrco",
+					"optic_aco_grn",
+					"optic_aco",
+					"ShdwCmpny_Optic_Scope_WestarM5",
+					"ShdwCmpny_Optic_LEScope_DC15A_mk2",
+					"ShdwCmpny_Optic_LEScope_DC15A",
+					"885th_Optic_Scope_WestarM5"
+				};
+			};
+			class MuzzleSlot: MuzzleSlot
+			{
+				compatibleItems[]=
+				{
+					"ShadwCmpany_Suppresor_Module_DC19"
+				};
+			};
+			class PointerSlot: PointerSlot
+			{
+				compatibleItems[]=
+				{
+					"acc_flashlight",
+					"acc_pointer_IR",
+					"ace_acc_pointer_red",
+					"ace_acc_pointer_green",
+					"ShdwCmpny_Light_MPD",
+					"ShdwCmpny_IR_MPD"
+				};
+			};
+			class UnderBarrelSlot: UnderBarrelSlot
+			{
+				iconPosition[]={0.2,0.80000001};
+				iconScale=0.30000001;
+				linkProxy="\A3\data_f_mark\proxies\weapon_slots\UNDERBARREL";
+				compatibleItems[]={};
+			};
+		};
+		class GunParticles
+		{
+			class FirstEffect
+			{
+				directionName="Konec hlavne";
+				effectName="RifleAssaultCloud";
+				positionName="Usti hlavne";
+			};
+		};
+	};
+	class 885th_DC17M_F: 885th_DC17M_Base
+	{
+		scope=2;
+		displayName="[885th] DC17M Blaster";
+		_generalMacro="885th_DC17M_F";
+		picture="\ShadowLegion_Weapons\data\DC17M\DC17M_UI.paa";
+		UiPicture="\ShadowLegion_Weapons\data\DC17M\DC17M_UI.paa";
+		model="ShadowLegion_Weapons\data\DC17M\models\DC17M_Blaster.p3d";
+		descriptionShort="Interchangeable Weapon System used by RCs during the clonewars, Blaster Configuration";
+		handAnim[]=
+		{
+			"OFP2_ManSkeleton",
+			"\ShadowLegion_Weapons\data\DC17M\Anim\ReloadBASE_DC17m.rtm"
+		};
+		initSpeed=472;
+		magazines[]=
+		{
+			"885th_60Rnd_mag_DC17M"
+		};
+		modes[]=
+		{
+			"Single",
+			"FullAuto",
+			"fullauto_medium",
+			"single_medium_optics1",
+			"single_far_optics2"
+		};
+		muzzles[] = {"this", "Stun"};
 		class Single: Mode_SemiAuto
 		{
-			sounds[] = {"StandardSound"};
+			sounds[]=
+			{
+				"StandardSound",
+				"SilencedSound"
+			};
 			class BaseSoundModeType
 			{
-				weaponSoundEffect = "";
-				closure1[] = {};
-				closure2[] = {};
-				soundClosure[] = {};
+				weaponSoundEffect="";
+				closure1[]={};
+				closure2[]={};
+				soundClosure[]={};
 			};
 			class StandardSound : BaseSoundModeType
 			{
@@ -16664,29 +16828,47 @@ class CfgWeapons
 				beginwater1[] = {"885_Sounds\DC17MFire.V2.ogg", 1, 1, 400};
 				soundBeginWater[] = {"beginwater1", 1};
 			};
-			reloadTime=0.30000001;
-			dispersion=0.001;
+			class SilencedSound: BaseSoundModeType
+			{
+				begin1[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				begin2[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				begin3[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				begin4[]={"ShadowLegion_Weapons\data\surpressed_2.ogg",1,1,100};
+				begin5[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				begin6[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				soundBegin[]={"begin1",0.5,"begin2",0.5,"begin3",0.5,"begin4",0.5,"begin5",0.5,"begin6",0.5};
+				beginwater1[]={"\ShadowLegion_Weapons\data\Underwater_Firing.ogg",1,1,200};
+				soundBeginWater[]={"beginwater1",0.5};	
+			};
+			recoil="recoil_single_ktb";
+			recoilProne="recoil_single_prone_ktb";
+			reloadTime=0.090000004;
+			dispersion=0.00026000003;
 			minRange=2;
 			minRangeProbab=0.5;
-			midRange=100;
+			midRange=250;
 			midRangeProbab=0.69999999;
-			maxRange=10000;
+			maxRange=450;
 			maxRangeProbab=0.30000001;
 		};
 		class FullAuto: Mode_FullAuto
 		{
-			sounds[] = {"StandardSound"};
+			sounds[]=
+			{
+				"StandardSound",
+				"SilencedSound"
+			};
 			class BaseSoundModeType
 			{
-				weaponSoundEffect = "";
-				closure1[] = {};
-				closure2[] = {};
-				soundClosure[] = {};
+				weaponSoundEffect="";
+				closure1[]={};
+				closure2[]={};
+				soundClosure[]={};
 			};
 			class StandardSound : BaseSoundModeType
 			{
 				weaponSoundEffect = "";
-				begin1[]={"885_Sounds\DC17MFire.V2.ogg",1.25, 1, 1800};
+				begin1[] = {"885_Sounds\DC17MFire.V2.ogg",1.25, 1, 1800};
 				begin2[] = {"885_Sounds\DC17MFire.V2.ogg", 1.25, 1.015, 1800};
 				begin3[] = {"885_Sounds\DC17MFire.V2.ogg", 1.25, 0.985, 1800};
 				begin4[] = {"885_Sounds\DC17MFire.V2.ogg", 1.25, 1.01, 1800};
@@ -16695,85 +16877,301 @@ class CfgWeapons
 				beginwater1[] = {"885_Sounds\DC17MFire.V2.ogg", 1, 1, 400};
 				soundBeginWater[] = {"beginwater1", 1};
 			};
-			reloadTime=0.1;
-			dispersion=0.00130;
+			class SilencedSound: BaseSoundModeType
+			{
+				begin1[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				begin2[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				begin3[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				begin4[]={"ShadowLegion_Weapons\data\surpressed_2.ogg",1,1,100};
+				begin5[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				begin6[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				soundBegin[]={"begin1",0.5,"begin2",0.5,"begin3",0.5,"begin4",0.5,"begin5",0.5,"begin6",0.5};
+				beginwater1[]={"\ShadowLegion_Weapons\data\Underwater_Firing.ogg",1,1,200};
+				soundBeginWater[]={"beginwater1",0.5};	
+			};
+			recoil="recoil_Auto_ktb";
+			recoilProne="recoil_Auto_prone_ktb";
+			reloadTime=0.090000004;
+			dispersion=0.00036000001;
+			minRange=0;
+			minRangeProbab=0.89999998;
+			midRange=15;
+			midRangeProbab=0.69999999;
+			maxRange=30;
+			maxRangeProbab=0.1;
+			aiRateOfFire=1e-006;
+		};
+		class fullauto_medium: FullAuto
+		{
+			showToPlayer=0;
+			burst=3;
+			aiBurstTerminable=1;
 			minRange=2;
 			minRangeProbab=0.5;
-			midRange=100;
+			midRange=75;
 			midRangeProbab=0.69999999;
-			maxRange=10000;
+			maxRange=150;
+			maxRangeProbab=0.050000001;
+			aiRateOfFire=2;
+			aiRateOfFireDistance=200;
+		};
+		class single_medium_optics1: Single
+		{
+			requiredOpticType=1;
+			showToPlayer=0;
+			minRange=2;
+			minRangeProbab=0.2;
+			midRange=450;
+			midRangeProbab=0.69999999;
+			maxRange=600;
+			maxRangeProbab=0.2;
+			aiRateOfFire=6;
+			aiRateOfFireDistance=600;
+		};
+		class single_far_optics2: single_medium_optics1
+		{
+			requiredOpticType=2;
+			showToPlayer=0;
+			minRange=100;
+			minRangeProbab=0.1;
+			midRange=500;
+			midRangeProbab=0.60000002;
+			maxRange=700;
+			maxRangeProbab=0.050000001;
+			aiRateOfFire=8;
+			aiRateOfFireDistance=700;
+		};
+	};
+	
+	class 885th_DC17M_Sniper_F: 885th_DC17M_Base
+	{
+		scope=1;
+		scopeCurator=0;
+		displayName="[885th][M] DC17M Sniper Blaster";
+		_generalMacro="885th_DC17M_Sniper_F";
+		picture="\ShadowLegion_Weapons\data\DC17M\DC17M_Sniper_UI.paa";
+		UiPicture="\ShadowLegion_Weapons\data\DC17M\DC17M_Sniper_UI.paa";
+		model="ShadowLegion_Weapons\data\DC17M\models\DC17M_Sniper.p3d";
+		descriptionShort="Interchangeable Weapon System used by RCs during the clonewars, Sniper Blaster Configuration";
+		handAnim[]=
+		{
+			"OFP2_ManSkeleton",
+			"\ShadowLegion_Weapons\data\DC17M\Anim\ReloadBASE_DC17m.rtm"
+		};
+		initSpeed=472;
+		magazines[]=
+		{
+			"885th_5Rnd_mag_DC17M_Sniper"
+		};
+		modes[]=
+		{
+			"Single",
+			"single_close_optics1",
+			"single_medium_optics1",
+			"single_far_optics1"
+		};
+		class Single: Mode_SemiAuto
+		{
+			sounds[]=
+			{
+				"StandardSound",
+				"SilencedSound"
+			};
+			class BaseSoundModeType
+			{
+				weaponSoundEffect="";
+				closure1[]={};
+				closure2[]={};
+				soundClosure[]={};
+			};
+			class StandardSound : BaseSoundModeType
+			{
+				weaponSoundEffect = "";
+				begin1[] = {"885_Sounds\DC17MSnipeFire.ogg",1.25, 1, 1800};
+				begin2[] = {"885_Sounds\DC17MSnipeFire.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Sounds\DC17MSnipeFire.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Sounds\DC17MSnipeFire.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Sounds\DC17MSnipeFire.ogg", 1.25, 0.995, 1800};
+				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
+				beginwater1[] = {"885_Sounds\DC17MSnipeFire.ogg", 1, 1, 400};
+				soundBeginWater[] = {"beginwater1", 1};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				begin1[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				begin2[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				begin3[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				begin4[]={"ShadowLegion_Weapons\data\surpressed_2.ogg",1,1,100};
+				begin5[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				begin6[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
+				soundBegin[]={"begin1",0.5,"begin2",0.5,"begin3",0.5,"begin4",0.5,"begin5",0.5,"begin6",0.5};
+				beginwater1[]={"\ShadowLegion_Weapons\data\Underwater_Firing.ogg",1,1,200};
+				soundBeginWater[]={"beginwater1",0.5};	
+			};
+			recoil="recoil_single_mk20";
+			recoilProne="recoil_single_prone_mk20";
+			reloadTime=0.69999999;
+			dispersion=0.00025000001;
+			minRange=2;
+			minRangeProbab=0.5;
+			midRange=200;
+			midRangeProbab=0.69999999;
+			maxRange=400;
+			maxRangeProbab=0.30000001;
+			soundContinuous=0;
+			soundBurst=0;
+		};
+		class single_close_optics1: Single
+		{
+			requiredOpticType=1;
+			showToPlayer=0;
+			minRange=2;
+			minRangeProbab=0.050000001;
+			midRange=300;
+			midRangeProbab=0.80000001;
+			maxRange=500;
+			maxRangeProbab=0.0099999998;
+			aiRateOfFire=2;
+			aiRateOfFireDistance=300;
+		};
+		class single_medium_optics1: single_close_optics1
+		{
+			minRange=300;
+			minRangeProbab=0.050000001;
+			midRange=500;
+			midRangeProbab=0.69999999;
+			maxRange=700;
+			maxRangeProbab=0.050000001;
+			aiRateOfFire=2;
+			aiRateOfFireDistance=500;
+		};
+		class single_far_optics1: single_medium_optics1
+		{
+			requiredOpticType=2;
+			minRange=300;
+			minRangeProbab=0.050000001;
+			midRange=700;
+			midRangeProbab=0.5;
+			maxRange=1000;
+			maxRangeProbab=0.050000001;
+			aiRateOfFire=4;
+			aiRateOfFireDistance=600;
+		};
+	};
+	
+	class 885th_DC17M_Launcher_F: 885th_DC17M_Base
+	{
+		scope=1;
+		scopeCurator=0;
+		displayName="[885th][AT] DC17M Launcher";
+		_generalMacro="885th_DC17M_Launcher_F";
+		picture="\ShadowLegion_Weapons\data\DC17M\DC17M_Launcher_UI.paa";
+		UiPicture="\ShadowLegion_Weapons\data\DC17M\DC17M_Launcher_UI.paa";
+		model="ShadowLegion_Weapons\data\DC17M\models\DC17M_Launcher.p3d";
+		reloadAction="ReloadMagazine";
+		descriptionShort="Interchangeable Weapon System used by RCs during the clonewars, Anti Armor Missile Launcher Configuration";
+		handAnim[]=
+		{
+			"OFP2_ManSkeleton",
+			"\ShadowLegion_Weapons\data\DC17M\Anim\ReloadBASE_DC17m.rtm"
+		};
+		initSpeed=472;
+		magazines[]=
+		{
+			"885th_AAD_DC17M"
+		};
+		muzzles[]=
+		{
+			"this"
+		};
+		modes[]=
+		{
+			"Single",
+			"single_medium_optics1",
+			"single_far_optics2"
+		};
+		class Single: Mode_SemiAuto
+		{
+			sounds[]=
+			{
+				"StandardSound",
+				"SilencedSound"
+			};
+			class BaseSoundModeType
+			{
+				weaponSoundEffect="";
+				closure1[]={};
+				closure2[]={};
+				soundClosure[]={};
+			};
+			class StandardSound: BaseSoundModeType
+			{
+				begin1[]={"885_Sounds\885th_UGL_Sound.ogg",3.1622777,1,400};
+				begin2[]={"885_Sounds\885th_UGL_Sound.ogg",3.1622777,1,400};
+				begin3[]={"885_Sounds\885th_UGL_Sound.ogg",3.1622777,1,400};
+				begin4[]={"885_Sounds\885th_UGL_Sound.ogg",3.1622777,1,400};
+				begin5[]={"885_Sounds\885th_UGL_Sound.ogg",3.1622777,1,400};
+				begin6[]={"885_Sounds\885th_UGL_Sound.ogg",3.1622777,1,400};
+				soundBegin[]={"begin1",0.5,"begin2",0.5,"begin3",0.5,"begin4",0.5,"begin5",0.5,"begin6",0.5};
+				beginwater1[]={"ShadowLegion_Weapons\data\885th_UGL_Sound.ogg",3.1622777,1,400};
+				soundBeginWater[]={"beginwater1",0.5};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				begin1[]={"885_Sounds\885th_UGL_Sound.ogg",3.1622777,1,400};
+				begin2[]={"885_Sounds\885th_UGL_Sound.ogg",3.1622777,1,400};
+				begin3[]={"885_Sounds\885th_UGL_Sound.ogg",3.1622777,1,400};
+				begin4[]={"885_Sounds\885th_UGL_Sound.ogg",3.1622777,1,400};
+				begin5[]={"885_Sounds\885th_UGL_Sound.ogg",3.1622777,1,400};
+				begin6[]={"885_Sounds\885th_UGL_Sound.ogg",3.1622777,1,400};
+				soundBegin[]={"begin1",0.5,"begin2",0.5,"begin3",0.5,"begin4",0.5,"begin5",0.5,"begin6",0.5};
+			};
+			recoil="recoil_auto_mk20";
+			recoilProne="recoil_auto_prone_mk20";
+			reloadTime=0.090000004;
+			dispersion=0.00026000003;
+			minRange=2;
+			minRangeProbab=0.5;
+			midRange=250;
+			midRangeProbab=0.69999999;
+			maxRange=450;
 			maxRangeProbab=0.30000001;
 		};
-		modelOptics="\ShadowLegion_Weapons\data\Acc\Reticles\model\Scope_Blue_1";
-		weaponInfoType="RscWeaponZeroing";
-		class OpticsModes
+		class single_medium_optics1: Single
 		{
-			class Ironsights
-			{
-				opticsID=1;
-				useModelOptics=0;
-				opticsFlare="false";
-				opticsPPEffects[]=
-				{
-					"OpticsCHAbera5",
-					"OpticsBlur5"
-				};
-				opticsDisablePeripherialVision=0;
-				opticsZoomMin=0.40000001;
-				opticsZoomMax=1.1;
-				opticsZoomInit=0.75;
-				memoryPointCamera="eye";
-				visionMode[]={};
-				distanceZoomMin=300;
-				distanceZoomMax=300;
-			};
-			class Scope: Ironsights
-			{
-				opticsID=2;
-				useModelOptics=1;
-				opticsPPEffects[]=
-				{
-					"OpticsCHAbera5",
-					"OpticsBlur5"
-				};
-				opticsFlare=0;
-				opticsDisablePeripherialVision=1;
-				opticsZoomMin=0.015;
-				opticsZoomMax=0.1;
-				opticsZoomInit=0.1;
-				memoryPointCamera="opticView";
-				visionMode[]={};
-				distanceZoomMin=300;
-				distanceZoomMax=300;
-			};
+			requiredOpticType=1;
+			showToPlayer=0;
+			minRange=2;
+			minRangeProbab=0.2;
+			midRange=450;
+			midRangeProbab=0.69999999;
+			maxRange=600;
+			maxRangeProbab=0.2;
+			aiRateOfFire=6;
+			aiRateOfFireDistance=600;
+		};
+		class single_far_optics2: single_medium_optics1
+		{
+			requiredOpticType=2;
+			showToPlayer=0;
+			minRange=100;
+			minRangeProbab=0.1;
+			midRange=500;
+			midRangeProbab=0.60000002;
+			maxRange=700;
+			maxRangeProbab=0.050000001;
+			aiRateOfFire=8;
+			aiRateOfFireDistance=700;
 		};
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
-			mass=90;
-			class CowsSlot: CowsSlot
-			{
-				compatibleItems[]={};
-			};
+			mass=97;
 			class MuzzleSlot: MuzzleSlot
 			{
-				compatibleItems[]={};
-			};
-			class PointerSlot: PointerSlot
-			{
-				compatibleItems[]={};
-			};
-			class UnderBarrelSlot: UnderBarrelSlot
-			{
-				compatibleItems[]={};
-			};
-		};
-		class GunParticles
-		{
-			class FirstEffect
-			{
-				directionName="Konec hlavne";
-				effectName="RifleAssaultCloud";
-				positionName="Usti hlavne";
+				compatibleItems[]=
+				{
+					""
+				};
 			};
 		};
 	};
@@ -17068,5 +17466,149 @@ class CfgWeapons
 		IMS_ExecutionType="ReversedKnife";
 		IMS_WeaponEventHandler_Special="[player, 'ShdwCmpny_Vibroblade_r'] spawn WBK_IMS_WeaponAbility_Rotate;";
 		IMS_Melee_Param_Damage=0.34999999;
+	};
+};
+
+class CfgMovesBasic
+{
+	class DefaultDie;
+	class ManActions
+	{
+		BPD_GestureReconfigure_DC17M = "BPD_GestureReconfigure_DC17M";
+		BPD_GestureReconfigure_DC17M_AT = "BPD_GestureReconfigure_DC17M_AT";
+	};
+	class Actions
+	{
+		class NoActions: ManActions
+		{
+			BPD_GestureReconfigure_DC17M[] =
+			{
+				"BPD_GestureReconfigure_DC17M",
+				"Gesture"
+			};
+			BPD_GestureReconfigure_DC17M_AT[] =
+			{
+				"BPD_GestureReconfigure_DC17M_AT",
+				"Gesture"
+			};
+		};
+		class RifleBaseStandActions;
+		class RifleStandActions;
+		class RifleAdjustProneBaseActions;
+		class RifleProneActions: RifleBaseStandActions
+		{
+			BPD_GestureReconfigure_DC17M = "RifleReloadProne_smg_03";
+			BPD_GestureReconfigure_DC17M_AT = "RifleReloadProne_smg_03";
+		};
+		class RifleAdjustFProneActions: RifleAdjustProneBaseActions
+		{
+			BPD_GestureReconfigure_DC17M[] =
+			{
+				"BPD_GestureReconfigure_DC17MContext",
+				"Gesture"
+			};
+			BPD_GestureReconfigure_DC17M_AT[] =
+			{
+				"BPD_GestureReconfigure_DC17M_ATContext",
+				"Gesture"
+			};
+		};
+		class RifleAdjustLProneActions: RifleAdjustProneBaseActions
+		{
+			BPD_GestureReconfigure_DC17M[] =
+			{
+				"BPD_GestureReconfigure_DC17MContext",
+				"Gesture"
+			};
+			BPD_GestureReconfigure_DC17M_AT[] =
+			{
+				"BPD_GestureReconfigure_DC17M_ATContext",
+				"Gesture"
+			};
+		};
+		class RifleAdjustRProneActions: RifleAdjustProneBaseActions
+		{
+			BPD_GestureReconfigure_DC17M[] =
+			{
+				"BPD_GestureReconfigure_DC17MContextAnimDrive",
+				"Gesture"
+			};
+			BPD_GestureReconfigure_DC17M_AT[] =
+			{
+				"BPD_GestureReconfigure_DC17M_ATContextAnimDrive",
+				"Gesture"
+			};
+		};
+		class DeployedProneActions: RifleProneActions
+		{
+			BPD_GestureReconfigure_DC17M[] =
+			{
+				"RifleReloadDeployed_smg_03",
+				"Gesture"
+			};
+			BPD_GestureReconfigure_DC17M_AT[] =
+			{
+				"RifleReloadDeployed_smg_03",
+				"Gesture"
+			};
+		};
+	};
+};
+class CfgGesturesMale
+{
+	class Default;
+	class States
+	{
+		class BPD_GestureReconfigure_DC17M: Default
+		{
+			file = "3AS\3AS_Weapons\Data\anim\DC17M_Reload.rtm";
+			looped = 0;
+			speed = -2; // duration of the animation in seconds * -1 - MUST match the sleep value in fnc_switchDC17M.sqf
+			mask = "handsWeapon";
+			headBobStrength = 0.2;
+			headBobMode = 2;
+			rightHandIKBeg = 1;
+			rightHandIKEnd = 1;
+			leftHandIKCurve[] = {0.012,1,0.041000001,0,0.94099998,0,0.98199999,1};
+		};
+		class BPD_GestureReconfigure_DC17M_AT: Default
+		{
+			file = "3AS\3AS_Weapons\Data\anim\DC17M_AT_Reload.rtm";
+			looped = 0;
+			speed = -2; // duration of the animation in seconds * -1 - MUST match the sleep value in fnc_switchDC17M.sqf
+			mask = "handsWeapon";
+			headBobStrength = 0.2;
+			headBobMode = 2;
+			rightHandIKBeg = 1;
+			rightHandIKEnd = 1;
+			leftHandIKCurve[] = {0.012,1,0.041000001,0,0.94099998,0,0.98199999,1};
+		};
+	};
+};
+
+class Extended_PreInit_EventHandlers
+{
+	class BPD_DC17M_Pre
+	{
+		init = "call compile preprocessFileLineNumbers '\885_Weapons\XEH_preInit.sqf'";
+	};
+};
+class Extended_PostInit_EventHandlers
+{
+	class BPD_DC17M_Post
+	{
+		init = "call compile preprocessFileLineNumbers '\885_Weapons\XEH_postInit.sqf'";
+	};
+};
+
+class CfgFunctions
+{
+	class BPD_DC17M
+	{
+		tag = "BPD";
+		class Weapons
+		{
+			class switchDC17M { file = "885_Weapons\scripts\functions\fnc_switchDC17M.sqf"; };
+		};
 	};
 };

@@ -1,14 +1,14 @@
 ambient[]={0.5,0.5,0.5,1};
-diffuse[]={0.60000002,0.60000002,0.60000002,1};
+diffuse[]={0.5,0.5,0.5,1};
 forcedDiffuse[]={0,0,0,0};
-emmisive[]={200, 200, 200, 1};
-specular[]={5.5999999,5.5999999,5.5999999,0.5};
-specularPower=512;
+emmisive[]={0,0,0,1};
+specular[]={0.2,0.2,0.2,0.1};
+specularPower=50;
 PixelShaderID="Super";
 VertexShaderID="Super";
 class Stage1
 {
-	texture="885_Armor\885_Armor\Customs\Kit\PilotHelmet_NOHQ.paa";
+	texture="885_Armor\885_Armor\Customs\Kit\helmet_nohq.paa";
 	uvSource="tex";
 	class uvTransform
 	{
@@ -32,31 +32,31 @@ class Stage2
 };
 class Stage3
 {
-	texture="#(argb,8,8,3)color(0,0,0,0,mc)";
+	texture="#(argb,8,8,3)color(1,1,1,0,MC)";
 	uvSource="tex";
 	class uvTransform
 	{
 		aside[]={1,0,0};
 		up[]={0,1,0};
-		dir[]={0,0,0};
+		dir[]={0,0,1};
 		pos[]={0,0,0};
 	};
 };
 class Stage4
 {
-	texture="885_Armor\885_Armor\Customs\Kit\PilotHelmet_AS.paa";
+	texture="885_Armor\885_Armor\Customs\Kit\helmet_as.paa";
 	uvSource="tex";
 	class uvTransform
 	{
 		aside[]={1,0,0};
 		up[]={0,1,0};
-		dir[]={0,0,0};
+		dir[]={0,0,1};
 		pos[]={0,0,0};
 	};
 };
 class Stage5
 {
-	texture="885_Armor\885_Armor\Customs\Kit\PilotHelmet_SMDI.paa";
+	texture="885_Armor\885_Armor\Customs\Kit\helmet_smdi.paa";
 	uvSource="tex";
 	class uvTransform
 	{

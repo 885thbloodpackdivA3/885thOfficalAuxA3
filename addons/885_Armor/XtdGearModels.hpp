@@ -989,7 +989,7 @@ class XtdGearInfos
 			variant="RC";
 			camo="RC";
 		};
-		class 885th_Kit_P2_Helm
+		class 885th_Kit_phase2SpecOp_helmet
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Kit";
