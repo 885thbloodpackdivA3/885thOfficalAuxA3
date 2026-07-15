@@ -12432,10 +12432,8 @@ class CfgVehicles
 	class GR_Femclone_dirty_armor_body;
 	class 3AS_B_CloneTrooper_F;
 	class 885th_Vornskr_Backpack_compact: 3AS_B_CloneTrooper_F
-	class 3AS_B_CloneTrooper_Rocket_F;
-	class 885th_Vornskr_Backpack: ls_gar_standard_backpack
 	{
-		displayName = " [885th] Vornskr Backpack";
+		displayName = "[885th] Vornskr Backpack";
 		picture = "";
 		maximumload = 300;
 		hiddenSelectionsTextures[]=
@@ -12529,100 +12527,6 @@ class CfgVehicles
 		tf_encryptionCode="tf_west_radio_code";
 		tf_hasLRradio=1;
 		tf_range=40000;
-		tf_subtype="digital_lr";
-	};
-	class 885th_LS_Explosives_Backpack: ls_gar_heavy_backpack
-	{
-		author="885th Bloodpack Division";
-		scope=2;
-		picture="";
-		displayName="[885th] Heavy Explosives Backpack";
-		maximumload = 500;
-
-		hiddenSelections[]=
-		{
-			"backpack",
-			"cover",
-			"pouches",
-			"tube"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Backpacks\885th_Explosives_Backpack_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_Explosives_Cover_Backpack_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_Explosives_Backpack_Pouches_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_Explosives_Backpack_Tube_co.paa"
-		};
-	};
-	class 885th_LS_Rocket_Backpack: ls_gar_rocket_backpack
-	{
-		author="885th Bloodpack Division";
-		scope=2;
-		picture="";
-		displayName="[885th] LS Anti-Tank Explosives Backpack";
-		maximumload = 700;
-
-		hiddenSelections[]=
-		{
-			"backpack",
-			"holder",
-			"rocket",
-			"light",
-			"pouches"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"\885_Armor\885_Armor\Backpacks\885th_Explosives_Backpack_co.paa",
-			"\ls\core\addons\characters_clone_legacy\backpacks\standard\data\holder_co.paa",
-			"\ls\core\addons\characters_clone_legacy\backpacks\standard\data\rocket_co.paa",
-			"\ls\core\addons\characters_clone_legacy\backpacks\standard\data\light_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_Explosives_Backpack_Pouches_co.paa"
-		};
-	};
-	class 885th_3as_Charge_Backpack: 3AS_B_CloneTrooper_Rocket_F
-	{
-		author="885th Bloodpack Division";
-		scope=2;
-		picture="";
-		displayName="[885th] Charge Anti-Tank Backpack";
-		maximumload = 700;
-
-		hiddenSelections[]=
-		{
-			"Backpack"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"\885_Armor\885_Armor\Customs\Charge\Charge_AT_Backpack.paa"
-		};
-	};
-	class 885th_Medic_Backpack: ls_gar_medic_backpack
-	{
-		author="885th Bloodpack Division";
-		scope=2;
-		picture="";
-		displayName="[885th] LS Vornskr Medic Backpack";
-		maximumload = 400;
-
-		hiddenSelections[]=
-		{
-			"backpack",
-			"cover",
-			"medic1",
-			"medic2"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Backpacks\885th_medic_backpack_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_backpack_cover_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_medic_backpack_bacta_co.paa",
-			"885_Armor\885_Armor\Backpacks\885th_medic_backpack_bacta_co.paa"
-		};
-		tf_dialog="JLTS_clone_rto_radio_dialog";
-		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
-		tf_encryptionCode="tf_west_radio_code";
-		tf_hasLRradio=1;
-		tf_range=25000;
 		tf_subtype="digital_lr";
 	};
 	class ls_cloneBackpack_ammo;
@@ -12940,6 +12844,7 @@ class CfgVehicles
 		tf_subtype="digital_lr";
 		mass=22;
 	};
+	//LS Gear
 	class ls_cloneBackpack_standard;
 	class 885th_Bleach_Surgeon_Backpack: ls_cloneBackpack_standard
 	{
@@ -13028,6 +12933,25 @@ class CfgVehicles
 		tf_range=100000;
 		tf_subtype="digital_lr";
 		mass=22;
+	};
+	
+	//3AS Gear
+	class 885th_3as_Charge_Backpack: 3AS_B_CloneTrooper_Rocket_F
+	{
+		author="885th Bloodpack Division";
+		scope=2;
+		picture="";
+		displayName="[885th] Charge Anti-Tank Backpack";
+		maximumload = 700;
+
+		hiddenSelections[]=
+		{
+			"Backpack"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"\885_Armor\885_Armor\Customs\Charge\Charge_AT_Backpack.paa"
+		};
 	};
 	//20th Gear
 	class 885th_Cust_RTO_Buttbag2_Bandit: B_AssaultPack_blk
