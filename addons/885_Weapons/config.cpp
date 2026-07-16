@@ -5199,7 +5199,7 @@ class CfgMagazines
 		author="Antauri + 885th Bloodpack Divison";
 		scope=2;
 		displayName="[885th] DC17M 60 Round Mag ";
-		picture="\ShadowLegion_Weapons\data\Magazines\DC15\UI\Magazine_DC15_UI_L_Blue";
+		picture="\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
 		ammo="885th_blasterbolt_bApex";
 		count=60;
 		mass=8;
@@ -5213,7 +5213,7 @@ class CfgMagazines
 		author="Antauri + 885th Bloodpack Divison";
 		scope=2;
 		displayName="[885th] DC17M Sniper 5rnd HighPowered Mag";
-		picture="\ShadowLegion_Weapons\data\Magazines\DC15\UI\Magazine_DC15_UI_M_Blue";
+		picture="\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
 		ammo="885th_blasterbolt_DC17MSnip";
 		count=5;
 		mass=8;
@@ -5229,7 +5229,7 @@ class CfgMagazines
 		displayName="[885th] DC17M T-31 Anti-Armor Det";
 		displayNameShort = " T-31 AAD";
 		descriptionShort = "1 round capacity, High-Powered thermal detonator.";
-		picture="\a3\Weapons_F_Tank\Launchers\MRAWS\Data\UI\icon_rocket_MRAWS_HEAT_F_ca.paa";
+		picture = "\MRC\JLTS\weapons\EPL2\data\ui\EPL2_mag_ui_ca.paa";
 		initSpeed=350;
 		count=1;
 		tracersEvery=1;
@@ -8337,11 +8337,11 @@ class CfgWeapons
 			class BaseSoundModeType;
 			class StandardSound: BaseSoundModeType
 			{
-				begin1[]={"885_Weapons\DX36C\DX36C.V2.ogg",1.25, 1, 1800};
-				begin2[] = {"885_Weapons\DX36C\DX36C.V2.ogg", 1.25, 1.015, 1800};
-				begin3[] = {"885_Weapons\DX36C\DX36C.V2.ogg", 1.25, 0.985, 1800};
-				begin4[] = {"885_Weapons\DX36C\DX36C.V2.ogg", 1.25, 1.01, 1800};
-				begin5[] = {"885_Weapons\DX36C\DX36C.V2.ogg", 1.25, 0.995, 1800};
+				begin1[]={"885_Weapons\DX36C\DX36CV3.ogg",1.25, 1, 1800};
+				begin2[] = {"885_Weapons\DX36C\DX36CV3.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Weapons\DX36C\DX36CV3.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Weapons\DX36C\DX36CV3.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Weapons\DX36C\DX36CV3.ogg", 1.25, 0.995, 1800};
 				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
 				beginwater1[]={"\ShadowLegion_Weapons\data\Underwater_Firing.ogg",1,1,200};
 				soundBeginWater[]={"beginwater1",0.5};
@@ -8374,11 +8374,11 @@ class CfgWeapons
 			class BaseSoundModeType;
 			class StandardSound: BaseSoundModeType
 			{
-				begin1[]={"885_Weapons\DX36C\DX36C.V2.ogg",1.25, 1, 1800};
-				begin2[] = {"885_Weapons\DX36C\DX36C.V2.ogg", 1.25, 1.015, 1800};
-				begin3[] = {"885_Weapons\DX36C\DX36C.V2.ogg", 1.25, 0.985, 1800};
-				begin4[] = {"885_Weapons\DX36C\DX36C.V2.ogg", 1.25, 1.01, 1800};
-				begin5[] = {"885_Weapons\DX36C\DX36C.V2.ogg", 1.25, 0.995, 1800};
+				begin1[]={"885_Weapons\DX36C\DX36CV3.ogg",1.25, 1, 1800};
+				begin2[] = {"885_Weapons\DX36C\DX36CV3.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Weapons\DX36C\DX36CV3.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Weapons\DX36C\DX36CV3.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Weapons\DX36C\DX36CV3.ogg", 1.25, 0.995, 1800};
 				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
 				beginwater1[]={"\ShadowLegion_Weapons\data\Underwater_Firing.ogg",1,1,200};
 				soundBeginWater[]={"beginwater1",0.5};
@@ -8410,11 +8410,11 @@ class CfgWeapons
 			class BaseSoundModeType;
 			class StandardSound: BaseSoundModeType
 			{
-				begin1[]={"885_Weapons\DX36C\DX36C.V2.ogg",1.25, 1, 1800};
-				begin2[] = {"885_Weapons\DX36C\DX36C.V2.ogg", 1.25, 1.015, 1800};
-				begin3[] = {"885_Weapons\DX36C\DX36C.V2.ogg", 1.25, 0.985, 1800};
-				begin4[] = {"885_Weapons\DX36C\DX36C.V2.ogg", 1.25, 1.01, 1800};
-				begin5[] = {"885_Weapons\DX36C\DX36C.V2.ogg", 1.25, 0.995, 1800};
+				begin1[]={"885_Weapons\DX36C\DX36CV3.ogg",1.25, 1, 1800};
+				begin2[] = {"885_Weapons\DX36C\DX36CV3.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Weapons\DX36C\DX36CV3.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Weapons\DX36C\DX36CV3.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Weapons\DX36C\DX36CV3.ogg", 1.25, 0.995, 1800};
 				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
 				beginwater1[]={"\ShadowLegion_Weapons\data\Underwater_Firing.ogg",1,1,200};
 				soundBeginWater[]={"beginwater1",0.5};
@@ -15444,7 +15444,7 @@ class CfgWeapons
 	};
 	
 	// CIS
-	class 885th_A180 : 3AS_A180_F
+	class 885th_A180: 3AS_A180_F
 	{
 		ace_overheating_mrbs = 5000;
 		ace_overheating_slowdownFactor = 0;
@@ -15531,7 +15531,7 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_E5 : arifle_MX_Base_F
+	class 885th_E5: arifle_MX_Base_F
 	{
 		ace_overheating_mrbs = 40000;
 		ace_overheating_slowdownFactor = 0;
@@ -15610,7 +15610,7 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_E5C : arifle_MX_Base_F
+	class 885th_E5C: arifle_MX_Base_F
 	{
 		ace_overheating_mrbs = 40000;
 		ace_overheating_slowdownFactor = 0;
@@ -15736,7 +15736,7 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_E5S : arifle_MX_Base_F
+	class 885th_E5S: arifle_MX_Base_F
 	{
 		ace_overheating_mrbs = 40000;
 		ace_overheating_slowdownFactor = 0;
@@ -15825,7 +15825,7 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_WristBlaster : 885th_E5C
+	class 885th_WristBlaster: 885th_E5C
 	{
 		access = 0;
 		ace_overheating_mrbs = 40000;
@@ -15966,31 +15966,51 @@ class CfgWeapons
 		};\
 	};
 	// Mandalorian
-	
-	class 885th_Westar35 : IDA_Westar35
+	class 885th_Westar35: hgun_Pistol_Heavy_01_F
 	{
-		ace_overheating_mrbs = 5000;
-		ace_overheating_slowdownFactor = 0;
-		ace_overheating_allowSwapBarrel = 0;
-		ace_overheating_dispersion = 0;
-		ace_overheating_closedBolt = 0;
-		ace_overheating_barrelMass = 1;
-		ace_barrelLength = 127;
-		access = 0;
-		baseWeapon = "885th_Westar35";
-		model = "Indecisive_Armoury_Weapons_INDEP\Data\Westar35\Model\IDA_Westar35.p3d";
-		picture = "Indecisive_Armoury_Weapons_INDEP\Data\Westar35\Westar35_ui.paa";
-		displayName = "[885th] Westar-35 Blaster Pistol";
+		ace_overheating_mrbs=40000;
+		ace_overheating_slowdownFactor=0;
+		ace_overheating_allowSwapBarrel=0;
+		ace_overheating_dispersion=1;
+		ace_overheating_closedBolt=0;
+		ace_overheating_barrelMass=1;
+		author="Indecisive Armoury Team + 885th Bloodpack Divison";
+		displayName="[885th] Westar-35 Blaster Pistol";
 		descriptionShort = "MandalTech Blaster Pistol";
+		scope=2;
+		inertia=0;
+		canShootInWater=1;
+		baseWeapon="885th_Westar35";
+		picture="Indecisive_Armoury_Weapons_INDEP\Data\Westar35\Westar35_ui.paa";
+		model="Indecisive_Armoury_Weapons_INDEP\Data\Westar35\Model\IDA_Westar35.p3d";
+		hiddenSelections[]=
+		{
+			"camo"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"Indecisive_Armoury_Weapons_INDEP\Data\Westar35\Textures\Westar35_co.paa"
+		};
 		magazines[] = {"885th_mando_cell_yellow_pistol"};
-		magazineWell[] = {};
-		nameSound = "Pistol";
-		optics = 1;
-		primary = 10;
-		reloadAction = "GestureReload_IDA_Reload_BlasterPistol";
-		reloadMagazineSound[] = {"\Indecisive_Armoury_Sounds\Blaster_reload_Vent.ogg", 1.5, 1, 100};
-		reloadSound[] = {"", 1, 1};
+		ace_clearJamAction="";
+		reloadAction="GestureReload_IDA_Reload_BlasterPistol";
+		recoil="IDA_recoil_BlasterPistol";
+		magazineWell[]={};
 		fireLightDiffuse[]={1,1,0};
+		drySound[]=
+		{
+			"\Indecisive_Armoury_Sounds\weapon_dry.ogg",
+			5,
+			1,
+			10
+		};
+		reloadMagazineSound[]=
+		{
+			"\Indecisive_Armoury_Sounds\Blaster_reload_Vent.ogg",
+			5,
+			1,
+			100
+		};
 		modes[] = {"Single"};
 		muzzles[] = {"this", "Stun"};
 		class Stun : 885th_Stun_pistol
@@ -16009,13 +16029,13 @@ class CfgWeapons
 			class StandardSound : BaseSoundModeType
 			{
 				weaponSoundEffect = "";
-				begin1[] = {"\Indecisive_Armoury_Sounds\INDEP\Westar35.ogg", 1.25, 1, 1800};
-				begin2[] = {"\Indecisive_Armoury_Sounds\INDEP\Westar35.ogg", 1.25, 1.015, 1800};
-				begin3[] = {"\Indecisive_Armoury_Sounds\INDEP\Westar35.ogg", 1.25, 0.985, 1800};
-				begin4[] = {"\Indecisive_Armoury_Sounds\INDEP\Westar35.ogg", 1.25, 1.01, 1800};
-				begin5[] = {"\Indecisive_Armoury_Sounds\INDEP\Westar35.ogg", 1.25, 0.995, 1800};
+				begin1[] = {"885_Sounds\Westar35V2.ogg", 1.25, 1, 1800};
+				begin2[] = {"885_Sounds\Westar35V2.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Sounds\Westar35V2.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Sounds\Westar35V2.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Sounds\Westar35V2.ogg", 1.25, 0.995, 1800};
 				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
-				beginwater1[] = {"\Indecisive_Armoury_Sounds\INDEP\Westar35.ogg", 1, 1, 400};
+				beginwater1[] = {"885_Sounds\Westar35V2.ogg", 1, 1, 400};
 				soundBeginWater[] = {"beginwater1", 1};
 			};
 			reloadTime = 0.1;
@@ -16027,24 +16047,24 @@ class CfgWeapons
 			maxRange = 100;
 			maxRangeProbab = 0.1;
 		};
-		class WeaponSlotsInfo : WeaponSlotsInfo
+		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
-			mass = 35;
-			class CowsSlot : CowsSlot
+			mass=20;
+			class CowsSlot: CowsSlot
 			{
-				compatibleItems[] = {};
+				compatibleItems[]={};
 			};
-			class MuzzleSlot : MuzzleSlot
+			class PointerSlot: PointerSlot
 			{
-				compatibleItems[] = {};
+				compatibleItems[]={};
 			};
-			class PointerSlot : PointerSlot
+			class MuzzleSlot: MuzzleSlot
 			{
-				compatibleItems[] = {};
+				compatibleItems[]={};
 			};
-			class UnderBarrelSlot : UnderBarrelSlot
+			class UnderBarrelSlot: UnderBarrelSlot
 			{
-				compatibleItems[] = {};
+				compatibleItems[]={};
 			};
 		};
 		class GunParticles
@@ -16056,8 +16076,8 @@ class CfgWeapons
 				positionName = "Usti hlavne";
 			};
 		};
-	}
-	class 885th_Galaar15 : arifle_MX_Base_F
+	};
+	class 885th_Galaar15: arifle_MX_Base_F
 	{
 		ace_overheating_mrbs = 5000;
 		ace_overheating_slowdownFactor = 0;
@@ -16214,7 +16234,7 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_Galaar90 : arifle_MX_Base_F
+	class 885th_Galaar90: arifle_MX_Base_F
 	{
 		ace_overheating_mrbs = 5000;
 		ace_overheating_slowdownFactor = 0;
@@ -16369,7 +16389,7 @@ class CfgWeapons
 		};
 	};
 	// Black Sun
-	class 885th_S5Security : 3AS_S5_F
+	class 885th_S5Security: 3AS_S5_F
 	{
 		ace_overheating_mrbs = 5000;
 		ace_overheating_slowdownFactor = 0;
@@ -16457,7 +16477,7 @@ class CfgWeapons
 			};
 		};
 	}
-	class 885th_FA11 : arifle_MX_Base_F
+	class 885th_FA11: arifle_MX_Base_F
 	{
 		ace_overheating_mrbs = 5000;
 		ace_overheating_slowdownFactor = 0;
@@ -16578,7 +16598,7 @@ class CfgWeapons
 		};
 	};
 	class IDA_SPK12;
-	class 885th_SPAK15 : IDA_SPK12
+	class 885th_SPAK15: IDA_SPK12
 	{
 		ace_overheating_mrbs = 5000;
 		ace_overheating_slowdownFactor = 0;
@@ -16947,7 +16967,7 @@ class CfgWeapons
 	{
 		scope=1;
 		scopeCurator=0;
-		displayName="[885th][M] DC17M Sniper Blaster";
+		displayName="[885th] DC17M Sniper Blaster";
 		_generalMacro="885th_DC17M_Sniper_F";
 		picture="\ShadowLegion_Weapons\data\DC17M\DC17M_Sniper_UI.paa";
 		UiPicture="\ShadowLegion_Weapons\data\DC17M\DC17M_Sniper_UI.paa";
@@ -17063,7 +17083,7 @@ class CfgWeapons
 	{
 		scope=1;
 		scopeCurator=0;
-		displayName="[885th][AT] DC17M Launcher";
+		displayName="[885th] DC17M Launcher";
 		_generalMacro="885th_DC17M_Launcher_F";
 		picture="\ShadowLegion_Weapons\data\DC17M\DC17M_Launcher_UI.paa";
 		UiPicture="\ShadowLegion_Weapons\data\DC17M\DC17M_Launcher_UI.paa";

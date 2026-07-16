@@ -22,7 +22,7 @@ class CfgAmmo
         displayName = "Bacta Grenade";
 		displayNameShort = "Bacta Grenade";
         descriptionShort = "Bacta Grenade";
-        model = "885_bacta_grenade\bacta grenade.p3d";
+        model = "\885_bacta_grenade\bacta grenade.p3d";
         hit=0;
 		indirectHit=0;
 		indirectHitRange=0.2;
@@ -110,9 +110,8 @@ class CfgMagazines
         displayName = "[885th] Bacta Grenade";
 		displayNameShort = "Bacta Grenade";
         descriptionShort = "Bacta Grenade";
-        picture = "885_bacta_grenade\data\icon_bacta_1rnd_CA.paa";
-        pictureWire = "885_bacta_grenade\data\icon_grenade_bacta_F_W_ca.paa";
-        model = "885_bacta_grenade\bacta grenade.p3d";
+        picture = "\885_bacta_grenade\data\ui\grenade_bacta_ca.paa";
+        model = "\885_bacta_grenade\bacta grenade.p3d";
         ammo = "bacta_nade_ammo";
 		smokeColor[]={0.1183,0.1867,1,1};
 		effectsSmoke="particle_effect_Bacta";
@@ -144,8 +143,7 @@ class CfgVehicles
         scopeCurator = 2;
         displayName = "[885th] Bacta Grenade";
         descriptionShort = "Bacta Grenade";
-        picture = "885_bacta_grenade\data\icon_bacta_1rnd_CA.paa";
-        pictureWire = "885_bacta_grenade\data\icon_grenade_bacta_F_W_ca.paa";
+        picture = "\885_bacta_grenade\data\ui\grenade_bacta_ca.paa";
         editorCategory = "";
         editorSubcategory = "";
         vehicleClass = "Explosives";

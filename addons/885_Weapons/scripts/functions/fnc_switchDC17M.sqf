@@ -6,23 +6,44 @@
         Sniper, or Launcher). Plays a hand gesture immediately, then swaps
         the weapon 4.5 seconds later (synced to the gesture length).
 
-        Deliberately does NOT use setUnitLoadout - Bohemia's own forums
-        document known, longstanding quirks with it around magazine ammo
-        counts not behaving as specified. Instead this works directly with
-        addWeapon/addMagazine/removeMagazine, and solves the ambiguous
-        auto-chamber problem (all three configs share one magazine well,
-        885th_DC17M_MagWell, so the engine treats their magazine classes as
-        interchangeable) by making the fresh target magazine the ONLY
-        DC17M-compatible magazine in your inventory at the exact moment the
-        new weapon is added - every other spare magazine (any class, any
-        ammo count) is temporarily pulled first, then restored afterward
-        by its exact [classname, ammoCount] pair. This guarantees the
-        correct magazine is what gets chambered, and that nothing you were
-        carrying is lost or duplicated - not even the leftover partial mag
-        from the OLD weapon, which gets identified and discarded (not
-        restored) since it only appears as loose inventory AFTER the old
-        weapon is removed, distinguishing it cleanly from your pre-existing
-        spares.
+        Uses removePrimaryWeaponItem / addPrimaryWeaponItem to unload and
+        chamber magazines DIRECTLY on the weapon slot, rather than fighting
+        over which magazine addWeapon's auto-chamber picks. Both commands
+        are officially documented by Bohemia as working "including
+        magazine" on the primaryWeapon specifically - this sidesteps the
+        root cause of every earlier bug in one move: all three DC17M
+        configs share one magazine well (885th_DC17M_MagWell), which made
+        the engine treat every config's magazine class as valid for any of
+        them, so addWeapon's auto-chamber (and setUnitLoadout, which has
+        its own separately-documented ammo-count bugs) could never be
+        trusted to pick the right one when other spare magazines were
+        present. Targeting the weapon's chamber slot directly removes the
+        ambiguity instead of working around it.
+
+        The old weapon's chambered magazine is identified precisely via
+        magazinesAmmoFull (matched on isLoaded=true AND muzzle==old weapon,
+        so there's no ambiguity about which physical instance it is), then
+        unloaded off the weapon and stashed directly into vest/backpack
+        cargo (or dropped in a ground weapon holder if neither exists) -
+        bypassing the normal per-item capacity check that addMagazine
+        would otherwise apply.
+
+        The new weapon is only loaded if you already have at least one
+        spare magazine of that config's class - that spare gets consumed
+        (removed from your inventory) to become the chambered magazine.
+        No ammo is ever created for free: if you have zero spares of the
+        target class, the weapon comes up unloaded and stays that way
+        until you resupply some other way.
+
+        If you carry MULTIPLE spares of the target class, all of them are
+        temporarily pulled out before the weapon is added and one is
+        chambered, then every remaining spare (all but the one consumed)
+        is restored by its exact [classname, ammo] pair. This works around
+        a documented Arma inventory-stacking quirk where introducing a new
+        instance of a magazine class while other loose spares of that same
+        class already exist can corrupt the ammo count of some of those
+        existing spares. Every OTHER spare magazine (any other config's
+        class) is never touched at all.
 
         While the swap is pending, the unit is locked (BPD_DC17M_switching)
         so the action can't be re-triggered mid-transition - XEH_postInit.sqf
@@ -75,7 +96,7 @@ _unit setVariable ["BPD_DC17M_switching", true];
 // snapshot attachments now, while still holding the old weapon
 private _items = primaryWeaponItems _unit;
 
-private _oldMagClass = _primaryMag select _currentIndex;
+private _newMagClass = _primaryMag select _targetIndex;
 
 private _gestureClass = if (_targetConfig == "885th_DC17M_Launcher_F") then {
     "BPD_GestureReconfigure_DC17M_AT"
@@ -84,8 +105,8 @@ private _gestureClass = if (_targetConfig == "885th_DC17M_Launcher_F") then {
 };
 _unit playActionNow _gestureClass;
 
-[_unit, _currentWeapon, _targetConfig, _targetIndex, _primaryMag, _oldMagClass, _items] spawn {
-    params ["_unit", "_currentWeapon", "_targetConfig", "_targetIndex", "_primaryMag", "_oldMagClass", "_items"];
+[_unit, _currentWeapon, _targetConfig, _newMagClass, _items] spawn {
+    params ["_unit", "_currentWeapon", "_targetConfig", "_newMagClass", "_items"];
 
     // MUST match the gesture's duration (speed = -2 in CfgGesturesMale)
     sleep 2;
@@ -96,48 +117,80 @@ _unit playActionNow _gestureClass;
         _unit setVariable ["BPD_DC17M_switching", false];
     };
 
-    private _newMagClass = _primaryMag select _targetIndex;
-    private _newMagCapacity = getNumber (configFile >> "CfgMagazines" >> _newMagClass >> "count");
+    // 1. Capture Mag Data - precisely identify the CHAMBERED magazine via
+    // magazinesAmmoFull (isLoaded = true, muzzle/location == old weapon)
+    private _magData = (magazinesAmmoFull _unit) select {(_x select 2) && (_x select 4 == _currentWeapon)};
+    private _magClass = "";
+    private _ammoCount = 0;
+    if !(_magData isEqualTo []) then {
+        _magClass = (_magData select 0) select 0;
+        _ammoCount = (_magData select 0) select 1;
+    };
 
-    // every DC17M magazine class EXCEPT the one we're switching to
-    private _otherClasses = _primaryMag - [_newMagClass];
+    // 3. The Unload Logic (Bypass Mass Limits) - unload it off the weapon,
+    // then stash it directly into vest/backpack cargo (bypassing the
+    // normal per-item capacity check that addMagazine would apply), or
+    // drop it in a ground weapon holder if neither container exists
+    if (_magClass != "") then {
+        _unit removePrimaryWeaponItem _magClass;
 
-    // pull every spare of those other classes out of inventory first,
-    // remembering their exact [classname, ammoCount] so we can restore
-    // them precisely afterward. This leaves the fresh magazine we're
-    // about to add as the ONLY DC17M-compatible magazine in inventory,
-    // so addWeapon's auto-chamber has nothing ambiguous left to pick from.
-    private _restoreList = [];
-    {
-        _x params ["_magClass", "_ammoCount"];
-        if (_magClass in _otherClasses) then {
-            _restoreList pushBack [_magClass, _ammoCount];
+        private _container = if (vest _unit != "") then {vestContainer _unit} else {backpackContainer _unit};
+        if (!isNull _container) then {
+            _container addMagazineAmmoCargo [_magClass, 1, _ammoCount];
+        } else {
+            private _wh = createVehicle ["GroundWeaponHolder", getPosATL _unit, [], 0, "CAN_COLLIDE"];
+            _wh addMagazineAmmoCargo [_magClass, 1, _ammoCount];
         };
-    } forEach (magazinesAmmo _unit);
-
-    { _unit removeMagazine (_x select 0) } forEach _restoreList;
+    };
 
     _unit removeWeapon _currentWeapon;
 
-    // the old weapon's chambered magazine just became a new loose spare of
-    // _oldMagClass. Since every PRE-EXISTING spare of that class was
-    // already stripped above (it's one of the "other classes"), any
-    // instance found now is definitely this fresh leftover - safe to
-    // discard without ambiguity, and NOT added to _restoreList so it
-    // never comes back.
+    // Snapshot every LOOSE spare magazine of the class we're switching
+    // into. Pulled out entirely first (not just counted) for the same
+    // reason as before: Arma's inventory stacking has a documented quirk
+    // where introducing a new instance of a class alongside existing loose
+    // spares of that class can corrupt the ammo count of some of them.
+    // Pulling them all out first means nothing else of that class exists
+    // while we add the weapon and chamber one.
+    private _sameClassRestoreList = [];
     {
-        _x params ["_magClass", "_ammoCount"];
-        if (_magClass == _oldMagClass) then {
-            _unit removeMagazine _magClass;
+        if ((_x select 0) == _newMagClass && !(_x select 2)) then {
+            _sameClassRestoreList pushBack [(_x select 0), (_x select 1)];
         };
-    } forEach (magazinesAmmo _unit);
+    } forEach (magazinesAmmoFull _unit);
 
-    _unit addMagazine [_newMagClass, _newMagCapacity];
+    { _unit removeMagazine (_x select 0) } forEach _sameClassRestoreList;
+
     _unit addWeapon _targetConfig;
-    _unit selectWeapon _targetConfig;
 
-    // restore every other-class spare exactly as it was
-    { _unit addMagazine _x } forEach _restoreList;
+    // Only chamber a magazine if you actually had at least one spare of
+    // this class - consuming one from your own stock rather than ever
+    // conjuring free ammo. If you had zero spares, the weapon comes up
+    // empty and stays that way until you resupply some other way.
+    if (count _sameClassRestoreList > 0) then {
+        _unit addPrimaryWeaponItem _newMagClass;
+
+        // that's one spare "spent" on chambering - drop the last entry
+        // from the restore list so it doesn't get given back below
+        _sameClassRestoreList deleteAt (count _sameClassRestoreList - 1);
+    } else {
+        systemChat "No spare magazines for that configuration - weapon will be unloaded.";
+    };
+
+    // restore whatever spares are LEFT (i.e. everything except the one
+    // consumed above, if any), bypassing the normal per-item capacity
+    // check the same way the old weapon's magazine gets stashed above
+    {
+        private _container = if (vest _unit != "") then {vestContainer _unit} else {backpackContainer _unit};
+        if (!isNull _container) then {
+            _container addMagazineAmmoCargo [(_x select 0), 1, (_x select 1)];
+        } else {
+            private _wh = createVehicle ["GroundWeaponHolder", getPosATL _unit, [], 0, "CAN_COLLIDE"];
+            _wh addMagazineAmmoCargo [(_x select 0), 1, (_x select 1)];
+        };
+    } forEach _sameClassRestoreList;
+
+    _unit selectWeapon _targetConfig;
 
     {
         if (_x != "") then {
