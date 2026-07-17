@@ -92,8 +92,8 @@ class XtdGearModels
 					"EOD",
                     "MG",
 					"Armored",
-                    "QRF",
-					"QRF Medic",
+                    "QRF A",
+					"QRF B",
                     "Hazard",
 					"Hazard Vet",
 					"Hazard CO"
@@ -403,6 +403,7 @@ class XtdGearModels
 				values[]=
 				{
 					"EOD",
+					"QRF",
 					"Hazard",
 					"Hazard Vet",
 					"Hazard CO",
@@ -415,6 +416,7 @@ class XtdGearModels
 				values[]=
 				{
 					"EOD",
+					"QRF",
                     "Hazard",
 					"Adv.Recon"
 				};
@@ -799,17 +801,17 @@ class XtdGearInfos
 			variant="Heavy";
 			camo="Heavy";
 		};
-		class 885th_AB_Helm
+		class 885th_Gryphon_AB_Helm
 		{
 			model="Trooper_Special_Helmets";
-			rank="QRF";
+			rank="QRF A";
 			variant="QRF";
 			camo="QRF";
 		};
-		class 885th_Medic_AB_Helm
+		class 885th_Gryphon_P2_Helm
 		{
 			model="Trooper_Special_Helmets";
-			rank="QRF Medic";
+			rank="QRF B";
 			variant="QRF";
 			camo="QRF";
 		};
@@ -1326,6 +1328,13 @@ class XtdGearInfos
 			rank="EOD";
 			variant="EOD";
 			camo="EOD";
+		};
+		class 885th_Gryphon_QRF_Uniform
+		{
+			model="Specialized_Uniforms";
+			rank="QRF";
+			variant="QRF";
+			camo="QRF";
 		};
 		class 885th_Hazard_Trooper_Uniform
 		{

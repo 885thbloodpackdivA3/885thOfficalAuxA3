@@ -22,6 +22,7 @@ class Cfgpatches
 			"885th_Najax_Recruit",
 			"885th_Najax_Camo_Trooper",
 			"885th_Najax_Scout_Trooper",
+			"885th_Gryphon_QRF_Trooper",
 			"885th_AdvRecon_Trooper",
 			"885th_Kusak_RC_Trooper",
 			"885th_ONI_Trooper",
@@ -114,6 +115,8 @@ class Cfgpatches
 			"885th_Vornskr_Hazard_Helm_Base",
 			"885th_Vornskr_Hazard_Helm_Vet",
 			"885th_Vornskr_Hazard_Helm_COM",
+			"885th_Gryphon_AB_Helm",
+			"885th_Gryphon_P2_Helm",
 			"885th_Clone_Holster",
 			"885th_vest_base",
 			"885th_vest_medic_base",
@@ -134,6 +137,7 @@ class Cfgpatches
 			"885th_Najax_Recruit_Uniform",
 			"885th_Najax_Camo_Uniform",
 			"885th_Najax_Scout_Uniform",
+			"885th_Gryphon_QRF_Uniform",
 			"885th_Kusak_Katarn_Uniform",
 			"885th_Crow_Katarn_Uniform",
 			"885th_Phantom_Katarn_Uniform",
@@ -152,8 +156,6 @@ class Cfgpatches
 			"885th_Hazard_Veteran_Uniform",
 			"885th_Hazard_COM_Uniform",
 			"885th_AdvRecon_Uniform",
-			"885th_AB_Helm",
-			"885th_Medic_AB_Helm",
 			"885th_Nexu_P2_Helm",
 			"885th_Crimz_ARF_Helm",
 			"885th_Wyrm_BARC_Helm",
@@ -2361,10 +2363,10 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_AB_Helm: IDA_AB_Helmet
+	class 885th_Gryphon_AB_Helm: IDA_AB_Helmet
 	{
 		author = "885th Bloodpack Division";
-		displayName = "[885th] Vornskr Paratrooper Helmet";
+		displayName = "[885th] Gryphon AB Helm";
 		scope = 2;
 		picture = "\Indecisive_Armoury_units\REPUBLIC\Clone_AB_Helmet\AB_Helmet_UI.paa";
 		model = "\Indecisive_Armoury_units\REPUBLIC\Clone_AB_Helmet\IDA_Clone_AB_Helmet.p3d";
@@ -2375,8 +2377,8 @@ class CfgWeapons
 		};
 		hiddenSelectionsTextures[] =
 		{
-			"885_Armor\885_Armor\Vornskr\Paratrooper\Vornskr_Airborne_Helm_co.paa",
-			"885_Armor\885_Armor\Vornskr\Paratrooper\Vornskr_Airborne_Helm_co.paa"
+			"885_Armor\885_Armor\Gryphon\885th_Gryphon_AB_Helm_co.paa",
+			"885_Armor\885_Armor\Gryphon\885th_Gryphon_AB_Helm_co.paa"
 		};
 		hiddenSelectionsMaterials[] =
 		{
@@ -2401,33 +2403,39 @@ class CfgWeapons
 				class Head
 				{
 					hitpointname = "HitHead";
-					armor = 10;
+					armor = 15;
 					PassThrough = 0.08975;
 				};
 				class Face
 				{
 					hitpointName = "HitFace";
-					armor = 10;
+					armor = 13;
 					PassThrough = 0.08975;
 				};
 			};
 		};
 	};
-	class 885th_Medic_AB_Helm: 885th_AB_Helm
+	class 885th_Gryphon_P2_Helm: 885th_P2_V2_Helmet
 	{
-		author = "885th Bloodpack Division";
-		displayName = "[885th] QRF Airborne Helmet";
-		hiddenselections[] =
+		author="885th Bloodpack Division";
+		displayName="[885th] Gryphon Alt. Helm";
+		picture="";
+		hiddenSelections[]=
 		{
 			"Camo",
-			"visor"
-		};
-		hiddenSelectionsTextures[] =
-		{
-			"885_Armor\885_Armor\Vornskr\Airborne\885th_Medic_Airborne_Helm_co.paa",
-			"885_Armor\885_Armor\Vornskr\Airborne\885th_Medic_Airborne_Helm_co.paa"
-		};
-	};
+			"Visor",
+        };
+        hiddenSelectionsTextures[]=
+        {
+        	"885_Armor\885_Armor\Gryphon\885th_Gryphon_P2_Helm_co.paa",
+			"885_Armor\885_Armor\Gryphon\885th_Gryphon_P2_Helm_co.paa",
+        };
+        hiddenSelectionsMaterials[]=
+        {
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
+			"\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet_Visor.rvmat",
+        };
+    };
 	class 885th_Charhound_Helm: 885th_P2_V2_Helmet
 	{
 		author="885th Bloodpack Division";
@@ -4163,6 +4171,18 @@ class CfgWeapons
 			uniformClass = "885th_Charhound_Medic_Trooper";
 			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
 			containerClass = "Supply250";
+			mass = 40;
+		};
+	};
+	class 885th_Gryphon_QRF_Uniform: 885th_Vornskr_Uniform
+	{
+		displayName = "[885th] Gryphon Airborne Armor";
+		class ItemInfo: UniformItem
+		{
+			uniformModel = "";
+			uniformClass = "885th_Gryphon_QRF_Trooper";
+			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
+			containerClass = "Supply300";
 			mass = 40;
 		};
 	};
@@ -13548,6 +13568,18 @@ class CfgVehicles
 		};
 	};
 	
+	class 885th_Gryphon_QRF_Trooper : 885th_Vornskr_Trooper {
+		faction="885th_Faction";
+		editorSubcategory="Sub885thTroopers";
+		camouflage = 0.6;
+		uniformClass = "885th_Gryphon_QRF_Uniform";
+		hiddenSelections[] = {"Camo1","Camo2"};
+		hiddenSelectionsTextures[] = {
+			"885_Armor\885_Armor\Gryphon\885th_Gryphon_Upper_co.paa",
+			"885_Armor\885_Armor\Gryphon\885th_Gryphon_Lower_co.paa"
+		};
+	};
+
 	class 885th_Vornskr_Hazard_Trooper : SEA_GM_Base_Plastic {
 		scope=1;
 		scopeCurator=1;
