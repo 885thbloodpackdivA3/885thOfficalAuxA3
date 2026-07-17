@@ -20,15 +20,9 @@ if (_callsign == "") then { _callsign = "CT-0000"; };
 (_display displayCtrl 9020) ctrlSetText ([daytime] call BIS_fnc_timeToString);
 (_display displayCtrl 9021) ctrlSetText format ["T+%1", [missionTime] call BIS_fnc_timeToString];
 
-// --- Health monitor ---
-private _bodyPct = round ((1 - (damage _unit)) * 100);
-private _armorBars = floor (_bodyPct / 10);
-
-private _barString = "";
-for "_i" from 1 to 10 do {
-    _barString = _barString + (if (_i <= _armorBars) then ["█"] else ["░"]);
-};
-(_display displayCtrl 9031) ctrlSetText _barString;
+// --- Health monitor (armor removed) ---
+private _damage = damage _unit;
+private _bodyPct = round ((1 - _damage) * 100);
 
 private _bodyColor = [0.2,1,0.2,1]; // green
 if (_bodyPct <= 70) then { _bodyColor = [1,0.8,0.2,1]; }; // yellow
@@ -38,15 +32,11 @@ private _bodyCtrl = _display displayCtrl 9032;
 _bodyCtrl ctrlSetText format ["BODY: %1%%", _bodyPct];
 _bodyCtrl ctrlSetTextColor _bodyColor;
 
-private _armorCtrl = _display displayCtrl 9031;
-_armorCtrl ctrlSetTextColor _bodyColor;
-
-// Bleeding / pain: pulls from ACE Medical if present, otherwise falls back to vanilla damage
 private _bleedText = "BLEED: NONE";
 private _painText = "PAIN: LOW";
 if (isClass (configFile >> "CfgPatches" >> "ace_medical")) then {
     private _bloodLoss = _unit getVariable ["ace_medical_bloodLoss", 0];
-    _bleedText = if (_bloodLoss > 0) then ["BLEED: ACTIVE"] else ["BLEED: NONE"];
+    _bleedText = if (_bloodLoss > 0) then {"BLEED: ACTIVE"} else {"BLEED: NONE"};
 
     private _pain = _unit getVariable ["ace_medical_pain", 0];
     _painText = "PAIN: LOW";
@@ -75,7 +65,6 @@ if (_weapon != "" && {_currentMag != ""}) then {
 };
 (_display displayCtrl 9042) ctrlSetText format ["MAG: %1/%2", _magCount, _magMax];
 
-// Placeholder - wire this up to your custom blaster heat variable if/when you add one
 private _temp = _unit getVariable ["BPD_weaponTemp", 0];
 (_display displayCtrl 9043) ctrlSetText format ["TEMP: %1%%", round _temp];
 
@@ -97,3 +86,53 @@ private _lines = [];
 
 // --- Compass ---
 (_display displayCtrl 9060) ctrlSetText format ["%1°", round (getDir _unit)];
+
+// --- Visor overlay (gos_hud-style, disabled until a texture path is set) ---
+private _overlayCtrl = _display displayCtrl 9070;
+private _overlayTexture = missionNamespace getVariable ["BPD_HUD_OverlayTexture", ""];
+if (_overlayTexture == "") then {
+    _overlayCtrl ctrlShow false;
+} else {
+    private _overlayOpacity = missionNamespace getVariable ["BPD_HUD_OverlayOpacity", 0.5];
+    _overlayCtrl ctrlShow true;
+    _overlayCtrl ctrlSetText _overlayTexture;
+    _overlayCtrl ctrlSetFade (1 - _overlayOpacity);
+    _overlayCtrl ctrlCommit 0;
+};
+
+// --- Crack overlay (shown once damage crosses the CBA threshold) ---
+private _crackCtrl = _display displayCtrl 9071;
+private _crackTexture = missionNamespace getVariable ["BPD_HUD_CrackTexture", ""];
+private _crackThreshold = missionNamespace getVariable ["BPD_HUD_CrackThreshold", 0.5];
+if (_crackTexture == "" || {_damage < _crackThreshold}) then {
+    _crackCtrl ctrlShow false;
+} else {
+    private _crackAlpha = ((_damage - _crackThreshold) / (1 - _crackThreshold)) max 0.3 min 1;
+    _crackCtrl ctrlShow true;
+    _crackCtrl ctrlSetText _crackTexture;
+    _crackCtrl ctrlSetFade (1 - _crackAlpha);
+    _crackCtrl ctrlCommit 0;
+};
+
+// --- Directional damage corners ---
+{
+    (_display displayCtrl _x) ctrlSetTextColor [1, 0.08, 0.08, 0];
+} forEach [9080, 9081, 9082, 9083];
+
+private _damageEndTime = missionNamespace getVariable ["BPD_HUD_damageIndicatorEndTime", -1];
+if (_damageEndTime > time) then {
+    private _damageDuration = missionNamespace getVariable ["BPD_HUD_DamageIndicatorDuration", 1.2];
+    private _remaining = _damageEndTime - time;
+    private _fade = (_remaining / _damageDuration) max 0 min 1;
+    private _dir = missionNamespace getVariable ["BPD_HUD_damageDirection", "all"];
+
+    private _showTL = _dir in ["front", "left", "all"];
+    private _showTR = _dir in ["front", "right", "all"];
+    private _showBR = _dir in ["back", "right", "all"];
+    private _showBL = _dir in ["back", "left", "all"];
+
+    if (_showTL) then { (_display displayCtrl 9080) ctrlSetTextColor [1, 0.08, 0.08, _fade]; };
+    if (_showTR) then { (_display displayCtrl 9081) ctrlSetTextColor [1, 0.08, 0.08, _fade]; };
+    if (_showBR) then { (_display displayCtrl 9082) ctrlSetTextColor [1, 0.08, 0.08, _fade]; };
+    if (_showBL) then { (_display displayCtrl 9083) ctrlSetTextColor [1, 0.08, 0.08, _fade]; };
+};

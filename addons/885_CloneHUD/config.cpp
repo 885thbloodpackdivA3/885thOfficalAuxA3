@@ -30,4 +30,23 @@ class CfgFunctions
     };
 };
 
+// Explicit XEH registration - auto-detection has been unreliable on this
+// modset (per the IonDisruptor / Bacta lessons), so we register both
+// explicitly rather than relying on CBA to find the files on its own.
+class Extended_PreInit_EventHandlers
+{
+    class 885th_CloneHUD
+    {
+        init = "call compile preprocessFileLineNumbers '\885_CloneHUD\XEH_preInit.sqf'";
+    };
+};
+
+class Extended_PostInit_EventHandlers
+{
+    class 885th_CloneHUD
+    {
+        init = "call compile preprocessFileLineNumbers '\885_CloneHUD\XEH_postInit.sqf'";
+    };
+};
+
 #include "RscTitles.hpp"

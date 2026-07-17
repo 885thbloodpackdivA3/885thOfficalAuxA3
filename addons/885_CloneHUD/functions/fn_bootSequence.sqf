@@ -7,6 +7,8 @@ params [["_unit", player]];
 
 if (!hasInterface) exitWith {};
 if (_unit != player) exitWith {}; // only ever run this for the local player
+if !(missionNamespace getVariable ["BPD_HUD_enabled", true]) exitWith {};
+if !(missionNamespace getVariable ["BPD_HUD_bootAnimation", true]) exitWith {};
 
 "BPD_CloneHUD_Boot" cutRsc ["BPD_CloneHUD_Boot", "PLAIN"];
 private _display = uiNamespace getVariable ["BPD_HUD_bootDisplay", displayNull];

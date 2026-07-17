@@ -35,6 +35,7 @@ class RscTitles
     // ---------------------------------------------------------------
     // Persistent HUD
     // ---------------------------------------------------------------
+	class RscPicture;
     class BPD_CloneHUD_Main
     {
         idd = -1;
@@ -46,18 +47,45 @@ class RscTitles
         controlsBackground[] = {};
         objects[] = {};
         controls[] = {
+            "BPD_hud_overlay","BPD_hud_crack",
             "BPD_hud_callsign","BPD_hud_link",
             "BPD_hud_time","BPD_hud_missionTimer",
-            "BPD_hud_armorLabel","BPD_hud_armorBar","BPD_hud_bodyLabel","BPD_hud_bleedLabel","BPD_hud_painLabel",
+            "BPD_hud_bodyLabel","BPD_hud_bleedLabel","BPD_hud_painLabel",
             "BPD_hud_weaponName","BPD_hud_weaponMode","BPD_hud_weaponMag","BPD_hud_weaponTemp",
             "BPD_hud_squadHeader","BPD_hud_squadList",
-            "BPD_hud_heading","BPD_hud_objDist"
+            "BPD_hud_heading","BPD_hud_objDist",
+            "BPD_hud_cornerTL","BPD_hud_cornerTR","BPD_hud_cornerBR","BPD_hud_cornerBL"
         };
 
         class BPD_HUDBase: RscText
         {
             colorBackground[] = {0,0,0,0};
             font = "PuristaBold";
+        };
+
+        // --- Full-screen visor overlay + crack (behind everything else) ---
+        // Both are hidden until a texture path is set via CBA settings -
+        // no art is bundled with this addon, so nothing draws until you
+        // point these at your own PAA files (visor_ca.paa style assets).
+        class BPD_hud_overlay: RscPicture
+        {
+            idc = 9070;
+            x = "safezoneX";
+            y = "safezoneY";
+            w = "safezoneW";
+            h = "safezoneH";
+            colorText[] = {1,1,1,1};
+            text = "";
+        };
+        class BPD_hud_crack: RscPicture
+        {
+            idc = 9071;
+            x = "safezoneX";
+            y = "safezoneY";
+            w = "safezoneW";
+            h = "safezoneH";
+            colorText[] = {1,1,1,1};
+            text = "";
         };
 
         // --- Top left: unit / link status ---
@@ -94,7 +122,7 @@ class RscTitles
             h = "0.024 * safezoneH";
             colorText[] = {0.3,0.9,1,0.9};
             sizeEx = 0.02;
-            style = 1; // right-aligned
+            style = 1;
             text = "00:00";
         };
         class BPD_hud_missionTimer: BPD_HUDBase
@@ -110,34 +138,12 @@ class RscTitles
             text = "T+00:00:00";
         };
 
-        // --- Left side: health monitor ---
-        class BPD_hud_armorLabel: BPD_HUDBase
-        {
-            idc = 9030;
-            x = "safezoneX + 0.02 * safezoneW";
-            y = "safezoneY + safezoneH * 0.7";
-            w = "0.18 * safezoneW";
-            h = "0.02 * safezoneH";
-            colorText[] = {1,1,1,0.85};
-            sizeEx = 0.016;
-            text = "ARMOR";
-        };
-        class BPD_hud_armorBar: BPD_HUDBase
-        {
-            idc = 9031;
-            x = "safezoneX + 0.02 * safezoneW";
-            y = "safezoneY + safezoneH * 0.724";
-            w = "0.18 * safezoneW";
-            h = "0.022 * safezoneH";
-            colorText[] = {0.2,1,0.2,1};
-            sizeEx = 0.018;
-            text = "██████████";
-        };
+        // --- Left side: health monitor (armor removed) ---
         class BPD_hud_bodyLabel: BPD_HUDBase
         {
             idc = 9032;
             x = "safezoneX + 0.02 * safezoneW";
-            y = "safezoneY + safezoneH * 0.755";
+            y = "safezoneY + safezoneH * 0.7";
             w = "0.18 * safezoneW";
             h = "0.022 * safezoneH";
             colorText[] = {0.2,1,0.2,1};
@@ -148,7 +154,7 @@ class RscTitles
         {
             idc = 9033;
             x = "safezoneX + 0.02 * safezoneW";
-            y = "safezoneY + safezoneH * 0.782";
+            y = "safezoneY + safezoneH * 0.727";
             w = "0.18 * safezoneW";
             h = "0.02 * safezoneH";
             colorText[] = {0.6,0.6,0.6,1};
@@ -159,7 +165,7 @@ class RscTitles
         {
             idc = 9034;
             x = "safezoneX + 0.02 * safezoneW";
-            y = "safezoneY + safezoneH * 0.806";
+            y = "safezoneY + safezoneH * 0.751";
             w = "0.18 * safezoneW";
             h = "0.02 * safezoneH";
             colorText[] = {0.6,0.6,0.6,1};
@@ -265,6 +271,54 @@ class RscTitles
             sizeEx = 0.016;
             style = 2;
             text = "OBJ: ---m";
+        };
+
+        // --- Damage direction corners (flash red on hit, gos_hud-style) ---
+        class BPD_hud_cornerTL: BPD_HUDBase
+        {
+            idc = 9080;
+            x = "safezoneX";
+            y = "safezoneY";
+            w = "safezoneW * 0.18";
+            h = "safezoneH * 0.14";
+            colorText[] = {1,0.08,0.08,0};
+            sizeEx = 0.05;
+            text = "◤";
+        };
+        class BPD_hud_cornerTR: BPD_HUDBase
+        {
+            idc = 9081;
+            x = "safezoneX + safezoneW * 0.82";
+            y = "safezoneY";
+            w = "safezoneW * 0.18";
+            h = "safezoneH * 0.14";
+            colorText[] = {1,0.08,0.08,0};
+            sizeEx = 0.05;
+            style = 1;
+            text = "◥";
+        };
+        class BPD_hud_cornerBR: BPD_HUDBase
+        {
+            idc = 9082;
+            x = "safezoneX + safezoneW * 0.82";
+            y = "safezoneY + safezoneH * 0.86";
+            w = "safezoneW * 0.18";
+            h = "safezoneH * 0.14";
+            colorText[] = {1,0.08,0.08,0};
+            sizeEx = 0.05;
+            style = 1;
+            text = "◢";
+        };
+        class BPD_hud_cornerBL: BPD_HUDBase
+        {
+            idc = 9083;
+            x = "safezoneX";
+            y = "safezoneY + safezoneH * 0.86";
+            w = "safezoneW * 0.18";
+            h = "safezoneH * 0.14";
+            colorText[] = {1,0.08,0.08,0};
+            sizeEx = 0.05;
+            text = "◣";
         };
     };
 };

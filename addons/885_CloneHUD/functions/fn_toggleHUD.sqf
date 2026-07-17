@@ -9,11 +9,13 @@ private _visible = !(missionNamespace getVariable ["BPD_HUD_visible", true]);
 missionNamespace setVariable ["BPD_HUD_visible", _visible];
 
 private _idcs = [
+    9070,9071,
     9010,9011,9020,9021,
-    9030,9031,9032,9033,9034,
+    9032,9033,9034,
     9040,9041,9042,9043,
     9050,9051,
-    9060,9061
+    9060,9061,
+    9080,9081,9082,9083
 ];
 
 {
