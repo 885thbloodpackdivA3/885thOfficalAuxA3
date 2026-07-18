@@ -207,6 +207,7 @@ class XtdGearModels
 					"Oxlong",
 					"Phantom",
 					"Rain",
+					"Rak",
 					"Rios",
 					"Screwball",
 					"Scorch",
@@ -1077,6 +1078,13 @@ class XtdGearInfos
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Rain";
+			variant="P2";
+			camo="P2";
+		};
+		class  885th_Rak_P2_Helm
+		{
+			model="Trooper_Custom_Helmets";
+			rank="Rak";
 			variant="P2";
 			camo="P2";
 		};

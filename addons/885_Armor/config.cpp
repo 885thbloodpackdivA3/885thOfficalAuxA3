@@ -63,6 +63,7 @@ class Cfgpatches
 			"885th_Recruit_P2_Helm",
 			"885th_Nightfall_P2_Helmet",
 			"885th_Vergil_P2_Helm",
+			"885th_Rak_P2_Helm",
 			"885th_Vulkan_P2_Helm",
 			"885th_EOD_Helm",
 			"885th_Medic_P2_Helm",
@@ -1042,6 +1043,27 @@ class CfgWeapons
         {
             "",
             "885_Armor\885_Armor\Customs\Oxlong\Oxlong_P2_Helmet_Visor.rvmat",
+        };
+	};
+	class 885th_Rak_P2_Helm: 885th_P2_V2_Helmet
+	{
+		author="885th Bloodpack Division";
+		displayName="[885th] Rak Custom P2 Helm";
+		picture="";
+		hiddenSelections[]=
+		{
+			"Camo",
+			"Visor",
+        };
+        hiddenSelectionsTextures[]=
+        {
+			"885_Armor\885_Armor\Customs\Rak\Rak_P2_Helm_co.paa",
+			"885_Armor\885_Armor\Customs\Rak\Rak_P2_Helm_co.paa",
+        };
+		hiddenSelectionsMaterials[]=
+        {
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
+            "",
         };
 	};
 
