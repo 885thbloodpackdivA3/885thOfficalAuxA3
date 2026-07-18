@@ -78,7 +78,7 @@ class Cfgpatches
 			"885th_Nightsingers_P3_Officer_Pilot_Helm",
 			"885th_Nightsingers_Armor_Crew_Helmet",
 			"885th_Smith_Engi_Helm",
-			"885th_Kit_P2_Helm",
+			"885th_Kit_phase2SpecOp_helmet",
 			"885th_Owl_Pilot_Helm",
 			"885th_Oxlong_P2_Helm",
 			"885th_Mayday_P2_Helm",
@@ -925,27 +925,6 @@ class CfgWeapons
         {
             "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
             "885_Armor\885_Armor\Customs\Nightfall\Nightfall_P2_Helmet_Visor.rvmat",
-        };
-    };
-	class 885th_Kit_P2_Helm: 885th_P2_V2_Helmet
-	{
-		author="885th Bloodpack Division";
-		displayName="[885th] Kit's P2 Custom Helm";
-		picture="";
-		hiddenSelections[]=
-		{
-			"Camo",
-			"Visor",
-        };
-        hiddenSelectionsTextures[]=
-        {
-        	"885_Armor\885_Armor\Customs\Kit\Kit_P2_Helmet_co.paa",
-			"885_Armor\885_Armor\Customs\Kit\Kit_P2_Helmet_co.paa",
-        };
-        hiddenSelectionsMaterials[]=
-        {
-            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
-			"885_Armor\885_Armor\Customs\Kit\Kit_P2_Helmet_Visor.rvmat",
         };
     };
 	class 885th_Recruit_P2_Helm: 885th_P2_V2_Helmet
@@ -1808,6 +1787,51 @@ class CfgWeapons
 			"885_Armor\885_Armor\Najax\Camo\Najax_Helm_Camo_co.paa",
 			"885_Armor\885_Armor\Najax\Najax_Plates_co.paa",
 			"885_Armor\885_Armor\Najax\Najax_Visor_co.paa"
+		};
+	};
+	class 885th_Kit_phase2SpecOp_helmet: H_HelmetO_ViperSP_hex_F
+	{
+		scope=2;
+		author="Legion Studios + 885th Bloodpack Divison";
+		displayName="Kit's Spec-Ops P2 Helmet";
+		model="\ls\core\addons\characters_clone_legacy\helmets\phase2SpecOp\ls_sob_phase2SpecOp_helmet.p3d";
+		hiddenSelections[]=
+		{
+			"camo1",
+			"visor"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Kit\helmet_co.paa",
+			"885_Armor\885_Armor\Customs\Kit\visor_co.paa"
+		};
+		 hiddenSelectionsMaterials[]=
+        {
+            "885_Armor\885_Armor\Customs\Kit\helmet.rvmat",
+            "885_Armor\885_Armor\Customs\Kit\visor.rvmat"
+        };
+		subItems[]=
+		{
+			"Integrated_NVG_TI_0_F"
+		};
+		class ItemInfo: ItemInfo
+		{
+			mass=10;
+			uniformModel="\ls\core\addons\characters_clone_legacy\helmets\phase2SpecOp\ls_sob_phase2SpecOp_helmet.p3d";
+			hiddenSelections[]=
+			{
+				"camo1",
+				"visor"
+			};
+			class HitpointsProtectionInfo
+			{
+				class Head
+				{
+					hitpointName="HitHead";
+					armor=50;
+					passThrough=0.5;
+				};
+			};
 		};
 	};
 	class 885th_Najax_Scout_P2_Helm_Base: H_HelmetO_ViperSP_hex_F
@@ -10465,32 +10489,32 @@ class CfgWeapons
 	/*1*/	"",
 	/*2*/	"",
 	/*3*/	"",
-	/*4*/	"",
+	/*4*/	"885_Armor\885_Armor\Customs\Sytha\RIG_co.paa",
 	/*5*/	"885_Armor\885_Armor\Customs\Sytha\RIG_co.paa",
 	/*6*/	"",
 	/*7*/	"",
-	/*8*/	"",
-	/*9*/	"",
+	/*8*/	"885_Armor\885_Armor\Customs\Sytha\RIG_co.paa",
+	/*9*/	"885_Armor\885_Armor\Customs\Sytha\RIG_co.paa",
 	/*10*/	"",
 	/*11*/	"",
-	/*12*/	"",
+	/*12*/	"885_Armor\885_Armor\Customs\Sytha\RIG_co.paa",
 	/*13*/	"",
 	/*14*/	"",
 	/*15*/	"885_Armor\885_Armor\Customs\Sytha\ARCVest_co.paa",
 	/*16*/	"885_Armor\885_Armor\Customs\Sytha\ARCVest_co.paa",
 	/*17*/	"885_Armor\885_Armor\Customs\Sytha\ARCVest_co.paa",
-	/*18*/	"",
+	/*18*/	"885_Armor\885_Armor\Customs\Sytha\ARCVest_co.paa",
 	/*19*/	"885_Armor\885_Armor\Customs\Sytha\ARCPauldron_co.paa",
 	/*20*/	"885_Armor\885_Armor\Customs\Sytha\ARCPauldron_co.paa",
-	/*21*/	"885_Armor\885_Armor\Customs\Sytha\Kama2_co.paa",
+	/*21*/	"",
 	/*22*/	"",
 	/*23*/	"",
 	/*24*/	"885_Armor\885_Armor\Customs\Sytha\NCOPauldron_co.paa",
-	/*25*/	"",
+	/*25*/	"885_Armor\885_Armor\Customs\Sytha\Suspenders&Straps_co.paa",
 	/*26*/	"",
-	/*27*/	"",
+	/*27*/	"885_Armor\885_Armor\Customs\Sytha\Suspenders&Straps_co.paa",
 	/*28*/	"",
-	/*29*/	"",
+	/*29*/	"885_Armor\885_Armor\Customs\Sytha\Suspenders&Straps_co.paa",
 	/*30*/	"",
 	/*31*/	"",
 	/*32*/	"",
@@ -10505,32 +10529,32 @@ class CfgWeapons
 	/*1*/	"",
 	/*2*/	"",
 	/*3*/	"",
-	/*4*/	"",
+	/*4*/	"885_Armor\885_Armor\Customs\Sytha\RIG.rvmat",
 	/*5*/	"885_Armor\885_Armor\Customs\Sytha\RIG.rvmat",
 	/*6*/	"",
 	/*7*/	"",
-	/*8*/	"",
-	/*9*/	"",
+	/*8*/	"885_Armor\885_Armor\Customs\Sytha\RIG.rvmat",
+	/*9*/	"885_Armor\885_Armor\Customs\Sytha\RIG.rvmat",
 	/*10*/	"",
 	/*11*/	"",
-	/*12*/	"",
+	/*12*/	"885_Armor\885_Armor\Customs\Sytha\RIG.rvmat",
 	/*13*/	"",
 	/*14*/	"",
 	/*15*/	"885_Armor\885_Armor\Customs\Sytha\ARCPlating.rvmat",
 	/*16*/	"885_Armor\885_Armor\Customs\Sytha\ARCPlating.rvmat",
 	/*17*/	"885_Armor\885_Armor\Customs\Sytha\ARCVest.rvmat",
-	/*18*/	"",
+	/*18*/	"885_Armor\885_Armor\Customs\Sytha\ARCVest.rvmat",
 	/*19*/	"885_Armor\885_Armor\Customs\Sytha\ARCPauldron.rvmat",
 	/*20*/	"885_Armor\885_Armor\Customs\Sytha\ARCPauldron.rvmat",
-	/*21*/	"885_Armor\885_Armor\Customs\Sytha\Kama2.rvmat",
+	/*21*/	"",
 	/*22*/	"",
 	/*23*/	"",
 	/*24*/  "885_Armor\885_Armor\Customs\Sytha\NCOPauldron.rvmat",
-	/*25*/	"",
+	/*25*/	"885_Armor\885_Armor\Customs\Sytha\Suspenders&Straps.rvmat",
 	/*26*/	"",
-	/*27*/	"",
+	/*27*/	"885_Armor\885_Armor\Customs\Sytha\Suspenders&Straps.rvmat",
 	/*28*/	"",
-	/*29*/	"",
+	/*29*/	"885_Armor\885_Armor\Customs\Sytha\Suspenders&Straps.rvmat",
 	/*30*/	"",
 	/*31*/	"",
 	/*32*/	"",
