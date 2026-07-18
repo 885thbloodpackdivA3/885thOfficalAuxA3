@@ -450,7 +450,6 @@ class CfgWeapons
 	class 3AS_Katarn_Vest_Team_Leader;
 	class 3AS_Katarn_Vest_Sniper;
 	class 3AS_V_Katarn_Vest_Demo;
-	class 3AS_N_CloneP2_MedicalScanner_F;
 	class 885th_P2_V2_Helmet: IDA_P2_Helmet
     {
         author="885th Bloodpack Division - ONI"; 
@@ -3749,23 +3748,6 @@ class CfgWeapons
 			hiddenSelections[] = {"camo"};
 		};
 	};
-
-	class 885th_Base_MedScanner: 3AS_N_CloneP2_MedicalScanner_F
-	{
-		author = "885th Bloodpack Division + 3as Devs";
-		displayName = "[885th] Medical Scanner ";
-		modelOptics = "";
-		hiddenSelections[] = {"Visor"};
-		hiddenSelectionsTextures[] = {"885_Armor\885_Armor\NVG\885th_NVG_Med_co.paa"};
-	};
-	class 885th_Bleach_MedScanner: 3AS_N_CloneP2_MedicalScanner_F
-	{
-		author = "885th Bloodpack Division + 3as Devs";
-		displayName = "[885th] Bleach Medical Scanner ";
-		modelOptics = "";
-		hiddenSelections[] = {"Visor"};
-		hiddenSelectionsTextures[] = {"885_Armor\885_Armor\NVG\885th_NVG_Bleach_co.paa"};
-	};
 	class 885th_Hazard_Veteran_Rangefinder: JLTS_CloneNVGRange
 	{
 		author = "885th Bloodpack Division + JLTS AE Devs";
@@ -4345,6 +4327,92 @@ class CfgWeapons
 			modelOff="\ShadowLegion_Aux\Data\Accessory\MCVisor\model\Clone_officer_visor.p3d";
 			mass=20;
 			hiddenSelections[]={"camo"};
+		};
+	};
+	class 885th_Medscanner_up_NVG: NVGoggles
+	{
+		author="Antauri + 885th Bloodpack Division";
+		displayName="[885th] Medscanner (NVG)";
+		modelOptics="";
+		model="\ShadowLegion_Aux_Beta\data\Medscanner\Model\Medscanner_On.p3d";
+		picture="\ShadowLegion_Aux_Beta\data\Medscanner\Medscanner_UI.paa";
+		hiddenSelections[]=
+		{
+			"Main",
+			"Glass",
+			"Lens"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\NVG\Main_co.paa",
+			"885_Armor\885_Armor\NVG\Main_co.paa",
+			"885_Armor\885_Armor\NVG\Main_co.paa"
+		};
+		hiddenSelectionsMaterials[]=
+		{
+			"885_Armor\885_Armor\NVG\Main.rvmat",
+			"885_Armor\885_Armor\NVG\Glass.rvmat",
+			"885_Armor\885_Armor\NVG\Glass.rvmat"
+		};
+		visionMode[] = {"Normal","NVG","TI"};
+		thermalMode[]={0,1};
+		class ItemInfo
+		{
+			type=616;
+			uniformModel="\ShadowLegion_Aux_Beta\data\Medscanner\Model\Medscanner_On.p3d";
+			modelOff="\ShadowLegion_Aux_Beta\data\Medscanner\Model\Medscanner_Off.p3d";
+			mass=20;
+			hiddenSelections[]=
+			{
+				"Main",
+				"Glass",
+				"Lens"
+			};
+		};
+	};
+	class 885th_Medscanner_down_NVG: NVGoggles
+	{
+		author="Antauri + 885th Bloodpack Division";
+		displayName="[885th] Medscanner (On)(NVG)";
+		modelOptics="";
+		model="\ShadowLegion_Aux_Beta\data\Medscanner\Model\Medscanner_On.p3d";
+		picture="\ShadowLegion_Aux_Beta\data\Medscanner\Medscanner_UI.paa";
+		hiddenSelections[]=
+		{
+			"Main",
+			"Glass",
+			"Lens"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\NVG\Main_co.paa",
+			"885_Armor\885_Armor\NVG\Main_co.paa",
+			"885_Armor\885_Armor\NVG\Main_co.paa"
+		};
+		hiddenSelectionsMaterials[]=
+		{
+			"885_Armor\885_Armor\NVG\Main.rvmat",
+			"885_Armor\885_Armor\NVG\Glass.rvmat",
+			"885_Armor\885_Armor\NVG\Glass.rvmat"
+		};
+		visionMode[]=
+		{
+			"Normal",
+			"NVG"
+		};
+		thermalMode[]={0,1};
+		class ItemInfo
+		{
+			type=616;
+			uniformModel="\ShadowLegion_Aux_Beta\data\Medscanner\Model\Medscanner_On.p3d";
+			modelOff="\ShadowLegion_Aux_Beta\data\Medscanner\Model\Medscanner_On.p3d";
+			mass=20;
+			hiddenSelections[]=
+			{
+				"Main",
+				"Glass",
+				"Lens"
+			};
 		};
 	};
 	class 885th_IDA_VestV4_Holster: Vest_Camo_Base
@@ -7947,7 +8015,47 @@ class CfgWeapons
 			};
 		};
 	};
-
+	class 885th_Bleach_Medscanner_up_NVG: NVGoggles
+	{	
+		author="Antauri + 885th Bloodpack Division";
+		displayName="[885th] Bleach's Medscanner (NVG)";
+		modelOptics="";
+		model="\ShadowLegion_Aux_Beta\data\Medscanner\Model\Medscanner_On.p3d";
+		picture="\ShadowLegion_Aux_Beta\data\Medscanner\Medscanner_UI.paa";
+		hiddenSelections[]=
+		{
+			"Main",
+			"Glass",
+			"Lens"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Bleach\Main_co.paa",
+			"885_Armor\885_Armor\Customs\Bleach\Main_co.paa",
+			"885_Armor\885_Armor\Customs\Bleach\Main_co.paa"
+		};
+		hiddenSelectionsMaterials[]=
+		{
+			"885_Armor\885_Armor\Customs\Bleach\Main.rvmat",
+			"885_Armor\885_Armor\Customs\Bleach\Glass.rvmat",
+			"885_Armor\885_Armor\Customs\Bleach\Glass.rvmat"
+		};
+		visionMode[] = {"Normal","NVG","TI"};
+		thermalMode[] = {0,1};
+		class ItemInfo
+		{
+			type=616;
+			uniformModel="\ShadowLegion_Aux_Beta\data\Medscanner\Model\Medscanner_On.p3d";
+			modelOff="\ShadowLegion_Aux_Beta\data\Medscanner\Model\Medscanner_Off.p3d";
+			mass=20;
+			hiddenSelections[]=
+			{
+				"Main",
+				"Glass",
+				"Lens"
+			};
+		};
+	};
 	//Custom Rigs
 	class 885th_Cust_VestV4_Rig_Bandit: Vest_Camo_Base
 	{
