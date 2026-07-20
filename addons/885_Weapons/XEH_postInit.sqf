@@ -75,23 +75,4 @@ diag_log "[885th DC17M] postInit OK";
     _unit setVariable ["885th_DC17M_actionIDs", _newActionIDs];
 
     diag_log format ["[885th DC17M] Actions added to %1: %2", _unit, _newActionIDs];
-
-    // TEMPORARY DIAGNOSTIC - always visible regardless of weapon, reports
-    // the exact currentWeapon classname via systemChat so we can confirm
-    // whether it actually matches "885th_DC17M_F" etc. on the server. Not
-    // conditioned on anything, safe to remove once we've confirmed this.
-    _unit addAction [
-        "<t color='#FFAA00'>[DEBUG] Check my weapon classname</t>",
-        {
-            params ["_target"];
-            systemChat format ["currentWeapon: '%1'", currentWeapon _target];
-        },
-        nil,
-        1,
-        false,
-        true,
-        "",
-        "true",
-        5
-    ];
 }] call CBA_fnc_addClassEventHandler;

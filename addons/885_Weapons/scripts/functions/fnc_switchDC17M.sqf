@@ -103,7 +103,9 @@ private _gestureClass = if (_targetConfig == "885th_DC17M_Launcher_F") then {
 } else {
     "BPD_GestureReconfigure_DC17M"
 };
-_unit playActionNow _gestureClass;
+// remoteExec target 0 = broadcast to all clients (including JIP), so
+// nearby players see the gesture too, not just you
+[_unit, _gestureClass] remoteExec ["playActionNow", 0];
 
 [_unit, _currentWeapon, _targetConfig, _newMagClass, _items] spawn {
     params ["_unit", "_currentWeapon", "_targetConfig", "_newMagClass", "_items"];

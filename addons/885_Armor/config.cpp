@@ -1813,7 +1813,7 @@ class CfgWeapons
 	class 885th_Kit_phase2SpecOp_helmet: H_HelmetO_ViperSP_hex_F
 	{
 		scope=2;
-		author="Legion Studios + 885th Bloodpack Divison";
+		author="Legion Studios + 885th Bloodpack Division";
 		displayName="Kit's Spec-Ops P2 Helmet";
 		model="\ls\core\addons\characters_clone_legacy\helmets\phase2SpecOp\ls_sob_phase2SpecOp_helmet.p3d";
 		hiddenSelections[]=
@@ -2701,11 +2701,11 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_Kusak_Katarn_Helmet: 3AS_Katarn_Helmet
+	class 885th_Kusak_Katarn_Helmet_Base: H_HelmetO_ViperSP_hex_F
 	{
-		author="885th Bloodpack Division";
-		scope=2;
-		displayName="[885th] RC Kusak' Helm";
+		author="$STR_3as_Studio + 885th Bloodpack Division";
+		scope=0;
+		displayName="[885th] RC Katarn Helmet";
 		picture="3AS\3AS_Characters\Commando\data\UI\Katarn_Helmet_Unmarked_UI_ca.paa";
 		model="\3AS\3AS_Characters\Commando\3AS_Katarn_Helmet.p3d";
 		hiddenSelections[]=
@@ -2715,16 +2715,15 @@ class CfgWeapons
 		};
 		hiddenSelectionsTextures[]=
 		{
-			"885_Armor\885_Armor\Kusak\Kusak_Commando_Helm_co.paa",
-			"885_Armor\885_Armor\Kusak\Kusak_Commando_Helm_co.paa"
+			"\3AS\3AS_Characters\Commando\data\Katarn_Helmet_Standard_CO.paa",
+			"\3AS\3AS_Characters\Commando\data\Katarn_Helmet_Standard_CO.paa"
 		};
+		descriptionShort="$STR_A3_SP_AL_II";
 		class ItemInfo: HeadgearItem
 		{
 			mass=10;
 			uniformModel="\3AS\3AS_Characters\Commando\3AS_Katarn_Helmet.p3d";
 			modelSides[]={3,1};
-			ace_hearing_lowerVolume = 0;
-			ace_hearing_protection = 1;
 			hiddenSelections[]=
 			{
 				"camo",
@@ -2739,6 +2738,21 @@ class CfgWeapons
 					passThrough=0.2;
 				};
 			};
+		};
+		subItems[]=
+		{
+			"885th_Katarn_Integrated_NVG_TI_F"
+		};
+	};
+	class 885th_Kusak_Katarn_Helmet: 885th_Kusak_Katarn_Helmet_Base
+	{
+		author="885th Bloodpack Division";
+		scope=2;
+		displayName="[885th] RC Kusak' Helm";
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Kusak\Kusak_Commando_Helm_co.paa",
+			"885_Armor\885_Armor\Kusak\Kusak_Commando_Helm_co.paa"
 		};
 	};
 	class Crow_Kusak_Katarn_Helm: 885th_Kusak_Katarn_Helmet
@@ -2746,40 +2760,10 @@ class CfgWeapons
 		author="885th Bloodpack Division";
 		scope=2;
 		displayName="[885th] RC Crow's Kusak' Helm";
-		picture="3AS\3AS_Characters\Commando\data\UI\Katarn_Helmet_Unmarked_UI_ca.paa";
-		model="\3AS\3AS_Characters\Commando\3AS_Katarn_Helmet.p3d";
-		subItems[] = {"Integrated_NVG_TI_0_F"};
-		hiddenSelections[]=
-		{
-			"camo",
-			"camo1"
-		};
 		hiddenSelectionsTextures[]=
 		{
 			"885_Armor\885_Armor\Customs\Crow\Crow_Katarn_Helm_co.paa",
 			"885_Armor\885_Armor\Customs\Crow\Crow_Katarn_Helm_co.paa"
-		};
-		class ItemInfo: HeadgearItem
-		{
-			mass=10;
-			uniformModel="\3AS\3AS_Characters\Commando\3AS_Katarn_Helmet.p3d";
-			modelSides[]={3,1};
-			ace_hearing_lowerVolume = 0;
-			ace_hearing_protection = 1;
-			hiddenSelections[]=
-			{
-				"camo",
-				"camo1"
-			};
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName="HitHead";
-					armor=20;
-					passThrough=0.2;
-				};
-			};
 		};
 	};
 	class Phantom_Kusak_Katarn_Helm: 885th_Kusak_Katarn_Helmet
@@ -2787,39 +2771,10 @@ class CfgWeapons
 		author="885th Bloodpack Division";
 		scope=2;
 		displayName="[885th] RC Phantom Kusak' Helm";
-		picture="3AS\3AS_Characters\Commando\data\UI\Katarn_Helmet_Unmarked_UI_ca.paa";
-		model="\3AS\3AS_Characters\Commando\3AS_Katarn_Helmet.p3d";
-		hiddenSelections[]=
-		{
-			"camo",
-			"camo1"
-		};
 		hiddenSelectionsTextures[]=
 		{
 			"885_Armor\885_Armor\Customs\Phantom\Phantom_Katarn_Helmet_co.paa",
 			"885_Armor\885_Armor\Customs\Phantom\Phantom_Katarn_Helmet_co.paa"
-		};
-		class ItemInfo: HeadgearItem
-		{
-			mass=10;
-			uniformModel="\3AS\3AS_Characters\Commando\3AS_Katarn_Helmet.p3d";
-			modelSides[]={3,1};
-			ace_hearing_lowerVolume = 0;
-			ace_hearing_protection = 1;
-			hiddenSelections[]=
-			{
-				"camo",
-				"camo1"
-			};
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName="HitHead";
-					armor=20;
-					passThrough=0.2;
-				};
-			};
 		};
 	};
 	class Scorch_Kusak_Katarn_Helm: 885th_Kusak_Katarn_Helmet
@@ -2827,39 +2782,10 @@ class CfgWeapons
 		author="885th Bloodpack Division";
 		scope=2;
 		displayName="[885th] RC Scorch Kusak Helm";
-		picture="3AS\3AS_Characters\Commando\data\UI\Katarn_Helmet_Unmarked_UI_ca.paa";
-		model="\3AS\3AS_Characters\Commando\3AS_Katarn_Helmet.p3d";
-		hiddenSelections[]=
-		{
-			"camo",
-			"camo1"
-		};
 		hiddenSelectionsTextures[]=
 		{
 			"885_Armor\885_Armor\Customs\Scorch\Scorch_Katarn_Helm_co.paa",
 			"885_Armor\885_Armor\Customs\Scorch\Scorch_Katarn_Helm_co.paa"
-		};
-		class ItemInfo: HeadgearItem
-		{
-			mass=10;
-			uniformModel="\3AS\3AS_Characters\Commando\3AS_Katarn_Helmet.p3d";
-			modelSides[]={3,1};
-			ace_hearing_lowerVolume = 0;
-			ace_hearing_protection = 1;
-			hiddenSelections[]=
-			{
-				"camo",
-				"camo1"
-			};
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName="HitHead";
-					armor=20;
-					passThrough=0.2;
-				};
-			};
 		};
 	};
 	class 885th_P2_MG_Helmet: H_HelmetO_ViperSP_hex_F
@@ -4302,6 +4228,21 @@ class CfgWeapons
 			mass = 40;
 		};
 	};
+	
+	// 885th Gear 
+	class 885th_Katarn_Integrated_NVG_TI_F: NVGoggles
+	{
+		scope=1;
+		visionMode[]=
+		{
+			"Normal",
+			"NVG",
+			"TI"
+		};
+		thermalMode[]={6};
+		modelOptics="";
+	};
+	
 	// 20th Gear
 	class 885th_Officer_MCVisor: NVGoggles
 	{

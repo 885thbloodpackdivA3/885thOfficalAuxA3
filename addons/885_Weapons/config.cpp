@@ -7205,7 +7205,7 @@ class CfgWeapons
 	class 885th_DC15SMKII_F: 885th_DC15SMKII_Base_F
 	{
 		author="885th Bloodpack Division";
-		baseWeapon="885th_DC15S_F";
+		baseWeapon="885th_DC15SMKII_F";
 		scope=2;
 		displayName="[885th] DC-15S MKII";
 		model="\3AS\3AS_Weapons\Republic\DC15S\3AS_DC15S_F.p3d";
@@ -17489,6 +17489,12 @@ class CfgWeapons
 	};
 };
 
+// Add as its own top-level block in 885_weapons\config.cpp.
+// Reuses the 3AS DC17M reload animation files as the "reconfigure" gesture -
+// verify these .rtm paths actually resolve in your install before relying
+// on this (see note in chat re: the "3as_gesturereload_dc17m" warning in
+// your last .rpt).
+
 class CfgMovesBasic
 {
 	class DefaultDie;
@@ -17605,6 +17611,9 @@ class CfgGesturesMale
 		};
 	};
 };
+
+// Add as its own top-level block in 885_weapons\config.cpp, alongside
+// CfgPatches / CfgFunctions / CfgWeapons etc (not nested inside any of them).
 
 class Extended_PreInit_EventHandlers
 {

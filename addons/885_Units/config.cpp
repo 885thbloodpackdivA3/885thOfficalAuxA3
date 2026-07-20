@@ -281,7 +281,7 @@ class CfgVehicles
 		sensitivity = 0.8;
 		uniformClass = "885th_Recruit_Uniform";
 		hiddenSelectionsTextures[] = {"\885_Armor\885_Armor\CR\885th_Recruit_Upper_co.paa","\885_Armor\885_Armor\CR\885th_Recruit_Lower_co.paa"};
-		weapons[] += {"885th_DC15S_F"};
+		weapons[] += {"885th_DC15SMKII_F"};
 		magazines[] += {MAG_10("885th_dc_cell_blue_low"),MAG_10("885th_dc_cell_blue")};
 		respawnMagazines[] += {MAG_10("885th_dc_cell_blue_low"),MAG_10("885th_dc_cell_blue")};
 		linkedItems[] += {"885th_Recruit_P2_Helm","885th_vest_base"};
@@ -330,7 +330,7 @@ class CfgVehicles
 		sensitivity = 1.3;
 		uniformClass = "885th_Vornskr_Uniform";
 		hiddenSelectionsTextures[] = {"\885_Armor\885_Armor\Vornskr\Vornskr_Upper_co.paa","\885_Armor\885_Armor\Vornskr\Vornskr_Lower_co.paa"};
-		weapons[] += {"885th_DC15S_GL", "IDA_PLX1"};
+		weapons[] += {"885th_DC15SMKII_GL", "IDA_PLX1"};
 		magazines[] += {MAG_10("885th_dc_cell_blue_low"),MAG_4("885th_PLX1_AT_Rocket")};
 		respawnMagazines[] += {MAG_10("885th_dc_cell_blue_low"),MAG_4("885th_PLX1_AT_Rocket")};
 		linkedItems[] += {"885th_P2_V2_Helmet","885th_vest_base"};
@@ -361,7 +361,7 @@ class CfgVehicles
 		sensitivity = 1.0;
 		uniformClass = "885th_Medic_Uniform";
 		hiddenSelectionsTextures[] = {"\885_Armor\885_Armor\Medic\885th_MedicV2_Upper_co.paa","\885_Armor\885_Armor\Medic\885th_MedicV2_Lower_co.paa"};
-		weapons[] += {"885th_DC15S_F"};
+		weapons[] += {"885th_DC15SMKII_F"};
 		items[] += {MAG_5("GW_Vasko500"),MAG_5("GW_Vasko250"),"IDA_Cauterizer","ACE_painkillers_item"};
 		respawnItems[] += {MAG_5("GW_Vasko500"),MAG_5("GW_Vasko250"),"IDA_Cauterizer","ACE_painkillers_item"};
 		magazines[] += {MAG_10("885th_dc_cell_blue_low"),MAG_10("885th_dc_cell_blue")};
