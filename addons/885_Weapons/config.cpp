@@ -10849,13 +10849,13 @@ class CfgWeapons
 			class StandardSound : BaseSoundModeType
 			{
 				weaponSoundEffect = "";
-				begin1[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 1, 1800};
-				begin2[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 1.015, 1800};
-				begin3[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 0.985, 1800};
-				begin4[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 1.01, 1800};
-				begin5[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 0.995, 1800};
+				begin1[] = {"885_Sounds\DC15LMKII.ogg", 1.25, 1, 1800};
+				begin2[] = {"885_Sounds\DC15LMKII.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Sounds\DC15LMKII.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Sounds\DC15LMKII.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Sounds\DC15LMKII.ogg", 1.25, 0.995, 1800};
 				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
-				beginwater1[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1, 1, 400};
+				beginwater1[] = {"885_Sounds\DC15LMKII.ogg", 1, 1, 400};
 				soundBeginWater[] = {"beginwater1", 1};
 			};
 			class SilencedSound: BaseSoundModeType
@@ -10874,7 +10874,7 @@ class CfgWeapons
 		class FullAuto_2: Mode_FullAuto
 		{
 			reloadTime=0.05;
-			dispersion=0.00056000001;
+			dispersion=0.00150;
 			minRange=100;
 			minRangeProbab=0.89999998;
 			midRange=700;
@@ -10888,13 +10888,13 @@ class CfgWeapons
 			class StandardSound : BaseSoundModeType
 			{
 				weaponSoundEffect = "";
-				begin1[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 1, 1800};
-				begin2[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 1.015, 1800};
-				begin3[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 0.985, 1800};
-				begin4[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 1.01, 1800};
-				begin5[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1.25, 0.995, 1800};
+				begin1[] = {"885_Sounds\DC15LMKII.ogg", 1.25, 1, 1800};
+				begin2[] = {"885_Sounds\DC15LMKII.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Sounds\DC15LMKII.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Sounds\DC15LMKII.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Sounds\DC15LMKII.ogg", 1.25, 0.995, 1800};
 				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
-				beginwater1[] = {"Indecisive_Armoury_Sounds\IMPERIAL\DLT19.ogg", 1, 1, 400};
+				beginwater1[] = {"885_Sounds\DC15LMKII.ogg", 1, 1, 400};
 				soundBeginWater[] = {"beginwater1", 1};
 			};
 			class SilencedSound: BaseSoundModeType

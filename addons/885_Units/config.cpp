@@ -297,7 +297,7 @@ class CfgVehicles
 		sensitivity = 1.1;
 		uniformClass = "885th_Vornskr_Uniform";
 		hiddenSelectionsTextures[] = {"\885_Armor\885_Armor\Vornskr\Vornskr_Upper_co.paa","\885_Armor\885_Armor\Vornskr\Vornskr_Lower_co.paa"};
-		weapons[] += {"885th_DC15A_F"};
+		weapons[] += {"885th_DC15A"};
 		magazines[] += {MAG_10("885th_dc_cell_blue_low"),MAG_10("885th_dc_cell_blue")};
 		respawnMagazines[] += {MAG_10("885th_dc_cell_blue_low"),MAG_10("885th_dc_cell_blue")};
 		linkedItems[] += {"885th_P2_V2_Helmet","885th_vest_base"};
