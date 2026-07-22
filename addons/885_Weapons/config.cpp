@@ -17491,9 +17491,6 @@ class CfgWeapons
 
 // Add as its own top-level block in 885_weapons\config.cpp.
 // Reuses the 3AS DC17M reload animation files as the "reconfigure" gesture -
-// verify these .rtm paths actually resolve in your install before relying
-// on this (see note in chat re: the "3as_gesturereload_dc17m" warning in
-// your last .rpt).
 
 class CfgMovesBasic
 {

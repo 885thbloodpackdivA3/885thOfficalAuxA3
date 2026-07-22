@@ -81,7 +81,7 @@ if (_unit getVariable ["BPD_DC17M_switching", false]) exitWith {
     false
 };
 
-private _currentWeapon = currentWeapon _unit;
+private _currentWeapon = primaryWeapon _unit;
 private _currentIndex = _configs find _currentWeapon;
 private _targetIndex = _configs find _targetConfig;
 
@@ -113,9 +113,12 @@ private _gestureClass = if (_targetConfig == "885th_DC17M_Launcher_F") then {
     // MUST match the gesture's duration (speed = -2 in CfgGesturesMale)
     sleep 2;
 
-    if (!alive _unit || {currentWeapon _unit != _currentWeapon}) exitWith {
-        // unit died, or manually swapped away from the DC17M mid-animation -
-        // cancel the pending swap rather than force it
+    if (!alive _unit || {!local _unit} || {primaryWeapon _unit != _currentWeapon}) exitWith {
+        // unit died, is no longer local (e.g. disconnected mid-animation),
+        // or manually swapped their primary weapon away from the DC17M
+        // entirely mid-animation - cancel the pending swap rather than
+        // force it. Briefly having a sidearm/binoculars raised does NOT
+        // cancel this, since we check primaryWeapon, not currentWeapon.
         _unit setVariable ["BPD_DC17M_switching", false];
     };
 
