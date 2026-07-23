@@ -17635,6 +17635,8 @@ class CfgFunctions
 		class Weapons
 		{
 			class switchDC17M { file = "885_Weapons\scripts\functions\fnc_switchDC17M.sqf"; };
+			class addDC17MConversionActions { file = "885_Weapons\scripts\functions\fn_addDC17MConversionActions.sqf"; };
 		};
 	};
 };
+

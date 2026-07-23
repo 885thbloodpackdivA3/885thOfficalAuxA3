@@ -1,96 +1,71 @@
 // XEH_postInit.sqf
-// Adds scroll-wheel actions to the local player for reconfiguring the
-// DC17M. Every OTHER config (not just "next in cycle") is shown at once -
-// e.g. holding the Rifle shows both "Switch to Sniper Configuration" and
-// "Switch to Launcher Configuration" simultaneously - so you can jump
-// straight to whichever one you want. All entries hide themselves while
-// BPD_fnc_switchDC17M has a swap in progress (see BPD_DC17M_switching).
-// Hooks CAManBase's InitPost via CBA so it re-attaches on every spawn,
-// respawn, and JIP - addon-safe, does not rely on mission-only hooks.
+//
+// Registers the DC17M reconfigure scroll-wheel actions for the local
+// player. This replaces an earlier CAManBase/InitPost class-event-handler
+// approach that registered actions successfully (confirmed repeatedly in
+// diag_log output) but never reliably rendered them in the actual scroll
+// wheel on the dedicated server. This mechanism instead waits directly for
+// player validity and re-registers on the specific events that can change
+// which unit the player controls, rather than reacting to a general
+// per-unit creation event.
+//
+// Structure:
+// - hasInterface guard so this only runs on machines with a UI at all
+// - CBA_fnc_waitUntilAndExecute polling for player validity before the
+//   first registration
+// - a mission-level addMissionEventHandler ["PlayerRespawn", ...] for
+//   re-registration after death
+// - CBA_fnc_addPlayerEventHandler ["unit", ...] for re-registration when
+//   the player takes control of a different unit (Zeus, slot-switching)
+// - a single global action-ID array, refreshed in place, rather than a
+//   per-unit stored variable
 
 diag_log "[885th DC17M] postInit OK";
 
-["CAManBase", "InitPost", {
-    params ["_unit"];
+if (!hasInterface) exitWith {};
 
-    if (isPlayer _unit) then {
-        diag_log format ["[885th DC17M] InitPost fired for %1 | local: %2", _unit, local _unit];
-    };
+// Tracks added action IDs so we can remove and re-add cleanly
+BPD_DC17M_ConversionActionIDs = [];
 
-    if !(local _unit) exitWith {};
-    if !(isPlayer _unit) exitWith {};
+// Removes all previously added conversion actions
+BPD_fnc_removeDC17MConversionActions = {
+    params [["_unit", player, [objNull]]];
+    {
+        _unit removeAction _x;
+    } forEach BPD_DC17M_ConversionActionIDs;
+    BPD_DC17M_ConversionActionIDs = [];
+};
 
-    // Adding actions the INSTANT InitPost fires can register them in the
-    // engine's bookkeeping (valid ID returned, stored fine) without them
-    // actually rendering in the scroll wheel. A delay fixes that, but
-    // spawn/sleep runs the delayed code in the SCHEDULED environment,
-    // which Bohemia/CBA/ACE3 all document as unreliable - subject to the
-    // engine's per-frame time budget, which gets more contested the
-    // heavier the server's actual load is. That's almost certainly why
-    // this worked reliably in singleplayer/editor (light load, scheduler
-    // has spare time every frame) but not on a real dedicated server
-    // (heavier load, many more scripts competing for the same budget).
-    // CBA_fnc_waitAndExecute runs its callback UNSCHEDULED after the
-    // delay instead - the same execution category XEHs themselves run in.
+// Re-adds all actions fresh (safe to call multiple times)
+BPD_fnc_refreshDC17MConversionActions = {
+    params [["_unit", player, [objNull]]];
+    if (isNull _unit) exitWith {};
+
+    [_unit] call BPD_fnc_removeDC17MConversionActions;
+    BPD_DC17M_ConversionActionIDs =
+        [_unit] call BPD_fnc_addDC17MConversionActions;
+
+    diag_log format ["[885th DC17M] Actions refreshed for %1: %2", _unit, BPD_DC17M_ConversionActionIDs];
+};
+
+// Wait for player to be valid before first add
+[{
+    !isNull player && { local player }
+}, {
+    [player] call BPD_fnc_refreshDC17MConversionActions;
+}] call CBA_fnc_waitUntilAndExecute;
+
+// Re-add when player respawns
+addMissionEventHandler ["PlayerRespawn", {
     [{
-        params ["_unit"];
+        !isNull player && { local player }
+    }, {
+        [player] call BPD_fnc_refreshDC17MConversionActions;
+    }] call CBA_fnc_waitUntilAndExecute;
+}];
 
-        diag_log format ["[885th DC17M] waitAndExecute fired for %1", _unit];
-
-        // remove any stale actions from a previous pass on this unit
-        private _existingIDs = _unit getVariable ["885th_DC17M_actionIDs", []];
-        {
-            _unit removeAction _x;
-        } forEach _existingIDs;
-
-        private _configs = [
-            "885th_DC17M_F",
-            "885th_DC17M_Sniper_F",
-            "885th_DC17M_Launcher_F"
-        ];
-        private _displayNames = [
-            "Rifle Configuration",
-            "Sniper Configuration",
-            "Launcher Configuration"
-        ];
-
-        private _newActionIDs = [];
-
-        for "_i" from 0 to (count _configs - 1) do {
-            private _currentConfig = _configs select _i;
-
-            for "_j" from 0 to (count _configs - 1) do {
-                if (_i != _j) then {
-                    private _targetConfig = _configs select _j;
-                    private _targetDisplay = _displayNames select _j;
-
-                    private _condition = format [
-                        "(primaryWeapon _target == '%1') && !(_target getVariable ['BPD_DC17M_switching', false])",
-                        _currentConfig
-                    ];
-
-                    private _actionID = _unit addAction [
-                        format ["Switch to %1", _targetDisplay],
-                        {
-                            params ["_target", "_caller", "_actionId", "_targetConfig"];
-                            [_target, _targetConfig] call BPD_fnc_switchDC17M;
-                        },
-                        _targetConfig,
-                        6,
-                        false,
-                        true,
-                        "",
-                        _condition,
-                        5
-                    ];
-
-                    _newActionIDs pushBack _actionID;
-                };
-            };
-        };
-
-        _unit setVariable ["885th_DC17M_actionIDs", _newActionIDs];
-
-        diag_log format ["[885th DC17M] Actions added to %1: %2", _unit, _newActionIDs];
-    }, [_unit], 1] call CBA_fnc_waitAndExecute;
-}] call CBA_fnc_addClassEventHandler;
+// Re-add if player takes control of a different unit
+["unit", {
+    params ["_unit"];
+    [_unit] call BPD_fnc_refreshDC17MConversionActions;
+}] call CBA_fnc_addPlayerEventHandler;
