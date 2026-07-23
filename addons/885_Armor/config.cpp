@@ -12916,6 +12916,30 @@ class CfgVehicles
 		tf_subtype="digital_lr";
 		mass=22;
 	};
+	class 885th_Scorch_Kusak_Backpack: B_AssaultPack_blk
+	{
+		author="3AS + 885th Bloodpack Division";
+		scope=2;
+		picture="3AS\3AS_Characters\Commando\data\UI\Katarn_Backpack_Unmarked_UI_ca.paa";
+		displayName="[885th] Scorch RC Backpack";
+		model = "\3AS\3AS_Characters\Commando\3AS_Katarn_BackPack.p3d";
+		hiddenSelections[]=
+		{
+			"Camo"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Scorch\Scorch_Katarn_Backpack_co.paa"
+		};
+		maximumload=450;
+		tf_dialog="JLTS_clone_lr_programmer_radio_dialog";
+		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
+		tf_encryptionCode="tf_west_radio_code";
+		tf_hasLRradio=1;
+		tf_range=40000;
+		tf_subtype="digital_lr";
+		mass=22;
+	};
 	class 885th_Arc_Pack: B_AssaultPack_blk
 	{
 		scope=2;
