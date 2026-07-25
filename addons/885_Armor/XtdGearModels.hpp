@@ -564,6 +564,7 @@ class XtdGearModels
 					"Bandit",
 					"Bleach",
 					"Crimz",
+					"Kit",
 					"Outcast",
 					"Mayday",
 					"ONI",
@@ -1624,6 +1625,11 @@ class XtdGearInfos
 		{
 			model="Custom_Vest";
 			vest="Crimz";
+		};
+		class 885th_Cust_VestV4_Rig_Kit
+		{
+			model="Custom_Vest";
+			vest="Kit";
 		};
 		class 885th_Cust_VestV4_Rig_Outcast
 		{
