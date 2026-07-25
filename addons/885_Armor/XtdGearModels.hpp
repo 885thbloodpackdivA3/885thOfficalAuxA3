@@ -567,6 +567,7 @@ class XtdGearModels
 					"Kit",
 					"Outcast",
 					"Mayday",
+					"Nightfall",
 					"ONI",
 					"Rios",
 					"Screwball",
@@ -1640,6 +1641,11 @@ class XtdGearInfos
 		{
 			model="Custom_Vest";
 			vest="Mayday";
+		};
+		class 885th_Cust_VestV4_Rig_Nightfall
+		{
+			model="Custom_Vest";
+			vest="Nightfall";
 		};
 		class 885th_Cust_VestV4_Rig_ONI
 		{
