@@ -935,12 +935,12 @@ class XtdGearInfos
 			variant="Pilot";
 			camo="Pilot";
 		};
-		class  885th_Charge_BARC_Helm
+		class  885th_Charge_P2_Helm
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Charge";
-			variant="BARC";
-			camo="BARC";
+			variant="P2";
+			camo="P2";
 		};
 		class  885th_Cerberus_BARC_Helm
 		{

@@ -1065,7 +1065,26 @@ class CfgWeapons
             "",
         };
 	};
-
+	class 885th_Charge_P2_Helm: 885th_P2_V2_Helmet
+	{
+		author="885th Bloodpack Division";
+		displayName="[885th] Charge's P2 Helmet";
+		hiddenselections[]=
+		{
+			"Camo",
+			"visor"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Charge\P2_Helmet_co.paa",
+			"885_Armor\885_Armor\Customs\Charge\P2_Helmet_co.paa",
+		};
+        hiddenSelectionsMaterials[]=
+        {
+			"",
+            "885_Armor\885_Armor\Customs\Charge\P2_Helmet_Visor.rvmat",
+        };
+	};
 	class 885th_EOD_Helm: 885th_P2_V2_Helmet
 	{
 		author="885th Bloodpack Division";
@@ -2175,26 +2194,6 @@ class CfgWeapons
 				};
 			};
 		};
-	};
-	class 885th_Charge_BARC_Helm: 885th_BARC_Helm
-	{
-		author="885th Bloodpack Division";
-		displayName="[885th] Charge's BARC Helmet";
-		hiddenselections[]=
-		{
-			"Camo",
-			"visor"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Charge\Charge_BARC_Helmet_co.paa",
-			"885_Armor\885_Armor\Customs\Charge\Charge_BARC_Helmet_co.paa",
-		};
-        hiddenSelectionsMaterials[]=
-        {
-			"",
-            "885_Armor\885_Armor\Customs\Charge\Charge_BARC_Helmet_Visor.rvmat",
-        };
 	};
 	class 885th_Cerberus_BARC_Helm: 885th_BARC_Helm
 	{
