@@ -1843,6 +1843,11 @@ class XtdGearInfos
 			model="Custom_Backpacks";
 			backpack="Syxer";
 		};
+		class 885th_Scorch_Kusak_Backpack
+		{
+			model="Custom_Backpacks";
+			backpack="Scorch";
+		};
 		class 885th_Thunder_Backpack
 		{
 			model="Custom_Backpacks";
