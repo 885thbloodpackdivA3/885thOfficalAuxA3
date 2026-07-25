@@ -652,8 +652,8 @@ class XtdGearModels
 					"Outcast",
 					"Rios",
 					"Syxer",
+					"Scorch",
 					"Thunder"
-
 				};
 			};
 		};

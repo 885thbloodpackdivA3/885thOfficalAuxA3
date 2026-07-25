@@ -2734,8 +2734,15 @@ class CfgWeapons
 				class Head
 				{
 					hitpointName="HitHead";
-					armor=20;
-					passThrough=0.2;
+					armor=25;
+					passThrough=0.05;
+				};
+				class Face
+				{
+					hitpointName = "HitFace";
+					armor = 15;
+					visual = "injury_Head";
+					PassThrough = 0.15;
 				};
 			};
 		};
@@ -3351,7 +3358,7 @@ class CfgWeapons
 	class 885th_Kusak_Squad_Leader: 3AS_Katarn_Vest_Team_Leader
 	{
 		author = "885th Bloodpack Division";
-		scope = 2;
+		scope = 0;
 		displayname = "[885th] Kusak Squad Lead Pauldron";
 		weaponPoolAvailable = 1;
 		allowedSlots[] = {901};
@@ -3370,20 +3377,20 @@ class CfgWeapons
 				class Chest
 				{
 					HitpointName = "HitChest";
-					armor = 25;
-					PassThrough = 0.25;
+					armor = 28;
+					PassThrough = 0.05;
 				};
 				class Legs
 				{
 					hitpointName = "HitLegs";
-					armor = 13;
-					passThrough = 0.25;
+					armor = 15;
+					passThrough = 0.1;
 				};
 				class Arms
 				{
 					hitpointName = "HitArms";
-					armor = 14;
-					passThrough = 0.25;
+					armor = 15;
+					passThrough = 0.1;
 				};
 			};
 		};
@@ -3408,20 +3415,20 @@ class CfgWeapons
 				class Chest
 				{
 					HitpointName = "HitChest";
-					armor = 25;
-					PassThrough = 0.25;
+					armor = 28;
+					PassThrough = 0.05;
 				};
 				class Legs
 				{
 					hitpointName = "HitLegs";
-					armor = 13;
-					passThrough = 0.25;
+					armor = 15;
+					passThrough = 0.1;
 				};
 				class Arms
 				{
 					hitpointName = "HitArms";
-					armor = 14;
-					passThrough = 0.25;
+					armor = 15;
+					passThrough = 0.1;
 				};
 			};
 		};
@@ -3447,20 +3454,20 @@ class CfgWeapons
 				class Chest
 				{
 					HitpointName = "HitChest";
-					armor = 25;
-					PassThrough = 0.25;
+					armor = 28;
+					PassThrough = 0.05;
 				};
 				class Legs
 				{
 					hitpointName = "HitLegs";
-					armor = 13;
-					passThrough = 0.25;
+					armor = 15;
+					passThrough = 0.1;
 				};
 				class Arms
 				{
 					hitpointName = "HitArms";
-					armor = 14;
-					passThrough = 0.25;
+					armor = 15;
+					passThrough = 0.1;
 				};
 			};
 		};
@@ -3487,20 +3494,20 @@ class CfgWeapons
 				class Chest
 				{
 					HitpointName = "HitChest";
-					armor = 25;
-					PassThrough = 0.25;
+					armor = 28;
+					PassThrough = 0.05;
 				};
 				class Legs
 				{
 					hitpointName = "HitLegs";
-					armor = 13;
-					passThrough = 0.25;
+					armor = 15;
+					passThrough = 0.1;
 				};
 				class Arms
 				{
 					hitpointName = "HitArms";
-					armor = 14;
-					passThrough = 0.25;
+					armor = 15;
+					passThrough = 0.1;
 				};
 			};
 		};
@@ -5149,45 +5156,45 @@ class CfgWeapons
 				"ChestGuard"
 			};
 			vestType="Rebreather";
-			containerClass="Supply200";
-			mass=65;
+			containerClass="Supply250";
+			mass=70;
 			class HitpointsProtectionInfo
 			{
 				class Chest
 				{
 					HitpointName="HitChest";
-					armor=25;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Diaphragm
 				{
 					HitpointName="HitDiaphragm";
-					armor=15;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Abdomen
 				{
 					hitpointName="HitAbdomen";
-					armor=15;
-					passThrough=0.30000001;
+					armor=16;
+					passThrough=0.2;
 				};
 				class Body
 				{
 					hitpointName="HitBody";
-					armor=15;
-					passThrough=0.30000001;
+					armor=16;
+					passThrough=0.2;
 				};
 				class Arms
 				{
 					hitpointName="HitArms";
-					armor=7;
-					passThrough=0.30000001;
+					armor=8;
+					passThrough=0.4;
 				};
 				class Legs
 				{
 					hitpointName="HitLegs";
-					armor=7;
-					passThrough=0.30000001;
+					armor=8;
+					passThrough=0.4;
 				};
 			};
 		};
@@ -8171,44 +8178,44 @@ class CfgWeapons
 			};
 			vestType="Rebreather";
 			containerClass="Supply250";
-			mass=65;
+			mass=70;
 			class HitpointsProtectionInfo
 			{
 				class Chest
 				{
 					HitpointName="HitChest";
-					armor=25;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Diaphragm
 				{
 					HitpointName="HitDiaphragm";
-					armor=15;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Abdomen
 				{
 					hitpointName="HitAbdomen";
-					armor=15;
-					passThrough=0.30000001;
+					armor=16;
+					passThrough=0.2;
 				};
 				class Body
-				{	
+				{
 					hitpointName="HitBody";
-					armor=15;
-					passThrough=0.30000001;
+					armor=16;
+					passThrough=0.2;
 				};
 				class Arms
-                {
-                    hitpointName="HitArms";
-                    armor=10;
-                    passThrough=0.30000001;
-                };
+				{
+					hitpointName="HitArms";
+					armor=8;
+					passThrough=0.4;
+				};
 				class Legs
 				{
 					hitpointName="HitLegs";
-					armor=10;
-					passThrough=0.30000001;
+					armor=8;
+					passThrough=0.4;
 				};
 			};
 		};
@@ -8385,44 +8392,44 @@ class CfgWeapons
 			};
 			vestType="Rebreather";
 			containerClass="Supply250";
-			mass=65;
+			mass=70;
 			class HitpointsProtectionInfo
 			{
 				class Chest
 				{
 					HitpointName="HitChest";
-					armor=25;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Diaphragm
 				{
 					HitpointName="HitDiaphragm";
-					armor=15;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Abdomen
 				{
 					hitpointName="HitAbdomen";
-					armor=15;
-					passThrough=0.30000001;
+					armor=16;
+					passThrough=0.2;
 				};
 				class Body
-				{	
+				{
 					hitpointName="HitBody";
-					armor=15;
-					passThrough=0.30000001;
+					armor=16;
+					passThrough=0.2;
 				};
 				class Arms
-                {
-                    hitpointName="HitArms";
-                    armor=10;
-                    passThrough=0.30000001;
-                };
+				{
+					hitpointName="HitArms";
+					armor=8;
+					passThrough=0.4;
+				};
 				class Legs
 				{
 					hitpointName="HitLegs";
-					armor=10;
-					passThrough=0.30000001;
+					armor=8;
+					passThrough=0.4;
 				};
 			};
 		};
@@ -9014,37 +9021,44 @@ class CfgWeapons
 			};
 			vestType="Rebreather";
 			containerClass="Supply250";
-			mass=65;
+			mass=70;
 			class HitpointsProtectionInfo
 			{
 				class Chest
 				{
 					HitpointName="HitChest";
-					armor=16;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Diaphragm
 				{
 					HitpointName="HitDiaphragm";
-					armor=16;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Abdomen
 				{
 					hitpointName="HitAbdomen";
 					armor=16;
-					passThrough=0.30000001;
+					passThrough=0.2;
 				};
 				class Body
 				{
 					hitpointName="HitBody";
-					passThrough=0.30000001;
+					armor=16;
+					passThrough=0.2;
+				};
+				class Arms
+				{
+					hitpointName="HitArms";
+					armor=8;
+					passThrough=0.4;
 				};
 				class Legs
 				{
 					hitpointName="HitLegs";
-					armor=6;
-					passThrough=0.30000001;
+					armor=8;
+					passThrough=0.4;
 				};
 			};
 		};
@@ -9428,44 +9442,44 @@ class CfgWeapons
 			};
 			vestType="Rebreather";
 			containerClass="Supply250";
-			mass=65;
+			mass=70;
 			class HitpointsProtectionInfo
 			{
 				class Chest
 				{
 					HitpointName="HitChest";
-					armor=25;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Diaphragm
 				{
 					HitpointName="HitDiaphragm";
-					armor=15;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Abdomen
 				{
 					hitpointName="HitAbdomen";
-					armor=15;
-					passThrough=0.30000001;
+					armor=16;
+					passThrough=0.2;
 				};
 				class Body
-				{	
+				{
 					hitpointName="HitBody";
-					armor=15;
-					passThrough=0.30000001;
+					armor=16;
+					passThrough=0.2;
 				};
 				class Arms
-                {
-                    hitpointName="HitArms";
-                    armor=10;
-                    passThrough=0.30000001;
-                };
+				{
+					hitpointName="HitArms";
+					armor=8;
+					passThrough=0.4;
+				};
 				class Legs
 				{
 					hitpointName="HitLegs";
-					armor=10;
-					passThrough=0.30000001;
+					armor=8;
+					passThrough=0.4;
 				};
 			};
 		};
@@ -10681,37 +10695,44 @@ class CfgWeapons
 			};
 			vestType="Rebreather";
 			containerClass="Supply250";
-			mass=65;
+			mass=70;
 			class HitpointsProtectionInfo
 			{
 				class Chest
 				{
 					HitpointName="HitChest";
-					armor=16;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Diaphragm
 				{
 					HitpointName="HitDiaphragm";
-					armor=16;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Abdomen
 				{
 					hitpointName="HitAbdomen";
 					armor=16;
-					passThrough=0.30000001;
+					passThrough=0.2;
 				};
 				class Body
 				{
 					hitpointName="HitBody";
-					passThrough=0.30000001;
+					armor=16;
+					passThrough=0.2;
+				};
+				class Arms
+				{
+					hitpointName="HitArms";
+					armor=8;
+					passThrough=0.4;
 				};
 				class Legs
 				{
 					hitpointName="HitLegs";
-					armor=6;
-					passThrough=0.30000001;
+					armor=8;
+					passThrough=0.4;
 				};
 			};
 		};
@@ -12950,6 +12971,30 @@ class CfgVehicles
 		tf_subtype="digital_lr";
 		mass=22;
 	};
+	class 885th_Scorch_Kusak_Backpack: B_AssaultPack_blk
+	{
+		author="3AS + 885th Bloodpack Division";
+		scope=2;
+		picture="3AS\3AS_Characters\Commando\data\UI\Katarn_Backpack_Unmarked_UI_ca.paa";
+		displayName="[885th] Scorch RC Backpack";
+		model = "\3AS\3AS_Characters\Commando\3AS_Katarn_BackPack.p3d";
+		hiddenSelections[]=
+		{
+			"Camo"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Scorch\Scorch_Katarn_Backpack_co.paa"
+		};
+		maximumload=450;
+		tf_dialog="JLTS_clone_lr_programmer_radio_dialog";
+		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
+		tf_encryptionCode="tf_west_radio_code";
+		tf_hasLRradio=1;
+		tf_range=40000;
+		tf_subtype="digital_lr";
+		mass=22;
+	};
 	class 885th_Arc_Pack: B_AssaultPack_blk
 	{
 		scope=2;
@@ -13692,16 +13737,36 @@ class CfgVehicles
 	class 885th_Kusak_RC_Trooper : 3AS_Rep_Commando_base_F {
 		scope=1;
 		scopeCurator=1;
-		scopeArsenal=2;
 		side=1;
 		faction="885th_Faction";
 		editorSubcategory="Sub885thTroopers";
-		uniformClass = "885th_Kusak_RC_Trooper";
+		uniformClass = "885th_Kusak_Katarn_Uniform";
 		hiddenSelections[] = {"Camo","Camo1"};
 		hiddenSelectionsTextures[] = {
 			"885_Armor\885_Armor\Kusak\Kusak_Commando_Armor_co.paa",
 			"3AS\3AS_Characters\Commando\data\Katarn_Undersuit_CO.paa"
-		};	
+		};
+		armor=10;
+		armorStructural=2.5;
+		explosionShielding=1.2;
+		class HitPoints
+    	{
+        // Visor & Head: Can take multiple blaster hits, but heavy sniper rounds remain lethal
+        class HitFace     { armor = 6; material = -1; name = "face_head"; passThrough = 0.15; radius = 0.08; };
+        class HitNeck     { armor = 8; material = -1; name = "neck";      passThrough = 0.15; radius = 0.1;  };
+        class HitHead     { armor = 12; material = -1; name = "head";      passThrough = 0.10; radius = 0.2;  };
+
+        // Torso: Heavy Katarn chestplate absorbs repeated plasma and slugthrower hits
+        class HitPelvis   { armor = 16; material = -1; name = "pelvis";    passThrough = 0.10; radius = 0.24; };
+        class HitAbdomen  { armor = 16; material = -1; name = "spine1";    passThrough = 0.10; radius = 0.16; };
+        class HitDiaphragm{ armor = 18; material = -1; name = "spine2";    passThrough = 0.10; radius = 0.18; };
+        class HitChest    { armor = 20; material = -1; name = "spine3";    passThrough = 0.08; radius = 0.18; };
+        class HitBody     { armor = 20; material = -1; name = "body";      passThrough = 0.08; radius = 0.16; };
+
+        // Limbs: Plated protection allows mobility while resisting shrapnel and small arms
+        class HitArms     { armor = 10; material = -1; name = "arms";      passThrough = 0.20; radius = 0.1;  };
+        class HitLegs     { armor = 10; material = -1; name = "legs";      passThrough = 0.20; radius = 0.1;  };
+    	};
 	};
 
 	class 885th_Crow_RC_Trooper : 885th_Kusak_RC_Trooper {
