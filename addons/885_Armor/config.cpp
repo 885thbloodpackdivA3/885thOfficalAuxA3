@@ -4201,6 +4201,7 @@ class CfgWeapons
 	};
 	class 885th_Thunder_Uniform: 885th_Vornskr_Uniform
 	{
+		scope=0;
 		displayName = "[885th] Thunder Custom P2 Armor";
 		class ItemInfo: UniformItem
 		{
@@ -12679,6 +12680,39 @@ class CfgVehicles
 			"\ls\core\addons\characters_clone\backpacks\standard\data\ammo_co.paa",
 		};
 	};
+	class 885th_Thunder_Backpack: ls_cloneBackpack_ammo
+	{
+		author="885th Bloodpack Division";
+		scope=2;
+		displayName="[885th] Thunder Heavy Backpack";
+		maximumload = 800;
+		model="\ls\core\addons\characters_clone\backpacks\standard\ls_backpack_clone_standard.p3d";
+		hiddenSelections[]= 
+		{
+			"backpack",
+			"cloth",
+			"radio",
+			"rockets",
+			"medic",
+			"bacta",
+			"ammo",
+			"heavy",
+			"supplies",
+			"lower_supplies",
+			"canister",
+			"grenade"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Thunder\885th_Thunder_HeavyBackpack.paa",
+			"",
+			"",
+			"885_Armor\885_Armor\Customs\Thunder\885th_Thunder_Rockets.paa",
+			"",
+			"",
+			"885_Armor\885_Armor\Customs\Thunder\885th_Thunder_Pouches.paa",
+		};
+	};
 	class 885th_JTAC_Backpack: B_kitbag_rgr
 	{
 		author="885th Bloodpack Division";
@@ -13131,43 +13165,7 @@ class CfgVehicles
 		tf_subtype="digital_lr";
 		mass=22;
 	};
-	class 885th_Cust_RTO_Buttbag2_Thunder: B_AssaultPack_blk
-	{
-		author="Antauri + 885thBPD";
-		scope=2;
-		picture="\MRC\JLTS\characters\CloneArmor\data\ui\Clone_RTO_pack_ui_ca.paa";
-		displayName="[885th] Thunder Buttbag LR Pack";
-		model = "\ShadowLegion_Aux\Data\CustomVests\V5\models\VESTV5_LR_Backpack.p3d";
-		hiddenSelections[]=
-		{
-			"KamaPouches",
-			"AirborneBag",
-			"Buttbag",
-			"LRpack"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"",
-			"",
-			"885_Armor\885_Armor\Customs\Thunder\LR_bag_co.paa",
-			"885_Armor\885_Armor\Customs\Thunder\LR_bag_co.paa"
-		};
-		hiddenSelectionsMaterials[]=
-		{
-			"",
-			"",
-			"885_Armor\885_Armor\Customs\Bandit\LRBag.rvmat",
-			"885_Armor\885_Armor\Customs\Bandit\LRBag.rvmat"
-		};
-		maximumload=350;
-		tf_dialog="JLTS_clone_lr_programmer_radio_dialog";
-		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
-		tf_encryptionCode="tf_west_radio_code";
-		tf_hasLRradio=1;
-		tf_range=40000;
-		tf_subtype="digital_lr";
-		mass=22;
-	};
+
 	class 885th_Cust_RTO_Buttbag2_Rios: B_AssaultPack_blk
 	{
 		author="Antauri + 885thBPD";
