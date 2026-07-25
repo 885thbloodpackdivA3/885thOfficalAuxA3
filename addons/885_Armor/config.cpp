@@ -2734,8 +2734,15 @@ class CfgWeapons
 				class Head
 				{
 					hitpointName="HitHead";
-					armor=20;
-					passThrough=0.2;
+					armor=25;
+					passThrough=0.05;
+				};
+				class Face
+				{
+					hitpointName = "HitFace";
+					armor = 15;
+					visual = "injury_Head";
+					PassThrough = 0.15;
 				};
 			};
 		};
@@ -3351,7 +3358,7 @@ class CfgWeapons
 	class 885th_Kusak_Squad_Leader: 3AS_Katarn_Vest_Team_Leader
 	{
 		author = "885th Bloodpack Division";
-		scope = 2;
+		scope = 0;
 		displayname = "[885th] Kusak Squad Lead Pauldron";
 		weaponPoolAvailable = 1;
 		allowedSlots[] = {901};
@@ -3370,20 +3377,20 @@ class CfgWeapons
 				class Chest
 				{
 					HitpointName = "HitChest";
-					armor = 25;
-					PassThrough = 0.25;
+					armor = 28;
+					PassThrough = 0.05;
 				};
 				class Legs
 				{
 					hitpointName = "HitLegs";
-					armor = 13;
-					passThrough = 0.25;
+					armor = 15;
+					passThrough = 0.1;
 				};
 				class Arms
 				{
 					hitpointName = "HitArms";
-					armor = 14;
-					passThrough = 0.25;
+					armor = 15;
+					passThrough = 0.1;
 				};
 			};
 		};
@@ -3408,20 +3415,20 @@ class CfgWeapons
 				class Chest
 				{
 					HitpointName = "HitChest";
-					armor = 25;
-					PassThrough = 0.25;
+					armor = 28;
+					PassThrough = 0.05;
 				};
 				class Legs
 				{
 					hitpointName = "HitLegs";
-					armor = 13;
-					passThrough = 0.25;
+					armor = 15;
+					passThrough = 0.1;
 				};
 				class Arms
 				{
 					hitpointName = "HitArms";
-					armor = 14;
-					passThrough = 0.25;
+					armor = 15;
+					passThrough = 0.1;
 				};
 			};
 		};
@@ -3447,20 +3454,20 @@ class CfgWeapons
 				class Chest
 				{
 					HitpointName = "HitChest";
-					armor = 25;
-					PassThrough = 0.25;
+					armor = 28;
+					PassThrough = 0.05;
 				};
 				class Legs
 				{
 					hitpointName = "HitLegs";
-					armor = 13;
-					passThrough = 0.25;
+					armor = 15;
+					passThrough = 0.1;
 				};
 				class Arms
 				{
 					hitpointName = "HitArms";
-					armor = 14;
-					passThrough = 0.25;
+					armor = 15;
+					passThrough = 0.1;
 				};
 			};
 		};
@@ -3487,20 +3494,20 @@ class CfgWeapons
 				class Chest
 				{
 					HitpointName = "HitChest";
-					armor = 25;
-					PassThrough = 0.25;
+					armor = 28;
+					PassThrough = 0.05;
 				};
 				class Legs
 				{
 					hitpointName = "HitLegs";
-					armor = 13;
-					passThrough = 0.25;
+					armor = 15;
+					passThrough = 0.1;
 				};
 				class Arms
 				{
 					hitpointName = "HitArms";
-					armor = 14;
-					passThrough = 0.25;
+					armor = 15;
+					passThrough = 0.1;
 				};
 			};
 		};
@@ -5148,45 +5155,45 @@ class CfgWeapons
 				"ChestGuard"
 			};
 			vestType="Rebreather";
-			containerClass="Supply200";
-			mass=65;
+			containerClass="Supply250";
+			mass=70;
 			class HitpointsProtectionInfo
 			{
 				class Chest
 				{
 					HitpointName="HitChest";
-					armor=25;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Diaphragm
 				{
 					HitpointName="HitDiaphragm";
-					armor=15;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Abdomen
 				{
 					hitpointName="HitAbdomen";
-					armor=15;
-					passThrough=0.30000001;
+					armor=16;
+					passThrough=0.2;
 				};
 				class Body
 				{
 					hitpointName="HitBody";
-					armor=15;
-					passThrough=0.30000001;
+					armor=16;
+					passThrough=0.2;
 				};
 				class Arms
 				{
 					hitpointName="HitArms";
-					armor=7;
-					passThrough=0.30000001;
+					armor=8;
+					passThrough=0.4;
 				};
 				class Legs
 				{
 					hitpointName="HitLegs";
-					armor=7;
-					passThrough=0.30000001;
+					armor=8;
+					passThrough=0.4;
 				};
 			};
 		};
@@ -8170,44 +8177,44 @@ class CfgWeapons
 			};
 			vestType="Rebreather";
 			containerClass="Supply250";
-			mass=65;
+			mass=70;
 			class HitpointsProtectionInfo
 			{
 				class Chest
 				{
 					HitpointName="HitChest";
-					armor=25;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Diaphragm
 				{
 					HitpointName="HitDiaphragm";
-					armor=15;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Abdomen
 				{
 					hitpointName="HitAbdomen";
-					armor=15;
-					passThrough=0.30000001;
+					armor=16;
+					passThrough=0.2;
 				};
 				class Body
-				{	
+				{
 					hitpointName="HitBody";
-					armor=15;
-					passThrough=0.30000001;
+					armor=16;
+					passThrough=0.2;
 				};
 				class Arms
-                {
-                    hitpointName="HitArms";
-                    armor=10;
-                    passThrough=0.30000001;
-                };
+				{
+					hitpointName="HitArms";
+					armor=8;
+					passThrough=0.4;
+				};
 				class Legs
 				{
 					hitpointName="HitLegs";
-					armor=10;
-					passThrough=0.30000001;
+					armor=8;
+					passThrough=0.4;
 				};
 			};
 		};
@@ -8384,44 +8391,44 @@ class CfgWeapons
 			};
 			vestType="Rebreather";
 			containerClass="Supply250";
-			mass=65;
+			mass=70;
 			class HitpointsProtectionInfo
 			{
 				class Chest
 				{
 					HitpointName="HitChest";
-					armor=25;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Diaphragm
 				{
 					HitpointName="HitDiaphragm";
-					armor=15;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Abdomen
 				{
 					hitpointName="HitAbdomen";
-					armor=15;
-					passThrough=0.30000001;
+					armor=16;
+					passThrough=0.2;
 				};
 				class Body
-				{	
+				{
 					hitpointName="HitBody";
-					armor=15;
-					passThrough=0.30000001;
+					armor=16;
+					passThrough=0.2;
 				};
 				class Arms
-                {
-                    hitpointName="HitArms";
-                    armor=10;
-                    passThrough=0.30000001;
-                };
+				{
+					hitpointName="HitArms";
+					armor=8;
+					passThrough=0.4;
+				};
 				class Legs
 				{
 					hitpointName="HitLegs";
-					armor=10;
-					passThrough=0.30000001;
+					armor=8;
+					passThrough=0.4;
 				};
 			};
 		};
@@ -9013,37 +9020,44 @@ class CfgWeapons
 			};
 			vestType="Rebreather";
 			containerClass="Supply250";
-			mass=65;
+			mass=70;
 			class HitpointsProtectionInfo
 			{
 				class Chest
 				{
 					HitpointName="HitChest";
-					armor=16;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Diaphragm
 				{
 					HitpointName="HitDiaphragm";
-					armor=16;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Abdomen
 				{
 					hitpointName="HitAbdomen";
 					armor=16;
-					passThrough=0.30000001;
+					passThrough=0.2;
 				};
 				class Body
 				{
 					hitpointName="HitBody";
-					passThrough=0.30000001;
+					armor=16;
+					passThrough=0.2;
+				};
+				class Arms
+				{
+					hitpointName="HitArms";
+					armor=8;
+					passThrough=0.4;
 				};
 				class Legs
 				{
 					hitpointName="HitLegs";
-					armor=6;
-					passThrough=0.30000001;
+					armor=8;
+					passThrough=0.4;
 				};
 			};
 		};
@@ -9427,44 +9441,44 @@ class CfgWeapons
 			};
 			vestType="Rebreather";
 			containerClass="Supply250";
-			mass=65;
+			mass=70;
 			class HitpointsProtectionInfo
 			{
 				class Chest
 				{
 					HitpointName="HitChest";
-					armor=25;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Diaphragm
 				{
 					HitpointName="HitDiaphragm";
-					armor=15;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Abdomen
 				{
 					hitpointName="HitAbdomen";
-					armor=15;
-					passThrough=0.30000001;
+					armor=16;
+					passThrough=0.2;
 				};
 				class Body
-				{	
+				{
 					hitpointName="HitBody";
-					armor=15;
-					passThrough=0.30000001;
+					armor=16;
+					passThrough=0.2;
 				};
 				class Arms
-                {
-                    hitpointName="HitArms";
-                    armor=10;
-                    passThrough=0.30000001;
-                };
+				{
+					hitpointName="HitArms";
+					armor=8;
+					passThrough=0.4;
+				};
 				class Legs
 				{
 					hitpointName="HitLegs";
-					armor=10;
-					passThrough=0.30000001;
+					armor=8;
+					passThrough=0.4;
 				};
 			};
 		};
@@ -10680,37 +10694,44 @@ class CfgWeapons
 			};
 			vestType="Rebreather";
 			containerClass="Supply250";
-			mass=65;
+			mass=70;
 			class HitpointsProtectionInfo
 			{
 				class Chest
 				{
 					HitpointName="HitChest";
-					armor=16;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Diaphragm
 				{
 					HitpointName="HitDiaphragm";
-					armor=16;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Abdomen
 				{
 					hitpointName="HitAbdomen";
 					armor=16;
-					passThrough=0.30000001;
+					passThrough=0.2;
 				};
 				class Body
 				{
 					hitpointName="HitBody";
-					passThrough=0.30000001;
+					armor=16;
+					passThrough=0.2;
+				};
+				class Arms
+				{
+					hitpointName="HitArms";
+					armor=8;
+					passThrough=0.4;
 				};
 				class Legs
 				{
 					hitpointName="HitLegs";
-					armor=6;
-					passThrough=0.30000001;
+					armor=8;
+					passThrough=0.4;
 				};
 			};
 		};
