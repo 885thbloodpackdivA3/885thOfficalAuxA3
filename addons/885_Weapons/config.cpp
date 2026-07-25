@@ -4,7 +4,7 @@ class CfgPatches
 	{
 		author = "885th Bloodpack Division + Indecisive Armoury Team";
 		name = "885th REP Weapons";
-		requiredAddons[] = {"A3_data_F", "A3_anims_F", "A3_weapons_F", "A3_characters_F", "A3_Characters_F_Proxies", "CBA_XEH"};
+		requiredAddons[] = {"CBA_XEH","A3_data_F", "A3_anims_F", "A3_weapons_F", "A3_characters_F", "A3_Characters_F_Proxies","cba_main","cba_jr"};
 		units[] = {};
 		weapons[] = {
 			"885th_A180", 
@@ -17635,8 +17635,17 @@ class CfgFunctions
 		class Weapons
 		{
 			class switchDC17M { file = "885_Weapons\scripts\functions\fnc_switchDC17M.sqf"; };
-			class addDC17MConversionActions { file = "885_Weapons\scripts\functions\fn_addDC17MConversionActions.sqf"; };
 		};
 	};
 };
 
+class CfgSounds
+{
+	sounds[] = {};
+	class BPD_DC17M_ServoClick
+	{
+		// Format: { "File_Path_In_PBO.ogg", Volume(db gain or scalar), Pitch, Max_Hearable_Distance }
+		sound[] = {"\885_sounds\DC17M_Switch.ogg", "db+15", 1.0, 35};
+		titles[] = {};
+	};
+};

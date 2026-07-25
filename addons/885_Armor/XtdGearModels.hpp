@@ -564,6 +564,7 @@ class XtdGearModels
 					"Bandit",
 					"Bleach",
 					"Crimz",
+					"Kit",
 					"Outcast",
 					"Mayday",
 					"ONI",
@@ -934,12 +935,12 @@ class XtdGearInfos
 			variant="Pilot";
 			camo="Pilot";
 		};
-		class  885th_Charge_BARC_Helm
+		class  885th_Charge_P2_Helm
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Charge";
-			variant="BARC";
-			camo="BARC";
+			variant="P2";
+			camo="P2";
 		};
 		class  885th_Cerberus_BARC_Helm
 		{
@@ -1624,6 +1625,11 @@ class XtdGearInfos
 		{
 			model="Custom_Vest";
 			vest="Crimz";
+		};
+		class 885th_Cust_VestV4_Rig_Kit
+		{
+			model="Custom_Vest";
+			vest="Kit";
 		};
 		class 885th_Cust_VestV4_Rig_Outcast
 		{

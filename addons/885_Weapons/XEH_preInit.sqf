@@ -1,12 +1,13 @@
-// XEH_preInit.sqf
-// Runs once, early, before missions/units exist.
-// Nothing here is strictly required (switchDC17M is registered via
-// CfgFunctions and lazy-compiled on first call regardless), this file just
-// confirms CBA is finding and running this addon's init files at all.
+/*
+    885th Bloodpack Division - DC17M Reconfiguration System
+    XEH_preInit.sqf - Hardened Pre-Compile Hub
+*/
 
-diag_log "[885th DC17M] preInit OK";
+diag_log "[885th DC17M] preInit: Compiling primary function strings into core memory...";
 
-// A global flag tracking whether this addon's reconfigure actions have
-// been added at least once. Declared here in preInit so it exists before
-// anything else runs.
-BPD_DC17M_ConversionActionsAdded = false;
+// Pre-compile the swap function into global space to prevent execution lag spikes on first scroll
+BPD_fnc_switchDC17M = compile preprocessFileLineNumbers "885_Weapons\scripts\functions\fnc_switchDC17M.sqf";
+
+BPD_DC17M_SystemStatus = "INITIALIZED_MP_SAFE";
+
+diag_log "[885th DC17M] preInit: Compilation complete.";
