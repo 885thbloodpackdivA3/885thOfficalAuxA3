@@ -56,7 +56,7 @@ class Cfgpatches
 			"885th_Sushi_P2_ARF_Helm",
 			"885th_Sunshine_P2_Helm",
 			"885th_Stormer_P2_Helmet",
-			"885th_Charge_BARC_Helm",
+			"885th_Charge_P2_Helm",
 			"885th_Nero_BARC_Helm",
 			"885th_Rain_P2_Helmet",
 			"885th_Wrath_P2_Helmet",
