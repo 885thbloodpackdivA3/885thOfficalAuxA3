@@ -4,7 +4,7 @@ class CfgPatches
 	{
 		author = "885th Bloodpack Division + Indecisive Armoury Team";
 		name = "885th REP Weapons";
-		requiredAddons[] = {"CBA_XEH","A3_data_F", "A3_anims_F", "A3_weapons_F", "A3_characters_F", "A3_Characters_F_Proxies","cba_main","cba_jr"};
+		requiredAddons[] = {"A3_data_F", "A3_anims_F", "A3_weapons_F", "A3_characters_F", "A3_Characters_F_Proxies","cba_main","cba_jr","cba_xeh"};
 		units[] = {};
 		weapons[] = {
 			"885th_A180", 
