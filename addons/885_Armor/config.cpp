@@ -3246,38 +3246,38 @@ class CfgWeapons
 				class Chest
 				{
 					HitpointName = "HitChest";
-					armor = 15;
-					PassThrough = 0.08975;
+					armor = 10;
+					PassThrough = 0.07;
 				};
 				class Diaphragm
 				{
 					HitpointName = "HitDiaphragm";
-					armor = 15;
-					PassThrough = 0.08975;
+					armor = 5;
+					PassThrough = 0.6;
 				};
 				class Abdomen
 				{
 					hitpointName = "HitAbdomen";
-					armor = 15;
-					PassThrough = 0.08975;
+					armor = 5;
+					PassThrough = 0.6;
 				};
 				class Body
 				{
 					hitpointName = "HitBody";
-					armor = 16;
-					PassThrough = 0.08975;
+					armor = 10;
+					PassThrough = 0.07;
 				};
 				class Arms
 				{
 					hitpointName = "HitArms";
-					armor = 15;
-					PassThrough = 0.08975;
+					armor = 2;
+					PassThrough = 0.9;
 				};
 				class Legs
 				{
 					hitpointName = "Hitlegs";
-					armor = 15;
-					PassThrough = 0.08975;
+					armor = 2;
+					PassThrough = 0.9;
 				};
 			};
 		};
@@ -14189,20 +14189,20 @@ class CfgVehicles
 		};
 		armor=10;
 		armorStructural=3.0;
-		explosionShielding=0.02;
+		explosionShielding=1.5;
 		class HitPoints
     	{
         // Visor & Head: Can take multiple blaster hits, but heavy sniper rounds remain lethal
-        class HitFace     { armor = 6; material = -1; name = "face_head"; passThrough = 0.60; radius = 0.08; };
-        class HitNeck     { armor = 8; material = -1; name = "neck";      passThrough = 0.60; radius = 0.1;  };
-        class HitHead     { armor = 10; material = -1; name = "head";      passThrough = 0.50; radius = 0.2;  };
+        class HitFace     { armor = 7; material = -1; name = "face_head"; passThrough = 0.90; radius = 0.08; };
+        class HitNeck     { armor = 7; material = -1; name = "neck";      passThrough = 0.80; radius = 0.1;  };
+        class HitHead     { armor = 10; material = -1; name = "head";      passThrough = 0.70; radius = 0.2;  };
 
         // Torso: Heavy Katarn chestplate absorbs repeated plasma and slugthrower hits
-        class HitPelvis   { armor = 15; material = -1; name = "pelvis";    passThrough = 0.50; radius = 0.24; };
-        class HitAbdomen  { armor = 15; material = -1; name = "spine1";    passThrough = 0.50; radius = 0.16; };
-        class HitDiaphragm{ armor = 10; material = -1; name = "spine2";    passThrough = 0.60; radius = 0.18; };
-        class HitChest    { armor = 10; material = -1; name = "spine3";    passThrough = 0.40; radius = 0.18; };
-        class HitBody     { armor = 10; material = -1; name = "body";      passThrough = 0.40; radius = 0.16; };
+        class HitPelvis   { armor = 5; material = -1; name = "pelvis";    passThrough = 0.60; radius = 0.24; };
+        class HitAbdomen  { armor = 5; material = -1; name = "spine1";    passThrough = 0.60; radius = 0.16; };
+        class HitDiaphragm{ armor = 5; material = -1; name = "spine2";    passThrough = 0.70; radius = 0.18; };
+        class HitChest    { armor = 10; material = -1; name = "spine3";    passThrough = 0.50; radius = 0.18; };
+        class HitBody     { armor = 10; material = -1; name = "body";      passThrough = 0.50; radius = 0.16; };
 
         // Limbs: Plated protection allows mobility while resisting shrapnel and small arms
         class HitArms     { armor = 10; material = -1; name = "arms";      passThrough = 0.70; radius = 0.1;  };
