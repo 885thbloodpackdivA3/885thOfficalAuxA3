@@ -1386,10 +1386,11 @@ class CfgVehicles
 		transportSoldier=8;
 		hideWeaponsCargo=1;
 		canFloat=1;
+        waterSpeedCoef = 5.5;    // Multiplier for water propulsion speed (Default is usually 2.5 - 3.0)
+        waterResistanceCoef = 0.04; // Reduces drag forces while swimming
 		waterLinearDampingCoefY=7;
 		waterLinearDampingCoefX=2;
 		waterAngularDampingCoef=5;
-		waterResistanceCoef=0.60000002;
 		waterPPInVehicle=0;
 		memoryPointsLeftWaterEffect="waterEffectL";
 		memoryPointsRightWaterEffect="waterEffectR";
@@ -1848,7 +1849,7 @@ class CfgVehicles
 		};
 		thrustDelay=0.25;
 		brakeIdleSpeed=1.78;
-		maxSpeed=110;
+		maxSpeed=115;
 		fuelCapacity=60;
 		wheelCircumference=3.8050001;
 		waterLeakiness=2.5;
@@ -1909,55 +1910,19 @@ class CfgVehicles
 		rearBias=1.3;
 		centreBias=1.3;
 		clutchStrength=35;
-		enginePower=420;
+		enginePower=520;
 		maxOmega=230;
 		minOmega=50;
-		peakTorque=2037.5;
+		peakTorque=2400;
 		dampingRateFullThrottle=0.079999998;
 		dampingRateZeroThrottleClutchEngaged=2;
 		dampingRateZeroThrottleClutchDisengaged=0.34999999;
-		torqueCurve[]=
-		{
-			
-			{
-				"(0/2200)",
-				"(0/1630)"
-			},
-			
-			{
-				"(900/2200)",
-				"(1200/1630)"
-			},
-			
-			{
-				"(1250/2200)",
-				"(1500/1630)"
-			},
-			
-			{
-				"(1300/2200)",
-				"(1630/1630)"
-			},
-			
-			{
-				"(1350/2200)",
-				"(1600/1630)"
-			},
-			
-			{
-				"(1600/2200)",
-				"(1400/1630)"
-			},
-			
-			{
-				"(2200/2200)",
-				"(1200/1630)"
-			},
-			
-			{
-				"(5800/2200)",
-				"(0/1630)"
-			}
+		torqueCurve[] = {
+            { 0.00, 0.65 },      // Idle torque
+            { 0.25, 0.90 },      // Low-end torque ramp
+            { 0.50, 1.00 },      // Peak torque range (medium RPM)
+            { 0.75, 0.95 },      // High RPM drop-off
+            { 1.00, 0.75 }       // Redline
 		};
 		changeGearMinEffectivity[]={0.5,0.15000001,0.97000003,0.97000003,0.97000003,0.97000003,0.97000003,0.98500001};
 		switchTime=0.1;
