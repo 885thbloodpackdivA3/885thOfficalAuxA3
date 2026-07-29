@@ -66,6 +66,7 @@ class CfgPatches
 			"885th_T15LIR",
 			"885th_DC15XS",
 			"885th_Command_DC15AUGL",
+			"885th_Modified_DC15S",
 			"885th_DX36C",
 			"885TH_DX36C_HE",
 			"885th_Z6",
@@ -96,6 +97,7 @@ class CfgPatches
 			"885th_battery_ampHR_blue",
 			"885th_battery_ampAR_blue",
 			"885th_battery_ampm41_green",
+			"885th_elite_dc_cell",
 			"885th_coil_blue",
 			"885th_coil_blue_high",
 			"885th_e_cell_red",
@@ -3650,6 +3652,20 @@ class CfgAmmo
 		airFriction=-0.00019999999;
 		effectfly="IDA_BlasterBoltGlow_Green_Fly";
 	};
+	class 885th_blasterbolt_blue_dc15mod: 885th_blasterbolt
+	{
+		hit = 15;                  
+		indirectHit = 1;           
+		indirectHitRange = 0;
+		airFriction = -0.0006;
+		caliber = 1.4;            
+		typicalSpeed = 500;
+		model= "\Indecisive_Armoury_Ammos\Data\Tracers\IDA_Blasterbolt_Blue.p3d";
+		effectFly= "IDA_BlasterBoltGlow_Medium_Blue_Fly";
+		tracerScale = 1.2;         
+		tracerStartTime = 0;       
+		tracerEndTime = 5;
+	};
 	class 885th_ammo_Grenade_EMP: G_40mm_HE
 	{
 		JLTS_isEMPAmmo=1;
@@ -4264,6 +4280,16 @@ class CfgMagazines
 		tracersEvery = 1;
 		initSpeed = 2000;
 		mass = 20;
+	};
+	class 885th_elite_dc_cell: 885th_dc_cell_blue
+	{
+		count = 80;
+		displayName = "[885th] DC15S Elite Cell";
+		displayNameShort = "Elite Cell";
+		descriptionShort = "80 round cells, modified blaster bolts";
+		ammo = "885th_blasterbolt_blue_dc15mod";
+		tracerEvery = 1;
+		initSpeed = 400;
 	};
 	// Base GL Mags
 	class 885th_mag_40mm_Base: CA_Magazine
@@ -8235,6 +8261,128 @@ class CfgWeapons
 			class UnderBarrelSlot : UnderBarrelSlot
 			{
 				compatibleItems[] = {};
+			};
+		};
+		class GunParticles
+		{
+			class FirstEffect
+			{
+				directionName = "Konec hlavne";
+				effectName = "RifleAssaultCloud";
+				positionName = "Usti hlavne";
+			};
+		};
+	};
+	class 885th_Modified_DC15S: Rifle_Base_F
+	{
+		scope = 2: 
+		canShootInWater = 1;
+		author = "885th Bloodpack Division + Antari";
+		displayName = "DC15S Elite Carbine";
+		descriptionShort = "Field modified DC15S tuned for close-quarters with heavy bolt assembly";
+		model = "\ShadowLegion_Weapons\data\DC15\DC15S\model\DC15_S.p3d";
+		picture = "\ShadowLegion_Weapons\data\DC15\DC15S\UI\DC15S_UI.paa";
+		recoil= "recoil_akm";
+		maxZeroing=400;
+		magazines[]= {"885th_elite_dc_cell"};
+		reloadAction = "GestureReload_JLTS_DC15S";
+		handAnim[] = {"OFP2_ManSkeleton","ShadowLegion_Weapons\data\DC15\DC15S\anim\ReloadBASE_DC15S.rtm"};
+		fireLightDuration=0.050000001; 
+		fireLightIntensity=0.40000001;
+		fireLightDiffuse[]={1,1,0};
+		fireLightAmbient[]={0,0,0};
+		reloadTime = 2.2;
+		muzzles[] = {"this","Stun"};
+		modes[] = {"Single", "FullAuto"};
+		class Stun : 885th_Stun_rifle
+		{
+		};
+		class Single : Mode_SemiAuto
+		{
+			sounds[] = {"StandardSound"};
+			class BaseSoundModeType
+			{
+				weaponSoundEffect = "";
+				closure1[] = {};
+				closure2[] = {};
+				soundClosure[] = {};
+			};
+			class StandardSound : BaseSoundModeType
+			{
+				begin1[]=
+				{
+					"885_Sounds\modifieddc15s.ogg",
+					1.9952624,
+					1,
+					900
+				};
+				soundBegin[] = {"begin1", 0.2};
+			};
+			reloadTime = 0.1;
+			dispersion = 0.0012;
+			minRange = 2;
+			minRangeProbab = 0.8;
+			midRange = 100;
+			midRangeProbab = 1.0;
+			maxRange = 200;
+			maxRangeProbab = 0.5;
+		};
+		class FullAuto : Mode_FullAuto
+		{
+			sounds[] = {"StandardSound"};
+			class BaseSoundModeType
+			{
+				weaponSoundEffect = "";
+				closure1[] = {};
+				closure2[] = {};
+				soundClosure[] = {};
+			};
+			class StandardSound : BaseSoundModeType
+			{
+				begin1[]=
+				{
+					"885_Sounds\modifieddc15s.ogg",
+					1.9952624,
+					1,
+					900
+				};
+				soundBegin[] = {"begin1", 0.2};
+			};
+			reloadTime = 0.85;
+			dispersion = 0.0018;
+			minRange = 0;
+			minRangeProbab = 0.9;
+			midRange = 50;
+			midRangeProbab = 0.7;
+			maxRange = 150;
+			maxRangeProbab = 0.1;
+		};
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			class MuzzleSlot: MuzzleSlot_65
+			{
+				iconPosition[]={0,0.44999999};
+				iconScale=0.2;
+				linkProxy="\A3\data_f\proxies\weapon_slots\MUZZLE";
+				compatibleItems[]={"ShadwCmpany_Suppresor_Module_DC19"};
+			};
+			class CowsSlot: CowsSlot_Rail
+			{
+				iconPosition[]={0.44999999,0.28};
+				iconScale=0.2;
+				linkProxy="\A3\data_f\proxies\weapon_slots\TOP";
+				compatibleItems[]={"ShadwCmpany_optic_E5"};
+			};
+			class PointerSlot: PointerSlot_Rail
+			{
+				iconPosition[]={0.34999999,0.44999999};
+				iconScale=0.2;
+				linkProxy="\A3\data_f\proxies\weapon_slots\SIDE";
+				compatibleItems[]=
+				{
+					"ShdwCmpny_Light_MPD",
+					"ShdwCmpny_IR_MPD"
+				};
 			};
 		};
 		class GunParticles
