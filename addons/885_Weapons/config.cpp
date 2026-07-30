@@ -3654,12 +3654,12 @@ class CfgAmmo
 	};
 	class 885th_blasterbolt_blue_dc15mod: 885th_blasterbolt
 	{
-		hit = 15;                  
-		indirectHit = 1;           
+		hit = 18;                  
+		indirectHit = 2;           
 		indirectHitRange = 0;
 		airFriction = -0.0006;
-		caliber = 1.4;            
-		typicalSpeed = 500;
+		caliber = 1.5;            
+		typicalSpeed = 600;
 		model= "\Indecisive_Armoury_Ammos\Data\Tracers\IDA_Blasterbolt_Blue.p3d";
 		effectFly= "IDA_BlasterBoltGlow_Medium_Blue_Fly";
 		tracerScale = 1.2;         
@@ -8278,7 +8278,7 @@ class CfgWeapons
 		Scope=0;
 		author="885th Bloodpack Division + Antauri";
 		magazines[]={"885th_elite_dc_cell"};
-		reloadAction="3AS_GestureReloadDC15S";
+		reloadAction = "GestureReload_JLTS_DC15S";
 		recoil= "recoil_akm";
 		magazineReloadSwitchPhase=0.40000001;
 		discreteDistanceInitIndex=0;
@@ -8309,7 +8309,8 @@ class CfgWeapons
 				linkProxy="\A3\data_f\proxies\weapon_slots\TOP";
 				compatibleItems[]=
 				{
-					"ShadwCmpany_optic_E5"
+					"ShadwCmpany_optic_E5",
+					"ShdwCmpny_Optic_Scope_WestarM5"
 				};
 			};
 			class PointerSlot: PointerSlot
@@ -8352,7 +8353,7 @@ class CfgWeapons
 		muzzles[]={"this","Stun"};
 		class Single: Mode_SemiAuto
 		{
-			reloadTime = 0.1;
+			reloadTime = 0.120;
 			dispersion = 0.0012;
 			minRange = 2;
 			minRangeProbab = 0.8;
@@ -8385,7 +8386,7 @@ class CfgWeapons
 		};
 		class FullAuto : Mode_FullAuto
 		{
-			reloadTime = 0.85;
+			reloadTime = 0.085;
 			dispersion = 0.0018;
 			minRange = 0;
 			minRangeProbab = 0.9;
