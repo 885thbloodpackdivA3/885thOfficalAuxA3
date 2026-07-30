@@ -8273,51 +8273,85 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_Modified_DC15S: Rifle_Base_F
+	class 885th_Modified_DC15S_Base_F: Rifle_Base_F
 	{
-		scope = 2: 
-		canShootInWater = 1;
-		author = "885th Bloodpack Division + Antari";
-		displayName = "DC15S Elite Carbine";
-		descriptionShort = "Field modified DC15S tuned for close-quarters with heavy bolt assembly";
-		model = "\ShadowLegion_Weapons\data\DC15\DC15S\model\DC15_S.p3d";
-		picture = "\ShadowLegion_Weapons\data\DC15\DC15S\UI\DC15S_UI.paa";
+		Scope=0;
+		author="885th Bloodpack Division + Antauri";
+		magazines[]={"885th_elite_dc_cell"};
+		reloadAction="3AS_GestureReloadDC15S";
 		recoil= "recoil_akm";
+		magazineReloadSwitchPhase=0.40000001;
+		discreteDistanceInitIndex=0;
+		canShootInWater=1;
+		maxRecoilSway=0.0125;
+		swayDecaySpeed=1.25;
+		inertia=0.40000001;
+		dexterity=1.6;
+		initSpeed=-1;
 		maxZeroing=400;
-		magazines[]= {"885th_elite_dc_cell"};
-		reloadAction = "GestureReload_JLTS_DC15S";
-		handAnim[] = {"OFP2_ManSkeleton","ShadowLegion_Weapons\data\DC15\DC15S\anim\ReloadBASE_DC15S.rtm"};
 		fireLightDuration=0.050000001; 
 		fireLightIntensity=0.40000001;
 		fireLightDiffuse[]={1,1,0};
 		fireLightAmbient[]={0,0,0};
-		reloadTime = 2.2;
-		muzzles[] = {"this","Stun"};
-		modes[] = {"Single", "FullAuto"};
-		class Stun : 885th_Stun_rifle
+		class GunParticles: GunParticles
 		{
+			class SecondEffect
+			{
+				positionName="Nabojnicestart";
+				directionName="Nabojniceend";
+				effectName="CaselessAmmoCloud";
+			};
 		};
-		class Single : Mode_SemiAuto
+		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
-			sounds[] = {"StandardSound"};
-			class BaseSoundModeType
+			class CowsSlot: CowsSlot
 			{
-				weaponSoundEffect = "";
-				closure1[] = {};
-				closure2[] = {};
-				soundClosure[] = {};
-			};
-			class StandardSound : BaseSoundModeType
-			{
-				begin1[]=
+				linkProxy="\A3\data_f\proxies\weapon_slots\TOP";
+				compatibleItems[]=
 				{
-					"885_Sounds\modifieddc15s.ogg",
-					1.9952624,
-					1,
-					900
+					"ShadwCmpany_optic_E5"
 				};
-				soundBegin[] = {"begin1", 0.2};
 			};
+			class PointerSlot: PointerSlot
+			{
+				linkProxy="\A3\data_f\proxies\weapon_slots\SIDE";
+				compatibleItems[]=
+				{
+					"ShdwCmpny_Light_MPD",
+					"ShdwCmpny_IR_MPD"
+				};
+			};
+			class UnderBarrelSlot: UnderBarrelSlot
+			{
+				linkProxy="\A3\data_f_mark\proxies\weapon_slots\UNDERBARREL";
+				compatibleItems[]={};
+			};
+			class MuzzleSlot: MuzzleSlot_65
+			{
+				iconPosition[]={0,0.44999999};
+				iconScale=0.2;
+				linkProxy="\A3\data_f\proxies\weapon_slots\MUZZLE";
+				compatibleItems[]={};
+			};
+		};
+		opticsZoomMin=0.25;
+		opticsZoomMax=1.25;
+		opticsZoomInit=0.75;
+		distanceZoomMin=200;
+		distanceZoomMax=200;
+		descriptionShort="Field modified DC15S tuned for close-quarters with heavy bolt assembly";
+		handAnim[]=
+		{
+			"OFP2_ManSkeleton",
+			"ShadowLegion_Weapons\data\DC15\DC15S\anim\ReloadBASE_DC15S.rtm"
+		};
+		selectionFireAnim="zasleh";
+		flash="gunfire";
+		flashSize=3;
+		modes[]={"Single","FullAuto",};
+		muzzles[]={"this","Stun"};
+		class Single: Mode_SemiAuto
+		{
 			reloadTime = 0.1;
 			dispersion = 0.0012;
 			minRange = 2;
@@ -8326,9 +8360,8 @@ class CfgWeapons
 			midRangeProbab = 1.0;
 			maxRange = 200;
 			maxRangeProbab = 0.5;
-		};
-		class FullAuto : Mode_FullAuto
-		{
+			soundContinuous=0;
+			soundBurst=0;
 			sounds[] = {"StandardSound"};
 			class BaseSoundModeType
 			{
@@ -8339,15 +8372,19 @@ class CfgWeapons
 			};
 			class StandardSound : BaseSoundModeType
 			{
-				begin1[]=
-				{
-					"885_Sounds\modifieddc15s.ogg",
-					1.9952624,
-					1,
-					900
-				};
-				soundBegin[] = {"begin1", 0.2};
+				weaponSoundEffect = "";
+				begin1[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 1, 1800};
+				begin2[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 0.995, 1800};
+				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
+				beginwater1[] = {"885_Sounds\modifieddc15s.ogg", 1, 1, 400};
+				soundBeginWater[] = {"beginwater1", 0.5};
 			};
+		};
+		class FullAuto : Mode_FullAuto
+		{
 			reloadTime = 0.85;
 			dispersion = 0.0018;
 			minRange = 0;
@@ -8356,44 +8393,77 @@ class CfgWeapons
 			midRangeProbab = 0.7;
 			maxRange = 150;
 			maxRangeProbab = 0.1;
+			soundContinuous=0;
+			soundBurst=0;
+			sounds[] = {"StandardSound"};
+			class BaseSoundModeType
+			{
+				weaponSoundEffect = "";
+				closure1[] = {};
+				closure2[] = {};
+				soundClosure[] = {};
+			};
+			class StandardSound : BaseSoundModeType
+			{
+				weaponSoundEffect = "";
+				begin1[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 1, 1800};
+				begin2[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 0.995, 1800};
+				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
+				beginwater1[] = {"885_Sounds\modifieddc15s.ogg", 1, 1, 400};
+				soundBeginWater[] = {"beginwater1", 0.5};
+			};
 		};
+		class Stun : 885th_Stun_rifle
+		{
+		};
+		aiDispersionCoefY=6;
+		aiDispersionCoefX=4;
+		caseless[]=
+		{
+			"",
+			1,
+			1,
+			1
+		};
+		soundBullet[]=
+		{
+			"caseless",
+			1
+		};
+		drySound[]=
+		{
+			"\ShadowLegion_Weapons\data\reloads\sounds\Empty_1.ogg",
+			2,
+			1,
+			20
+		};
+		reloadMagazineSound[]=
+		{
+			"\ShadowLegion_Weapons\data\reloads\sounds\Reload_1.ogg",
+			1,
+			1,
+			30
+		};
+	};
+	class 885th_Modified_DC15S: 885th_Modified_DC15S_Base_F
+	{
+		scope=2;
+		displayName="[885th] DC15S Elite Carbine";
+		model="\ShadowLegion_Weapons\data\DC15\DC15S\model\DC15_S.p3d";
+		picture="\ShadowLegion_Weapons\data\DC15\DC15S\UI\DC15S_UI.paa";
+		UiPicture="\ShadowLegion_Weapons\data\DC15\DC15S\UI\DC15S_UI.paa";
+		weaponInfoType="RscWeaponZeroing";
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
-			class MuzzleSlot: MuzzleSlot_65
-			{
-				iconPosition[]={0,0.44999999};
-				iconScale=0.2;
-				linkProxy="\A3\data_f\proxies\weapon_slots\MUZZLE";
-				compatibleItems[]={"ShadwCmpany_Suppresor_Module_DC19"};
-			};
-			class CowsSlot: CowsSlot_Rail
-			{
-				iconPosition[]={0.44999999,0.28};
-				iconScale=0.2;
-				linkProxy="\A3\data_f\proxies\weapon_slots\TOP";
-				compatibleItems[]={"ShadwCmpany_optic_E5"};
-			};
-			class PointerSlot: PointerSlot_Rail
-			{
-				iconPosition[]={0.34999999,0.44999999};
-				iconScale=0.2;
-				linkProxy="\A3\data_f\proxies\weapon_slots\SIDE";
-				compatibleItems[]=
-				{
-					"ShdwCmpny_Light_MPD",
-					"ShdwCmpny_IR_MPD"
-				};
-			};
+			mass=60;
 		};
-		class GunParticles
-		{
-			class FirstEffect
-			{
-				directionName = "Konec hlavne";
-				effectName = "RifleAssaultCloud";
-				positionName = "Usti hlavne";
-			};
-		};
+		ace_overheating_mrbs=3000;
+		ace_overheating_slowdownFactor=1;
+		ace_overheating_allowSwapBarrel=0;
+		ace_overheating_dispersion=0.75;
 	};
 	class 885th_DX36C_Base_F: Rifle_Base_F
 	{
