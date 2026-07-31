@@ -98,6 +98,7 @@ class CfgPatches
 			"885th_battery_ampAR_blue",
 			"885th_battery_ampm41_green",
 			"885th_elite_dc_cell",
+			"885th_elite_300_dc_cell",
 			"885th_coil_blue",
 			"885th_coil_blue_high",
 			"885th_e_cell_red",
@@ -3666,6 +3667,28 @@ class CfgAmmo
 		tracerStartTime = 0;       
 		tracerEndTime = 5;
 	};
+	class 885th_blasterbolt_blue_dc15mod_300AAC: 885th_blasterbolt
+	{
+		hit = 20;                  
+		indirectHit = 0;           
+		indirectHitRange = 0;
+		airFriction = -0.00045;
+		caliber = 2.4;            
+		typicalSpeed = 310;
+		model= "\Indecisive_Armoury_Ammos\Data\Tracers\IDA_Blasterbolt_Blue.p3d";
+		effectFly= "IDA_BlasterBoltGlow_Medium_Blue_Fly";
+		timeToLive = 3;
+		tracerScale = 1.3;         
+		tracerStartTime = 0;       
+		tracerEndTime = 3;
+		class CamShakePlayerFire
+		{
+			power = 1.4;
+			duration = 0.12;
+			frequency = 20;
+			distance = 1;
+		};
+	};
 	class 885th_ammo_Grenade_EMP: G_40mm_HE
 	{
 		JLTS_isEMPAmmo=1;
@@ -4281,15 +4304,16 @@ class CfgMagazines
 		initSpeed = 2000;
 		mass = 20;
 	};
-	class 885th_elite_dc_cell: 885th_dc_cell_blue
+	
+	class 885th_elite_300_dc_cell: 885th_dc_cell_blue
 	{
-		count = 80;
+		count = 60;
 		displayName = "[885th] DC15S Elite Cell";
 		displayNameShort = "Elite Cell";
-		descriptionShort = "80 round cells, modified blaster bolts";
-		ammo = "885th_blasterbolt_blue_dc15mod";
+		descriptionShort = "60 round cells, modified blaster bolts";
+		ammo = "885th_blasterbolt_blue_dc15mod_300AAC";
 		tracerEvery = 1;
-		initSpeed = 400;
+		initSpeed = 310;
 	};
 	// Base GL Mags
 	class 885th_mag_40mm_Base: CA_Magazine
@@ -8277,7 +8301,7 @@ class CfgWeapons
 	{
 		Scope=0;
 		author="885th Bloodpack Division + Antauri";
-		magazines[]={"885th_elite_dc_cell"};
+		magazines[]={"885th_elite_300_dc_cell"};
 		reloadAction = "GestureReload_JLTS_DC15S";
 		recoil= "recoil_akm";
 		magazineReloadSwitchPhase=0.40000001;
