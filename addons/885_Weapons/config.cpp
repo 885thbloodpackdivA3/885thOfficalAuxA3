@@ -8309,8 +8309,7 @@ class CfgWeapons
 				linkProxy="\A3\data_f\proxies\weapon_slots\TOP";
 				compatibleItems[]=
 				{
-					"ShadwCmpany_optic_E5",
-					"ShdwCmpny_Optic_Scope_WestarM5"
+					"ShadwCmpany_optic_E5"
 				};
 			};
 			class PointerSlot: PointerSlot
