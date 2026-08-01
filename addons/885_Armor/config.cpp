@@ -8009,7 +8009,7 @@ class CfgWeapons
 	{
 		author="Antauri + 885th Bloodpack Division";
 		scope=2;
-		displayName="[885th] Bandit's Platoon Rig";
+		displayName="[885th] Bandit's Heavy Platoon Rig";
 		picture="\SWLB_clones\data\ui\icon_SWLB_clone_uniform_ca.paa";
 		model="\ShadowLegion_Aux\Data\CustomVests\V4\models\VESTV4_VestRig_HolsterDouble.p3d";
 		hiddenSelections[]=
@@ -8068,7 +8068,7 @@ class CfgWeapons
 	/*12*/	"",
 	/*13*/	"",
 	/*14*/	"885_Armor\885_Armor\Customs\Bandit\RIG_co.paa",
-	/*15*/	"",
+	/*15*/	"885_Armor\885_Armor\Customs\Bandit\ARCVest_co.paa",
 	/*16*/	"",
 	/*17*/	"885_Armor\885_Armor\Customs\Bandit\ARCVest_co.paa",
 	/*18*/	"",
@@ -8108,7 +8108,7 @@ class CfgWeapons
 	/*12*/	"",
 	/*13*/	"",
 	/*14*/	"885_Armor\885_Armor\Customs\Bandit\RIG.rvmat",
-	/*15*/	"",
+	/*15*/	"885_Armor\885_Armor\Customs\Bandit\ARCPlating.rvmat",
 	/*16*/	"",
 	/*17*/	"885_Armor\885_Armor\Customs\Bandit\ARCVest.rvmat",
 	/*18*/	"",
