@@ -96,7 +96,6 @@ class CfgPatches
 			"885th_battery_ampHR_blue",
 			"885th_battery_ampAR_blue",
 			"885th_battery_ampm41_green",
-			"885th_elite_dc_cell",
 			"885th_elite_300_dc_cell",
 			"885th_coil_blue",
 			"885th_coil_blue_high",
