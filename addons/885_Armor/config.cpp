@@ -3,7 +3,7 @@ class Cfgpatches
     class 885th_Armor
     {
         author = "885th Bloodpack Div";
-        requiredAddons[] = {"A3_Data_F","A3_Weapons_F","A3_Characters_F","ls_characters_clone_legacy"};
+        requiredAddons[] = {"A3_Data_F","A3_Weapons_F","A3_Characters_F","ls_characters_clone_legacy","cba_main","3AS_Characters_Commando"};
         requiredVersion = 0.1;
         units[] = {
 			"885th_Vornskr_Trooper",
@@ -1304,6 +1304,50 @@ class CfgWeapons
 			};
 		};
 	};
+	class 885th_Warden_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
+	{
+		scope=2;
+		author="885th Bloodpack Division";
+		displayName="[885th] Warden's Pilot Helm";
+		picture="";
+		hiddenSelections[]=
+		{
+			"camo1",
+			"camo2",
+			"visor"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Warden\885th_Warden_P1_Pilot_Helm_co.paa",
+			"885_Armor\885_Armor\Customs\Warden\Warden_Lifesys_co.paa",
+			"885_Armor\885_Armor\Customs\Warden\885th_Warden_P1_Pilot_Helm_co.paa"
+		};
+		hiddenSelectionsMaterials[]=
+        {	
+			"",
+			"",
+            "885_Armor\885_Armor\Customs\Warden\Warden_P1_Pilot_Helm_Visor.rvmat",
+        };
+	};
+	class 885th_Owl_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
+	{
+		scope=2;
+		author="885th Bloodpack Division";
+		displayName="[885th] Owl's Pilot Helm";
+		picture="";
+		hiddenSelections[]=
+		{
+			"camo1",
+			"camo2",
+			"visor"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Owl\885th_Owl_Pilot_Helm_co.paa",
+			"885_Armor\885_Armor\Customs\Owl\885th_Owl_LifesSupport_co.paa",
+			"885_Armor\885_Armor\Customs\Owl\885th_Owl_Pilot_Helm_co.paa"
+		};
+	};
 	class 885th_Nightsingers_P2_Pilot_Helm_Base: H_HelmetO_ViperSP_hex_F
 	{
 		scope=0;
@@ -1360,12 +1404,12 @@ class CfgWeapons
 		};
 		hiddenSelectionsTextures[]=
 		{
-			"\885_Armor\885_Armor\Nightsingers\Nightsingers_P2_Pilot_Helmet_co.paa",
-			"\ls_armor_bluefor\helmet\gar\phase2Pilot\data\visor_co.paa"
+			"\885_Armor\885_Armor\Nightsingers\P2_Pilot_Helmet_co.paa",
+			"\885_Armor\885_Armor\Nightsingers\visor_co.paa"
 		};
 		hiddenSelectionsMaterials[] = {
-    	"\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\ls_gar_phase2Pilot_helmet.rvmat", // The standard Clone material
-    	"\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\visor.rvmat" // The standard visor material
+    	"\885_Armor\885_Armor\Nightsingers\P2_Pilot_Helmet.rvmat", // The standard Clone material
+    	"\885_Armor\885_Armor\Nightsingers\visor.rvmat" // The standard visor material
 		};
 	};
 	class 885th_Nightsingers_P2_Pilot_Senior_Helm: 885th_Nightsingers_P2_Pilot_Helm_Base
@@ -1382,12 +1426,12 @@ class CfgWeapons
 		};
 		hiddenSelectionsTextures[]=
 		{
-			"885_Armor\885_Armor\Nightsingers\Senior\Nightsingers_P2_Pilot_Senior_Helmet_co.paa",
-			"\ls_armor_bluefor\helmet\gar\phase2Pilot\data\visor_co.paa"
+			"\885_Armor\885_Armor\Nightsingers\Senior\P2_Pilot_Helmet_co.paa",
+			"\885_Armor\885_Armor\Nightsingers\visor_co.paa"
 		};
 		hiddenSelectionsMaterials[] = {
-    	"\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\ls_gar_phase2Pilot_helmet.rvmat", // The standard Clone material
-    	"\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\visor.rvmat" // The standard visor material
+    	"\885_Armor\885_Armor\Nightsingers\Senior\P2_Pilot_Helmet.rvmat", // The standard Clone material
+    	"\885_Armor\885_Armor\Nightsingers\visor.rvmat" // The standard visor material
 		};
 	};
 	class 885th_Nightsingers_P2_Pilot_Officer_Helm: 885th_Nightsingers_P2_Pilot_Helm_Base
@@ -1404,56 +1448,12 @@ class CfgWeapons
 		};
 		hiddenSelectionsTextures[]=
 		{
-			"885_Armor\885_Armor\Nightsingers\Officer\Nightsingers_P2_Pilot_Officer_Helmet_co.paa",
-			"\ls_armor_bluefor\helmet\gar\phase2Pilot\data\visor_co.paa"
+			"\885_Armor\885_Armor\Nightsingers\Officer\P2_Pilot_Helmet_co.paa",
+			"\885_Armor\885_Armor\Nightsingers\visor_co.paa"
 		};
 		hiddenSelectionsMaterials[] = {
-    	"\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\ls_gar_phase2Pilot_helmet.rvmat", // The standard Clone material
-    	"\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\visor.rvmat" // The standard visor material
-		};
-	};
-	class 885th_Warden_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
-	{
-		scope=2;
-		author="885th Bloodpack Division";
-		displayName="[885th] Warden's Pilot Helm";
-		picture="";
-		hiddenSelections[]=
-		{
-			"camo1",
-			"camo2",
-			"visor"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Warden\885th_Warden_P1_Pilot_Helm_co.paa",
-			"885_Armor\885_Armor\Customs\Warden\Warden_Lifesys_co.paa",
-			"885_Armor\885_Armor\Customs\Warden\885th_Warden_P1_Pilot_Helm_co.paa"
-		};
-		hiddenSelectionsMaterials[]=
-        {	
-			"",
-			"",
-            "885_Armor\885_Armor\Customs\Warden\Warden_P1_Pilot_Helm_Visor.rvmat",
-        };
-	};
-	class 885th_Owl_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
-	{
-		scope=2;
-		author="885th Bloodpack Division";
-		displayName="[885th] Owl's Pilot Helm";
-		picture="";
-		hiddenSelections[]=
-		{
-			"camo1",
-			"camo2",
-			"visor"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Owl\885th_Owl_Pilot_Helm_co.paa",
-			"885_Armor\885_Armor\Customs\Owl\885th_Owl_LifesSupport_co.paa",
-			"885_Armor\885_Armor\Customs\Owl\885th_Owl_Pilot_Helm_co.paa"
+    	"\885_Armor\885_Armor\Nightsingers\Officer\P2_Pilot_Helmet.rvmat", // The standard Clone material
+    	"\885_Armor\885_Armor\Nightsingers\visor.rvmat" // The standard visor material
 		};
 	};
 	class 885th_Nightsingers_P3_Pilot_Helm: H_HelmetO_ViperSP_hex_F
@@ -2096,7 +2096,7 @@ class CfgWeapons
 		{
 			"885_Armor\885_Armor\Customs\Ares\Ares_ARF_P2_Helmet.rvmat",
 			"",
-			"885_Armor\885_Armor\Najax\885TH_ARF_P2_Visor.rvmat"
+			"885_Armor\885_Armor\Customs\Ares\visor.rvmat"
 		};
     };
 	class 885th_Sushi_P2_ARF_Helm: 885th_Najax_ARF_P2_Helm
@@ -11024,8 +11024,8 @@ class CfgWeapons
 	/*30*/	"",
 	/*31*/	"885_Armor\885_Armor\Customs\Nightfall\AirborneBag_co.paa",
 	/*32*/	"",
-	/*33*/	"",
-	/*34*/	"885_Armor\885_Armor\Customs\Nightfall\LRBag_co.paa",
+	/*33*/	"885_Armor\885_Armor\Customs\Nightfall\LRBag_co.paa",
+	/*34*/	"",
 	/*35*/	"",
 	/*36*/	"",
 	/*37*/	""
@@ -11064,8 +11064,8 @@ class CfgWeapons
 	/*30*/	"",
 	/*31*/	"885_Armor\885_Armor\Customs\Nightfall\AirborneBag.rvmat",
 	/*32*/	"",
-	/*33*/	"",
-	/*34*/	"885_Armor\885_Armor\Customs\Nightfall\LRBag.rvmat",
+	/*33*/	"885_Armor\885_Armor\Customs\Nightfall\LRBag.rvmat",
+	/*34*/	"",
 	/*35*/	"",
 	/*36*/	"",
 	/*37*/	""
@@ -13691,6 +13691,44 @@ class CfgVehicles
 		tf_subtype="digital_lr";
 		mass=22;
 	};
+	class 885th_Cust_RTO_Buttbag2_Nightfall: B_AssaultPack_blk
+	{
+		author="Antauri + 885thBPD";
+		scope=2;
+		picture="\MRC\JLTS\characters\CloneArmor\data\ui\Clone_RTO_pack_ui_ca.paa";
+		displayName="[885th] Nightfall Buttbag and LR Pack + Pouches";
+		model = "\ShadowLegion_Aux\Data\CustomVests\V5\models\VESTV5_LR_Backpack.p3d";
+		hiddenSelections[]=
+		{
+			"KamaPouches",
+			"AirborneBag",
+			"Buttbag",
+			"LRpack"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"",
+			"",
+			"",
+			"885_Armor\885_Armor\Customs\Nightfall\LRBag_co.paa"
+		};
+		hiddenSelectionsMaterials[]=
+		{
+			"",
+			"",
+			"",
+			"885_Armor\885_Armor\Customs\Nightfall\LRBag.rvmat"
+		};
+		maximumload=350;
+		tf_dialog="JLTS_clone_lr_programmer_radio_dialog";
+		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
+		tf_encryptionCode="tf_west_radio_code";
+		tf_hasLRradio=1;
+		tf_range=40000;
+		tf_subtype="digital_lr";
+		mass=22;
+	};
+	
 	// Uniform Characters
 	class Underwear_F;
 	class B_Soldier_f;
@@ -14500,3 +14538,48 @@ class CfgVehicles
 };
 
 #include "XtdGearModels.hpp"
+
+class CfgSounds
+{
+    sounds[] = {};
+
+    class AUX_Shield_Boot
+    {
+        name = "AUX_Shield_Boot";
+        sound[] = {"\885_Sounds\shield_boot.ogg", 1, 1};
+        titles[] = {};
+    };
+
+    class AUX_Shield_Hit
+    {
+        name = "AUX_Shield_Hit";
+        sound[] = {"\885_sounds\shield_hit.ogg", 1, 1};
+        titles[] = {};
+    };
+
+    class AUX_Shield_Recharge
+    {
+        name = "AUX_Shield_Recharge";
+        sound[] = {"\885_sounds\shield_recharge.ogg", 1, 1};
+        titles[] = {};
+    };
+	
+	 class AUX_Shield_Shutdown
+    {
+        name = "AUX_Shield_Shutdown";
+        sound[] = {"\885_sounds\shield_shutdown.ogg", 1, 1};
+        titles[] = {};
+    };
+};
+
+class Extended_PreInit_EventHandlers {
+    class 885th_Shield_PreInit {
+        init = "call compile preprocessFileLineNumbers '\885_Armor\scripts\XEH_preInit.sqf'";
+    };
+};
+
+class Extended_PostInit_EventHandlers {
+    class 885th_Shield_PostInit {
+        init = "call compile preprocessFileLineNumbers '\885_Armor\scripts\XEH_postInit.sqf'";
+    };
+};

@@ -651,6 +651,7 @@ class XtdGearModels
 					"Bandit",
 					"Bleach",
 					"Charge",
+					"Nightfall",
 					"Outcast",
 					"Rios",
 					"Syxer",
@@ -1827,6 +1828,11 @@ class XtdGearInfos
 		{
 			model="Custom_Backpacks";
 			backpack="Charge";
+		};
+		class 885th_Cust_RTO_Buttbag2_Nightfall
+		{
+			model="Custom_Backpacks";
+			backpack="Nightfall";
 		};
 		class 885th_Outcast_JTAC_Backpack
 		{

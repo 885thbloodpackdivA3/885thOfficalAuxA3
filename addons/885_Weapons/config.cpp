@@ -328,7 +328,6 @@ class CfgAmmo
 	class Components;
 	class 885th_blasterbolt: BulletBase
 	{	
-		ACE_damageType="plasma";
 		visibleFire=5;
 		audibleFire=20;
 		visibleFireTime=2;
