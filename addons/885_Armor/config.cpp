@@ -6549,7 +6549,7 @@ class CfgWeapons
 	/*5*/	"",
 	/*6*/	"",
 	/*7*/	"",
-	/*8*/	"885_Armor\885_Armor\Vests\Squad\RIG_co.paa",
+	/*8*/	"885_Armor\885_Armor\Vests\Standard\RIG_co.paa",
 	/*9*/	"",
 	/*10*/	"",
 	/*11*/	"",
