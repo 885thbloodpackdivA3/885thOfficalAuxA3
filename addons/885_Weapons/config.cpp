@@ -65,7 +65,7 @@ class CfgPatches
 			"885th_Valken38A_F",
 			"885th_T15LIR",
 			"885th_DC15XS",
-			"885th_Command_DC15AUGL",
+			"885th_Modified_DC15S",
 			"885th_DX36C",
 			"885TH_DX36C_HE",
 			"885th_Z6",
@@ -96,6 +96,7 @@ class CfgPatches
 			"885th_battery_ampHR_blue",
 			"885th_battery_ampAR_blue",
 			"885th_battery_ampm41_green",
+			"885th_elite_300_dc_cell",
 			"885th_coil_blue",
 			"885th_coil_blue_high",
 			"885th_e_cell_red",
@@ -3649,6 +3650,42 @@ class CfgAmmo
 		airFriction=-0.00019999999;
 		effectfly="IDA_BlasterBoltGlow_Green_Fly";
 	};
+	class 885th_blasterbolt_blue_dc15mod: 885th_blasterbolt
+	{
+		hit = 18;                  
+		indirectHit = 2;           
+		indirectHitRange = 0;
+		airFriction = -0.0006;
+		caliber = 1.5;            
+		typicalSpeed = 600;
+		model= "\Indecisive_Armoury_Ammos\Data\Tracers\IDA_Blasterbolt_Blue.p3d";
+		effectFly= "IDA_BlasterBoltGlow_Medium_Blue_Fly";
+		tracerScale = 1.2;         
+		tracerStartTime = 0;       
+		tracerEndTime = 5;
+	};
+	class 885th_blasterbolt_blue_dc15mod_300AAC: 885th_blasterbolt
+	{
+		hit = 20;                  
+		indirectHit = 0;           
+		indirectHitRange = 0;
+		airFriction = -0.00045;
+		caliber = 2.4;            
+		typicalSpeed = 310;
+		model= "\Indecisive_Armoury_Ammos\Data\Tracers\IDA_Blasterbolt_Blue.p3d";
+		effectFly= "IDA_BlasterBoltGlow_Medium_Blue_Fly";
+		timeToLive = 3;
+		tracerScale = 1.3;         
+		tracerStartTime = 0;       
+		tracerEndTime = 3;
+		class CamShakePlayerFire
+		{
+			power = 1.4;
+			duration = 0.12;
+			frequency = 20;
+			distance = 1;
+		};
+	};
 	class 885th_ammo_Grenade_EMP: G_40mm_HE
 	{
 		JLTS_isEMPAmmo=1;
@@ -4263,6 +4300,17 @@ class CfgMagazines
 		tracersEvery = 1;
 		initSpeed = 2000;
 		mass = 20;
+	};
+	
+	class 885th_elite_300_dc_cell: 885th_dc_cell_blue
+	{
+		count = 60;
+		displayName = "[885th] DC15S Elite Cell";
+		displayNameShort = "Elite Cell";
+		descriptionShort = "60 round cells, modified blaster bolts";
+		ammo = "885th_blasterbolt_blue_dc15mod_300AAC";
+		tracerEvery = 1;
+		initSpeed = 310;
 	};
 	// Base GL Mags
 	class 885th_mag_40mm_Base: CA_Magazine
@@ -8041,210 +8089,197 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_DCP90 : SMG_03C_TR_Khaki
+	class 885th_Modified_DC15S_Base_F: Rifle_Base_F
 	{
-		access = 3;
-		author = "AifeSupport";
-		ace_overheating_mrbs = 40000;
-		ace_overheating_slowdownFactor = 0;
-		ace_overheating_allowSwapBarrel = 0;
-		ace_overheating_dispersion = 0;
-		ace_overheating_closedBolt = 0;
-		ace_overheating_barrelMass = 1;
-		ace_barrelLength = 264;
-		scope = 0;
-		displayName = "[885th] DC-P90 Carbine";
-		descriptionShort = "If lost please return to 2901 Lotho";
-		magazines[] = {"885th_dc_cell_blue"};
-		magazineWell[] = {"DC_energycells"};
-		hiddenSelections[] = {"camo"};
-		hiddenSelectionsTextures[] = {"\885_Weapons\textures\body_pink_co.paa"};
-		muzzles[] = {"this", "Stun"};
-		fireLightDiffuse[]={0.1,0.25,1};
-		drySound[] = {"\Indecisive_Armoury_Sounds\weapon_dry.ogg", 5, 1, 10};
-		class Stun : 885th_Stun_rifle
+		Scope=0;
+		author="885th Bloodpack Division + Antauri";
+		magazines[]={"885th_elite_300_dc_cell"};
+		reloadAction = "GestureReload_JLTS_DC15S";
+		recoil= "recoil_akm";
+		magazineReloadSwitchPhase=0.40000001;
+		discreteDistanceInitIndex=0;
+		canShootInWater=1;
+		maxRecoilSway=0.0125;
+		swayDecaySpeed=1.25;
+		inertia=0.40000001;
+		dexterity=1.6;
+		initSpeed=-1;
+		maxZeroing=400;
+		fireLightDuration=0.050000001; 
+		fireLightIntensity=0.40000001;
+		fireLightDiffuse[]={1,1,0};
+		fireLightAmbient[]={0,0,0};
+		class GunParticles: GunParticles
 		{
-		};
-		class WeaponSlotsInfo : WeaponSlotsInfo
-		{
-			mass = 5;
-			class CowsSlot : CowsSlot{};
-			class MuzzleSlot : MuzzleSlot{};
-			class PointerSlot : PointerSlot{};
-			class UnderBarrelSlot : UnderBarrelSlot{};
-		};
-	};
-	class 885th_Command_DC15AUGL: JLTS_DC15A_ugl
-	{
-		ace_overheating_mrbs = 40000;
-		ace_overheating_slowdownFactor = 0;
-		ace_overheating_allowSwapBarrel = 0;
-		ace_overheating_dispersion = 1;
-		ace_overheating_closedBolt = 0;
-		ace_overheating_barrelMass = 1;
-		ace_barrelLength = 610;
-		author = "885th Bloodpack Division";
-		scope = 2;
-		inertia = 0;
-		canShootInWater = 1;
-		displayName = "[885th] DC15A-X Heavy Blaster Rifle";
-		descriptionShort = "Mid to Longe, slow rate of fire. Command Variant";
-		picture="\MRC\JLTS\weapons\DC15A\data\ui\DC15A_ugl_ui_ca.paa";
-		model="\MRC\JLTS\weapons\DC15A\DC15A_ugl.p3d";
-		handAnim[] = {"OFP2_ManSkeleton", "\MRC\JLTS\weapons\DC15A\anims\DC15A_handanim.rtm"};
-		ace_clearJamAction = "";
-		reloadAction = "GestureReload_JLTS_DC15A";
-		reloadTime = 1.0;
-		reloadMagazineSound[] = {"\Indecisive_Armoury_Sounds\Blaster_reload_Vent.ogg", 1.5, 1, 100};
-		recoil = "recoil_akm";
-		magazines[] = {"885th_dc_cell_blue_apex"};
-		magazineWell[] = {};
-		modes[] = {"Single", "FullAuto"};
-		fireLightDiffuse[] = {0.1, 0.25, 1};
-		drySound[] = {"\Indecisive_Armoury_Sounds\weapon_dry.ogg", 5, 1, 10};
-		muzzles[] = {"this","UGL"};
-		class UGL: UGL_F
-		{
-			displayName="Amplified High Explosive Launcher";
-			descriptionShort="Amp. HEL";
-			magazines[] = {"885th_coil_blue_high","885th_3rnd_40mm_HE_mag"};
-			magazineWell[] = {"885th_UGL_3Rnd_MagWell"};
-			useModelOptics=0;
-			useExternalOptic=0;
-			modes[]=
+			class SecondEffect
 			{
-				"Fire"
-			};
-			class Fire: Mode_SemiAuto
-			{
-				sounds[]=
-				{
-					"StandardSound"
-				};
-				class BaseSoundModeType
-				{
-					weaponSoundEffect="";
-					closure1[]={};
-					closure2[]={};
-					soundClosure[]={};
-				};
-				class StandardSound: BaseSoundModeType
-				{
-					weaponSoundEffect="";
-					begin1[]=
-					{
-						"885_Sounds\885th_UGL_Sound.ogg",
-						3.1622777,
-						1,
-						400
-					};
-					soundBegin[]=
-					{
-						"begin1",
-						0.1
-					};
-				};
-			};
-			cameraDir="OP_look";
-			discreteDistance[]={75,100,200,300,400};
-			discreteDistanceInitIndex=1;
-			discreteDistanceCameraPoint[]=
-			{
-				"OP_eye"
+				positionName="Nabojnicestart";
+				directionName="Nabojniceend";
+				effectName="CaselessAmmoCloud";
 			};
 		};
-		class Single : Mode_SemiAuto
+		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
-			sounds[] = {"StandardSound"};
-			class BaseSoundModeType
+			class CowsSlot: CowsSlot
 			{
-				weaponSoundEffect = "";
-				closure1[] = {};
-				closure2[] = {};
-				soundClosure[] = {};
-			};
-			class StandardSound : BaseSoundModeType
-			{
-				begin1[]=
+				linkProxy="\A3\data_f\proxies\weapon_slots\TOP";
+				compatibleItems[]=
 				{
-					"885_Sounds\Command DC15.ogg",
-					1.9952624,
-					1,
-					900
+					"ShadwCmpany_optic_E5"
 				};
-				soundBegin[] = {"begin1", 0.2};
 			};
-			reloadTime = 0.14;
-			dispersion = 0.00195;
-			minRange = 0;
-			minRangeProbab = 0.8;
-			midRange = 150;
-			midRangeProbab = 1.0;
-			maxRange = 600;
-			maxRangeProbab = 0.5;
-		};
-		class FullAuto : Mode_FullAuto
-		{
-			sounds[] = {"StandardSound"};
-			class BaseSoundModeType
+			class PointerSlot: PointerSlot
 			{
-				weaponSoundEffect = "";
-				closure1[] = {};
-				closure2[] = {};
-				soundClosure[] = {};
-			};
-			class StandardSound : BaseSoundModeType
-			{
-				begin1[]=
+				linkProxy="\A3\data_f\proxies\weapon_slots\SIDE";
+				compatibleItems[]=
 				{
-					"885_Sounds\Command DC15.ogg",
-					1.9952624,
-					1,
-					900
+					"ShdwCmpny_Light_MPD",
+					"ShdwCmpny_IR_MPD"
 				};
-				soundBegin[] = {"begin1", 0.2};
 			};
-			reloadTime = 0.12;
-			dispersion = 0.00205;
-			minRange = 0;
-			minRangeProbab = 1.0;
-			midRange = 500;
-			midRangeProbab = 0.8;
-			maxRange = 1000;
-			maxRangeProbab = 0.6;
-		};
-		class WeaponSlotsInfo : WeaponSlotsInfo
-		{
-			mass = 80;
-			class CowsSlot : CowsSlot
+			class UnderBarrelSlot: UnderBarrelSlot
 			{
-				compatibleItems[] = {};
+				linkProxy="\A3\data_f_mark\proxies\weapon_slots\UNDERBARREL";
+				compatibleItems[]={};
 			};
-			class MuzzleSlot : MuzzleSlot
-			{	
+			class MuzzleSlot: MuzzleSlot_65
+			{
 				iconPosition[]={0,0.44999999};
 				iconScale=0.2;
 				linkProxy="\A3\data_f\proxies\weapon_slots\MUZZLE";
-				compatibleItems[] = {"ShdwCmpny_Muzzle_LE_DC15A_Unsur"};
-			};
-			class PointerSlot : PointerSlot
-			{
-				compatibleItems[] = {"acc_flashlight","ShdwCmpny_Light_MPD","ShdwCmpny_IR_MPD"};
-			};
-			class UnderBarrelSlot : UnderBarrelSlot
-			{
-				compatibleItems[] = {};
+				compatibleItems[]={};
 			};
 		};
-		class GunParticles
+		opticsZoomMin=0.25;
+		opticsZoomMax=1.25;
+		opticsZoomInit=0.75;
+		distanceZoomMin=200;
+		distanceZoomMax=200;
+		descriptionShort="Field modified DC15S tuned for close-quarters with heavy bolt assembly";
+		handAnim[]=
 		{
-			class FirstEffect
+			"OFP2_ManSkeleton",
+			"ShadowLegion_Weapons\data\DC15\DC15S\anim\ReloadBASE_DC15S.rtm"
+		};
+		selectionFireAnim="zasleh";
+		flash="gunfire";
+		flashSize=3;
+		modes[]={"Single","FullAuto",};
+		muzzles[]={"this","Stun"};
+		class Single: Mode_SemiAuto
+		{
+			reloadTime = 0.120;
+			dispersion = 0.0012;
+			minRange = 2;
+			minRangeProbab = 0.8;
+			midRange = 100;
+			midRangeProbab = 1.0;
+			maxRange = 200;
+			maxRangeProbab = 0.5;
+			soundContinuous=0;
+			soundBurst=0;
+			sounds[] = {"StandardSound"};
+			class BaseSoundModeType
 			{
-				directionName = "Konec hlavne";
-				effectName = "RifleAssaultCloud";
-				positionName = "Usti hlavne";
+				weaponSoundEffect = "";
+				closure1[] = {};
+				closure2[] = {};
+				soundClosure[] = {};
+			};
+			class StandardSound : BaseSoundModeType
+			{
+				weaponSoundEffect = "";
+				begin1[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 1, 1800};
+				begin2[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 0.995, 1800};
+				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
+				beginwater1[] = {"885_Sounds\modifieddc15s.ogg", 1, 1, 400};
+				soundBeginWater[] = {"beginwater1", 0.5};
 			};
 		};
+		class FullAuto : Mode_FullAuto
+		{
+			reloadTime = 0.085;
+			dispersion = 0.0018;
+			minRange = 0;
+			minRangeProbab = 0.9;
+			midRange = 50;
+			midRangeProbab = 0.7;
+			maxRange = 150;
+			maxRangeProbab = 0.1;
+			soundContinuous=0;
+			soundBurst=0;
+			sounds[] = {"StandardSound"};
+			class BaseSoundModeType
+			{
+				weaponSoundEffect = "";
+				closure1[] = {};
+				closure2[] = {};
+				soundClosure[] = {};
+			};
+			class StandardSound : BaseSoundModeType
+			{
+				weaponSoundEffect = "";
+				begin1[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 1, 1800};
+				begin2[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 0.995, 1800};
+				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
+				beginwater1[] = {"885_Sounds\modifieddc15s.ogg", 1, 1, 400};
+				soundBeginWater[] = {"beginwater1", 0.5};
+			};
+		};
+		class Stun : 885th_Stun_rifle
+		{
+		};
+		aiDispersionCoefY=6;
+		aiDispersionCoefX=4;
+		caseless[]=
+		{
+			"",
+			1,
+			1,
+			1
+		};
+		soundBullet[]=
+		{
+			"caseless",
+			1
+		};
+		drySound[]=
+		{
+			"\ShadowLegion_Weapons\data\reloads\sounds\Empty_1.ogg",
+			2,
+			1,
+			20
+		};
+		reloadMagazineSound[]=
+		{
+			"\ShadowLegion_Weapons\data\reloads\sounds\Reload_1.ogg",
+			1,
+			1,
+			30
+		};
+	};
+	class 885th_Modified_DC15S: 885th_Modified_DC15S_Base_F
+	{
+		scope=2;
+		displayName="[885th] DC15S Elite Carbine";
+		model="\ShadowLegion_Weapons\data\DC15\DC15S\model\DC15_S.p3d";
+		picture="\ShadowLegion_Weapons\data\DC15\DC15S\UI\DC15S_UI.paa";
+		UiPicture="\ShadowLegion_Weapons\data\DC15\DC15S\UI\DC15S_UI.paa";
+		weaponInfoType="RscWeaponZeroing";
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			mass=60;
+		};
+		ace_overheating_mrbs=3000;
+		ace_overheating_slowdownFactor=1;
+		ace_overheating_allowSwapBarrel=0;
+		ace_overheating_dispersion=0.75;
 	};
 	class 885th_DX36C_Base_F: Rifle_Base_F
 	{
