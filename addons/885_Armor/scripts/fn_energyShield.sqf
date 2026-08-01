@@ -6,6 +6,41 @@ if (!hasInterface) exitWith {};
 waitUntil { !isNull (findDisplay 46) };
 waitUntil { !isNull player }; // player can still be objNull for a moment after the display exists
 
+// Qualifying [headgear, uniform] pairs now come from the
+// AUX_885th_Shield_GearSets CBA setting (editable in the CBA settings menu)
+// instead of being hardcoded here - still an exact PAIR match per entry,
+// just server-tunable without a script repack. Parsed fresh here at
+// startup; falls back to the original Katarn-only combo if the setting is
+// somehow missing or malformed.
+BPD_fnc_shieldParseGearSets = {
+    private _raw = missionNamespace getVariable ["AUX_885th_Shield_GearSets", "885th_Kusak_Katarn_Helmet:885th_Kusak_Katarn_Uniform"];
+    private _sets = [];
+    {
+        private _parts = _x splitString ":";
+        if (count _parts == 2) then {
+            _sets pushBack _parts;
+        };
+    } forEach (_raw splitString ",");
+    if (_sets isEqualTo []) then {
+        _sets = [["885th_Kusak_Katarn_Helmet", "885th_Kusak_Katarn_Uniform"]];
+    };
+    _sets
+};
+
+BPD_shield_validGearSets = [] call BPD_fnc_shieldParseGearSets;
+
+BPD_fnc_shieldGearValid = {
+    params ["_unit"];
+    private _helmet = headgear _unit;
+    private _uniform = uniform _unit;
+    private _valid = false;
+    {
+        _x params ["_reqHelmet", "_reqUniform"];
+        if (_helmet == _reqHelmet && {_uniform == _reqUniform}) exitWith { _valid = true; };
+    } forEach BPD_shield_validGearSets;
+    _valid
+};
+
 // FIX: ACE Medical's own docs explicitly warn that adding a HandleDamage
 // handler "is virtually guaranteed to break ACE's handling" - which is
 // exactly what was happening here (menu/HUD/sounds all worked, but the
@@ -41,7 +76,7 @@ BPD_fnc_injectShieldMenus = {
             hint "Katarn Armor Systems: SHIELDS UP.";
         },
         [], 1.5, false, true, "",
-        "!(player getVariable ['AUX_Shield_Active', false]) && {headgear player == '885th_Kusak_Katarn_Helmet'} && {uniform player == '885th_Kusak_Katarn_Uniform'}"
+        "!(player getVariable ['AUX_Shield_Active', false]) && ([player] call BPD_fnc_shieldGearValid)"
     ];
 
     private _deactivateId = player addAction [
@@ -177,10 +212,9 @@ BPD_shieldEngine_pfhId = [{
     private _active = _unit getVariable ["AUX_Shield_Active", false];
     if (!_active) exitWith { [0, 1, false, false] call BPD_fnc_shieldHUD_update; };
 
-    private _hasHelmet = (headgear _unit == "885th_Kusak_Katarn_Helmet");
-    private _hasArmor  = (uniform _unit == "885th_Kusak_Katarn_Uniform");
+    private _gearValid = [_unit] call BPD_fnc_shieldGearValid;
 
-    if (!_hasHelmet || !_hasArmor) exitWith {
+    if (!_gearValid) exitWith {
         _unit setVariable ["AUX_Shield_Active", false];
         playSound "AUX_Shield_Shutdown";
         hintSilent "Shield Offline: Katarn hardware signature dropped.";

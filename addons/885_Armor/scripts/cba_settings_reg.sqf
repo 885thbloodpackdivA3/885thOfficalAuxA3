@@ -85,3 +85,16 @@
     "885th Katarn Shield",
     [0, 1, 0.2, 2]
 ] call CBA_fnc_addSetting;
+
+// NEW - qualifying [helmet, uniform] gear pairs, editable from the CBA
+// settings menu instead of hardcoded in fn_energyShield.sqf. Format is
+// "helmet1:uniform1,helmet2:uniform2" - each comma-separated entry is one
+// exact PAIR (still requires wearing both together, same as the original
+// Katarn-only check), colon-separated. No spaces around the colons/commas.
+[
+    "AUX_885th_Shield_GearSets", "EDITBOX",
+    ["Qualifying Gear Sets", "Comma-separated list of helmet:uniform pairs that activate the shield, e.g. helmet1:uniform1,helmet2:uniform2 - no spaces."],
+    "885th Katarn Shield",
+    "885th_Kusak_Katarn_Helmet:885th_Kusak_Katarn_Uniform",
+    true
+] call CBA_fnc_addSetting;
