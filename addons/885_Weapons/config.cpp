@@ -4116,27 +4116,191 @@ class CfgAmmo
 		triggerSpeedCoef[]={0.85000002,1};
 		triggerTime=0.001;
 	};
-	// Economy
-	class 885th_blasterbolt_red : 885th_blasterbolt
-	{
-		model = "\3AS\3AS_Weapons\Data\tracer_red.p3d";
-		effectfly = "3AS_PlasmaBolt_Red_Fly";
-		hit = 16;
-		caliber = 3.8;
-		coefGravity = 0;
-	};
-	class 885th_blasterbolt_rHigh : 885th_blasterbolt_red
-	{
-		hit = 10;
-		caliber = 5.7;
-		coefGravity = 0;
-	};
-	class 885th_blasterbolt_rAmp : 885th_blasterbolt_red
-	{
-		hit = 30;
-		caliber = 7.62;
-		coefGravity = 0;
-	};
+	// CIS
+	class 885th_blasterbolt_Red_Pistol_Standard: 885th_blasterbolt
+    {
+        hit=7;
+        indirectHit=0;
+        indirectHitRange=0;
+        cartridge="";
+        audibleFire=50;
+        dangerRadiusBulletClose=4;
+        dangerRadiusHit=8;
+        suppressionRadiusBulletClose=2;
+        suppressionRadiusHit=4;
+        visibleFireTime=3;
+        cost=50;
+        airLock=1;
+        caliber=1.1799999;
+        typicalSpeed=306;
+        model = "\3AS\3AS_Weapons\Data\tracer_red.p3d";
+        tracerScale=0.58999997;
+        airFriction=-0.00026999999;
+        effectfly = "3AS_PlasmaBolt_Red_Fly";
+    };
+    class 885th_blasterbolt_Red_Pistol_PlusP: 885th_blasterbolt_Red_Pistol_Standard
+    {
+        hit=8;                             
+        indirectHit=0;
+        indirectHitRange=0;
+        cartridge="";
+        audibleFire=52;                      
+        dangerRadiusBulletClose=4;
+        dangerRadiusHit=8;
+        suppressionRadiusBulletClose=2;
+        suppressionRadiusHit=5;
+        visibleFireTime=3;
+        cost=50;
+        airLock=1;
+        caliber=1.28;                        
+        typicalSpeed=320;                      
+        model = "\3AS\3AS_Weapons\Data\tracer_red.p3d";
+        tracerScale=0.61000001;                
+        airFriction=-0.00025500001;            
+        effectfly = "3AS_PlasmaBolt_Red_Fly";
+    };
+	class 885th_blasterbolt_Red_Rifle_Standard: 885th_blasterbolt
+    {
+        hit=15;
+        indirectHit=0;
+        indirectHitRange=0;
+        cartridge="";
+        visibleFire=3;
+        audibleFire=45;
+        dangerRadiusBulletClose=8;
+        dangerRadiusHit=12;
+        suppressionRadiusBulletClose=6;
+        suppressionRadiusHit=8;
+        cost=1.2;
+        airLock=1;
+        typicalSpeed=472;
+        caliber=1.95;
+        model = "\3AS\3AS_Weapons\Data\tracer_red.p3d";
+        tracerScale=0.97500002;
+        airFriction=-0.00018;
+       	effectfly = "3AS_PlasmaBolt_Red_Fly";
+        class CamShakeExplode
+        {
+            power=2.8284299;
+            duration=0.60000002;
+            frequency=20;
+            distance=8.48528;
+        };
+        class CamShakeHit
+        {
+            power=5;
+            duration=0.2;
+            frequency=20;
+            distance=1;
+        };
+    };
+	class 885th_blasterbolt_Red_Sniper_Standard: 885th_blasterbolt
+    {
+        hit=35;
+        indirectHit=0;
+        indirectHitRange=0;
+        cartridge="";
+        visibleFire=5;
+        audibleFire=120;
+        dangerRadiusBulletClose=12;
+        dangerRadiusHit=16;
+        suppressionRadiusBulletClose=8;
+        suppressionRadiusHit=12;
+        visibleFireTime=3;
+        cost=5;
+        airLock=1;
+        caliber=4.48;
+        typicalSpeed=750;
+        model = "\3AS\3AS_Weapons\Data\tracer_red.p3d";
+        tracerScale=2.24;
+        airFriction=-0.00011;
+        effectfly = "3AS_PlasmaBolt_Red_Fly";
+        class CamShakeExplode
+        {
+            power=3.6055501;
+            duration=0.80000001;
+            frequency=20;
+            distance=10.8167;
+        };
+        class CamShakeHit
+        {
+            power=13;
+            duration=0.40000001;
+            frequency=20;
+            distance=1;
+        };
+    };
+	class 885th_blasterbolt_Red_HeavyRifle_Standard: 885th_blasterbolt
+    {
+        hit=19;                             
+        indirectHitRange=0;
+        cartridge="";
+        visibleFire=4;
+        visibleFireTime=3;
+        audibleFire=55;                       
+        dangerRadiusBulletClose=10;
+        dangerRadiusHit=15;
+        suppressionRadiusBulletClose=7;
+        suppressionRadiusHit=10;
+        cost=1.6;                               
+        airLock=1;
+        typicalSpeed=490;                         
+        caliber=2.2;                                
+        model = "\3AS\3AS_Weapons\Data\tracer_red.p3d";
+        tracerScale=1.1;                              
+        airFriction=-0.00017000001;                     
+        effectfly = "3AS_PlasmaBolt_Red_Fly";
+        class CamShakeExplode
+        {
+            power=3.2;
+            duration=0.65000004;
+            frequency=20;
+            distance=9.6;
+        };
+        class CamShakeHit
+        {
+            power=7;
+            duration=0.3;
+            frequency=20;
+            distance=1;
+        };
+    };
+	class 885th_blasterbolt_Red_B2_HP: 885th_blasterbolt_Red_HeavyRifle_Standard
+    {
+        hit=24;                             
+        indirectHit=0;
+        indirectHitRange=0;
+        cartridge="";
+        visibleFire=5;
+        visibleFireTime=3;
+        audibleFire=65;                       
+        dangerRadiusBulletClose=12;
+        dangerRadiusHit=18;
+        suppressionRadiusBulletClose=8;
+        suppressionRadiusHit=12;
+        cost=2.1;                               
+        airLock=1;
+        typicalSpeed=560;                         
+        caliber=2.2;                                
+        model = "\3AS\3AS_Weapons\Data\tracer_red.p3d";
+        tracerScale=1.3;                              
+        airFriction=-0.00015000001;
+        effectfly = "3AS_PlasmaBolt_Red_Fly";
+        class CamShakeExplode
+        {
+            power=3.7;
+            duration=0.7;
+            frequency=20;
+            distance=10.5;
+        };
+        class CamShakeHit
+        {
+            power=8.5;
+            duration=0.35;
+            frequency=20;
+            distance=1;
+        };
+    };
 	// Militia
 	class 885th_blasterbolt_green : 885th_blasterbolt
 	{
@@ -5167,42 +5331,46 @@ class CfgMagazines
 	class 885th_e_cell_red : 885th_cell
 	{
 		count = 50;
-		displayName = "[885th] Economy Energy Cell";
-		displayNameShort = "Eco. Cell";
+		displayName = "[885th] E-5 Energy Cell";
+		displayNameShort = "E-5 Cell";
 		descriptionShort = "50 round capacity, red blaster bolts.";
-		ammo = "885th_blasterbolt_red";
+		ammo = "885th_blasterbolt_Red_Rifle_Standard";
+		initspeed=472;
 		tracersEvery = 1;
 		mass = 10;
 	};
 	class 885th_e_cell_red_pistol : 885th_e_cell_red
 	{
 		count = 15;
-		displayName = "[885th] Economy Pistol Energy Cell";
-		displayNameShort = "Eco. Pistol Cell";
+		displayName = "[885th] Officer Pistol Energy Cell";
+		displayNameShort = "+P Pistol Cell";
 		descriptionShort = "15 round capacity, red blaster bolts.";
-		ammo = "885th_blasterbolt_red";
+		ammo = "885th_blasterbolt_Red_Pistol_PlusP";
+		initspeed=320;
 		tracersEvery = 1;
 		mass = 3;
 	};
 	class 885th_e_battery_red_high : 885th_e_cell_red
 	{
 		count = 300;
-		displayName = "[885th] Economy High-Power Battery";
-		displayNameShort = "Eco. HP Battery";
+		displayName = "[885th] Battle Droid High-Power Battery";
+		displayNameShort = "B2 HP Battery";
 		descriptionShort = "300 round capacity, red high power blaster bolts.";
 		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
 		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
-		ammo = "885th_blasterbolt_rAmp";
+		ammo = "885th_blasterbolt_Red_B2_HP";
+		initspeed=490;
 		tracersEvery = 1;
 		mass = 25;
 	};
 	class 885th_e_cell_red_amp : 885th_e_cell_red
 	{
 		count = 10;
-		displayName = "[885th] Economy Amplified Energy Cell";
-		displayNameShort = "Eco. Amp. Cell";
+		displayName = "[885th] E-5S Energy Cell";
+		displayNameShort = "E-5S Cell";
 		descriptionShort = "10 round capacity, red blaster bolts.";
-		ammo = "885th_blasterbolt_rAmp";
+		ammo = "885th_blasterbolt_Red_Sniper_Standard";
+		initspeed=750;
 		tracersEvery = 1;
 		mass = 10;
 	};
@@ -15622,6 +15790,8 @@ class CfgWeapons
 			midRangeProbab = 0.7;
 			maxRange = 1000;
 			maxRangeProbab = 0.3;
+			aiRateOfFire = 0.2;
+			aiRateOfFireDistance = 200;
 		};
 		class WeaponSlotsInfo : WeaponSlotsInfo
 		{
@@ -15701,6 +15871,8 @@ class CfgWeapons
 			midRangeProbab = 0.8;
 			maxRange = 1000;
 			maxRangeProbab = 0.2;
+			aiRateOfFire = 0.3;
+			aiRateOfFireDistance = 350;
 		};
 		class WeaponSlotsInfo : WeaponSlotsInfo
 		{
@@ -15828,6 +16000,8 @@ class CfgWeapons
 			midRangeProbab = 1.0;
 			maxRange = 2000;
 			maxRangeProbab = 0.7;
+			aiRateOfFire = 0.7;
+			aiRateOfFireDistance = 1000;
 		};
 		class WeaponSlotsInfo : WeaponSlotsInfo
 		{
@@ -15906,7 +16080,7 @@ class CfgWeapons
 				beginwater1[] = {"\Indecisive_Armoury_Sounds\CIS\WristBlaster.ogg", 1, 1, 400};
 				soundBeginWater[] = {"beginwater1", 1};
 			};
-			reloadTime = 0.15;
+			reloadTime = 0.10;
 			dispersion = 0.00300;
 			burst = 1;
 			soundContinuous = "false";
@@ -15917,6 +16091,8 @@ class CfgWeapons
 			midRangeProbab = 0.7;
 			maxRange = 1500;
 			maxRangeProbab = 0.1;
+			aiRateOfFire = 0.3;
+			aiRateOfFireDistance = 450;
 		};
 		class WristRocket : UGL_F
 		{
@@ -15976,6 +16152,8 @@ class CfgWeapons
 				midRangeProbab = 0.75;
 				maxRange = 800;
 				maxRangeProbab = 0.8;
+				aiRateOfFire = 0.8;
+				aiRateOfFireDistance = 200;
 			};
 		};
 		class WeaponSlotsInfo : WeaponSlotsInfo
