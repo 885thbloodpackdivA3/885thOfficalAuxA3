@@ -296,7 +296,6 @@ class Flame_Explosion
 };
 class CfgAmmo
 {
-	class B_762x51_Ball;
 	class G_40mm_HE;
 	class RocketBase;
 	class BulletBase;
