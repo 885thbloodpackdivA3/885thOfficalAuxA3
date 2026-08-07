@@ -12,7 +12,6 @@ class CfgPatches
 			"885th_DC15L_F",
 			"885th_DC15X_F",
 			"885th_DLT19",
-			"885th_Valken38x_F",
 			"885th_DC17S_F",
 			"885th_RPS6",
 			"885th_Chaingun",
@@ -499,9 +498,7 @@ class CfgWeapons
 		scope = 2;
 		displayName = "[885th] DC-15L LMG";
 		magazines[] = {
-			"885th_battery_low_blue",
-			"885th_battery_high_blue",
-			"885th_battery_amp_blue"};
+			"885th_dc15L_cell_blue"};
 		magazineWell[] = {};
 		muzzles[] = {"this"};
 		fireLightDiffuse[]={0.1,0.25,1};
@@ -521,20 +518,20 @@ class CfgWeapons
 		ace_barrelTwist = 0;
 		scope = 2;
 		displayName = "[885th] DC-15X Sniper Rifle";
-		magazines[] = {"885th_dc_cell_blue_amp","885th_dc_cell_blue_Omega"};
+		magazines[] = {"885th_dc15xsniper_ap_cell_blue","885th_dc15xsniper_over_cell_blue"};
 		magazineWell[] = {};
 		muzzles[] = {"this"};
 		fireLightDiffuse[]={0.1,0.25,1};
 		modes[] = {"Single"};
 		class Single: Mode_SemiAuto
 		{
-			reloadTime=1.2;
-			dispersion = 0.0001;
-			minRange=2;
+			reloadTime=1.3;
+			dispersion = 0.0004;
+			minRange=200;
 			minRangeProbab=0.5;
-			midRange=200;
+			midRange=500;
 			midRangeProbab=0.69999999;
-			maxRange=400;
+			maxRange=800;
 			maxRangeProbab=0.30000001;
 			soundContinuous=0;
 			soundBurst=0;
@@ -666,7 +663,7 @@ class CfgWeapons
 			mass = 65;
 			class CowsSlot : CowsSlot
 			{
-				compatibleItems[] = {"3AS_optic_DC15X_F","3AS_optic_DC15LE_F"};
+				compatibleItems[] = {"3AS_optic_DC15X_F","JLTS_DC15X_scope","optic_KHS_blk"};
 			};
 			class MuzzleSlot : MuzzleSlot
 			{	
@@ -687,150 +684,6 @@ class CfgWeapons
 		};
 	};
 
-	class 3AS_Valken38x_F;
-	class 885th_Valken38x_F : 3AS_Valken38x_F 
-	{
-		baseWeapon = "885th_Valken38x_F";
-		ace_overheating_mrbs = 40000;
-		ace_overheating_slowdownFactor = 0;
-		ace_overheating_allowSwapBarrel = 0;
-		ace_overheating_dispersion = 1;
-		ace_overheating_closedBolt = 0;
-		ace_overheating_barrelMass = 1;
-		ace_barrelLength = 620;
-		ace_barrelTwist = 0;
-		scope = 2;
-		displayName = "[885th] Valken-38X Sniper Rifle";
-		magazines[] = {"885th_dc_cell_blue_amp","885th_dc_cell_blue_Omega"};
-		magazineWell[] = {};
-		muzzles[] = {"this"};
-		fireLightDiffuse[]={0.1,0.25,1};
-		modes[] = {"Single"};
-		class Single: Mode_SemiAuto
-		{
-			reloadTime=1.0;
-			dispersion = 0.0001;
-			minRange=2;
-			minRangeProbab=0.5;
-			midRange=200;
-			midRangeProbab=0.69999999;
-			maxRange=400;
-			maxRangeProbab=0.30000001;
-			soundContinuous=0;
-			soundBurst=0;
-			sounds[]=
-			{
-				"StandardSound",
-				"SilencedSound"
-			};
-			class BaseSoundModeType;
-			class StandardSound: BaseSoundModeType
-			{
-				soundSetShot[]=
-				{
-					"3AS_Sniper_SoundSet"
-				};
-			};
-			class SilencedSound: BaseSoundModeType
-			{
-				begin1[]=
-				{
-					"ShadowLegion_Weapons\data\surpressed_1.ogg",
-					2,
-					1,
-					200
-				};
-				begin2[]=
-				{
-					"ShadowLegion_Weapons\data\surpressed_2.ogg",
-					2,
-					1,
-					200
-				};
-				begin3[]=
-				{
-					"ShadowLegion_Weapons\data\surpressed_3.ogg",
-					2,
-					1,
-					200
-				};
-				begin4[]=
-				{
-					"ShadowLegion_Weapons\data\surpressed_4.ogg",
-					2,
-					1,
-					200
-				};
-				begin5[]=
-				{
-					"ShadowLegion_Weapons\data\surpressed_5.ogg",
-					2,
-					1,
-					200
-				};
-				begin6[]=
-				{
-					"ShadowLegion_Weapons\data\surpressed_6.ogg",
-					2,
-					1,
-					200
-				};
-				soundBegin[]=
-				{
-					"begin1",
-					0.5,
-					"begin2",
-					0.5,
-					"begin3",
-					0.5,
-					"begin4",
-					0.5,
-					"begin5",
-					0.5,
-					"begin6",
-					0.5
-				};
-				beginwater1[]=
-				{
-					"\ShadowLegion_Weapons\data\Underwater_Firing.ogg",
-					1,
-					1,
-					200
-				};
-				soundBeginWater[]=
-				{
-					"beginwater1",
-					0.5
-				};
-			};
-		};
-		class WeaponSlotsInfo : WeaponSlotsInfo {
-			mass = 65;
-			class CowsSlot : CowsSlot
-			{
-				iconPosition[]={0.44999999,0.28};
-				iconScale=0.2;
-				linkProxy="\A3\data_f\proxies\weapon_slots\TOP";
-				compatibleItems[]={"ShadwCmpany_optic_Acog","3AS_optic_DC15X_F","ShdwCmpny_Optic_LEScope_DC15A","3AS_optic_DC15L_F","optic_MRCO","ShdwCmpny_Optic_Valken"};
-			};
-			class MuzzleSlot : MuzzleSlot
-			{	
-				iconPosition[]={0,0.44999999};
-				iconScale=0.2;
-				linkProxy="\A3\data_f\proxies\weapon_slots\MUZZLE";
-				compatibleItems[] = {"ShadwCmpany_Suppresor_Module_DC15"};
-			};
-			class PointerSlot : PointerSlot
-			{	
-				linkProxy="\A3\data_f\proxies\weapon_slots\SIDE";
-				compatibleItems[] = {"acc_flashlight","acc_pointer_IR","ace_acc_pointer_red","ace_acc_pointer_green"};
-			};
-			class UnderBarrelSlot : UnderBarrelSlot
-			{
-				compatibleItems[] = {"3AS_Bipod_VK38X_f","ShdwCmpny_Bipod_Valken"};
-			};
-		};
-	};
 	class 3AS_DC17S_F;
 	class 885th_DC17S_F : 3AS_DC17S_F 
 	{
