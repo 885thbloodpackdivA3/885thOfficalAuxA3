@@ -7584,7 +7584,7 @@ class CfgWeapons
 				compatibleItems[]=
 				{
 					"ShadwCmpany_optic_Acog",
-					"ShadwCmpany_Electroscope",
+					"ShadwCmpany_Electroscope_Standalone",
 					"ShdwCmpny_Optic_A280Scope",
 					"ShdwCmpny_Optic_LEScope_DC15A_mk2",
 					"ShdwCmpny_Optic_LEScope_DC15A",
@@ -14270,7 +14270,6 @@ class CfgWeapons
 					"ShadwCmpany_Hybrid_Magnifier_Magnified",
 					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
 					"ShadwCmpany_773_Hybrid_Magnifier_Magnified",
-					"ShadwCmpany_Electroscope",
 					"ShadwCmpany_Electroscope_Standalone",
 					"ShadwCmpany_optic_e11",
 					"ShdwCmpny_Optic_Scope_WestarM5",
@@ -15006,7 +15005,6 @@ class CfgWeapons
 					"ShadwCmpany_Hybrid_Magnifier_Magnified",
 					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
 					"ShadwCmpany_773_Hybrid_Magnifier_Magnified",
-					"ShadwCmpany_Electroscope",
 					"ShadwCmpany_Electroscope_Standalone",
 					"ShadwCmpany_optic_e11",
 					"ShdwCmpny_Optic_Scope_WestarM5",
@@ -16775,7 +16773,6 @@ class CfgWeapons
 					"ShadwCmpany_Hybrid_Magnifier_Magnified",
 					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
 					"ShadwCmpany_773_Hybrid_Magnifier_Magnified",
-					"ShadwCmpany_Electroscope",
 					"ShadwCmpany_Electroscope_Standalone",
 					"ShadwCmpany_optic_e11",
 					"ShdwCmpny_Optic_Valken",
