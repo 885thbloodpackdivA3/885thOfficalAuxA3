@@ -413,8 +413,8 @@ class CfgWeapons
 		ace_barrelTwist = 0;
 		scope = 2;
 		displayName = "[885th] DC-15C Rifle";
-		magazines[] = {"885th_dc_cell_blue"};
-		magazineWell[] = {"DC_energycells"};
+		magazines[] = {"885th_dc15c_cell"};
+		magazineWell[] = {};
 		muzzles[] = {"this", "Stun"};
 		fireLightDiffuse[]={0.1,0.25,1};
 		class Stun : 885th_Stun_rifle {};
@@ -498,7 +498,7 @@ class CfgWeapons
 		scope = 2;
 		displayName = "[885th] DC-15L LMG";
 		magazines[] = {
-			"885th_dc15L_cell_blue"};
+			"885th_dc15l_cell"};
 		magazineWell[] = {};
 		muzzles[] = {"this"};
 		fireLightDiffuse[]={0.1,0.25,1};
@@ -518,7 +518,7 @@ class CfgWeapons
 		ace_barrelTwist = 0;
 		scope = 2;
 		displayName = "[885th] DC-15X Sniper Rifle";
-		magazines[] = {"885th_dc15xsniper_ap_cell_blue","885th_dc15xsniper_over_cell_blue"};
+		magazines[] = {"885th_dc15xsniper_ap_cell","885th_dc15xsniper_over_cell"};
 		magazineWell[] = {};
 		muzzles[] = {"this"};
 		fireLightDiffuse[]={0.1,0.25,1};
