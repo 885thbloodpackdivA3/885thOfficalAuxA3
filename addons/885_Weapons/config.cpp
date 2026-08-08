@@ -7584,7 +7584,6 @@ class CfgWeapons
 				compatibleItems[]=
 				{
 					"ShadwCmpany_optic_Acog",
-					"ShadwCmpany_Electroscope_Standalone",
 					"ShdwCmpny_Optic_A280Scope",
 					"ShdwCmpny_Optic_LEScope_DC15A_mk2",
 					"ShdwCmpny_Optic_LEScope_DC15A",
@@ -14270,7 +14269,6 @@ class CfgWeapons
 					"ShadwCmpany_Hybrid_Magnifier_Magnified",
 					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
 					"ShadwCmpany_773_Hybrid_Magnifier_Magnified",
-					"ShadwCmpany_Electroscope_Standalone",
 					"ShadwCmpany_optic_e11",
 					"ShdwCmpny_Optic_Scope_WestarM5",
 					"ShdwCmpny_Optic_LEScope_DC15A_mk2"
@@ -15005,7 +15003,6 @@ class CfgWeapons
 					"ShadwCmpany_Hybrid_Magnifier_Magnified",
 					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
 					"ShadwCmpany_773_Hybrid_Magnifier_Magnified",
-					"ShadwCmpany_Electroscope_Standalone",
 					"ShadwCmpany_optic_e11",
 					"ShdwCmpny_Optic_Scope_WestarM5",
 					"ShdwCmpny_Optic_LEScope_DC15A_mk2"
@@ -15041,7 +15038,7 @@ class CfgWeapons
 			class LinkedItemsOptic
 			{
 				slot="CowsSlot";
-				item="ShadwCmpany_Electroscope_Standalone";
+				item="";
 			};
 			class LinkedItemsAcc
 			{
@@ -16773,7 +16770,6 @@ class CfgWeapons
 					"ShadwCmpany_Hybrid_Magnifier_Magnified",
 					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
 					"ShadwCmpany_773_Hybrid_Magnifier_Magnified",
-					"ShadwCmpany_Electroscope_Standalone",
 					"ShadwCmpany_optic_e11",
 					"ShdwCmpny_Optic_Valken",
 					"ShadwCmpany_optic_DH17Scope",
