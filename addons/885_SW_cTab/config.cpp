@@ -7035,11 +7035,11 @@ class CfgWeapons
 	class CBA_MiscItem_ItemInfo;
 	class ItemcTab: CBA_MiscItem
 	{
-		descriptionshort="Roda Panther DK10 Rugged Tablet PC";
+		descriptionshort="Republic tactical datapad providing secure communications, mission data, and battlefield command access";
 		descriptionuse="<t color='#9cf953'>Use: </t>Show Commander's Tablet";
-		displayname="DK10 Tablet";
+		displayname="[885th] Datapad Integrated Command System [DICS]";
 		picture="\cTab\img\icon_dk10.paa";
-		model="\ctab\data\itemDK10.p3d";
+		model="\MRC\JLTS\contraband\Intel\datapad_civ.p3d";
 		scope=2;
 		author="Gundy-Riouken-Raspu";
 		simulation="Weapon";
@@ -7051,7 +7051,7 @@ class CfgWeapons
 	class ItemAndroid: ItemcTab
 	{
 		descriptionshort="SoroSuub Imagecaster";
-		descriptionuse="";
+		descriptionuse="<t color='#9cf953'>Use: </t>Show ATAK";
 		displayname="[885th] Personal Holoprojector";
 		picture="\cTab\img\icon_Android.paa";
 		model="\MRC\JLTS\contraband\Intel\holo.p3d";
@@ -7064,12 +7064,11 @@ class CfgWeapons
 	};
 	class ItemMicroDAGR: ItemcTab
 	{
-		descriptionshort="HNV-2930 Micro Defense Advanced GPS Receiver";
+		descriptionshort="A hand-held electronic device used for inputting, storing, and displaying information";
 		descriptionuse="<t color='#9cf953'>Use: </t>Show MicroDAGR";
-		displayname="MicroDAGR";
+		displayname="[885th] Mini Datapad [GPS]";
 		picture="\cTab\img\icon_MicroDAGR.paa";
-		model="\ctab\data\itemMicroDAGR.p3d";
-		scope=2;
+		model="\MRC\JLTS\contraband\Core_contraband\scanner_bounty.p3d";
 		class ItemInfo: CBA_MiscItem_ItemInfo
 		{
 			mass=2;
@@ -7078,9 +7077,9 @@ class CfgWeapons
 	};
 	class ItemcTabHCam: CBA_MiscItem
 	{
-		descriptionshort="CountourHD 1080P Helmet Mounted Camera";
+		descriptionshort="An integrated helmet camera system used by the GAR to provide commanders with real-time battlefield feeds from clone troopers.";
 		descriptionuse="<t color='#9cf953'>Use: </t>Used to record and stream video";
-		displayname="Helmet Camera";
+		displayname="[885th] Clone-cam";
 		picture="\cTab\img\cTab_helmetCam_ico.paa";
 		scope=2;
 		author="Gundy-Riouken-Raspu";
