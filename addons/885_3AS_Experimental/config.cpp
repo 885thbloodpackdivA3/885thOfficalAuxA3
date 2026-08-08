@@ -370,7 +370,7 @@ class CfgMagazines {
 	class 885th_dc15sa_pistol_mag_blue : 885th_dc_cell_blue
 	{	
 		scope=2;
-		count = 15;
+		count = 7;
 		author="885th";
 		displayName = "[885th] DC-15SA Energy Cell";
 		displayNameShort = "DC-15SA Pistol Cell";

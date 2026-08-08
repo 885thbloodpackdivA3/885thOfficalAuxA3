@@ -3606,6 +3606,11 @@ class CfgAmmo
 		airFriction=-0.00025500001;            
 		effectFly="3AS_PlasmaBolt_Blue_Fly";
 	};
+	// dual pistol ammo
+	class 885th_blasterbolt_Pistol_PlusP_dual: 885th_blasterbolt_Pistol_PlusP
+	{
+		model="\3AS\3AS_Weapons\Data\tracer_blue_dual.p3d";
+	};
 	class 885th_blasterbolt_Pistol_HP: 885th_blasterbolt_Pistol_Standard
 	{
 		hit=10;                         
@@ -3629,7 +3634,7 @@ class CfgAmmo
 	};
 	class 885th_blasterbolt_Pistol_AP: 885th_blasterbolt_Pistol_Standard
 	{
-		hit=5;                           
+		hit=5;                             
 		indirectHit=0;
 		indirectHitRange=0;
 		cartridge="";
@@ -3641,12 +3646,12 @@ class CfgAmmo
 		visibleFireTime=3;
 		cost=50;
 		airLock=1;
-		caliber=1.7;                        
-		deflecting=0;                        
-		typicalSpeed=320;                     
+		caliber=2;                          
+		deflecting=0;
+		typicalSpeed=310;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=0.58999997;
-		airFriction=-0.00025000001;           
+		airFriction=-0.00025000001;
 		effectFly="3AS_PlasmaBolt_Blue_Fly";
 	};
 	
@@ -3694,7 +3699,7 @@ class CfgAmmo
 		indirectHitRange=0;
 		cost=1;
 		typicalSpeed=390;                
-		airFriction=-0.00023000001;      
+		airFriction=-0.00020000001;      
 		waterFriction=-0.30000001;
 		caliber=2;                       
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
@@ -3728,10 +3733,10 @@ class CfgAmmo
 		indirectHit=0;
 		indirectHitRange=0;
 		cost=1;
-		typicalSpeed=380;                 
+		typicalSpeed=410;                 
 		airFriction=-0.00021000001;       
 		waterFriction=-0.30000001;
-		caliber=2.6;                      
+		caliber=2.8;                      
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=0.69999999;
 		audibleFire=35;
@@ -3786,6 +3791,41 @@ class CfgAmmo
 		class CamShakeHit
 		{
 			power=5.5;
+			duration=0.2;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_blasterbolt_Carbine_Subsonic: 885th_blasterbolt_Carbine_HP
+	{
+		airLock=1;
+		hit=10;                             
+		indirectHit=0;
+		indirectHitRange=0;
+		cost=1.1;
+		typicalSpeed=295;                   
+		airFriction=-0.00024000001;             
+		waterFriction=-0.30000001;
+		caliber=2.3;                              
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=0.68000001;                     
+		audibleFire=17;                               
+		dangerRadiusBulletClose=5;                      
+		dangerRadiusHit=8;
+		suppressionRadiusBulletClose=3;
+		suppressionRadiusHit=5;
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		aiAmmoUsageFlags=64;
+		class CamShakeExplode
+		{
+			power=2.2;
+			duration=0.5;
+			frequency=20;
+			distance=6.5;
+		};
+		class CamShakeHit
+		{
+			power=4.5;
 			duration=0.2;
 			frequency=20;
 			distance=1;
@@ -3976,7 +4016,7 @@ class CfgAmmo
 	};
 	class 885th_blasterbolt_Rifle_AP: 885th_blasterbolt_Rifle_Standard
 	{
-		hit=13;                             
+		hit=13;
 		indirectHit=0;
 		indirectHitRange=0;
 		cartridge="";
@@ -3988,12 +4028,12 @@ class CfgAmmo
 		suppressionRadiusHit=8;
 		cost=1.2;
 		airLock=1;
-		typicalSpeed=495;                    
-		caliber=2.9;                           
-		deflecting=0;                           
+		typicalSpeed=545;                   
+		caliber=2.9;
+		deflecting=0;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=0.97500002;
-		airFriction=-0.00016500001;             
+		airFriction=-0.00016500001;
 		effectFly="3AS_PlasmaBolt_Blue_Fly";
 		class CamShakeExplode
 		{
@@ -4065,8 +4105,8 @@ class CfgAmmo
 	class 885th_blasterbolt_DC15LE_Explosive: 885th_blasterbolt_Rifle_Standard
 	{
 		hit=8;                              
-		indirectHit=25;                       
-		indirectHitRange=4;                     
+		indirectHit=10;                       
+		indirectHitRange=2;                     
 		explosive=1;                             
 		cartridge="";
 		visibleFire=6;
@@ -4243,6 +4283,42 @@ class CfgAmmo
 		{
 			power=9;
 			duration=0.3;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_blasterbolt_Rifle_DMR_Subsonic: 885th_blasterbolt_Rifle_DMR_Balanced
+	{
+		hit=19;                            
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		visibleFire=2;                        
+		visibleFireTime=3;
+		audibleFire=28;                         
+		dangerRadiusBulletClose=6;                
+		dangerRadiusHit=10;
+		suppressionRadiusBulletClose=4;
+		suppressionRadiusHit=6;
+		cost=3.3;                                   
+		airLock=1;
+		typicalSpeed=300;                             
+		caliber=3.6;                                    
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=1.35;                                 
+		airFriction=-0.00019000001;                         
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		class CamShakeExplode
+		{
+			power=2.6;
+			duration=0.55;
+			frequency=20;
+			distance=7.5;
+		};
+		class CamShakeHit
+		{
+			power=6.5;
+			duration=0.25;
 			frequency=20;
 			distance=1;
 		};
@@ -4455,7 +4531,7 @@ class CfgAmmo
 		airFriction=-0.00013500001;
 		effectFly="IDA_BlasterBoltGlow_Yellow_Fly";
 		lightColor[]={1,1,0};
-		ExplosionEffects="IDA_ImpactEffect";
+		ExplosionEffects="Flame_Explosion";
 		craterEffects="ls_plasma_impact";
 		class CamShakeExplode
 		{
@@ -5377,84 +5453,242 @@ class CfgMagazines
 		ammo = "885th_blasterbolt";
 		mass = 8;
 	};
-	// DC Series
-	class 885th_dc_cell_blue : 885th_cell
-	{
-		count = 50;
-		displayName = "[885th] Standard Energy Cell";
-		displayNameShort = "Std. Cell";
-		descriptionShort = "50 round capacity, standard blaster bolts.";
-		ammo = "885th_blasterbolt_blue";
-		tracersEvery = 1;
-		mass = 10;
-	};
-	class 885th_dc15a_cell_blue : 885th_cell
-	{
-		count = 100;
-		displayName = "[885th] DC15A Energy Cell";
-		displayNameShort = "DC15A Cell";
-		descriptionShort = "100 round capacity, standard blaster bolts.";
-		ammo = "885th_blasterbolt_Rifle_Standard";
-		initSpeed=472;
-		tracersEvery = 1;
-		mass = 10;
-	};
-	class 885th_dc15a_hp_cell_blue : 885th_cell
-	{
-		count = 50;
-		displayName = "[885th] DC15A HP Energy Cell";
-		displayNameShort = "DC15A HP";
-		descriptionShort = "50 round capacity, high power blaster bolts.";
-		ammo = "885th_blasterbolt_Rifle_HP";
-		initSpeed=530;
-		tracersEvery = 1;
-		mass = 15;
-	};
-	class 885th_dc15c_cell_blue : 885th_cell
+	// 885th Pistol Magazines
+	class 885th_dc17_cell : 885th_cell
 	{
 		count = 40;
-		displayName = "[885th] DC15C Energy Cell";
-		displayNameShort = "DC15C Cell";
+		displayName = "[885th] DC-17 Blaster-Pistol Standard Cell";
+		displayNameShort = "Std Cell For The DC-17 Blaster Pistol";
+		descriptionShort = "40 round capacity, standard blaster bolts.";
+		ammo = "885th_blasterbolt_Pistol_Standard";
+		initSpeed = 306;
+		tracersEvery = 1;
+		mass = 3;
+	};
+	class 885th_dc17_cell_extended : 885th_cell
+	{
+		count = 80;
+		displayName = "[885th] DC-17 Blaster-Pistol Standard Cell Extended";
+		displayNameShort = "Higher Capacity Std Cell For The DC-17 Blaster Pistol";
+		descriptionShort = "80 round capacity, standard blaster bolts.";
+		ammo = "885th_blasterbolt_Pistol_Standard";
+		initSpeed = 306;
+		tracersEvery = 1;
+		mass = 3;
+	};
+	class 885th_dc17s_cell : 885th_cell
+	{
+		count = 30;
+		displayName = "[885th] DC-17s Blaster-Pistol overpressured Cell";
+		displayNameShort = "Overpressured Cell For The DC-17s Blaster Pistol";
+		descriptionShort = "30 round capacity, overpressured blaster bolts.";
+		ammo = "885th_blasterbolt_Pistol_PlusP";
+		initSpeed = 320;
+		tracersEvery = 1;
+		mass = 3;
+	};
+	class 885th_dc17s_dual_cell: 885th_cell
+	{
+		count = 60;
+		displayName = "[885th] DC-17s Dual Blaster-Pistols Overpressured Cell";
+		displayNameShort = "overpressured Cell For The DC-17s Blaster Pistol";
+		descriptionShort = "60 round capacity, overpressured blaster bolts.";
+		ammo = "885th_blasterbolt_Pistol_PlusP_dual";
+		initSpeed = 320;
+		tracersEvery = 1;
+		mass = 6;
+	};
+	class 885th_dc15sa_cell : 885th_cell
+	{	
+		count = 7;
+		author="885th";
+		displayName = "[885th] DC-15SA Blaster-Pistol High Power Cell";
+		displayNameShort = "High Power Cell For The DC-15SA Heavy Blaster Pistol";
+		descriptionShort = "7 round capacity, high power blaster bolts.";
+		ammo = "885th_blasterbolt_Pistol_HP";
+		initSpeed=335;
+		tracersEvery = 1;
+		mass = 4;
+	};
+	class 885th_dc21_cell : 885th_cell
+	{	
+		count = 25;
+		author="885th";
+		displayName = "[885th] DC-21 Blaster-Pistol Modified Cell";
+		displayNameShort = "Modified Cell For The DC-21 Blaster Pistol";
+		descriptionShort = "25 round capacity, modified blaster bolts.";
+		ammo = "885th_blasterbolt_Carbine_Standard";
+		initSpeed=361;
+		tracersEvery = 1;
+		lastRoundsTracer=10;
+		mass = 4;
+	};
+	class 885th_dc21_tracerless_cell : 885th_cell
+	{	
+		count = 25;
+		author="885th";
+		displayName = "[885th] DC-21 Blaster-Pistol Modified Tracerless Cell";
+		displayNameShort = "Modified Tracerless Cell For The DC-21 Blaster Pistol";
+		descriptionShort = "25 round capacity, modified tracerless blaster bolts.";
+		ammo = "885th_blasterbolt_Carbine_Tracerless";
+		initSpeed=361;
+		tracersEvery=1;
+		lastRoundsTracer=10;
+		mass = 4;
+	};
+	class 885th_dc15p_cell : 885th_cell
+	{
+		count = 10;
+		author="885th";
+		displayName = "[885th] DC-15P Heavy Blaster-Pistol Overpressured Cell";
+		displayNameShort = "Overpressured Cell For The DC-15P Heavy Blaster Pistol";
+		descriptionShort = "10 round capacity, overpressured blaster bolts.";
+		ammo = "885th_blasterbolt_Carbine_PlusP";
+		initSpeed=395;
+		tracersEvery=1;
+		mass = 5;
+	};
+	class 885th_westar35_cell : 885th_cell
+	{
+		count = 20;
+		author="885th";
+		displayName = "[885th] Westar-35 Blaster-Pistol Armor-Piercing Cell";
+		displayNameShort = "Armor-Piercing Cell For The Westar-35 Blaster Pistol";
+		descriptionShort = "20 round capacity, Armor-Piercing blaster bolts.";
+		ammo = "885th_blasterbolt_Pistol_AP";
+		initSpeed=395;
+		tracersEvery=1;
+		mass = 5;
+	};
+	//885th Carbine Magazines
+	class 885th_dc15s_cell : 885th_cell
+	{
+		count = 100;
+		displayName = "[885th] DC-15S Blaster-Carbine Standard Cell";
+		displayNameShort = "Std Cell For The DC-15S Blaster Carbine";
+		descriptionShort = "100 round capacity, Standard blaster bolts.";
+		ammo = "885th_blasterbolt_Carbine_Standard";
+		tracersEvery = 1;
+		initSpeed = 361;
+		mass = 10;
+	};
+	class 885th_dc15s_hp_cell : 885th_cell
+	{
+		count = 50;
+		displayName = "[885th] DC-15S Blaster-Carbine High Power Cell";
+		displayNameShort = "High Power Cell For The DC-15S Blaster Carbine";
+		descriptionShort = "100 round capacity, High Power blaster bolts.";
+		ammo = "885th_blasterbolt_Carbine_HP";
+		tracersEvery = 1;
+		initSpeed = 390;
+		mass = 10;
+	};
+	class 885th_dc15s_ap_cell : 885th_cell
+	{
+		count = 35;
+		displayName = "[885th] DC-15S Blaster-Carbine Armor-Piercing Cell";
+		displayNameShort = "Armor-Piercing Cell For The DC-15S Blaster Carbine";
+		descriptionShort = "35 round capacity, Armor-Piercing blaster bolts.";
+		ammo = "885th_blasterbolt_Carbine_AP";
+		tracersEvery = 1;
+		initSpeed = 410;
+		mass = 10;
+	};
+	class 885th_dc15se_cell : 885th_cell
+	{
+		count = 55;
+		displayName = "[885th] DC-15SE Blaster-Carbine Overpressured Cell";
+		displayNameShort = "Overpressured Cell For The DC-15S Blaster Carbine";
+		descriptionShort = "55 round capacity, Overpressured blaster bolts.";
+		ammo = "885th_blasterbolt_Carbine_PlusP";
+		tracersEvery = 1;
+		initSpeed = 395;
+		mass = 10;
+	};
+	class 885th_dc19_cell : 885th_cell
+	{
+		count = 60;
+		displayName = "[885th] DC-19 Blaster-Carbine Subsonic Cell";
+		displayNameShort = "Subsonic Cell For The DC-19 Blaster Carbine";
+		descriptionShort = "60 round capacity, subsonic blaster bolts.";
+		ammo = "885th_blasterbolt_Carbine_Subsonic";
+		tracersEvery = 1;
+		initSpeed = 295;
+		mass = 10;
+	};
+	class 885th_dc19_tracerless_cell : 885th_cell
+	{
+		count = 60;
+		displayName = "[885th] DC-19 Blaster-Carbine Tracerless Cell";
+		displayNameShort = "Tracerless Cell For The DC-19 Blaster Carbine";
+		descriptionShort = "60 round capacity, tracerless blaster bolts.";
+		ammo = "885th_blasterbolt_Carbine_Tracerless";
+		tracersEvery = 1;
+		initSpeed = 361;
+		mass = 10;
+	};
+	
+	//885th Carbinerifle Magazines
+	class 885th_dc15c_cell : 885th_cell
+	{
+		count = 40;
+		displayName = "[885th] DC15C Carbine-Rifle Medium Power Cell";
+		displayNameShort = "Medium Cell For The DC-15C Carbine-Rifle";
 		descriptionShort = "40 round capacity, standard blaster bolts.";
 		ammo = "885th_blasterbolt_CarbineRifle_Medium";
 		initSpeed=440;
 		tracersEvery = 1;
 		mass = 10;
 	};
-	class 885th_dc15c_ap_cell_blue : 885th_cell
+	class 885th_dc15c_ap_cell : 885th_cell
 	{
 		count = 35;
-		displayName = "[885th] DC15C AP Energy Cell";
-		displayNameShort = "DC15C AP";
+		displayName = "[885th] DC15C Armor-Piercing Cell";
+		displayNameShort = "Armor-Piercing Cell For The DC-15C Carbine-Rifle";
 		descriptionShort = "35 round capacity, armor piercing blaster bolts.";
 		ammo = "885th_blasterbolt_CarbineRifle_Medium_AP";
-		initSpeed=440;
+		initSpeed=468;
 		tracersEvery = 1;
 		mass = 15;
 	};
-	class 885th_dc15L_cell_blue : 885th_cell
+	
+	//885th Rifle Magazines
+	class 885th_dc15a_cell : 885th_cell
 	{
-		count = 200;
-		displayName = "[885th] DC15L Energy Cell";
-		displayNameShort = "DC15L Cell";
-		descriptionShort = "200 round capacity, standard blaster bolts.";
+		count = 100;
+		displayName = "[885th] DC15A Blaster-Rifle Standard Cell";
+		displayNameShort = "Std Cell For The DC-15A Blaster Rifle";
+		descriptionShort = "100 round capacity, standard blaster bolts.";
 		ammo = "885th_blasterbolt_Rifle_Standard";
 		initSpeed=472;
 		tracersEvery = 1;
-		mass = 32;
-	};
-	class 885th_dc15L_short_cell_blue : 885th_cell
-	{
-		count = 45;
-		displayName = "[885th] DC15L Mk.2 AP Short Mag";
-		displayNameShort = "DC15L AP Mag";
-		descriptionShort = "45 round capacity, armor piercing blaster bolts.";
-		ammo = "885th_blasterbolt_Rifle_AP";
-		initSpeed=495;
-		tracersEvery = 1;
 		mass = 10;
 	};
-	class 885th_dc15le_cell_blue : 885th_cell
+	class 885th_dc15a_hp_cell : 885th_cell
+	{
+		count = 50;
+		displayName = "[885th] DC15A Blaster-Rifle High-Power Cell";
+		displayNameShort = "High Power Cell For The DC-15A Blaster Rifle";
+		descriptionShort = "50 round capacity, high power blaster bolts.";
+		ammo = "885th_blasterbolt_Rifle_HP";
+		initSpeed=530;
+		tracersEvery = 1;
+		mass = 15;
+	};
+	class 885th_dc15a_ap_cell : 885th_cell
+	{
+		count = 35;
+		displayName = "[885th] DC15A Blaster-Rifle Armor-Piercing Cell";
+		displayNameShort = "Armor-Piercing Cell For The DC-15A Blaster-Rifle";
+		descriptionShort = "35 round capacity, armor piercing blaster bolts.";
+		ammo = "885th_blasterbolt_Rifle_AP";
+		initSpeed=545;
+		tracersEvery = 1;
+		mass = 15;
+	};
+	
+	//885th Heavy Rifle Magazines
+	class 885th_dc15le_cell : 885th_cell
 	{
 		count = 35;
 		displayName = "[885th] DC15LE Energy Cell";
@@ -5465,7 +5699,7 @@ class CfgMagazines
 		tracersEvery = 1;
 		mass = 10;
 	};
-	class 885th_dc15le_heavy_cell_blue : 885th_cell
+	class 885th_dc15le_heavy_cell : 885th_cell
 	{
 		count = 175;
 		displayName = "[885th] DC15LE Heavy Energy Cell";
@@ -5476,7 +5710,7 @@ class CfgMagazines
 		tracersEvery = 1;
 		mass = 20;
 	};
-	class 885th_dc15le_explos_cell_blue : 885th_cell
+	class 885th_dc15le_explos_cell : 885th_cell
 	{
 		count = 30;
 		displayName = "[885th] DC15LE Explosive Cell";
@@ -5487,7 +5721,44 @@ class CfgMagazines
 		tracersEvery = 1;
 		mass = 50;
 	};
-	class 885th_firepuncher_cell_blue : 885th_cell
+	
+	//885th LMG Magazines
+	class 885th_dc15l_cell: 885th_cell
+	{
+		count = 200;
+		displayName = "[885th] DC15L Energy Cell";
+		displayNameShort = "DC15L Cell";
+		descriptionShort = "200 round capacity, standard blaster bolts.";
+		ammo = "885th_blasterbolt_Rifle_Standard";
+		initSpeed=472;
+		tracersEvery = 1;
+		mass = 32;
+	};
+	class 885th_dc15lmkii_cell : 885th_cell
+	{
+		count = 200;
+		displayName = "[885th] DC15L MKII High Power Cell";
+		displayNameShort = "DC15L High Power Cell";
+		descriptionShort = "200 round capacity, high power blaster bolts.";
+		ammo = "885th_blasterbolt_Rifle_HP";
+		initSpeed=530;
+		tracersEvery = 1;
+		mass = 32;
+	};
+	class 885th_dc15lmkii_short_cell : 885th_cell
+	{
+		count = 45;
+		displayName = "[885th] DC15L MKII AP Cell";
+		displayNameShort = "DC15L MKII AP Cell";
+		descriptionShort = "45 round capacity, armor piercing blaster bolts.";
+		ammo = "885th_blasterbolt_Rifle_AP";
+		initSpeed=495;
+		tracersEvery = 1;
+		mass = 10;
+	};
+	
+	//885th DMR Magazines
+	class 885th_firepuncher_cell : 885th_cell
 	{
 		count = 30;
 		displayName = "[885th] Firepuncher Energy Cell";
@@ -5498,7 +5769,7 @@ class CfgMagazines
 		tracersEvery = 1;
 		mass = 12;
 	};
-	class 885th_firepuncher_ap_cell_blue : 885th_cell
+	class 885th_firepuncher_ap_cell : 885th_cell
 	{
 		count = 25;
 		displayName = "[885th] Firepuncher AP Energy Cell";
@@ -5509,18 +5780,22 @@ class CfgMagazines
 		tracersEvery = 1;
 		mass = 15;
 	};
-	class 885th_firespitter_cell_blue : 885th_cell
+	
+	//885th Snub-DMR Magazines
+	class 885th_firespitter_cell : 885th_cell
 	{
 		count = 40;
 		displayName = "[885th] Firespitter Energy Cell";
 		displayNameShort = "Firespitter Cell";
 		descriptionShort = "40 round capacity, modified blaster bolts.";
-		ammo = "";
-		initSpeed=;
+		ammo = "885th_blasterbolt_Rifle_DMR_Subsonic";
+		initSpeed=300;
 		tracersEvery = 1;
 		mass = 13;
 	};
-	class 885th_dc15xsniper_cell_blue : 885th_cell
+	
+	//885th Sniper Magazines
+	class 885th_dc15xsniper_cell: 885th_cell
 	{
 		count = 20;
 		displayName = "[885th] DC15X Sniper Cell";
@@ -5531,7 +5806,7 @@ class CfgMagazines
 		tracersEvery = 1;
 		mass = 20;
 	};
-	class 885th_dc15xsniper_ap_cell_blue : 885th_cell
+	class 885th_dc15xsniper_ap_cell : 885th_cell
 	{
 		count = 5;
 		displayName = "[885th] DC15X AP Sniper Cell";
@@ -5542,7 +5817,7 @@ class CfgMagazines
 		tracersEvery = 1;
 		mass = 25;
 	};
-	class 885th_dc15xsniper_over_cell_blue : 885th_cell
+	class 885th_dc15xsniper_over_cell : 885th_cell
 	{
 		count = 4;
 		displayName = "[885th] DC15X Overcharged Cell";
@@ -7896,7 +8171,7 @@ class CfgWeapons
 		reloadMagazineSound[] = {"\Indecisive_Armoury_Sounds\Blaster_reload_Vent.ogg", 1.5, 1, 100};
 		recoil = "885_recoil_dc15s";
 		magazines[] = {"885th_dc_cell_blue"};
-		magazineWell[] = {"DC_energycells"};
+		magazineWell[] = {""};
 		modes[] = {"Single", "FullAuto"};
 		fireLightDiffuse[] = {0.1, 0.25, 1};
 		drySound[] = {"\Indecisive_Armoury_Sounds\weapon_dry.ogg", 5, 1, 10};
@@ -18987,12 +19262,20 @@ class Extended_PreInit_EventHandlers
 	{
 		init = "call compile preprocessFileLineNumbers '\885_Weapons\XEH_preInit.sqf'";
 	};
+	class BPD_DC15SA_Pre
+	{
+		init = "call compile preprocessFileLineNumbers '\885_Weapons\DC15SA\XEH_preInit.sqf'";
+	};
 };
 class Extended_PostInit_EventHandlers
 {
 	class BPD_DC17M_Post
 	{
 		init = "call compile preprocessFileLineNumbers '\885_Weapons\XEH_postInit.sqf'";
+	};
+	class BPD_DC15SA_Post
+	{
+		init = "call compile preprocessFileLineNumbers '\885_Weapons\DC15SA\XEH_postInit.sqf'";
 	};
 };
 
@@ -19006,6 +19289,14 @@ class CfgFunctions
 			class switchDC17M { file = "885_Weapons\scripts\functions\fnc_switchDC17M.sqf"; };
 		};
 	};
+	class BPD_DC15SA
+	{
+		tag = "BPD";
+		class Weapons
+		{
+			class dc15saRecharge { file = "885_Weapons\DC15SA\scripts\functions\fnc_dc15saRecharge.sqf"; };
+		};
+	};
 };
 
 class CfgSounds
@@ -19015,6 +19306,12 @@ class CfgSounds
 	{
 		// Format: { "File_Path_In_PBO.ogg", Volume(db gain or scalar), Pitch, Max_Hearable_Distance }
 		sound[] = {"\885_sounds\DC17M_Switch.ogg", "db+15", 1.0, 35};
+		titles[] = {};
+	};
+	class BPD_DC15SA_ChargeFull
+	{
+		// Format: { "File_Path_In_PBO.ogg", Volume(db gain or scalar), Pitch, Max_Hearable_Distance }
+		sound[] = {"885_sounds\DC15SA_ChargeFull.ogg", "db+15", 1.0, 20};
 		titles[] = {};
 	};
 };
