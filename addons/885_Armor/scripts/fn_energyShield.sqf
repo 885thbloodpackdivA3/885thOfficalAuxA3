@@ -76,7 +76,7 @@ BPD_fnc_injectShieldMenus = {
             hint "Katarn Armor Systems: SHIELDS UP.";
         },
         [], 1.5, false, true, "",
-        "!(player getVariable ['AUX_Shield_Active', false]) && ([player] call BPD_fnc_shieldGearValid)"
+        "!(player getVariable ['AUX_Shield_Active', false]) && (missionNamespace getVariable ['AUX_885th_Shield_MasterEnabled', true]) && ([player] call BPD_fnc_shieldGearValid)"
     ];
 
     private _deactivateId = player addAction [
@@ -208,6 +208,13 @@ BPD_shieldEngine_pfhId = [{
     };
 
     if (isNull _unit || {!alive _unit}) exitWith {};
+
+    if !(missionNamespace getVariable ["AUX_885th_Shield_MasterEnabled", true]) exitWith {
+        if (_unit getVariable ["AUX_Shield_Active", false]) then {
+            _unit setVariable ["AUX_Shield_Active", false];
+        };
+        [0, 1, false, false] call BPD_fnc_shieldHUD_update;
+    };
 
     private _active = _unit getVariable ["AUX_Shield_Active", false];
     if (!_active) exitWith { [0, 1, false, false] call BPD_fnc_shieldHUD_update; };

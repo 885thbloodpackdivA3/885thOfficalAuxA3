@@ -98,3 +98,26 @@
     "885th_Kusak_Katarn_Helmet:885th_Kusak_Katarn_Uniform",
     true
 ] call CBA_fnc_addSetting;
+
+// NEW - master on/off switch for the ENTIRE shield system (menu, HUD, both
+// vanilla and ACE/KAT damage paths). Separate from AUX_885th_Shield_ACE_Enabled,
+// which only toggles the ACE-specific mitigation path. This one shuts the
+// whole feature off cleanly without touching any other setting.
+[
+    "AUX_885th_Shield_MasterEnabled", "CHECKBOX",
+    ["Enable Shield System", "Master on/off switch for the entire Katarn shield system - menu, HUD, and both damage paths. Turn off to fully disable without changing any other setting."],
+    "885th Katarn Shield",
+    true,
+    true
+] call CBA_fnc_addSetting;
+
+// NEW - shield HUD screen position. Personal display preference, so this is
+// a per-client setting (isForced = false), unlike everything else in this
+// file which is server-controlled. Each player picks their own placement.
+[
+    "AUX_885th_Shield_HUD_Position", "LIST",
+    ["Shield HUD Position", "Where the shield integrity bar appears on screen."],
+    "885th Katarn Shield",
+    [[0, 1, 2, 3, 4, 5], ["Top Center", "Bottom Center", "Top Left", "Top Right", "Bottom Left", "Bottom Right"], 0],
+    false
+] call CBA_fnc_addSetting;

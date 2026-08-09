@@ -18,7 +18,9 @@
 #define BAR_WIDTH 0.26
 #define SEGMENT_GAP 0.0015
 #define BAR_HEIGHT 0.014
-#define BAR_Y 0.815
+#define TOP_MARGIN 0.04
+#define BOTTOM_MARGIN 0.815
+#define SIDE_MARGIN 0.02
 
 BPD_shieldHUD_ctrls = [];
 
@@ -29,6 +31,33 @@ BPD_fnc_shieldHUD_destroy = {
     BPD_shieldHUD_ctrls = [];
 };
 
+/*
+    Position presets, driven by AUX_885th_Shield_HUD_Position:
+    0 = Top Center, 1 = Bottom Center, 2 = Top Left, 3 = Top Right,
+    4 = Bottom Left, 5 = Bottom Right
+    Returns [_barX, _barY, _labelOnTop] - _labelOnTop controls whether the
+    text label sits above or below the bar, so it never clips off-screen
+    regardless of which vertical edge the bar is anchored to.
+*/
+BPD_fnc_shieldHUD_getPosition = {
+    private _preset = missionNamespace getVariable ["AUX_885th_Shield_HUD_Position", 0];
+
+    private _centerX = safezoneX + (safezoneW * 0.5) - (BAR_WIDTH * 0.5);
+    private _leftX   = safezoneX + SIDE_MARGIN;
+    private _rightX  = safezoneX + safezoneW - BAR_WIDTH - SIDE_MARGIN;
+    private _topY    = safezoneY + (safezoneH * TOP_MARGIN);
+    private _bottomY = safezoneY + (safezoneH * BOTTOM_MARGIN);
+
+    switch (_preset) do {
+        case 1: { [_centerX, _bottomY, true] };  // Bottom Center
+        case 2: { [_leftX,   _topY,    false] }; // Top Left
+        case 3: { [_rightX,  _topY,    false] }; // Top Right
+        case 4: { [_leftX,   _bottomY, true] };  // Bottom Left
+        case 5: { [_rightX,  _bottomY, true] };  // Bottom Right
+        default { [_centerX, _topY,    false] }; // Top Center
+    };
+};
+
 BPD_fnc_shieldHUD_build = {
     [] call BPD_fnc_shieldHUD_destroy;
 
@@ -36,8 +65,7 @@ BPD_fnc_shieldHUD_build = {
     if (isNull _display) exitWith {};
 
     private _segW = (BAR_WIDTH - (SEGMENT_GAP * (SEGMENT_COUNT - 1))) / SEGMENT_COUNT;
-    private _barX = safezoneX + (safezoneW * 0.5) - (BAR_WIDTH * 0.5);
-    private _barY = safezoneY + (safezoneH * BAR_Y);
+    ([] call BPD_fnc_shieldHUD_getPosition) params ["_barX", "_barY", "_labelOnTop"];
 
     // backing plate, slightly larger than the segment row
     private _bg = _display ctrlCreate ["RscText", -1];
@@ -46,9 +74,10 @@ BPD_fnc_shieldHUD_build = {
     _bg ctrlCommit 0;
     BPD_shieldHUD_ctrls pushBack _bg;
 
-    // label above the bar - shows numeric readout / status text
+    // label sits above or below the bar depending on preset, so it never clips off-screen
+    private _labelY = if (_labelOnTop) then { _barY - 0.022 } else { _barY + BAR_HEIGHT + 0.006 };
     private _label = _display ctrlCreate ["RscText", -1];
-    _label ctrlSetPosition [_barX, _barY - 0.022, BAR_WIDTH, 0.016];
+    _label ctrlSetPosition [_barX, _labelY, BAR_WIDTH, 0.016];
     _label ctrlSetTextColor [0.55, 0.95, 1, 1];
     _label ctrlSetBackgroundColor [0, 0, 0, 0];
     _label ctrlSetText "";
