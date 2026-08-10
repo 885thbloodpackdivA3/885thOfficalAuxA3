@@ -25,7 +25,7 @@ if (isNull _unit || {!alive _unit}) exitWith {};
 
 // --- CONFIG: matches CfgWeapons/CfgMagazines in config_dc15sa_recharge_snippet.hpp ---
 private _weaponClass  = "885th_DC15SA_F";
-private _magClass     = "885th_dc15sa_pistol_mag_blue";
+private _magClass     = "885th_dc15sa_cell";
 private _maxAmmo      = 7;      // consecutive shots on full charge
 private _rechargeRate = 1;      // seconds per round recharged
 private _fullSoundClass = "BPD_DC15SA_ChargeFull"; // CfgSounds classname, see config_dc15sa_recharge_snippet.hpp
