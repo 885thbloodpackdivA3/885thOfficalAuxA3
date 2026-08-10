@@ -5634,6 +5634,8 @@ class CfgMagazines
 		displayNameShort = "Medium Cell For The DC-15C Carbine-Rifle";
 		descriptionShort = "40 round capacity, standard blaster bolts.";
 		ammo = "885th_blasterbolt_CarbineRifle_Medium";
+		modelSpecial = "\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
+		modelSpecialIsProxy = 1;
 		initSpeed=440;
 		tracersEvery = 1;
 		mass = 10;
@@ -5645,6 +5647,8 @@ class CfgMagazines
 		displayNameShort = "Armor-Piercing Cell For The DC-15C Carbine-Rifle";
 		descriptionShort = "35 round capacity, armor piercing blaster bolts.";
 		ammo = "885th_blasterbolt_CarbineRifle_Medium_AP";
+		modelSpecial = "\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
+		modelSpecialIsProxy = 1;
 		initSpeed=468;
 		tracersEvery = 1;
 		mass = 15;
@@ -5693,6 +5697,8 @@ class CfgMagazines
 		displayNameShort = "DC15LE Cell";
 		descriptionShort = "35 round capacity, standard blaster bolts.";
 		ammo = "885th_blasterbolt_Rifle_Medium";
+		modelSpecial = "\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
+		modelSpecialIsProxy = 1;
 		initSpeed=500;
 		tracersEvery = 1;
 		mass = 10;
@@ -5704,6 +5710,8 @@ class CfgMagazines
 		displayNameShort = "DC15LE Hvy Cell";
 		descriptionShort = "175 round capacity, heavy blaster bolts.";
 		ammo = "885th_blasterbolt_Rifle_Medium";
+		modelSpecial = "\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
+		modelSpecialIsProxy = 1;
 		initSpeed=500;
 		tracersEvery = 1;
 		mass = 20;
@@ -5715,6 +5723,8 @@ class CfgMagazines
 		displayNameShort = "DC15LE Low Yield";
 		descriptionShort = "30 round capacity, low yield explosive bolts. ADVISE CAUTION";
 		ammo = "885th_blasterbolt_DC15LE_Explosive";
+		modelSpecial = "\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
+		modelSpecialIsProxy = 1;
 		initSpeed=380;
 		tracersEvery = 1;
 		mass = 50;
@@ -5728,8 +5738,6 @@ class CfgMagazines
 		displayNameShort = "DC15L Cell";
 		descriptionShort = "200 round capacity, standard blaster bolts.";
 		ammo = "885th_blasterbolt_Rifle_Standard";
-		modelSpecial="\ShadowLegion_Weapons\data\DC15\DC15L\model\dc15L_Drummag.p3d";
-		modelSpecialIsProxy=1;
 		initSpeed=472;
 		tracersEvery = 1;
 		mass = 32;
@@ -5741,6 +5749,8 @@ class CfgMagazines
 		displayNameShort = "DC15L High Power Cell";
 		descriptionShort = "200 round capacity, high power blaster bolts.";
 		ammo = "885th_blasterbolt_Rifle_HP";
+		modelSpecial="\ShadowLegion_Weapons\data\DC15\DC15L\model\dc15L_Drummag.p3d";
+		modelSpecialIsProxy=1;
 		initSpeed=530;
 		tracersEvery = 1;
 		mass = 32;
@@ -5752,6 +5762,8 @@ class CfgMagazines
 		displayNameShort = "DC15L MKII AP Cell";
 		descriptionShort = "45 round capacity, armor piercing blaster bolts.";
 		ammo = "885th_blasterbolt_Rifle_AP";
+		modelSpecial = "\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
+		modelSpecialIsProxy = 1;
 		initSpeed=495;
 		tracersEvery = 1;
 		mass = 10;
@@ -6241,7 +6253,7 @@ class CfgMagazines
 		descriptionShort = "500 round capacity, Standard power blaster bolts.";
 		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
 		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
-		ammo = "885th_blasterbolt_Rifle_Standard";
+		ammo = "885th_blasterbolt_CarbineRifle_Medium";
 		initSpeed=410;
 		tracersEvery = 1;
 		mass = 25;
@@ -10631,10 +10643,15 @@ class CfgWeapons
 					"885th_Optic_Scope_WestarM5",
 					"ShadwCmpany_optic_Reflex_Mk1_Alt1",
 					"ShadwCmpany_optic_e11",
-					"3AS_Imp_Optic_2",
-					"3AS_Imp_Optic_3",
 					"ShadwCmpany_Hybrid_Magnifier_Holo",
-					"ShadwCmpany_Hybrid_Magnifier_Magnified"
+					"ShadwCmpany_Hybrid_Magnifier_Magnified",
+					"ShadwCmpany_optic_Reflex_Mk1_Alt2",
+					"ShadwCmpany_optic_Acog",
+					"ShdwCmpny_Optic_Scope_WestarM5",
+					"ShadwCmpany_Hybrid_Magnifier_Holo",
+					"ShadwCmpany_Hybrid_Magnifier_Magnified",
+					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
+					"ShadwCmpany_773_Hybrid_Magnifier_Magnified"
 				};
 			};
 			class PointerSlot: PointerSlot
@@ -11240,7 +11257,7 @@ class CfgWeapons
 		author="885th Bloodpack Division + SL Mod Dev Team";
 		model="\ShadowLegion_Weapons\data\DC15\DC15LE\Model\DC15_LE.p3d";
 		magazines[] = {
-			"885th_dc15le_cell","885th_dc15le_heavy_cell_blue","885th_dc15le_explos_cell"};
+			"885th_dc15le_heavy_cell","885th_dc15le_explos_cell"};
 		magazineWell[] = {};
 		handAnim[]=
 		{
@@ -14055,7 +14072,7 @@ class CfgWeapons
 			reloadTime=0.35;
 			Burst=1;
 			soundBurst="true";
-			dispersion=0;
+			dispersion=0.0060;
 			minRange=1;
 			minRangeProbab=0.5;
 			midRange=25;
@@ -14794,7 +14811,7 @@ class CfgWeapons
 	class 885th_Z6Para_Base_F: Rifle_Base_F
 	{
 		author="885th Bloodpack Division";
-		magazines[] = {"885th_battery_low_blue"};
+		magazines[] = {"885th_battery_para_low_blue"};
 		magazineWell[] = {};
 		magazineReloadSwitchPhase=0.5;
 		reloadAction="GestureReloadMX";

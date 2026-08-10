@@ -454,11 +454,8 @@ class CfgWeapons
 		ace_barrelTwist = 0;
 		scope = 2;
 		displayName = "[885th] DC-15C Rifle (GL)";
-		magazines[] = {"885th_dc_cell_blue"};
-		magazineWell[]=
-		{
-			"DC_energycells",
-		};
+		magazines[] = {"885th_dc15c_cell"};
+		magazineWell[]={};
 		fireLightDiffuse[]={0.1,0.25,1};
 		muzzles[] = {"this","GL_3GL_F"};
 		class GL_3GL_F : GL_3GL_F {};
@@ -466,7 +463,7 @@ class CfgWeapons
 			mass = 65;
 			class CowsSlot : CowsSlot
 			{
-				compatibleItems[] = {"3AS_optic_DC15C_F","3AS_Imp_Optic_E11","3AS_optic_DC15L_F"};
+				compatibleItems[] = {"3AS_optic_DC15C_F","3AS_Imp_Optic_E11","3AS_optic_DC15L_F","885th_Optic_Scope_WestarM5"};
 			};
 			class MuzzleSlot : MuzzleSlot
 			{
