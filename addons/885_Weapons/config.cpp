@@ -4064,7 +4064,7 @@ class CfgAmmo
 		hit=12;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		effectFly="3AS_PlasmaBolt_blue_Fly";
-		submunitionAmmo="885th_blasterbolt_CarbineRifle_Standard";
+		submunitionAmmo="885th_blasterbolt_CarbineRifle_Medium";
 		submunitionConeType[]=
 		{
 			"random",
@@ -4079,7 +4079,7 @@ class CfgAmmo
 		simulationStep=9.9999997e-005;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		effectFly="3AS_PlasmaBolt_blue_Fly";
-		submunitionAmmo="885th_blasterbolt_blue";
+		submunitionAmmo="885th_blasterbolt_Carbine_Standard";
 		submunitionConeType[]=
 		{
 			"poissondisc",
@@ -4588,7 +4588,7 @@ class CfgAmmo
 		cost=6;                                 
 		airLock=1;
 		typicalSpeed=850;                         
-		caliber=6.8;                                
+		caliber=4.2;                                
 		coefGravity=0.35;                             
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=1.5;
@@ -6312,30 +6312,18 @@ class CfgMagazines
 		lastRoundsTracer=5;
 		descriptionShort="Standard energy cartridge for the DC-15P Blaster.";
 	};
-	class 885th_battery_amp_blue : 885th_cell
-	{
-		count = 250;
-		displayName = "[885th] Amplified Blaster Battery";
-		displayNameShort = "Amp. Battery";
-		descriptionShort = "250 round capacity, amplified blaster bolts.";
-		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
-		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
-		ammo = "885th_blasterbolt_bAmp";
-		tracersEvery = 1;
-		mass = 35;
-	};
 	class 885th_battery_ampHR_blue : 885th_cell
 	{
 		count = 150;
 		displayName = "[885th] Heavy Precision Battery";
-		displayNameShort = "Hvy Amp. Battery";
-		descriptionShort = "150 round capacity, amplified blaster bolts.";
+		displayNameShort = "Marksman Battery";
+		descriptionShort = "150 round capacity, heavy precision blaster bolts.";
 		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
 		model = "\MRC\JLTS\weapons\DC15A\DC15A_mag.p3d";
-		ammo = "885th_blasterbolt_bAmp";
-		initSpeed=510;
+		ammo = "885th_blasterbolt_Amplified";
+		initSpeed=850;
 		tracersEvery = 1;
-		mass = 30;
+		mass = 35;
 	};
 	class 885th_battery_ampm41_green : 885th_cell
 	{
@@ -6449,7 +6437,7 @@ class CfgMagazines
 		lastRoundsTracer=25;
 		descriptionShort="Standard Energy Cell Used Only For The DC15BR.";
 	};
-	class 885th_Breaching_dc23_Cell_10Rnd_Blue: CA_Magazine
+	class 885th_DC23_breaching_cell: CA_Magazine
 	{
 		author="885th Bloodpack Division + Indecisive Armoury Team";
 		scope=2;
@@ -14010,7 +13998,7 @@ class CfgWeapons
 		picture="Indecisive_Armoury_Weapons_REPUBLIC\Data\DC23\DC23_ui.paa";
 		model="Indecisive_Armoury_Weapons_REPUBLIC\Data\DC23\Model\IDA_DC23.p3d";
 		handAnim[]={"OFP2_ManSkeleton","Indecisive_Armoury_Anims\Republic\DC23.rtm"};
-		magazines[]={"885th_Breaching_dc23_Cell_10Rnd_Blue"};
+		magazines[]={"885th_DC23_breaching_cell"};
 		magazineWell[]={};
 		muzzles[]={"this"};
 		modes[]={"Fire"};
@@ -14100,7 +14088,7 @@ class CfgWeapons
 			reloadTime=0.35;
 			Burst=1;
 			soundBurst="true";
-			dispersion=0.0020;
+			dispersion=0.0060;
 			minRange=1;
 			minRangeProbab=0.5;
 			midRange=25;
