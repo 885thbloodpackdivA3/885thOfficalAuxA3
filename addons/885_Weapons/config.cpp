@@ -4224,8 +4224,10 @@ class CfgAmmo
 		tracerScale=1.15;                                   
 		airFriction=-0.00028000001;                           
 		effectfly="IDA_BlasterBoltGlow_Blue_Fly";
-		ExplosionEffects="IDA_ImpactEffect";
 		craterEffects="ls_plasma_impact";
+		explosionSoundEffect="DefaultExplosion";
+		explosionEffects="3AS_ImpactPlasmaExplosion_Blue";
+		explosionEffectsRadius=0.25;
 		class CamShakeExplode
 		{
 			power=6;
@@ -4632,7 +4634,7 @@ class CfgAmmo
 		airFriction=-0.00013500001;
 		effectFly="IDA_BlasterBoltGlow_Yellow_Fly";
 		lightColor[]={1,1,0};
-		ExplosionEffects="Flame_Explosion";
+		ExplosionEffects="IDA_ImpactEffect";
 		craterEffects="ls_plasma_impact";
 		class CamShakeExplode
 		{
@@ -5674,12 +5676,12 @@ class CfgMagazines
 	class 885th_dc19_tracerless_cell : 885th_cell
 	{
 		count = 60;
-		displayName = "[885th] DC-19 Blaster-Carbine Tracerless Cell";
-		displayNameShort = "Tracerless Cell For The DC-19 Blaster Carbine";
-		descriptionShort = "60 round capacity, tracerless blaster bolts.";
+		displayName = "[885th] DC-19 Blaster-Carbine Subsonic Tracerless Cell";
+		displayNameShort = "Subsonic Tracerless Cell For The DC-19 Blaster Carbine";
+		descriptionShort = "60 round capacity, subsonic tracerless blaster bolts.";
 		ammo = "885th_blasterbolt_Carbine_Tracerless";
 		tracersEvery = 1;
-		initSpeed = 361;
+		initSpeed = 295;
 		mass = 10;
 	};
 	class 885th_elite_300_dc_cell: 885th_cell
@@ -6117,7 +6119,6 @@ class CfgMagazines
 		initSpeed=490;
 		tracersEvery=1;
 		lastRoundsTracer=10;
-		descriptionShort="High Powered charge cell used by the Valken 38X.";
 	};
 	class 885th_Valken38R_HighPower_Cell : 885th_cell
 	{
