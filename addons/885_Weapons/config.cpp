@@ -5989,7 +5989,165 @@ class CfgMagazines
 		tracersEvery = 1;
 		mass = 10;
 	};
-	
+
+	//885th Z6 Magazines
+	class 885th_battery_para_low_blue : 885th_cell
+	{
+		count = 500;
+		displayName = "[885th] Z6 LP Paratrooper Battery";
+		displayNameShort = "Z6 LP Battery";
+		descriptionShort = "500 round capacity, Standard power blaster bolts.";
+		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
+		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
+		ammo = "885th_blasterbolt_CarbineRifle_Medium";
+		initSpeed=410;
+		tracersEvery = 1;
+		mass = 25;
+	};
+	class 885th_battery_z6_high_blue : 885th_cell
+	{
+		count = 300;
+		displayName = "[885th] Z6 Blaster Battery";
+		displayNameShort = "Z6 Battery";
+		descriptionShort = "300 round capacity, high power blaster bolts.";
+		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
+		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
+		ammo = "885th_blasterbolt_Rifle_HP";
+		initSpeed=480;
+		tracersEvery = 1;
+		mass = 30;
+	};
+	class 885th_Z6_he_battery_Blue: 885th_cell
+	{
+		author="Chief33";
+		scope=2;
+		displayName="[885th]Z6 High Explosive Battery";
+		displayNameShort = "Z6 HE Battery";
+		descriptionShort="High Explosive battery used by the Z6 Rotary Cannon.";
+		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
+		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
+		ammo="885th_HE_blasterbolt_Blue_Z6";
+		count=3;
+		mass=15;
+		initSpeed=911;
+		tracersEvery=1;
+		lastRoundsTracer=2;
+	};
+
+	//885th Z8 Magazines
+	class 885th_Z8_Experimental_200rnd_battery_blue: 885th_cell
+	{
+		scope=2;
+		displayName="[885th] Z8 High Powered Battery";
+		ammo="885th_Z8_STD";
+		tracersEvery=1;
+		type=16;
+		count=200;
+		lastRoundsTracer=200;
+		descriptionShort="Z8 Experimental Blaster Cannon High Powered Battery";
+		mass=40;
+		initSpeed=660;
+	};
+	class 885th_Z8_Experimental_50rnd_HE_battery_blue: 885th_cell
+	{
+		scope=2;
+		displayName="[885th] Z8 High Powered HE Battery";
+		ammo="885th_HE_blasterbolt_blue_DC15LEMKII";
+		tracersEvery=1;
+		count=50;
+		lastRoundsTracer=200;
+		descriptionShort="Z8 Experimental Blaster Cannon High Powered Battery";
+		mass=40;
+		initSpeed=560;
+	};
+
+	//885th DX36C Magazines
+	class 885th_DX36C_battery_yellow_high : 885th_cell
+	{
+		count = 55;
+		displayName = "[885th] DX36C High-Powered Armor-Piercing Battery";
+		displayNameShort = "DX36C HP AP Battery";
+		descriptionShort = "55 round capacity, AP blaster bolts.";
+		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
+		picture = "\885_Weapons\DX36C\UI\DX36C_mag_ui.paa";
+		initSpeed=545;
+		ammo = "885th_blasterbolt_Rifle_HP_API";
+		tracersEvery = 1;
+		mass = 15;
+	};
+	class 885th_DX36C_he_battery_yellow: 885th_cell
+	{
+		author="Chief33";
+		scope=2;
+		displayName="[885th]DX36C High Explosive Battery";
+		displayNameShort = "DX36C HE Battery";
+		descriptionShort="High Explosive battery used by the DX36 Experimental Blaster.";
+		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
+		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
+		ammo="885th_HE_blasterbolt_yellow_DX36";
+		count=3;
+		mass=15;
+		initSpeed=911;
+		tracersEvery=1;
+		lastRoundsTracer=2;
+	};
+
+	//885th Westar M5 Magazines
+	class 885th_Westarm5mkii_Ap_cell_blue : 885th_cell
+	{
+		count = 85;
+		displayName = "[885th] Westar-M5 High Power Modified Cell";
+		displayNameShort = "HP-AP Cell";
+		descriptionShort = "85 round capacity, HP-AP specialized blaster cell";
+		ammo = "885th_blasterbolt_Rifle_HP_AP";
+		initSpeed=560;
+		tracersEvery = 1;
+		mass = 10;
+	};
+
+	//885th Valken38 Magazines
+	class 885th_Valken38A_HighPower_Cell: 885th_cell
+	{
+		scope=2;
+		displayName="[885th] Valken38A Heavy Cell";
+		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
+		ammo="885th_blasterbolt_HeavyRifle_Standard";
+		count=20;
+		mass=10;
+		initSpeed=490;
+		tracersEvery=1;
+		lastRoundsTracer=10;
+		descriptionShort="High Powered charge cell used by the Valken 38X.";
+	};
+	class 885th_Valken38R_HighPower_Cell : 885th_cell
+	{
+		count = 25;
+		displayName = "[885th] Valken38R HP Heavy Cell";
+		displayNameShort = "V-38R HP Cell";
+		descriptionShort = "25 round capacity, Heavy Rifle precision bolts.";
+		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
+		model = "\MRC\JLTS\weapons\DC15A\DC15A_mag.p3d";
+		ammo = "885th_blasterbolt_HeavyRifle_HP";
+		initSpeed=560;
+		tracersEvery = 1;
+		mass = 15;
+	};
+	class 885th_battery_ampHR_blue : 885th_cell
+	{
+		count = 150;
+		displayName = "[885th] Valken38X Heavy Precision Battery";
+		displayNameShort = "V-38X Hvy Battery";
+		descriptionShort = "150 round capacity, heavy precision blaster bolts.";
+		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
+		model = "\MRC\JLTS\weapons\DC15A\DC15A_mag.p3d";
+		ammo = "885th_blasterbolt_Amplified";
+		initSpeed=850;
+		tracersEvery = 1;
+		mass = 35;
+	};
+
+	//885th
+
 	//885th DMR Magazines
 	class 885th_firepuncher_cell : 885th_cell
 	{
@@ -6519,32 +6677,7 @@ class CfgMagazines
 		initSpeed=60;
 	};
 	// Republic Extras
-	class 885th_battery_para_low_blue : 885th_cell
-	{
-		count = 500;
-		displayName = "[885th] LP Paratrooper Battery";
-		displayNameShort = "LP Battery";
-		descriptionShort = "500 round capacity, Standard power blaster bolts.";
-		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
-		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
-		ammo = "885th_blasterbolt_CarbineRifle_Medium";
-		initSpeed=410;
-		tracersEvery = 1;
-		mass = 25;
-	};
-	class 885th_battery_z6_high_blue : 885th_cell
-	{
-		count = 300;
-		displayName = "[885th] Z6 Blaster Battery";
-		displayNameShort = "Z6 Battery";
-		descriptionShort = "300 round capacity, high power blaster bolts.";
-		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
-		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
-		ammo = "885th_blasterbolt_Rifle_HP";
-		initSpeed=480;
-		tracersEvery = 1;
-		mass = 30;
-	};
+	
 	class 885th_DC15P_High_Blue: 885th_cell
 	{
 		author="885th Bloodapack Division";
@@ -6558,32 +6691,6 @@ class CfgMagazines
 		lastRoundsTracer=5;
 		descriptionShort="Standard energy cartridge for the DC-15P Blaster.";
 	};
-	class 885th_battery_amp_blue : 885th_cell
-	{
-		count = 250;
-		displayName = "[885th] Amplified Blaster Battery";
-		displayNameShort = "Amp. Battery";
-		descriptionShort = "250 round capacity, amplified blaster bolts.";
-		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
-		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
-		ammo = "885th_blasterbolt_bAmp";
-		tracersEvery = 1;
-		mass = 35;
-
-	};
-	class 885th_battery_ampHR_blue : 885th_cell
-	{
-		count = 150;
-		displayName = "[885th] Heavy Precision Battery";
-		displayNameShort = "Marksman Battery";
-		descriptionShort = "150 round capacity, heavy precision blaster bolts.";
-		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		model = "\MRC\JLTS\weapons\DC15A\DC15A_mag.p3d";
-		ammo = "885th_blasterbolt_Amplified";
-		initSpeed=850;
-		tracersEvery = 1;
-		mass = 35;
-	};
 	class 885th_battery_ampm41_green : 885th_cell
 	{
 		count = 200;
@@ -6596,60 +6703,6 @@ class CfgMagazines
 		ammo = "885th_blasterbolt_Amp_m41_green";
 		tracersEvery = 1;
 		mass = 50;
-	};
-	class 885th_Z8_Experimental_200rnd_battery_blue: 885th_cell
-	{
-		scope=2;
-		displayName="[885th] Z8 High Powered Battery";
-		ammo="885th_Z8_STD";
-		tracersEvery=1;
-		type=16;
-		count=200;
-		lastRoundsTracer=200;
-		descriptionShort="Z8 Experimental Blaster Cannon High Powered Battery";
-		mass=40;
-		initSpeed=660;
-	};
-	class 885th_Z8_Experimental_50rnd_HE_battery_blue: 885th_cell
-	{
-		scope=2;
-		displayName="[885th] Z8 High Powered HE Battery";
-		ammo="885th_HE_blasterbolt_blue_DC15LEMKII";
-		tracersEvery=1;
-		count=50;
-		lastRoundsTracer=200;
-		descriptionShort="Z8 Experimental Blaster Cannon High Powered Battery";
-		mass=40;
-		initSpeed=560;
-	};
-	class 885th_DX36C_battery_yellow_high : 885th_cell
-	{
-		count = 55;
-		displayName = "[885th] DX36C High-Powered Armor-Piercing Battery";
-		displayNameShort = "DX36C HP AP Battery";
-		descriptionShort = "55 round capacity, AP blaster bolts.";
-		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
-		picture = "\885_Weapons\DX36C\UI\DX36C_mag_ui.paa";
-		initSpeed=545;
-		ammo = "885th_blasterbolt_Rifle_HP_API";
-		tracersEvery = 1;
-		mass = 15;
-	};
-	class 885th_DX36C_he_battery_yellow: 885th_cell
-	{
-		author="Chief33";
-		scope=2;
-		displayName="[885th]DX36C High Explosive Battery";
-		displayNameShort = "DX36C HE Battery";
-		descriptionShort="High Explosive battery used by the DX36 Experimental Blaster.";
-		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
-		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
-		ammo="885th_HE_blasterbolt_yellow_DX36";
-		count=3;
-		mass=15;
-		initSpeed=911;
-		tracersEvery=1;
-		lastRoundsTracer=2;
 	};
 	class 885th_Z6_he_battery_Blue: 885th_cell
 	{
@@ -6742,59 +6795,6 @@ class CfgMagazines
 		tracerEvery=1;
 		lastRoundsTracer=1;
 		descriptionShort="DX-23 Doomsday Slug Mag.";
-	};
-	class 885th_DC15LMKII_Extended_Cell_blue: CA_Magazine
-	{
-		author="Antauri + 885th Bloodpack Division";
-		scope=2;
-		displayName="[885th] DC15L MK II 200rnd Extended Cell";
-		picture="\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		modelSpecial="\ShadowLegion_Weapons\data\DC15\DC15L\model\dc15L_Drummag.p3d";
-		modelSpecialIsProxy=1;
-		ammo="";
-		count=200;
-		mass=32;
-		initSpeed=490;
-		tracersEvery=1;
-		lastRoundsTracer=200;
-		descriptionShort="DC-15L MKII Extended Cell.";
-	};
-	class 885th_Valken38A_HighPower_Cell: 885th_cell
-	{
-		scope=2;
-		displayName="[885th] Valken38A Heavy Cell";
-		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		ammo="885th_blasterbolt_HeavyRifle_Standard";
-		count=20;
-		mass=10;
-		initSpeed=490;
-		tracersEvery=1;
-		lastRoundsTracer=10;
-		descriptionShort="High Powered charge cell used by the Valken 38X.";
-	};
-	class 885th_Valken38R_HighPower_Cell : 885th_cell
-	{
-		count = 25;
-		displayName = "[885th] Valken38R HP Heavy Cell";
-		displayNameShort = "V-38R HP Cell";
-		descriptionShort = "25 round capacity, Heavy Rifle precision bolts.";
-		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		model = "\MRC\JLTS\weapons\DC15A\DC15A_mag.p3d";
-		ammo = "885th_blasterbolt_HeavyRifle_HP";
-		initSpeed=560;
-		tracersEvery = 1;
-		mass = 15;
-	};
-	class 885th_Westarm5mkii_Ap_cell_blue : 885th_cell
-	{
-		count = 85;
-		displayName = "[885th] Westar-M5 High Power Modified Cell";
-		displayNameShort = "HP-AP Cell";
-		descriptionShort = "85 round capacity, HP-AP specialized blaster cell";
-		ammo = "885th_blasterbolt_Rifle_HP_AP";
-		initSpeed=560;
-		tracersEvery = 1;
-		mass = 10;
 	};
 	class 885th_coil_blue : 885th_cell
 	{
