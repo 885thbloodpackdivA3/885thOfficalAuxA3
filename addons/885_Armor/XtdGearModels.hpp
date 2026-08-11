@@ -22,23 +22,6 @@ class XtdGearModels
 				};
 			};
 		};
-		class Trooper_RTO_Helmets
-		{
-			options[]=
-			{
-				"rank"
-			};
-			label="Phase I RTO Trooper Helmets";
-			class rank
-			{
-				label="Rank";
-				values[]=
-				{
-					"RTO",
-					"Advisor"
-				};
-			};
-		};
         class Trooper_BARC_Helmets
 		{
 			options[]=
@@ -184,7 +167,6 @@ class XtdGearModels
                 {
 					"Ares",
                     "Bandit",
-					"Bleach",
 					"Bright",
 					"Bullets",
 					"Charge",
@@ -203,7 +185,6 @@ class XtdGearModels
 					"Mayday",
 					"Maverick",
 					"ONI",
-					"Outcast",
 					"Owl",
 					"Oxlong",
 					"Phantom",
@@ -213,7 +194,6 @@ class XtdGearModels
 					"Screwball",
 					"Scorch",
 					"Sytha",
-					"Syxer",
 					"Smith",
 					"Sunshine",
 					"Stormer",
@@ -441,18 +421,15 @@ class XtdGearModels
 				values[]=
 				{
 					"Bandit",
-					"Bleach",
 					"Crimz",
 					"Crow",
 					"Nightfall",
 					"ONI",
-					"Outcast",
 					"Phantom",
 					"Rios",
 					"Screwball",
 					"Scorch",
 					"Smith",
-					"Syxer",
 					"Thunder",
 					"Titan"
 				};
@@ -563,10 +540,8 @@ class XtdGearModels
 				{	
 					"Ares",
 					"Bandit",
-					"Bleach",
 					"Crimz",
 					"Kit",
-					"Outcast",
 					"Mayday",
 					"Nightfall",
 					"ONI",
@@ -574,7 +549,6 @@ class XtdGearModels
 					"Screwball",
 					"Stormer",
 					"Sytha",
-					"Syxer",
 					"Thunder"
 				};
 			};
@@ -650,12 +624,9 @@ class XtdGearModels
 				{	
 					"Ares",
 					"Bandit",
-					"Bleach",
 					"Charge",
 					"Nightfall",
-					"Outcast",
 					"Rios",
-					"Syxer",
 					"Scorch",
 					"Thunder"
 				};
@@ -725,17 +696,6 @@ class XtdGearInfos
 			 model="Trooper_Pilot_Fighter_Helmets";
 			rank="Officer";
 		};
-		//RTO Helmets
-        class 885th_Vornskr_P1_RTO_Helm
-        {
-            model="Trooper_RTO_Helmets";
-			rank="RTO";
-        };
-        class 885th_Vornskr_P1_Advisor_Helm
-        {
-            model="Trooper_RTO_Helmets";
-			rank="Advisor";
-        };
 		//Najax ARF Helmets
 		class 885th_Najax_ARF_P2_Recruit_Helm
 		{
@@ -917,13 +877,6 @@ class XtdGearInfos
 			variant="BARC";
 			camo="BARC";
 		};
-		class  885th_Bleach_P2_Helmet
-		{
-			model="Trooper_Custom_Helmets";
-			rank="Bleach";
-			variant="P2";
-			camo="P2";
-		};
 		class 885th_Bright_P2_Helmet
 		{
 			model="Trooper_Custom_Helmets";
@@ -1057,13 +1010,6 @@ class XtdGearInfos
 			variant="P2";
 			camo="P2";
 		};
-		class 885th_Outcast_RTO_Helm
-		{
-			model="Trooper_Custom_Helmets";
-			rank="Outcast";
-			variant="P1";
-			camo="P1";
-		};
 		class 885th_Owl_Pilot_Helm
 		{
 			model="Trooper_Custom_Helmets";
@@ -1126,13 +1072,6 @@ class XtdGearInfos
 			rank="Sytha";
 			variant="BARC";
 			camo="BARC";
-		};
-		class 885th_Syxer_P2_Helm
-		{
-			model="Trooper_Custom_Helmets";
-			rank="Syxer";
-			variant="P2";
-			camo="P2";
 		};
 		class 885th_Smith_EngineerV2_Helm
 		{
@@ -1380,11 +1319,6 @@ class XtdGearInfos
 			model="Custom_Uniforms";
 			rank="Bandit";
 		};
-		class 885th_Bleach_Uniform
-		{
-			model="Custom_Uniforms";
-			rank="Bleach";
-		};
 		class 885th_Crimz_Uniform
 		{
 			model="Custom_Uniforms";
@@ -1410,11 +1344,6 @@ class XtdGearInfos
 			model="Custom_Uniforms";
 			rank="ONI";
 		};
-		class 885th_Outcast_Uniform
-		{
-			model="Custom_Uniforms";
-			rank="Outcast";
-		};
 		class 885th_Phantom_Katarn_Uniform
 		{
 			model="Custom_Uniforms";
@@ -1439,11 +1368,6 @@ class XtdGearInfos
 		{
 			model="Custom_Uniforms";
 			rank="Smith";
-		};
-		class 885th_Syxer_Uniform
-		{
-			model="Custom_Uniforms";
-			rank="Syxer";
 		};
 		class 885th_Thunder_Uniform
 		{
@@ -1626,11 +1550,6 @@ class XtdGearInfos
 			model="Custom_Vest";
 			vest="Bandit";
 		};
-		class 885th_Cust_VestV4_Rig_Bleach
-		{
-			model="Custom_Vest";
-			vest="Bleach";
-		};
 		class 885th_Cust_VestV4_Rig_Crimz
 		{
 			model="Custom_Vest";
@@ -1640,11 +1559,6 @@ class XtdGearInfos
 		{
 			model="Custom_Vest";
 			vest="Kit";
-		};
-		class 885th_Cust_VestV4_Rig_Outcast
-		{
-			model="Custom_Vest";
-			vest="Outcast";
 		};
 		class 885th_Cust_VestV4_Rig_Mayday
 		{
@@ -1680,11 +1594,6 @@ class XtdGearInfos
 		{
 			model="Custom_Vest";
 			vest="Sytha";
-		};
-		class 885th_Cust_VestV4_Rig_Syxer
-		{
-			model="Custom_Vest";
-			vest="Syxer";
 		};
 		class 885th_Cust_VestV4_Rig_Thunder
 		{
@@ -1827,11 +1736,6 @@ class XtdGearInfos
 			model="Custom_Backpacks";
 			backpack="Bandit";
 		};
-		class 885th_Bleach_Surgeon_Backpack
-		{
-			model="Custom_Backpacks";
-			backpack="Bleach";
-		};
 		class 885th_3as_Charge_Backpack
 		{
 			model="Custom_Backpacks";
@@ -1842,20 +1746,10 @@ class XtdGearInfos
 			model="Custom_Backpacks";
 			backpack="Nightfall";
 		};
-		class 885th_Outcast_JTAC_Backpack
-		{
-			model="Custom_Backpacks";
-			backpack="Outcast";
-		};
 		class 885th_Cust_RTO_Buttbag2_Rios
 		{
 			model="Custom_Backpacks";
 			backpack="Rios";
-		};
-		class 885th_Cust_Breach_Backpack_Syxer
-		{
-			model="Custom_Backpacks";
-			backpack="Syxer";
 		};
 		class 885th_Scorch_Kusak_Backpack
 		{
