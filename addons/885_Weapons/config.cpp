@@ -13269,7 +13269,54 @@ class CfgWeapons
 		flash="gunfire";
 		flashSize=3;
 		muzzles[] = {"this"};
-		modes[]={"FullAuto"};
+		modes[]={"Single","FullAuto"};
+		class Single: Mode_SemiAuto
+		{
+			sounds[]=
+			{
+				"StandardSound",
+				"SilencedSound"
+			};
+			class BaseSoundModeType
+			{
+				weaponSoundEffect="";
+				closure1[]={};
+				closure2[]={};
+				soundClosure[]={};
+			};
+			class StandardSound : BaseSoundModeType
+			{
+				weaponSoundEffect = "";
+				begin1[]={"885_Sounds\Valken38a.ogg",1.25, 1, 1800};
+				begin2[] = {"885_Sounds\Valken38a.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Sounds\Valken38a.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Sounds\Valken38a.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Sounds\Valken38a.ogg", 1.25, 0.995, 1800};
+				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
+				beginwater1[] = {"885_Sounds\Valken38a.ogg", 1, 1, 400};
+				soundBeginWater[] = {"beginwater1", 1};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				begin1[]={"ShadowLegion_Weapons\data\DC19Surpressed.ogg",2,1,300};
+				begin2[]={"ShadowLegion_Weapons\data\DC19Surpressed.ogg",2,1,300};
+				begin3[]={"ShadowLegion_Weapons\data\DC19Surpressed.ogg",2,1,300};
+				begin4[]={"ShadowLegion_Weapons\data\DC19Surpressed.ogg",2,1,300};
+				begin5[]={"ShadowLegion_Weapons\data\DC19Surpressed.ogg",2,1,300};
+				begin6[]={"ShadowLegion_Weapons\data\DC19Surpressed.ogg",2,1,300};
+				soundBegin[]={"begin1",0.5,"begin2",0.5,"begin3",0.5,"begin4",0.5,"begin5",0.5,"begin6",0.5};
+				beginwater1[]={"\ShadowLegion_Weapons\data\Underwater_Firing.ogg",1,1,200};
+				soundBeginWater[]={"beginwater1",0.5};
+			}
+			reloadTime=0.17141999;
+			dispersion=0.00025000001;
+			minRange=2;
+			minRangeProbab=0.5;
+			midRange=100;
+			midRangeProbab=0.69999999;
+			maxRange=500;
+			maxRangeProbab=0.30000001;
+		};
 		class FullAuto: Mode_FullAuto
 		{
 			sounds[]={"StandardSound","SilencedSound"};
