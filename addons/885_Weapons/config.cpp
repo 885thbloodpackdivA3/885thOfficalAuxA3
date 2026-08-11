@@ -134,9 +134,9 @@ class CfgPatches
 			"885th_cell_green_pistol",
 			"885th_cell_green_high",
 			"885th_DW32S_cell",
-			"885th_60Rnd_mag_DC17M",
-			"885th_5Rnd_mag_DC17M_Sniper",
-			"885th_AAD_DC17M",
+			"885th_DC17M_cell",
+			"885th_DC17M_cell_sniper",
+			"885th_DC17M_aad",
 			"885th_1rnd_40mm_HE_mag",
 			"885th_1rnd_40mm_AP_mag",
 			"885th_1rnd_40mm_whitesmoke_mag",
@@ -5769,7 +5769,53 @@ class CfgMagazines
 		mass = 15;
 	};
 	
-	//885th Scattershot Ammo
+	//885th DC17M Magazines
+	class 885th_DC17M_cell: CA_Magazine
+	{
+		author="Antauri + 885th Bloodpack Divison";
+		scope=2;
+		displayName="[885th] DC17M 60 Round Mag ";
+		picture="\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
+		ammo="885th_blasterbolt_Rifle_Subsonic";
+		count=60;
+		mass=6;
+		initSpeed=290;
+		tracersEvery=1;
+		lastRoundsTracer=50;
+		descriptionShort="DC17m Blaster Magazine.";
+	};
+	class 885th_DC17M_cell_sniper: CA_Magazine
+	{
+		author="Antauri + 885th Bloodpack Divison";
+		scope=2;
+		displayName="[885th] DC17M Sniper 5rnd HighPowered Mag";
+		picture="\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
+		ammo="885th_blasterbolt_DMR";
+		count=5;
+		mass=8;
+		initSpeed=639;
+		tracersEvery=1;
+		lastRoundsTracer=5;
+		descriptionShort="DC17m Sniper Blaster Magazine.";
+	};
+	class 885th_DC17M_aad: CA_Magazine
+	{
+		author="Antauri + 885th Bloodpack Divison";
+		scope=2;
+		displayName="[885th] DC17M T-31 Anti-Armor Det";
+		displayNameShort = " T-31 AAD";
+		descriptionShort = "1 round capacity, High-Powered thermal detonator.";
+		picture = "\MRC\JLTS\weapons\EPL2\data\ui\EPL2_mag_ui_ca.paa";
+		initSpeed=350;
+		count=1;
+		tracersEvery=1;
+		lastRoundsTracer=1;
+		ammo="885th_thermalshell_high";
+		type=16;
+		mass=8;
+	};
+	
+	//885th Scattershot Magazines
 	class 885th_dp23_scattershot_cell: 885th_cell
 	{
 		scope=2;
@@ -5932,6 +5978,17 @@ class CfgMagazines
 		tracersEvery = 1;
 		mass = 10;
 	};
+	class 885th_t15_cell: 885th_cell
+	{
+		count = 200;
+		displayName = "[885th] T-15 Light Infantry Repeater Cell";
+		displayNameShort = "T-15LIR Cell";
+		descriptionShort = "100 round capacity, standard blaster bolts.";
+		ammo = "885th_blasterbolt_Rifle_Medium";
+		initSpeed=445;
+		tracersEvery = 1;
+		mass = 10;
+	};
 	
 	//885th DMR Magazines
 	class 885th_firepuncher_cell : 885th_cell
@@ -5955,6 +6012,24 @@ class CfgMagazines
 		initSpeed=635;
 		tracersEvery = 1;
 		mass = 15;
+	};
+	class 885th_DW32S_cell: CA_Magazine
+	{
+		JLTS_hasElectronics=1;
+		JLTS_hasEMPProtection=1;
+		author="885th Bloodpack Division + MrClock";
+		scope=2;
+		modelSpecial="";
+		modelSpecialIsProxy=0;
+		picture="\MRC\JLTS\weapons\DW32S\data\ui\DW32S_mag_ui_ca.paa";
+		model="\MRC\JLTS\weapons\DW32S\DW32S_mag.p3d";
+		count=55;
+		mass=20;
+		initSpeed=611;
+		displayName="[885th] DW32S Cell";
+		descriptionShort="DW-32S Cell.";
+		ammo="885th_blasterbolt_Rifle_DMR_Balanced";
+		tracersEvery=1;
 	};
 	
 	//885th Snub-DMR Magazines
@@ -6684,24 +6759,6 @@ class CfgMagazines
 		lastRoundsTracer=200;
 		descriptionShort="DC-15L MKII Extended Cell.";
 	};
-	class 885th_DW32S_cell: CA_Magazine
-	{
-		JLTS_hasElectronics=1;
-		JLTS_hasEMPProtection=1;
-		author="885th Bloodpack Division + MrClock";
-		scope=2;
-		modelSpecial="";
-		modelSpecialIsProxy=0;
-		picture="\MRC\JLTS\weapons\DW32S\data\ui\DW32S_mag_ui_ca.paa";
-		model="\MRC\JLTS\weapons\DW32S\DW32S_mag.p3d";
-		count=55;
-		mass=20;
-		initSpeed=611;
-		displayName="[885th] DW32S Low-Power Cell";
-		descriptionShort="DW-32S Low Power Cell.";
-		ammo="885th_blasterbolt_Rifle_DMR_Balanced";
-		tracersEvery=1;
-	};
 	class 885th_Valken38A_HighPower_Cell: 885th_cell
 	{
 		scope=2;
@@ -6896,50 +6953,6 @@ class CfgMagazines
 		tracersEvery = 1;
 		mass = 10;
 	};
-	class 885th_60Rnd_mag_DC17M: CA_Magazine
-	{
-		author="Antauri + 885th Bloodpack Divison";
-		scope=2;
-		displayName="[885th] DC17M 60 Round Mag ";
-		picture="\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		ammo="885th_blasterbolt_bApex";
-		count=60;
-		mass=8;
-		initSpeed=417;
-		tracersEvery=1;
-		lastRoundsTracer=50;
-		descriptionShort="DC17m Blaster Magazine.";
-	};
-	class 885th_5Rnd_mag_DC17M_Sniper: CA_Magazine
-	{
-		author="Antauri + 885th Bloodpack Divison";
-		scope=2;
-		displayName="[885th] DC17M Sniper 5rnd HighPowered Mag";
-		picture="\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		ammo="885th_blasterbolt_Sniper_Standard";
-		count=5;
-		mass=8;
-		initSpeed=872;
-		tracersEvery=1;
-		lastRoundsTracer=5;
-		descriptionShort="DC17m Sniper Blaster Magazine..";
-	};
-	class 885th_AAD_DC17M: CA_Magazine
-	{
-		author="Antauri + 885th Bloodpack Divison";
-		scope=2;
-		displayName="[885th] DC17M T-31 Anti-Armor Det";
-		displayNameShort = " T-31 AAD";
-		descriptionShort = "1 round capacity, High-Powered thermal detonator.";
-		picture = "\MRC\JLTS\weapons\EPL2\data\ui\EPL2_mag_ui_ca.paa";
-		initSpeed=350;
-		count=1;
-		tracersEvery=1;
-		lastRoundsTracer=1;
-		ammo="885th_thermalshell_high";
-		type=16;
-		mass=8;
-	};
 	class 885th_mando_cell_yellow_amp : 885th_mando_cell_yellow
 	{
 		count = 20;
@@ -7022,9 +7035,9 @@ class CfgMagazineWells
 	{
 		885th_Magazines[]=
 		{
-			"885th_60Rnd_mag_DC17M",
-			"885th_5Rnd_mag_DC17M_Sniper",
-			"885th_AAD_DC17M"
+			"885th_DC17M_cell",
+			"885th_DC17M_cell_sniper",
+			"885th_DC17M_aad"
 		};
 	};
 	class 885th_UGL_1Rnd_MagWell
@@ -12656,10 +12669,9 @@ class CfgWeapons
 		handAnim[] = {"OFP2_ManSkeleton", "\MRC\JLTS\weapons\DW32S\anims\DW32S_handanim.rtm"};
 		ace_clearJamAction = "";
 		reloadMagazineSound[] = {"885_Sounds\DW32SReload.ogg", 1.5, 1, 100};
-		recoil = "885_recoil_DC15A";
 		magazines[] = {"885th_DW32S_cell"};
 		magazineWell[] = {};
-		modes[] = {"Single","Burst"};
+		modes[] = {"Single"};
 		fireLightDiffuse[] = {0.1, 0.25, 1};
 		drySound[] = {"MRC\JLTS\weapons\Core\sounds\weapon_dry.wss", 5, 1, 10};
 		muzzles[] = {"this"};
@@ -12685,57 +12697,16 @@ class CfgWeapons
 				beginwater1[] = {"885_Sounds\DW32S.ogg", 1, 1, 400};
 				soundBeginWater[] = {"beginwater1", 1};
 			};
-			reloadTime = 0.20;
-			dispersion = 0.00060;
-			minRange = 0;
-			minRangeProbab = 0.8;
-			midRange = 1000;
-			midRangeProbab = 1.0;
-			maxRange = 1500;
-			maxRangeProbab = 0.8;
-		};
-		class Burst: Mode_Burst
-		{
-			sounds[] = {"StandardSound"};
-			class BaseSoundModeType
-			{
-				weaponSoundEffect = "";
-				closure1[] = {};
-				closure2[] = {};
-				soundClosure[] = {};
-			};
-			class StandardSound : BaseSoundModeType
-			{
-				weaponSoundEffect = "";
-				begin1[]={"885_Sounds\DW32S.ogg",1.25, 1, 1800};
-				begin2[] = {"885_Sounds\DW32S.ogg", 1.25, 1.015, 1800};
-				begin3[] = {"885_Sounds\DW32S.ogg", 1.25, 0.985, 1800};
-				begin4[] = {"885_Sounds\DW32S.ogg", 1.25, 1.01, 1800};
-				begin5[] = {"885_Sounds\DW32S.ogg", 1.25, 0.995, 1800};
-				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
-				beginwater1[] = {"885_Sounds\DW32S.ogg", 1, 1, 400};
-				soundBeginWater[] = {"beginwater1", 1};
-			};
-			burst = 3;
-			rate = 0.10;
-			textureType = "burst";
-			reloadTime = 0.15;
-			dispersion = 0.00025;
-			flash = "gunfire";
-			flashSize = 0.1;
-			soundBurst = 0;
-			soundContinuous = 0;
-			maxRange = 2000;
-			maxRangeProbab = 0.3;
-			midRange = 1000;
-			midRangeProbab = 0.7;
-			minRange = 200;
-			minRangeProbab = 0.5;
-			aiDispersionCoefX = 1.4;
-			aiDispersionCoefY = 1.7;
-			aiRateOfFire = 2;
-			aiRateOfFireDispersion = 1;
-			aiRateOfFireDistance = 500;
+			reloadTime=0.1;
+			recoil="recoil_single_mx";
+			recoilProne="recoil_single_prone_mx";
+			dispersion=0.00086999999;
+			minRange=2;
+			minRangeProbab=0.5;
+			midRange=200;
+			midRangeProbab=0.69999999;
+			maxRange=400;
+			maxRangeProbab=0.30000001;
 		};
 		modelOptics = "\ShadowLegion_Weapons\data\Acc\Reticles\model\Scope_Blue_1";
 		weaponInfoType = "RscWeaponZeroing";
@@ -15320,7 +15291,7 @@ class CfgWeapons
 		reloadAction="GestureReload_IDA_Reload_Blaster";
 		reloadMagazineSound[]={"\Indecisive_Armoury_Sounds\Blaster_reload_Vent.ogg",5,1,100};
 		recoil="IDA_recoil_HeavyRepeatingBlaster";
-		magazines[] = {"885th_battery_high_blue"};
+		magazines[] = {"885th_t15_cell"};
 		magazineWell[] = {};
 		magazineReloadTime = 0.55;
 		fireLightDiffuse[] = {0.1, 0.25, 1};
@@ -19075,10 +19046,9 @@ class CfgWeapons
 			"OFP2_ManSkeleton",
 			"\ShadowLegion_Weapons\data\DC17M\Anim\ReloadBASE_DC17m.rtm"
 		};
-		initSpeed=472;
 		magazines[]=
 		{
-			"885th_60Rnd_mag_DC17M"
+			"885th_DC17M_cell"
 		};
 		modes[]=
 		{
@@ -19248,7 +19218,7 @@ class CfgWeapons
 		initSpeed=472;
 		magazines[]=
 		{
-			"885th_5Rnd_mag_DC17M_Sniper"
+			"885th_DC17M_cell_sniper"
 		};
 		modes[]=
 		{
@@ -19365,7 +19335,7 @@ class CfgWeapons
 		initSpeed=472;
 		magazines[]=
 		{
-			"885th_AAD_DC17M"
+			"885th_DC17M_aad"
 		};
 		muzzles[]=
 		{
