@@ -12728,37 +12728,6 @@ class CfgVehicles
 		tf_subtype="digital_lr";
 		mass=22;
 	};
-	class 885th_Cust_Breach_Backpack_Syxer: B_AssaultPack_blk
-	{
-		author="Antauri + 885thBPD";
-		scope=2;
-		picture="\MRC\JLTS\characters\CloneArmor\data\ui\Clone_backpack_ui_ca.paa";
-		displayName="[885th] Syxer Breacher Backpack";
-		model="\ShadowLegion_Aux\Data\AssaultBackpacks\model\Assalt_BAG_RTO_V2.p3d";
-		hiddenSelections[]=
-		{
-			"camo",
-			"camo1"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Syxer\Syxer_breacher_backpack_co.paa",
-			"885_Armor\885_Armor\Customs\Syxer\Syxer_breacher_backpack_Screen_co.paa"
-		};
-		hiddenSelectionsMaterials[]=
-		{
-			"\ShadowLegion_Aux\Data\AssaultBackpacks\Textures\Standard\Backpack.rvmat",
-			"\ShadowLegion_Aux\Data\AssaultBackpacks\Textures\Standard\Screen.rvmat"
-		};
-		maximumload=400;
-		tf_dialog="JLTS_clone_lr_programmer_radio_dialog";
-		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
-		tf_encryptionCode="tf_west_radio_code";
-		tf_hasLRradio=1;
-		tf_range=40000;
-		tf_subtype="digital_lr";
-		mass=22;
-	};
 	class 885th_Cust_RTO_Buttbag2_Ares: B_AssaultPack_blk
 	{
 		author="Antauri + 885thBPD";
@@ -13488,19 +13457,6 @@ class CfgVehicles
 		hiddenSelectionsTextures[] = {
 			"\885_Armor\885_Armor\Customs\Nightfall\Nightfall_Armor_Upper_co.paa",
 			"\885_Armor\885_Armor\Customs\Nightfall\Nightfall_Armor_Lower_co.paa"
-		};
-	};
-	
-	class 885th_Syxer_Trooper : 885th_Vornskr_Trooper {
-		scope=1;
-		scopeCurator=1;
-		scopeArsenal=2;
-		side=1;
-		uniformClass = "885th_Syxer_Uniform";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {
-			"\885_Armor\885_Armor\Customs\Syxer\Syxer_Armor_Upper_co.paa",
-			"\885_Armor\885_Armor\Customs\Syxer\Syxer_Armor_Lower_co.paa"
 		};
 	};
 	
