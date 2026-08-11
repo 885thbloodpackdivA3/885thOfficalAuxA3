@@ -5717,6 +5717,16 @@ class CfgMagazines
 		initSpeed = 361;
 		mass = 10;
 	};
+	class 885th_elite_300_dc_cell: 885th_cell
+	{
+		count = 60;
+		displayName = "[885th] DC15S Elite Cell";
+		displayNameShort = "Elite Cell";
+		descriptionShort = "60 round cells, modified blaster bolts";
+		ammo = "885th_blasterbolt_blue_dc15mod_300AAC";
+		tracerEvery = 1;
+		initSpeed = 310;
+	};
 	
 	//885th Carbinerifle Magazines
 	class 885th_dc15c_cell : 885th_cell
@@ -6048,16 +6058,6 @@ class CfgMagazines
 		tracersEvery = 1;
 		initSpeed = 2000;
 		mass = 20;
-	};
-	class 885th_elite_300_dc_cell: 885th_dc_cell_blue
-	{
-		count = 60;
-		displayName = "[885th] DC15S Elite Cell";
-		displayNameShort = "Elite Cell";
-		descriptionShort = "60 round cells, modified blaster bolts";
-		ammo = "885th_blasterbolt_blue_dc15mod_300AAC";
-		tracerEvery = 1;
-		initSpeed = 310;
 	};
 	// Base GL Mags
 	class 885th_mag_40mm_Base: CA_Magazine
