@@ -4111,7 +4111,6 @@ class CfgAmmo
 		submunitionConeAngle=0.34999999;
 		triggerTime=9.9999997e-010;
 	};
-<<<<<<< Updated upstream
 	class 885th_Breaching_Scattershot_blue: 885th_blasterbolt
 	{	
 		hit=12;
@@ -4128,8 +4127,6 @@ class CfgAmmo
 		triggerSpeedCoef[]={0.85000002,1};
 		triggerTime=0.001;
 	};
-	
-=======
 	class 885th_Doomsday_slug_blasterbolt_blue: 885th_blasterbolt
 	{
 		hit=900;
@@ -4151,7 +4148,7 @@ class CfgAmmo
 		suppressionRadiusHit=4;
 		deflecting=2;
 	};
->>>>>>> Stashed changes
+
 	// Republic Heavy Blaster Rifle Ammo
 	class 885th_blasterbolt_Rifle_Medium: 885th_blasterbolt_Rifle_Standard
 	{
@@ -4191,8 +4188,8 @@ class CfgAmmo
 	class 885th_blasterbolt_DC15LE_Explosive: 885th_blasterbolt_Rifle_Standard
 	{
 		hit=8;                              
-		indirectHit=10;                       
-		indirectHitRange=2;                     
+		indirectHit=5;                       
+		indirectHitRange=1;                     
 		explosive=1;                             
 		cartridge="";
 		visibleFire=6;
@@ -4714,8 +4711,8 @@ class CfgAmmo
 	class 885th_blasterbolt_ION: 885th_blasterbolt
 	{
 		hit=10;
-		indirectHit=3;
-		indirectHitRange=4.0;
+		indirectHit=0.1;
+		indirectHitRange=0.1;
 		explosive=1;
 		explosionEffects="IonDisruptorBlast";
 		cartridge="";
@@ -6006,11 +6003,8 @@ class CfgMagazines
 		ammo = "885th_blasterbolt_green";
 		tracersEvery = 1;
 		mass = 10;
-<<<<<<< Updated upstream
+
 	};	
-	class 885th_elite_300_dc_cell: 885th_cell
-=======
-	};
 	class 885th_dc_cell_blue;
 	class 885th_dc_cell_blue_low : 885th_dc_cell_blue
 	{
@@ -6055,9 +6049,7 @@ class CfgMagazines
 		initSpeed = 2000;
 		mass = 20;
 	};
-	
 	class 885th_elite_300_dc_cell: 885th_dc_cell_blue
->>>>>>> Stashed changes
 	{
 		count = 60;
 		displayName = "[885th] DC15S Elite Cell";
@@ -6478,7 +6470,6 @@ class CfgMagazines
 		tracersEvery = 1;
 		mass = 30;
 	};
-<<<<<<< Updated upstream
 	class 885th_DC15P_High_Blue: 885th_cell
 	{
 		author="885th Bloodapack Division";
@@ -6491,7 +6482,7 @@ class CfgMagazines
 		tracersEvery=1;
 		lastRoundsTracer=5;
 		descriptionShort="Standard energy cartridge for the DC-15P Blaster.";
-=======
+	};
 	class 885th_battery_amp_blue : 885th_cell
 	{
 		count = 250;
@@ -6503,7 +6494,7 @@ class CfgMagazines
 		ammo = "885th_blasterbolt_bAmp";
 		tracersEvery = 1;
 		mass = 35;
->>>>>>> Stashed changes
+
 	};
 	class 885th_battery_ampHR_blue : 885th_cell
 	{
@@ -6647,7 +6638,6 @@ class CfgMagazines
 		initSpeed=325;
 		mass=20;
 	};
-<<<<<<< Updated upstream
 	class 885th_DX23_scattershot_mag: CA_Magazine
 	{
 		author="885th Bloodpack Division + SL Mod Dev Team";
@@ -6677,7 +6667,7 @@ class CfgMagazines
 		tracerEvery=1;
 		lastRoundsTracer=1;
 		descriptionShort="DX-23 Doomsday Slug Mag.";
-=======
+	};
 	class 885th_DC15LMKII_Extended_Cell_blue: CA_Magazine
 	{
 		author="Antauri + 885th Bloodpack Division";
@@ -6693,7 +6683,6 @@ class CfgMagazines
 		tracersEvery=1;
 		lastRoundsTracer=200;
 		descriptionShort="DC-15L MKII Extended Cell.";
->>>>>>> Stashed changes
 	};
 	class 885th_DW32S_cell: CA_Magazine
 	{
@@ -9158,11 +9147,7 @@ class CfgWeapons
 	class 885th_DC15SMKII_Base_F: Rifle_Base_F
 	{
 		author="885th Bloodpack Division";
-<<<<<<< Updated upstream
-		magazines[]={""};
-=======
 		magazines[]={"885th_dc15s_hp_cell","885th_dc15s_ap_cell"};
->>>>>>> Stashed changes
 		magazineWell[]={};
 		magazineReloadSwitchPhase=0.5;
 		reloadAction="GestureReload_JLTS_DC15S";
@@ -13560,11 +13545,7 @@ class CfgWeapons
 		initSpeed=-1;
 		reloadMagazineSound[] = {"\ShadowLegion_Weapons\data\reloads\sounds\Reload_1.ogg", 2, 1,30};
 		recoil = "885_recoil_DC17";
-<<<<<<< Updated upstream
-		magazines[] = {"885th_dc_cell_blue_low","885th_dc_cell_blue"};
-=======
 		magazines[] = {"885th_dc19_cell","885th_dc19_tracerless_cell"};
->>>>>>> Stashed changes
 		magazineWell[] = {};
 		magazineReloadTime = 0;
 		fireLightDiffuse[] = {0.1, 0.25, 1};
@@ -13755,11 +13736,7 @@ class CfgWeapons
 		scope = 2;
 		model="\ShadowLegion_Weapons\data\DC15\DC19\models\DC19_S_Folded.p3d";
 		displayName = "[885th] DC-19 FS";
-<<<<<<< Updated upstream
-		magazines[] = {"885th_dc_cell_blue_low","885th_dc_cell_blue"};
-=======
 		magazines[] = {"885th_dc19_cell","885th_dc19_tracerless_cell"};
->>>>>>> Stashed changes
 		magazineWell[] = {};
 		modes[] = {"Single","FullAuto"};
 		muzzles[] = {"this","Stun"};
@@ -19815,8 +19792,6 @@ class CfgWeapons
 	};
 };
 
-// Add as its own top-level block in 885_weapons\config.cpp.
-// Reuses the 3AS DC17M reload animation files as the "reconfigure" gesture -
 
 class CfgMovesBasic
 {
@@ -19934,9 +19909,6 @@ class CfgGesturesMale
 		};
 	};
 };
-
-// Add as its own top-level block in 885_weapons\config.cpp, alongside
-// CfgPatches / CfgFunctions / CfgWeapons etc (not nested inside any of them).
 
 class Extended_PreInit_EventHandlers
 {
