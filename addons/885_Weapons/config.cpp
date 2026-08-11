@@ -6117,7 +6117,6 @@ class CfgMagazines
 		initSpeed=490;
 		tracersEvery=1;
 		lastRoundsTracer=10;
-		descriptionShort="High Powered charge cell used by the Valken 38X.";
 	};
 	class 885th_Valken38R_HighPower_Cell : 885th_cell
 	{
