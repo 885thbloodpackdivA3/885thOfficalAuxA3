@@ -110,8 +110,8 @@ class CfgPatches
 			"885th_battery_ampHR_blue",
 			"885th_battery_ampm41_green",
 			"885th_elite_300_dc_cell",
-			"885th_coil_blue",
-			"885th_coil_blue_high",
+			"885th_t15_coil_cell",
+			"885th_t15_coil_cell_high",
 			"885th_e_cell_red",
 			"885th_e_cell_red_pistol",
 			"885th_e_battery_red_high",
@@ -303,6 +303,7 @@ class CfgCloudlets
 		damageType="Fire";
 	};
 };
+
 class Flame_Explosion
 {
 	class flame_Light
@@ -4734,7 +4735,6 @@ class CfgAmmo
 		indirectHit=0.1;
 		indirectHitRange=0.1;
 		explosive=1;
-		explosionEffects="IonDisruptorBlast";
 		cartridge="";
 		visibleFire=6;
 		audibleFire=65;
@@ -4746,13 +4746,17 @@ class CfgAmmo
 		airLock=1;
 		typicalSpeed=420;
 		caliber=0.8;
-		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		effectFly="JLTS_plasma_blue";
+		model="\MRC\JLTS\weapons\Core\effects\emp_blue.p3d";
+		lightcolor[]={0.25,0.25,0.5};
 		tracerScale=1.35;
 		airFriction=-0.00022;
-		effectFly="3AS_PlasmaBolt_Blue_Fly";
-		class EventHandlers
+		explosionEffects="JLTS_fx_exp_EMP";
+		SoundSetExplosion[]=
 		{
-			hit="[_this select 0, _this select 2] execVM '885th\scripts\ion_disable.sqf';";
+			"JLTS_GrenadeEMP_Exp_SoundSet",
+			"JLTS_GrenadeEMP_Tail_SoundSet",
+			"Explosion_Debris_SoundSet"
 		};
 		class CamShakeExplode
 		{
@@ -6147,8 +6151,6 @@ class CfgMagazines
 		mass = 35;
 	};
 
-	//885th
-
 	//885th DMR Magazines
 	class 885th_firepuncher_cell : 885th_cell
 	{
@@ -6238,6 +6240,53 @@ class CfgMagazines
 		tracersEvery = 1;
 		mass = 5;
 	};
+	
+	//885th T-15 Blaster Cannon Magazines
+	class 885th_t15_coil_cell : 885th_cell
+	{
+		count = 5;
+		displayName = "[885th] Standard Thermal Coil";
+		displayNameShort = "Thermal Coil";
+		descriptionShort = "5 round capacity, thermal shells.";
+		model = "\MRC\JLTS\weapons\EPL2\EPL2_mag.p3d";
+		picture = "\MRC\JLTS\weapons\EPL2\data\ui\EPL2_mag_ui_ca.paa";
+		ammo = "885th_thermalshell";
+		initSpeed = 425;
+		tracersEvery = 1;
+		mass = 70;
+		type = 16;
+	};
+	class 885th_t15_coil_cell_high : 885th_cell
+	{
+		count = 3;
+		displayName = "[885th] High-Power Thermal Coil";
+		displayNameShort = "HP Thermal Coil";
+		descriptionShort = "3 round capacity, High-Powered thermal shells.";
+		model = "\MRC\JLTS\weapons\EPL2\EPL2_mag.p3d";
+		picture = "\MRC\JLTS\weapons\EPL2\data\ui\EPL2_mag_ui_ca.paa";
+		ammo = "885th_thermalshell_high";
+		initSpeed = 300;
+		tracersEvery = 1;
+		mass = 70;
+		type = 16;
+	};
+	class 885th_T15_ion_cell: 885th_cell
+	{
+		author="Chief33";
+		scope=2;
+		displayName="[885th] T-15 Ion Cell";
+		displayNameShort = "T-15 Ion Cell";
+		descriptionShort="Ionization-based plasma cell.";
+		model = "\MRC\JLTS\weapons\EPL2\EPL2_mag.p3d";
+		picture = "\MRC\JLTS\weapons\EPL2\data\ui\EPL2_mag_ui_ca.paa";
+		ammo="885th_blasterbolt_ION";
+		count=1;
+		mass=25;
+		initSpeed=420;
+		tracersEvery=1;
+		lastRoundsTracer=2;
+	};
+	
 	class 885th_dc_cell_green : 885th_cell
 	{
 		count = 50;
@@ -6661,34 +6710,7 @@ class CfgMagazines
 		lastRoundsTracer=2;
 		descriptionShort="High Explosive Battery used by the DC15LE MK II Heavy Blaster.";
 	};
-	class 885th_coil_blue : 885th_cell
-	{
-		count = 5;
-		displayName = "[885th] Standard Thermal Coil";
-		displayNameShort = "Thermal Coil";
-		descriptionShort = "5 round capacity, thermal shells.";
-		model = "\MRC\JLTS\weapons\EPL2\EPL2_mag.p3d";
-		picture = "\MRC\JLTS\weapons\EPL2\data\ui\EPL2_mag_ui_ca.paa";
-		ammo = "885th_thermalshell";
-		initSpeed = 425;
-		tracersEvery = 1;
-		mass = 70;
-		type = 16;
-	};
-	class 885th_coil_blue_high : 885th_cell
-	{
-		count = 3;
-		displayName = "[885th] High-Power Thermal Coil";
-		displayNameShort = "HP Thermal Coil";
-		descriptionShort = "3 round capacity, High-Powered thermal shells.";
-		model = "\MRC\JLTS\weapons\EPL2\EPL2_mag.p3d";
-		picture = "\MRC\JLTS\weapons\EPL2\data\ui\EPL2_mag_ui_ca.paa";
-		ammo = "885th_thermalshell_high";
-		initSpeed = 300;
-		tracersEvery = 1;
-		mass = 70;
-		type = 16;
-	};
+	
 	class 885th_773_Flame_Cell : 885th_cell
 	{
 		author="885th Bloodpack Division";
@@ -13256,7 +13278,7 @@ class CfgWeapons
 			};
 			class MuzzleSlot: MuzzleSlot
 			{
-				linkProxy="\A3\data_f\proxies\weapon_slots\MUZZLE";
+				linkProxy="\A3\data_f\proxies\weapon_slots\MU885th_blasterbolt_r_b_IONZZLE";
 				compatibleItems[]=
 				{
 					"ShadwCmpany_Suppresor_Module_DC15"
@@ -15270,11 +15292,11 @@ class CfgWeapons
 		ace_clearJamAction = "";
 		reloadAction = "GestureReload_IDA_Reload_Blaster";
 		recoil = "885_recoil_T15";
-		magazines[] = {"885th_coil_blue", "885th_coil_blue_high"};
+		magazines[] = {"885th_t15_coil_cell", "885th_t15_coil_cell_high"};
 		magazineWell[] = {};
 		fireLightDiffuse[] = {0.1, 0.25, 1};
 		drySound[] = {"\Indecisive_Armoury_Sounds\weapon_dry.ogg", 5, 1, 10};
-		muzzles[] = {"this"};
+		muzzles[] = {"this","885TH_T15ION"};
 		modes[] = {"Single"};
 		class Single : Mode_SemiAuto
 		{
@@ -15307,6 +15329,147 @@ class CfgWeapons
 			maxRange = 1000;
 			maxRangeProbab = 0.6;
 		};
+		class 885TH_T15ION: Rifle_Long_Base_F
+		{
+			displayName="Explosive Battery";
+			descriptionShort="T-15 ION Battery";
+			useModelOptics=1;
+			useExternalOptic=1;
+			maxZeroing=1800;
+			maxRecoilSway=0.029999999;
+			swayDecaySpeed=1.25;
+			discreteDistance[]={200,300,400,500,600};
+			discreteDistanceInitIndex=1;
+			distanceZoomMin=100;
+			distanceZoomMax=350;
+			cursor="srifle";
+			inertia=1.2;
+			aimTransitionSpeed=0.5;
+			dexterity=1;
+			magazines[]=
+			{
+				"885th_t15_ion_cell"
+			};
+			magazineWell[]={};
+			class GunParticles: GunParticles
+			{
+				class SecondEffect
+				{
+					positionName="Nabojnicestart";
+					directionName="Nabojniceend";
+					effectName="CaselessAmmoCloud";
+				};
+			};
+			selectionFireAnim="zasleh";
+			flash="gunfire";
+			flashSize=3;
+			modes[]=
+			{
+				"Single"
+			};
+			reloadMagazineSound[]={"\Indecisive_Armoury_Sounds\Blaster_reload_Vent.ogg",5,1,100};
+			class Single: Mode_SemiAuto
+			{
+				sounds[]={"StandardSound"};
+				class BaseSoundModeType
+				{
+				weaponSoundEffect="";
+				closure1[]={};
+				closure2[]={};
+				soundClosure[]={};
+				};
+				class StandardSound: BaseSoundModeType
+				{
+				weaponSoundEffect="";
+				begin1[]={"\Indecisive_Armoury_Sounds\Republic\T15.ogg",1.25,1,1800};
+				begin2[]={"\Indecisive_Armoury_Sounds\Republic\T15.ogg",1.25,1.025,1800};
+				begin3[]={"\Indecisive_Armoury_Sounds\Republic\T15.ogg",1.25,0.94999999,1800};
+				begin4[]={"\Indecisive_Armoury_Sounds\Republic\T15.ogg",1.25,1.05,1800};
+				begin5[]={"\Indecisive_Armoury_Sounds\Republic\T15.ogg",1.25,0.89999998,1800};
+				soundBegin[]={"begin1",0.2,"begin2",0.2,"begin3",0.2,"begin4",0.2,"begin5",0.2};
+				beginwater1[]={"\Indecisive_Armoury_Sounds\Republic\T15.ogg",1,1,400};
+				soundBeginWater[]={"beginwater1",1};
+				};
+				drySound[] = {"\Indecisive_Armoury_Sounds\weapon_dry.ogg", 5, 1, 10};
+				class SoundTails
+				{
+					class TailInterior
+					{
+						sound[]=
+						{
+							"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_05_Cyrus\silencer_DMR_05_tail_interior",
+							1,
+							1,
+							300
+						};
+						frequency=1;
+						volume="interior";
+					};
+					class TailTrees
+					{
+						sound[]=
+						{
+							"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_05_Cyrus\silencer_DMR_05_tail_trees",
+							1,
+							1,
+							300
+						};
+						frequency=1;
+						volume="(1-interior/1.4)*trees";
+					};
+					class TailForest
+					{
+						sound[]=
+						{
+							"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_05_Cyrus\silencer_DMR_05_tail_forest",
+							1,
+							1,
+							300
+						};
+						frequency=1;
+						volume="(1-interior/1.4)*forest";
+					};
+					class TailMeadows
+					{
+						sound[]=
+						{
+							"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_05_Cyrus\silencer_DMR_05_tail_meadows",
+							1,
+							1,
+							300
+						};
+						frequency=1;
+						volume="(1-interior/1.4)*(meadows/2 max sea/2)";
+					};
+					class TailHouses
+					{
+						sound[]=
+						{
+							"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_05_Cyrus\silencer_DMR_05_tail_houses",
+							1,
+							1,
+							300
+						};
+						frequency=1;
+						volume="(1-interior/1.4)*houses";
+					};
+				};
+				reloadTime=0.35;
+				dispersion=0.00015000001;
+				recoil="recoil_single_gm6";
+				recoilProne="recoil_single_prone_gm6";
+				minRange=2;
+				minRangeProbab=0.5;
+				midRange=150;
+				midRangeProbab=0.69999999;
+				maxRange=450;
+				maxRangeProbab=0.30000001;
+				aiRateOfFire=3;
+				aiRateOfFireDistance=500;
+			};
+		};
+		aiDispersionCoefY=6;
+		aiDispersionCoefX=4;
 		class WeaponSlotsInfo : WeaponSlotsInfo
 		{
 			mass = 85;
@@ -19661,7 +19824,6 @@ class CfgWeapons
 	};
 };
 
-
 class CfgMovesBasic
 {
 	class DefaultDie;
@@ -19789,6 +19951,10 @@ class Extended_PreInit_EventHandlers
 	{
 		init = "call compile preprocessFileLineNumbers '\885_Weapons\DC15SA\XEH_preInit.sqf'";
 	};
+	class 885th_ion_ammo_preInit
+    {
+        init = "call compile preprocessFileLineNumbers '\885_Weapons\ion_ammo\XEH_preInit.sqf';";
+    };
 };
 class Extended_PostInit_EventHandlers
 {
@@ -19800,6 +19966,10 @@ class Extended_PostInit_EventHandlers
 	{
 		init = "call compile preprocessFileLineNumbers '\885_Weapons\DC15SA\XEH_postInit.sqf'";
 	};
+	 class 885th_ion_ammo_postInit
+    {
+        init = "call compile preprocessFileLineNumbers '\885_Weapons\ion_ammo\XEH_postInit.sqf';";
+    };
 };
 
 class CfgFunctions
@@ -19820,6 +19990,23 @@ class CfgFunctions
 			class dc15saRecharge { file = "885_Weapons\DC15SA\scripts\functions\fnc_dc15saRecharge.sqf"; };
 		};
 	};
+	class 885th_ion_ammo
+    {
+        tag = "885th_ion_ammo";
+        class Ammo
+        {
+            class ionSettings
+            {
+                file="885_Weapons\ion_ammo\scripts\fn_settings.sqf";
+                preInit=1;
+            };
+            class ionDisable
+            {
+                file="885_Weapons\ion_ammo\scripts\fn_ionDisable.sqf";
+            };
+
+        };
+    };
 };
 
 class CfgSounds
