@@ -4250,7 +4250,7 @@ class CfgWeapons
 			uniformModel = "";
 			uniformClass = "885th_ONI_MC_Trooper";
 			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
-			containerClass = "Supply300";
+			containerClass = "Supply350";
 			mass = 40;
 		};
 	};
@@ -14562,9 +14562,9 @@ class CfgVehicles
 		class HitPoints
     	{
         // Visor & Head: Can take multiple blaster hits, but heavy sniper rounds remain lethal
-        class HitFace     { armor = 3; material = -1; name = "face_head"; passThrough = 0.8; radius = 0.08; };
-        class HitNeck     { armor = 4; material = -1; name = "neck";      passThrough = 0.6; radius = 0.1;  };
-        class HitHead     { armor = 5; material = -1; name = "head";      passThrough = 0.6; radius = 0.2;  };
+        class HitFace     { armor = 3; material = -1; name = "face_head"; passThrough = 0.80; radius = 0.08; };
+        class HitNeck     { armor = 4; material = -1; name = "neck";      passThrough = 0.60; radius = 0.1;  };
+        class HitHead     { armor = 5; material = -1; name = "head";      passThrough = 0.60; radius = 0.2;  };
 
         // Torso: Heavy Katarn chestplate absorbs repeated plasma and slugthrower hits
         class HitPelvis   { armor = 5; material = -1; name = "pelvis";    passThrough = 0.60; radius = 0.24; };
@@ -14572,10 +14572,7 @@ class CfgVehicles
         class HitDiaphragm{ armor = 2; material = -1; name = "spine2";    passThrough = 0.70; radius = 0.18; };
         class HitChest    { armor = 6; material = -1; name = "spine3";    passThrough = 0.60; radius = 0.18; };
         class HitBody     { armor = 6; material = -1; name = "body";      passThrough = 0.60; radius = 0.16; };
-
-        // Limbs: Plated protection allows mobility while resisting shrapnel and small arms
-        class HitArms     { armor = 3; material = -1; name = "arms";      passThrough = 0.80; radius = 0.1;  };
-        class HitLegs     { armor = 3; material = -1; name = "legs";      passThrough = 0.80; radius = 0.1;  };
+		
     	};
 	};
 	
