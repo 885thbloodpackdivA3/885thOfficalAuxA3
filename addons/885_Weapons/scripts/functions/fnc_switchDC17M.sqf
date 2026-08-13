@@ -17,9 +17,9 @@ private _configs = [
 ];
 
 private _primaryMag = [
-    "885th_60Rnd_mag_DC17M",
-    "885th_5Rnd_mag_DC17M_Sniper",
-    "885th_AAD_DC17M"
+    "885th_DC17M_cell",
+    "885th_DC17M_cell_sniper",
+    "885th_DC17M_aad"
 ];
 
 if (_unit getVariable ["BPD_DC17M_switching", false]) exitWith {

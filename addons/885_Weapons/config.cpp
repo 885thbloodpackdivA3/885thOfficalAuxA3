@@ -4,7 +4,7 @@ class CfgPatches
 	{
 		author = "885th Bloodpack Division + Indecisive Armoury Team";
 		name = "885th REP Weapons";
-		requiredAddons[] = {"A3_data_F", "A3_anims_F", "A3_weapons_F", "A3_characters_F", "A3_Characters_F_Proxies","cba_main","cba_jr","cba_xeh"};
+		requiredAddons[] = {"A3_data_F", "A3_anims_F", "A3_weapons_F", "A3_characters_F", "A3_Characters_F_Proxies","cba_main","cba_jr","cba_xeh","3AS_Weapons_Republic","3AS_Weapons","3AS_Weapons_DC15SA","3AS_Weapons_Republic_DP23","3AS_Weapons_Republic_DC17S"};
 		units[] = {};
 		weapons[] = {
 			"885th_A180", 
@@ -82,8 +82,23 @@ class CfgPatches
 		};
 		magazines[] = {
 			"885th_dc_cell_blue",
-			"885th_dc_cell_blue_pistol",
-			"885th_dc_cell_blue_pistol_extended",
+			"885th_dc17_cell",
+			"885th_dc17_cell_extended",
+			"885th_dc17s_cell",
+			"885th_dc17s_cell_ap",
+			"885th_dc17s_dual_cell",
+			"885th_dc17s_dual_cell_ap",
+			"885th_dc21_cell",
+			"885th_dc21_tracerless_cell",
+			"885th_dc15p_cell",
+			"885th_dc15sa_cell",
+			"885th_westar35_cell",
+			"885th_dc15s_cell",
+			"885th_dc15s_hp_cell",
+			"885th_dc15s_ap_cell",
+			"885th_dc15se_cell",
+			"885th_dc19_cell",
+			"885th_dc19_tracerless_cell",
 			"885th_dc_cell_green",
 			"885th_dc_cell_blue_low",
 			"885th_dc_cell_blue_high",
@@ -92,13 +107,11 @@ class CfgPatches
 			"885th_dc_cell_blue_apex",
 			"885th_battery_low_blue",
 			"885th_battery_high_blue",
-			"885th_battery_amp_blue",
 			"885th_battery_ampHR_blue",
-			"885th_battery_ampAR_blue",
 			"885th_battery_ampm41_green",
 			"885th_elite_300_dc_cell",
-			"885th_coil_blue",
-			"885th_coil_blue_high",
+			"885th_t15_coil_cell",
+			"885th_t15_coil_cell_high",
 			"885th_e_cell_red",
 			"885th_e_cell_red_pistol",
 			"885th_e_battery_red_high",
@@ -110,12 +123,38 @@ class CfgPatches
 			"885th_DX36C_he_battery_yellow",
 			"885th_mando_cell_yellow_amp",
 			"885th_mando_battery_yellow_high",
+			"885th_dc15cmkii_cell",
+			"885th_dc15cmkii_ap_cell",
+			"885th_dc15le_cell",
+			"885th_dc15le_heavy_cell",
+			"885th_dc15le_explos_cell",
+			"885th_dc15l_cell",
+			"885th_dc15lmkii_cell",
+			"885th_dc15lmkii_short_cell",
+			"885th_firespitter_cell",
+			"885th_dc15a_cell",
+			"885th_dc15a_hp_cell",
+			"885th_dc15a_ap_cell",
+			"885th_firepuncher_cell",
+			"885th_firepuncher_ap_cell",
+			"885th_dc15xsniper_cell",
+			"885th_dc15xsniper_ap_cell",
+			"885th_dc15xsniper_over_cell",
+			"885th_Westarm5mkii_Ap_cell_blue",
+			"885th_Valken38A_HighPower_Cell",
+			"885th_Valken38R_HighPower_Cell",
+			"885th_DC23_breaching_cell",
+			"885th_dp23_scattershot_cell",
+			"885th_DX23_scattershot_cell",
+			"885th_DX23_Doomsday_slug_cell",
+			"885th_battery_para_low_blue",
+			"885th_battery_z6_high_blue",
 			"885th_cell_green_pistol",
 			"885th_cell_green_high",
 			"885th_DW32S_cell",
-			"885th_60Rnd_mag_DC17M",
-			"885th_5Rnd_mag_DC17M_Sniper",
-			"885th_AAD_DC17M",
+			"885th_DC17M_cell",
+			"885th_DC17M_cell_sniper",
+			"885th_DC17M_aad",
 			"885th_1rnd_40mm_HE_mag",
 			"885th_1rnd_40mm_AP_mag",
 			"885th_1rnd_40mm_whitesmoke_mag",
@@ -264,6 +303,7 @@ class CfgCloudlets
 		damageType="Fire";
 	};
 };
+
 class Flame_Explosion
 {
 	class flame_Light
@@ -296,7 +336,6 @@ class Flame_Explosion
 };
 class CfgAmmo
 {
-	class B_762x51_Ball;
 	class G_40mm_HE;
 	class RocketBase;
 	class BulletBase;
@@ -328,7 +367,7 @@ class CfgAmmo
 	class SensorTemplateData;
 	class Components;
 	class 885th_blasterbolt: BulletBase
-	{	
+	{
 		visibleFire=5;
 		audibleFire=20;
 		visibleFireTime=2;
@@ -341,7 +380,7 @@ class CfgAmmo
 		indirectHitRange=0;
 		model="3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		caliber=1;
-		coefGravity=0.34999999;
+		coefGravity=0.2;
 		cartridge="";
 		cost=1;
 		timeToLive=10;
@@ -349,15 +388,12 @@ class CfgAmmo
 		ExplosionEffects="IDA_ImpactEffect";
 		craterEffects="";
 		explosive=0.1;
-		tracerscale=1;
-		tracerstarttime=0.0049999999;
-		tracerendtime=10;
-		airFriction=0;
+		tracerStartTime=0;
+		tracerEndTime=10;
+		airFriction=-0.00030000001;
 		muzzleEffect="";
-		waterFriction=-0.00095999998;
 		waterEffectOffset=0.80000001;
 		effectFly="3AS_PlasmaBolt_Blue_Fly";
-		effectflare="FlareShell";
 		aiAmmoUsageFlags="64 + 128 + 256";
 		soundHitBody1[]=
 		{
@@ -3566,64 +3602,1181 @@ class CfgAmmo
 		smokeColor[]={0.66970003,0.22750001,0.10053,1};
 		effectsSmoke="SmokeShellOrangeEffect";
 	};
-	// Republic
+	// Republic Pistol Ammo
+	class 885th_blasterbolt_Pistol_Standard: 885th_blasterbolt
+	{
+		hit=7;
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		audibleFire=50;
+		dangerRadiusBulletClose=4;
+		dangerRadiusHit=8;
+		suppressionRadiusBulletClose=2;
+		suppressionRadiusHit=4;
+		visibleFireTime=3;
+		cost=50;
+		airLock=1;
+		caliber=1.1799999;
+		typicalSpeed=306;
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=0.58999997;
+		airFriction=-0.00026999999;
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+	};
+	class 885th_blasterbolt_Pistol_PlusP: 885th_blasterbolt_Pistol_Standard
+	{
+		hit=8;                             
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		audibleFire=52;                     
+		dangerRadiusBulletClose=4;
+		dangerRadiusHit=8;
+		suppressionRadiusBulletClose=2;
+		suppressionRadiusHit=5;
+		visibleFireTime=3;
+		cost=50;
+		airLock=1;
+		caliber=1.28;                       
+		typicalSpeed=320;                      
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=0.61000001;                
+		airFriction=-0.00025500001;            
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+	};
+	class 885th_blasterbolt_Pistol_PlusP_dual: 885th_blasterbolt_Pistol_PlusP
+	{
+		model="\3AS\3AS_Weapons\Data\tracer_blue_dual.p3d";
+	};
+	class 885th_blasterbolt_Pistol_HP: 885th_blasterbolt_Pistol_Standard
+	{
+		hit=10;                         
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		audibleFire=53;                    
+		dangerRadiusBulletClose=5;
+		dangerRadiusHit=9;
+		suppressionRadiusBulletClose=3;
+		suppressionRadiusHit=5;
+		visibleFireTime=3;
+		cost=50;
+		airLock=1;
+		caliber=1.4;                      
+		typicalSpeed=335;                   
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=0.64000005;             
+		airFriction=-0.00024000001;         
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+	};
+	class 885th_blasterbolt_Pistol_AP: 885th_blasterbolt_Pistol_Standard
+	{
+		hit=5;                             
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		audibleFire=50;
+		dangerRadiusBulletClose=4;
+		dangerRadiusHit=8;
+		suppressionRadiusBulletClose=2;
+		suppressionRadiusHit=4;
+		visibleFireTime=3;
+		cost=50;
+		airLock=1;
+		caliber=2.2;                          
+		deflecting=0;
+		typicalSpeed=340;
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=0.58999997;
+		airFriction=-0.00025000001;
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+	};
+	class 885th_blasterbolt_Pistol_AP_dual: 885th_blasterbolt_Pistol_AP
+	{
+		model="\3AS\3AS_Weapons\Data\tracer_blue_dual.p3d";
+	};
+	class 885th_blasterbolt_Pistol_HP_AP: 885th_blasterbolt_Pistol_HP
+	{
+	hit=9;                               
+	indirectHit=0;
+	indirectHitRange=0;
+	cartridge="";
+	audibleFire=55;                       
+	dangerRadiusBulletClose=5;
+	dangerRadiusHit=9;
+	suppressionRadiusBulletClose=3;
+	suppressionRadiusHit=5;
+	visibleFireTime=3;
+	cost=50;
+	airLock=1;
+	caliber=2.6;                            
+	deflecting=0;                             
+	typicalSpeed=360;                           
+	model="\Indecisive_Armoury_Ammos\Data\Tracers\IDA_Blasterbolt_Yellow.p3d";
+	tracerScale=0.66000003;
+	airFriction=-0.00022000001;                   
+	effectfly="IDA_BlasterBoltGlow_Yellow_Fly";
+	};
+	
+	// Republic Carbine Ammo
+	class 885th_blasterbolt_Carbine_Standard: 885th_blasterbolt
+	{
+		airLock=1;
+		hit=9;
+		indirectHit=0;
+		indirectHitRange=0;
+		cost=1;
+		typicalSpeed=361;
+		airFriction=-0.00023000001;
+		waterFriction=-0.30000001;
+		caliber=1.8;
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=0.69999999;
+		audibleFire=35;
+		dangerRadiusBulletClose=8;
+		dangerRadiusHit=12;
+		suppressionRadiusBulletClose=6;
+		suppressionRadiusHit=8;
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		aiAmmoUsageFlags=64; 
+		class CamShakeExplode
+		{
+			power=2.2360699;
+			duration=0.40000001;
+			frequency=20;
+			distance=6.7082;
+		};
+		class CamShakeHit
+		{
+			power=5;
+			duration=0.2;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_blasterbolt_Carbine_HP: 885th_blasterbolt_Carbine_Standard
+	{
+		airLock=1;
+		hit=12;                         
+		indirectHit=0;
+		indirectHitRange=0;
+		cost=1;
+		typicalSpeed=390;                
+		airFriction=-0.00020000001;      
+		waterFriction=-0.30000001;
+		caliber=2;                       
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=0.75;                 
+		audibleFire=38;                    
+		dangerRadiusBulletClose=9;
+		dangerRadiusHit=13;
+		suppressionRadiusBulletClose=7;
+		suppressionRadiusHit=9;
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		aiAmmoUsageFlags=64;
+		class CamShakeExplode
+		{
+			power=2.6;
+			duration=0.40000001;
+			frequency=20;
+			distance=7;
+		};
+		class CamShakeHit
+		{
+			power=6;
+			duration=0.2;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_blasterbolt_Carbine_AP: 885th_blasterbolt_Carbine_Standard
+	{
+		airLock=1;
+		hit=7;                          
+		indirectHit=0;
+		indirectHitRange=0;
+		cost=1;
+		typicalSpeed=410;                 
+		airFriction=-0.00021000001;       
+		waterFriction=-0.30000001;
+		caliber=2.8;                      
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=0.69999999;
+		audibleFire=35;
+		dangerRadiusBulletClose=8;
+		dangerRadiusHit=12;
+		suppressionRadiusBulletClose=6;
+		suppressionRadiusHit=8;
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		aiAmmoUsageFlags=64;
+		class CamShakeExplode
+		{
+			power=2.2360699;
+			duration=0.40000001;
+			frequency=20;
+			distance=6.7082;
+		};
+		class CamShakeHit
+		{
+			power=5;
+			duration=0.2;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_blasterbolt_Carbine_PlusP: 885th_blasterbolt_Carbine_Standard
+	{
+		airLock=1;
+		hit=11;                          
+		indirectHit=0;
+		indirectHitRange=0;
+		cost=1;
+		typicalSpeed=395;                  
+		airFriction=-0.00022000001;       
+		waterFriction=-0.30000001;
+		caliber=1.9;                       
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=0.72000003;             
+		audibleFire=37;                      
+		dangerRadiusBulletClose=9;
+		dangerRadiusHit=13;
+		suppressionRadiusBulletClose=6;
+		suppressionRadiusHit=9;
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		aiAmmoUsageFlags=64;
+		class CamShakeExplode
+		{
+			power=2.4;
+			duration=0.40000001;
+			frequency=20;
+			distance=7;
+		};
+		class CamShakeHit
+		{
+			power=5.5;
+			duration=0.2;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_blasterbolt_Carbine_Subsonic: 885th_blasterbolt_Carbine_HP
+	{
+		airLock=1;
+		hit=10;                             
+		indirectHit=0;
+		indirectHitRange=0;
+		cost=1.1;
+		typicalSpeed=295;                   
+		airFriction=-0.00024000001;             
+		waterFriction=-0.30000001;
+		caliber=2.3;                              
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=0.68000001;                     
+		audibleFire=17;                               
+		dangerRadiusBulletClose=5;                      
+		dangerRadiusHit=8;
+		suppressionRadiusBulletClose=3;
+		suppressionRadiusHit=5;
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		aiAmmoUsageFlags=64;
+		class CamShakeExplode
+		{
+			power=2.2;
+			duration=0.5;
+			frequency=20;
+			distance=6.5;
+		};
+		class CamShakeHit
+		{
+			power=4.5;
+			duration=0.2;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_blasterbolt_Carbine_Tracerless: 885th_blasterbolt_Carbine_Standard
+	{
+		airLock=1;
+		hit=9;
+		indirectHit=0;
+		indirectHitRange=0;
+		cost=1;
+		nvgOnly=1;
+		typicalSpeed=361;
+		airFriction=0;
+		waterFriction=-0.30000001;
+		caliber=1.8;
+		model="\A3\Weapons_f\Data\bullettracer\tracer_red";
+		tracerScale=0.69999999;
+		visibleFire=3;
+		audibleFire=2;
+		visibleFireTime=3;
+		audibleFireTime=3;
+		dangerRadiusBulletClose=8;
+		dangerRadiusHit=12;
+		suppressionRadiusBulletClose=6;
+		suppressionRadiusHit=8;
+		effectFly="AmmoClassic";
+		aiAmmoUsageFlags=64;
+		class CamShakeExplode
+		{
+			power=2.2360699;
+			duration=0.40000001;
+			frequency=20;
+			distance=6.7082;
+		};
+		class CamShakeHit
+		{
+			power=5;
+			duration=0.2;
+			frequency=20;
+			distance=1;
+		};
+	};
+	
+	//Republic Carbinerifle Ammo
+	class 885th_blasterbolt_CarbineRifle_Medium: 885th_blasterbolt
+	{
+		hit=14;                             
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		aiAmmoUsageFlags=64;
+		dangerRadiusBulletClose=9;
+		dangerRadiusHit=13;
+		suppressionRadiusBulletClose=7;
+		suppressionRadiusHit=9;
+		cost=1.2;
+		airLock=1;
+		typicalSpeed=445;                    
+		caliber=1.85;                          
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=0.87500002;                 
+		airFriction=-0.00018500001;             
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		class CamShakeExplode
+		{
+			power=2.7;
+			duration=0.40000001;
+			frequency=20;
+			distance=7.7;
+		};
+		class CamShakeHit
+		{
+			power=6.7;
+			duration=0.40000001;
+			frequency=20;
+			distance=1;
+		};
+	};
+
+	class 885th_blasterbolt_CarbineRifle_Medium_AP: 885th_blasterbolt_CarbineRifle_Medium
+	{
+    	hit=12;                             // down from Medium's 14 — AP trades damage for penetration
+    	indirectHit=0;
+    	indirectHitRange=0;
+    	cartridge="";
+    	aiAmmoUsageFlags=64;
+    	dangerRadiusBulletClose=9;
+    	dangerRadiusHit=13;
+    	suppressionRadiusBulletClose=7;
+    	suppressionRadiusHit=9;
+    	cost=1.2;
+    	airLock=1;
+    	typicalSpeed=468;                     // small bump from Medium's 445
+    	caliber=2.8;                           // the core AP stat — well above Medium's 1.85
+    	deflecting=0;                           // shouldn't deflect off angled armor
+    	model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+    	tracerScale=0.87500002;
+    	airFriction=-0.00017000001;             // slightly less drag than Medium
+    	effectFly="3AS_PlasmaBolt_Blue_Fly";
+    	class CamShakeExplode
+    	{
+        	power=2.7;
+        	duration=0.40000001;
+        	frequency=20;
+        	distance=7.7;
+    	};
+    	class CamShakeHit
+    	{
+        	power=6.7;
+        	duration=0.40000001;
+        	frequency=20;
+        	distance=1;
+    	};
+	};
+	
+	//Republic Rifle Ammo
+	class 885th_blasterbolt_Rifle_Standard: 885th_blasterbolt
+	{
+		hit=15;
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		visibleFire=3;
+		audibleFire=45;
+		dangerRadiusBulletClose=8;
+		dangerRadiusHit=12;
+		suppressionRadiusBulletClose=6;
+		suppressionRadiusHit=8;
+		cost=1.2;
+		airLock=1;
+		typicalSpeed=472;
+		caliber=1.95;
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=0.97500002;
+		airFriction=-0.00018;
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		class CamShakeExplode
+		{
+			power=2.8284299;
+			duration=0.60000002;
+			frequency=20;
+			distance=8.48528;
+		};
+		class CamShakeHit
+		{
+			power=5;
+			duration=0.2;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_blasterbolt_Rifle_HP: 885th_blasterbolt_Rifle_Standard
+	{
+		hit=20;                            
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		visibleFire=3;
+		audibleFire=50;                       
+		dangerRadiusBulletClose=11;
+		dangerRadiusHit=16;
+		suppressionRadiusBulletClose=8;
+		suppressionRadiusHit=11;
+		cost=1.2;
+		airLock=1;
+		typicalSpeed=530;                     
+		caliber=2.4;                           
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=1.075;                      
+		airFriction=-0.00015000001;             
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		class CamShakeExplode
+		{
+			power=3.5;
+			duration=0.65000004;
+			frequency=20;
+			distance=9.6;
+		};
+		class CamShakeHit
+		{
+			power=6.5;
+			duration=0.25;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_blasterbolt_Rifle_AP: 885th_blasterbolt_Rifle_Standard
+	{
+		hit=13;
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		visibleFire=3;
+		audibleFire=45;
+		dangerRadiusBulletClose=8;
+		dangerRadiusHit=12;
+		suppressionRadiusBulletClose=6;
+		suppressionRadiusHit=8;
+		cost=1.2;
+		airLock=1;
+		typicalSpeed=545;                   
+		caliber=2.9;
+		deflecting=0;
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=0.97500002;
+		airFriction=-0.00016500001;
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		class CamShakeExplode
+		{
+			power=2.8284299;
+			duration=0.60000002;
+			frequency=20;
+			distance=8.48528;
+		};
+		class CamShakeHit
+		{
+			power=5;
+			duration=0.2;
+			frequency=20;
+			distance=1;
+		};
+	};
+	//Republic Scattershot Ammo
+	class 885th_scattershot_blasterbolt_blue: 885th_blasterbolt
+	{	
+		hit=12;
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		effectFly="3AS_PlasmaBolt_blue_Fly";
+		submunitionAmmo="885th_blasterbolt_CarbineRifle_Medium";
+		submunitionConeType[]=
+		{
+			"random",
+			8
+		};
+		submunitionConeAngle=0.34999999;
+		triggerTime=9.9999997e-010;
+	};
+	class 885th_Breaching_Scattershot_blue: 885th_blasterbolt
+	{	
+		hit=12;
+		simulationStep=9.9999997e-005;
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		effectFly="3AS_PlasmaBolt_blue_Fly";
+		submunitionAmmo="885th_blasterbolt_Carbine_Standard";
+		submunitionConeType[]=
+		{
+			"poissondisc",
+			6
+		};
+		submunitionConeAngle=5;
+		triggerSpeedCoef[]={0.85000002,1};
+		triggerTime=0.001;
+	};
+	class 885th_Doomsday_slug_blasterbolt_blue: 885th_blasterbolt
+	{
+		hit=900;
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		cost=15;
+		typicalSpeed=1500;
+		airFriction=-0.00033000001;
+		caliber=3;
+		airLock=1;
+		tracerScale=0.5;
+		nvgOnly=1;
+		audibleFire=30;
+		aiAmmoUsageFlags=64;
+		dangerRadiusBulletClose=4;
+		dangerRadiusHit=8;
+		suppressionRadiusBulletClose=2;
+		suppressionRadiusHit=4;
+		deflecting=2;
+	};
+
+	// Republic Heavy Blaster Rifle Ammo
+	class 885th_blasterbolt_Rifle_Medium: 885th_blasterbolt_Rifle_Standard
+	{
+		hit=17;                             
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		visibleFire=3;
+		audibleFire=47;
+		dangerRadiusBulletClose=9;
+		dangerRadiusHit=13;
+		suppressionRadiusBulletClose=7;
+		suppressionRadiusHit=9;
+		cost=1.2;
+		airLock=1;
+		typicalSpeed=500;                     
+		caliber=1.95;                          
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=1.02500001;
+		airFriction=-0.00016500001;
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		class CamShakeExplode
+		{
+			power=3.1;
+			duration=0.60000002;
+			frequency=20;
+			distance=8.9;
+		};
+		class CamShakeHit
+		{
+			power=5.6;
+			duration=0.2;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_blasterbolt_DC15LE_Explosive: 885th_blasterbolt_Rifle_Standard
+	{
+		hit=8;                              
+		indirectHit=5;                       
+		indirectHitRange=1;                     
+		explosive=1;                             
+		cartridge="";
+		visibleFire=6;
+		audibleFire=60;                             
+		dangerRadiusBulletClose=8;
+		dangerRadiusHit=25;
+		suppressionRadiusBulletClose=6;
+		suppressionRadiusHit=18;
+		cost=3;                                       
+		airLock=1;
+		typicalSpeed=380;                               
+		caliber=1.5;                                      
+		model="\Indecisive_Armoury_Ammos\Data\Tracers\IDA_Blasterbolt_Blue.p3d";
+		tracerScale=1.15;                                   
+		airFriction=-0.00028000001;                           
+		effectfly="IDA_BlasterBoltGlow_Blue_Fly";
+		craterEffects="ls_plasma_impact";
+		explosionSoundEffect="DefaultExplosion";
+		explosionEffects="3AS_ImpactPlasmaExplosion_Blue";
+		explosionEffectsRadius=0.25;
+		class CamShakeExplode
+		{
+			power=6;
+			duration=0.80000001;
+			frequency=20;
+			distance=15;
+		};
+		class CamShakeHit
+		{
+			power=9;
+			duration=0.4;
+			frequency=20;
+			distance=2;
+		};
+	};
+	class 885th_blasterbolt_HeavyRifle_Standard: 885th_blasterbolt
+	{
+		hit=19;                             
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		visibleFire=4;
+		visibleFireTime=3;
+		audibleFire=55;                       
+		dangerRadiusBulletClose=10;
+		dangerRadiusHit=15;
+		suppressionRadiusBulletClose=7;
+		suppressionRadiusHit=10;
+		cost=1.6;                               
+		airLock=1;
+		typicalSpeed=490;                         
+		caliber=2.2;                                
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=1.1;                              
+		airFriction=-0.00017000001;                     
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		class CamShakeExplode
+		{
+			power=3.2;
+			duration=0.65000004;
+			frequency=20;
+			distance=9.6;
+		};
+		class CamShakeHit
+		{
+			power=7;
+			duration=0.3;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_blasterbolt_HeavyRifle_HP: 885th_blasterbolt_HeavyRifle_Standard
+	{
+		hit=24;                             
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		visibleFire=5;
+		visibleFireTime=3;
+		audibleFire=65;                       
+		dangerRadiusBulletClose=12;
+		dangerRadiusHit=18;
+		suppressionRadiusBulletClose=8;
+		suppressionRadiusHit=12;
+		cost=2.1;                               
+		airLock=1;
+		typicalSpeed=560;                         
+		caliber=2.2;                                
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=1.3;                              
+		airFriction=-0.00015000001;                     
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		class CamShakeExplode
+		{
+			power=3.7;
+			duration=0.7;
+			frequency=20;
+			distance=10.5;
+		};
+		class CamShakeHit
+		{
+			power=8.5;
+			duration=0.35;
+			frequency=20;
+			distance=1;
+		};
+	};
+	
+	//Republic DMR Ammo
+	class 885th_blasterbolt_Rifle_DMR_Balanced: 885th_blasterbolt
+	{
+		hit=27;                             
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		visibleFire=4;                        
+		visibleFireTime=3;
+		audibleFire=82;                         
+		dangerRadiusBulletClose=10;
+		dangerRadiusHit=14;
+		suppressionRadiusBulletClose=7;
+		suppressionRadiusHit=10;
+		cost=3.1;                                 
+		airLock=1;
+		typicalSpeed=611;                           
+		caliber=3.2;                                  
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=1.6;                                
+		airFriction=-0.000145;                            
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		class CamShakeExplode
+		{
+			power=3.2;
+			duration=0.7;
+			frequency=20;
+			distance=9.65;
+		};
+		class CamShakeHit
+		{
+			power=9;
+			duration=0.3;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_blasterbolt_Rifle_DMR_AP: 885th_blasterbolt_Rifle_DMR_Balanced
+	{
+		hit=21;                             
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		visibleFire=4;
+		visibleFireTime=3;
+		audibleFire=82;
+		dangerRadiusBulletClose=10;
+		dangerRadiusHit=14;
+		suppressionRadiusBulletClose=7;
+		suppressionRadiusHit=10;
+		cost=3.4;                             
+		airLock=1;
+		typicalSpeed=635;                      
+		caliber=4.8;                              
+		deflecting=0;                               
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=1.6;
+		airFriction=-0.00013000001;                   
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		class CamShakeExplode
+		{
+			power=3.2;
+			duration=0.7;
+			frequency=20;
+			distance=9.65;
+		};
+		class CamShakeHit
+		{
+			power=9;
+			duration=0.3;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_blasterbolt_Rifle_DMR_Subsonic: 885th_blasterbolt_Rifle_DMR_Balanced
+	{
+		hit=19;                            
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		visibleFire=2;                        
+		visibleFireTime=3;
+		audibleFire=28;                         
+		dangerRadiusBulletClose=6;                
+		dangerRadiusHit=10;
+		suppressionRadiusBulletClose=4;
+		suppressionRadiusHit=6;
+		cost=3.3;                                   
+		airLock=1;
+		typicalSpeed=300;                             
+		caliber=3.6;                                    
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=1.35;                                 
+		airFriction=-0.00019000001;                         
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		class CamShakeExplode
+		{
+			power=2.6;
+			duration=0.55;
+			frequency=20;
+			distance=7.5;
+		};
+		class CamShakeHit
+		{
+			power=6.5;
+			duration=0.25;
+			frequency=20;
+			distance=1;
+		};
+	};
+	
+	// Republic Sniper Ammo
+	class 885th_blasterbolt_Sniper_Standard: 885th_blasterbolt
+	{
+		hit=35;
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		visibleFire=5;
+		audibleFire=120;
+		dangerRadiusBulletClose=12;
+		dangerRadiusHit=16;
+		suppressionRadiusBulletClose=8;
+		suppressionRadiusHit=12;
+		visibleFireTime=3;
+		cost=5;
+		airLock=1;
+		caliber=4.48;
+		typicalSpeed=750;
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=2.24;
+		airFriction=-0.00011;
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		class CamShakeExplode
+		{
+			power=3.6055501;
+			duration=0.80000001;
+			frequency=20;
+			distance=10.8167;
+		};
+		class CamShakeHit
+		{
+			power=13;
+			duration=0.40000001;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_blasterbolt_Sniper_AP: 885th_blasterbolt_Sniper_Standard
+	{
+		hit=32;                             
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		visibleFire=5;
+		audibleFire=126;                      
+		dangerRadiusBulletClose=14;
+		dangerRadiusHit=19;
+		suppressionRadiusBulletClose=9;
+		suppressionRadiusHit=14;
+		visibleFireTime=3;
+		cost=6.5;                               
+		airLock=1;
+		caliber=6;                                
+		deflecting=0;                               
+		typicalSpeed=815;                             
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=2.4;
+		airFriction=-0.000095000005;                    
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		class CamShakeExplode
+		{
+			power=4.3;
+			duration=0.85000002;
+			frequency=20;
+			distance=12;
+		};
+		class CamShakeHit
+		{
+			power=15;
+			duration=0.45000001;
+			frequency=20;
+			distance=1;
+		};
+	};
+	
+	// Westar-M5 & Westar-M5 MKII Ammo
+	class 885th_blasterbolt_Rifle_HP_AP: 885th_blasterbolt_Rifle_Standard
+	{
+		hit=23;                              
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		visibleFire=3;
+		audibleFire=54;                        
+		dangerRadiusBulletClose=12;
+		dangerRadiusHit=17;
+		suppressionRadiusBulletClose=9;
+		suppressionRadiusHit=12;
+		cost=2.4;                                
+		airLock=1;
+		typicalSpeed=560;                          
+		caliber=3.6;                                 
+		deflecting=0;                                  
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=1.05;
+		airFriction=-0.00014000001;                      
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		class CamShakeExplode
+		{
+			power=3.4;
+			duration=0.65000004;
+			frequency=20;
+			distance=9.8;
+		};
+		class CamShakeHit
+		{
+			power=7.8;
+			duration=0.3;
+			frequency=20;
+			distance=1;
+		};
+	};
+	
+	//DC-17M Ammo
+	class 885th_blasterbolt_Rifle_Subsonic: 885th_blasterbolt
+	{
+		hit=12;                             
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		visibleFire=2;                        
+		audibleFire=16;                         
+		dangerRadiusBulletClose=5;                
+		dangerRadiusHit=8;
+		suppressionRadiusBulletClose=3;
+		suppressionRadiusHit=5;
+		cost=1.3;
+		airLock=1;
+		typicalSpeed=290;                           
+		caliber=2.15;                                 
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=0.85000002;                         
+		airFriction=-0.00021000001;                       
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		class CamShakeExplode
+		{
+			power=2.4;
+			duration=0.5;
+			frequency=20;
+			distance=7;
+		};
+		class CamShakeHit
+		{
+			power=4.5;
+			duration=0.2;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_blasterbolt_DMR: 885th_blasterbolt
+	{
+		hit=25;
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		visibleFire=5;
+		audibleFire=120;
+		visibleFireTime=3;
+		cost=7;
+		airLock=1;
+		caliber=3.21;
+		coefGravity=0.175;
+		typicalSpeed=639;
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=1.605;
+		airFriction=0;
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		class CamShakeExplode
+		{
+			power=3.1622801;
+			duration=0.60000002;
+			frequency=20;
+			distance=9.4868298;
+		};
+		class CamShakeHit
+		{
+			power=10;
+			duration=0.40000001;
+			frequency=20;
+			distance=1;
+		};
+	};
+	
+	// REP Exprimental Ammo
+	class 885th_blasterbolt_Rifle_HP_API: 885th_blasterbolt_Rifle_Standard
+	{
+		hit=25;
+		indirectHit=0.3;                         
+		indirectHitRange=0.3;
+		explosive=0.30000001                           
+		cartridge="";
+		visibleFire=3;
+		audibleFire=53;
+		dangerRadiusBulletClose=11;
+		dangerRadiusHit=16;
+		suppressionRadiusBulletClose=8;
+		suppressionRadiusHit=11;
+		cost=1.6;
+		airLock=1;
+		typicalSpeed=545;
+		caliber=3.1;
+		deflecting=0;
+		model="\Indecisive_Armoury_Ammos\Data\Tracers\IDA_Blasterbolt_Yellow.p3d";
+		tracerScale=1.075;
+		airFriction=-0.00013500001;
+		effectFly="IDA_BlasterBoltGlow_Yellow_Fly";
+		lightColor[]={1,1,0};
+		ExplosionEffects="IDA_ImpactEffect";
+		craterEffects="ls_plasma_impact";
+		class CamShakeExplode
+		{
+			power=3.8;
+			duration=0.65000004;
+			frequency=20;
+			distance=10;
+		};
+		class CamShakeHit
+		{
+			power=7.2;
+			duration=0.3;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_blasterbolt_Amplified: 885th_blasterbolt_Rifle_Standard
+	{
+		hit=42;                              
+		indirectHit=0;
+		indirectHitRange=0;
+		cartridge="";
+		visibleFire=6;
+		visibleFireTime=3;
+		audibleFire=68;
+		dangerRadiusBulletClose=14;
+		dangerRadiusHit=19;
+		suppressionRadiusBulletClose=9;
+		suppressionRadiusHit=14;
+		cost=6;                                 
+		airLock=1;
+		typicalSpeed=850;                         
+		caliber=4.2;                                
+		coefGravity=0.35;                             
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=1.5;
+		airFriction=-0.00011000001;
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		class CamShakeExplode
+		{
+			power=4.3;
+			duration=0.75;
+			frequency=20;
+			distance=11.5;
+		};
+		class CamShakeHit
+		{
+			power=11.5;
+			duration=0.35;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_blasterbolt_Overcharged: 885th_blasterbolt_Rifle_Standard
+	{
+		hit=50;                              
+		indirectHit=0;
+		indirectHitRange=0;
+		explosive=0.05;
+		cartridge="";
+		visibleFire=6;
+		visibleFireTime=3;
+		audibleFire=70;
+		dangerRadiusBulletClose=15;
+		dangerRadiusHit=20;
+		suppressionRadiusBulletClose=10;
+		suppressionRadiusHit=15;
+		cost=6.5;                                
+		airLock=1;
+		warheadName="AP";
+		aiAmmoUsageFlags=64;
+		typicalSpeed=880;                           
+		caliber=7.4;                                  
+		coefGravity=0.3;                                
+		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
+		tracerScale=1.55;
+		airFriction=-0.00010500001;
+		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		class CamShakeExplode
+		{
+			power=4.5;
+			duration=0.8;
+			frequency=20;
+			distance=12;
+		};
+		class CamShakeHit
+		{
+			power=12;
+			duration=0.4;
+			frequency=20;
+			distance=1;
+		};
+	};
+	class 885th_blasterbolt_ION: 885th_blasterbolt
+	{
+		hit=10;
+		indirectHit=0.1;
+		indirectHitRange=0.1;
+		explosive=1;
+		cartridge="";
+		visibleFire=6;
+		audibleFire=65;
+		dangerRadiusBulletClose=22;
+		dangerRadiusHit=35;
+		suppressionRadiusBulletClose=16;
+		suppressionRadiusHit=22;
+		cost=3.0;
+		airLock=1;
+		typicalSpeed=420;
+		caliber=0.8;
+		effectFly="JLTS_plasma_blue";
+		model="\MRC\JLTS\weapons\Core\effects\emp_blue.p3d";
+		lightcolor[]={0.25,0.25,0.5};
+		tracerScale=1.35;
+		airFriction=-0.00022;
+		explosionEffects="JLTS_fx_exp_EMP";
+		SoundSetExplosion[]=
+		{
+			"JLTS_GrenadeEMP_Exp_SoundSet",
+			"JLTS_GrenadeEMP_Tail_SoundSet",
+			"Explosion_Debris_SoundSet"
+		};
+		class CamShakeExplode
+		{
+			power=6.7082;
+			duration=0.95;
+			frequency=32;
+			distance=20;
+		};
+		class CamShakeHit
+		{
+			power=7;
+			duration=0.45;
+			frequency=32;
+			distance=3.5;
+		};
+	};
+	
 	class 885th_blasterbolt_blue : 885th_blasterbolt
 	{
 		hit = 20;
 		caliber = 5.7;
-		coefGravity = 0;
-	};
-	class 885th_blasterbolt_bLow : 885th_blasterbolt_blue
-	{
-		hit = 10;
-		caliber = 3.5;
-		coefGravity = 0;
-	};
-	class 885th_blasterbolt_bHigh : 885th_blasterbolt_blue
-	{
-		hit = 25;
-		ACE_caliber = 7.823;
-		caliber = 7.62;
-		coefGravity = 0;
-	};
-	class 885th_blasterbolt_bAmp : 885th_blasterbolt_blue
-	{
-		ACE_muzzlevelocities[] = {335, 620, 1200, 730, 800, 780, 850, 880};
-		ACE_barrellengths[] = 	{228, 450, 457, 609, 650, 620, 655, 750};
-		hit = 70;
-		caliber = 10.0;
-		ACE_caliber = 10.0;
-		coefGravity = 0;
-	};
-	class 885th_blasterbolt_bOver : 885th_blasterbolt_blue
-	{
-		ace_vehicle_damage_incendiary = 1.5;
-		warheadName = "AP";
-		aiAmmoUsageFlags = "64 + 128 + 512";
-		ACE_muzzlevelocities[] = {335, 620, 1200, 730, 820, 800, 840, 853};
-		ACE_barrellengths[] = {228, 450, 457, 609, 650, 620, 655, 750};
-		hit = 100;
-		explosive = 0.1;
-		caliber = 25.0;
-		ACE_caliber = 20.0;
-		coefGravity = 0;
-	};
-	class 885th_blasterbolt_bApex: 885th_blasterbolt_blue
-	{
-		warheadName = "AP";
-		aiAmmoUsageFlags = "64 + 128 + 512";
-		ACE_muzzlevelocities[] = {335, 620, 1200, 730, 820, 800, 840, 853};
-		ACE_barrellengths[] = {228, 450, 457, 609, 650, 620, 655, 750};
-		hit = 55;
-		ACE_caliber = 7.823;
-		caliber = 7.62;
-		coefGravity = 0;
-	};
-	class 885th_blasterbolt_DC17MSnip : 885th_blasterbolt_blue
-	{
-		hit = 75;
-		caliber = 10.0;
-		ACE_caliber = 10.0;
 		coefGravity = 0;
 	};
 	// Republic Extras
@@ -3649,20 +4802,6 @@ class CfgAmmo
 		tracerScale=0.82499999;
 		airFriction=-0.00019999999;
 		effectfly="IDA_BlasterBoltGlow_Green_Fly";
-	};
-	class 885th_blasterbolt_blue_dc15mod: 885th_blasterbolt
-	{
-		hit = 18;                  
-		indirectHit = 2;           
-		indirectHitRange = 0;
-		airFriction = -0.0006;
-		caliber = 1.5;            
-		typicalSpeed = 600;
-		model= "\Indecisive_Armoury_Ammos\Data\Tracers\IDA_Blasterbolt_Blue.p3d";
-		effectFly= "IDA_BlasterBoltGlow_Medium_Blue_Fly";
-		tracerScale = 1.2;         
-		tracerStartTime = 0;       
-		tracerEndTime = 5;
 	};
 	class 885th_blasterbolt_blue_dc15mod_300AAC: 885th_blasterbolt
 	{
@@ -3746,20 +4885,6 @@ class CfgAmmo
 		craterEffects="";
 		effectFly="IDA_BlasterBoltGlow_Medium_Blue_Fly";
 		model="\Indecisive_Armoury_Ammos\Data\Tracers\IDA_Blasterbolt_Blue.p3d";
-	};
-	class 885th_blasterbolt_yellow_DX36: 885th_blasterbolt
-	{
-		ace_vehicle_damage_incendiary = 1.5;
-		warheadName = "AP";
-		model="\Indecisive_Armoury_Ammos\Data\Tracers\IDA_Blasterbolt_Yellow.p3d";
-		effectfly="IDA_BlasterBoltGlow_Yellow_Fly";
-		Lightcolor[]={1,1,0};
-		hit=45;
-		caliber = 7.62;
-		coefGravity=0;
-		ExplosionEffects="IDA_ImpactEffect";
-		cratereffects="ls_plasma_impact";
-		explosive=0.30000001;
 	};
 	class 885th_HE_blasterbolt_yellow_DX36: GrenadeBase
 	{
@@ -4100,43 +5225,191 @@ class CfgAmmo
 			distance=1;
 		};
 	};
-	class 885th_Breaching_Scattershot_blue: 885th_blasterbolt
-	{	
-		hit=20;
-		simulationStep=9.9999997e-005;
-		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
-		effectFly="3AS_PlasmaBolt_blue_Fly";
-		submunitionAmmo="885th_blasterbolt_blue";
-		submunitionConeType[]=
-		{
-			"poissondisc",
-			6
-		};
-		submunitionConeAngle=5;
-		triggerSpeedCoef[]={0.85000002,1};
-		triggerTime=0.001;
-	};
-	// Economy
-	class 885th_blasterbolt_red : 885th_blasterbolt
-	{
-		model = "\3AS\3AS_Weapons\Data\tracer_red.p3d";
-		effectfly = "3AS_PlasmaBolt_Red_Fly";
-		hit = 16;
-		caliber = 3.8;
-		coefGravity = 0;
-	};
-	class 885th_blasterbolt_rHigh : 885th_blasterbolt_red
-	{
-		hit = 10;
-		caliber = 5.7;
-		coefGravity = 0;
-	};
-	class 885th_blasterbolt_rAmp : 885th_blasterbolt_red
-	{
-		hit = 30;
-		caliber = 7.62;
-		coefGravity = 0;
-	};
+	// CIS
+	class 885th_blasterbolt_Red_Pistol_Standard: 885th_blasterbolt
+    {
+        hit=7;
+        indirectHit=0;
+        indirectHitRange=0;
+        cartridge="";
+        audibleFire=50;
+        dangerRadiusBulletClose=4;
+        dangerRadiusHit=8;
+        suppressionRadiusBulletClose=2;
+        suppressionRadiusHit=4;
+        visibleFireTime=3;
+        cost=50;
+        airLock=1;
+        caliber=1.1799999;
+        typicalSpeed=306;
+        model = "\3AS\3AS_Weapons\Data\tracer_red.p3d";
+        tracerScale=0.58999997;
+        airFriction=-0.00026999999;
+        effectfly = "3AS_PlasmaBolt_Red_Fly";
+    };
+    class 885th_blasterbolt_Red_Pistol_PlusP: 885th_blasterbolt_Red_Pistol_Standard
+    {
+        hit=8;                             
+        indirectHit=0;
+        indirectHitRange=0;
+        cartridge="";
+        audibleFire=52;                      
+        dangerRadiusBulletClose=4;
+        dangerRadiusHit=8;
+        suppressionRadiusBulletClose=2;
+        suppressionRadiusHit=5;
+        visibleFireTime=3;
+        cost=50;
+        airLock=1;
+        caliber=1.28;                        
+        typicalSpeed=320;                      
+        model = "\3AS\3AS_Weapons\Data\tracer_red.p3d";
+        tracerScale=0.61000001;                
+        airFriction=-0.00025500001;            
+        effectfly = "3AS_PlasmaBolt_Red_Fly";
+    };
+	class 885th_blasterbolt_Red_Rifle_Standard: 885th_blasterbolt
+    {
+        hit=15;
+        indirectHit=0;
+        indirectHitRange=0;
+        cartridge="";
+        visibleFire=3;
+        audibleFire=45;
+        dangerRadiusBulletClose=8;
+        dangerRadiusHit=12;
+        suppressionRadiusBulletClose=6;
+        suppressionRadiusHit=8;
+        cost=1.2;
+        airLock=1;
+        typicalSpeed=472;
+        caliber=1.95;
+        model = "\3AS\3AS_Weapons\Data\tracer_red.p3d";
+        tracerScale=0.97500002;
+        airFriction=-0.00018;
+       	effectfly = "3AS_PlasmaBolt_Red_Fly";
+        class CamShakeExplode
+        {
+            power=2.8284299;
+            duration=0.60000002;
+            frequency=20;
+            distance=8.48528;
+        };
+        class CamShakeHit
+        {
+            power=5;
+            duration=0.2;
+            frequency=20;
+            distance=1;
+        };
+    };
+	class 885th_blasterbolt_Red_Sniper_Standard: 885th_blasterbolt
+    {
+        hit=35;
+        indirectHit=0;
+        indirectHitRange=0;
+        cartridge="";
+        visibleFire=5;
+        audibleFire=120;
+        dangerRadiusBulletClose=12;
+        dangerRadiusHit=16;
+        suppressionRadiusBulletClose=8;
+        suppressionRadiusHit=12;
+        visibleFireTime=3;
+        cost=5;
+        airLock=1;
+        caliber=4.48;
+        typicalSpeed=750;
+        model = "\3AS\3AS_Weapons\Data\tracer_red.p3d";
+        tracerScale=2.24;
+        airFriction=-0.00011;
+        effectfly = "3AS_PlasmaBolt_Red_Fly";
+        class CamShakeExplode
+        {
+            power=3.6055501;
+            duration=0.80000001;
+            frequency=20;
+            distance=10.8167;
+        };
+        class CamShakeHit
+        {
+            power=13;
+            duration=0.40000001;
+            frequency=20;
+            distance=1;
+        };
+    };
+	class 885th_blasterbolt_Red_HeavyRifle_Standard: 885th_blasterbolt
+    {
+        hit=19;                             
+        indirectHitRange=0;
+        cartridge="";
+        visibleFire=4;
+        visibleFireTime=3;
+        audibleFire=55;                       
+        dangerRadiusBulletClose=10;
+        dangerRadiusHit=15;
+        suppressionRadiusBulletClose=7;
+        suppressionRadiusHit=10;
+        cost=1.6;                               
+        airLock=1;
+        typicalSpeed=490;                         
+        caliber=2.2;                                
+        model = "\3AS\3AS_Weapons\Data\tracer_red.p3d";
+        tracerScale=1.1;                              
+        airFriction=-0.00017000001;                     
+        effectfly = "3AS_PlasmaBolt_Red_Fly";
+        class CamShakeExplode
+        {
+            power=3.2;
+            duration=0.65000004;
+            frequency=20;
+            distance=9.6;
+        };
+        class CamShakeHit
+        {
+            power=7;
+            duration=0.3;
+            frequency=20;
+            distance=1;
+        };
+    };
+	class 885th_blasterbolt_Red_B2_HP: 885th_blasterbolt_Red_HeavyRifle_Standard
+    {
+        hit=24;                             
+        indirectHit=0;
+        indirectHitRange=0;
+        cartridge="";
+        visibleFire=5;
+        visibleFireTime=3;
+        audibleFire=65;                       
+        dangerRadiusBulletClose=12;
+        dangerRadiusHit=18;
+        suppressionRadiusBulletClose=8;
+        suppressionRadiusHit=12;
+        cost=2.1;                               
+        airLock=1;
+        typicalSpeed=560;                         
+        caliber=2.2;                                
+        model = "\3AS\3AS_Weapons\Data\tracer_red.p3d";
+        tracerScale=1.3;                              
+        airFriction=-0.00015000001;
+        effectfly = "3AS_PlasmaBolt_Red_Fly";
+        class CamShakeExplode
+        {
+            power=3.7;
+            duration=0.7;
+            frequency=20;
+            distance=10.5;
+        };
+        class CamShakeHit
+        {
+            power=8.5;
+            duration=0.35;
+            frequency=20;
+            distance=1;
+        };
+    };
 	// Militia
 	class 885th_blasterbolt_green : 885th_blasterbolt
 	{
@@ -4217,37 +5490,802 @@ class CfgMagazines
 		ammo = "885th_blasterbolt";
 		mass = 8;
 	};
-	// DC Series
-	class 885th_dc_cell_blue : 885th_cell
+	// 885th Pistol Magazines
+	class 885th_dc17_cell : 885th_cell
+	{
+		count = 40;
+		displayName = "[885th] DC-17 Blaster-Pistol Standard Cell";
+		displayNameShort = "Std Cell For The DC-17 Blaster Pistol";
+		descriptionShort = "40 round capacity, standard blaster bolts.";
+		ammo = "885th_blasterbolt_Pistol_Standard";
+		initSpeed = 306;
+		tracersEvery = 1;
+		mass = 3;
+	};
+	class 885th_dc17_cell_extended : 885th_cell
+	{
+		count = 80;
+		displayName = "[885th] DC-17 Blaster-Pistol Standard Cell Extended";
+		displayNameShort = "Higher Capacity Std Cell For The DC-17 Blaster Pistol";
+		descriptionShort = "80 round capacity, standard blaster bolts.";
+		ammo = "885th_blasterbolt_Pistol_Standard";
+		initSpeed = 306;
+		tracersEvery = 1;
+		mass = 6;
+	};
+	class 885th_dc17s_cell : 885th_cell
+	{
+		count = 30;
+		displayName = "[885th] DC-17s Blaster-Pistol overpressured Cell";
+		displayNameShort = "Overpressured Cell For The DC-17s Blaster Pistol";
+		descriptionShort = "30 round capacity, overpressured blaster bolts.";
+		ammo = "885th_blasterbolt_Pistol_PlusP";
+		initSpeed = 320;
+		tracersEvery = 1;
+		mass = 3;
+	};
+	class 885th_dc17s_cell_ap : 885th_cell
+	{
+		count = 25;
+		displayName = "[885th] DC-17s Blaster-Pistol Armor-Piercing Cell";
+		displayNameShort = "Armor-Piercing Cell For The DC-17s Blaster Pistol";
+		descriptionShort = "25 round capacity, armor-piercing blaster bolts.";
+		ammo = "885th_blasterbolt_Pistol_AP";
+		initSpeed = 340;
+		tracersEvery = 1;
+		mass = 5;
+	};
+	class 885th_dc17s_dual_cell: 885th_cell
+	{
+		count = 60;
+		displayName = "[885th] DC-17s Dual Blaster-Pistols Overpressured Cell";
+		displayNameShort = "overpressured Cell For The DC-17s Blaster Pistol";
+		descriptionShort = "60 round capacity, overpressured blaster bolts.";
+		ammo = "885th_blasterbolt_Pistol_PlusP_dual";
+		initSpeed = 320;
+		tracersEvery = 1;
+		mass = 6;
+	};
+	class 885th_dc17s_dual_cell_ap: 885th_cell
+	{
+		count = 35;
+		displayName = "[885th] DC-17s Dual Blaster-Pistols Armor-Piercing Cell";
+		displayNameShort = "Armor-Piercing For The DC-17s Blaster Pistol";
+		descriptionShort = "35 round capacity, armor-piercing blaster bolts.";
+		ammo = "885th_blasterbolt_Pistol_AP_dual";
+		initSpeed = 340;
+		tracersEvery = 1;
+		mass = 6;
+	};
+	class 885th_dc15sa_cell : 885th_cell
+	{	
+		count = 7;
+		author="885th";
+		displayName = "[885th] DC-15SA Blaster-Pistol High Power Cell";
+		displayNameShort = "High Power Cell For The DC-15SA Heavy Blaster Pistol";
+		descriptionShort = "7 round capacity, high power blaster bolts.";
+		ammo = "885th_blasterbolt_Pistol_HP";
+		initSpeed=335;
+		tracersEvery = 1;
+		mass = 4;
+	};
+	class 885th_dc21_cell : 885th_cell
+	{	
+		count = 25;
+		author="885th";
+		displayName = "[885th] DC-21 Blaster-Pistol Modified Cell";
+		displayNameShort = "Modified Cell For The DC-21 Blaster Pistol";
+		descriptionShort = "25 round capacity, modified blaster bolts.";
+		ammo = "885th_blasterbolt_Carbine_Standard";
+		initSpeed=361;
+		tracersEvery = 1;
+		lastRoundsTracer=10;
+		mass = 4;
+	};
+	class 885th_dc21_tracerless_cell : 885th_cell
+	{	
+		count = 25;
+		author="885th";
+		displayName = "[885th] DC-21 Blaster-Pistol Modified Tracerless Cell";
+		displayNameShort = "Modified Tracerless Cell For The DC-21 Blaster Pistol";
+		descriptionShort = "25 round capacity, modified tracerless blaster bolts.";
+		ammo = "885th_blasterbolt_Carbine_Tracerless";
+		initSpeed=361;
+		tracersEvery=1;
+		lastRoundsTracer=10;
+		mass = 4;
+	};
+	class 885th_dc15p_cell : 885th_cell
+	{
+		count = 10;
+		author="885th";
+		displayName = "[885th] DC-15P Heavy Blaster-Pistol Overpressured Cell";
+		displayNameShort = "Overpressured Cell For The DC-15P Heavy Blaster Pistol";
+		descriptionShort = "10 round capacity, overpressured blaster bolts.";
+		ammo = "885th_blasterbolt_Carbine_PlusP";
+		initSpeed=395;
+		tracersEvery=1;
+		mass = 5;
+	};
+	class 885th_westar35_cell : 885th_cell
+	{
+		count = 20;
+		author="885th";
+		displayName = "[885th] Westar-35 Blaster-Pistol Armor-Piercing Cell";
+		displayNameShort = "Armor-Piercing Cell For The Westar-35 Blaster Pistol";
+		descriptionShort = "20 round capacity, Armor-Piercing blaster bolts.";
+		ammo = "885th_blasterbolt_Pistol_HP_AP";
+		initSpeed=360;
+		tracersEvery=1;
+		mass = 5;
+	};
+	
+	//885th Carbine Magazines
+	class 885th_dc15s_cell : 885th_cell
+	{
+		count = 100;
+		displayName = "[885th] DC-15S Blaster-Carbine Standard Cell";
+		displayNameShort = "Std Cell For The DC-15S Blaster Carbine";
+		descriptionShort = "100 round capacity, Standard blaster bolts.";
+		ammo = "885th_blasterbolt_Carbine_Standard";
+		tracersEvery = 1;
+		initSpeed = 361;
+		mass = 10;
+	};
+	class 885th_dc15s_hp_cell : 885th_cell
 	{
 		count = 50;
-		displayName = "[885th] Standard Energy Cell";
-		displayNameShort = "Std. Cell";
-		descriptionShort = "50 round capacity, standard blaster bolts.";
-		ammo = "885th_blasterbolt_blue";
+		displayName = "[885th] DC-15S Blaster-Carbine High Power Cell";
+		displayNameShort = "High Power Cell For The DC-15S Blaster Carbine";
+		descriptionShort = "50 round capacity, High Power blaster bolts.";
+		ammo = "885th_blasterbolt_Carbine_HP";
+		tracersEvery = 1;
+		initSpeed = 390;
+		mass = 10;
+	};
+	class 885th_dc15s_ap_cell : 885th_cell
+	{
+		count = 35;
+		displayName = "[885th] DC-15S Blaster-Carbine Armor-Piercing Cell";
+		displayNameShort = "Armor-Piercing Cell For The DC-15S Blaster Carbine";
+		descriptionShort = "35 round capacity, Armor-Piercing blaster bolts.";
+		ammo = "885th_blasterbolt_Carbine_AP";
+		tracersEvery = 1;
+		initSpeed = 410;
+		mass = 10;
+	};
+	class 885th_dc15se_cell : 885th_cell
+	{
+		count = 55;
+		displayName = "[885th] DC-15SE Blaster-Carbine Overpressured Cell";
+		displayNameShort = "Overpressured Cell For The DC-15S Blaster Carbine";
+		descriptionShort = "55 round capacity, Overpressured blaster bolts.";
+		ammo = "885th_blasterbolt_Carbine_PlusP";
+		tracersEvery = 1;
+		initSpeed = 395;
+		mass = 10;
+	};
+	class 885th_dc19_cell : 885th_cell
+	{
+		count = 60;
+		displayName = "[885th] DC-19 Blaster-Carbine Subsonic Cell";
+		displayNameShort = "Subsonic Cell For The DC-19 Blaster Carbine";
+		descriptionShort = "60 round capacity, subsonic blaster bolts.";
+		ammo = "885th_blasterbolt_Carbine_Subsonic";
+		tracersEvery = 1;
+		initSpeed = 295;
+		mass = 10;
+	};
+	class 885th_dc19_tracerless_cell : 885th_cell
+	{
+		count = 60;
+		displayName = "[885th] DC-19 Blaster-Carbine Subsonic Tracerless Cell";
+		displayNameShort = "Subsonic Tracerless Cell For The DC-19 Blaster Carbine";
+		descriptionShort = "60 round capacity, subsonic tracerless blaster bolts.";
+		ammo = "885th_blasterbolt_Carbine_Tracerless";
+		tracersEvery = 1;
+		initSpeed = 295;
+		mass = 10;
+	};
+	class 885th_elite_300_dc_cell: 885th_cell
+	{
+		count = 60;
+		displayName = "[885th] DC15S Elite Cell";
+		displayNameShort = "Elite Cell";
+		descriptionShort = "60 round cells, modified blaster bolts";
+		ammo = "885th_blasterbolt_blue_dc15mod_300AAC";
+		tracerEvery = 1;
+		initSpeed = 310;
+	};
+	
+	//885th Carbinerifle Magazines
+	class 885th_dc15c_cell : 885th_cell
+	{
+		count = 40;
+		displayName = "[885th] DC15C Carbine-Rifle Medium Power Cell";
+		displayNameShort = "Medium Cell For The DC-15C Carbine-Rifle";
+		descriptionShort = "40 round capacity, standard blaster bolts.";
+		ammo = "885th_blasterbolt_CarbineRifle_Medium";
+		initSpeed=440;
 		tracersEvery = 1;
 		mass = 10;
 	};
-	class 885th_dc_cell_blue_pistol : 885th_dc_cell_blue
+	class 885th_dc15cmkii_cell : CA_Magazine
 	{
-		count = 10;
-		displayName = "[885th] Standard Pistol Energy Cell";
-		displayNameShort = "Std. Pistol Cell";
-		descriptionShort = "10 round capacity, standard blaster bolts.";
-		ammo = "885th_blasterbolt_blue";
+		scope = 2;
+		count = 40;
+		displayName = "[885th] DC15C MK.II Carbine-Rifle Medium Power Cell";
+		displayNameShort = "Medium Cell For The DC-15C Carbine-Rifle";
+		descriptionShort = "40 round capacity, standard blaster bolts.";
+		ammo = "885th_blasterbolt_CarbineRifle_Medium";
+		modelSpecial = "\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
+		modelSpecialIsProxy = 1;
+		initSpeed=440;
 		tracersEvery = 1;
-		mass = 3;
+		mass = 10;
 	};
-	class 885th_dc_cell_blue_pistol_extended : 885th_dc_cell_blue
+	class 885th_dc15cmkii_ap_cell : CA_Magazine
+	{
+		scope = 2;
+		count = 35;
+		displayName = "[885th] DC15C MK.II Armor-Piercing Cell";
+		displayNameShort = "Armor-Piercing Cell For The DC-15C Carbine-Rifle";
+		descriptionShort = "35 round capacity, armor piercing blaster bolts.";
+		ammo = "885th_blasterbolt_CarbineRifle_Medium_AP";
+		modelSpecial = "\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
+		modelSpecialIsProxy = 1;
+		initSpeed=468;
+		tracersEvery = 1;
+		mass = 15;
+	};
+	
+	//885th DC17M Magazines
+	class 885th_DC17M_cell: CA_Magazine
+	{
+		author="Antauri + 885th Bloodpack Divison";
+		scope=2;
+		displayName="[885th] DC17M 60 Round Mag ";
+		picture="\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
+		ammo="885th_blasterbolt_Rifle_Subsonic";
+		count=60;
+		mass=6;
+		initSpeed=290;
+		tracersEvery=1;
+		lastRoundsTracer=50;
+		descriptionShort="DC17m Blaster Magazine.";
+	};
+	class 885th_DC17M_cell_sniper: CA_Magazine
+	{
+		author="Antauri + 885th Bloodpack Divison";
+		scope=2;
+		displayName="[885th] DC17M Sniper 5rnd HighPowered Mag";
+		picture="\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
+		ammo="885th_blasterbolt_DMR";
+		count=5;
+		mass=8;
+		initSpeed=639;
+		tracersEvery=1;
+		lastRoundsTracer=5;
+		descriptionShort="DC17m Sniper Blaster Magazine.";
+	};
+	class 885th_DC17M_aad: CA_Magazine
+	{
+		author="Antauri + 885th Bloodpack Divison";
+		scope=2;
+		displayName="[885th] DC17M T-31 Anti-Armor Det";
+		displayNameShort = " T-31 AAD";
+		descriptionShort = "1 round capacity, High-Powered thermal detonator.";
+		picture = "\MRC\JLTS\weapons\EPL2\data\ui\EPL2_mag_ui_ca.paa";
+		initSpeed=350;
+		count=1;
+		tracersEvery=1;
+		lastRoundsTracer=1;
+		ammo="885th_thermalshell_high";
+		type=16;
+		mass=8;
+	};
+	
+	//885th Scattershot Magazines
+	class 885th_DC23_breaching_cell: CA_Magazine
+	{
+		author="885th Bloodpack Division + Indecisive Armoury Team";
+		scope=2;
+		modelSpecial="";
+		modelSpecialIsProxy=0;
+		picture="\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
+		model="\MRC\JLTS\weapons\DC15A\DC15A_mag.p3d";
+		count=10;
+		displayName="[885th] DC23 10Rnd Breaching Scatter Cell";
+		displayNameShort="Breaching Scatter Cell";
+		descriptionShort="10 round capacity";
+		ammo="885th_Breaching_Scattershot_blue";
+		tracersEvery=1;
+		initSpeed=325;
+		mass=20;
+	};
+	class 885th_dp23_scattershot_cell: 885th_cell
+	{
+		scope=2;
+		author="885th";
+		displayName="[885th] DP-23 25rnd Scattershot Battery";
+		displayNameShort="Scattershot";
+		descriptionShort="25 round capacity, Scattershot blaster bolts";
+		ammo="885th_scattershot_blasterbolt_blue";
+		initSpeed=317;
+		mass=7;
+		count=16;
+	};
+	class 885th_DX23_scattershot_cell: CA_Magazine
+	{
+		author="885th Bloodpack Division + SL Mod Dev Team";
+		scope=2;
+		displayName="[885th] DX-23 25rnd Scattershot Battery";
+		picture="\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
+		modelSpecial="\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
+		modelSpecialIsProxy=1;
+		initSpeed=400;
+		ammo="885th_scattershot_blasterbolt_blue";
+		count=25;
+		mass=6;
+		descriptionShort="DX-23 Scattershot Mag.";
+	};
+	class 885th_DX23_Doomsday_slug_cell: CA_Magazine
+	{
+		author="885th Bloodpack Division + SL Mod Dev Team";
+		scope=2;
+		displayName="[885th] DX-23 Doomsday Slug Cell";
+		picture="\3AS\3AS_Weapons\Data\UI\3as_doomsday_r.paa";
+		modelSpecial="\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
+		modelSpecialIsProxy=1;
+		initSpeed=1500;
+		ammo="885th_Doomsday_slug_blasterbolt_blue";
+		count=1;
+		mass=25;
+		tracerEvery=1;
+		lastRoundsTracer=1;
+		descriptionShort="DX-23 Doomsday Slug Mag.";
+	};
+	
+	//885th Rifle Magazines
+	class 885th_dc15a_cell : 885th_cell
+	{
+		count = 100;
+		displayName = "[885th] DC15A Blaster-Rifle Standard Cell";
+		displayNameShort = "Std Cell For The DC-15A Blaster Rifle";
+		descriptionShort = "100 round capacity, standard blaster bolts.";
+		ammo = "885th_blasterbolt_Rifle_Standard";
+		initSpeed=472;
+		tracersEvery = 1;
+		mass = 10;
+	};
+	class 885th_dc15a_hp_cell : 885th_cell
+	{
+		count = 50;
+		displayName = "[885th] DC15A Blaster-Rifle High-Power Cell";
+		displayNameShort = "High Power Cell For The DC-15A Blaster Rifle";
+		descriptionShort = "50 round capacity, high power blaster bolts.";
+		ammo = "885th_blasterbolt_Rifle_HP";
+		initSpeed=530;
+		tracersEvery = 1;
+		mass = 15;
+	};
+	class 885th_dc15a_ap_cell : 885th_cell
+	{
+		count = 35;
+		displayName = "[885th] DC15A Blaster-Rifle Armor-Piercing Cell";
+		displayNameShort = "Armor-Piercing Cell For The DC-15A Blaster-Rifle";
+		descriptionShort = "35 round capacity, armor piercing blaster bolts.";
+		ammo = "885th_blasterbolt_Rifle_AP";
+		initSpeed=545;
+		tracersEvery = 1;
+		mass = 15;
+	};
+	class 885th_DC15BR_battery_blue: CA_Magazine
+	{
+		author="885th Bloodpack Division + SL Mod Dev Team";
+		scope=2;
+		displayName="[885th] DC15BR 45rnd High-Power Energy Cell";
+		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
+		modelSpecial="\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
+		modelSpecialIsProxy=1;
+		ammo="885th_blasterbolt_Rifle_Standard";
+		count=45;
+		mass=10;
+		initSpeed=900;
+		tracersEvery=1;
+		lastRoundsTracer=25;
+		descriptionShort="Standard Energy Cell Used Only For The DC15BR.";
+	};
+	
+	//885th Heavy Rifle Magazines
+	class 885th_dc15le_cell : CA_Magazine
+	{
+		scope = 2;
+		count = 35;
+		displayName = "[885th] DC15LE Energy Cell";
+		displayNameShort = "DC15LE Cell";
+		descriptionShort = "35 round capacity, standard blaster bolts.";
+		ammo = "885th_blasterbolt_Rifle_Medium";
+		modelSpecial = "\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
+		modelSpecialIsProxy = 1;
+		initSpeed=500;
+		tracersEvery = 1;
+		mass = 10;
+	};
+	class 885th_dc15le_heavy_cell : CA_Magazine
+	{
+		scope = 2;
+		count = 175;
+		displayName = "[885th] DC15LE Heavy Energy Cell";
+		displayNameShort = "DC15LE Hvy Cell";
+		descriptionShort = "175 round capacity, heavy blaster bolts.";
+		ammo = "885th_blasterbolt_Rifle_Medium";
+		modelSpecial = "\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
+		modelSpecialIsProxy = 1;
+		initSpeed=500;
+		tracersEvery = 1;
+		mass = 20;
+	};
+	class 885th_dc15le_explos_cell : CA_Magazine
+	{
+		scope = 2;
+		count = 30;
+		displayName = "[885th] DC15LE Explosive Cell";
+		displayNameShort = "DC15LE Low Yield";
+		descriptionShort = "30 round capacity, low yield explosive bolts. ADVISE CAUTION";
+		ammo = "885th_blasterbolt_DC15LE_Explosive";
+		modelSpecial = "\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
+		modelSpecialIsProxy = 1;
+		initSpeed=380;
+		tracersEvery = 1;
+		mass = 50;
+	};
+	
+	//885th LMG Magazines
+	class 885th_dc15l_cell: 885th_cell
+	{
+		count = 200;
+		displayName = "[885th] DC15L Energy Cell";
+		displayNameShort = "DC15L Cell";
+		descriptionShort = "200 round capacity, standard blaster bolts.";
+		ammo = "885th_blasterbolt_Rifle_Standard";
+		initSpeed=472;
+		tracersEvery = 1;
+		mass = 32;
+	};
+	class 885th_dc15lmkii_cell : CA_Magazine
+	{
+		scope = 2;
+		count = 200;
+		displayName = "[885th] DC15L MKII High Power Cell";
+		displayNameShort = "DC15L High Power Cell";
+		descriptionShort = "200 round capacity, high power blaster bolts.";
+		ammo = "885th_blasterbolt_Rifle_HP";
+		modelSpecial="\ShadowLegion_Weapons\data\DC15\DC15L\model\dc15L_Drummag.p3d";
+		modelSpecialIsProxy=1;
+		initSpeed=530;
+		tracersEvery = 1;
+		mass = 32;
+	};
+	class 885th_dc15lmkii_short_cell : CA_Magazine
+	{
+		scope = 2;
+		count = 45;
+		displayName = "[885th] DC15L MKII AP Cell";
+		displayNameShort = "DC15L MKII AP Cell";
+		descriptionShort = "45 round capacity, armor piercing blaster bolts.";
+		ammo = "885th_blasterbolt_Rifle_AP";
+		modelSpecial = "\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
+		modelSpecialIsProxy = 1;
+		initSpeed=495;
+		tracersEvery = 1;
+		mass = 10;
+	};
+	class 885th_t15_cell: 885th_cell
+	{
+		count = 200;
+		displayName = "[885th] T-15 Light Infantry Repeater Cell";
+		displayNameShort = "T-15LIR Cell";
+		descriptionShort = "100 round capacity, standard blaster bolts.";
+		ammo = "885th_blasterbolt_Rifle_Medium";
+		initSpeed=445;
+		tracersEvery = 1;
+		mass = 10;
+	};
+
+	//885th Z6 Magazines
+	class 885th_battery_para_low_blue : 885th_cell
+	{
+		count = 500;
+		displayName = "[885th] Z6 LP Paratrooper Battery";
+		displayNameShort = "Z6 LP Battery";
+		descriptionShort = "500 round capacity, Standard power blaster bolts.";
+		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
+		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
+		ammo = "885th_blasterbolt_CarbineRifle_Medium";
+		initSpeed=410;
+		tracersEvery = 1;
+		mass = 25;
+	};
+	class 885th_battery_z6_high_blue : 885th_cell
+	{
+		count = 300;
+		displayName = "[885th] Z6 Blaster Battery";
+		displayNameShort = "Z6 Battery";
+		descriptionShort = "300 round capacity, high power blaster bolts.";
+		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
+		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
+		ammo = "885th_blasterbolt_Rifle_HP";
+		initSpeed=480;
+		tracersEvery = 1;
+		mass = 30;
+	};
+	class 885th_Z6_he_battery_Blue: 885th_cell
+	{
+		author="Chief33";
+		scope=2;
+		displayName="[885th]Z6 High Explosive Battery";
+		displayNameShort = "Z6 HE Battery";
+		descriptionShort="High Explosive battery used by the Z6 Rotary Cannon.";
+		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
+		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
+		ammo="885th_HE_blasterbolt_Blue_Z6";
+		count=3;
+		mass=15;
+		initSpeed=480;
+		tracersEvery=1;
+		lastRoundsTracer=2;
+	};
+
+	//885th Z8 Magazines
+	class 885th_Z8_Experimental_200rnd_battery_blue: 885th_cell
+	{
+		scope=2;
+		displayName="[885th] Z8 High Powered Battery";
+		ammo="885th_Z8_STD";
+		tracersEvery=1;
+		type=16;
+		count=200;
+		lastRoundsTracer=200;
+		descriptionShort="Z8 Experimental Blaster Cannon High Powered Battery";
+		mass=40;
+		initSpeed=660;
+	};
+	class 885th_Z8_Experimental_50rnd_HE_battery_blue: 885th_cell
+	{
+		scope=2;
+		displayName="[885th] Z8 High Powered HE Battery";
+		ammo="885th_HE_blasterbolt_blue_DC15LEMKII";
+		tracersEvery=1;
+		count=50;
+		lastRoundsTracer=200;
+		descriptionShort="Z8 Experimental Blaster Cannon High Powered Battery";
+		mass=40;
+		initSpeed=560;
+	};
+
+	//885th DX36C Magazines
+	class 885th_DX36C_battery_yellow_high : 885th_cell
+	{
+		count = 55;
+		displayName = "[885th] DX36C High-Powered Armor-Piercing Battery";
+		displayNameShort = "DX36C HP AP Battery";
+		descriptionShort = "55 round capacity, AP blaster bolts.";
+		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
+		picture = "\885_Weapons\DX36C\UI\DX36C_mag_ui.paa";
+		initSpeed=545;
+		ammo = "885th_blasterbolt_Rifle_HP_API";
+		tracersEvery = 1;
+		mass = 15;
+	};
+	class 885th_DX36C_he_battery_yellow: 885th_cell
+	{
+		author="Chief33";
+		scope=2;
+		displayName="[885th]DX36C High Explosive Battery";
+		displayNameShort = "DX36C HE Battery";
+		descriptionShort="High Explosive battery used by the DX36 Experimental Blaster.";
+		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
+		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
+		ammo="885th_HE_blasterbolt_yellow_DX36";
+		count=3;
+		mass=15;
+		initSpeed=911;
+		tracersEvery=1;
+		lastRoundsTracer=2;
+	};
+
+	//885th Westar M5 Magazines
+	class 885th_Westarm5mkii_Ap_cell_blue : 885th_cell
+	{
+		count = 85;
+		displayName = "[885th] Westar-M5 High Power Modified Cell";
+		displayNameShort = "HP-AP Cell";
+		descriptionShort = "85 round capacity, HP-AP specialized blaster cell";
+		ammo = "885th_blasterbolt_Rifle_HP_AP";
+		initSpeed=560;
+		tracersEvery = 1;
+		mass = 10;
+	};
+
+	//885th Valken38 Magazines
+	class 885th_Valken38A_HighPower_Cell: 885th_cell
+	{
+		scope=2;
+		displayName="[885th] Valken38A Heavy Cell";
+		displayNameShort = "V-38A Hvy Cell";
+		descriptionShort = "20 round capacity, Heavy Rifle precision bolts.";
+		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
+		ammo="885th_blasterbolt_HeavyRifle_Standard";
+		count=20;
+		mass=10;
+		initSpeed=490;
+		tracersEvery=1;
+		lastRoundsTracer=10;
+	};
+	class 885th_Valken38R_HighPower_Cell : 885th_cell
+	{
+		count = 25;
+		displayName = "[885th] Valken38R HP Heavy Cell";
+		displayNameShort = "V-38R HP Cell";
+		descriptionShort = "25 round capacity, Heavy Rifle precision bolts.";
+		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
+		model = "\MRC\JLTS\weapons\DC15A\DC15A_mag.p3d";
+		ammo = "885th_blasterbolt_HeavyRifle_HP";
+		initSpeed=560;
+		tracersEvery = 1;
+		mass = 15;
+	};
+	class 885th_battery_ampHR_blue : 885th_cell
+	{
+		count = 150;
+		displayName = "[885th] Valken38X Heavy Precision Battery";
+		displayNameShort = "V-38X Hvy Battery";
+		descriptionShort = "150 round capacity, heavy precision blaster bolts.";
+		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
+		model = "\MRC\JLTS\weapons\DC15A\DC15A_mag.p3d";
+		ammo = "885th_blasterbolt_Amplified";
+		initSpeed=850;
+		tracersEvery = 1;
+		mass = 35;
+	};
+
+	//885th DMR Magazines
+	class 885th_firepuncher_cell : 885th_cell
 	{
 		count = 30;
-		displayName = "[885th] Standard Pistol Energy Cell Extended";
-		displayNameShort = "Std. Pistol Cell";
-		descriptionShort = "30 round capacity, standard blaster bolts.";
-		ammo = "885th_blasterbolt_blue";
+		displayName = "[885th] Firepuncher Energy Cell";
+		displayNameShort = "Firepuncher Cell";
+		descriptionShort = "30 round capacity, precise blaster bolts.";
+		ammo = "885th_blasterbolt_Rifle_DMR_Balanced";
+		initSpeed=611;
 		tracersEvery = 1;
-		mass = 3;
+		mass = 12;
 	};
+	class 885th_firepuncher_ap_cell : 885th_cell
+	{
+		count = 25;
+		displayName = "[885th] Firepuncher AP Energy Cell";
+		displayNameShort = "Firepuncher AP";
+		descriptionShort = "25 round capacity, precise armor piercing blaster bolts.";
+		ammo = "885th_blasterbolt_Rifle_DMR_AP";
+		initSpeed=635;
+		tracersEvery = 1;
+		mass = 15;
+	};
+	class 885th_DW32S_cell: CA_Magazine
+	{
+		JLTS_hasElectronics=1;
+		JLTS_hasEMPProtection=1;
+		author="885th Bloodpack Division + MrClock";
+		scope=2;
+		modelSpecial="";
+		modelSpecialIsProxy=0;
+		picture="\MRC\JLTS\weapons\DW32S\data\ui\DW32S_mag_ui_ca.paa";
+		model="\MRC\JLTS\weapons\DW32S\DW32S_mag.p3d";
+		count=55;
+		mass=20;
+		initSpeed=611;
+		displayName="[885th] DW32S Cell";
+		descriptionShort="DW-32S Cell.";
+		ammo="885th_blasterbolt_Rifle_DMR_Balanced";
+		tracersEvery=1;
+	};
+	
+	//885th Snub-DMR Magazines
+	class 885th_firespitter_cell : 885th_cell
+	{
+		count = 40;
+		displayName = "[885th] Firespitter Energy Cell";
+		displayNameShort = "Firespitter Cell";
+		descriptionShort = "40 round capacity, modified blaster bolts.";
+		ammo = "885th_blasterbolt_Rifle_DMR_Subsonic";
+		initSpeed=300;
+		tracersEvery = 1;
+		mass = 13;
+	};
+	
+	//885th Sniper Magazines
+	class 885th_dc15xsniper_cell: 885th_cell
+	{
+		count = 20;
+		displayName = "[885th] DC15X Sniper Cell";
+		displayNameShort = "DC15X Cell";
+		descriptionShort = "20 round capacity, heavy prcision bolts.";
+		ammo = "885th_blasterbolt_Sniper_Standard";
+		initSpeed=750;
+		tracersEvery = 1;
+		mass = 20;
+	};
+	class 885th_dc15xsniper_ap_cell : 885th_cell
+	{
+		count = 5;
+		displayName = "[885th] DC15X AP Sniper Cell";
+		displayNameShort = "DC15X AP";
+		descriptionShort = "5 round capacity, heavy armor piercing sniper bolts.";
+		ammo = "885th_blasterbolt_Sniper_AP";
+		initSpeed=815;
+		tracersEvery = 1;
+		mass = 25;
+	};
+	class 885th_dc15xsniper_over_cell : 885th_cell
+	{
+		count = 4;
+		displayName = "[885th] DC15X Overcharged Cell";
+		displayNameShort = "DC15X Overcharged";
+		descriptionShort = "4 round capacity, heavy overcharged piercing sniper bolts.";
+		ammo = "885th_blasterbolt_Overcharged";
+		initSpeed=880;
+		tracersEvery = 1;
+		mass = 5;
+	};
+	
+	//885th T-15 Blaster Cannon Magazines
+	class 885th_t15_coil_cell : 885th_cell
+	{
+		count = 5;
+		displayName = "[885th] Standard Thermal Coil";
+		displayNameShort = "Thermal Coil";
+		descriptionShort = "5 round capacity, thermal shells.";
+		model = "\MRC\JLTS\weapons\EPL2\EPL2_mag.p3d";
+		picture = "\MRC\JLTS\weapons\EPL2\data\ui\EPL2_mag_ui_ca.paa";
+		ammo = "885th_thermalshell";
+		initSpeed = 425;
+		tracersEvery = 1;
+		mass = 70;
+		type = 16;
+	};
+	class 885th_t15_coil_cell_high : 885th_cell
+	{
+		count = 3;
+		displayName = "[885th] High-Power Thermal Coil";
+		displayNameShort = "HP Thermal Coil";
+		descriptionShort = "3 round capacity, High-Powered thermal shells.";
+		model = "\MRC\JLTS\weapons\EPL2\EPL2_mag.p3d";
+		picture = "\MRC\JLTS\weapons\EPL2\data\ui\EPL2_mag_ui_ca.paa";
+		ammo = "885th_thermalshell_high";
+		initSpeed = 300;
+		tracersEvery = 1;
+		mass = 70;
+		type = 16;
+	};
+	class 885th_T15_ion_cell: 885th_cell
+	{
+		author="Chief33";
+		scope=2;
+		displayName="[885th] T-15 Ion Cell";
+		displayNameShort = "T-15 Ion Cell";
+		descriptionShort="Ionization-based plasma cell.";
+		model = "\MRC\JLTS\weapons\EPL2\EPL2_mag.p3d";
+		picture = "\MRC\JLTS\weapons\EPL2\data\ui\EPL2_mag_ui_ca.paa";
+		ammo="885th_blasterbolt_ION";
+		count=1;
+		mass=25;
+		initSpeed=420;
+		tracersEvery=1;
+		lastRoundsTracer=2;
+	};
+	
 	class 885th_dc_cell_green : 885th_cell
 	{
 		count = 50;
@@ -4257,60 +6295,7 @@ class CfgMagazines
 		ammo = "885th_blasterbolt_green";
 		tracersEvery = 1;
 		mass = 10;
-	};
-	class 885th_dc_cell_blue_low : 885th_dc_cell_blue
-	{
-		count = 100;
-		displayName = "[885th] Low-Power Energy Cell";
-		displayNameShort = "LP Cell";
-		descriptionShort = "100 round capacity, low energy blaster bolts.";
-		ammo = "885th_blasterbolt_bLow";
-		tracersEvery = 1;
-		mass = 10;
-	};
-	class 885th_dc_cell_blue_high : 885th_dc_cell_blue
-	{
-		count = 25;
-		displayName = "[885th] High-Power Energy Cell";
-		displayNameShort = "HP Cell";
-		descriptionShort = "25 round capacity, high energy blaster bolts.";
-		ammo = "885th_blasterbolt_bHigh";
-		tracersEvery = 1;
-		initSpeed = 900;
-		mass = 10;
-	};
-	class 885th_dc_cell_blue_amp : 885th_dc_cell_blue
-	{
-		count = 15;
-		displayName = "[885th] Amplified Energy Cell";
-		displayNameShort = "Amp Cell";
-		descriptionShort = "15 round capacity, Amplified blaster bolts.";
-		ammo = "885th_blasterbolt_bAmp";
-		tracersEvery = 1;
-		initSpeed = 1100;
-		mass = 15;
-	};
-	class 885th_dc_cell_blue_over : 885th_dc_cell_blue
-	{
-		count = 10;
-		displayName = "[885th] Overcharged Energy Cell";
-		displayNameShort = "OC Cell";
-		descriptionShort = "10 round capacity, overcharged energy blaster bolts.";
-		ammo = "885th_blasterbolt_bOver";
-		tracersEvery = 1;
-		initSpeed = 2000;
-		mass = 20;
-	};
-	
-	class 885th_elite_300_dc_cell: 885th_dc_cell_blue
-	{
-		count = 60;
-		displayName = "[885th] DC15S Elite Cell";
-		displayNameShort = "Elite Cell";
-		descriptionShort = "60 round cells, modified blaster bolts";
-		ammo = "885th_blasterbolt_blue_dc15mod_300AAC";
-		tracerEvery = 1;
-		initSpeed = 310;
+
 	};
 	// Base GL Mags
 	class 885th_mag_40mm_Base: CA_Magazine
@@ -4697,105 +6682,7 @@ class CfgMagazines
 		initSpeed=60;
 	};
 	// Republic Extras
-	class 885th_battery_low_blue : 885th_cell
-	{
-		count = 500;
-		displayName = "[885th] Low Power Blaster Battery";
-		displayNameShort = "LP Battery";
-		descriptionShort = "500 round capacity, Standard power blaster bolts.";
-		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
-		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
-		ammo = "885th_blasterbolt_blue";
-		tracersEvery = 1;
-		mass = 25;
-	};
-	class 885th_battery_high_blue : 885th_cell
-	{
-		count = 300;
-		displayName = "[885th] High Power Blaster Battery";
-		displayNameShort = "HP Battery";
-		descriptionShort = "300 round capacity, high power blaster bolts.";
-		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
-		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
-		ammo = "885th_blasterbolt_bHigh";
-		tracersEvery = 1;
-		mass = 30;
-	};
-	class 885th_DC15P_High_Blue: 885th_cell
-	{
-		author="885th Bloodapack Division";
-		scope=2;
-		displayName="[885th] DC-15P 15rnd High Powered Cell";
-		ammo="885th_blasterbolt_blue";
-		count=15;
-		mass=4;
-		initSpeed=800;
-		tracersEvery=1;
-		lastRoundsTracer=5;
-		descriptionShort="Standard energy cartridge for the DC-15P Blaster.";
-	};
-	class 885th_battery_amp_blue : 885th_cell
-	{
-		count = 250;
-		displayName = "[885th] Amplified Blaster Battery";
-		displayNameShort = "Amp. Battery";
-		descriptionShort = "250 round capacity, amplified blaster bolts.";
-		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
-		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
-		ammo = "885th_blasterbolt_bAmp";
-		tracersEvery = 1;
-		mass = 35;
-	};
-	class 885th_battery_ampHR_blue : 885th_cell
-	{
-		count = 150;
-		displayName = "[885th] Heavy Amplified Blaster Battery";
-		displayNameShort = "Hvy Amp. Battery";
-		descriptionShort = "150 round capacity, amplified blaster bolts.";
-		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		model = "\MRC\JLTS\weapons\DC15A\DC15A_mag.p3d";
-		ammo = "885th_blasterbolt_bAmp";
-		tracersEvery = 1;
-		mass = 40;
-	};
-	class 885th_battery_ampAR_blue : 885th_cell
-	{
-		count = 25;
-		displayName = "[885th] Heavy Amplified Blaster Battery Short";
-		displayNameShort = "Hvy Amp. Battery";
-		descriptionShort = "25 round capacity, amplified blaster bolts.";
-		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		model = "\MRC\JLTS\weapons\DC15A\DC15A_mag.p3d";
-		ammo = "885th_blasterbolt_bAmp";
-		initSpeed=885;
-		tracersEvery = 1;
-		mass = 15;
-	};
-	class 885th_dc_cell_blue_apex: 885th_cell
-	{
-		count = 60;
-		displayName = "[885th] Heavy Apex Blaster Cell";
-		displayNameShort = "Apex Blaster Cell";
-		descriptionShort = "60 round capacity, modified blaster bolts.";
-		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		model = "\MRC\JLTS\weapons\DC15A\DC15A_mag.p3d";
-		ammo = "885th_blasterbolt_bApex";
-		tracersEvery = 1;
-		mass = 10;
-	};
-	class 885th_dc_cell_blue_Omega: 885th_dc_cell_blue_apex
-	{
-		count = 5;
-		displayName = "[885th] Omega AP Blaster Cell";
-		displayNameShort = "Omega Blaster Cell";
-		descriptionShort = "5 round capacity, Apex Sniper Bolt.";
-		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		model = "\MRC\JLTS\weapons\DC15A\DC15A_mag.p3d";
-		initSpeed=3000;
-		ammo = "885th_blasterbolt_bApex";
-		tracersEvery = 1;
-		mass = 15;
-	};
+	
 	class 885th_battery_ampm41_green : 885th_cell
 	{
 		count = 200;
@@ -4808,151 +6695,6 @@ class CfgMagazines
 		ammo = "885th_blasterbolt_Amp_m41_green";
 		tracersEvery = 1;
 		mass = 50;
-	};
-	class 885th_Z8_Experimental_200rnd_battery_blue: 885th_cell
-	{
-		scope=2;
-		displayName="[885th] Z8 High Powered Battery";
-		ammo="885th_Z8_STD";
-		tracersEvery=1;
-		type=16;
-		count=200;
-		lastRoundsTracer=200;
-		descriptionShort="Z8 Experimental Blaster Cannon High Powered Battery";
-		mass=40;
-		initSpeed=660;
-	};
-	class 885th_Z8_Experimental_50rnd_HE_battery_blue: 885th_cell
-	{
-		scope=2;
-		displayName="[885th] Z8 High Powered HE Battery";
-		ammo="885th_HE_blasterbolt_blue_DC15LEMKII";
-		tracersEvery=1;
-		count=50;
-		lastRoundsTracer=200;
-		descriptionShort="Z8 Experimental Blaster Cannon High Powered Battery";
-		mass=40;
-		initSpeed=560;
-	};
-	class 885th_DX36C_battery_yellow_high : 885th_cell
-	{
-		count = 55;
-		displayName = "[885th] DX36C High-Powered Armor-Piercing Battery";
-		displayNameShort = "DX36C HP AP Battery";
-		descriptionShort = "55 round capacity, AP blaster bolts.";
-		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
-		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
-		initSpeed=1035;
-		ammo = "885th_blasterbolt_yellow_DX36";
-		tracersEvery = 1;
-		mass = 15;
-	};
-	class 885th_DX36C_he_battery_yellow: 885th_cell
-	{
-		author="Chief33";
-		scope=2;
-		displayName="[885th]DX36C High Explosive Battery";
-		displayNameShort = "DX36C HE Battery";
-		descriptionShort="High Explosive battery used by the DX36 Experimental Blaster.";
-		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
-		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
-		ammo="885th_HE_blasterbolt_yellow_DX36";
-		count=3;
-		mass=15;
-		initSpeed=911;
-		tracersEvery=1;
-		lastRoundsTracer=2;
-	};
-	class 885th_Z6_he_battery_Blue: 885th_cell
-	{
-		author="Chief33";
-		scope=2;
-		displayName="[885th]Z6 High Explosive Battery";
-		displayNameShort = "Z6 HE Battery";
-		descriptionShort="High Explosive battery used by the Z6 Rotary Cannon.";
-		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
-		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
-		ammo="885th_HE_blasterbolt_Blue_Z6";
-		count=3;
-		mass=15;
-		initSpeed=911;
-		tracersEvery=1;
-		lastRoundsTracer=2;
-	};
-	class 885th_DC15CMKII_cell_blue_apex: CA_Magazine
-	{
-		author="885th Bloodpack Division + SL Mod Dev Team";
-		scope=2;
-		displayName="[885th] DC15C MK II 65rnd Apex Cell";
-		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		modelSpecial="\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
-		modelSpecialIsProxy=1;
-		ammo="885th_blasterbolt_bApex";
-		count=60;
-		mass=8;
-		tracersEvery=1;
-		descriptionShort="60 round capacity, modified blaster bolts used by the DC15C MK II.";
-	};
-	class 885th_DC15LEHB_battery_low_blue: CA_Magazine
-	{
-		author="885th Bloodpack Division + SL Mod Dev Team";
-		scope=2;
-		displayName="[885th] DC15LE Heavy Blaster 500rnd Low-Power Energy Cell";
-		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		modelSpecial="\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
-		modelSpecialIsProxy=1;
-		ammo="885th_blasterbolt_blue";
-		count=500;
-		mass=25;
-		tracersEvery=1;
-		lastRoundsTracer=25;
-		descriptionShort="Low-Power Energy Cell Used Only For The DC15LE Heavy Blaster.";
-	};
-	class 885th_DC15LEHB_battery_high_blue: CA_Magazine
-	{
-		author="885th Bloodpack Division + SL Mod Dev Team";
-		scope=2;
-		displayName="[885th] DC15LE Heavy Blaster 300rnd High-Power Energy Cell";
-		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		modelSpecial="\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
-		modelSpecialIsProxy=1;
-		ammo="885th_blasterbolt_bHigh";
-		count=300;
-		mass=30;
-		tracersEvery=1;
-		lastRoundsTracer=25;
-		descriptionShort="High-Power Energy Cell Used Only For The DC15LE Heavy Blaster.";
-	};
-	class 885th_DC15LEHB_battery_amp_blue: CA_Magazine
-	{
-		author="885th Bloodpack Division + SL Mod Dev Team";
-		scope=2;
-		displayName="[885th] DC15LE Heavy Blaster 250rnd Amplified Energy Cell";
-		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		modelSpecial="\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
-		modelSpecialIsProxy=1;
-		ammo="885th_blasterbolt_bAmp";
-		count=250;
-		mass=35;
-		tracersEvery=1;
-		lastRoundsTracer=25;
-		descriptionShort="Amplified Energy Cell Used Only For The DC15LE MKII.";
-	};
-	class 885th_DC15LEMKII_battery_high_blue: CA_Magazine
-	{
-		author="885th Bloodpack Division + SL Mod Dev Team";
-		scope=2;
-		displayName="[885th] DC15LE MKII 50rnd High-Power Energy Cell";
-		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		modelSpecial="\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
-		modelSpecialIsProxy=1;
-		ammo="885th_blasterbolt_bHigh";
-		count=50;
-		mass=10;
-		initSpeed=1000;
-		tracersEvery=1;
-		lastRoundsTracer=25;
-		descriptionShort="High-Power Energy Cell Used Only For The DC15LE MKII.";
 	};
 	class 885th_DC15LEMKII_He_Battery_Blue: 885th_cell
 	{
@@ -4967,155 +6709,7 @@ class CfgMagazines
 		lastRoundsTracer=2;
 		descriptionShort="High Explosive Battery used by the DC15LE MK II Heavy Blaster.";
 	};
-	class 885th_DC15BR_battery_blue: CA_Magazine
-	{
-		author="885th Bloodpack Division + SL Mod Dev Team";
-		scope=2;
-		displayName="[885th] DC15BR 45rnd High-Power Energy Cell";
-		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		modelSpecial="\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
-		modelSpecialIsProxy=1;
-		ammo="885th_blasterbolt_blue";
-		count=45;
-		mass=10;
-		initSpeed=900;
-		tracersEvery=1;
-		lastRoundsTracer=25;
-		descriptionShort="Standard Energy Cell Used Only For The DC15BR.";
-	};
-	class 885th_Breaching_Scatter_Cell_5Rnd_Blue: CA_Magazine
-	{
-		author="885th Bloodpack Division + Indecisive Armoury Team";
-		scope=2;
-		modelSpecial="";
-		modelSpecialIsProxy=0;
-		picture="\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		model="\MRC\JLTS\weapons\DC15A\DC15A_mag.p3d";
-		count=5;
-		displayName="[885th] 5Rnd Breaching Scatter Cell";
-		displayNameShort="Breaching Scatter Cell";
-		descriptionShort="5 round capacity";
-		ammo="885th_Breaching_Scattershot_blue";
-		tracersEvery=1;
-		initSpeed=350;
-		mass=8;
-	};
-	class 885th_DX23_scattershot_mag: CA_Magazine
-	{
-		author="885th Bloodpack Division + SL Mod Dev Team";
-		scope=2;
-		displayName="[885th] DX-23 25rnd Scattershot Battery";
-		picture="\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		modelSpecial="\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
-		modelSpecialIsProxy=1;
-		initSpeed=400;
-		ammo="885th_scattershot_blasterbolt_blue";
-		count=25;
-		mass=6;
-		descriptionShort="DX-23 Scattershot Mag.";
-	};
-	class 885th_DX23_Doomsday_slug_Mag: CA_Magazine
-	{
-		author="885th Bloodpack Division + SL Mod Dev Team";
-		scope=2;
-		displayName="[885th] DX-23 Doomsday Slug Cell";
-		picture="\3AS\3AS_Weapons\Data\UI\3as_doomsday_r.paa";
-		modelSpecial="\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
-		modelSpecialIsProxy=1;
-		initSpeed=1500;
-		ammo="885th_Doomsday_slug_blasterbolt_blue";
-		count=1;
-		mass=25;
-		tracerEvery=1;
-		lastRoundsTracer=1;
-		descriptionShort="DX-23 Doomsday Slug Mag.";
-	};
-	class 885th_DC15LMKII_Extended_Cell_blue: CA_Magazine
-	{
-		author="Antauri + 885th Bloodpack Division";
-		scope=2;
-		displayName="[885th] DC15L MK II 200rnd Extended Cell";
-		picture="\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		modelSpecial="\ShadowLegion_Weapons\data\DC15\DC15L\model\dc15L_Drummag.p3d";
-		modelSpecialIsProxy=1;
-		ammo="885th_blasterbolt_blue";
-		count=200;
-		mass=32;
-		initSpeed=490;
-		tracersEvery=1;
-		lastRoundsTracer=200;
-		descriptionShort="DC-15L MKII Extended Cell.";
-	};
-	class 885th_DW32S_cell: CA_Magazine
-	{
-		JLTS_hasElectronics=1;
-		JLTS_hasEMPProtection=1;
-		author="885th Bloodpack Division + MrClock";
-		scope=2;
-		modelSpecial="";
-		modelSpecialIsProxy=0;
-		picture="\MRC\JLTS\weapons\DW32S\data\ui\DW32S_mag_ui_ca.paa";
-		model="\MRC\JLTS\weapons\DW32S\DW32S_mag.p3d";
-		count=55;
-		mass=20;
-		initSpeed=839;
-		displayName="[885th] DW32S Low-Power Cell";
-		descriptionShort="DW-32S Low Power Cell.";
-		ammo="885th_blasterbolt_bLow";
-		tracersEvery=1;
-	};
-	class 885th_Valken38A_HighPower_Cell: 885th_cell
-	{
-		scope=2;
-		displayName="[885th] Valken38A 20rnd HighPower Cell";
-		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		ammo="885th_blasterbolt_bHigh";
-		count=20;
-		mass=10;
-		initSpeed=872;
-		tracersEvery=1;
-		lastRoundsTracer=10;
-		descriptionShort="High Powered charge cell used by the Valken 38X.";
-	};
-	class 885th_Westarm5mkii_Ap_cell_blue : 885th_cell
-	{
-		count = 40;
-		displayName = "[885th] Westar-M5 MKII Armor-Piercing Energy Cell";
-		displayNameShort = "AP Cell";
-		descriptionShort = "40 round capacity, AP blaster bolts.";
-		ammo = "885th_blasterbolt_bHigh";
-		initSpeed=800;
-		tracersEvery = 1;
-		mass = 10;
-	};
-	class 885th_coil_blue : 885th_cell
-	{
-		count = 5;
-		displayName = "[885th] Standard Thermal Coil";
-		displayNameShort = "Thermal Coil";
-		descriptionShort = "5 round capacity, thermal shells.";
-		model = "\MRC\JLTS\weapons\EPL2\EPL2_mag.p3d";
-		picture = "\MRC\JLTS\weapons\EPL2\data\ui\EPL2_mag_ui_ca.paa";
-		ammo = "885th_thermalshell";
-		initSpeed = 320;
-		tracersEvery = 1;
-		mass = 70;
-		type = 16;
-	};
-	class 885th_coil_blue_high : 885th_cell
-	{
-		count = 3;
-		displayName = "[885th] High-Power Thermal Coil";
-		displayNameShort = "HP Thermal Coil";
-		descriptionShort = "3 round capacity, High-Powered thermal shells.";
-		model = "\MRC\JLTS\weapons\EPL2\EPL2_mag.p3d";
-		picture = "\MRC\JLTS\weapons\EPL2\data\ui\EPL2_mag_ui_ca.paa";
-		ammo = "885th_thermalshell_high";
-		initSpeed = 120;
-		tracersEvery = 1;
-		mass = 70;
-		type = 16;
-	};
+	
 	class 885th_773_Flame_Cell : 885th_cell
 	{
 		author="885th Bloodpack Division";
@@ -5131,19 +6725,6 @@ class CfgMagazines
 		tracersEvery=1;
 		lastRoundsTracer=999;
 		mass=15;
-	};
-	class 885th_25Rnd_Tracerless_Cell: 885th_cell
-	{
-		author="Antauri + 885th Bloodpack Division";
-		scope=2;
-		displayName="[885th] 25 Round Tracerless Cell";
-		ammo="885th_Traceless_Subsonic_Blue";
-		count=25;
-		mass=8;
-		initSpeed=417;
-		tracersEvery=1;
-		lastRoundsTracer=10;
-		descriptionShort="mixture of tibanna plasma ammunition, invisible to the naked eye, subsonic, yet its capacity per power cell left much to be desired.";
 	};
 	class 30Rnd_65x39_caseless_mag;
 	class 885th_EPL2_mag: 30Rnd_65x39_caseless_mag
@@ -5167,42 +6748,46 @@ class CfgMagazines
 	class 885th_e_cell_red : 885th_cell
 	{
 		count = 50;
-		displayName = "[885th] Economy Energy Cell";
-		displayNameShort = "Eco. Cell";
+		displayName = "[885th] E-5 Energy Cell";
+		displayNameShort = "E-5 Cell";
 		descriptionShort = "50 round capacity, red blaster bolts.";
-		ammo = "885th_blasterbolt_red";
+		ammo = "885th_blasterbolt_Red_Rifle_Standard";
+		initspeed=472;
 		tracersEvery = 1;
 		mass = 10;
 	};
 	class 885th_e_cell_red_pistol : 885th_e_cell_red
 	{
 		count = 15;
-		displayName = "[885th] Economy Pistol Energy Cell";
-		displayNameShort = "Eco. Pistol Cell";
+		displayName = "[885th] Officer Pistol Energy Cell";
+		displayNameShort = "+P Pistol Cell";
 		descriptionShort = "15 round capacity, red blaster bolts.";
-		ammo = "885th_blasterbolt_red";
+		ammo = "885th_blasterbolt_Red_Pistol_PlusP";
+		initspeed=320;
 		tracersEvery = 1;
 		mass = 3;
 	};
 	class 885th_e_battery_red_high : 885th_e_cell_red
 	{
 		count = 300;
-		displayName = "[885th] Economy High-Power Battery";
-		displayNameShort = "Eco. HP Battery";
+		displayName = "[885th] Battle Droid High-Power Battery";
+		displayNameShort = "B2 HP Battery";
 		descriptionShort = "300 round capacity, red high power blaster bolts.";
 		model = "\MRC\JLTS\weapons\z6\z6_mag.p3d";
 		picture = "\MRC\JLTS\weapons\z6\data\ui\z6_mag_ui_ca.paa";
-		ammo = "885th_blasterbolt_rAmp";
+		ammo = "885th_blasterbolt_Red_B2_HP";
+		initspeed=490;
 		tracersEvery = 1;
 		mass = 25;
 	};
 	class 885th_e_cell_red_amp : 885th_e_cell_red
 	{
 		count = 10;
-		displayName = "[885th] Economy Amplified Energy Cell";
-		displayNameShort = "Eco. Amp. Cell";
+		displayName = "[885th] E-5S Energy Cell";
+		displayNameShort = "E-5S Cell";
 		descriptionShort = "10 round capacity, red blaster bolts.";
-		ammo = "885th_blasterbolt_rAmp";
+		ammo = "885th_blasterbolt_Red_Sniper_Standard";
+		initspeed=750;
 		tracersEvery = 1;
 		mass = 10;
 	};
@@ -5240,50 +6825,6 @@ class CfgMagazines
 		ammo = "885th_blasterbolt_yHigh";
 		tracersEvery = 1;
 		mass = 10;
-	};
-	class 885th_60Rnd_mag_DC17M: CA_Magazine
-	{
-		author="Antauri + 885th Bloodpack Divison";
-		scope=2;
-		displayName="[885th] DC17M 60 Round Mag ";
-		picture="\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		ammo="885th_blasterbolt_bApex";
-		count=60;
-		mass=8;
-		initSpeed=417;
-		tracersEvery=1;
-		lastRoundsTracer=50;
-		descriptionShort="DC17m Blaster Magazine.";
-	};
-	class 885th_5Rnd_mag_DC17M_Sniper: CA_Magazine
-	{
-		author="Antauri + 885th Bloodpack Divison";
-		scope=2;
-		displayName="[885th] DC17M Sniper 5rnd HighPowered Mag";
-		picture="\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		ammo="885th_blasterbolt_DC17MSnip";
-		count=5;
-		mass=8;
-		initSpeed=872;
-		tracersEvery=1;
-		lastRoundsTracer=5;
-		descriptionShort="DC17m Sniper Blaster Magazine..";
-	};
-	class 885th_AAD_DC17M: CA_Magazine
-	{
-		author="Antauri + 885th Bloodpack Divison";
-		scope=2;
-		displayName="[885th] DC17M T-31 Anti-Armor Det";
-		displayNameShort = " T-31 AAD";
-		descriptionShort = "1 round capacity, High-Powered thermal detonator.";
-		picture = "\MRC\JLTS\weapons\EPL2\data\ui\EPL2_mag_ui_ca.paa";
-		initSpeed=350;
-		count=1;
-		tracersEvery=1;
-		lastRoundsTracer=1;
-		ammo="885th_thermalshell_high";
-		type=16;
-		mass=8;
 	};
 	class 885th_mando_cell_yellow_amp : 885th_mando_cell_yellow
 	{
@@ -5367,9 +6908,9 @@ class CfgMagazineWells
 	{
 		885th_Magazines[]=
 		{
-			"885th_60Rnd_mag_DC17M",
-			"885th_5Rnd_mag_DC17M_Sniper",
-			"885th_AAD_DC17M"
+			"885th_DC17M_cell",
+			"885th_DC17M_cell_sniper",
+			"885th_DC17M_aad"
 		};
 	};
 	class 885th_UGL_1Rnd_MagWell
@@ -5471,6 +7012,9 @@ class CfgWeapons
 	class 3AS_MuzzleSlot_DC15A;
 	class 3AS_CowsSlot_DC15A; 
 	class 3AS_UnderBarrelSlot_DC15A;
+	class 3AS_MuzzleSlot_DC17S;
+	class 3AS_CowsSlot_DC17S;
+	class 3AS_CowsSlot_DP23;
 	class 3AS_1UGL_MK54_HE_shell;
 	class 3AS_1UGL_Magwell;
 	class JLTS_DC15A_ugl;
@@ -5889,7 +7433,7 @@ class CfgWeapons
 		maxRange = 200;
 		maxRangeProbab = 0.0;
 	};
-	// Republic
+	//885th Pistols
 	
 	class 885th_DC17 : Pistol_Base_F
 	{
@@ -5909,7 +7453,7 @@ class CfgWeapons
 		displayName = "[885th] DC-17 Blaster Pistol";
 		descriptionShort = "Standard Issue Pistol.";
 		drySound[] = {"\Indecisive_Armoury_Sounds\weapon_dry.ogg", 5, 1, 10};
-		magazines[] = {"885th_dc_cell_blue_pistol"};
+		magazines[] = {"885th_dc17_cell"};
 		magazineWell[] = {};
 		muzzles[] = {"this", "Stun"};
 		nameSound = "Pistol";
@@ -6005,7 +7549,7 @@ class CfgWeapons
 		displayName = "[885th] DC-17A Blaster Pistol";
 		descriptionShort = "A Modified DC-17 Blaster Pistol.";
 		drySound[] = {"\Indecisive_Armoury_Sounds\weapon_dry.ogg", 5, 1, 10};
-		magazines[] = {"885th_dc_cell_blue_pistol_extended"};
+		magazines[] = {"885th_dc17_cell_extended"};
 		magazineWell[] = {};
 		muzzles[] = {"this"};
 		nameSound = "Pistol";
@@ -6122,6 +7666,341 @@ class CfgWeapons
 		};
 		dexterity=1.5;
 	};
+	class 885th_DC17S_Base_F: Pistol_Base_F
+	{
+		author="3AS + 885th Bloodpack Divison";
+		magazines[]=
+		{
+			"885th_dc17s_cell"
+		};
+		magazineWell[]={};
+		class Stun : 885th_Stun_pistol {};
+		hiddenSelections[]=
+		{
+			"camo1"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			""
+		};
+		modes[]=
+		{
+			"Single"
+		};
+		class Single: Mode_SemiAuto
+		{
+			sounds[]=
+			{
+				"StandardSound"
+			};
+			class BaseSoundModeType;
+			class StandardSound : BaseSoundModeType
+			{
+				begin1[] = {"885_Sounds\DC17S.ogg", 1.25, 1, 1800};
+				begin2[] = {"885_Sounds\DC17S.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Sounds\DC17S.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Sounds\DC17S.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Sounds\DC17S.ogg", 1.25, 0.995, 1800};
+				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
+				beginwater1[] = {"885_Sounds\DC17S.ogg", 1, 1, 400};
+				soundBeginWater[] = {"beginwater1", 1};
+			};
+			recoil="recoil_pistol_heavy";
+			recoilProne="recoil_prone_pistol_heavy";
+			reloadTime=0.1;
+			dispersion=0.0039900001;
+			minRange=5;
+			minRangeProbab=0.30000001;
+			midRange=25;
+			midRangeProbab=0.60000002;
+			maxRange=50;
+			maxRangeProbab=0.1;
+			aiRateOfFire=2;
+			aiRateOfFireDistance=25;
+		};
+		inertia=0.30000001;
+		aimTransitionSpeed=1.5;
+		dexterity=1.7;
+		fireLightDiffuse[]={7,36,190,1};
+		fireLightIntensity=0.02;
+		flashSize=0.1;
+		initSpeed=-1;
+		recoil="3as_recoil_light";
+		maxZeroing=100;
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			mass=22;
+			holsterScale=0.75;
+			class MuzzleSlot: 3AS_MuzzleSlot_DC17S
+			{
+				iconPosition[]={0.23999999,0.34999999};
+				iconScale=0.2;
+			};
+			class CowsSlot: 3AS_CowsSlot_DC17S
+			{
+				compatibleItems[]={};
+				iconPosition[]={0.60000002,0.27000001};
+				iconScale=0.15000001;
+			};
+		};
+		descriptionShort="";
+		caseless[]=
+		{
+			"",
+			1,
+			1,
+			1
+		};
+		soundBullet[]=
+		{
+			"caseless",
+			1
+		};
+		drySound[]=
+		{
+			"\3AS\3AS_Main\Sounds\Blaster_empty",
+			2,
+			1,
+			20
+		};
+		reloadMagazineSound[]=
+		{
+			"\3AS\3AS_Main\Sounds\Old\Blaster_reload.wss",
+			0.56234133,
+			1,
+			30
+		};
+		ace_overheating_mrbs=3000;
+		ace_overheating_slowdownFactor=1;
+		ace_overheating_allowSwapBarrel=0;
+		ace_overheating_dispersion=0.75;
+	};
+	class 885th_DC17S_F : 885th_DC17S_Base_F 
+	{
+		baseWeapon = "885th_DC17S_F";
+		ace_overheating_mrbs = 40000;
+		ace_overheating_slowdownFactor = 0;
+		ace_overheating_allowSwapBarrel = 0;
+		ace_overheating_dispersion = 1;
+		ace_overheating_closedBolt = 0;
+		ace_overheating_barrelMass = 1;
+		ace_barrelLength = 114.3;
+		ace_barrelTwist = 0;
+		scope = 2;
+		displayName = "[885th] DC-17S Blaster Pistol";
+		model="\3AS\3AS_Weapons\Republic\DC17S\3AS_DC17S_F.p3d";
+		picture="\3AS\3AS_Weapons\Republic\DC17S\Data\UI\3as_dc17s.paa";
+		UiPicture="\A3\weapons_f\data\UI\icon_regular_CA.paa";
+		magazines[] = {"885th_dc17s_cell","885th_dc17s_cell_ap"};
+		magazineWell[] = {};
+		modes[] = {"Single","Burst"};
+		muzzles[] = {"this", "Stun"};
+		class Single: Mode_SemiAuto
+		{
+			sounds[]={"StandardSound"};
+			class BaseSoundModeType
+			{
+				weaponSoundEffect = "";
+				closure1[] = {};
+				closure2[] = {};
+				soundClosure[] = {};
+			};
+			class StandardSound : BaseSoundModeType
+			{
+				begin1[] = {"885_Sounds\DC17S.ogg", 1.25, 1, 1800};
+				begin2[] = {"885_Sounds\DC17S.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Sounds\DC17S.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Sounds\DC17S.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Sounds\DC17S.ogg", 1.25, 0.995, 1800};
+				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
+				beginwater1[] = {"885_Sounds\DC17S.ogg", 1, 1, 400};
+				soundBeginWater[] = {"beginwater1", 1};
+			};
+			reloadTime=0.050000001;
+			dispersion=0.00131;
+			minRange=2;
+			minRangeProbab=0.30000001;
+			midRange=100;
+			midRangeProbab=0.69999999;
+			maxRange=150;
+			maxRangeProbab=0.050000001;
+			aiRateOfFire=2;
+			aiRateOfFireDistance=300;
+		};
+		class Burst: Mode_Burst
+		{
+			sounds[]={"StandardSound"};
+			class BaseSoundModeType
+			{
+				weaponSoundEffect = "";
+				closure1[] = {};
+				closure2[] = {};
+				soundClosure[] = {};
+			};
+			class StandardSound : BaseSoundModeType
+			{
+				begin1[] = {"885_Sounds\DC17S.ogg", 1.25, 1, 1800};
+				begin2[] = {"885_Sounds\DC17S.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Sounds\DC17S.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Sounds\DC17S.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Sounds\DC17S.ogg", 1.25, 0.995, 1800};
+				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
+				beginwater1[] = {"885_Sounds\DC17S.ogg", 1, 1, 400};
+				soundBeginWater[] = {"beginwater1", 1};
+			};
+			soundBurst=0;
+			textureType="dual";
+			burst=2;
+			reloadTime=0.050000001;
+			dispersion=0.00131;
+			minRange=2;
+			minRangeProbab=0.30000001;
+			midRange=50;
+			midRangeProbab=0.69999999;
+			maxRange=100;
+			maxRangeProbab=0.050000001;
+			aiRateOfFire=1;
+			aiRateOfFireDistance=250;
+		};
+		fireLightDiffuse[]={7,36,190,1};
+		fireLightIntensity=0.02;
+		flashSize=0.1;
+		class WeaponSlotsInfo : WeaponSlotsInfo {
+			mass = 25;
+			class CowsSlot : CowsSlot
+			{
+				compatibleItems[] = {"885th_reflex_Optic"};
+			};
+			class MuzzleSlot : MuzzleSlot
+			{
+				compatibleItems[] = {"3AS_muzzle_DC17S_F"};
+			};
+			class PointerSlot : PointerSlot
+			{
+				compatibleItems[] = {};
+			};
+			class UnderBarrelSlot : UnderBarrelSlot
+			{
+				compatibleItems[] = {};
+			};
+		};
+	};
+	class 885th_DC17S_W: 885th_DC17S_F
+	{
+		displayName="DC-17S Blaster Pistol Wrap-Display";
+		hiddenSelectionsTextures[]=
+		{
+			"\3AS\3AS_Weapons\Republic\DC17S\Data\DC17S_Wrap_co.paa"
+		};
+		muzzles[] = {"this", "Stun"};
+	};
+	class 885th_DC17S_Dual_F : 885th_DC17S_Base_F
+	{
+		baseWeapon = "885th_DC17S_Dual_F";
+		ace_overheating_mrbs = 40000;
+		ace_overheating_slowdownFactor = 0;
+		ace_overheating_allowSwapBarrel = 0;
+		ace_overheating_dispersion = 1;
+		ace_overheating_closedBolt = 0;
+		ace_overheating_barrelMass = 1;
+		ace_barrelLength = 114.3;
+		ace_barrelTwist = 0;
+		cursor="";
+		cursorAim="gl";
+		scope = 2;
+		displayName = "[885th] DC-17S Dual Blaster Pistols";
+		model="\3AS\3AS_Weapons\Republic\DC17S\3AS_DC17S_Dual_F.p3d";
+		picture="\3AS\3AS_Weapons\Republic\DC17S\Data\UI\3as_dc17s.paa";
+		UiPicture="\A3\weapons_f\data\UI\icon_regular_CA.paa";
+		handAnim[]=
+		{
+			"OFP2_ManSkeleton",
+			"3AS\3AS_Weapons\Republic\DC17S\Data\Anim\DC17S_Dual_Handanim.rtm"
+		};
+		reloadAction="3AS_GestureReloadDualDC17S";
+		magazines[] = {"885th_dc17s_dual_cell","885th_dc17s_dual_cell_ap"};
+		magazineWell[] = {};
+		modes[] = {"Single","Burst"};
+		muzzles[] = {"this"};
+		class Single: Mode_SemiAuto
+		{
+			sounds[]={"StandardSound"};
+			class BaseSoundModeType
+			{
+				weaponSoundEffect = "";
+				closure1[] = {};
+				closure2[] = {};
+				soundClosure[] = {};
+			};
+			class StandardSound : BaseSoundModeType
+			{
+				begin1[] = {"885_Sounds\DC17S.ogg", 1.25, 1, 1800};
+				begin2[] = {"885_Sounds\DC17S.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Sounds\DC17S.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Sounds\DC17S.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Sounds\DC17S.ogg", 1.25, 0.995, 1800};
+				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
+				beginwater1[] = {"885_Sounds\DC17S.ogg", 1, 1, 400};
+				soundBeginWater[] = {"beginwater1", 1};
+			};
+			reloadTime=0.050000001;
+			dispersion=0.00131;
+			minRange=2;
+			minRangeProbab=0.30000001;
+			midRange=50;
+			midRangeProbab=0.69999999;
+			maxRange=100;
+			maxRangeProbab=0.050000001;
+			aiRateOfFire=2;
+			aiRateOfFireDistance=300;
+		};
+		class Burst: Mode_Burst
+		{
+			sounds[]={"StandardSound"};
+			class BaseSoundModeType
+			{
+				weaponSoundEffect = "";
+				closure1[] = {};
+				closure2[] = {};
+				soundClosure[] = {};
+			};
+			class StandardSound : BaseSoundModeType
+			{
+				begin1[] = {"885_Sounds\DC17S.ogg", 1.25, 1, 1800};
+				begin2[] = {"885_Sounds\DC17S.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Sounds\DC17S.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Sounds\DC17S.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Sounds\DC17S.ogg", 1.25, 0.995, 1800};
+				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
+				beginwater1[] = {"885_Sounds\DC17S.ogg", 1, 1, 400};
+				soundBeginWater[] = {"beginwater1", 1};
+			};
+			soundBurst=0;
+			textureType="dual";
+			burst=2;
+			reloadTime=0.050000001;
+			dispersion=0.00131;
+			minRange=2;
+			minRangeProbab=0.30000001;
+			midRange=50;
+			midRangeProbab=0.69999999;
+			maxRange=100;
+			maxRangeProbab=0.050000001;
+			aiRateOfFire=1;
+			aiRateOfFireDistance=250;
+		};
+		fireLightDiffuse[]={7,36,190,1};
+		fireLightIntensity=0.02;
+		flashSize=0.1;
+	};
+	class 885th_DC17S_Dual_W: 885th_DC17S_Dual_F
+	{
+		displayName="$STR_3AS_Weapons_Republic_DC17S_Dual_Wrap_Display";
+		hiddenSelectionsTextures[]=
+		{
+			"\3AS\3AS_Weapons\Republic\DC17S\Data\DC17S_Wrap_co.paa"
+		};
+	};
 	class 885th_DC15P: hgun_Pistol_Heavy_01_F
 	{
 		ace_overheating_mrbs=40000;
@@ -6149,7 +8028,7 @@ class CfgWeapons
 		};
 		magazines[]=
 		{
-			"885th_DC15P_High_Blue"
+			"885th_dc15p_cell"
 		};
 		ace_clearJamAction="";
 		reloadAction="GestureReload_IDA_Reload_BlasterPistol";
@@ -6344,6 +8223,191 @@ class CfgWeapons
 			};
 		};
 	};
+	class 885th_DC15SA_Base_F: Pistol_Base_F
+	{
+		magazines[]=
+		{
+			"885th_dc15sa_cell"
+		};
+		magazineWell[]={};
+		reloadAction="GestureReloadPistol";
+		magazineReloadSwitchPhase=1;
+		discreteDistanceInitIndex=1;
+		maxRecoilSway=0.064999998;
+		swayDecaySpeed=2;
+		inertia=0.050000001;
+		initSpeed=-1;
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			holsterScale=0.80000001;
+			class MuzzleSlot: MuzzleSlot
+			{
+				compatibleItems[]={};
+			};
+			class CowsSlot: CowsSlot
+			{
+				compatibleItems[]={};
+			};
+			class PointerSlot: PointerSlot
+			{
+				compatibleItems[]={};
+			};
+			class UnderBarrelSlot: UnderBarrelSlot
+			{
+				compatibleItems[]={};
+			};
+		};
+		opticsZoomMin=0.25;
+		opticsZoomMax=1.25;
+		opticsZoomInit=0.75;
+		distanceZoomMin=50;
+		distanceZoomMax=50;
+		descriptionShort="DC-15sa";
+		dexterity=1.5;
+		caseless[]=
+		{
+			"",
+			1,
+			1,
+			1
+		};
+		soundBullet[]=
+		{
+			"caseless",
+			1
+		};
+		selectionFireAnim="zasleh";
+		flash="gunfire";
+		flashSize=0.1;
+		fireLightDiffuse[]={7,36,190,1};
+		fireLightIntensity=0.02;
+		fireLightDuration=0.050000001;
+		modes[]=
+		{
+			"Single"
+		};
+		class Single: Mode_SemiAuto
+		{
+			sounds[]=
+			{
+				"StandardSound"
+			};
+			class BaseSoundModeType;
+			class StandardSound : BaseSoundModeType
+			{
+				begin1[] = {"885_Sounds\DC15SA.ogg", 1.25, 1, 1800};
+				begin2[] = {"885_Sounds\DC15SA.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Sounds\DC15SA.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Sounds\DC15SA.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Sounds\DC15SA.ogg", 1.25, 0.995, 1800};
+				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
+				beginwater1[] = {"885_Sounds\DC15SA.ogg", 1, 1, 400};
+				soundBeginWater[] = {"beginwater1", 1};
+			};
+			reloadTime=0.25;
+			dispersion=0.0029500001;
+			minRange=1;
+			minRangeProbab=0.30000001;
+			midRange=150;
+			midRangeProbab=0.57999998;
+			maxRange=500;
+			maxRangeProbab=0.039999999;
+		};
+		recoil="3as_recoil_light";
+		aiDispersionCoefY=6;
+		aiDispersionCoefX=6;
+		drySound[]=
+		{
+			"\3AS\3AS_Main\Sounds\Blaster_empty",
+			2,
+			1,
+			20
+		};
+		reloadMagazineSound[]=
+		{
+			"\3AS\3AS_Main\Sounds\Old\Blaster_reload.wss",
+			1,
+			1,
+			30
+		};
+		reloadSound[]=
+		{
+			"",
+			1,
+			1
+		};
+	};
+	class 885th_DC15SA_F : 885th_DC15SA_Base_F
+	{	
+		baseWeapon = "885th_DC15SA_F";
+		scope=2;
+		author="";
+		displayName="[885th] DC-15SA";
+		model="3AS\3AS_Weapons\DC15SA\3AS_DC15SA_F.p3d";
+		picture="\3AS\3AS_Weapons\DC15SA\data\UI\3as_dc15sa.paa";
+		weaponInfoType="RscWeaponZeroing";
+		recoil = "recoil_pistol_zubr";
+		modes[] = {"Single"};
+		muzzles[] = {"this"};
+		class Single: Mode_SemiAuto
+		{
+			sounds[]={"StandardSound"};
+			class BaseSoundModeType
+			{
+				weaponSoundEffect = "";
+				closure1[] = {};
+				closure2[] = {};
+				soundClosure[] = {};
+			};
+			class StandardSound : BaseSoundModeType
+			{
+				begin1[] = {"885_Sounds\DC15SA.ogg", 1.25, 1, 1800};
+				begin2[] = {"885_Sounds\DC15SA.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Sounds\DC15SA.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Sounds\DC15SA.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Sounds\DC15SA.ogg", 1.25, 0.995, 1800};
+				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
+				beginwater1[] = {"885_Sounds\DC15SA.ogg", 1, 1, 400};
+				soundBeginWater[] = {"beginwater1", 1};
+			};
+			reloadTime=0.15;
+			dispersion=0.00131;
+			minRange=2;
+			minRangeProbab=0.30000001;
+			midRange=100;
+			midRangeProbab=0.69999999;
+			maxRange=150;
+			maxRangeProbab=0.050000001;
+			aiRateOfFire=2;
+			aiRateOfFireDistance=300;
+		};
+		class OpticsModes
+		{
+			class Ironsights
+			{
+				opticsID=2;
+				useModelOptics=0;
+				opticsFlare="true";
+				opticsPPEffects[]=
+				{
+					"OpticsCHAbera5",
+					"OpticsBlur5"
+				};
+				opticsDisablePeripherialVision=0.67000002;
+				opticsZoomMin=0.5;
+				opticsZoomMax=1;
+				opticsZoomInit=1;
+				memoryPointCamera="eye";
+				visionMode[]={};
+				distanceZoomMin=100;
+				distanceZoomMax=100;
+			};
+		};
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			mass=40;
+		};
+	};
 	class 885th_DC21 : Pistol_Base_F
 	{
 		author = "885th Bloodpack Division";
@@ -6364,7 +8428,7 @@ class CfgWeapons
 		displayName = "[885th] DC-21 Blaster Pistol";
 		descriptionShort = "Modular and Compact Pistol.";
 		drySound[] = {"885_Weapons\DX36C\drysound.ogg", 5, 1, 20};
-		magazines[] = {"885th_dc_cell_blue_pistol_extended","885th_25Rnd_Tracerless_Cell"};
+		magazines[] = {"885th_dc21_cell","885th_dc21_tracerless_cell"};
 		magazineWell[] = {};
 		muzzles[] = {"this", "Stun"};
 		nameSound = "Pistol";
@@ -6566,9 +8630,9 @@ class CfgWeapons
 		reloadTime = 1.0;
 		reloadMagazineSound[] = {"\Indecisive_Armoury_Sounds\Blaster_reload_Vent.ogg", 1.5, 1, 100};
 		recoil = "885_recoil_dc15s";
-		magazines[] = {"885th_dc_cell_blue"};
-		magazineWell[] = {"DC_energycells"};
-		modes[] = {"Single", "FullAuto"};
+		magazines[] = {"885th_dc15s_cell"};
+		magazineWell[] = {};
+		modes[] = {"Single"};
 		fireLightDiffuse[] = {0.1, 0.25, 1};
 		drySound[] = {"\Indecisive_Armoury_Sounds\weapon_dry.ogg", 5, 1, 10};
 		muzzles[] = {"this", "Stun"};
@@ -6605,37 +8669,6 @@ class CfgWeapons
 			midRangeProbab = 1.0;
 			maxRange = 1500;
 			maxRangeProbab = 0.8;
-		};
-		class FullAuto : Mode_FullAuto
-		{
-			sounds[] = {"StandardSound"};
-			class BaseSoundModeType
-			{
-				weaponSoundEffect = "";
-				closure1[] = {};
-				closure2[] = {};
-				soundClosure[] = {};
-			};
-			class StandardSound : BaseSoundModeType
-			{
-				weaponSoundEffect = "";
-				begin1[] = {"\Indecisive_Armoury_Sounds\REPUBLIC\DC15S.ogg", 1.25, 1, 1800};
-				begin2[] = {"\Indecisive_Armoury_Sounds\REPUBLIC\DC15S.ogg", 1.25, 1.015, 1800};
-				begin3[] = {"\Indecisive_Armoury_Sounds\REPUBLIC\DC15S.ogg", 1.25, 0.985, 1800};
-				begin4[] = {"\Indecisive_Armoury_Sounds\REPUBLIC\DC15S.ogg", 1.25, 1.01, 1800};
-				begin5[] = {"\Indecisive_Armoury_Sounds\REPUBLIC\DC15S.ogg", 1.25, 0.995, 1800};
-				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
-				beginwater1[] = {"\Indecisive_Armoury_Sounds\REPUBLIC\DC15S.ogg", 1, 1, 400};
-				soundBeginWater[] = {"beginwater1", 1};
-			};
-			reloadTime = 0.15;
-			dispersion = 0.00300;
-			minRange = 0;
-			minRangeProbab = 0.9;
-			midRange = 100;
-			midRangeProbab = 1.0;
-			maxRange = 300;
-			maxRangeProbab = 0.4;
 		};
 		modelOptics = "3AS\3AS_Weapons\Data\3AS_2D_Optic.p3d";
 		weaponInfoType = "RscWeaponZeroing";
@@ -6724,8 +8757,8 @@ class CfgWeapons
 		UiPicture="\ShadowLegion_Weapons\data\DC15\DC15S\UI\DC15S_Folded_Stock_UI.paa";
 		weaponInfoType="RscWeaponZeroing";
 		recoil = "885_recoil_dc15s";
-		magazines[] = {"885th_dc_cell_blue"};
-		magazineWell[] = {"DC_energycells"};
+		magazines[] = {"885th_dc15se_cell"};
+		magazineWell[] = {};
 		fireLightDiffuse[] = {0.1, 0.25, 1};
 		drySound[] = {"885_Weapons\DX36C\drysound.ogg", 5, 1, 20};
 		ace_clearJamAction = "";
@@ -7000,8 +9033,8 @@ class CfgWeapons
 	class 885th_DC15SMKII_Base_F: Rifle_Base_F
 	{
 		author="885th Bloodpack Division";
-		magazines[]={"885th_dc_cell_blue"};
-		magazineWell[]={"DC_energycells"};
+		magazines[]={"885th_dc15s_hp_cell","885th_dc15s_ap_cell"};
+		magazineWell[]={};
 		magazineReloadSwitchPhase=0.5;
 		reloadAction="GestureReload_JLTS_DC15S";
 		recoil="3AS_recoil_DC15S";
@@ -7350,8 +9383,8 @@ class CfgWeapons
 		reloadTime = 1.0;
 		reloadMagazineSound[] = {"\Indecisive_Armoury_Sounds\Blaster_reload_Vent.ogg", 1.5, 1, 100};
 		recoil = "885_recoil_dc15a";
-		magazines[] = {"885th_dc_cell_blue"};
-		magazineWell[] = {"DC_energycells"};
+		magazines[] = {"885th_dc15c_cell"};
+		magazineWell[] = {};
 		modes[] = {"Single"};
 		fireLightDiffuse[] = {0.1, 0.25, 1};
 		drySound[] = {"\Indecisive_Armoury_Sounds\weapon_dry.ogg", 5, 1, 10};
@@ -7585,7 +9618,6 @@ class CfgWeapons
 				compatibleItems[]=
 				{
 					"ShadwCmpany_optic_Acog",
-					"ShadwCmpany_Electroscope",
 					"ShdwCmpny_Optic_A280Scope",
 					"ShdwCmpny_Optic_LEScope_DC15A_mk2",
 					"ShdwCmpny_Optic_LEScope_DC15A",
@@ -7636,8 +9668,8 @@ class CfgWeapons
 	class 885th_DC15AMKII_Base_F: Rifle_Base_F
 	{
 		author="885th Bloodpack Division";
-		magazines[]={"885th_dc_cell_blue"};
-		magazineWell[]={"DC_energycells"};
+		magazines[]={"885th_dc15a_cell","885th_dc15a_hp_cell","885th_dc15a_ap_cell"};
+		magazineWell[]={};
 		magazineReloadSwitchPhase=0.5;
 		reloadAction="GestureReloadMX";
 		recoil="3AS_recoil_dc15a";
@@ -8747,7 +10779,7 @@ class CfgWeapons
 		scope=2;
 		displayName="[885th] DX36C";
 		model="885_Weapons\DX36C\Model\DX36C.p3d";
-		picture="885_Weapons\UI\885_dX36.paa";
+		picture="\885_Weapons\DX36C\ui\885_dX36.paa";
 		UiPicture="";
 		inertia=0.40000001;
 		aimTransitionSpeed=1;
@@ -8788,9 +10820,7 @@ class CfgWeapons
 		author="885th Bloodpack Division";
 		magazines[]=
 		{
-			"885th_dc_cell_blue",
-			"885th_dc_cell_blue_high",
-			"885th_dc_cell_blue_amp"
+			"885th_Westarm5mkii_Ap_cell_blue"
 		};
 		reloadAction="GestureReloadMX";
 		magazineReloadSwitchPhase=0.40000001;
@@ -9131,9 +11161,7 @@ class CfgWeapons
 		author="885th Bloodpack Division";
 		magazines[]=
 		{
-			"885th_dc_cell_blue",
-			"885th_dc_cell_blue_high",
-			"885th_dc_cell_blue_amp"
+			"885th_Westarm5mkii_Ap_cell_blue"
 		};
 		muzzles[] = {"this","885th_WestarM5_underbarrel"};
 		reloadAction="GestureReloadMX";
@@ -9208,10 +11236,15 @@ class CfgWeapons
 					"885th_Optic_Scope_WestarM5",
 					"ShadwCmpany_optic_Reflex_Mk1_Alt1",
 					"ShadwCmpany_optic_e11",
-					"3AS_Imp_Optic_2",
-					"3AS_Imp_Optic_3",
 					"ShadwCmpany_Hybrid_Magnifier_Holo",
-					"ShadwCmpany_Hybrid_Magnifier_Magnified"
+					"ShadwCmpany_Hybrid_Magnifier_Magnified",
+					"ShadwCmpany_optic_Reflex_Mk1_Alt2",
+					"ShadwCmpany_optic_Acog",
+					"ShdwCmpny_Optic_Scope_WestarM5",
+					"ShadwCmpany_Hybrid_Magnifier_Holo",
+					"ShadwCmpany_Hybrid_Magnifier_Magnified",
+					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
+					"ShadwCmpany_773_Hybrid_Magnifier_Magnified"
 				};
 			};
 			class PointerSlot: PointerSlot
@@ -9536,7 +11569,7 @@ class CfgWeapons
 	class 885th_WestarM5MKII_Base_F: Rifle_Base_F
 	{
 		author="885th Bloodpack Division + SL Mod Dev Team";
-		magazines[] = {"885th_Westarm5mkii_Ap_cell_blue","885th_dc_cell_blue_low","885th_dc_cell_blue"};
+		magazines[] = {"885th_Westarm5mkii_Ap_cell_blue"};
 		reloadAction="GestureReloadMX";
 		magazineReloadSwitchPhase=0.40000001;
 		discreteDistanceInitIndex=0;
@@ -9811,136 +11844,13 @@ class CfgWeapons
 		ace_overheating_allowSwapBarrel=0;
 		ace_overheating_dispersion=0.75;
 	};
-	class 885th_DC15LE : IDA_DC15A
-	{
-		ace_overheating_mrbs = 40000;
-		ace_overheating_slowdownFactor = 0;
-		ace_overheating_allowSwapBarrel = 0;
-		ace_overheating_dispersion = 0;
-		ace_overheating_closedBolt = 0;
-		ace_overheating_barrelMass = 1;
-		ace_barrelLength = 609;
-		author = "885th Bloodpack Division + IDA Dev Team";
-		scope = 2;
-		inertia = 0;
-		canShootInWater = 1;
-		displayName = "[885th] DC-15 LE Rifle";
-		descriptionShort = "Long Range Precision Modified Rifle. Semi Auto";
-		picture = "Indecisive_Armoury_Weapons_REPUBLIC\Data\DC15A\DC15A_ui.paa";
-		model = "Indecisive_Armoury_Weapons_REPUBLIC\Data\DC15LE\Model\IDA_DC15LE.p3d";
-		handAnim[] = {"OFP2_ManSkeleton", "Indecisive_Armoury_Anims\Republic\DC15A.rtm"};
-		ace_clearJamAction = "";
-		reloadAction = "GestureReload_JLTS_DC15A";
-		reloadMagazineSound[] = {"\Indecisive_Armoury_Sounds\Blaster_reload_Vent.ogg", 1.5, 1, 100};
-		recoil = "885_recoil_dc15a";
-		magazines[] = {"885th_dc_cell_blue"};
-		magazineWell[] = {};
-		modes[] = {"Single"};
-		fireLightDiffuse[] = {0.1, 0.25, 1};
-		drySound[] = {"\Indecisive_Armoury_Sounds\weapon_dry.ogg", 5, 1, 10};
-		muzzles[] = {"this", "Stun"};
-		class Stun : 885th_Stun_rifle
-		{
-		};
-		class Single : Mode_SemiAuto
-		{
-			sounds[] = {"StandardSound"};
-			class BaseSoundModeType
-			{
-				weaponSoundEffect = "";
-				closure1[] = {};
-				closure2[] = {};
-				soundClosure[] = {};
-			};
-			class StandardSound : BaseSoundModeType
-			{
-				weaponSoundEffect = "";
-				begin1[] = {"\Indecisive_Armoury_Sounds\REPUBLIC\DC15LE.ogg", 1.25, 1, 1800};
-				begin2[] = {"\Indecisive_Armoury_Sounds\REPUBLIC\DC15LE.ogg", 1.25, 1.015, 1800};
-				begin3[] = {"\Indecisive_Armoury_Sounds\REPUBLIC\DC15LE.ogg", 1.25, 0.985, 1800};
-				begin4[] = {"\Indecisive_Armoury_Sounds\REPUBLIC\DC15LE.ogg", 1.25, 1.01, 1800};
-				begin5[] = {"\Indecisive_Armoury_Sounds\REPUBLIC\DC15LE.ogg", 1.25, 0.995, 1800};
-				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
-				beginwater1[] = {"\Indecisive_Armoury_Sounds\REPUBLIC\DC15LE.ogg", 1, 1, 400};
-				soundBeginWater[] = {"beginwater1", 1};
-			};
-			reloadTime = 0.27;
-			dispersion = 0.00050;
-			minRange = 0;
-			minRangeProbab = 0.8;
-			midRange = 1000;
-			midRangeProbab = 1.0;
-			maxRange = 1500;
-			maxRangeProbab = 0.8;
-		};
-		modelOptics = "3AS\3AS_Weapons\Data\3AS_2D_Optic.p3d";
-		weaponInfoType = "RscWeaponZeroing";
-		class OpticsModes
-		{
-			class Ironsights
-			{
-				opticsID = 1;
-				useModelOptics = 0;
-				opticsFlare = "false";
-				opticsPPEffects[] = {"OpticsCHAbera5", "OpticsBlur5"};
-				opticsDisablePeripherialVision = 0;
-				opticsZoomMin = 0.4;
-				opticsZoomMax = 1.1;
-				opticsZoomInit = 0.75;
-				memoryPointCamera = "eye";
-				visionMode[] = {};
-				distanceZoomMin = 300;
-				distanceZoomMax = 300;
-			};
-			class Scope : Ironsights
-			{
-				opticsID = 2;
-				useModelOptics = 1;
-				opticsPPEffects[] = {"OpticsCHAbera5", "OpticsBlur5"};
-				opticsFlare = 0;
-				opticsDisablePeripherialVision = 1;
-				opticsZoomMin = 0.015;
-				opticsZoomMax = 0.1;
-				opticsZoomInit = 0.1;
-				memoryPointCamera = "opticView";
-				visionMode[] = {};
-				distanceZoomMin = 300;
-				distanceZoomMax = 300;
-			};
-		};
-		class WeaponSlotsInfo : WeaponSlotsInfo
-		{
-			mass = 80;
-			class CowsSlot : CowsSlot
-			{
-				compatibleItems[] = {};
-				iconPicture = "";
-			};
-			class MuzzleSlot : MuzzleSlot
-			{
-				compatibleItems[] = {
-					"3AS_Muzzle_LE_DC15A",
-				};
-			};
-			class PointerSlot : PointerSlot
-			{
-				compatibleItems[] = {"acc_flashlight"};
-			};
-			class UnderBarrelSlot : UnderBarrelSlot
-			{
-				compatibleItems[] = {"3AS_Bipod_VK38X_f"};
-			};
-		};
-	};
 	class 885th_DC15LEHB_Base: Rifle_Base_F
 	{
 		scope=0;
 		author="885th Bloodpack Division + SL Mod Dev Team";
 		model="\ShadowLegion_Weapons\data\DC15\DC15LE\Model\DC15_LE.p3d";
 		magazines[] = {
-			"885th_DC15LEHB_battery_low_blue",
-			"885th_DC15LEHB_battery_high_blue",
-			"885th_DC15LEHB_battery_amp_blue"};
+			"885th_dc15le_heavy_cell","885th_dc15le_explos_cell"};
 		magazineWell[] = {};
 		handAnim[]=
 		{
@@ -10173,7 +12083,7 @@ class CfgWeapons
 		ace_barrelLength = 609;
 		author = "885th Bloodpack Division + SL Mod Dev Team";
 		scope = 2;
-		displayName = "[885th] DC-15 LE MK II";
+		displayName = "[885th] DC-15 LE Rifle";
 		descriptionShort = "Long Range Precision Modified Rifle. With Multiple Fire Modes";
 		model = "\ShadowLegion_Weapons\data\DC15\DC15LE\Model\DC15_LE.p3d";
 		picture = "\ShadowLegion_Weapons\data\DC15\DC15A\UI\DC15A_UI.paa";
@@ -10182,7 +12092,7 @@ class CfgWeapons
 		ace_clearJamAction = "";
 		reloadAction = "GestureReload_JLTS_DC15A";
 		reloadMagazineSound[] = {"\ShadowLegion_Weapons\data\reloads\sounds\Reload_1.ogg", 5, 1, 30};
-		magazines[] = {"885th_DC15LEMKII_battery_high_blue"};
+		magazines[] = {"885th_dc15le_cell"};
 		magazineWell[] = {};
 		muzzles[] = {"this","885th_DC15LEMKII_HE"};
 		fireLightDiffuse[] = {0.1, 0.25, 1};
@@ -10631,10 +12541,9 @@ class CfgWeapons
 		handAnim[] = {"OFP2_ManSkeleton", "\MRC\JLTS\weapons\DW32S\anims\DW32S_handanim.rtm"};
 		ace_clearJamAction = "";
 		reloadMagazineSound[] = {"885_Sounds\DW32SReload.ogg", 1.5, 1, 100};
-		recoil = "885_recoil_DC15A";
 		magazines[] = {"885th_DW32S_cell"};
 		magazineWell[] = {};
-		modes[] = {"Single","Burst"};
+		modes[] = {"Single"};
 		fireLightDiffuse[] = {0.1, 0.25, 1};
 		drySound[] = {"MRC\JLTS\weapons\Core\sounds\weapon_dry.wss", 5, 1, 10};
 		muzzles[] = {"this"};
@@ -10660,57 +12569,16 @@ class CfgWeapons
 				beginwater1[] = {"885_Sounds\DW32S.ogg", 1, 1, 400};
 				soundBeginWater[] = {"beginwater1", 1};
 			};
-			reloadTime = 0.20;
-			dispersion = 0.00060;
-			minRange = 0;
-			minRangeProbab = 0.8;
-			midRange = 1000;
-			midRangeProbab = 1.0;
-			maxRange = 1500;
-			maxRangeProbab = 0.8;
-		};
-		class Burst: Mode_Burst
-		{
-			sounds[] = {"StandardSound"};
-			class BaseSoundModeType
-			{
-				weaponSoundEffect = "";
-				closure1[] = {};
-				closure2[] = {};
-				soundClosure[] = {};
-			};
-			class StandardSound : BaseSoundModeType
-			{
-				weaponSoundEffect = "";
-				begin1[]={"885_Sounds\DW32S.ogg",1.25, 1, 1800};
-				begin2[] = {"885_Sounds\DW32S.ogg", 1.25, 1.015, 1800};
-				begin3[] = {"885_Sounds\DW32S.ogg", 1.25, 0.985, 1800};
-				begin4[] = {"885_Sounds\DW32S.ogg", 1.25, 1.01, 1800};
-				begin5[] = {"885_Sounds\DW32S.ogg", 1.25, 0.995, 1800};
-				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
-				beginwater1[] = {"885_Sounds\DW32S.ogg", 1, 1, 400};
-				soundBeginWater[] = {"beginwater1", 1};
-			};
-			burst = 3;
-			rate = 0.10;
-			textureType = "burst";
-			reloadTime = 0.15;
-			dispersion = 0.00025;
-			flash = "gunfire";
-			flashSize = 0.1;
-			soundBurst = 0;
-			soundContinuous = 0;
-			maxRange = 2000;
-			maxRangeProbab = 0.3;
-			midRange = 1000;
-			midRangeProbab = 0.7;
-			minRange = 200;
-			minRangeProbab = 0.5;
-			aiDispersionCoefX = 1.4;
-			aiDispersionCoefY = 1.7;
-			aiRateOfFire = 2;
-			aiRateOfFireDispersion = 1;
-			aiRateOfFireDistance = 500;
+			reloadTime=0.1;
+			recoil="recoil_single_mx";
+			recoilProne="recoil_single_prone_mx";
+			dispersion=0.00086999999;
+			minRange=2;
+			minRangeProbab=0.5;
+			midRange=200;
+			midRangeProbab=0.69999999;
+			maxRange=400;
+			maxRangeProbab=0.30000001;
 		};
 		modelOptics = "\ShadowLegion_Weapons\data\Acc\Reticles\model\Scope_Blue_1";
 		weaponInfoType = "RscWeaponZeroing";
@@ -10775,8 +12643,8 @@ class CfgWeapons
 		canShootInWater=1;
 		magazines[]=
 		{
-			"885th_DC15LMKII_Extended_Cell_blue",
-			"885th_DC15BR_battery_blue"
+			"885th_dc15lmkii_cell",
+			"885th_dc15lmkii_short_cell"
 		};
 		reloadAction="3AS_GestureReloadDC15S";
 		recoil="885_recoil_dc15a";
@@ -11087,14 +12955,14 @@ class CfgWeapons
 		scope = 2;
 		inertia = 0.4;
 		canShootInWater = 1;
-		displayName = "[885th] DC-15 Heavy Infantry Repeater";
+		displayName = "[885th] Valken38X Heavy Infantry Repeater";
 		descriptionShort = "Heavy Precision Repeater, Mid to Long Range";
-		model="3AS\3AS_Weapons\Republic\DC15L\3AS_DC15L_f.p3d";
-		picture="\3AS\3AS_Weapons\Republic\DC15L\Data\UI\3as_dc15l.paa";
-		handAnim[] = {"OFP2_ManSkeleton", "\3AS\3AS_Weapons\Republic\DC15L\Data\Anims\New_DC15L_Handanim.rtm"};
+		model = "\3AS\3AS_Weapons\Republic\Valken38X\3AS_Valken38X_F.p3d";
+		picture = "\3AS\3AS_Weapons\Republic\Valken38X\Data\UI\3as_valken38x.paa";
+		handAnim[] = {"OFP2_ManSkeleton","\A3\Weapons_F_Mark\LongRangeRifles\DMR_02\data\Anim\DMR_02.rtm"};
 		ace_clearJamAction = "";
 		reloadAction = "3AS_GestureReloadOverHeat";
-		reloadMagazineSound[] = {"\3AS\3AS_Main\Sounds\Old\Blaster_reload.wss",1,1,30};
+		reloadMagazineSound[] = {"\ShadowLegion_Weapons\data\reloads\sounds\Reload_1.ogg", 2, 1, 30};
 		recoil = "3AS_recoil_DC15L";
 		magazines[] = {"885th_battery_ampHR_blue"};
 		magazineWell[] = {};
@@ -11120,16 +12988,16 @@ class CfgWeapons
 					"3AS_DLT19_Shot_SoundSet"
 				};
 			};
-			reloadTime = 0.15;
-			dispersion = 0.0015;
+			reloadTime = 0.13;
+			dispersion = 0.0011;
 			burst = 1;
 			soundContinuous = "false";
 			soundBurst = "true";
-			minRange = 0;
+			minRange = 200;
 			minRangeProbab = 1.0;
-			midRange = 700;
+			midRange = 500;
 			midRangeProbab = 1.0;
-			maxRange = 1000;
+			maxRange = 900;
 			maxRangeProbab = 0.9;
 		};
 		class WeaponSlotsInfo : WeaponSlotsInfo
@@ -11144,11 +13012,11 @@ class CfgWeapons
 				iconPosition[]={0,0.44999999};
 				iconScale=0.2;
 				linkProxy="\A3\data_f\proxies\weapon_slots\MUZZLE";
-				compatibleItems[] = {"ShdwCmpny_Muzzle_LE_DC15A_Unsur"};
+				compatibleItems[] = {};
 			};
 			class PointerSlot : PointerSlot
 			{
-				compatibleItems[] = {"acc_flashlight"};
+				compatibleItems[] = {};
 			};
 			class UnderBarrelSlot : UnderBarrelSlot
 			{
@@ -11188,7 +13056,7 @@ class CfgWeapons
 		magazineReloadSwitchPhase=0.40000001;
 		reloadMagazineSound[] = {"\ShadowLegion_Weapons\data\reloads\sounds\Reload_1.ogg", 2, 1, 30};
 		recoil = "recoil_spar_dmr";
-		magazines[] = {"885th_battery_ampAR_blue"};
+		magazines[] = {"885th_Valken38R_HighPower_Cell"};
 		magazineWell[] = {};
 		fireLightDiffuse[] = {0.1, 0.25, 1};
 		drySound[] = {"\ShadowLegion_Weapons\data\reloads\sounds\Empty_1.ogg", 5, 1, 20};
@@ -11408,7 +13276,7 @@ class CfgWeapons
 			};
 			class MuzzleSlot: MuzzleSlot
 			{
-				linkProxy="\A3\data_f\proxies\weapon_slots\MUZZLE";
+				linkProxy="\A3\data_f\proxies\weapon_slots\MU885th_blasterbolt_r_b_IONZZLE";
 				compatibleItems[]=
 				{
 					"ShadwCmpany_Suppresor_Module_DC15"
@@ -11421,7 +13289,54 @@ class CfgWeapons
 		flash="gunfire";
 		flashSize=3;
 		muzzles[] = {"this"};
-		modes[]={"FullAuto"};
+		modes[]={"Single","FullAuto"};
+		class Single: Mode_SemiAuto
+		{
+			sounds[]=
+			{
+				"StandardSound",
+				"SilencedSound"
+			};
+			class BaseSoundModeType
+			{
+				weaponSoundEffect="";
+				closure1[]={};
+				closure2[]={};
+				soundClosure[]={};
+			};
+			class StandardSound : BaseSoundModeType
+			{
+				weaponSoundEffect = "";
+				begin1[]={"885_Sounds\Valken38a.ogg",1.25, 1, 1800};
+				begin2[] = {"885_Sounds\Valken38a.ogg", 1.25, 1.015, 1800};
+				begin3[] = {"885_Sounds\Valken38a.ogg", 1.25, 0.985, 1800};
+				begin4[] = {"885_Sounds\Valken38a.ogg", 1.25, 1.01, 1800};
+				begin5[] = {"885_Sounds\Valken38a.ogg", 1.25, 0.995, 1800};
+				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
+				beginwater1[] = {"885_Sounds\Valken38a.ogg", 1, 1, 400};
+				soundBeginWater[] = {"beginwater1", 1};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				begin1[]={"ShadowLegion_Weapons\data\DC19Surpressed.ogg",2,1,300};
+				begin2[]={"ShadowLegion_Weapons\data\DC19Surpressed.ogg",2,1,300};
+				begin3[]={"ShadowLegion_Weapons\data\DC19Surpressed.ogg",2,1,300};
+				begin4[]={"ShadowLegion_Weapons\data\DC19Surpressed.ogg",2,1,300};
+				begin5[]={"ShadowLegion_Weapons\data\DC19Surpressed.ogg",2,1,300};
+				begin6[]={"ShadowLegion_Weapons\data\DC19Surpressed.ogg",2,1,300};
+				soundBegin[]={"begin1",0.5,"begin2",0.5,"begin3",0.5,"begin4",0.5,"begin5",0.5,"begin6",0.5};
+				beginwater1[]={"\ShadowLegion_Weapons\data\Underwater_Firing.ogg",1,1,200};
+				soundBeginWater[]={"beginwater1",0.5};
+			}
+			reloadTime=0.17141999;
+			dispersion=0.00025000001;
+			minRange=2;
+			minRangeProbab=0.5;
+			midRange=100;
+			midRangeProbab=0.69999999;
+			maxRange=500;
+			maxRangeProbab=0.30000001;
+		};
 		class FullAuto: Mode_FullAuto
 		{
 			sounds[]={"StandardSound","SilencedSound"};
@@ -11520,7 +13435,7 @@ class CfgWeapons
 		initSpeed=-1;
 		reloadMagazineSound[] = {"\ShadowLegion_Weapons\data\reloads\sounds\Reload_1.ogg", 2, 1,30};
 		recoil = "885_recoil_DC17";
-		magazines[] = {"885th_dc_cell_blue_low","885th_dc_cell_blue","885th_25Rnd_Tracerless_Cell"};
+		magazines[] = {"885th_dc19_cell","885th_dc19_tracerless_cell"};
 		magazineWell[] = {};
 		magazineReloadTime = 0;
 		fireLightDiffuse[] = {0.1, 0.25, 1};
@@ -11711,7 +13626,7 @@ class CfgWeapons
 		scope = 2;
 		model="\ShadowLegion_Weapons\data\DC15\DC19\models\DC19_S_Folded.p3d";
 		displayName = "[885th] DC-19 FS";
-		magazines[] = {"885th_dc_cell_blue_low","885th_dc_cell_blue","885th_25Rnd_Tracerless_Cell"};
+		magazines[] = {"885th_dc19_cell","885th_dc19_tracerless_cell"};
 		magazineWell[] = {};
 		modes[] = {"Single","FullAuto"};
 		muzzles[] = {"this","Stun"};
@@ -11722,8 +13637,8 @@ class CfgWeapons
 	class 885th_DC15C_Base_F: Rifle_Base_F
 	{
 		author="885th Bloodpack Division";
-		magazines[] = {"885th_dc_cell_blue"};
-		magazineWell[] = {"DC_energycells"};
+		magazines[] = {"885th_dc15c_cell"};
+		magazineWell[] = {};
 		magazineReloadSwitchPhase=0.5;
 		reloadAction="GestureReloadMX";
 		recoil="3AS_recoil_DC15C";
@@ -12109,7 +14024,7 @@ class CfgWeapons
 		selectionFireAnim="zasleh";
 		flash="gunfire";
 		flashSize=3;
-		magazines[] = {"885th_DC15CMKII_cell_blue_apex"};
+		magazines[] = {"885th_dc15cmkii_cell","885th_dc15cmkii_ap_cell"};
 		modes[]={"Single","FullAuto"};
 		muzzles[]={"this"};
 		class Single: Mode_SemiAuto
@@ -12373,7 +14288,7 @@ class CfgWeapons
 		scope = 2;
 		inertia = 0;
 		displayName = "[885th] DC15X Sharpshooter Rifle";
-		magazines[] = {"885th_dc_cell_blue_high","885th_dc_cell_blue_over"};
+		magazines[] = {"885th_dc15xsniper_cell"};
 		ace_clearJamAction = "";
 		reloadAction = "GestureReload_IDA_Reload_Blaster";
 		recoil = "885_recoil_DC15X";
@@ -12417,7 +14332,7 @@ class CfgWeapons
                 soundBeginWater[]={"beginwater1",0.5};
             };
 			reloadTime = 0.40;
-			dispersion = 0.0005;
+			dispersion = 0.0003;
 			minRange = 2;
 			minRangeProbab = 0.5;
 			midRange = 100;
@@ -12461,7 +14376,7 @@ class CfgWeapons
 		model="\ShadowLegion_Weapons\data\DP23\model\DP23.p3d";
 		_generalMacro="ShdwCmpny_DP23_F";
 		fireLightDiffuse[] = {0.1, 0.25, 1};
-		magazines[] = {"885th_DX23_scattershot_mag", "885th_DX23_Doomsday_slug_Mag"};
+		magazines[] = {"885th_DX23_scattershot_cell", "885th_DX23_Doomsday_slug_cell"};
 		magazineWell[] = {};
 		reloadAction="3AS_GestureReloadDC15S";
 		recoil="recoil_ktb";
@@ -12646,6 +14561,201 @@ class CfgWeapons
 			};
 		};
 	};
+	class 885th_DP23_Base_F: Rifle_Base_F
+	{
+		author="3AS + 885th Bloodpack Divison";
+		magazines[]=
+		{
+			"885th_dp23_scattershot_cell"
+		};
+		magazineReloadSwitchPhase=0.5;
+		reloadAction="GestureReloadMX";
+		recoil="3as_recoil_heavy";
+		maxZeroing=400;
+		discreteDistanceInitIndex=0;
+		maxRecoilSway=0.0125;
+		swayDecaySpeed=1.25;
+		inertia=0.60000002;
+		aimTransitionSpeed=0.80000001;
+		dexterity=1.4;
+		initSpeed=-1;
+		class GunParticles: GunParticles
+		{
+		};
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			mass=60;
+			class CowsSlot: 3AS_CowsSlot_DP23
+			{
+				iconPosition[]={0.5,0.34999999};
+				iconScale=0.2;
+			};
+		};
+		distanceZoomMin=300;
+		distanceZoomMax=300;
+		descriptionShort="$STR_3AS_Weapons_Republic_DP23_DesShort";
+		handAnim[]=
+		{
+			"OFP2_ManSkeleton",
+			"3as\3AS_Weapons\Republic\DP23\Data\Anim\New_DP23_handanim.rtm"
+		};
+		modes[]=
+		{
+			"Single",
+			"Single_close",
+			"Single_far"
+		};
+		class Single: Mode_SemiAuto
+		{
+			reloadTime=0.5;
+			dispersion=0.00133;
+			minRange=1;
+			minRangeProbab=0.1;
+			midRange=10;
+			midRangeProbab=0.80000001;
+			maxRange=50;
+			maxRangeProbab=0.15000001;
+			soundContinuous=0;
+			soundBurst=0;
+			sounds[]=
+			{
+				"StandardSound",
+				"SilencedSound"
+			};
+			class BaseSoundModeType;
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[]=
+				{
+					"3AS_DP23_Shot_SoundSet"
+				};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[]=
+				{
+					"3AS_DP23_Shot_SoundSet"
+				};
+			};
+			aiRateOfFire=1;
+			aiRateOfFireDistance=20;
+		};
+		class Single_Close: Single
+		{
+			showToPlayer=0;
+			minRange=50;
+			minRangeProbab=0.1;
+			midRange=170;
+			midRangeProbab=0.80000001;
+			maxRange=250;
+			maxRangeProbab=0.15000001;
+			aiRateOfFire=2;
+			aiRateOfFireDistance=200;
+		};
+		class Single_Far: Single_Close
+		{
+			minRange=220;
+			minRangeProbab=0.1;
+			midRange=250;
+			midRangeProbab=0.69999999;
+			maxRange=350;
+			maxRangeProbab=0.15000001;
+			aiRateOfFire=4;
+			aiRateOfFireDistance=300;
+		};
+		aiDispersionCoefY=6;
+		aiDispersionCoefX=4;
+		class OpticsModes
+		{
+			class Ironsights
+			{
+				opticsID=1;
+				useModelOptics=0;
+				opticsFlare=0;
+				opticsPPEffects[]=
+				{
+					"Default"
+				};
+				opticsDisablePeripherialVision=0;
+				opticsZoomMin=0.25;
+				opticsZoomMax=1.25;
+				opticsZoomInit=0.75;
+				memoryPointCamera="eye";
+				visionMode[]={};
+				distanceZoomMin=100;
+				distanceZoomMax=100;
+			};
+		};
+		caseless[]=
+		{
+			"",
+			1,
+			1,
+			1
+		};
+		soundBullet[]=
+		{
+			"caseless",
+			1
+		};
+		drySound[]=
+		{
+			"\3AS\3AS_Main\Sounds\Blaster_empty",
+			2,
+			1,
+			20
+		};
+		reloadMagazineSound[]=
+		{
+			"\3AS\3AS_Main\Sounds\DC15A\DC15aReload",
+			1,
+			1,
+			30
+		};
+		hiddenSelections[]=
+		{
+			"holo_reticle"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"\3AS\3AS_Weapons\Republic\DP23\Data\reticle_DP23_ca.paa"
+		};
+		ace_overheating_mrbs=3000;
+		ace_overheating_slowdownFactor=1;
+		ace_overheating_allowSwapBarrel=0;
+		ace_overheating_dispersion=0.75;
+	};
+	class 885th_DP23_F : 885th_DP23_Base_F
+	{
+		author="3AS + 885th Bloodpack Divison";
+		baseWeapon = "885th_DP23_F";
+		scope = 2;
+		displayName = "[885th] DP-23 Scattergun";
+		model="\3AS\3AS_Weapons\Republic\DP23\3AS_DP23_F.p3d";
+		picture="\3AS\3AS_Weapons\Republic\DP23\Data\UI\3as_dp23.paa";
+		UiPicture="\A3\weapons_f\data\UI\icon_regular_CA.paa";
+		muzzles[] = {"this"};
+		class WeaponSlotsInfo : WeaponSlotsInfo {
+			mass = 65;
+			class CowsSlot : CowsSlot
+			{
+				compatibleItems[] = {"3AS_optic_DC15C_F"};
+			};
+			class MuzzleSlot : MuzzleSlot
+			{
+				compatibleItems[] = {};
+			};
+			class PointerSlot : PointerSlot
+			{
+				compatibleItems[] = {"acc_flashlight"};
+			};
+			class UnderBarrelSlot : UnderBarrelSlot
+			{
+				compatibleItems[] = {""};
+			};
+		};
+		fireLightDiffuse[]={0.1,0.25,1};
+	};
 	class 885th_DC23: arifle_MX_Base_F
 	{
 		ace_overheating_mrbs=40000;
@@ -12665,7 +14775,7 @@ class CfgWeapons
 		picture="Indecisive_Armoury_Weapons_REPUBLIC\Data\DC23\DC23_ui.paa";
 		model="Indecisive_Armoury_Weapons_REPUBLIC\Data\DC23\Model\IDA_DC23.p3d";
 		handAnim[]={"OFP2_ManSkeleton","Indecisive_Armoury_Anims\Republic\DC23.rtm"};
-		magazines[]={"885th_Breaching_Scatter_Cell_5Rnd_Blue"};
+		magazines[]={"885th_DC23_breaching_cell"};
 		magazineWell[]={};
 		muzzles[]={"this"};
 		modes[]={"Fire"};
@@ -12755,7 +14865,7 @@ class CfgWeapons
 			reloadTime=0.35;
 			Burst=1;
 			soundBurst="true";
-			dispersion=0;
+			dispersion=0.0060;
 			minRange=1;
 			minRangeProbab=0.5;
 			midRange=25;
@@ -13100,7 +15210,7 @@ class CfgWeapons
 		reloadAction="GestureReload_IDA_Reload_Blaster";
 		reloadMagazineSound[]={"\Indecisive_Armoury_Sounds\Blaster_reload_Vent.ogg",5,1,100};
 		recoil="IDA_recoil_HeavyRepeatingBlaster";
-		magazines[] = {"885th_battery_high_blue"};
+		magazines[] = {"885th_t15_cell"};
 		magazineWell[] = {};
 		magazineReloadTime = 0.55;
 		fireLightDiffuse[] = {0.1, 0.25, 1};
@@ -13180,11 +15290,11 @@ class CfgWeapons
 		ace_clearJamAction = "";
 		reloadAction = "GestureReload_IDA_Reload_Blaster";
 		recoil = "885_recoil_T15";
-		magazines[] = {"885th_coil_blue", "885th_coil_blue_high"};
+		magazines[] = {"885th_t15_coil_cell", "885th_t15_coil_cell_high"};
 		magazineWell[] = {};
 		fireLightDiffuse[] = {0.1, 0.25, 1};
 		drySound[] = {"\Indecisive_Armoury_Sounds\weapon_dry.ogg", 5, 1, 10};
-		muzzles[] = {"this"};
+		muzzles[] = {"this","885TH_T15ION"};
 		modes[] = {"Single"};
 		class Single : Mode_SemiAuto
 		{
@@ -13217,6 +15327,147 @@ class CfgWeapons
 			maxRange = 1000;
 			maxRangeProbab = 0.6;
 		};
+		class 885TH_T15ION: Rifle_Long_Base_F
+		{
+			displayName="Explosive Battery";
+			descriptionShort="T-15 ION Battery";
+			useModelOptics=1;
+			useExternalOptic=1;
+			maxZeroing=1800;
+			maxRecoilSway=0.029999999;
+			swayDecaySpeed=1.25;
+			discreteDistance[]={200,300,400,500,600};
+			discreteDistanceInitIndex=1;
+			distanceZoomMin=100;
+			distanceZoomMax=350;
+			cursor="srifle";
+			inertia=1.2;
+			aimTransitionSpeed=0.5;
+			dexterity=1;
+			magazines[]=
+			{
+				"885th_t15_ion_cell"
+			};
+			magazineWell[]={};
+			class GunParticles: GunParticles
+			{
+				class SecondEffect
+				{
+					positionName="Nabojnicestart";
+					directionName="Nabojniceend";
+					effectName="CaselessAmmoCloud";
+				};
+			};
+			selectionFireAnim="zasleh";
+			flash="gunfire";
+			flashSize=3;
+			modes[]=
+			{
+				"Single"
+			};
+			reloadMagazineSound[]={"\Indecisive_Armoury_Sounds\Blaster_reload_Vent.ogg",5,1,100};
+			class Single: Mode_SemiAuto
+			{
+				sounds[]={"StandardSound"};
+				class BaseSoundModeType
+				{
+				weaponSoundEffect="";
+				closure1[]={};
+				closure2[]={};
+				soundClosure[]={};
+				};
+				class StandardSound: BaseSoundModeType
+				{
+				weaponSoundEffect="";
+				begin1[]={"\Indecisive_Armoury_Sounds\Republic\T15.ogg",1.25,1,1800};
+				begin2[]={"\Indecisive_Armoury_Sounds\Republic\T15.ogg",1.25,1.025,1800};
+				begin3[]={"\Indecisive_Armoury_Sounds\Republic\T15.ogg",1.25,0.94999999,1800};
+				begin4[]={"\Indecisive_Armoury_Sounds\Republic\T15.ogg",1.25,1.05,1800};
+				begin5[]={"\Indecisive_Armoury_Sounds\Republic\T15.ogg",1.25,0.89999998,1800};
+				soundBegin[]={"begin1",0.2,"begin2",0.2,"begin3",0.2,"begin4",0.2,"begin5",0.2};
+				beginwater1[]={"\Indecisive_Armoury_Sounds\Republic\T15.ogg",1,1,400};
+				soundBeginWater[]={"beginwater1",1};
+				};
+				drySound[] = {"\Indecisive_Armoury_Sounds\weapon_dry.ogg", 5, 1, 10};
+				class SoundTails
+				{
+					class TailInterior
+					{
+						sound[]=
+						{
+							"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_05_Cyrus\silencer_DMR_05_tail_interior",
+							1,
+							1,
+							300
+						};
+						frequency=1;
+						volume="interior";
+					};
+					class TailTrees
+					{
+						sound[]=
+						{
+							"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_05_Cyrus\silencer_DMR_05_tail_trees",
+							1,
+							1,
+							300
+						};
+						frequency=1;
+						volume="(1-interior/1.4)*trees";
+					};
+					class TailForest
+					{
+						sound[]=
+						{
+							"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_05_Cyrus\silencer_DMR_05_tail_forest",
+							1,
+							1,
+							300
+						};
+						frequency=1;
+						volume="(1-interior/1.4)*forest";
+					};
+					class TailMeadows
+					{
+						sound[]=
+						{
+							"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_05_Cyrus\silencer_DMR_05_tail_meadows",
+							1,
+							1,
+							300
+						};
+						frequency=1;
+						volume="(1-interior/1.4)*(meadows/2 max sea/2)";
+					};
+					class TailHouses
+					{
+						sound[]=
+						{
+							"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_05_Cyrus\silencer_DMR_05_tail_houses",
+							1,
+							1,
+							300
+						};
+						frequency=1;
+						volume="(1-interior/1.4)*houses";
+					};
+				};
+				reloadTime=0.35;
+				dispersion=0.00015000001;
+				recoil="recoil_single_gm6";
+				recoilProne="recoil_single_prone_gm6";
+				minRange=2;
+				minRangeProbab=0.5;
+				midRange=150;
+				midRangeProbab=0.69999999;
+				maxRange=450;
+				maxRangeProbab=0.30000001;
+				aiRateOfFire=3;
+				aiRateOfFireDistance=500;
+			};
+		};
+		aiDispersionCoefY=6;
+		aiDispersionCoefX=4;
 		class WeaponSlotsInfo : WeaponSlotsInfo
 		{
 			mass = 85;
@@ -13270,7 +15521,7 @@ class CfgWeapons
 		recoil = "885_recoil_Z6";
 		recoilProne = "assaultRifleBase";
 		reloadMagazineSound[] = {"\Indecisive_Armoury_Sounds\Blaster_reload_Vent.ogg", 1.5, 1, 100};
-		magazines[] = {"885th_battery_high_blue", "885th_battery_amp_blue"};
+		magazines[] = {"885th_battery_z6_high_blue"};
 		magazineWell[] = {};
 		magazineReloadTime = 0.0;
 		magazineReloadSwitchPhase = 0.5;
@@ -13494,7 +15745,7 @@ class CfgWeapons
 	class 885th_Z6Para_Base_F: Rifle_Base_F
 	{
 		author="885th Bloodpack Division";
-		magazines[] = {"885th_battery_low_blue"};
+		magazines[] = {"885th_battery_para_low_blue"};
 		magazineWell[] = {};
 		magazineReloadSwitchPhase=0.5;
 		reloadAction="GestureReloadMX";
@@ -14271,8 +16522,6 @@ class CfgWeapons
 					"ShadwCmpany_Hybrid_Magnifier_Magnified",
 					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
 					"ShadwCmpany_773_Hybrid_Magnifier_Magnified",
-					"ShadwCmpany_Electroscope",
-					"ShadwCmpany_Electroscope_Standalone",
 					"ShadwCmpany_optic_e11",
 					"ShdwCmpny_Optic_Scope_WestarM5",
 					"ShdwCmpny_Optic_LEScope_DC15A_mk2"
@@ -14480,7 +16729,7 @@ class CfgWeapons
 		dexterity=1;
 		fireLightDiffuse[] = {0.1, 0.25, 1};
 		modes[] = {"Single","Burst"}; 
-		magazines[] = {"885th_dc_cell_blue_high","885th_dc_cell_blue_over","885th_25Rnd_Tracerless_Cell"};
+		magazines[] = {"885th_firepuncher_cell","885th_firepuncher_ap_cell"};
 		muzzles[] = {"this", "Stun"};
 		class Stun : 885th_Stun_rifle
 		{
@@ -14577,8 +16826,7 @@ class CfgWeapons
 		recoil="recoil_spar_dmr";
 		magazines[]=
 		{
-			"885th_dc_cell_blue_high",
-			"885th_25Rnd_Tracerless_Cell"
+			"885th_firepuncher_cell"
 		};
 		class Single: Mode_SemiAuto
 		{
@@ -14711,9 +16959,7 @@ class CfgWeapons
 		recoil="recoil_spar_dmr";
 		magazines[]=
 		{
-			"885th_dc_cell_blue_high",
-			"885th_dc_cell_blue_over",
-			"885th_25Rnd_Tracerless_Cell"
+			"885th_firepuncher_cell"
 		};
 		muzzles[] = {"this","885th_773_Firepuncher_MKII_Flame"};
 		class Single: Mode_SemiAuto
@@ -15007,8 +17253,6 @@ class CfgWeapons
 					"ShadwCmpany_Hybrid_Magnifier_Magnified",
 					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
 					"ShadwCmpany_773_Hybrid_Magnifier_Magnified",
-					"ShadwCmpany_Electroscope",
-					"ShadwCmpany_Electroscope_Standalone",
 					"ShadwCmpany_optic_e11",
 					"ShdwCmpny_Optic_Scope_WestarM5",
 					"ShdwCmpny_Optic_LEScope_DC15A_mk2"
@@ -15044,7 +17288,7 @@ class CfgWeapons
 			class LinkedItemsOptic
 			{
 				slot="CowsSlot";
-				item="ShadwCmpany_Electroscope_Standalone";
+				item="";
 			};
 			class LinkedItemsAcc
 			{
@@ -15075,8 +17319,7 @@ class CfgWeapons
 		fireLightDiffuse[] = {0.1, 0.25, 1};
 		magazines[]=
 		{
-			"885th_dc_cell_blue",
-			"885th_25Rnd_Tracerless_Cell"
+			"885th_firespitter_cell"
 		};
 		muzzles[] = {"this", "Stun"};
 		class Stun : 885th_Stun_rifle
@@ -15263,11 +17506,15 @@ class CfgWeapons
 			{
 				compatibleitems[]=
 				{
-					"ShadwCmpany_Barrel_773_1",
-					"ShadwCmpany_Barrel_773_2",
-					"ShadwCmpany_Barrel_773_3",
 					"ShadwCmpany_Suppresor_Module_DC19"
 				};
+			};
+			class UnderBarrelSlot: UnderBarrelSlot_rail
+			{
+				iconPosition[]={0.2,0.80000001};
+				iconScale=0.30000001;
+				linkProxy="\A3\data_f_mark\proxies\weapon_slots\UNDERBARREL";
+				compatibleItems[]={};
 			};
 		};
 	};
@@ -15288,8 +17535,7 @@ class CfgWeapons
 		fireLightDiffuse[] = {0.1, 0.25, 1};
 		magazines[]=
 		{
-			"885th_dc_cell_blue",
-			"885th_25Rnd_Tracerless_Cell"
+			"885th_firespitter_cell"
 		};
 		muzzles[] = {"this", "Stun"};
 		class Stun : 885th_Stun_rifle
@@ -15468,11 +17714,15 @@ class CfgWeapons
 			{
 				compatibleitems[]=
 				{
-					"ShadwCmpany_Barrel_773_1",
-					"ShadwCmpany_Barrel_773_2",
-					"ShadwCmpany_Barrel_773_3",
 					"ShadwCmpany_Suppresor_Module_DC19"
 				};
+			};
+			class UnderBarrelSlot: UnderBarrelSlot_rail
+			{
+				iconPosition[]={0.2,0.80000001};
+				iconScale=0.30000001;
+				linkProxy="\A3\data_f_mark\proxies\weapon_slots\UNDERBARREL";
+				compatibleItems[]={};
 			};
 		};
 	};
@@ -15622,6 +17872,8 @@ class CfgWeapons
 			midRangeProbab = 0.7;
 			maxRange = 1000;
 			maxRangeProbab = 0.3;
+			aiRateOfFire = 0.2;
+			aiRateOfFireDistance = 200;
 		};
 		class WeaponSlotsInfo : WeaponSlotsInfo
 		{
@@ -15701,6 +17953,8 @@ class CfgWeapons
 			midRangeProbab = 0.8;
 			maxRange = 1000;
 			maxRangeProbab = 0.2;
+			aiRateOfFire = 0.3;
+			aiRateOfFireDistance = 350;
 		};
 		class WeaponSlotsInfo : WeaponSlotsInfo
 		{
@@ -15828,6 +18082,8 @@ class CfgWeapons
 			midRangeProbab = 1.0;
 			maxRange = 2000;
 			maxRangeProbab = 0.7;
+			aiRateOfFire = 0.7;
+			aiRateOfFireDistance = 1000;
 		};
 		class WeaponSlotsInfo : WeaponSlotsInfo
 		{
@@ -15906,7 +18162,7 @@ class CfgWeapons
 				beginwater1[] = {"\Indecisive_Armoury_Sounds\CIS\WristBlaster.ogg", 1, 1, 400};
 				soundBeginWater[] = {"beginwater1", 1};
 			};
-			reloadTime = 0.15;
+			reloadTime = 0.10;
 			dispersion = 0.00300;
 			burst = 1;
 			soundContinuous = "false";
@@ -15917,6 +18173,8 @@ class CfgWeapons
 			midRangeProbab = 0.7;
 			maxRange = 1500;
 			maxRangeProbab = 0.1;
+			aiRateOfFire = 0.3;
+			aiRateOfFireDistance = 450;
 		};
 		class WristRocket : UGL_F
 		{
@@ -15976,6 +18234,8 @@ class CfgWeapons
 				midRangeProbab = 0.75;
 				maxRange = 800;
 				maxRangeProbab = 0.8;
+				aiRateOfFire = 0.8;
+				aiRateOfFireDistance = 200;
 			};
 		};
 		class WeaponSlotsInfo : WeaponSlotsInfo
@@ -16025,7 +18285,7 @@ class CfgWeapons
 		{
 			"Indecisive_Armoury_Weapons_INDEP\Data\Westar35\Textures\Westar35_co.paa"
 		};
-		magazines[] = {"885th_mando_cell_yellow_pistol"};
+		magazines[] = {"885th_westar35_cell"};
 		ace_clearJamAction="";
 		reloadAction="GestureReload_IDA_Reload_BlasterPistol";
 		recoil="IDA_recoil_BlasterPistol";
@@ -16776,8 +19036,6 @@ class CfgWeapons
 					"ShadwCmpany_Hybrid_Magnifier_Magnified",
 					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
 					"ShadwCmpany_773_Hybrid_Magnifier_Magnified",
-					"ShadwCmpany_Electroscope",
-					"ShadwCmpany_Electroscope_Standalone",
 					"ShadwCmpany_optic_e11",
 					"ShdwCmpny_Optic_Valken",
 					"ShadwCmpany_optic_DH17Scope",
@@ -16842,10 +19100,9 @@ class CfgWeapons
 			"OFP2_ManSkeleton",
 			"\ShadowLegion_Weapons\data\DC17M\Anim\ReloadBASE_DC17m.rtm"
 		};
-		initSpeed=472;
 		magazines[]=
 		{
-			"885th_60Rnd_mag_DC17M"
+			"885th_DC17M_cell"
 		};
 		modes[]=
 		{
@@ -17015,7 +19272,7 @@ class CfgWeapons
 		initSpeed=472;
 		magazines[]=
 		{
-			"885th_5Rnd_mag_DC17M_Sniper"
+			"885th_DC17M_cell_sniper"
 		};
 		modes[]=
 		{
@@ -17132,7 +19389,7 @@ class CfgWeapons
 		initSpeed=472;
 		magazines[]=
 		{
-			"885th_AAD_DC17M"
+			"885th_DC17M_aad"
 		};
 		muzzles[]=
 		{
@@ -17485,6 +19742,42 @@ class CfgWeapons
 			};
 		};
 	};
+	class 3AS_Imp_Optic_1;
+	class 885th_reflex_Optic: 3AS_Imp_Optic_1
+	{
+		scope=2;
+		displayName="885th Reflex Optic";
+		weaponInfoType="RscWeaponZeroing";
+		class ItemInfo: InventoryOpticsItem_Base_F
+		{
+			mass=7;
+			modelOptics="\3AS\3AS_Weapons\Data\3AS_2D_Optic.p3d";
+			class OpticsModes
+			{
+				class HoloSights
+				{
+					opticsID=1;
+					useModelOptics=0;
+					opticsFlare="false";
+					opticsPPEffects[]=
+					{
+						"OpticsCHAbera1",
+						"OpticsBlur1"
+					};
+					opticsDisablePeripherialVision=0.0;
+					opticsZoomMin="0.25/1.8";
+					opticsZoomMax=0.25;
+					opticsZoomInit=0.75;
+					memoryPointCamera="eye";
+					visionMode[]={};
+					discreteDistance[]={50,100};
+					discreteDistanceInitIndex=0;
+					distanceZoomMin=50;
+					distanceZoomMax=100;
+				};
+			};
+		};
+	};
 	//Melee
 	class Knife_m3;
 	class 885th_VibroLaserknife_Base: Knife_m3
@@ -17522,9 +19815,6 @@ class CfgWeapons
 		IMS_Melee_Param_Damage=0.34999999;
 	};
 };
-
-// Add as its own top-level block in 885_weapons\config.cpp.
-// Reuses the 3AS DC17M reload animation files as the "reconfigure" gesture -
 
 class CfgMovesBasic
 {
@@ -17643,15 +19933,20 @@ class CfgGesturesMale
 	};
 };
 
-// Add as its own top-level block in 885_weapons\config.cpp, alongside
-// CfgPatches / CfgFunctions / CfgWeapons etc (not nested inside any of them).
-
 class Extended_PreInit_EventHandlers
 {
 	class BPD_DC17M_Pre
 	{
 		init = "call compile preprocessFileLineNumbers '\885_Weapons\XEH_preInit.sqf'";
 	};
+	class BPD_DC15SA_Pre
+	{
+		init = "call compile preprocessFileLineNumbers '\885_Weapons\DC15SA\XEH_preInit.sqf'";
+	};
+	class 885th_ion_ammo_preInit
+    {
+        init = "call compile preprocessFileLineNumbers '\885_Weapons\ion_ammo\XEH_preInit.sqf';";
+    };
 };
 class Extended_PostInit_EventHandlers
 {
@@ -17659,6 +19954,14 @@ class Extended_PostInit_EventHandlers
 	{
 		init = "call compile preprocessFileLineNumbers '\885_Weapons\XEH_postInit.sqf'";
 	};
+	class BPD_DC15SA_Post
+	{
+		init = "call compile preprocessFileLineNumbers '\885_Weapons\DC15SA\XEH_postInit.sqf'";
+	};
+	 class 885th_ion_ammo_postInit
+    {
+        init = "call compile preprocessFileLineNumbers '\885_Weapons\ion_ammo\XEH_postInit.sqf';";
+    };
 };
 
 class CfgFunctions
@@ -17671,6 +19974,31 @@ class CfgFunctions
 			class switchDC17M { file = "885_Weapons\scripts\functions\fnc_switchDC17M.sqf"; };
 		};
 	};
+	class BPD_DC15SA
+	{
+		tag = "BPD";
+		class Weapons
+		{
+			class dc15saRecharge { file = "885_Weapons\DC15SA\scripts\functions\fnc_dc15saRecharge.sqf"; };
+		};
+	};
+	class 885th_ion_ammo
+    {
+        tag = "885th_ion_ammo";
+        class Ammo
+        {
+            class ionSettings
+            {
+                file="885_Weapons\ion_ammo\scripts\fn_settings.sqf";
+                preInit=1;
+            };
+            class ionDisable
+            {
+                file="885_Weapons\ion_ammo\scripts\fn_ionDisable.sqf";
+            };
+
+        };
+    };
 };
 
 class CfgSounds
@@ -17680,6 +20008,12 @@ class CfgSounds
 	{
 		// Format: { "File_Path_In_PBO.ogg", Volume(db gain or scalar), Pitch, Max_Hearable_Distance }
 		sound[] = {"\885_sounds\DC17M_Switch.ogg", "db+15", 1.0, 35};
+		titles[] = {};
+	};
+	class BPD_DC15SA_ChargeFull
+	{
+		// Format: { "File_Path_In_PBO.ogg", Volume(db gain or scalar), Pitch, Max_Hearable_Distance }
+		sound[] = {"885_sounds\DC15SA_ChargeFull.ogg", "db+15", 1.0, 20};
 		titles[] = {};
 	};
 };

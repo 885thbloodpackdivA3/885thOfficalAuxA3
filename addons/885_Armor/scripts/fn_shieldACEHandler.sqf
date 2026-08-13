@@ -22,6 +22,7 @@
 */
 params ["_unit", "_damageArray", "_typeOfDamage", "_ammo"];
 
+if !(missionNamespace getVariable ["AUX_885th_Shield_MasterEnabled", true]) exitWith { _this };
 if !(missionNamespace getVariable ["AUX_885th_Shield_ACE_Enabled", true]) exitWith { _this };
 
 private _active = _unit getVariable ["AUX_Shield_Active", false];
