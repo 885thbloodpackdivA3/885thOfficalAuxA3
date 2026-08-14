@@ -7,6 +7,7 @@ class Cfgpatches
         requiredVersion = 0.1;
         units[] = {
 			"885th_Vornskr_Trooper",
+			"885th_Company_MC_Trooper",
 			"885th_Vornskr_EOD_Trooper",
 			"885th_Vornskr_VCT_Trooper",
 			"885th_Vornskr_Officer_Trooper",
@@ -25,6 +26,7 @@ class Cfgpatches
 			"885th_AdvRecon_Trooper",
 			"885th_Kusak_RC_Trooper",
 			"885th_ONI_Trooper",
+			"885th_ONI_MC_Trooper",
 			"885th_Bandit_Trooper",
 			"885th_Screwball_Trooper",
 			"885th_Crimz_Trooper",
@@ -49,6 +51,7 @@ class Cfgpatches
 			"885th_P2_Officer_Helmet",
 			"885th_P2_MG_Helmet",
 			"885th_ONI_P2_Helmet",
+			"885th_ONI_MC_Helmet",
 			"885th_Bright_P2_Helmet",
 			"885th_Screwball_P1_ARF_Helm",
 			"885th_Sushi_P2_ARF_Helm",
@@ -116,6 +119,7 @@ class Cfgpatches
 			"885th_vest_medic_base",
 			"885th_vest_EOD_base",
 			"885th_Vornskr_Uniform",
+			"885th_CloneMC_Uniform",
 			"885th_Vornskr_EOD_Uniform",
 			"885th_Vornskr_VCT_Uniform",
 			"885th_Vornskr_Officer_Uniform",
@@ -137,6 +141,7 @@ class Cfgpatches
 			"885th_Scorch_Katarn_Uniform",
 			"885th_Rios_Uniform",
 			"885th_ONI_Uniform",
+			"885th_ONI_MC_Uniform",
 			"885th_Bandit_Uniform",
 			"885th_Nightfall_Uniform",
 			"885th_Screwball_Uniform",
@@ -423,6 +428,8 @@ class CfgWeapons
 	class ls_clone_scout_base;
 	class IDA_Clone_NVG;
 	class IDA_Clone_Uniform;
+	class JLTS_CloneHelmetP2MC;
+	class JLTS_CloneHelmetP2MC_illum;
 	class JLTS_CloneArmor;
 	class ls_cloneUniform_scout;
 	class SEA_Uniform_GM_Fabric;
@@ -615,27 +622,69 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_ONI_P2_Helmet: 885th_P2_V2_Helmet
-    {
-        author="885th Bloodpack Division";
-        displayName="[885th] ONI's Custom P2 Helmet";
-        hiddenselections[]=
-        {
-            "Camo", 
-            "Visor",
-        };
-        hiddenSelectionsTextures[]=
-        {
-            "885_Armor\885_Armor\Customs\ONI\ONI_P2_Helmet_co.paa",
-			"885_Armor\885_Armor\Customs\ONI\ONI_P2_Helmet_co.paa",
-
-        };
-        hiddenSelectionsMaterials[]=
-        {
-            "",
-            "885_Armor\885_Armor\Customs\ONI\ONI_P2_Helmet_Visor.rvmat",
-        };
-    };
+	class 885th_ONI_MC_Helmet_Base: JLTS_CloneHelmetP2MC
+	{	
+		scope=0;
+		author = "885th Bloodpack Division";
+		picture="\MRC\JLTS\characters\CloneArmor\data\ui\CloneHelmetP2_ui_ca.paa";
+		hiddenSelections[]=
+		{
+			"camo1",
+			"camo2"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\ONI\ONI_MC_Helmet_co.paa",
+			"885_Armor\885_Armor\Customs\ONI\ONI_MC_Helmet_co.paa"
+		};
+		model="\MRC\JLTS\characters\CloneArmor\CloneHelmetP2MC.p3d";
+		subItems[]={};
+		ace_hearing_lowerVolume=0;
+		ace_hearing_protection=1;
+		class ItemInfo: HeadgearItem
+		{
+			mass=10;
+			uniformModel="\MRC\JLTS\characters\CloneArmor\CloneHelmetP2MC.p3d";
+			hiddenSelections[]=
+			{
+				"camo1",
+				"camo2"
+			};
+			allowedSlots[]={801,901,701,605};
+			modelSides[]={6};
+			class HitpointsProtectionInfo
+			{
+				class Head
+				{
+					hitpointName="HitHead";
+					armor=11;
+					passThrough=0.5;
+				};
+				class Face
+				{
+					hitpointName="HitFace";
+					armor=10;
+					passThrough=0.6;
+				};
+			};
+		};
+	};
+	class 885th_ONI_MC_Helmet: 885th_ONI_MC_Helmet_Base
+	{
+		author = "JLTS + 885th Bloodpack Division";
+		displayName = "[885th] ONI Custom Commander Helm";
+		scope = 2;
+		hiddenSelections[]=
+		{
+			"camo1",
+			"camo2"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\ONI\ONI_MC_Helmet_co.paa",
+			"885_Armor\885_Armor\Customs\ONI\ONI_MC_Helmet_co.paa"
+		};
+	};
 	class 885th_Stormer_P2_Helmet: 885th_P2_V2_Helmet
     {
         author="885th Bloodpack Division";
@@ -3537,6 +3586,42 @@ class CfgWeapons
 			};
 		};
 	};
+	class 885th_ONI_Command_Visor: NVGoggles
+	{
+		author="885th Bloodpack Division";
+		displayName="ONI Commander Visor";
+		ace_nightvision_border = "\z\ace\addons\nightvision\data\nvg_mask_binos_4096.paa";
+		ace_nightvision_colorPreset[] = {0,{0,0,0,0},{1.3,1.2,0,0.9},{6,1,1,0}};
+		modelOptics = "\3AS\3AS_Republic_Characters\NVG\3as_ClonetrooperNVG_Optics.p3d";
+		model="\MRC\JLTS\characters\CloneArmor\CloneNVGMC.p3d";
+		hiddenSelections[]=
+		{
+			"camo1"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\ONI\ONI_MC_Visor_co.paa"
+		};
+		picture="\MRC\JLTS\characters\CloneArmor\data\ui\Clone_nvg_mc_visor_ui_ca.paa";
+		visionMode[]=
+		{
+			"Normal",
+			"NVG",
+			"TI"
+		};
+		thermalMode[]={4,5};
+		class ItemInfo
+		{
+			type=616;
+			uniformModel="\MRC\JLTS\characters\CloneArmor\CloneNVGMC.p3d";
+			modelOff="\MRC\JLTS\characters\CloneArmor\CloneNVGMC.p3d";
+			mass=10;
+			hiddenSelections[]=
+			{
+				"camo1"
+			};
+		};
+	};
 	class 885th_Officer_NVG: NVGoggles
 	{
 		author = "885th Bloodpack Division + IDA Devs";
@@ -3674,6 +3759,23 @@ class CfgWeapons
 			uniformType="Neopren";
 			containerClass="Supply200";
 			mass=40;
+		};
+	};
+	class JLTS_CloneArmorMC;
+	class 885th_CloneMC_Uniform: JLTS_CloneArmorMC
+	{
+		author="885th Bloodpack Division";
+		scope = 0;
+		displayName = "[885th] Clone Company Commander Armor";
+		picture="\MRC\JLTS\characters\CloneArmor\data\ui\CloneArmor_ui_ca.paa";
+		model="\MRC\JLTS\characters\CloneArmor\CloneArmorMC.p3d";
+		class ItemInfo: UniformItem
+		{
+			uniformModel="";
+			uniformClass="885th_Company_MC_Trooper";
+			uniformType="Neopren";
+			containerClass="Supply300";
+			mass=70;
 		};
 	};
     class 885th_Vornskr_EOD_Uniform: 885th_Vornskr_Uniform
@@ -3988,15 +4090,16 @@ class CfgWeapons
 			mass = 40;
 		};
 	};
-	class 885th_ONI_Uniform: 885th_Vornskr_Uniform
+	class 885th_ONI_MC_Uniform: JLTS_CloneArmorMC
 	{
-		displayName = "[885th] ONI's Custom P2 Armor";
+		displayName = "[885th] ONI's MC Armor";
+		scope=2;
 		class ItemInfo: UniformItem
 		{
 			uniformModel = "";
-			uniformClass = "885th_ONI_Trooper";
+			uniformClass = "885th_ONI_MC_Trooper";
 			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
-			containerClass = "Supply300";
+			containerClass = "Supply350";
 			mass = 40;
 		};
 	};
@@ -8045,7 +8148,7 @@ class CfgWeapons
 	class 885th_Cust_VestV4_Rig_ONI: Vest_Camo_Base
 	{
 		author="Antauri + 885th Bloodpack Division";
-		scope=2;
+		scope=0;
 		displayName="[885th] ONI's Commander Pauldron";
 		picture="\SWLB_clones\data\ui\icon_SWLB_clone_uniform_ca.paa";
 		model="\ShadowLegion_Aux\Data\CustomVests\V4\models\VESTV4_VestRig_HolsterSingle.p3d";
@@ -12158,6 +12261,7 @@ class CfgVehicles
 	class SEA_GM_Base_21_Plastic;
 	class SEA_GM_Base_21_Fabric;
 	class SEA_Clone_GM_DC15S;
+	class JLTS_Clone_P2_marshalcommander;
 	class ls_clone_unit_base;
 	class 3AS_Rep_Commando_base_F;
 	class GR_Femclone_dirty_armor_body;
@@ -13415,20 +13519,41 @@ class CfgVehicles
 			"885_Armor\885_Armor\Nexu\Nexu_Medic_Armor_Lower_co.paa"
 		};
 	};
-	
-	class 885th_ONI_Trooper : 885th_Vornskr_Trooper {
-		scope=1;
-		scopeCurator=1;
-		scopeArsenal=2;
-		side=1;
-		uniformClass = "885th_ONI_Uniform";
-		hiddenSelections[] = {"Camo1","Camo2"};
+
+	class 885th_ONI_MC_Trooper: JLTS_Clone_P2_marshalcommander
+	{
+		scope = 1;
+		scopeCurator = 1;
+		scopeArsenal = 2;
+		uniformClass = "885th_ONI_MC_Uniform";
+		hiddenSelections[] ={"camo1", "camo2", "camo3"};
 		hiddenSelectionsTextures[] = {
-			"\885_Armor\885_Armor\Customs\Oni\ONI_P2_Upper_co.paa",
-			"\885_Armor\885_Armor\Customs\Oni\ONI_P2_Lower_co.paa"
+			"\885_Armor\885_Armor\Customs\ONI\ONI_MC_Upper_co.paa",
+			"\885_Armor\885_Armor\Customs\ONI\ONI_MC_Lower_co.paa",
+			"\MRC\JLTS\characters\CloneArmor\data\Clone_rank_co.paa"
+		};
+		armor=1;
+		armorStructural=3;
+		explosionShielding=0.50;
+		class HitPoints
+    	{
+        // Visor & Head: Can take multiple blaster hits, but heavy sniper rounds remain lethal
+        class HitFace     { armor = 12; material = -1; name = "face_head"; passThrough = 0.80; radius = 0.08; };
+        class HitNeck     { armor = 12; material = -1; name = "neck";      passThrough = 0.60; radius = 0.1;  };
+        class HitHead     { armor = 16; material = -1; name = "head";      passThrough = 0.60; radius = 0.2;  };
+
+        // Torso: Heavy Katarn chestplate absorbs repeated plasma and slugthrower hits
+        class HitPelvis   { armor = 15; material = -1; name = "pelvis";    passThrough = 0.60; radius = 0.24; };
+        class HitAbdomen  { armor = 15; material = -1; name = "spine1";    passThrough = 0.60; radius = 0.16; };
+        class HitDiaphragm{ armor = 18; material = -1; name = "spine2";    passThrough = 0.70; radius = 0.18; };
+        class HitChest    { armor = 18; material = -1; name = "spine3";    passThrough = 0.60; radius = 0.18; };
+        class HitBody     { armor = 16; material = -1; name = "body";      passThrough = 0.60; radius = 0.16; };	
+
+		class HitArms     { armor = 12; material = -1; name = "arms"; visual = "arms"; explosionShielding = 0.45; passThrough = 0.90; radius = 0.16; };
+		class HitLegs	  {armor = 12; material = -1; name = "legs"; visual = "legs"; explosionShielding = 0.45; passThrough = 0.90; radius = 0.16; };
 		};
 	};
-
+	
 	class 885th_Bandit_Trooper : 885th_Vornskr_Trooper {
 		scope=1;
 		scopeCurator=1;

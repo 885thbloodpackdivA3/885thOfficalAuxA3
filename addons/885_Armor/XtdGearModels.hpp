@@ -989,13 +989,6 @@ class XtdGearInfos
 			variant="P2";
 			camo="P2";
 		};
-		class 885th_Lotho_P2_Helm
-		{
-			model="Trooper_Custom_Helmets";
-			rank="Lotho";
-			variant="P2";
-			camo="P2";
-		};
 		class 885th_Nightfall_P2_Helm
 		{
 			model="Trooper_Custom_Helmets";
@@ -1031,7 +1024,7 @@ class XtdGearInfos
 			variant="P2";
 			camo="P2";
 		};
-		class 885th_ONI_P2_Helmet
+		class 885th_ONI_MC_Helmet
 		{
 			model="Trooper_Custom_Helmets";
 			rank="ONI";
@@ -1367,7 +1360,7 @@ class XtdGearInfos
 			model="Custom_Uniforms";
 			rank="Nightfall";
 		};
-		class 885th_ONI_Uniform
+		class 885th_ONI_MC_Uniform
 		{
 			model="Custom_Uniforms";
 			rank="ONI";
