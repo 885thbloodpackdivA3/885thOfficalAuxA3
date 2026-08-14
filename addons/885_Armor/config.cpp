@@ -622,29 +622,9 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_ONI_P2_Helmet: 885th_P2_V2_Helmet
-    {
-        author="885th Bloodpack Division";
-        displayName="[885th] ONI's Custom P2 Helmet";
-        hiddenselections[]=
-        {
-            "Camo", 
-            "Visor",
-        };
-        hiddenSelectionsTextures[]=
-        {
-            "885_Armor\885_Armor\Customs\ONI\ONI_P2_Helmet_co.paa",
-			"885_Armor\885_Armor\Customs\ONI\ONI_P2_Helmet_co.paa",
-
-        };
-        hiddenSelectionsMaterials[]=
-        {
-            "",
-            "885_Armor\885_Armor\Customs\ONI\ONI_P2_Helmet_Visor.rvmat",
-        };
-    };
 	class 885th_ONI_MC_Helmet_Base: JLTS_CloneHelmetP2MC
 	{	
+		scope=0;
 		author = "885th Bloodpack Division";
 		picture="\MRC\JLTS\characters\CloneArmor\data\ui\CloneHelmetP2_ui_ca.paa";
 		hiddenSelections[]=
@@ -4107,18 +4087,6 @@ class CfgWeapons
 			uniformClass = "885th_Nexu_Medic_Trooper";
 			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
 			containerClass = "Supply250";
-			mass = 40;
-		};
-	};
-	class 885th_ONI_Uniform: 885th_Vornskr_Uniform
-	{
-		displayName = "[885th] ONI's Custom P2 Armor";
-		class ItemInfo: UniformItem
-		{
-			uniformModel = "";
-			uniformClass = "885th_ONI_Trooper";
-			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
-			containerClass = "Supply300";
 			mass = 40;
 		};
 	};
@@ -8180,7 +8148,7 @@ class CfgWeapons
 	class 885th_Cust_VestV4_Rig_ONI: Vest_Camo_Base
 	{
 		author="Antauri + 885th Bloodpack Division";
-		scope=2;
+		scope=0;
 		displayName="[885th] ONI's Commander Pauldron";
 		picture="\SWLB_clones\data\ui\icon_SWLB_clone_uniform_ca.paa";
 		model="\ShadowLegion_Aux\Data\CustomVests\V4\models\VESTV4_VestRig_HolsterSingle.p3d";
@@ -13551,19 +13519,6 @@ class CfgVehicles
 			"885_Armor\885_Armor\Nexu\Nexu_Medic_Armor_Lower_co.paa"
 		};
 	};
-	
-	class 885th_ONI_Trooper : 885th_Vornskr_Trooper {
-		scope=1;
-		scopeCurator=1;
-		scopeArsenal=2;
-		side=1;
-		uniformClass = "885th_ONI_Uniform";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {
-			"\885_Armor\885_Armor\Customs\Oni\ONI_P2_Upper_co.paa",
-			"\885_Armor\885_Armor\Customs\Oni\ONI_P2_Lower_co.paa"
-		};
-	};
 
 	class 885th_ONI_MC_Trooper: JLTS_Clone_P2_marshalcommander
 	{
@@ -13592,12 +13547,11 @@ class CfgVehicles
         class HitAbdomen  { armor = 15; material = -1; name = "spine1";    passThrough = 0.60; radius = 0.16; };
         class HitDiaphragm{ armor = 18; material = -1; name = "spine2";    passThrough = 0.70; radius = 0.18; };
         class HitChest    { armor = 18; material = -1; name = "spine3";    passThrough = 0.60; radius = 0.18; };
-        class HitBody     { armor = 16; material = -1; name = "body";      passThrough = 0.60; radius = 0.16; };
-		
-		class HitArms 	  { armor = 12; material = -1; name = "body";      passThrough = 0.60; radius = 0.16; };
-		class HitLegs	  { armor = 12; material = -1; name = "body";      passThrough = 0.60; radius = 0.16; };	
+        class HitBody     { armor = 16; material = -1; name = "body";      passThrough = 0.60; radius = 0.16; };	
 
-    	};
+		class HitArms     { armor = 12; material = -1; name = "arms"; visual = "arms"; explosionShielding = 0.45; passThrough = 0.90; radius = 0.16; };
+		class HitLegs	  {armor = 12; material = -1; name = "legs"; visual = "legs"; explosionShielding = 0.45; passThrough = 0.90; radius = 0.16; };
+		};
 	};
 	
 	class 885th_Bandit_Trooper : 885th_Vornskr_Trooper {
