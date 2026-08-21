@@ -380,7 +380,7 @@ class CfgAmmo
 		indirectHitRange=0;
 		model="3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		caliber=1;
-		coefGravity=0.2;
+		coefGravity=0.34999999;
 		cartridge="";
 		cost=1;
 		timeToLive=10;
@@ -5654,14 +5654,19 @@ class CfgMagazines
 		initSpeed = 410;
 		mass = 10;
 	};
-	class 885th_dc15se_cell : 885th_cell
+	class 885th_dc15se_cell : CA_Magazine
 	{
+		scope = 2;
 		count = 55;
 		displayName = "[885th] DC-15SE Blaster-Carbine Overpressured Cell";
 		displayNameShort = "Overpressured Cell For The DC-15S Blaster Carbine";
 		descriptionShort = "55 round capacity, Overpressured blaster bolts.";
+		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
 		ammo = "885th_blasterbolt_Carbine_PlusP";
+		modelSpecial="\ShadowLegion_Weapons\data\Magazines\DC15S\DC15S_Mag.p3d";
+		modelSpecialIsProxy=1;
 		tracersEvery = 1;
+		lastRoundsTracer=60;
 		initSpeed = 395;
 		mass = 10;
 	};
@@ -5687,15 +5692,21 @@ class CfgMagazines
 		initSpeed = 295;
 		mass = 10;
 	};
-	class 885th_elite_300_dc_cell: 885th_cell
+	class 885th_elite_300_dc_cell: CA_Magazine
 	{
+		scope = 2;
 		count = 60;
 		displayName = "[885th] DC15S Elite Cell";
 		displayNameShort = "Elite Cell";
 		descriptionShort = "60 round cells, modified blaster bolts";
+		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
 		ammo = "885th_blasterbolt_blue_dc15mod_300AAC";
+		modelSpecial="\ShadowLegion_Weapons\data\Magazines\DC15S\DC15S_Mag.p3d";
+		modelSpecialIsProxy=1;
 		tracerEvery = 1;
+		lastRoundsTracer=60;
 		initSpeed = 310;
+		mass=10;
 	};
 	
 	//885th Carbinerifle Magazines
@@ -5882,11 +5893,11 @@ class CfgMagazines
 		tracersEvery = 1;
 		mass = 15;
 	};
-	class 885th_DC15BR_battery_blue: CA_Magazine
+	class 885th_dc15br_cell: CA_Magazine
 	{
 		author="885th Bloodpack Division + SL Mod Dev Team";
 		scope=2;
-		displayName="[885th] DC15BR 45rnd High-Power Energy Cell";
+		displayName="[885th] DC15BR 45rnd Standard Cell";
 		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
 		modelSpecial="\ShadowLegion_Weapons\data\Magazines\DC15\Models\DC15_Mag.p3d";
 		modelSpecialIsProxy=1;
@@ -9390,7 +9401,7 @@ class CfgWeapons
 		reloadTime = 1.0;
 		reloadMagazineSound[] = {"\ShadowLegion_Weapons\data\reloads\sounds\Reload_1.ogg", 1.5, 1, 100};
 		recoil = "885_recoil_dc15a";
-		magazines[] = {"885th_dc15c_cell"};
+		magazines[] = {"885th_dc15a_cell"};
 		magazineWell[] = {};
 		modes[] = {"Single"};
 		fireLightDiffuse[] = {0.1, 0.25, 1};
@@ -9478,7 +9489,7 @@ class CfgWeapons
 			};
 			class UnderBarrelSlot : UnderBarrelSlot
 			{
-				compatibleItems[] = {"3AS_Bipod_VK38X_f"};
+				compatibleItems[] = {};
 			};
 		};
 		class GunParticles
@@ -9516,7 +9527,7 @@ class CfgWeapons
 		reloadTime = 1.0;
 		reloadMagazineSound[] = {"\ShadowLegion_Weapons\data\reloads\sounds\Reload_1.ogg", 2, 1, 30};
 		recoil = "885_recoil_dc15a";
-		magazines[] = {"885th_DC15BR_battery_blue"};
+		magazines[] = {"885th_dc15br_cell"};
 		magazineWell[] = {};
 		modes[] = {"Burst"};
 		fireLightDiffuse[]={0,0,1};
@@ -9675,7 +9686,7 @@ class CfgWeapons
 	class 885th_DC15AMKII_Base_F: Rifle_Base_F
 	{
 		author="885th Bloodpack Division";
-		magazines[]={"885th_dc15a_cell","885th_dc15a_hp_cell","885th_dc15a_ap_cell"};
+		magazines[]={"885th_dc15a_hp_cell","885th_dc15a_ap_cell"};
 		magazineWell[]={};
 		magazineReloadSwitchPhase=0.5;
 		reloadAction="GestureReloadMX";
@@ -10367,6 +10378,11 @@ class CfgWeapons
 					"ShdwCmpny_Light_MPD",
 					"ShdwCmpny_IR_MPD"
 				};
+			};
+			class UnderBarrelSlot: UnderBarrelSlot
+			{
+				linkProxy="\A3\data_f_mark\proxies\weapon_slots\UNDERBARREL";
+				compatibleItems[]={};
 			};
 		};
 		class GunParticles: GunParticles
@@ -12471,6 +12487,7 @@ class CfgWeapons
 			class UnderBarrelSlot: UnderBarrelSlot
 			{
 				linkProxy="\A3\data_f_mark\proxies\weapon_slots\UNDERBARREL";
+				compatibleItems[]={};
 			};
 		};
 		optics=1;

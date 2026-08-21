@@ -192,20 +192,17 @@ class XtdGearModels
 					"Crusader",
 					"Crow",
 					"Gooner",
-					"Horrid",
 					"Jackson",
 					"Kit",
 					"Lotho",
 					"Nightfall",
 					"Nightmare",
-					"Nero",
 					"Mayday",
 					"Maverick",
 					"ONI",
 					"Owl",
 					"Oxlong",
 					"Phantom",
-					"Rain",
 					"Rak",
 					"Rios",
 					"Screwball",
@@ -220,7 +217,6 @@ class XtdGearModels
 					"Warden",
 					"Wyrm",
 					"Wrath",
-					"Vergil",
 					"Vulkan"
                 };
             };
@@ -898,12 +894,12 @@ class XtdGearInfos
 			variant="ARF";
 			camo="ARF";
 		};
-		class 885th_Bandit_BARC2_Helm
+		class 885th_Bandit_P2_Helm
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Bandit";
-			variant="BARC";
-			camo="BARC";
+			variant="P2";
+			camo="P2";
 		};
 		class 885th_Bright_P2_Helmet
 		{
@@ -961,13 +957,6 @@ class XtdGearInfos
 			variant="P2";
 			camo="P2";
 		};
-		class 885th_Horrid_P2_Helm
-		{
-			model="Trooper_Custom_Helmets";
-			rank="Horrid";
-			variant="P2";
-			camo="P2";
-		};
 		class 885th_Jackson_P2_Helmet
 		{
 			model="Trooper_Custom_Helmets";
@@ -1002,13 +991,6 @@ class XtdGearInfos
 			rank="Nightmare";
 			variant="Engineer";
 			camo="Engineer";
-		};
-		class 885th_Nero_BARC_Helm
-		{
-			model="Trooper_Custom_Helmets";
-			rank="Nero";
-			variant="BARC";
-			camo="BARC";
 		};
 		class 885th_Maverick_BARC_Helm
 		{
@@ -1051,13 +1033,6 @@ class XtdGearInfos
 			rank="Phantom";
 			variant="RC";
 			camo="RC";
-		};
-		class  885th_Rain_P2_Helmet
-		{
-			model="Trooper_Custom_Helmets";
-			rank="Rain";
-			variant="P2";
-			camo="P2";
 		};
 		class  885th_Rak_P2_Helm
 		{
@@ -1154,13 +1129,6 @@ class XtdGearInfos
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Wrath";
-			variant="P2";
-			camo="P2";
-		};
-		class 885th_Vergil_P2_Helm
-		{
-			model="Trooper_Custom_Helmets";
-			rank="Vergil";
 			variant="P2";
 			camo="P2";
 		};

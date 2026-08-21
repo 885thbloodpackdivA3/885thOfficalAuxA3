@@ -58,12 +58,9 @@ class Cfgpatches
 			"885th_Sunshine_P2_Helm",
 			"885th_Stormer_P2_Helmet",
 			"885th_Charge_P2_Helm",
-			"885th_Nero_BARC_Helm",
-			"885th_Rain_P2_Helmet",
 			"885th_Wrath_P2_Helmet",
 			"885th_Recruit_P2_Helm",
 			"885th_Nightfall_P2_Helmet",
-			"885th_Vergil_P2_Helm",
 			"885th_Rak_P2_Helm",
 			"885th_Vulkan_P2_Helm",
 			"885th_EOD_Helm",
@@ -85,7 +82,6 @@ class Cfgpatches
 			"885th_Oxlong_P2_Helm",
 			"885th_Mayday_P2_Helm",
 			"885th_Crusader_P2_Helm",
-			"885th_Horrid_P2_Helm",
 			"885th_Cerberus_BARC_Helm",
 			"885th_Warden_Pilot_Helm",
 			"885th_Cerberus_P3_Pilot_Helm",
@@ -393,6 +389,7 @@ class CfgWeapons
 	class HeadgearItem;
 	class UniformItem;
 	class VestItem;
+	class H_HelmetB_black;
 	class H_HelmetO_ViperSP_hex_F;
 	class V_PlateCarrier1_rgr;
 	class V_rebreatherB;
@@ -940,27 +937,6 @@ class CfgWeapons
 			"885_Armor\885_Armor\Customs\Mayday\885th_Mayday_P2_Helm_co.paa",
         };
     };
-	class 885th_Rain_P2_Helmet: 885th_P2_V2_Helmet
-    {
-        author="885th Bloodpack Division";
-        displayName="[885th] Rain's Custom P2 Helmet";
-        hiddenselections[]=
-        {
-            "Camo", 
-            "Visor",
-        };
-        hiddenSelectionsTextures[]=
-        {
-            "885_Armor\885_Armor\Customs\Rain\P2_Helmet_co.paa",
-			"885_Armor\885_Armor\Customs\Rain\P2_Helmet_co.paa",
-
-        };
-        hiddenSelectionsMaterials[]=
-        {
-            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
-            "885_Armor\885_Armor\Customs\Rain\Rain_P2_Helmet_Visor.rvmat",
-        };
-    };
 	class 885th_Rios_P2_Helmet: 885th_P2_V2_Helmet
     {
         author="885th Bloodpack Division";
@@ -1024,22 +1000,6 @@ class CfgWeapons
             "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet_Visor.rvmat",
         };
     };
-	class 885th_Vergil_P2_Helm: 885th_P2_V2_Helmet
-	{
-		author="885th Bloodpack Division";
-		displayName="[885th] Vergil Custom P2 Helm";
-		picture="";
-		hiddenSelections[]=
-		{
-			"Camo",
-			"Visor",
-        };
-        hiddenSelectionsTextures[]=
-        {
-			"885_Armor\885_Armor\Customs\Vergil\885th_Vergil_P2_Helm_co.paa",
-			"885_Armor\885_Armor\Customs\Vergil\885th_Vergil_P2_Helm_co.paa",
-        };
-    };
 	class 885th_Crusader_P2_Helm: 885th_P2_V2_Helmet
 	{
 		author="885th Bloodpack Division";
@@ -1056,28 +1016,6 @@ class CfgWeapons
 			"885_Armor\885_Armor\Customs\Crusader\Crusader_P2_Helm_co.paa",
         };
 	};
-		class 885th_Horrid_P2_Helm: 885th_P2_V2_Helmet
-	{
-		author="885th Bloodpack Division";
-		displayName="[885th] Horrid Custom P2 Helm";
-		picture="";
-		hiddenSelections[]=
-		{
-			"Camo",
-			"Visor",
-        };
-        hiddenSelectionsTextures[]=
-        {
-			"885_Armor\885_Armor\Customs\Horrid\P2_Helmet_co.paa",
-			"885_Armor\885_Armor\Customs\Horrid\P2_Helmet_co.paa",
-        };
-		hiddenSelectionsMaterials[]=
-        {
-            "",
-            "885_Armor\885_Armor\Customs\Horrid\Horrid_P2_Helmet_Visor.rvmat",
-        };
-	};
-
 	class 885th_Vulkan_P2_Helm: 885th_P2_V2_Helmet
 	{
 		author="885th Bloodpack Division";
@@ -1160,6 +1098,53 @@ class CfgWeapons
 			"",
             "885_Armor\885_Armor\Customs\Charge\P2_Helmet_Visor.rvmat",
         };
+	};
+	class 885th_Bandit_P2_Helm: H_HelmetB_black
+	{
+		scope=2;
+		author="Legion Studios + 885th Bloodpack Division";
+		displayName="[885th] Bandit's Modified P2 Helmet";
+		model="\ls\core\addons\characters_clone_legacy\helmets\rex\ls_gar_rex_helmet.p3d";
+		hiddenSelections[]=
+		{
+			"camo1",
+			"visor"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Bandit\Bandit_Helmet_co.paa",
+			"885_Armor\885_Armor\Customs\Bandit\visor_co.paa"
+		};
+        hiddenSelectionsMaterials[]=
+        {
+			"885_Armor\885_Armor\Customs\Bandit\Bandit_Helmet.rvmat",
+            "885_Armor\885_Armor\Customs\Bandit\visor.rvmat"
+        };
+		picture="\ls\core\addons\characters_clone_legacy\_ui\rex_helmet_ui_ca.paa";
+		class ItemInfo: ItemInfo
+		{
+			uniformModel="\ls\core\addons\characters_clone_legacy\helmets\rex\ls_gar_rex_helmet.p3d";
+			hiddenSelections[]=
+			{
+				"camo1",
+				"visor"
+			};
+			class HitpointsProtectionInfo
+			{
+				class Head
+				{
+					hitpointName="HitHead";
+					armor=17;
+					passThrough=0.2;
+				};
+				class Face
+				{
+					hitpointName="HitFace";
+					armor=10;
+					passThrough=0.2;
+				};
+			};
+		};
 	};
 	class 885th_EOD_Helm: 885th_P2_V2_Helmet
 	{
@@ -2219,22 +2204,6 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_Cerberus_BARC_Helm: 885th_BARC_Helm
-	{
-		author="885th Bloodpack Division";
-		displayName="[885th] Cerberus Custom BARC Helm";
-		picture="";
-		hiddenSelections[]=
-		{
-			"Camo",
-			"Visor",
-        };
-        hiddenSelectionsTextures[]=
-        {
-			"885_Armor\885_Armor\Customs\Cerberus\885th_Cerberus_Barc_Helm_co.paa",
-			"885_Armor\885_Armor\Customs\Cerberus\885th_Cerberus_Barc_Helm_co.paa",
-        };
-	};
 	class 885th_Sytha_BARC_Helm: 885th_BARC_Helm
 	{
 		author="885th Bloodpack Division";
@@ -2253,26 +2222,6 @@ class CfgWeapons
         {
 			"",
             "885_Armor\885_Armor\Customs\Sytha\Sytha_BARC_Helmet_Visor.rvmat",
-        };
-	};
-	class 885th_Nero_BARC_Helm: 885th_BARC_Helm
-	{
-		author="885th Bloodpack Division";
-		displayName="[885th] Nero's BARC Helmet";
-		hiddenselections[]=
-		{
-			"Camo",
-			"visor"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Nero\Nero_BARC_Helmet_co.paa",
-			"885_Armor\885_Armor\Customs\Nero\Nero_BARC_Helmet_co.paa",
-		};
-        hiddenSelectionsMaterials[]=
-        {
-			"",
-            "885_Armor\885_Armor\Customs\Nero\Nero_BARC_Helmet_Visor.rvmat",
         };
 	};
 	class 885th_Maverick_BARC_Helm: 885th_BARC_Helm
@@ -2316,56 +2265,6 @@ class CfgWeapons
 			"",
             "885_Armor\885_Armor\Customs\Thunder\Thunder_BARC_Helmet_Visor.rvmat",
         };
-	};
-	class H_HelmetB_black;
-	class 885th_Bandit_BARC2_Helm: H_HelmetB_black
-	{
-		scope=2;
-		author="885th Bloodpack Division";
-		displayName="[885th] Bandit's Modified BARC Helmet";
-		model="\ls\core\addons\characters_clone_legacy\helmets\barc\ls_helmet_clone_barc.p3d";
-		hiddenselections[]=
-		{
-			"camo1",
-			"visor"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Bandit\Bandit_BARC2_Helmet_co.paa",
-			"885_Armor\885_Armor\Customs\Bandit\Bandit_BARC2_Helmet_Visor_co.paa"
-		};
-        hiddenSelectionsMaterials[]=
-        {
-			"885_Armor\885_Armor\Customs\Bandit\Bandit_BARC2_Helmet.rvmat",
-            "885_Armor\885_Armor\Customs\Bandit\Bandit_BARC2_Helmet_Visor.rvmat"
-        };
-		picture="\ls\core\addons\characters_clone_legacy\_ui\barc_helmet_ui_ca.paa";
-		ace_hearing_lowerVolume=0;
-		ace_hearing_protection=1;
-		class ItemInfo: ItemInfo
-		{
-			uniformModel="\ls\core\addons\characters_clone_legacy\helmets\barc\ls_helmet_clone_barc.p3d";
-			hiddenSelections[]=
-			{
-				"camo1",
-				"visor"
-			};
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName="HitHead";
-					armor=17;
-					passThrough=0.2;
-				};
-				class Face
-				{
-					hitpointName="HitFace";
-					armor=10;
-					passThrough=0.2;
-				};
-			};
-		};
 	};
 	class 885th_Wyrm_BARC_Helm: 885th_BARC_Helm
 	{
