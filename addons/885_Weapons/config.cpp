@@ -119,8 +119,8 @@ class CfgPatches
 			"885th_mando_cell_yellow",
 			"885th_mando_cell_yellow_pistol",
 			"885th_mando_cell_yellow_high",
-			"885th_DX36C_battery_yellow_high",
-			"885th_DX36C_he_battery_yellow",
+			"885th_dx36c_cell",
+			"885th_dx36c_cell_he",
 			"885th_mando_cell_yellow_amp",
 			"885th_mando_battery_yellow_high",
 			"885th_dc15cmkii_cell",
@@ -5467,6 +5467,7 @@ class CfgAmmo
 class CfgMagazines
 {
 	class 100Rnd_65x39_caseless_mag;
+	class 30Rnd_65x39_caseless_mag;
 	class 3Rnd_Smoke_Grenade_shell;
 	class 1Rnd_HE_Grenade_shell;
 	class CA_LauncherMagazine;
@@ -5926,6 +5927,19 @@ class CfgMagazines
 		tracersEvery = 1;
 		mass = 10;
 	};
+	class 885th_dc15le_cell_he: 885th_cell
+	{
+		author="885th Bloodpack Division + SL Mod Dev Team";
+		scope=2;
+		displayName="[885th]DC15LE MK II High Explosive Battery";
+		ammo="885th_HE_blasterbolt_blue_DC15LEMKII";
+		count=2;
+		mass=15;
+		initSpeed=1055;
+		tracersEvery=1;
+		lastRoundsTracer=2;
+		descriptionShort="High Explosive Battery used by the DC15LE MK II Heavy Blaster.";
+	};
 	class 885th_dc15le_heavy_cell : CA_Magazine
 	{
 		scope = 2;
@@ -6081,9 +6095,24 @@ class CfgMagazines
 		mass=40;
 		initSpeed=560;
 	};
-
+	
+	//885th M-41 Magazines
+	class 885th_battery_ampm41_green : 885th_cell
+	{
+		count = 200;
+		displayName = "[885th] M41 Heavy Amplified Blaster Battery";
+		displayNameShort = "M41 Api Hvy Amp. Battery";
+		descriptionShort = "200 round capacity, Api Heavy amplified blaster bolts.";
+		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
+		model = "\MRC\JLTS\weapons\DC15A\DC15A_mag.p3d";
+		initSpeed=550;
+		ammo = "885th_blasterbolt_Amp_m41_green";
+		tracersEvery = 1;
+		mass = 50;
+	};
+	
 	//885th DX36C Magazines
-	class 885th_DX36C_battery_yellow_high : 885th_cell
+	class 885th_dx36c_cell : 885th_cell
 	{
 		count = 55;
 		displayName = "[885th] DX36C High-Powered Armor-Piercing Battery";
@@ -6096,7 +6125,7 @@ class CfgMagazines
 		tracersEvery = 1;
 		mass = 15;
 	};
-	class 885th_DX36C_he_battery_yellow: 885th_cell
+	class 885th_dx36c_cell_he: 885th_cell
 	{
 		author="Chief33";
 		scope=2;
@@ -6190,6 +6219,22 @@ class CfgMagazines
 		initSpeed=635;
 		tracersEvery = 1;
 		mass = 15;
+	};
+	class 885th_773_Flame_Cell : 885th_cell
+	{
+		author="885th Bloodpack Division";
+		scope=2;
+		count=2;
+		displayName="[885th] 773 Flame Cell";
+		displayNameShort="Flame Cell";
+		descriptionShort="Liquid destruction.";
+		model = "\MRC\JLTS\weapons\EPL2\EPL2_mag.p3d";
+		picture = "\MRC\JLTS\weapons\EPL2\data\ui\EPL2_mag_ui_ca.paa";
+		ammo="885th_FlameRound";
+		initSpeed=50;
+		tracersEvery=1;
+		lastRoundsTracer=999;
+		mass=15;
 	};
 	class 885th_DW32S_cell: CA_Magazine
 	{
@@ -6302,6 +6347,25 @@ class CfgMagazines
 		initSpeed=420;
 		tracersEvery=1;
 		lastRoundsTracer=2;
+	};
+	
+	//885th EPL Magazines
+	class 885th_EPL2_mag: 30Rnd_65x39_caseless_mag
+	{
+		JLTS_hasElectronics=1;
+		JLTS_hasEMPProtection=1;
+		author="885th Bloodapack Division";
+		picture="\MRC\JLTS\weapons\EPL2\data\ui\EPL2_mag_ui_ca.paa";
+		model="\MRC\JLTS\weapons\EPL2\EPL2_mag.p3d";
+		count=2;
+		displayName="$STR_JLTS_names_EPL2_mag";
+		displayNameShort="$STR_JLTS_snames_EnergyCellEMP";
+		descriptionShort="$STR_JLTS_descs_EPL2_mag";
+		ammo="885th_ammo_Grenade_EMP";
+		modelSpecialIsProxy=0;
+		modelSpecial="";
+		initSpeed=250;
+		mass=13;
 	};
 	
 	class 885th_dc_cell_green : 885th_cell
@@ -6699,69 +6763,7 @@ class CfgMagazines
 		deleteIfEmpty=0;
 		initSpeed=60;
 	};
-	// Republic Extras
-	
-	class 885th_battery_ampm41_green : 885th_cell
-	{
-		count = 200;
-		displayName = "[885th] M41 Heavy Amplified Blaster Battery";
-		displayNameShort = "M41 Api Hvy Amp. Battery";
-		descriptionShort = "200 round capacity, Api Heavy amplified blaster bolts.";
-		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
-		model = "\MRC\JLTS\weapons\DC15A\DC15A_mag.p3d";
-		initSpeed=550;
-		ammo = "885th_blasterbolt_Amp_m41_green";
-		tracersEvery = 1;
-		mass = 50;
-	};
-	class 885th_DC15LEMKII_He_Battery_Blue: 885th_cell
-	{
-		author="885th Bloodpack Division + SL Mod Dev Team";
-		scope=2;
-		displayName="[885th]DC15LE MK II High Explosive Battery";
-		ammo="885th_HE_blasterbolt_blue_DC15LEMKII";
-		count=2;
-		mass=15;
-		initSpeed=1055;
-		tracersEvery=1;
-		lastRoundsTracer=2;
-		descriptionShort="High Explosive Battery used by the DC15LE MK II Heavy Blaster.";
-	};
-	
-	class 885th_773_Flame_Cell : 885th_cell
-	{
-		author="885th Bloodpack Division";
-		scope=2;
-		count=2;
-		displayName="[885th] 773 Flame Cell";
-		displayNameShort="Flame Cell";
-		descriptionShort="Liquid destruction.";
-		model = "\MRC\JLTS\weapons\EPL2\EPL2_mag.p3d";
-		picture = "\MRC\JLTS\weapons\EPL2\data\ui\EPL2_mag_ui_ca.paa";
-		ammo="885th_FlameRound";
-		initSpeed=50;
-		tracersEvery=1;
-		lastRoundsTracer=999;
-		mass=15;
-	};
-	class 30Rnd_65x39_caseless_mag;
-	class 885th_EPL2_mag: 30Rnd_65x39_caseless_mag
-	{
-		JLTS_hasElectronics=1;
-		JLTS_hasEMPProtection=1;
-		author="885th Bloodapack Division";
-		picture="\MRC\JLTS\weapons\EPL2\data\ui\EPL2_mag_ui_ca.paa";
-		model="\MRC\JLTS\weapons\EPL2\EPL2_mag.p3d";
-		count=2;
-		displayName="$STR_JLTS_names_EPL2_mag";
-		displayNameShort="$STR_JLTS_snames_EnergyCellEMP";
-		descriptionShort="$STR_JLTS_descs_EPL2_mag";
-		ammo="885th_ammo_Grenade_EMP";
-		modelSpecialIsProxy=0;
-		modelSpecial="";
-		initSpeed=250;
-		mass=13;
-	};
+
 	// E-Series
 	class 885th_e_cell_red : 885th_cell
 	{
@@ -10335,10 +10337,10 @@ class CfgWeapons
 	{
 		scope=0;
 		canShootInWater=1;
-		author="Antauri + ONI & Chief33";
+		author="Antauri + Chief33";
 		_generalMacro="885th_DX36C_Base_F";
 		descriptionShort="Mid to Long Range. Heavy Hitting Experimental Rifle";
-		magazines[]= {"885th_DX36C_battery_yellow_high"};
+		magazines[]= {"885th_dx36c_cell"};
 		recoil="recoil_akm";
 		maxZeroing=1000;
 		handAnim[]= {"OFP2_ManSkeleton","885_Weapons\DX36C\anim\ReloadBASE_DX36C.rtm"};
@@ -10573,7 +10575,7 @@ class CfgWeapons
 			dexterity=1;
 			magazines[]=
 			{
-				"885th_DX36C_he_battery_yellow"
+				"885th_dx36c_cell_he"
 			};
 			magazineWell[]={};
 			class GunParticles: GunParticles
@@ -12294,7 +12296,7 @@ class CfgWeapons
 			inertia=1.2;
 			aimTransitionSpeed=0.5;
 			dexterity=1;
-			magazines[]={"885th_DC15LEMKII_He_Battery_Blue"};
+			magazines[]={"885th_dc15le_cell_he"};
 			magazineWell[]={};
 			class GunParticles: GunParticles
 			{
