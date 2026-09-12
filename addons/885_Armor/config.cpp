@@ -11,9 +11,6 @@ class Cfgpatches
 			"885th_Vornskr_EOD_Trooper",
 			"885th_Vornskr_VCT_Trooper",
 			"885th_Vornskr_Officer_Trooper",
-			"885th_Charhound_Trooper",
-			"885th_Charhound_VCT_Trooper",
-			"885th_Charhound_Officer_Trooper",
 			"885th_Recruit_Trooper",
 			"885th_Medic_Trooper",
 			"885th_Nightsinger_Trooper",
@@ -39,6 +36,12 @@ class Cfgpatches
 			"885th_Vornskr_Hazard_Trooper",
 			"885th_Vornskr_Hazard_Veteran_Trooper",
 			"885th_Vornskr_Hazard_COM_Trooper",
+			"885th_Fyrnock_Trooper",
+			"885th_Fyrnock_VCT_Trooper",
+			"885th_Fyrnock_Officer_Trooper",
+			"885th_Fyrnock_VCT_Uniform",
+			"885th_Fyrnock_Officer_Uniform",
+			"885th_Fyrnock_Medic_Trooper",
 			"885th_Nexu_Trooper",
 			"885th_Nexu_Vct_Uniform",
 			"885th_Nexu_Officer_Uniform",
@@ -100,9 +103,6 @@ class Cfgpatches
 			"Scorch_Kusak_Katarn_Helm",
 			"885th_Vornskr_Engineer_Helm",
 			"885th_Vornskr_EngineerV2_Helm",
-			"885th_Charhound_Helm",
-			"885th_Charhound_VCT_Helm",
-			"885th_Charhound_Officer_Helm",
 			"885th_Vornskr_Hazard_Helm_Base",
 			"885th_Vornskr_Hazard_Helm_Vet",
 			"885th_Vornskr_Hazard_Helm_COM",
@@ -115,9 +115,6 @@ class Cfgpatches
 			"885th_Vornskr_EOD_Uniform",
 			"885th_Vornskr_VCT_Uniform",
 			"885th_Vornskr_Officer_Uniform",
-			"885th_Charhound_Uniform",
-			"885th_Charhound_VCT_Uniform",
-			"885th_Charhound_Officer_Uniform",
 			"885th_Recruit_Uniform",
 			"885th_Medic_Uniform",
 			"885th_Nightsingers_Uniform",
@@ -150,6 +147,12 @@ class Cfgpatches
 			"885th_Nexu_P2_Helm",
 			"885th_Crimz_ARF_Helm",
 			"885th_Rios_ARF_Helm",
+			"885th_Fyrnock_P2_Helm",
+			"885th_Fyrnock_VCT_P2_Helm",
+			"885th_Fyrnock_Officer_P2_Helm",
+			"885th_Fyrnock_Medic_P2_Helm",
+			"885th_Fyrnock_Uniform",
+			"885th_Fyrnock_Medic_Uniform",
 			"885th_Nexu_P2_Uniform",
 			"885th_Nexu_Vct_P2_Helm",
 			"885th_Nexu_Officer_P2_Helm",
@@ -2277,90 +2280,6 @@ class CfgWeapons
 			"885_Armor\885_Armor\Vornskr\Airborne\885th_Medic_Airborne_Helm_co.paa"
 		};
 	};
-	class 885th_Charhound_Helm: 885th_P2_V2_Helmet
-	{
-		author="885th Bloodpack Division";
-		displayName="[885th] Charhound Squad Helm";
-		picture="";
-		hiddenSelections[]=
-		{
-			"Camo",
-			"Visor",
-        };
-        hiddenSelectionsTextures[]=
-        {
-        	"885_Armor\885_Armor\Charhound\885th_Charhound_P2_Helm_co.paa",
-			"885_Armor\885_Armor\Charhound\885th_Charhound_P2_Helm_co.paa",
-        };
-        hiddenSelectionsMaterials[]=
-        {
-            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
-			"\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet_Visor.rvmat",
-        };
-    };
-	class 885th_Charhound_VCT_Helm: 885th_P2_V2_Helmet
-	{
-		author="885th Bloodpack Division";
-		displayName="[885th] Charhound VCT Squad Helm";
-		picture="";
-		hiddenSelections[]=
-		{
-			"Camo",
-			"Visor",
-        };
-        hiddenSelectionsTextures[]=
-        {
-        	"885_Armor\885_Armor\Charhound\885th_Charhound_P2_VCT_Helm_co.paa",
-			"885_Armor\885_Armor\Charhound\885th_Charhound_P2_VCT_Helm_co.paa",
-        };
-        hiddenSelectionsMaterials[]=
-        {
-            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
-			"\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet_Visor.rvmat",
-        };
-    };
-	class 885th_Charhound_Officer_Helm: 885th_P2_V2_Helmet
-	{
-		author="885th Bloodpack Division";
-		displayName="[885th] Charhound Officer Squad Helm";
-		picture="";
-		hiddenSelections[]=
-		{
-			"Camo",
-			"Visor",
-        };
-        hiddenSelectionsTextures[]=
-        {
-        	"885_Armor\885_Armor\Charhound\885th_Charhound_P2_Officer_Helm_co.paa",
-			"885_Armor\885_Armor\Charhound\885th_Charhound_P2_Officer_Helm_co.paa",
-        };
-        hiddenSelectionsMaterials[]=
-        {
-            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
-			"\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet_Visor.rvmat",
-        };
-    };
-	class 885th_Charhound_Medic_Helm: 885th_P2_V2_Helmet
-	{
-		author="885th Bloodpack Division";
-		displayName="[885th] Charhound Medic Squad Helm";
-		picture="";
-		hiddenSelections[]=
-		{
-			"Camo",
-			"Visor",
-        };
-        hiddenSelectionsTextures[]=
-        {
-        	"885_Armor\885_Armor\Charhound\885th_Charhound_P2_Medic_Helm_co.paa",
-			"885_Armor\885_Armor\Charhound\885th_Charhound_P2_Medic_Helm_co.paa",
-        };
-        hiddenSelectionsMaterials[]=
-        {
-            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
-			"\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet_Visor.rvmat",
-        };
-    };
 	class 885th_Vornskr_Hazard_Helm_Base: H_HelmetO_ViperSP_hex_F
 	{
 		author="885th Bloodpack Division";
@@ -2651,6 +2570,90 @@ class CfgWeapons
 			};
 		};
 	};
+	class 885th_Fyrnock_P2_Helm: 885th_P2_V2_Helmet
+	{
+		author="885th Bloodpack Division";
+		displayName="[885th] Clone Fyrnock Squad Helm";
+		picture="";
+		hiddenSelections[]=
+		{
+			"Camo",
+			"Visor",
+        };
+        hiddenSelectionsTextures[]=
+        {
+			"885_Armor\885_Armor\Fyrnock\885th_Fyrnock_CT_Helmet.paa",
+			"885_Armor\885_Armor\Fyrnock\885th_Fyrnock_CT_Helmet.paa",
+        };
+        hiddenSelectionsMaterials[]=
+        {
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat", //Currently pathed to IDA for your convenience
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet_Visor.rvmat",
+        };
+    };
+	class 885th_Fyrnock_VCT_P2_Helm: 885th_P2_V2_Helmet
+	{
+		author="885th Bloodpack Division";
+		displayName="[885th] Clone Fyrnock VCT Squad Helm";
+		picture="";
+		hiddenSelections[]=
+		{
+			"Camo",
+			"Visor",
+        };
+        hiddenSelectionsTextures[]=
+        {
+			"885_Armor\885_Armor\Fyrnock\885th_Fyrnock_VCT_Helmet.paa",
+			"885_Armor\885_Armor\Fyrnock\885th_Fyrnock_VCT_Helmet.paa",
+        };
+        hiddenSelectionsMaterials[]=
+        {
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat", //Currently pathed to IDA for your convenience
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet_Visor.rvmat",
+        };
+    };
+	class 885th_Fyrnock_Officer_P2_Helm: 885th_P2_V2_Helmet
+	{
+		author="885th Bloodpack Division";
+		displayName="[885th] Clone Fyrnock Officer Squad Helm";
+		picture="";
+		hiddenSelections[]=
+		{
+			"Camo",
+			"Visor",
+        };
+        hiddenSelectionsTextures[]=
+        {
+			"885_Armor\885_Armor\Fyrnock\885th_Fyrnock_Officer_Helmet.paa",
+			"885_Armor\885_Armor\Fyrnock\885th_Fyrnock_Officer_Helmet.paa",
+        };
+        hiddenSelectionsMaterials[]=
+        {
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat", //Currently pathed to IDA for your convenience
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet_Visor.rvmat",
+        };
+    };
+	class 885th_Fyrnock_Medic_P2_Helm: 885th_P2_V2_Helmet
+	{
+		author="885th Bloodpack Division";
+		displayName="[885th] Clone Fyrnock Medic Squad Helm";
+		picture="";
+		hiddenSelections[]=
+		{
+			"Camo",
+			"Visor",
+        };
+        hiddenSelectionsTextures[]=
+        {
+			"885_Armor\885_Armor\Fyrnock\885th_Fyrnock_Medic_Helmet.paa",
+			"885_Armor\885_Armor\Fyrnock\885th_Fyrnock_Medic_Helmet.paa",
+        };
+        hiddenSelectionsMaterials[]=
+        {
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat", //Currently pathed to IDA for your convenience
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet_Visor.rvmat",
+        };
+    };
 	class 885th_Nexu_P2_Helm: 885th_P2_V2_Helmet
 	{
 		author="885th Bloodpack Division";
@@ -3865,6 +3868,54 @@ class CfgWeapons
 			mass = 40;
 		};
 	};
+	class 885th_Fyrnock_Uniform: 885th_Vornskr_Uniform
+	{
+		displayName = "[885th] Fyrnock P2 Squad Armor";
+		class ItemInfo: UniformItem
+		{
+			uniformModel = "";
+			uniformClass = "885th_Fyrnock_Trooper";
+			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
+			containerClass = "Supply250";
+			mass = 40;
+		};
+	};
+	class 885th_Fyrnock_VCT_Uniform: 885th_Vornskr_Uniform
+	{
+		displayName = "[885th] Fyrnock VCT P2 Squad Armor";
+		class ItemInfo: UniformItem
+		{
+			uniformModel = "";
+			uniformClass = "885th_Fyrnock_VCT_Trooper";
+			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
+			containerClass = "Supply250";
+			mass = 40;
+		};
+	};
+	class 885th_Fyrnock_Officer_Uniform: 885th_Vornskr_Uniform
+	{
+		displayName = "[885th] Fyrnock Officer P2 Squad Armor";
+		class ItemInfo: UniformItem
+		{
+			uniformModel = "";
+			uniformClass = "885th_Fyrnock_Officer_Trooper";
+			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
+			containerClass = "Supply250";
+			mass = 40;
+		};
+	};
+	class 885th_Fyrnock_Medic_Uniform: 885th_Vornskr_Uniform
+	{
+		displayName = "[885th] Fyrnock Medic P2 Squad Armor";
+		class ItemInfo: UniformItem
+		{
+			uniformModel = "";
+			uniformClass = "885th_Fyrnock_Medic_Trooper";
+			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
+			containerClass = "Supply250";
+			mass = 40;
+		};
+	};
 	class 885th_Nexu_Uniform: 885th_Vornskr_Uniform
 	{
 		displayName = "[885th] Nexu's P2 Squad Armor";
@@ -3876,7 +3927,8 @@ class CfgWeapons
 			containerClass = "Supply250";
 			mass = 40;
 		};
-	};class 885th_Nexu_Vct_Uniform: 885th_Vornskr_Uniform
+	};
+	class 885th_Nexu_Vct_Uniform: 885th_Vornskr_Uniform
 	{
 		displayName = "[885th] Nexu's VCT P2 Squad Armor";
 		class ItemInfo: UniformItem
@@ -3907,54 +3959,6 @@ class CfgWeapons
 		{
 			uniformModel = "";
 			uniformClass = "885th_Nexu_Medic_Trooper";
-			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
-			containerClass = "Supply250";
-			mass = 40;
-		};
-	};
-	class 885th_Charhound_Uniform: 885th_Vornskr_Uniform
-	{
-		displayName = "[885th] Charhound's P2 Squad Armor";
-		class ItemInfo: UniformItem
-		{
-			uniformModel = "";
-			uniformClass = "885th_Charhound_Trooper";
-			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
-			containerClass = "Supply250";
-			mass = 40;
-		};
-	};
-	class 885th_Charhound_VCT_Uniform: 885th_Vornskr_Uniform
-	{
-		displayName = "[885th] Charhound's P2 VCT Squad Armor";
-		class ItemInfo: UniformItem
-		{
-			uniformModel = "";
-			uniformClass = "885th_Charhound_VCT_Trooper";
-			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
-			containerClass = "Supply250";
-			mass = 40;
-		};
-	};
-	class 885th_Charhound_Officer_Uniform: 885th_Vornskr_Uniform
-	{
-		displayName = "[885th] Charhound's P2 Officer Squad Armor";
-		class ItemInfo: UniformItem
-		{
-			uniformModel = "";
-			uniformClass = "885th_Charhound_Officer_Trooper";
-			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
-			containerClass = "Supply300";
-			mass = 40;
-		};
-	};
-	class 885th_Charhound_Medic_Uniform: 885th_Vornskr_Uniform
-	{
-		displayName = "[885th] Charhound's P2 Medic Squad Armor";
-		class ItemInfo: UniformItem
-		{
-			uniformModel = "";
-			uniformClass = "885th_Charhound_Medic_Trooper";
 			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
 			containerClass = "Supply250";
 			mass = 40;
@@ -13103,7 +13107,54 @@ class CfgVehicles
 			"3AS\3AS_Characters\Commando\data\Katarn_Undersuit_CO.paa"
 		};
 	};
-	
+	class 885th_Fyrnock_Trooper : 885th_Vornskr_Trooper {
+		scope=1;
+		scopeCurator=1;
+		scopeArsenal=2;
+		side=1;
+		uniformClass = "885th_Fyrnock_Uniform";
+		hiddenSelections[] = {"Camo1","Camo2"};
+		hiddenSelectionsTextures[] = {
+			"885_Armor\885_Armor\Fyrnock\885th_Fyrnock_CT_Armor_Upper.paa",
+			"885_Armor\885_Armor\Fyrnock\885th_Fyrnock_CT_Armor_Lower.paa"
+		};
+	};
+	class 885th_Fyrnock_VCT_Trooper : 885th_Vornskr_Trooper {
+		scope=1;
+		scopeCurator=1;
+		scopeArsenal=2;
+		side=1;
+		uniformClass = "885th_Fyrnock_VCT_Uniform";
+		hiddenSelections[] = {"Camo1","Camo2"};
+		hiddenSelectionsTextures[] = {
+			"885_Armor\885_Armor\Fyrnock\885th_Fyrnock_VCT_Armor_Upper.paa",
+			"885_Armor\885_Armor\Fyrnock\885th_Fyrnock_VCT_Armor_Lower.paa"
+		};
+	};
+	class 885th_Fyrnock_Officer_Trooper : 885th_Vornskr_Trooper {
+		scope=1;
+		scopeCurator=1;
+		scopeArsenal=2;
+		side=1;
+		uniformClass = "885th_Fyrnock_Officer_Uniform";
+		hiddenSelections[] = {"Camo1","Camo2"};
+		hiddenSelectionsTextures[] = {
+			"885_Armor\885_Armor\Fyrnock\885th_Fyrnock_Officer_Armor_Upper.paa",
+			"885_Armor\885_Armor\Fyrnock\885th_Fyrnock_Officer_Armor_Lower.paa"
+		};
+	};
+	class 885th_Fyrnock_Medic_Trooper : 885th_Vornskr_Trooper {
+		scope=1;
+		scopeCurator=1;
+		scopeArsenal=2;
+		side=1;
+		uniformClass = "885th_Fyrnock_Medic_Uniform";
+		hiddenSelections[] = {"Camo1","Camo2"};
+		hiddenSelectionsTextures[] = {
+			"885_Armor\885_Armor\Fyrnock\885th_Fyrnock_Medic_Armor_Upper.paa",
+			"885_Armor\885_Armor\Fyrnock\885th_Fyrnock Medic_Armor_Lower.paa"
+		};
+	};
 	class 885th_Nexu_Trooper : 885th_Vornskr_Trooper {
 		scope=1;
 		scopeCurator=1;
@@ -13150,55 +13201,6 @@ class CfgVehicles
 		hiddenSelectionsTextures[] = {
 			"885_Armor\885_Armor\Nexu\Nexu_Medic_Armor_Upper_co.paa",
 			"885_Armor\885_Armor\Nexu\Nexu_Medic_Armor_Lower_co.paa"
-		};
-	};
-	
-	class 885th_Charhound_Trooper : 885th_Vornskr_Trooper {
-		scope=1;
-		scopeCurator=1;
-		scopeArsenal=2;
-		side=1;
-		uniformClass = "885th_Charhound_Uniform";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {
-			"885_Armor\885_Armor\Charhound\885th_Charhound_Upper_co.paa",
-			"885_Armor\885_Armor\Charhound\885th_Charhound_Lower_co.paa"
-		};
-	};
-	class 885th_Charhound_VCT_Trooper : 885th_Vornskr_Trooper {
-		scope=1;
-		scopeCurator=1;
-		scopeArsenal=2;
-		side=1;
-		uniformClass = "885th_Charhound_VCT_Uniform";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {
-			"885_Armor\885_Armor\Charhound\885th_Charhound_P2_VCT_Upper_co.paa",
-			"885_Armor\885_Armor\Charhound\885th_Charhound_P2_VCT_Lower_co.paa"
-		};
-	};
-	class 885th_Charhound_Officer_Trooper : 885th_Vornskr_Trooper {
-		scope=1;
-		scopeCurator=1;
-		scopeArsenal=2;
-		side=1;
-		uniformClass = "885th_Charhound_Officer_Uniform";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {
-			"885_Armor\885_Armor\Charhound\885th_Charhound_P2_Officer_Upper_co.paa",
-			"885_Armor\885_Armor\Charhound\885th_Charhound_P2_Officer_Lower_co.paa"
-		};
-	};
-	class 885th_Charhound_Medic_Trooper : 885th_Vornskr_Trooper {
-		scope=1;
-		scopeCurator=1;
-		scopeArsenal=2;
-		side=1;
-		uniformClass = "885th_Charhound_Medic_Uniform";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {
-			"885_Armor\885_Armor\Charhound\885th_Charhound_Medic_Upper_co.paa",
-			"885_Armor\885_Armor\Charhound\885th_Charhound_Medic_Lower_co.paa"
 		};
 	};
 	

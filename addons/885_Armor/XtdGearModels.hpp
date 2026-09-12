@@ -823,28 +823,28 @@ class XtdGearInfos
 			rank="Standard";
 		};
 		//Squad Helmets
-		class 885th_Charhound_Helm
+		class 885th_Fyrnock_P2_Helm
 		{
 			model="Trooper_Squad_Helmets";
 			rank="Standard";
 			variant="1-1";
 			camo="1-1";
 		};
-		class 885th_Charhound_VCT_Helm
+		class 885th_Fyrnock_VCT_P2_Helm
 		{
 			model="Trooper_Squad_Helmets";
 			rank="VCT";
 			variant="1-1";
 			camo="1-1";
 		};
-		class 885th_Charhound_Officer_Helm
+		class 885th_Fyrnock_Officer_P2_Helm
 		{
 			model="Trooper_Squad_Helmets";
 			rank="Officer";
 			variant="1-1";
 			camo="1-1";
 		};
-		class 885th_Charhound_Medic_Helm
+		class 885th_Fyrnock_Medic_P2_Helm
 		{
 			model="Trooper_Squad_Helmets";
 			rank="Medic";
@@ -1111,28 +1111,28 @@ class XtdGearInfos
 			rank="Medic";
 		};
 		//Squad Uniforms
-		class 885th_Charhound_Uniform
+		class 885th_Fyrnock_Uniform
 		{
 			model="Squad_Uniforms";
 			rank="CT";
 			variant="1-1";
 			camo="1-1";
 		};
-		class 885th_Charhound_VCT_Uniform
+		class 885th_Fyrnock_VCT_Uniform
 		{
 			model="Squad_Uniforms";
 			rank="VCT";
 			variant="1-1";
 			camo="1-1";
 		};
-		class 885th_Charhound_Officer_Uniform
+		class 885th_Fyrnock_Officer_Uniform
 		{
 			model="Squad_Uniforms";
 			rank="Officer";
 			variant="1-1";
 			camo="1-1";
 		};
-		class 885th_Charhound_Medic_Uniform
+		class 885th_Fyrnock_Medic_Uniform 
 		{
 			model="Squad_Uniforms";
 			rank="Medic";
