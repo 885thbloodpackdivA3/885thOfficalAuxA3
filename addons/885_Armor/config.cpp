@@ -61,7 +61,6 @@ class Cfgpatches
 			"885th_Wrath_P2_Helmet",
 			"885th_Recruit_P2_Helm",
 			"885th_Nightfall_P2_Helmet",
-			"885th_Rak_P2_Helm",
 			"885th_Vulkan_P2_Helm",
 			"885th_EOD_Helm",
 			"885th_Medic_P2_Helm",
@@ -80,10 +79,7 @@ class Cfgpatches
 			"885th_Kit_phase2SpecOp_helmet",
 			"885th_Owl_Pilot_Helm",
 			"885th_Oxlong_P2_Helm",
-			"885th_Mayday_P2_Helm",
 			"885th_Crusader_P2_Helm",
-			"885th_Cerberus_BARC_Helm",
-			"885th_Warden_Pilot_Helm",
 			"885th_Cerberus_P3_Pilot_Helm",
 			"885th_Vornskr_P1_RTO_Helm",
 			"885th_Vornskr_P1_Advisor_Helm",
@@ -142,6 +138,7 @@ class Cfgpatches
 			"885th_Nightfall_Uniform",
 			"885th_Screwball_Uniform",
 			"885th_Crimz_Uniform",
+			"885th_Sytha_Uniform",
 			"885th_Smith_Uniform",
 			"885th_Thunder_Uniform",
 			"885th_Hazard_Trooper_Uniform",
@@ -152,13 +149,11 @@ class Cfgpatches
 			"885th_Medic_AB_Helm",
 			"885th_Nexu_P2_Helm",
 			"885th_Crimz_ARF_Helm",
-			"885th_Wyrm_BARC_Helm",
 			"885th_Rios_ARF_Helm",
 			"885th_Nexu_P2_Uniform",
 			"885th_Nexu_Vct_P2_Helm",
 			"885th_Nexu_Officer_P2_Helm",
 			"885th_Nexu_Medic_P2_Uniform",
-			"885th_Nightmare_Engineer_Helm",
 			"885th_Cust_VestV4_Rig_Bandit",
 			"885th_Cust_VestV4_Rig_ONI"
 		};
@@ -765,40 +760,6 @@ class CfgWeapons
             "885_Armor\885_Armor\Customs\Bright\Bright_P2_Helmet_Visor.rvmat",
         };
     };
-	class 885th_Jackson_P2_Helmet: 885th_P2_V2_Helmet
-    {
-        author="885th Bloodpack Division"; 
-        displayName="[885th] Jackson's P2 Helmet";
-        hiddenselections[]=
-        {
-            "Camo", 
-            "visor",
-        };
-        hiddenSelectionsTextures[]=
-        {
-            "885_Armor\885_Armor\Customs\Jackson\885th_Jackson_P2_Helm.co.paa",
-            "885_Armor\885_Armor\Customs\Jackson\885th_Jackson_P2_Helm.co.paa",
-        };
-		hiddenSelectionsMaterials[]=
-        {
-            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
-            "885_Armor\885_Armor\Customs\Jackson\Jackson_P2_Helmet_Visor.rvmat",
-        };
-    };
-	class 885th_Nightmare_Engineer_Helm: 885th_Vornskr_Engineer_Helm
-	{
-		author="885th Bloodpack Division";
-		displayName="[885th] Nightmare's Engineer Helm";
-		picture="";
-		hiddenSelections[]=
-		{
-			"camo1"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Nightmare\Nightmare_Engineer_Helmet_co.paa"
-		};
-	};
 	class 885th_Smith_EngineerV2_Helm: H_HelmetO_ViperSP_hex_F
 	{
 		author="885th Bloodpack Division";
@@ -921,22 +882,6 @@ class CfgWeapons
 			"885_Armor\885_Armor\Customs\Sunshine\885th_Sunshine_P2_Helm_co.paa",
         };
     };
-	class 885th_Mayday_P2_Helm: 885th_P2_V2_Helmet
-	{
-		author="885th Bloodpack Division";
-		displayName="[885th] Mayday P2 Custom Helm";
-		picture="";
-		hiddenSelections[]=
-		{
-			"Camo",
-			"Visor",
-        };
-        hiddenSelectionsTextures[]=
-        {
-        	"885_Armor\885_Armor\Customs\Mayday\885th_Mayday_P2_Helm_co.paa",
-			"885_Armor\885_Armor\Customs\Mayday\885th_Mayday_P2_Helm_co.paa",
-        };
-    };
 	class 885th_Rios_P2_Helmet: 885th_P2_V2_Helmet
     {
         author="885th Bloodpack Division";
@@ -1056,27 +1001,6 @@ class CfgWeapons
         {
             "",
             "885_Armor\885_Armor\Customs\Oxlong\Oxlong_P2_Helmet_Visor.rvmat",
-        };
-	};
-	class 885th_Rak_P2_Helm: 885th_P2_V2_Helmet
-	{
-		author="885th Bloodpack Division";
-		displayName="[885th] Rak Custom P2 Helm";
-		picture="";
-		hiddenSelections[]=
-		{
-			"Camo",
-			"Visor",
-        };
-        hiddenSelectionsTextures[]=
-        {
-			"885_Armor\885_Armor\Customs\Rak\Rak_P2_Helm_co.paa",
-			"885_Armor\885_Armor\Customs\Rak\Rak_P2_Helm_co.paa",
-        };
-		hiddenSelectionsMaterials[]=
-        {
-            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
-            "",
         };
 	};
 	class 885th_Charge_P2_Helm: 885th_P2_V2_Helmet
@@ -1364,31 +1288,6 @@ class CfgWeapons
 				"visor"
 			};
 		};
-	};
-	class 885th_Warden_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
-	{
-		scope=2;
-		author="885th Bloodpack Division";
-		displayName="[885th] Warden's Pilot Helm";
-		picture="";
-		hiddenSelections[]=
-		{
-			"camo1",
-			"camo2",
-			"visor"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Warden\885th_Warden_P1_Pilot_Helm_co.paa",
-			"885_Armor\885_Armor\Customs\Warden\Warden_Lifesys_co.paa",
-			"885_Armor\885_Armor\Customs\Warden\885th_Warden_P1_Pilot_Helm_co.paa"
-		};
-		hiddenSelectionsMaterials[]=
-        {	
-			"",
-			"",
-            "885_Armor\885_Armor\Customs\Warden\Warden_P1_Pilot_Helm_Visor.rvmat",
-        };
 	};
 	class 885th_Owl_Pilot_Helm: 885th_Nightsingers_P1_Pilot_Helm
 	{
@@ -1883,6 +1782,51 @@ class CfgWeapons
 			};
 		};
 	};
+	class 885th_Signal_phase2SpecOp_helmet: H_HelmetO_ViperSP_hex_F
+	{
+		scope=2;
+		author="Legion Studios + 885th Bloodpack Division";
+		displayName="Signal's Spec-Ops P2 Helmet";
+		model="\ls\core\addons\characters_clone_legacy\helmets\phase2SpecOp\ls_sob_phase2SpecOp_helmet.p3d";
+		hiddenSelections[]=
+		{
+			"camo1",
+			"visor"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Signal\helmet_co.paa",
+			"885_Armor\885_Armor\Customs\Signal\visor_co.paa"
+		};
+		 hiddenSelectionsMaterials[]=
+        {
+            "885_Armor\885_Armor\Customs\Signal\helmet.rvmat",
+            "885_Armor\885_Armor\Customs\Signal\visor.rvmat"
+        };
+		subItems[]=
+		{
+			"Integrated_NVG_TI_0_F"
+		};
+		class ItemInfo: ItemInfo
+		{
+			mass=10;
+			uniformModel="\ls\core\addons\characters_clone_legacy\helmets\phase2SpecOp\ls_sob_phase2SpecOp_helmet.p3d";
+			hiddenSelections[]=
+			{
+				"camo1",
+				"visor"
+			};
+			class HitpointsProtectionInfo
+			{
+				class Head
+				{
+					hitpointName="HitHead";
+					armor=50;
+					passThrough=0.5;
+				};
+			};
+		};
+	};
 	class 885th_Najax_Scout_P2_Helm_Base: H_HelmetO_ViperSP_hex_F
 	{
 		scope=0;
@@ -2266,27 +2210,6 @@ class CfgWeapons
             "885_Armor\885_Armor\Customs\Thunder\Thunder_BARC_Helmet_Visor.rvmat",
         };
 	};
-	class 885th_Wyrm_BARC_Helm: 885th_BARC_Helm
-	{
-		author="885th Bloodpack Division";
-		displayName="[885th] Wyrm's Custom BARC Helm";
-		picture="";
-		hiddenSelections[]=
-		{
-			"Camo",
-			"visor"
-        };
-        hiddenSelectionsTextures[]=
-        {
-			"885_Armor\885_Armor\Customs\Wyrm\885th_Wyrm_BARC_Helmet_co.paa",
-			"885_Armor\885_Armor\Customs\Wyrm\885th_Wyrm_BARC_Helmet_co.paa"
-        };
-        hiddenSelectionsMaterials[]=
-        {
-            "\Indecisive_Armoury_units\REPUBLIC\Clone_BARC_Helmet\IDA_BARC_Helmet.rvmat", //Currently pathed to IDA for your convenience
-            
-        };
-    };
 	class 885th_AB_Helm: IDA_AB_Helmet
 	{
 		author = "885th Bloodpack Division";
@@ -3989,31 +3912,6 @@ class CfgWeapons
 			mass = 40;
 		};
 	};
-	class 885th_ONI_MC_Uniform: JLTS_CloneArmorMC
-	{
-		displayName = "[885th] ONI's MC Armor";
-		scope=2;
-		class ItemInfo: UniformItem
-		{
-			uniformModel = "";
-			uniformClass = "885th_ONI_MC_Trooper";
-			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
-			containerClass = "Supply350";
-			mass = 40;
-		};
-	};
-	class 885th_Crimz_Uniform: 885th_Vornskr_Uniform
-	{
-		displayName = "[885th] Crimz Custom P2 Armor";
-		class ItemInfo: UniformItem
-		{
-			uniformModel = "";
-			uniformClass = "885th_Crimz_Trooper";
-			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
-			containerClass = "Supply300";
-			mass = 40;
-		};
-	};
 	class 885th_Charhound_Uniform: 885th_Vornskr_Uniform
 	{
 		displayName = "[885th] Charhound's P2 Squad Armor";
@@ -4062,6 +3960,31 @@ class CfgWeapons
 			mass = 40;
 		};
 	};
+	class 885th_ONI_MC_Uniform: JLTS_CloneArmorMC
+	{
+		displayName = "[885th] ONI's MC Armor";
+		scope=2;
+		class ItemInfo: UniformItem
+		{
+			uniformModel = "";
+			uniformClass = "885th_ONI_MC_Trooper";
+			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
+			containerClass = "Supply350";
+			mass = 40;
+		};
+	};
+	class 885th_Crimz_Uniform: 885th_Vornskr_Uniform
+	{
+		displayName = "[885th] Crimz Custom P2 Armor";
+		class ItemInfo: UniformItem
+		{
+			uniformModel = "";
+			uniformClass = "885th_Crimz_Trooper";
+			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
+			containerClass = "Supply300";
+			mass = 40;
+		};
+	};
 	class 885th_Bandit_Uniform: 885th_Vornskr_Uniform
 	{
 		displayName = "[885th] Bandit's Custom P2 Armor";
@@ -4093,6 +4016,18 @@ class CfgWeapons
 		{
 			uniformModel = "";
 			uniformClass = "885th_Screwball_Trooper";
+			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
+			containerClass = "Supply300";
+			mass = 40;
+		};
+	};
+	class 885th_Sytha_Uniform: 885th_Vornskr_Uniform
+	{
+		displayName = "[885th] Sytha Custom P2 Armor";
+		class ItemInfo: UniformItem
+		{
+			uniformModel = "";
+			uniformClass = "885th_Sytha_Trooper";
 			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
 			containerClass = "Supply300";
 			mass = 40;
@@ -9302,214 +9237,6 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_Cust_VestV4_Rig_Mayday: Vest_Camo_Base
-	{
-		author="Antauri + 885th Bloodpack Division";
-		scope=2;
-		displayName="[885th] Mayday's Custom Rig";
-		picture="\SWLB_clones\data\ui\icon_SWLB_clone_uniform_ca.paa";
-		model="\ShadowLegion_Aux\Data\CustomVests\V4\models\VESTV4_VestRig_HolsterDouble.p3d";
-		hiddenSelections[]=
-		{
-	/*1*/	"VibrobladeLeft",
-	/*2*/	"VibrobladeRight",
-	/*3*/	"Grenades",
-	/*4*/	"RigLower",
-	/*5*/	"ShoulderPouches",
-	/*6*/	"ShoulderAntennaRight",
-	/*7*/	"ShoulderAntennaLeft",
-	/*8*/	"HolsterRight",
-	/*9*/	"HolsterLeft",
-	/*10*/	"CartridgesTopRight",
-	/*11*/	"ArmPouchLeft",
-	/*12*/	"ArmCatridgesRight",
-	/*13*/	"SuspenderPouchesFront",
-	/*14*/	"SuspenderPouchesBack",
-	/*15*/	"ARCPlating",
-	/*16*/	"ARCBracers",
-	/*17*/	"KamaPouches",
-	/*18*/	"ARCKama",
-	/*19*/	"ARCPauldronLeft",
-	/*20*/	"ARCPauldronRight",
-	/*21*/	"JetpackKama",
-	/*22*/	"NCOPauldronLeft",
-	/*23*/	"NCOPauldronSmallRight",
-	/*24*/	"PauldronBase",
-	/*25*/	"SuspenderLeft",
-	/*26*/	"SuspenderCross",
-	/*27*/	"SuspenderRight",
-	/*28*/	"ArmStrapLeft",
-	/*29*/	"ArmStrapRight",
-	/*30*/	"AirbornePieces",
-	/*31*/	"AirborneBag",
-	/*32*/	"CorporalPauldron",
-	/*33*/	"Buttbag",
-	/*34*/	"LRpack",
-	/*35*/	"CorporalPauldron2",
-	/*36*/	"CrossClip",
-	/*37*/	"ChestGuard"
-		};
-		hiddenSelectionsTextures[]=
-		{
-	/*1*/	"885_Armor\885_Armor\Customs\Mayday\RIG_co.paa",
-	/*2*/	"885_Armor\885_Armor\Customs\Mayday\RIG_co.paa",
-	/*3*/	"885_Armor\885_Armor\Customs\Mayday\RIG_co.paa",
-	/*4*/	"",
-	/*5*/	"",
-	/*6*/	"",
-	/*7*/	"",
-	/*8*/	"885_Armor\885_Armor\Customs\Mayday\RIG_co.paa",
-	/*9*/	"885_Armor\885_Armor\Customs\Mayday\RIG_co.paa",
-	/*10*/	"885_Armor\885_Armor\Customs\Mayday\RIG_co.paa",
-	/*11*/	"",
-	/*12*/	"",
-	/*13*/	"885_Armor\885_Armor\Customs\Mayday\RIG_co.paa",
-	/*14*/	"",
-	/*15*/	"",
-	/*16*/	"",
-	/*17*/	"",
-	/*18*/	"",
-	/*19*/	"",
-	/*20*/	"",
-	/*21*/	"",
-	/*22*/	"",
-	/*23*/	"",
-	/*24*/	"",
-	/*25*/	"885_Armor\885_Armor\Customs\Mayday\Suspenders&Straps_co.paa",
-	/*26*/	"885_Armor\885_Armor\Customs\Mayday\Suspenders&Straps_co.paa",
-	/*27*/	"885_Armor\885_Armor\Customs\Mayday\Suspenders&Straps_co.paa",
-	/*28*/	"",
-	/*29*/	"",
-	/*30*/	"",
-	/*31*/	"",
-	/*32*/	"",
-	/*33*/	"",
-	/*34*/	"",
-	/*35*/	"",
-	/*36*/	"",
-	/*37*/	""
-		};
-		hiddenSelectionsMaterials[]=
-		{
-	/*1*/	"885_Armor\885_Armor\Customs\Mayday\RIG.rvmat",
-	/*2*/	"885_Armor\885_Armor\Customs\Mayday\RIG.rvmat",
-	/*3*/	"885_Armor\885_Armor\Customs\Mayday\RIG.rvmat",
-	/*4*/	"",
-	/*5*/	"",
-	/*6*/	"",
-	/*7*/	"",
-	/*8*/	"885_Armor\885_Armor\Customs\Mayday\RIG.rvmat",
-	/*9*/	"885_Armor\885_Armor\Customs\Mayday\RIG.rvmat",
-	/*10*/	"885_Armor\885_Armor\Customs\Mayday\RIG.rvmat",
-	/*11*/	"",
-	/*12*/	"",
-	/*13*/	"885_Armor\885_Armor\Customs\Mayday\RIG.rvmat",
-	/*14*/	"",
-	/*15*/	"",
-	/*16*/	"",
-	/*17*/	"",
-	/*18*/	"",
-	/*19*/	"",
-	/*20*/	"",
-	/*21*/	"",
-	/*22*/	"",
-	/*23*/	"",
-	/*24*/  "",
-	/*25*/	"885_Armor\885_Armor\Customs\Mayday\Suspenders&Straps.rvmat",
-	/*26*/	"885_Armor\885_Armor\Customs\Mayday\Suspenders&Straps.rvmat",
-	/*27*/	"885_Armor\885_Armor\Customs\Mayday\Suspenders&Straps.rvmat",
-	/*28*/	"",
-	/*29*/	"",
-	/*30*/	"",
-	/*31*/	"",
-	/*32*/	"",
-	/*33*/	"",
-	/*34*/	"",
-	/*35*/	"",
-	/*36*/	"",
-	/*37*/	""
-		};
-		class ItemInfo: VestItem
-		{
-			uniformModel="\ShadowLegion_Aux\Data\CustomVests\V4\models\VESTV4_VestRig_HolsterDouble.p3d";
-			hiddenSelections[]=
-			{
-				"VibrobladeLeft",
-				"VibrobladeRight",
-				"Grenades",
-				"RigLower",
-				"ShoulderPouches",
-				"ShoulderAntennaRight",
-				"ShoulderAntennaLeft",
-				"HolsterRight",
-				"HolsterLeft",
-				"CartridgesTopRight",
-				"ArmPouchLeft",
-				"ArmCatridgesRight",
-				"SuspenderPouchesFront",
-				"SuspenderPouchesBack",
-				"ARCPlating",
-				"ARCBracers",
-				"KamaPouches",
-				"ARCKama",
-				"ARCPauldronLeft",
-				"ARCPauldronRight",
-				"JetpackKama",
-				"NCOPauldronLeft",
-				"NCOPauldronSmallRight",
-				"PauldronBase",
-				"SuspenderLeft",
-				"SuspenderCross",
-				"SuspenderRight",
-				"ArmStrapLeft",
-				"ArmStrapRight",
-				"AirbornePieces",
-				"AirborneBag",
-				"CorporalPauldron",
-				"Buttbag",
-				"LRpack",
-				"CorporalPauldron2",
-				"CrossClip",
-				"ChestGuard"
-			};
-			vestType="Rebreather";
-			containerClass="Supply250";
-			mass=65;
-			class HitpointsProtectionInfo
-			{
-				class Chest
-				{
-					HitpointName="HitChest";
-					armor=16;
-					PassThrough=0.30000001;
-				};
-				class Diaphragm
-				{
-					HitpointName="HitDiaphragm";
-					armor=16;
-					PassThrough=0.30000001;
-				};
-				class Abdomen
-				{
-					hitpointName="HitAbdomen";
-					armor=16;
-					passThrough=0.30000001;
-				};
-				class Body
-				{	
-					hitpointName="HitBody";
-					armor=16;
-					passThrough=0.30000001;
-				};
-				class Legs
-				{
-					hitpointName="HitLegs";
-					armor=6;
-					passThrough=0.30000001;
-				};
-			};
-		};
-	};
 	class 885th_Cust_VestV4_Rig_Ares: Vest_Camo_Base
 	{
 		author="Antauri + 885th Bloodpack Division";
@@ -9932,11 +9659,11 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_Cust_VestV4_Rig_Kit: Vest_Camo_Base
+	class 885th_Cust_VestV4_Rig_Maverick: Vest_Camo_Base
 	{
 		author="Antauri + 885th Bloodpack Division";
 		scope=2;
-		displayName="[885th] Kit's Pauldron";
+		displayName="[885th] Maverick's ARC Rig";
 		picture="\SWLB_clones\data\ui\icon_SWLB_clone_uniform_ca.paa";
 		model="\ShadowLegion_Aux\Data\CustomVests\V4\models\VESTV4_VestRig_HolsterDouble.p3d";
 		hiddenSelections[]=
@@ -9988,28 +9715,28 @@ class CfgWeapons
 	/*5*/	"",
 	/*6*/	"",
 	/*7*/	"",
-	/*8*/	"885_Armor\885_Armor\Customs\Kit\RIG_co.paa",
-	/*9*/	"885_Armor\885_Armor\Customs\Kit\RIG_co.paa",
+	/*8*/	"885_Armor\885_Armor\Customs\Maverick\RIG_co.paa",
+	/*9*/	"885_Armor\885_Armor\Customs\Maverick\RIG_co.paa",
 	/*10*/	"",
-	/*11*/	"",
-	/*12*/	"885_Armor\885_Armor\Customs\Kit\RIG_co.paa",
-	/*13*/	"885_Armor\885_Armor\Customs\Kit\RIG_co.paa",
-	/*14*/	"885_Armor\885_Armor\Customs\Kit\RIG_co.paa",
-	/*15*/	"885_Armor\885_Armor\Customs\Kit\ARCVest_co.paa",
-	/*16*/	"885_Armor\885_Armor\Customs\Kit\ARCVest_co.paa",
-	/*17*/	"885_Armor\885_Armor\Customs\Kit\ARCVest_co.paa",
-	/*18*/	"885_Armor\885_Armor\Customs\Kit\ARCVest_co.paa",
-	/*19*/	"885_Armor\885_Armor\Customs\Kit\ARCPauldron_co.paa",
-	/*20*/	"885_Armor\885_Armor\Customs\Kit\ARCPauldron_co.paa",
+	/*11*/	"885_Armor\885_Armor\Customs\Maverick\RIG_co.paa",
+	/*12*/	"885_Armor\885_Armor\Customs\Maverick\RIG_co.paa",
+	/*13*/	"",
+	/*14*/	"",
+	/*15*/	"885_Armor\885_Armor\Customs\Maverick\ARCVest_co.paa",
+	/*16*/	"885_Armor\885_Armor\Customs\Maverick\ARCVest_co.paa",
+	/*17*/	"885_Armor\885_Armor\Customs\Maverick\ARCVest_co.paa",
+	/*18*/	"885_Armor\885_Armor\Customs\Maverick\ARCVest_co.paa",
+	/*19*/	"885_Armor\885_Armor\Customs\Maverick\ARCPauldron_co.paa",
+	/*20*/	"885_Armor\885_Armor\Customs\Maverick\ARCPauldron_co.paa",
 	/*21*/	"",
 	/*22*/	"",
 	/*23*/	"",
-	/*24*/	"885_Armor\885_Armor\Customs\Kit\NCOPauldron_co.paa",
-	/*25*/	"885_Armor\885_Armor\Customs\Kit\Suspenders&Straps_co.paa",
+	/*24*/	"885_Armor\885_Armor\Customs\Maverick\NCOPauldron_co.paa",
+	/*25*/	"",
 	/*26*/	"",
-	/*27*/	"885_Armor\885_Armor\Customs\Kit\Suspenders&Straps_co.paa",
-	/*28*/	"",
-	/*29*/	"885_Armor\885_Armor\Customs\Kit\Suspenders&Straps_co.paa",
+	/*27*/	"",
+	/*28*/	"885_Armor\885_Armor\Customs\Maverick\Suspenders&Straps_co.paa",
+	/*29*/	"885_Armor\885_Armor\Customs\Maverick\Suspenders&Straps_co.paa",
 	/*30*/	"",
 	/*31*/	"",
 	/*32*/	"",
@@ -10028,28 +9755,28 @@ class CfgWeapons
 	/*5*/	"",
 	/*6*/	"",
 	/*7*/	"",
-	/*8*/	"885_Armor\885_Armor\Customs\Kit\RIG.rvmat",
-	/*9*/	"885_Armor\885_Armor\Customs\Kit\RIG.rvmat",
+	/*8*/	"885_Armor\885_Armor\Customs\Maverick\RIG.rvmat",
+	/*9*/	"885_Armor\885_Armor\Customs\Maverick\RIG.rvmat",
 	/*10*/	"",
-	/*11*/	"",
-	/*12*/	"885_Armor\885_Armor\Customs\Kit\RIG.rvmat",
-	/*13*/	"885_Armor\885_Armor\Customs\Kit\RIG.rvmat",
-	/*14*/	"885_Armor\885_Armor\Customs\Kit\RIG.rvmat",
-	/*15*/	"885_Armor\885_Armor\Customs\Kit\ARCPlating.rvmat",
-	/*16*/	"885_Armor\885_Armor\Customs\Kit\ARCPlating.rvmat",
-	/*17*/	"885_Armor\885_Armor\Customs\Kit\ARCVest.rvmat",
-	/*18*/	"885_Armor\885_Armor\Customs\Kit\ARCVest.rvmat",
-	/*19*/	"885_Armor\885_Armor\Customs\Kit\ARCPauldron.rvmat",
-	/*20*/	"885_Armor\885_Armor\Customs\Kit\ARCPauldron.rvmat",
+	/*11*/	"885_Armor\885_Armor\Customs\Maverick\RIG.rvmat",
+	/*12*/	"885_Armor\885_Armor\Customs\Maverick\RIG.rvmat",
+	/*13*/	"",
+	/*14*/	"",
+	/*15*/	"885_Armor\885_Armor\Customs\Maverick\ARCPlating.rvmat",
+	/*16*/	"885_Armor\885_Armor\Customs\Maverick\ARCPlating.rvmat",
+	/*17*/	"885_Armor\885_Armor\Customs\Maverick\ARCVest.rvmat",
+	/*18*/	"885_Armor\885_Armor\Customs\Maverick\ARCVest.rvmat",
+	/*19*/	"885_Armor\885_Armor\Customs\Maverick\ARCPauldron.rvmat",
+	/*20*/	"885_Armor\885_Armor\Customs\Maverick\ARCPauldron.rvmat",
 	/*21*/	"",
 	/*22*/	"",
 	/*23*/	"",
-	/*24*/  "885_Armor\885_Armor\Customs\Kit\NCOPauldron.rvmat",
-	/*25*/	"885_Armor\885_Armor\Customs\Kit\Suspenders&Straps.rvmat",
+	/*24*/  "885_Armor\885_Armor\Customs\Maverick\NCOPauldron.rvmat",
+	/*25*/	"",
 	/*26*/	"",
-	/*27*/	"885_Armor\885_Armor\Customs\Kit\Suspenders&Straps.rvmat",
-	/*28*/	"",
-	/*29*/	"885_Armor\885_Armor\Customs\Kit\Suspenders&Straps.rvmat",
+	/*27*/	"",
+	/*28*/	"885_Armor\885_Armor\Customs\Maverick\Suspenders&Straps.rvmat",
+	/*29*/	"885_Armor\885_Armor\Customs\Maverick\Suspenders&Straps.rvmat",
 	/*30*/	"",
 	/*31*/	"",
 	/*32*/	"",
@@ -10104,37 +9831,44 @@ class CfgWeapons
 			};
 			vestType="Rebreather";
 			containerClass="Supply250";
-			mass=65;
+			mass=70;
 			class HitpointsProtectionInfo
 			{
 				class Chest
 				{
 					HitpointName="HitChest";
-					armor=16;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Diaphragm
 				{
 					HitpointName="HitDiaphragm";
-					armor=16;
-					PassThrough=0.30000001;
+					armor=18;
+					PassThrough=0.15;
 				};
 				class Abdomen
 				{
 					hitpointName="HitAbdomen";
 					armor=16;
-					passThrough=0.30000001;
+					passThrough=0.2;
 				};
 				class Body
 				{
 					hitpointName="HitBody";
-					passThrough=0.30000001;
+					armor=16;
+					passThrough=0.2;
+				};
+				class Arms
+				{
+					hitpointName="HitArms";
+					armor=8;
+					passThrough=0.4;
 				};
 				class Legs
 				{
 					hitpointName="HitLegs";
-					armor=6;
-					passThrough=0.30000001;
+					armor=8;
+					passThrough=0.4;
 				};
 			};
 		};
@@ -13418,7 +13152,56 @@ class CfgVehicles
 			"885_Armor\885_Armor\Nexu\Nexu_Medic_Armor_Lower_co.paa"
 		};
 	};
-
+	
+	class 885th_Charhound_Trooper : 885th_Vornskr_Trooper {
+		scope=1;
+		scopeCurator=1;
+		scopeArsenal=2;
+		side=1;
+		uniformClass = "885th_Charhound_Uniform";
+		hiddenSelections[] = {"Camo1","Camo2"};
+		hiddenSelectionsTextures[] = {
+			"885_Armor\885_Armor\Charhound\885th_Charhound_Upper_co.paa",
+			"885_Armor\885_Armor\Charhound\885th_Charhound_Lower_co.paa"
+		};
+	};
+	class 885th_Charhound_VCT_Trooper : 885th_Vornskr_Trooper {
+		scope=1;
+		scopeCurator=1;
+		scopeArsenal=2;
+		side=1;
+		uniformClass = "885th_Charhound_VCT_Uniform";
+		hiddenSelections[] = {"Camo1","Camo2"};
+		hiddenSelectionsTextures[] = {
+			"885_Armor\885_Armor\Charhound\885th_Charhound_P2_VCT_Upper_co.paa",
+			"885_Armor\885_Armor\Charhound\885th_Charhound_P2_VCT_Lower_co.paa"
+		};
+	};
+	class 885th_Charhound_Officer_Trooper : 885th_Vornskr_Trooper {
+		scope=1;
+		scopeCurator=1;
+		scopeArsenal=2;
+		side=1;
+		uniformClass = "885th_Charhound_Officer_Uniform";
+		hiddenSelections[] = {"Camo1","Camo2"};
+		hiddenSelectionsTextures[] = {
+			"885_Armor\885_Armor\Charhound\885th_Charhound_P2_Officer_Upper_co.paa",
+			"885_Armor\885_Armor\Charhound\885th_Charhound_P2_Officer_Lower_co.paa"
+		};
+	};
+	class 885th_Charhound_Medic_Trooper : 885th_Vornskr_Trooper {
+		scope=1;
+		scopeCurator=1;
+		scopeArsenal=2;
+		side=1;
+		uniformClass = "885th_Charhound_Medic_Uniform";
+		hiddenSelections[] = {"Camo1","Camo2"};
+		hiddenSelectionsTextures[] = {
+			"885_Armor\885_Armor\Charhound\885th_Charhound_Medic_Upper_co.paa",
+			"885_Armor\885_Armor\Charhound\885th_Charhound_Medic_Lower_co.paa"
+		};
+	};
+	
 	class 885th_ONI_MC_Trooper: JLTS_Clone_P2_marshalcommander
 	{
 		scope = 1;
@@ -13498,54 +13281,20 @@ class CfgVehicles
 		};
 	};
 
-	class 885th_Charhound_Trooper : 885th_Vornskr_Trooper {
+	class 885th_Sytha_Trooper : 885th_Vornskr_Trooper {
 		scope=1;
 		scopeCurator=1;
 		scopeArsenal=2;
 		side=1;
-		uniformClass = "885th_Charhound_Uniform";
+		camouflage = 0.3;
+		uniformClass = "885th_Sytha_Uniform";
 		hiddenSelections[] = {"Camo1","Camo2"};
 		hiddenSelectionsTextures[] = {
-			"885_Armor\885_Armor\Charhound\885th_Charhound_Upper_co.paa",
-			"885_Armor\885_Armor\Charhound\885th_Charhound_Lower_co.paa"
+			"885_Armor\885_Armor\Customs\Sytha\885th_Sytha_Upper_co.paa",
+			"885_Armor\885_Armor\Customs\Sytha\885th_Sytha_Lower_co.paa"
 		};
 	};
-	class 885th_Charhound_VCT_Trooper : 885th_Vornskr_Trooper {
-		scope=1;
-		scopeCurator=1;
-		scopeArsenal=2;
-		side=1;
-		uniformClass = "885th_Charhound_VCT_Uniform";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {
-			"885_Armor\885_Armor\Charhound\885th_Charhound_P2_VCT_Upper_co.paa",
-			"885_Armor\885_Armor\Charhound\885th_Charhound_P2_VCT_Lower_co.paa"
-		};
-	};
-	class 885th_Charhound_Officer_Trooper : 885th_Vornskr_Trooper {
-		scope=1;
-		scopeCurator=1;
-		scopeArsenal=2;
-		side=1;
-		uniformClass = "885th_Charhound_Officer_Uniform";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {
-			"885_Armor\885_Armor\Charhound\885th_Charhound_P2_Officer_Upper_co.paa",
-			"885_Armor\885_Armor\Charhound\885th_Charhound_P2_Officer_Lower_co.paa"
-		};
-	};
-	class 885th_Charhound_Medic_Trooper : 885th_Vornskr_Trooper {
-		scope=1;
-		scopeCurator=1;
-		scopeArsenal=2;
-		side=1;
-		uniformClass = "885th_Charhound_Medic_Uniform";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {
-			"885_Armor\885_Armor\Charhound\885th_Charhound_Medic_Upper_co.paa",
-			"885_Armor\885_Armor\Charhound\885th_Charhound_Medic_Lower_co.paa"
-		};
-	};
+
 	class 885th_Rios_Trooper : 885th_Vornskr_Trooper {
 		scope=1;
 		scopeCurator=1;

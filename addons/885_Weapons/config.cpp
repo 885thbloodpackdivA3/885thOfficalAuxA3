@@ -388,12 +388,15 @@ class CfgAmmo
 		ExplosionEffects="IDA_ImpactEffect";
 		craterEffects="";
 		explosive=0.1;
-		tracerStartTime=0;
-		tracerEndTime=10;
-		airFriction=-0.00030000001;
+		tracerscale=1;
+		tracerstarttime=0.0049999999;
+		tracerendtime=10;
+		airFriction=0;
 		muzzleEffect="";
+		waterFriction=-0.00095999998;
 		waterEffectOffset=0.80000001;
 		effectFly="3AS_PlasmaBolt_Blue_Fly";
+		effectflare="FlareShell";
 		aiAmmoUsageFlags="64 + 128 + 256";
 		soundHitBody1[]=
 		{
@@ -3618,6 +3621,7 @@ class CfgAmmo
 		cost=50;
 		airLock=1;
 		caliber=1.1799999;
+		coefGravity=0.050000001;
 		typicalSpeed=306;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=0.58999997;
@@ -3638,7 +3642,8 @@ class CfgAmmo
 		visibleFireTime=3;
 		cost=50;
 		airLock=1;
-		caliber=1.28;                       
+		caliber=1.28;
+		coefGravity=0.050000001;
 		typicalSpeed=320;                      
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=0.61000001;                
@@ -3663,7 +3668,8 @@ class CfgAmmo
 		visibleFireTime=3;
 		cost=50;
 		airLock=1;
-		caliber=1.4;                      
+		caliber=1.4;
+		coefGravity=0.050000001;
 		typicalSpeed=335;                   
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=0.64000005;             
@@ -3684,7 +3690,8 @@ class CfgAmmo
 		visibleFireTime=3;
 		cost=50;
 		airLock=1;
-		caliber=2.2;                          
+		caliber=2.2;
+		coefGravity=0.050000001;
 		deflecting=0;
 		typicalSpeed=340;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
@@ -3710,7 +3717,8 @@ class CfgAmmo
 	visibleFireTime=3;
 	cost=50;
 	airLock=1;
-	caliber=2.6;                            
+	caliber=2.6;
+	coefGravity=0.050000001;
 	deflecting=0;                             
 	typicalSpeed=360;                           
 	model="\Indecisive_Armoury_Ammos\Data\Tracers\IDA_Blasterbolt_Yellow.p3d";
@@ -3731,6 +3739,7 @@ class CfgAmmo
 		airFriction=-0.00023000001;
 		waterFriction=-0.30000001;
 		caliber=1.8;
+		coefGravity=0.050000001;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=0.69999999;
 		audibleFire=35;
@@ -3765,7 +3774,8 @@ class CfgAmmo
 		typicalSpeed=390;                
 		airFriction=-0.00020000001;      
 		waterFriction=-0.30000001;
-		caliber=2;                       
+		caliber=2;
+		coefGravity=0.050000001;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=0.75;                 
 		audibleFire=38;                    
@@ -3800,7 +3810,8 @@ class CfgAmmo
 		typicalSpeed=410;                 
 		airFriction=-0.00021000001;       
 		waterFriction=-0.30000001;
-		caliber=2.8;                      
+		caliber=2.8;
+		coefGravity=0.050000001;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=0.69999999;
 		audibleFire=35;
@@ -3835,7 +3846,8 @@ class CfgAmmo
 		typicalSpeed=395;                  
 		airFriction=-0.00022000001;       
 		waterFriction=-0.30000001;
-		caliber=1.9;                       
+		caliber=1.9;
+		coefGravity=0.050000001;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=0.72000003;             
 		audibleFire=37;                      
@@ -3870,7 +3882,8 @@ class CfgAmmo
 		typicalSpeed=295;                   
 		airFriction=-0.00024000001;             
 		waterFriction=-0.30000001;
-		caliber=2.3;                              
+		caliber=2.3;
+		coefGravity=0.050000001;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=0.68000001;                     
 		audibleFire=17;                               
@@ -3907,6 +3920,7 @@ class CfgAmmo
 		airFriction=0;
 		waterFriction=-0.30000001;
 		caliber=1.8;
+		coefGravity=0.050000001;
 		model="\A3\Weapons_f\Data\bullettracer\tracer_red";
 		tracerScale=0.69999999;
 		visibleFire=3;
@@ -3950,7 +3964,8 @@ class CfgAmmo
 		cost=1.2;
 		airLock=1;
 		typicalSpeed=445;                    
-		caliber=1.85;                          
+		caliber=1.85;
+		coefGravity=0.050000001;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=0.87500002;                 
 		airFriction=-0.00018500001;             
@@ -3984,7 +3999,8 @@ class CfgAmmo
     	cost=1.2;
     	airLock=1;
     	typicalSpeed=468;                     // small bump from Medium's 445
-    	caliber=2.8;                           // the core AP stat — well above Medium's 1.85
+    	caliber=2.8;		// the core AP stat — well above Medium's 1.85
+		coefGravity=0.050000001;
     	deflecting=0;                           // shouldn't deflect off angled armor
     	model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
     	tracerScale=0.87500002;
@@ -4024,6 +4040,7 @@ class CfgAmmo
 		airLock=1;
 		typicalSpeed=472;
 		caliber=1.95;
+		coefGravity=0.050000001;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=0.97500002;
 		airFriction=-0.00018;
@@ -4058,7 +4075,8 @@ class CfgAmmo
 		cost=1.2;
 		airLock=1;
 		typicalSpeed=530;                     
-		caliber=2.4;                           
+		caliber=2.4; 
+		coefGravity=0.050000001;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=1.075;                      
 		airFriction=-0.00015000001;             
@@ -4094,6 +4112,7 @@ class CfgAmmo
 		airLock=1;
 		typicalSpeed=545;                   
 		caliber=2.9;
+		coefGravity=0.050000001;
 		deflecting=0;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=0.97500002;
@@ -4183,7 +4202,8 @@ class CfgAmmo
 		cost=1.2;
 		airLock=1;
 		typicalSpeed=500;                     
-		caliber=1.95;                          
+		caliber=1.95;
+		coefGravity=0.050000001;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=1.02500001;
 		airFriction=-0.00016500001;
@@ -4259,7 +4279,8 @@ class CfgAmmo
 		cost=1.6;                               
 		airLock=1;
 		typicalSpeed=490;                         
-		caliber=2.2;                                
+		caliber=2.2;
+		coefGravity=0.050000001;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=1.1;                              
 		airFriction=-0.00017000001;                     
@@ -4295,7 +4316,8 @@ class CfgAmmo
 		cost=2.1;                               
 		airLock=1;
 		typicalSpeed=560;                         
-		caliber=2.2;                                
+		caliber=2.2;
+		coefGravity=0.050000001;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=1.3;                              
 		airFriction=-0.00015000001;                     
@@ -4333,7 +4355,8 @@ class CfgAmmo
 		cost=3.1;                                 
 		airLock=1;
 		typicalSpeed=611;                           
-		caliber=3.2;                                  
+		caliber=3.2;
+		coefGravity=0.050000001;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=1.6;                                
 		airFriction=-0.000145;                            
@@ -4369,7 +4392,8 @@ class CfgAmmo
 		cost=3.4;                             
 		airLock=1;
 		typicalSpeed=635;                      
-		caliber=4.8;                              
+		caliber=4.8;
+		coefGravity=0.050000001;
 		deflecting=0;                               
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=1.6;
@@ -4406,7 +4430,8 @@ class CfgAmmo
 		cost=3.3;                                   
 		airLock=1;
 		typicalSpeed=300;                             
-		caliber=3.6;                                    
+		caliber=3.6;
+		coefGravity=0.050000001;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=1.35;                                 
 		airFriction=-0.00019000001;                         
@@ -4444,6 +4469,7 @@ class CfgAmmo
 		cost=5;
 		airLock=1;
 		caliber=4.48;
+		coefGravity=0.050000001;
 		typicalSpeed=750;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=2.24;
@@ -4479,7 +4505,8 @@ class CfgAmmo
 		visibleFireTime=3;
 		cost=6.5;                               
 		airLock=1;
-		caliber=6;                                
+		caliber=6;
+		coefGravity=0.050000001;
 		deflecting=0;                               
 		typicalSpeed=815;                             
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
@@ -4518,7 +4545,8 @@ class CfgAmmo
 		cost=2.4;                                
 		airLock=1;
 		typicalSpeed=560;                          
-		caliber=3.6;                                 
+		caliber=3.6;
+		coefGravity=0.050000001;
 		deflecting=0;                                  
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=1.05;
@@ -4556,7 +4584,8 @@ class CfgAmmo
 		cost=1.3;
 		airLock=1;
 		typicalSpeed=290;                           
-		caliber=2.15;                                 
+		caliber=2.15;
+		coefGravity=0.050000001;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=0.85000002;                         
 		airFriction=-0.00021000001;                       
@@ -4588,7 +4617,7 @@ class CfgAmmo
 		cost=7;
 		airLock=1;
 		caliber=3.21;
-		coefGravity=0.175;
+		coefGravity=0.050000001;
 		typicalSpeed=639;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=1.605;
@@ -4628,6 +4657,7 @@ class CfgAmmo
 		airLock=1;
 		typicalSpeed=420;
 		caliber=0.8;
+		coefGravity=0.050000001;
 		effectFly="JLTS_plasma_blue";
 		model="\MRC\JLTS\weapons\Core\effects\emp_blue.p3d";
 		lightcolor[]={0.25,0.25,0.5};
@@ -4672,6 +4702,7 @@ class CfgAmmo
 		airLock=1;
 		typicalSpeed=545;
 		caliber=3.1;
+		coefGravity=0.050000001;
 		deflecting=0;
 		model="\Indecisive_Armoury_Ammos\Data\Tracers\IDA_Blasterbolt_Yellow.p3d";
 		tracerScale=1.075;
@@ -13460,7 +13491,6 @@ class CfgWeapons
 		dexterity=1.6;
 		initSpeed=-1;
 		reloadMagazineSound[] = {"\ShadowLegion_Weapons\data\reloads\sounds\Reload_1.ogg", 2, 1,30};
-		recoil = "885_recoil_DC17";
 		magazines[] = {"885th_dc19_cell","885th_dc19_tracerless_cell"};
 		magazineWell[] = {};
 		magazineReloadTime = 0;
@@ -13508,6 +13538,8 @@ class CfgWeapons
 				beginwater1[]={"\ShadowLegion_Weapons\data\Underwater_Firing.ogg",1,1,200};
 				soundBeginWater[]={"beginwater1",0.5};
 			}
+			recoil="recoil_single_mx";
+			recoilProne="recoil_single_prone_mx";
 			reloadTime=0.050000001;
 			dispersion=0.00131;
 			minRange=2;
@@ -13553,6 +13585,8 @@ class CfgWeapons
 				beginwater1[]={"\ShadowLegion_Weapons\data\Underwater_Firing.ogg",1,1,200};
 				soundBeginWater[]={"beginwater1",0.5};
 			}
+			recoil="recoil_single_mx";
+			recoilProne="recoil_single_prone_mx";
 			soundBurst=0;
 			textureType="dual";
 			burst=2;
@@ -13601,6 +13635,8 @@ class CfgWeapons
 				beginwater1[]={"\ShadowLegion_Weapons\data\Underwater_Firing.ogg",1,1,200};
 				soundBeginWater[]={"beginwater1",0.5};
 			}
+			recoil="recoil_auto_mk20";
+			recoilProne="recoil_auto_prone_mk20";
 			reloadTime=0.050000001;
 			dispersion=0.00131;
 			minRange=0;
@@ -15052,7 +15088,7 @@ class CfgWeapons
 		aiDispersionCoefX=21;
 		class WeaponSlotsInfo : WeaponSlotsInfo
 		{
-			mass = 75;
+			mass = 100;
 			class CowsSlot : CowsSlot
 			{
 				compatibleItems[] = {"IDA_TargetingScope","ShdwCmpny_Optic_LEScope_DC15A_mk2","ShadwCmpany_optic_Acog","ACE_optic_Hamr_2D"};
@@ -15172,7 +15208,7 @@ class CfgWeapons
 		};
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
-			mass=97;
+			mass=400;
 			class CowsSlot: CowsSlot
 			{
 				compatibleItems[]=
@@ -15818,7 +15854,7 @@ class CfgWeapons
 		};
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
-			mass=350;
+			mass=190;
 			class MuzzleSlot: 885th_MuzzleSlot_Z6
 			{
 				iconPosition[]={0,0.44999999};
