@@ -1784,7 +1784,7 @@ class CfgWeapons
 	};
 	class 885th_Signal_phase2SpecOp_helmet: H_HelmetO_ViperSP_hex_F
 	{
-		scope=2;
+		scope=0;
 		author="Legion Studios + 885th Bloodpack Division";
 		displayName="Signal's Spec-Ops P2 Helmet";
 		model="\ls\core\addons\characters_clone_legacy\helmets\phase2SpecOp\ls_sob_phase2SpecOp_helmet.p3d";
