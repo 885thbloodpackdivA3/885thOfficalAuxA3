@@ -20,7 +20,6 @@ class CfgPatches
 			"885th_RPS6_G_Dispo_Base",
 			"885th_RPS6_G_Dispo",
 			"885th_RPS6_G_Dispo_Used",
-			"885th_DC15SA_F"
 		};
 		ammo[] = {
 			"885th_Chaingun_Ammo_Y",
