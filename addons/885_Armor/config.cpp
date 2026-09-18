@@ -13084,7 +13084,7 @@ class CfgVehicles
 		};
 		hiddenSelectionsTextures[]=
 		{
-			"885_Armor\885_Armor\Customs\Crimz\Crimz_Scout_Uniform_co.paa"
+			"885_Armor\885_Armor\Customs\Crimz\Crimz_Scout_Uniform_co.paa",
 			"885_Armor\885_Armor\Customs\Crimz\Crimz_Scout_Armor_co.paa"
 		};
 	};
