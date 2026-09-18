@@ -1722,24 +1722,6 @@ class CfgWeapons
 			"885_Armor\885_Armor\Najax\Najax_Visor_co.paa"
 		};
 	};
-	class 885th_Najax_P1_ARF_Camo_Helm: 885th_Najax_P1_ARF_Helm
-	{
-		scope=1;
-		author="885th Bloodpack Division";
-		displayName="[885th] Najax ARF Spec Ops Helm";
-		hiddenSelections[]=
-		{
-			"camo1",
-			"camo2",
-			"visor"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Najax\Camo\Najax_Helm_Camo_co.paa",
-			"885_Armor\885_Armor\Najax\Najax_Plates_co.paa",
-			"885_Armor\885_Armor\Najax\Najax_Visor_co.paa"
-		};
-	};
 	class 885th_Kit_phase2SpecOp_helmet: H_HelmetO_ViperSP_hex_F
 	{
 		scope=2;
@@ -2003,25 +1985,6 @@ class CfgWeapons
 			"",
 			"885_Armor\885_Armor\Najax\885TH_ARF_P2_Visor.rvmat"
 		};
-    };
-	class 885th_Najax_ARF_P2_Camo_Helm: 885th_Najax_ARF_P2_Helm_Base
-    {
-        author="885th Bloodpack Division";
-        displayName="[885th] Najax Spec Ops ARF P2 Helm";
-        scope=2;
-        picture="";
-        hiddenSelections[]=
-        {
-            "camo1",
-            "camo2",
-            "visor"
-        };
-        hiddenSelectionsTextures[]=
-        {
-            "885_Armor\885_Armor\Najax\Camo\885th_Najax_ARF_P2_Camo_Helm_co.paa",
-            "",
-            "\ls\core\addons\characters_clone_legacy\helmets\arf\data\helmet_co.paa"
-        };
     };
 	class 885th_Screwball_P2_ARF_Helm: 885th_Najax_ARF_P2_Helm
 	{
@@ -3731,18 +3694,7 @@ class CfgWeapons
 			mass = 40;
 		};
 	};
-	class 885th_Najax_Camo_Uniform: 885th_Vornskr_Uniform
-	{
-		displayName = "[885th] Najax Spec Ops Armor";
-		class ItemInfo: UniformItem
-		{
-			uniformModel = "";
-			uniformClass = "885th_Najax_Camo_Trooper";
-			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
-			containerClass = "Supply250";
-			mass = 40;
-		};
-	};
+	
 	class U_B_CombatUniform_mcam;
 	class 885th_Najax_Scout_Uniform: U_B_CombatUniform_mcam
 	{
@@ -12677,18 +12629,6 @@ class CfgVehicles
 		hiddenSelectionsTextures[] = {
 			"\885_Armor\885_Armor\Najax\Recruit\885th_Najax_Recruit_Upper_co.paa",
 			"\885_Armor\885_Armor\Najax\Recruit\885th_Najax_Recruit_Lower_co.paa"
-		};
-	};
-
-	class 885th_Najax_Camo_Trooper : 885th_Vornskr_Trooper {
-		faction="885th_Faction";
-		editorSubcategory="Sub885thTroopers";
-		camouflage = 0.2;
-		uniformClass = "885th_Najax_Camo_Uniform";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {
-			"\885_Armor\885_Armor\Najax\Camo\885th_Najax_Camo_Upper_co.paa",
-			"\885_Armor\885_Armor\Najax\Camo\885th_Najax_Camo_Lower_co.paa"
 		};
 	};
 

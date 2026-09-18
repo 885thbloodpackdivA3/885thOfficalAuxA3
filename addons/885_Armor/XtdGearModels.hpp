@@ -69,7 +69,6 @@ class XtdGearModels
 				{
 					"Cadet",
 					"ARF",
-                    "Spec Ops",
 					"Scout"
 				};
 			};
@@ -374,7 +373,6 @@ class XtdGearModels
 				{
 					"Cadet",
 					"ARF",
-                    "Spec Ops",
 					"Scout"
 				};
 			};
@@ -729,11 +727,6 @@ class XtdGearInfos
 		{
 			model="Trooper_ARF_Helmets";
 			rank="ARF";
-		};
-		class 885th_Najax_ARF_P2_Camo_Helm
-		{
-			model="Trooper_ARF_Helmets";
-			rank="Spec Ops";
 		};
 		class 885th_Najax_Scout_P2_Helm
 		{
@@ -1200,11 +1193,6 @@ class XtdGearInfos
 		{
 			model="Najax_Uniforms";
 			rank="ARF";
-		};
-		class 885th_Najax_Camo_Uniform
-		{
-			model="Najax_Uniforms";
-			rank="Spec Ops";
 		};
 		class 885th_Najax_Scout_Uniform
 		{
