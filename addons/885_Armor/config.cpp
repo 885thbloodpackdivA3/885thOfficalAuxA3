@@ -145,7 +145,7 @@ class Cfgpatches
 			"885th_AB_Helm",
 			"885th_Medic_AB_Helm",
 			"885th_Nexu_P2_Helm",
-			"885th_Crimz_ARF_Helm",
+			"885th_Crimz_Scout_Helm",
 			"885th_Rios_ARF_Helm",
 			"885th_Fyrnock_P2_Helm",
 			"885th_Fyrnock_VCT_P2_Helm",
@@ -1891,6 +1891,24 @@ class CfgWeapons
 			"885_Armor\885_Armor\Najax\Scout\885th_Najax_Scout_Helm_co.paa"
 		};
 	};
+	class 885th_Crimz_Scout_Helm: 885th_Najax_Scout_P2_Helm_Base
+	{
+		author="885th Bloodpack Division";
+		displayName="[885th] Crimz Scout Helm";
+		scope=2;
+		model="\ls\core\addons\characters_clone\helmets\scout\ls_helmet_clone_scout.p3d";
+		picture="";
+		hiddenSelections[]=
+		{
+			"Camo",
+			"Visor"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Crimz\Crimz_Scout_Helmet_co.paa",
+			"885_Armor\885_Armor\Customs\Crimz\Crimz_Scout_Helmet_co.paa"
+		};
+	};
 	class 885th_Najax_ARF_P2_Helm_Base: H_HelmetO_ViperSP_hex_F
     {
         scope=0;
@@ -2080,31 +2098,6 @@ class CfgWeapons
 			"885_Armor\885_Armor\Customs\Sushi\visor.rvmat"
 		};
     };
-	class 885th_Crimz_ARF_Helm: 885th_Najax_ARF_P2_Helm
-	{
-		scope=2;
-		author="885th Bloodpack Division";
-		displayName="[885th] Crimz's Custom ARF Helm";
-		picture="";
-		 hiddenSelections[]=
-        {
-            "camo1",
-            "camo2",
-            "visor"
-        };
-        hiddenSelectionsTextures[]=
-        {
-            "885_Armor\885_Armor\Customs\Crimz\885th_Crimz_ARF_co.paa",
-            "",
-            "885_Armor\885_Armor\Customs\Crimz\visor_co.paa"
-        };
-		hiddenSelectionsMaterials[] = 
-		{
-			"885_Armor\885_Armor\Najax\885TH_ARF_P2_Helmet.rvmat",
-			"",
-			"\a3\characters_f_bootcamp\common\data\vrarmoremmisive.rvmat"
-		};
-	};
 	class 885th_BARC_Helm: IDA_BARC_Helmet
 	{
 		author="885th Bloodpack Division";
@@ -3977,7 +3970,7 @@ class CfgWeapons
 			mass = 40;
 		};
 	};
-	class 885th_Crimz_Uniform: 885th_Vornskr_Uniform
+	class 885th_Crimz_Uniform: ls_cloneUniform_scout
 	{
 		displayName = "[885th] Crimz Custom P2 Armor";
 		class ItemInfo: UniformItem
@@ -8193,213 +8186,6 @@ class CfgWeapons
 					hitpointName="HitLegs";
 					armor=8;
 					passThrough=0.4;
-				};
-			};
-		};
-	};
-	class 885th_Cust_VestV4_Rig_Crimz: Vest_Camo_Base
-	{
-		author="Antauri + 885th Bloodpack Division";
-		scope=2;
-		displayName="[885th] Crimz's Platoon Rig";
-		picture="\SWLB_clones\data\ui\icon_SWLB_clone_uniform_ca.paa";
-		model="\ShadowLegion_Aux\Data\CustomVests\V4\models\VESTV4_VestRig_HolsterDouble.p3d";
-		hiddenSelections[]=
-		{
-	/*1*/	"VibrobladeLeft",
-	/*2*/	"VibrobladeRight",
-	/*3*/	"Grenades",
-	/*4*/	"RigLower",
-	/*5*/	"ShoulderPouches",
-	/*6*/	"ShoulderAntennaRight",
-	/*7*/	"ShoulderAntennaLeft",
-	/*8*/	"HolsterRight",
-	/*9*/	"HolsterLeft",
-	/*10*/	"CartridgesTopRight",
-	/*11*/	"ArmPouchLeft",
-	/*12*/	"ArmCatridgesRight",
-	/*13*/	"SuspenderPouchesFront",
-	/*14*/	"SuspenderPouchesBack",
-	/*15*/	"ARCPlating",
-	/*16*/	"ARCBracers",
-	/*17*/	"KamaPouches",
-	/*18*/	"ARCKama",
-	/*19*/	"ARCPauldronLeft",
-	/*20*/	"ARCPauldronRight",
-	/*21*/	"JetpackKama",
-	/*22*/	"NCOPauldronLeft",
-	/*23*/	"NCOPauldronSmallRight",
-	/*24*/	"PauldronBase",
-	/*25*/	"SuspenderLeft",
-	/*26*/	"SuspenderCross",
-	/*27*/	"SuspenderRight",
-	/*28*/	"ArmStrapLeft",
-	/*29*/	"ArmStrapRight",
-	/*30*/	"AirbornePieces",
-	/*31*/	"AirborneBag",
-	/*32*/	"CorporalPauldron",
-	/*33*/	"Buttbag",
-	/*34*/	"LRpack",
-	/*35*/	"CorporalPauldron2",
-	/*36*/	"CrossClip",
-	/*37*/	"ChestGuard"
-		};
-		hiddenSelectionsTextures[]=
-		{
-	/*1*/	"",
-	/*2*/	"",
-	/*3*/	"",
-	/*4*/	"",
-	/*5*/	"",
-	/*6*/	"",
-	/*7*/	"",
-	/*8*/	"885_Armor\885_Armor\Customs\Crimz\RIG_co.paa",
-	/*9*/	"885_Armor\885_Armor\Customs\Crimz\RIG_co.paa",
-	/*10*/	"",
-	/*11*/	"",
-	/*12*/	"",
-	/*13*/	"",
-	/*14*/	"",
-	/*15*/	"",
-	/*16*/	"",
-	/*17*/	"",
-	/*18*/	"",
-	/*19*/	"",
-	/*20*/	"",
-	/*21*/	"885_Armor\885_Armor\Customs\Crimz\Kama2_co.paa",
-	/*22*/	"885_Armor\885_Armor\Customs\Crimz\NCOPauldron_co.paa",
-	/*23*/	"",
-	/*24*/	"885_Armor\885_Armor\Customs\Crimz\NCOPauldron_co.paa",
-	/*25*/	"885_Armor\885_Armor\Customs\Crimz\Suspenders&Straps_co.paa",
-	/*26*/	"",
-	/*27*/	"885_Armor\885_Armor\Customs\Crimz\Suspenders&Straps_co.paa",
-	/*28*/	"",
-	/*29*/	"",
-	/*30*/	"",
-	/*31*/	"",
-	/*32*/	"",
-	/*33*/	"",
-	/*34*/	"",
-	/*35*/	"",
-	/*36*/	"",
-	/*37*/	""
-		};
-		hiddenSelectionsMaterials[]=
-		{
-	/*1*/	"",
-	/*2*/	"",
-	/*3*/	"",
-	/*4*/	"",
-	/*5*/	"",
-	/*6*/	"",
-	/*7*/	"",
-	/*8*/	"885_Armor\885_Armor\Customs\Crimz\RIG.rvmat",
-	/*9*/	"885_Armor\885_Armor\Customs\Crimz\RIG.rvmat",
-	/*10*/	"",
-	/*11*/	"",
-	/*12*/	"",
-	/*13*/	"",
-	/*14*/	"",
-	/*15*/	"",
-	/*16*/	"",
-	/*17*/	"",
-	/*18*/	"",
-	/*19*/	"",
-	/*20*/	"",
-	/*21*/	"885_Armor\885_Armor\Customs\Crimz\Kama2.rvmat",
-	/*22*/	"885_Armor\885_Armor\Customs\Crimz\NCOPauldron.rvmat",
-	/*23*/	"",
-	/*24*/  "885_Armor\885_Armor\Customs\Crimz\NCOPauldron.rvmat",
-	/*25*/	"885_Armor\885_Armor\Customs\Crimz\Suspenders&Straps.rvmat",
-	/*26*/	"",
-	/*27*/	"885_Armor\885_Armor\Customs\Crimz\Suspenders&Straps.rvmat",
-	/*28*/	"",
-	/*29*/	"",
-	/*30*/	"",
-	/*31*/	"",
-	/*32*/	"",
-	/*33*/	"",
-	/*34*/	"",
-	/*35*/	"",
-	/*36*/	"",
-	/*37*/	""
-		};
-		class ItemInfo: VestItem
-		{
-			uniformModel="\ShadowLegion_Aux\Data\CustomVests\V4\models\VESTV4_VestRig_HolsterDouble.p3d";
-			hiddenSelections[]=
-			{
-				"VibrobladeLeft",
-				"VibrobladeRight",
-				"Grenades",
-				"RigLower",
-				"ShoulderPouches",
-				"ShoulderAntennaRight",
-				"ShoulderAntennaLeft",
-				"HolsterRight",
-				"HolsterLeft",
-				"CartridgesTopRight",
-				"ArmPouchLeft",
-				"ArmCatridgesRight",
-				"SuspenderPouchesFront",
-				"SuspenderPouchesBack",
-				"ARCPlating",
-				"ARCBracers",
-				"KamaPouches",
-				"ARCKama",
-				"ARCPauldronLeft",
-				"ARCPauldronRight",
-				"JetpackKama",
-				"NCOPauldronLeft",
-				"NCOPauldronSmallRight",
-				"PauldronBase",
-				"SuspenderLeft",
-				"SuspenderCross",
-				"SuspenderRight",
-				"ArmStrapLeft",
-				"ArmStrapRight",
-				"AirbornePieces",
-				"AirborneBag",
-				"CorporalPauldron",
-				"Buttbag",
-				"LRpack",
-				"CorporalPauldron2",
-				"CrossClip",
-				"ChestGuard"
-			};
-			vestType="Rebreather";
-			containerClass="Supply250";
-			mass=65;
-			class HitpointsProtectionInfo
-			{
-				class Chest
-				{
-					HitpointName="HitChest";
-					armor=16;
-					PassThrough=0.30000001;
-				};
-				class Diaphragm
-				{
-					HitpointName="HitDiaphragm";
-					armor=16;
-					PassThrough=0.30000001;
-				};
-				class Abdomen
-				{
-					hitpointName="HitAbdomen";
-					armor=16;
-					passThrough=0.30000001;
-				};
-				class Body
-				{
-					hitpointName="HitBody";
-					passThrough=0.30000001;
-				};
-				class Legs
-				{
-					hitpointName="HitLegs";
-					armor=6;
-					passThrough=0.30000001;
 				};
 			};
 		};
@@ -13269,17 +13055,36 @@ class CfgVehicles
 		};
 	};
 	
-	class 885th_Crimz_Trooper : 885th_Vornskr_Trooper {
+
+	class 885th_Crimz_Trooper: B_Soldier_02_f
+	{
 		scope=1;
-		scopeCurator=1;
-		scopeArsenal=2;
-		side=1;
+		author="885th Bloodpack Division";
+		displayName="[885th] Crimz Scout Armor";
 		camouflage = 0.3;
-		uniformClass = "885th_Crimz_Uniform";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {
-			"885_Armor\885_Armor\Customs\Crimz\885th_Crimz_Upper_co.paa",
-			"885_Armor\885_Armor\Customs\Crimz\885th_Crimz_Lower_co.paa"
+		uniformClass="885th_Crimz_Uniform";
+		nakedUniform="885th_";
+		model="\ls\core\addons\characters_clone\uniforms\scout\ls_uniform_clone_scout.p3d";
+		hiddenSelections[]=
+		{
+			"camo1",
+			"camo2"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Crimz\Crimz_Scout_Uniform_co.paa"
+			"885_Armor\885_Armor\Customs\Crimz\Crimz_Scout_Armor_co.paa"
+		};
+	};
+	class 885th_Crimz_Scout_Undersuit: 885th_Crimz_Trooper
+	{
+		author="885th Bloodpack Division";
+		displayName="[885th] Crimz Scout Armor Undersuit";
+		uniformClass="885th_Crimz_Scout_Undersuit";
+		nakedUniform="U_BasicBody";
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Crimz\Crimz_Scout_Uniform_co.paa"
 		};
 	};
 
