@@ -483,6 +483,7 @@ class XtdGearModels
 					"RC Tech",
 					"RC EOD",
 					"RC Sniper",
+					"Najax Pouch",
 					"Scout Pouch",
 					"ARC Vest"
 				};
@@ -1390,10 +1391,15 @@ class XtdGearInfos
 			model="Detachment_Vest";
 			vest="RC Sniper";
 		};
-		class 885th_Najax_Vest_scout
+		class 885th_Najax_Scout_Vest
 		{
 			model="Detachment_Vest";
-			vest="Scout Pouch";
+			vest="Najax Pouch";
+		};
+		class 885th_Scout_Vest
+		{
+			model = "Detachment_Vest";
+			vest = "Scout Pouch";
 		};
 		class 885th_IDA_VestV4_ARC_Rig
 		{

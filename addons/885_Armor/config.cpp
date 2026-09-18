@@ -2845,124 +2845,136 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_Scout_vest_base: ls_cloneVest_scout
-	{
-		author = "885th Bloodpack Division";
-		displayname = "[885th] Najax Scout Pouches";
-		model="";
-		hiddenSelections[] = {"camo1"};
-		hiddenSelectionsTextures[] = {"885_Armor\885_Armor\Najax\Scout\885th_Najax_Pouches_co.paa"};
-		scope = 0;
-		scopeCurator = 2;
-		scopeArsenal = 2;
-		allowedSlots[] = {901};
-		picture = "\Indecisive_Armoury_units\Plate_UI.paa";
-		class ItemInfo: VestItem
-		{
-			uniformmodel = "";
-			containerclass ="Supply280";
-			mass = 15;
-			vesttype = "Rebreather";
-			class HitpointsProtectionInfo
-			{
-				class Chest
-				{
-					HitpointName = "HitChest";
-					armor = 11;
-					PassThrough = 0.08975;
-				};
-				class Diaphragm
-				{
-					HitpointName = "HitDiaphragm";
-					armor = 11;
-					PassThrough = 0.08975;
-				};
-				class Abdomen
-				{
-					hitpointName = "HitAbdomen";
-					armor = 7;
-					PassThrough = 0.08975;
-				};
-				class Body
-				{
-					hitpointName = "HitBody";
-					armor = 12;
-					PassThrough = 0.08975;
-				};
-				class Arms
-				{
-					hitpointName = "HitArms";
-					armor = 8;
-					PassThrough = 0.08975;
-				};
-				class Legs
-				{
-					hitpointName = "Hitlegs";
-					armor = 8;
-					PassThrough = 0.08975;
-				};
-			};
-		};
-	};
-	class 885th_Najax_Vest_scout: V_rebreatherB
-	{
-		author = "885th Bloodpack Division";
-		displayname = "[885th] Clone Scout Pouches";
-		model="\ls\core\addons\characters_clone\vests\scout\ls_vest_clone_scout.p3d";
-		hiddenSelections[] = {"camo1"};
-		hiddenSelectionsTextures[] = {"885_Armor\885_Armor\Najax\Scout\885th_Najax_Pouches_co.paa"};
-		scope = 2;
-		scopeCurator = 2;
-		scopeArsenal = 2;
-		allowedSlots[] = {901};
-		picture = "\Indecisive_Armoury_units\Plate_UI.paa";
-		class ItemInfo: VestItem
-		{
-			uniformmodel = "\ls\core\addons\characters_clone\vests\scout\ls_vest_clone_scout.p3d";
-			containerClass ="Supply250";
-			mass = 15;
-			vesttype = "Rebreather";
-			class HitpointsProtectionInfo
-			{
-				class Chest
-				{
-					HitpointName = "HitChest";
-					armor = 11;
-					PassThrough = 0.08975;
-				};
-				class Diaphragm
-				{
-					HitpointName = "HitDiaphragm";
-					armor = 11;
-					PassThrough = 0.08975;
-				};
-				class Abdomen
-				{
-					hitpointName = "HitAbdomen";
-					armor = 7;
-					PassThrough = 0.08975;
-				};
-				class Body
-				{
-					hitpointName = "HitBody";
-					armor = 12;
-					PassThrough = 0.08975;
-				};
-				class Arms
-				{
-					hitpointName = "HitArms";
-					armor = 8;
-					PassThrough = 0.08975;
-				};
-				class Legs
-				{
-					hitpointName = "Hitlegs";
-					armor = 8;
-					PassThrough = 0.08975;
-				};
-			};
-		};
-	};
+	class 885th_Scout_Vest: V_rebreatherB
+    {
+        author="885th Bloodpack Division";
+        scope=2;
+        displayName= "[885th] Adv. Scout Pouches";
+       	picture = "\ls\core\addons\characters_clone\data\ui\scoutVest_ui_ca.paa";
+        model = "\ls\core\addons\characters_clone\vests\scout\ls_vest_clone_scout.p3d";
+        hiddenSelections[]=
+        {
+			"camo1"
+        };
+        hiddenSelectionsTextures[]=
+        {
+			"\ls\core\addons\characters_clone\vests\scout\data\pouches_co.paa"
+        };
+        class ItemInfo: VestItem
+        {
+            uniformModel = "\ls\core\addons\characters_clone\vests\scout\ls_vest_clone_scout.p3d";
+            hiddenSelections[]=
+            {
+				"camo1"
+            };
+            vestType="Rebreather";
+            containerClass="Supply250";
+            mass=65;
+            class HitpointsProtectionInfo
+            {
+                class Chest
+                {
+                    HitpointName="HitChest";
+                    armor=10;
+                    PassThrough=0.2;
+                };
+                class Diaphragm
+                {
+                    HitpointName="HitDiaphragm";
+                    armor=10;
+                    PassThrough=0.2;
+                };
+                class Abdomen
+                {
+                    hitpointName="HitAbdomen";
+                    armor=15;
+                    passThrough=0.2;
+                };
+                class Body
+                {
+                    hitpointName="HitBody";
+                    passThrough=0.30000001;
+                };
+                class Arms
+                {
+                    hitpointName="HitArms";
+                    armor=7;
+                    passThrough=0.30000001;
+                };
+                class Legs
+                {
+                    hitpointName="HitLegs";
+                    armor=7;
+                    passThrough=0.30000001;
+                };
+            };
+        };
+    };
+	class 885th_Najax_Scout_Vest: V_rebreatherB
+    {
+        author="885th Bloodpack Division";
+        scope=2;
+        displayName= "[885th] Najax Scout Pouches";
+       	picture = "\ls\core\addons\characters_clone\data\ui\scoutVest_ui_ca.paa";
+        model = "\ls\core\addons\characters_clone\vests\scout\ls_vest_clone_scout.p3d";
+        hiddenSelections[]=
+        {
+			"camo1"
+        };
+        hiddenSelectionsTextures[]=
+        {
+			"\885_Armor\885_Armor\Najax\Scout\885th_Najax_Pouches_co.paa"
+        };
+        class ItemInfo: VestItem
+        {
+            uniformModel = "\ls\core\addons\characters_clone\vests\scout\ls_vest_clone_scout.p3d";
+            hiddenSelections[]=
+            {
+				"camo1"
+            };
+            vestType="Rebreather";
+            containerClass="Supply250";
+            mass=65;
+            class HitpointsProtectionInfo
+            {
+                class Chest
+                {
+                    HitpointName="HitChest";
+                    armor=10;
+                    PassThrough=0.2;
+                };
+                class Diaphragm
+                {
+                    HitpointName="HitDiaphragm";
+                    armor=10;
+                    PassThrough=0.2;
+                };
+                class Abdomen
+                {
+                    hitpointName="HitAbdomen";
+                    armor=15;
+                    passThrough=0.2;
+                };
+                class Body
+                {
+                    hitpointName="HitBody";
+                    passThrough=0.30000001;
+                };
+                class Arms
+                {
+                    hitpointName="HitArms";
+                    armor=7;
+                    passThrough=0.30000001;
+                };
+                class Legs
+                {
+                    hitpointName="HitLegs";
+                    armor=7;
+                    passThrough=0.30000001;
+                };
+            };
+        };
+    };
 	class 885th_vest_medic_base: 885th_vest_base{
 		displayname = "[885th] Standard Armor Plating - Medic Kit";
 		class ItemInfo: ItemInfo {
