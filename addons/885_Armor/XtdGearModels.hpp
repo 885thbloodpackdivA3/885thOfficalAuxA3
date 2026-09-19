@@ -69,7 +69,6 @@ class XtdGearModels
 				{
 					"Cadet",
 					"ARF",
-                    "Spec Ops",
 					"Scout"
 				};
 			};
@@ -224,13 +223,14 @@ class XtdGearModels
 					"Pilot",
 					"Engineer",
 					"ARF",
+					"Scout",
 					"RC"
                 };
             };
             class camo
             {
                 label="Variant";
-                values[]= {"P1","P2","BARC","Pilot","Engineer","ARF","RC"};
+                values[]= {"P1","P2","BARC","Pilot","Engineer","ARF","Scout","RC"};
                 alwaysSelectable=1;
             };
         };
@@ -373,7 +373,6 @@ class XtdGearModels
 				{
 					"Cadet",
 					"ARF",
-                    "Spec Ops",
 					"Scout"
 				};
 			};
@@ -547,7 +546,6 @@ class XtdGearModels
 				{	
 					"Ares",
 					"Bandit",
-					"Crimz",
 					"Kit",
 					"Maverick",
 					"Nightfall",
@@ -729,11 +727,6 @@ class XtdGearInfos
 		{
 			model="Trooper_ARF_Helmets";
 			rank="ARF";
-		};
-		class 885th_Najax_ARF_P2_Camo_Helm
-		{
-			model="Trooper_ARF_Helmets";
-			rank="Spec Ops";
 		};
 		class 885th_Najax_Scout_P2_Helm
 		{
@@ -923,12 +916,12 @@ class XtdGearInfos
 			variant="P2";
 			camo="P2";
 		};
-		class 885th_Crimz_ARF_Helm
+		class 885th_Crimz_Scout_Helm
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Crimz";
-			variant="ARF";
-			camo="ARF";
+			variant="Scout";
+			camo="Scout";
 		};
 		class 885th_Crusader_P2_Helm
 		{
@@ -1200,11 +1193,6 @@ class XtdGearInfos
 		{
 			model="Najax_Uniforms";
 			rank="ARF";
-		};
-		class 885th_Najax_Camo_Uniform
-		{
-			model="Najax_Uniforms";
-			rank="Spec Ops";
 		};
 		class 885th_Najax_Scout_Uniform
 		{
@@ -1493,11 +1481,6 @@ class XtdGearInfos
 		{
 			model="Custom_Vest";
 			vest="Bandit";
-		};
-		class 885th_Cust_VestV4_Rig_Crimz
-		{
-			model="Custom_Vest";
-			vest="Crimz";
 		};
 		class 885th_Cust_VestV4_Rig_Kit
 		{

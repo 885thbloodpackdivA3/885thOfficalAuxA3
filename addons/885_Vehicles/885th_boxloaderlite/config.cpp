@@ -15,7 +15,7 @@ class CfgFunctions {
 	class boxloader {
 		tag = "boxloader";
 		class boxloaderFunctions {
-			file = "885_Test\885th_boxloaderlite\fnc";
+			file = "885_Vehicles\885th_boxloaderlite\fnc";
 			class init_player {postInit = 1;};
 			class init_load {preInit = 1;};
 			class preinit {};
