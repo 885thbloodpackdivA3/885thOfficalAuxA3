@@ -1676,7 +1676,7 @@ class XtdGearInfos
 		};
 		class 885th_Oxlong_Backpack
 		{
-			model = "Custom Backpacks";
+			model = "Custom_Backpacks";
 			backpack = "Oxlong";
 		};
 		class 885th_Cust_RTO_Buttbag2_Rios
