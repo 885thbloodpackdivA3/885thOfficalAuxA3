@@ -631,6 +631,7 @@ class XtdGearModels
 					"Bandit",
 					"Charge",
 					"Nightfall",
+					"Oxlong",
 					"Rios",
 					"Scorch",
 					"Thunder"
@@ -1672,6 +1673,11 @@ class XtdGearInfos
 		{
 			model="Custom_Backpacks";
 			backpack="Nightfall";
+		};
+		class 885th_Oxlong_Backpack
+		{
+			model = "Custom Backpacks";
+			backpack = "Oxlong";
 		};
 		class 885th_Cust_RTO_Buttbag2_Rios
 		{

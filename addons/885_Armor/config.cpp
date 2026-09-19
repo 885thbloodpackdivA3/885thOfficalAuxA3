@@ -11818,6 +11818,42 @@ class CfgVehicles
 			"885_Armor\885_Armor\Customs\Thunder\885th_Thunder_Pouches.paa",
 		};
 	};
+	class 885th_Oxlong_Backpack: ls_cloneBackpack_ammo
+	{
+		author="885th Bloodpack Division";
+		scope=2;
+		displayName="[885th] Oxlong Heavy Backpack";
+		maximumload = 800;
+		model="\ls\core\addons\characters_clone\backpacks\standard\ls_backpack_clone_standard.p3d";
+		hiddenSelections[]= 
+		{
+			"backpack",
+			"cloth",
+			"radio",
+			"rockets",
+			"medic",
+			"bacta",
+			"ammo",
+			"heavy",
+			"supplies",
+			"lower_supplies",
+			"canister",
+			"grenade"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Oxlong\Oxlong_Custom_Backpack_co.paa",
+			"885_Armor\885_Armor\Customs\Oxlong\Oxlong_Custom_Backpack_co.paa",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"\ls\core\addons\characters_clone\backpacks\standard\data\heavy_CO.paa",
+			"",
+			"885_Armor\885_Armor\Customs\Oxlong\Oxlong_Custom_Lower_Pouches_co.paa"
+		};
+	};
 	class 885th_JTAC_Backpack: B_kitbag_rgr
 	{
 		author="885th Bloodpack Division";
