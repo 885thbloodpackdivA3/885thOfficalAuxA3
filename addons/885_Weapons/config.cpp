@@ -8721,72 +8721,86 @@ class CfgWeapons
 			maxRange=350;
 			maxRangeProbab=0.1;
 		};
-		modelOptics = "3AS\3AS_Weapons\Data\3AS_2D_Optic.p3d";
-		weaponInfoType = "RscWeaponZeroing";
+		distanceZoomMin=400;
+		distanceZoomMax=400;
+		weaponInfoType="RscOptics_nightstalker";
+		modelOptics="\Indecisive_Armoury_Weapons_REPUBLIC\Data\LowPower_Scope\IDA_LowPower_Scope_Blue.p3d";
 		class OpticsModes
 		{
-			class Ironsights
+			class Iron
 			{
-				opticsID = 1;
-				useModelOptics = 0;
-				opticsFlare = "false";
-				opticsPPEffects[] = {"OpticsCHAbera5", "OpticsBlur5"};
-				opticsDisablePeripherialVision = 0;
-				opticsZoomMin = 0.4;
-				opticsZoomMax = 1.1;
-				opticsZoomInit = 0.75;
-				memoryPointCamera = "eye";
-				visionMode[] = {};
-				discreteDistance[]={50,100};
+				opticsID=1;
+				useModelOptics=0;
+				opticsPPEffects[]=
+				{
+					"",
+					""
+				};
+				opticsZoomMin=0.25;
+				opticsZoomMax=1.25;
+				opticsZoomInit=0.75;
+				discreteDistance[]={200};
 				discreteDistanceInitIndex=0;
-				distanceZoomMin = 100;
-				distanceZoomMax = 100;
+				distanceZoomMin=200;
+				distanceZoomMax=200;
+				memoryPointCamera="eye";
+				visionMode[]={};
+				opticsFlare=0;
+				opticsDisablePeripherialVision=0;
 			};
-			class Scope : Ironsights
+			class IDA_DC15S_Scope
 			{
-				opticsID = 2;
-				useModelOptics = 1;
-				opticsPPEffects[] = {"OpticsCHAbera5", "OpticsBlur5"};
-				opticsFlare = 0;
-				opticsDisablePeripherialVision = 1;
-				opticsZoomMin = 0.015;
-				opticsZoomMax = 0.1;
-				opticsZoomInit = 0.1;
-				memoryPointCamera = "opticView";
-				visionMode[] = {};
-				discreteDistance[]={100,200,300,400,500};
+				opticsID=2;
+				useModelOptics=1;
+				opticsPPEffects[]=
+				{
+					"OpticsRadialBlur1",
+					"OpticsBlur1"
+				};
+				opticsZoomMin=0.125;
+				opticsZoomMax=0.125;
+				opticsZoomInit=0.125;
+				discreteDistance[]={200};
 				discreteDistanceInitIndex=0;
-				distanceZoomMin = 100;
-				distanceZoomMax = 500;
+				distanceZoomMin=100;
+				distanceZoomMax=1000;
+				memoryPointCamera="eye";
+				visionMode[]={};
+				opticsFlare=0;
+				opticsDisablePeripherialVision=0;
+				cameraDir="";
 			};
 		};
-		class WeaponSlotsInfo : WeaponSlotsInfo
+		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
-			mass = 65;
-			class CowsSlot : CowsSlot
+			mass=50;
+			class CowsSlot: CowsSlot
 			{
-				compatibleItems[] = {};
+				compatibleItems[]={};
 			};
-			class MuzzleSlot : MuzzleSlot
+			class MuzzleSlot: MuzzleSlot
 			{
-				compatibleItems[] = {};
+				compatibleItems[]={};
 			};
-			class PointerSlot : PointerSlot
+			class PointerSlot: PointerSlot
 			{
-				compatibleItems[] = {"acc_flashlight"};
+				compatibleItems[]=
+				{
+					"acc_flashLight"
+				};
 			};
-			class UnderBarrelSlot : UnderBarrelSlot
+			class UnderBarrelSlot: UnderBarrelSlot
 			{
-				compatibleItems[] = {};
+				compatibleItems[]={};
 			};
 		};
 		class GunParticles
 		{
 			class FirstEffect
 			{
-				directionName = "Konec hlavne";
-				effectName = "RifleAssaultCloud";
-				positionName = "Usti hlavne";
+				directionName="Konec hlavne";
+				effectName="RifleAssaultCloud";
+				positionName="Usti hlavne";
 			};
 		};
 	};
@@ -9505,33 +9519,86 @@ class CfgWeapons
 			maxRange = 1000;
 			maxRangeProbab = 0.6;
 		};
-		class WeaponSlotsInfo : WeaponSlotsInfo
+		distanceZoomMin=650;
+		distanceZoomMax=650;
+		weaponInfoType="RscOptics_nightstalker";
+		modelOptics="\Indecisive_Armoury_Weapons_REPUBLIC\Data\LowPower_Scope\IDA_LowPower_Scope_Blue.p3d";
+		class OpticsModes
 		{
-			mass = 80;
-			class CowsSlot : CowsSlot
+			class Iron
 			{
-				compatibleItems[] = {"3AS_optic_reflex_DC15C", "885th_Optic_Scope_WestarM5", "ACE_optic_Hamr_2D", "3AS_Optic_DC15L"};
+				opticsID=1;
+				useModelOptics=0;
+				opticsPPEffects[]=
+				{
+					"",
+					""
+				};
+				opticsZoomMin=0.25;
+				opticsZoomMax=1.25;
+				opticsZoomInit=0.75;
+				discreteDistance[]={200};
+				discreteDistanceInitIndex=0;
+				distanceZoomMin=200;
+				distanceZoomMax=200;
+				memoryPointCamera="eye";
+				visionMode[]={};
+				opticsFlare=0;
+				opticsDisablePeripherialVision=0;
 			};
-			class MuzzleSlot : MuzzleSlot
+			class IDA_DC15A_Scope
 			{
-				compatibleItems[] = {};
+				opticsID=2;
+				useModelOptics=1;
+				opticsPPEffects[]=
+				{
+					"OpticsRadialBlur1",
+					"OpticsBlur1"
+				};
+				opticsZoomMin=0.125;
+				opticsZoomMax=0.125;
+				opticsZoomInit=0.125;
+				discreteDistance[]={200};
+				discreteDistanceInitIndex=0;
+				distanceZoomMin=100;
+				distanceZoomMax=1000;
+				memoryPointCamera="eye";
+				visionMode[]={};
+				opticsFlare=0;
+				opticsDisablePeripherialVision=0;
+				cameraDir="";
 			};
-			class PointerSlot : PointerSlot
+		};
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			mass=80;
+			class CowsSlot: CowsSlot
 			{
-				compatibleItems[] = {"acc_flashlight"};
+				compatibleItems[]={};
 			};
-			class UnderBarrelSlot : UnderBarrelSlot
+			class MuzzleSlot: MuzzleSlot
 			{
-				compatibleItems[] = {};
+				compatibleItems[]={};
+			};
+			class PointerSlot: PointerSlot
+			{
+				compatibleItems[]=
+				{
+					"acc_flashLight"
+				};
+			};
+			class UnderBarrelSlot: UnderBarrelSlot
+			{
+				compatibleItems[]={};
 			};
 		};
 		class GunParticles
 		{
 			class FirstEffect
 			{
-				directionName = "Konec hlavne";
-				effectName = "RifleAssaultCloud";
-				positionName = "Usti hlavne";
+				directionName="Konec hlavne";
+				effectName="RifleAssaultCloud";
+				positionName="Usti hlavne";
 			};
 		};
 	};

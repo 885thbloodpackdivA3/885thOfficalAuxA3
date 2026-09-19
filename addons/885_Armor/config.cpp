@@ -763,6 +763,26 @@ class CfgWeapons
             "885_Armor\885_Armor\Customs\Bright\Bright_P2_Helmet_Visor.rvmat",
         };
     };
+	class 885th_Sytha_P2_Helm: 885th_P2_V2_Helmet
+	{
+		author="885th Bloodpack Division";
+		displayName="[885th] Sytha's P2 Helmet";
+		hiddenselections[]=
+		{
+			"Camo",
+			"visor"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Sytha\P2_Helmet_co.paa",
+			"885_Armor\885_Armor\Customs\Sytha\P2_Helmet_co.paa",
+		};
+        hiddenSelectionsMaterials[]=
+        {
+			"",
+            "885_Armor\885_Armor\Customs\Sytha\P2_Helmet_Visor.rvmat",
+        };
+	};
 	class 885th_Smith_EngineerV2_Helm: H_HelmetO_ViperSP_hex_F
 	{
 		author="885th Bloodpack Division";
@@ -2150,26 +2170,6 @@ class CfgWeapons
 				};
 			};
 		};
-	};
-	class 885th_Sytha_BARC_Helm: 885th_BARC_Helm
-	{
-		author="885th Bloodpack Division";
-		displayName="[885th] Sytha's BARC Helmet";
-		hiddenselections[]=
-		{
-			"Camo",
-			"visor"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Sytha\Sytha_BARC_Helmet_co.paa",
-			"885_Armor\885_Armor\Customs\Sytha\Sytha_BARC_Helmet_co.paa",
-		};
-        hiddenSelectionsMaterials[]=
-        {
-			"",
-            "885_Armor\885_Armor\Customs\Sytha\Sytha_BARC_Helmet_Visor.rvmat",
-        };
 	};
 	class 885th_Maverick_BARC_Helm: 885th_BARC_Helm
 	{
@@ -4075,7 +4075,6 @@ class CfgWeapons
 	};
 	class 885th_Thunder_Uniform: 885th_Vornskr_Uniform
 	{
-		scope=0;
 		displayName = "[885th] Thunder Custom P2 Armor";
 		class ItemInfo: UniformItem
 		{
@@ -8627,7 +8626,7 @@ class CfgWeapons
 	class 885th_Cust_VestV4_Rig_Rios: Vest_Camo_Base
 	{
 		author="Antauri + 885th Bloodpack Division";
-		scope=2;
+		scope=0;
 		displayName="[885th] Rios's ARC Rig";
 		picture="\SWLB_clones\data\ui\icon_SWLB_clone_uniform_ca.paa";
 		model="\ShadowLegion_Aux\Data\CustomVests\V4\models\VESTV4_VestRig_HolsterDouble.p3d";
@@ -9728,7 +9727,7 @@ class CfgWeapons
 	/*2*/	"",
 	/*3*/	"",
 	/*4*/	"",
-	/*5*/	"",
+	/*5*/	"885_Armor\885_Armor\Customs\Maverick\RIG_co.paa",
 	/*6*/	"",
 	/*7*/	"",
 	/*8*/	"885_Armor\885_Armor\Customs\Maverick\RIG_co.paa",
@@ -9768,7 +9767,7 @@ class CfgWeapons
 	/*2*/	"",
 	/*3*/	"",
 	/*4*/	"",
-	/*5*/	"",
+	/*5*/	"885_Armor\885_Armor\Customs\Maverick\RIG.rvmat",
 	/*6*/	"",
 	/*7*/	"",
 	/*8*/	"885_Armor\885_Armor\Customs\Maverick\RIG.rvmat",

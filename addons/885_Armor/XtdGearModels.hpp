@@ -1035,12 +1035,12 @@ class XtdGearInfos
 			variant="Engineer";
 			camo="Engineer";
 		};
-		class 885th_Sytha_BARC_Helm
+		class 885th_Sytha_P2_Helm
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Sytha";
-			variant="BARC";
-			camo="BARC";
+			variant="P2";
+			camo="P2";
 		};
 		class 885th_Sunshine_P2_Helm
 		{
