@@ -81,6 +81,7 @@ class Cfgpatches
 			"885th_Smith_Engi_Helm",
 			"885th_Kit_phase2SpecOp_helmet",
 			"885th_Owl_Pilot_Helm",
+			"885th_Kings_Pilot_Helm",
 			"885th_Oxlong_P2_Helm",
 			"885th_Crusader_P2_Helm",
 			"885th_Cerberus_P3_Pilot_Helm",
@@ -1439,6 +1440,28 @@ class CfgWeapons
     	"\885_Armor\885_Armor\Nightsingers\visor.rvmat" // The standard visor material
 		};
 	};
+	class 885th_Kings_Pilot_Helm: 885th_Nightsingers_P2_Pilot_Helm_Base
+	{
+		scope=2;
+        author="885th Bloodpack Division";
+		displayName= "[885th] King's Pilot Helm";
+        picture="";
+		model = "\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\ls_gar_phase2Pilot_helmet.p3d";
+		hiddenSelections[]=
+		{
+			"camo1",
+			"visor"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Kings\Kings_P2_Pilot_Helm_co.paa",
+			"\885_Armor\885_Armor\Nightsingers\visor_co.paa"
+		};
+		hiddenSelectionsMaterials[] = {
+    	"\885_Armor\885_Armor\Nightsingers\Officer\P2_Pilot_Helmet.rvmat", // The standard Clone material
+    	"\885_Armor\885_Armor\Nightsingers\visor.rvmat" // The standard visor material
+		};
+	};
 	class 885th_Nightsingers_P3_Pilot_Helm: H_HelmetO_ViperSP_hex_F
 	{
 		scope=0;
@@ -1570,7 +1593,7 @@ class CfgWeapons
 		{
 			"885_Armor\885_Armor\Customs\Cerberus\Cerberus_P3_Pilot_Helm_co.paa",
 			"885_Armor\885_Armor\Customs\Cerberus\Cerberus_P3_Pilot_Helm_co.paa",
-			"885_Armor\885_Armor\Nightsingers\Phase 3\Ranks\885th_LifeSupport_co.paa",
+			"885_Armor\885_Armor\Customs\Cerberus\Cerbeus_P3_Life_Support_co.paa",
 			"885_Armor\885_Armor\Customs\Cerberus\Cerberus_P3_Pilot_Helm_co.paa"
 		};
 		hiddenSelectionsMaterials[]=
