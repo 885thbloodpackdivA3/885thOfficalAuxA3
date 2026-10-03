@@ -192,6 +192,7 @@ class XtdGearModels
 					"Crow",
 					"Gooner",
 					"Kit",
+					"Kings",
 					"Nightfall",
 					"Maverick",
 					"ONI",
@@ -951,6 +952,13 @@ class XtdGearInfos
 			rank="Kit";
 			variant="P2";
 			camo="P2";
+		};
+		class 885th_Kings_Pilot_Helm
+		{
+			model="Trooper_Custom_Helmets";
+			rank="Kings";
+			variant="Pilot";
+			camo="Pilot";
 		};
 		class 885th_Nightfall_P2_Helm
 		{
