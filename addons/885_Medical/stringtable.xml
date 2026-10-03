@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="885th_ACE_Medical_Extension">
+    <Package name="885th_Medical_Assets">
+		<Key ID="STR_885th_Medical_Display_ClothBandage">
+            <English>[885th] Cloth Bandage</English>
+        </Key>
+        <Key ID="STR_885th_Medical_Display_BactaBandage">
+            <English>[885th] Bacta Bandage</English>
+        </Key>
+        <Key ID="STR_885th_Medical_Display_BactaSpray">
+			<English>[885th] Bacta Spray</English>
+        </Key>
+        <Key ID="STR_885th_Medical_Display_BactaPatch">
+			<English>[885th] Bacta Patch</English>
+        </Key>
+        <Key ID="STR_885th_Medical_Display_Stim_Perigen">
+			<English>[885th] Stim (Perigen)</English>
+        </Key>
+        <Key ID="STR_885th_Medical_Display_Stim_Enkephalin">
+			<English>[885th] Stim (Enkephalin)</English>
+        </Key>
+        <Key ID="STR_885th_Medical_Display_Stim_Kyrprax">
+			<English>[885th] Stim (Kyrprax)</English>
+        </Key>
+        <Key ID="STR_885th_Medical_Display_Stim_Myocaine">
+			<English>[885th] Stim (Myocaine)</English>
+        </Key>
+        <Key ID="STR_885th_Medical_Display_Stim_Reedug">
+			<English>[885th] Stim (Reedug)</English>
+        </Key>
+        <Key ID="STR_885th_Medical_Display_Injector_Myoplexaril">
+			<English>[885th] Injector (Myoplexaril)</English>
+        </Key>
+        <Key ID="STR_885th_Medical_Display_Injector_Polybiotics">
+			<English>[885th] Injector (Polybiotics)</English>
+        </Key>
+        <Key ID="STR_885th_Medical_Display_Injector_Nyex">
+			<English>[885th] Injector (Nyex)</English>
+        </Key>
+		<Key ID="STR_885th_Medical_Display_Vasko1000">
+            <English>[885th] Vasko 1000ml</English>
+        </Key>
+        <Key ID="STR_885th_Medical_Display_Vasko500">
+            <English>[885th] Vasko 500ml</English>
+        </Key>
+        <Key ID="STR_885th_Medical_Display_Vasko250">
+            <English>[885th] Vasko 250ml</English>
+        </Key>
+        <Key ID="STR_885th_Medical_Display_BactaPack">
+            <English>[885th] Bacta Pack</English>
+        </Key>
+        <Key ID="STR_885th_Medical_Display_Cauterizer">
+            <English>[885th] Cauterizer</English>
+		</Key>
+
+
+
+		<Key ID="STR_885th_Medical_Using_Bandage">
+            <English>Bandaging</English>
+        </Key>
+		<Key ID="STR_885th_Medical_Using_BactaSpray">
+            <English>Spraying</English>
+        </Key>
+        <Key ID="STR_885th_Medical_Using_BactaPatch">
+            <English>Applying Patch</English>
+        </Key>
+        <Key ID="STR_885th_Medical_Using_Perigen">
+            <English>Injecting Perigen</English>
+        </Key>
+		<Key ID="STR_885th_Medical_Using_Enkephalin">
+            <English>Injecting Enkephalin</English>
+        </Key>
+		<Key ID="STR_885th_Medical_Using_Nyex">
+            <English>Injecting Nyex</English>
+        </Key>
+		<Key ID="STR_885th_Medical_Using_Kyrprax">
+            <English>Injecting Kyrprax</English>
+        </Key>
+		<Key ID="STR_885th_Medical_Using_Polybiotics">
+            <English>Injecting Polybiotics</English>
+        </Key>
+		<Key ID="STR_885th_Medical_Using_Myocaine">
+            <English>Injecting Myocaine</English>
+        </Key>
+		<Key ID="STR_885th_Medical_Using_Myoplexaril">
+            <English>Injecting Myoplexaril</English>
+        </Key>
+        <Key ID="STR_885th_Medical_Using_Reedug">
+            <English>Injecting Reedug</English>
+        </Key>
+        <Key ID="STR_885th_Medical_Using_Vasko">
+            <English>Injecting Vasko</English>
+        </Key>
+        <Key ID="STR_885th_Medical_Using_Cauterizer">
+            <English>Cauterizing</English>
+        </Key>
+		<Key ID="STR_885th_Medical_Using_BactaPack">
+            <English>Applying Bacta</English>
+        </Key>
+	</Package>
+</Project>

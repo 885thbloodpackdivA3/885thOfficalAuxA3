@@ -722,27 +722,6 @@ class CfgWeapons
             "885_Armor\885_Armor\Customs\Wrath\Wrath_P2_Helmet_Visor.rvmat",
         };
     };
-	class 885th_Gooner_P2_Helmet: 885th_P2_V2_Helmet
-    {
-        author="885th Bloodpack Division";
-        displayName="[885th] Gooner's Custom P2 Helmet";
-        hiddenselections[]=
-        {
-            "Camo", 
-            "Visor",
-        };
-        hiddenSelectionsTextures[]=
-        {
-            "885_Armor\885_Armor\Customs\Gooner\P2_Helmet_co.paa",
-			"885_Armor\885_Armor\Customs\Gooner\P2_Helmet_co.paa",
-
-        };
-        hiddenSelectionsMaterials[]=
-        {
-            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
-            "885_Armor\885_Armor\Customs\Gooner\Gooner_P2_Helmet_Visor.rvmat",
-        };
-    };
 	class 885th_Bright_P2_Helmet: 885th_P2_V2_Helmet
     {
         author="885th Bloodpack Division"; 
@@ -1626,7 +1605,6 @@ class CfgWeapons
 			};
 		};
 	};
-	
 	class 885th_Vornskr_P1_Advisor_Helm: SEA_Helmet_SpecOps_LR_Base
 	{
 		scope=0;
@@ -1671,7 +1649,6 @@ class CfgWeapons
 			};
 		};
 	};
-	
 	class SEA_Helmet_ARF_Base;
 	class 885th_Najax_P1_ARF_Helm: SEA_Helmet_ARF_Base
 	{
@@ -1787,51 +1764,6 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_Signal_phase2SpecOp_helmet: H_HelmetO_ViperSP_hex_F
-	{
-		scope=0;
-		author="Legion Studios + 885th Bloodpack Division";
-		displayName="Signal's Spec-Ops P2 Helmet";
-		model="\ls\core\addons\characters_clone_legacy\helmets\phase2SpecOp\ls_sob_phase2SpecOp_helmet.p3d";
-		hiddenSelections[]=
-		{
-			"camo1",
-			"visor"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Signal\helmet_co.paa",
-			"885_Armor\885_Armor\Customs\Signal\visor_co.paa"
-		};
-		 hiddenSelectionsMaterials[]=
-        {
-            "885_Armor\885_Armor\Customs\Signal\helmet.rvmat",
-            "885_Armor\885_Armor\Customs\Signal\visor.rvmat"
-        };
-		subItems[]=
-		{
-			"Integrated_NVG_TI_0_F"
-		};
-		class ItemInfo: ItemInfo
-		{
-			mass=10;
-			uniformModel="\ls\core\addons\characters_clone_legacy\helmets\phase2SpecOp\ls_sob_phase2SpecOp_helmet.p3d";
-			hiddenSelections[]=
-			{
-				"camo1",
-				"visor"
-			};
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName="HitHead";
-					armor=50;
-					passThrough=0.5;
-				};
-			};
-		};
-	};
 	class 885th_Najax_Scout_P2_Helm_Base: H_HelmetO_ViperSP_hex_F
 	{
 		scope=0;
@@ -1909,6 +1841,24 @@ class CfgWeapons
 		{
 			"885_Armor\885_Armor\Customs\Crimz\Crimz_Scout_Helmet_co.paa",
 			"885_Armor\885_Armor\Customs\Crimz\Crimz_Scout_Helmet_co.paa"
+		};
+	};
+	class 885th_Gooner_Scout_Helm: 885th_Najax_Scout_P2_Helm_Base
+	{
+		author="885th Bloodpack Division";
+		displayName="[885th] Gooner Scout Helm";
+		scope=2;
+		model="\ls\core\addons\characters_clone\helmets\scout\ls_helmet_clone_scout.p3d";
+		picture="";
+		hiddenSelections[]=
+		{
+			"camo1",
+			"visor"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Gooner\ScoutHelmet_co.paa",
+			"885_Armor\885_Armor\Customs\Gooner\ScoutHelmet_co.paa"
 		};
 	};
 	class 885th_Najax_ARF_P2_Helm_Base: H_HelmetO_ViperSP_hex_F
@@ -3918,6 +3868,18 @@ class CfgWeapons
 			uniformClass = "885th_Nexu_Medic_Trooper";
 			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
 			containerClass = "Supply250";
+			mass = 40;
+		};
+	};
+	class 885th_Ares_Uniform: 885th_Vornskr_Uniform
+	{
+		displayName = "[885th] Ares Custom P2 Armor";
+		class ItemInfo: UniformItem
+		{
+			uniformModel = "";
+			uniformClass = "885th_Ares_Trooper";
+			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
+			containerClass = "Supply300";
 			mass = 40;
 		};
 	};
@@ -12182,7 +12144,7 @@ class CfgVehicles
 	class 885th_Cust_RTO_Buttbag2_Bandit: B_AssaultPack_blk
 	{
 		author="Antauri + 885thBPD";
-		scope=2;
+		scope=0;
 		picture="\MRC\JLTS\characters\CloneArmor\data\ui\Clone_RTO_pack_ui_ca.paa";
 		displayName="[885th] Bandit Buttbag and Pouches RTO Pack";
 		model = "\ShadowLegion_Aux\Data\CustomVests\V5\models\VESTV5_LR_Backpack.p3d";
@@ -12216,7 +12178,42 @@ class CfgVehicles
 		tf_subtype="digital_lr";
 		mass=22;
 	};
-
+	class JLTS_Clone_jumppack_mc;
+	class 885th_Bandit_cdv: JLTS_Clone_jumppack_mc
+	{
+		scope=2;
+		author="885th BPD + Legion Studios";
+		displayName="[885th] Bandit Emergency Descent Pack";
+		picture="\MRC\JLTS\characters\CloneArmor\data\ui\Clone_jumppack_mc_ui_ca.paa";
+		model="\MRC\JLTS\characters\CloneArmor\CloneJumppackMC.p3d";
+		hiddenSelections[]=
+		{
+			"camo1"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Bandit\camo1_co.paa"
+		};
+		hiddenSelectionsMaterials[]=
+		{
+			"885_Armor\885_Armor\Customs\Bandit\camo1.rvmat"
+		};
+		tf_dialog="JLTS_clone_lr_programmer_radio_dialog";
+		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
+		tf_encryptionCode="tf_west_radio_code";
+		tf_hasLRradio=1;
+		tf_range=40000;
+		tf_subtype="digital_lr";
+		JLTS_isJumppack=0;
+		sc_jumppack=1;
+		sc_particles[]=
+		{
+			{0,-0.3,-0.1}
+		};
+		maximumload=600;
+		mass = 15;
+	};
+	
 	class 885th_Cust_RTO_Buttbag2_Rios: B_AssaultPack_blk
 	{
 		author="Antauri + 885thBPD";
@@ -13010,6 +13007,24 @@ class CfgVehicles
 		class HitLegs	  {armor = 12; material = -1; name = "legs"; visual = "legs"; explosionShielding = 0.45; passThrough = 0.90; radius = 0.16; };
 		};
 	};
+	class 885th_Ares_Trooper : 885th_Vornskr_Trooper {
+		scope=1;
+		scopeCurator=1;
+		scopeArsenal=2;
+		side=1;
+		camouflage = 0.3;
+		uniformClass = "885th_Ares_Uniform";
+		hiddenSelections[] = {"Camo1","Camo2"};
+		hiddenSelectionsTextures[] = {
+			"885_Armor\885_Armor\Customs\Ares\885th_Ares_Upper_co.paa",
+			"885_Armor\885_Armor\Customs\Ares\885th_Ares_Lower_co.paa"
+		};
+		hiddenSelectionsMaterials[]=
+        {
+			"885_Armor\885_Armor\Customs\Ares\P2_BodyUpper.rvmat",
+            "885_Armor\885_Armor\Customs\Ares\P2_Bodylower.rvmat"
+        };
+	};
 	
 	class 885th_Bandit_Trooper : 885th_Vornskr_Trooper {
 		scope=1;
@@ -13022,7 +13037,7 @@ class CfgVehicles
 			"\885_Armor\885_Armor\Customs\Bandit\P2_BodyUpper_co.paa",
 			"\885_Armor\885_Armor\Customs\Bandit\P2_BodyLower_co.paa"
 		};
-		 hiddenSelectionsMaterials[]=
+		hiddenSelectionsMaterials[]=
         {
 			"885_Armor\885_Armor\Customs\Bandit\P2_BodyUpper.rvmat",
             "885_Armor\885_Armor\Customs\Bandit\P2_Bodylower.rvmat"

@@ -19050,6 +19050,8 @@ class CfgWeapons
 		scope=2;
 		inertia=0;
 		canShootInWater=1;
+		caseless[]={"",1,1,1};
+		soundBullet[]={"caseless",1};
 		baseWeapon="885th_Westar35";
 		picture="Indecisive_Armoury_Weapons_INDEP\Data\Westar35\Westar35_ui.paa";
 		model="Indecisive_Armoury_Weapons_INDEP\Data\Westar35\Model\IDA_Westar35.p3d";

@@ -201,7 +201,6 @@ class XtdGearModels
 					"Rios",
 					"Screwball",
 					"Scorch",
-					"Signal",
 					"Smith",
 					"Sytha",
 					"Sunshine",
@@ -425,6 +424,7 @@ class XtdGearModels
 				label="Custom";
 				values[]=
 				{
+					"Ares",
 					"Bandit",
 					"Crimz",
 					"Crow",
@@ -931,12 +931,12 @@ class XtdGearInfos
 			variant="P2";
 			camo="P2";
 		};
-		class 885th_Gooner_P2_Helmet
+		class 885th_Gooner_Scout_Helm
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Gooner";
-			variant="P2";
-			camo="P2";
+			variant="Scout";
+			camo="Scout";
 		};
 		class Crow_Kusak_Katarn_Helm
 		{
@@ -1014,13 +1014,6 @@ class XtdGearInfos
 			rank="Scorch";
 			variant="RC";
 			camo="RC";
-		};
-		class 885th_Signal_phase2SpecOp_helmet
-		{
-			model="Trooper_Custom_Helmets";
-			rank="Signal";
-			variant="P2";
-			camo="P2";
 		};
 		class 885th_Smith_EngineerV2_Helm
 		{
@@ -1237,6 +1230,11 @@ class XtdGearInfos
 			camo="Adv.Recon";
 		};
 		//Customs Uniforms
+		class 885th_Ares_Uniform
+		{
+			model="Custom_Uniforms";
+			rank="Ares";
+		};
 		class 885th_Bandit_Uniform
 		{
 			model="Custom_Uniforms";
@@ -1251,11 +1249,6 @@ class XtdGearInfos
 		{
 			model="Custom_Uniforms";
 			rank="Crow";
-		};
-		class 885th_Lotho_Uniform
-		{
-			model="Custom_Uniforms";
-			rank="Lotho";
 		};
 		class 885th_Nightfall_Uniform
 		{
@@ -1659,7 +1652,7 @@ class XtdGearInfos
 			model="Custom_Backpacks";
 			backpack="Ares";
 		};
-		class 885th_Cust_RTO_Buttbag2_Bandit
+		class 885th_Bandit_cdv
 		{
 			model="Custom_Backpacks";
 			backpack="Bandit";
