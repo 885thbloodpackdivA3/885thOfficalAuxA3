@@ -32,6 +32,7 @@ class Cfgpatches
 			"885th_Phantom_RC_Trooper",
 			"885th_Scorch_RC_Trooper",
 			"885th_Smith_Trooper",
+			"885th_Stormer_Trooper",
 			"885th_Thunder_Trooper",
 			"885th_Vornskr_Hazard_Trooper",
 			"885th_Vornskr_Hazard_Veteran_Trooper",
@@ -962,6 +963,22 @@ class CfgWeapons
         {
 			"885_Armor\885_Armor\Customs\Crusader\Crusader_P2_Helm_co.paa",
 			"885_Armor\885_Armor\Customs\Crusader\Crusader_P2_Helm_co.paa",
+        };
+	};
+	class 885th_Cypher_P2_Helm: 885th_P2_V2_Helmet
+	{
+		author="885th Bloodpack Division";
+		displayName="[885th] Cypher Custom P2 Helm";
+		picture="";
+		hiddenSelections[]=
+		{
+			"Camo",
+			"Visor",
+        };
+        hiddenSelectionsTextures[]=
+        {
+			"885_Armor\885_Armor\Customs\Cypher\Cypher_P2_Helmet.paa",
+			"885_Armor\885_Armor\Customs\Cypher\Cypher_P2_Helmet.paa",
         };
 	};
 	class 885th_Vulkan_P2_Helm: 885th_P2_V2_Helmet
@@ -3998,6 +4015,18 @@ class CfgWeapons
 		{
 			uniformModel = "";
 			uniformClass = "885th_Smith_Trooper";
+			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
+			containerClass = "Supply300";
+			mass = 40;
+		};
+	};
+	class 885th_Stormer_Uniform: 885th_Vornskr_Uniform
+	{
+		displayName = "[885th] Stormer Custom P2 Armor";
+		class ItemInfo: UniformItem
+		{
+			uniformModel = "";
+			uniformClass = "885th_Stormer_Trooper";
 			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
 			containerClass = "Supply300";
 			mass = 40;
@@ -13149,6 +13178,18 @@ class CfgVehicles
 		hiddenSelectionsTextures[] = {
 			"885_Armor\885_Armor\Customs\Smith\Smith_Armor_Upper_co.paa",
 			"885_Armor\885_Armor\Customs\Smith\Smith_Armor_Lower_co.paa"
+		};
+	};
+	class 885th_Stormer_Trooper : 885th_Vornskr_Trooper {
+		scope=1;
+		scopeCurator=1;
+		scopeArsenal=2;
+		side=1;
+		uniformClass = "885th_Stormer_Uniform";
+		hiddenSelections[] = {"Camo1","Camo2"};
+		hiddenSelectionsTextures[] = {
+			"885_Armor\885_Armor\Customs\Stormer\Stormer_Custom_Armor_Upper.paa",
+			"885_Armor\885_Armor\Customs\Stormer\Stormer_Custom_Armor_Lower.paa"
 		};
 	};
 	class 885th_Screwball_Trooper : 885th_Vornskr_Trooper {
