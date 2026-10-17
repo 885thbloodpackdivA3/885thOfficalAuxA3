@@ -942,6 +942,7 @@ class XtdGearInfos
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Cypher";
+		};
 		class 885th_Drip_P2_Helm
 		{
 			model="Trooper_Custom_Helmets";
