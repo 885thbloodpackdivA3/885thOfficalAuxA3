@@ -549,6 +549,7 @@ class XtdGearModels
 				{	
 					"Ares",
 					"Bandit",
+					"Charge",
 					"Kit",
 					"Maverick",
 					"Nightfall",
@@ -635,6 +636,7 @@ class XtdGearModels
 					"Charge",
 					"Nightfall",
 					"Oxlong",
+					"ONI",
 					"Rios",
 					"Scorch",
 					"Thunder"
@@ -1500,6 +1502,11 @@ class XtdGearInfos
 			model="Custom_Vest";
 			vest="Bandit";
 		};
+		class 885th_Cust_VestV4_Rig_Charge
+		{
+			model="Custom_Vest";
+			vest="Charge";
+		};
 		class 885th_Cust_VestV4_Rig_Kit
 		{
 			model="Custom_Vest";
@@ -1515,7 +1522,7 @@ class XtdGearInfos
 			model="Custom_Vest";
 			vest="Nightfall";
 		};
-		class 885th_Cust_VestV4_Rig_ONI
+		class 885th_ONI_MC_Kama
 		{
 			model="Custom_Vest";
 			vest="ONI";
@@ -1681,7 +1688,7 @@ class XtdGearInfos
 			model="Custom_Backpacks";
 			backpack="Bandit";
 		};
-		class 885th_3as_Charge_Backpack
+		class 885th_Cust_RTO_Buttbag2_Charge
 		{
 			model="Custom_Backpacks";
 			backpack="Charge";
@@ -1695,6 +1702,11 @@ class XtdGearInfos
 		{
 			model = "Custom_Backpacks";
 			backpack = "Oxlong";
+		};
+		class 885th_ONI_cdv
+		{
+			model = "Custom_Backpacks";
+			backpack = "ONI";
 		};
 		class 885th_Cust_RTO_Buttbag2_Rios
 		{

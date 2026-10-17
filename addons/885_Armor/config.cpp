@@ -83,7 +83,6 @@ class Cfgpatches
 			"885th_Owl_Pilot_Helm",
 			"885th_Kings_Pilot_Helm",
 			"885th_Oxlong_P2_Helm",
-			"885th_Crusader_P2_Helm",
 			"885th_Cerberus_P3_Pilot_Helm",
 			"885th_Vornskr_P1_RTO_Helm",
 			"885th_Vornskr_P1_Advisor_Helm",
@@ -147,7 +146,6 @@ class Cfgpatches
 			"885th_Medic_AB_Helm",
 			"885th_Nexu_P2_Helm",
 			"885th_Crimz_Scout_Helm",
-			"885th_Rios_ARF_Helm",
 			"885th_Fyrnock_P2_Helm",
 			"885th_Fyrnock_VCT_P2_Helm",
 			"885th_Fyrnock_Officer_P2_Helm",
@@ -3335,6 +3333,53 @@ class CfgWeapons
 					hitpointName = "HitArms";
 					armor = 15;
 					passThrough = 0.1;
+				};
+			};
+		};
+	};
+	class 885th_ONI_MC_Kama: V_PlateCarrier1_rgr
+	{
+		author="885th Bloodpack Division";
+		scope=2;
+		displayName="Marshal Commander Kama - ONI";
+		picture="\MRC\JLTS\characters\CloneArmor\data\ui\CloneVestPauldron_ui_ca.paa";
+		model = "\MRC\JLTS\characters\CloneArmor\CloneVestKama.p3d";
+		hiddenSelections[]=
+		{
+			"camo1"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\ONI\ONI_MC_Kama_co.paa"
+		};
+		class ItemInfo: VestItem
+		{
+			uniformModel="\MRC\JLTS\characters\CloneArmor\CloneVestKama.p3d";
+			containerClass="Supply400";
+			hiddenSelections[]=
+			{
+				"camo1"
+			};
+			mass=80;
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					HitpointName="HitChest";
+					armor=5;
+					PassThrough=0.8;
+				};
+				class Legs
+				{
+					hitpointName="HitLegs";
+					armor=19;
+					passThrough=0.3;
+				};
+				class Arms
+				{
+					hitpointName="HitArms";
+					armor=10;
+					passThrough=0.8;
 				};
 			};
 		};
@@ -8003,220 +8048,6 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_Cust_VestV4_Rig_ONI: Vest_Camo_Base
-	{
-		author="Antauri + 885th Bloodpack Division";
-		scope=0;
-		displayName="[885th] ONI's Commander Pauldron";
-		picture="\SWLB_clones\data\ui\icon_SWLB_clone_uniform_ca.paa";
-		model="\ShadowLegion_Aux\Data\CustomVests\V4\models\VESTV4_VestRig_HolsterSingle.p3d";
-		hiddenSelections[]=
-		{
-	/*1*/	"VibrobladeLeft",
-	/*2*/	"VibrobladeRight",
-	/*3*/	"Grenades",
-	/*4*/	"RigLower",
-	/*5*/	"ShoulderPouches",
-	/*6*/	"ShoulderAntennaRight",
-	/*7*/	"ShoulderAntennaLeft",
-	/*8*/	"HolsterRight",
-	/*9*/	"HolsterLeft",
-	/*10*/	"CartridgesTopRight",
-	/*11*/	"ArmPouchLeft",
-	/*12*/	"ArmCatridgesRight",
-	/*13*/	"SuspenderPouchesFront",
-	/*14*/	"SuspenderPouchesBack",
-	/*15*/	"ARCPlating",
-	/*16*/	"ARCBracers",
-	/*17*/	"KamaPouches",
-	/*18*/	"ARCKama",
-	/*19*/	"ARCPauldronLeft",
-	/*20*/	"ARCPauldronRight",
-	/*21*/	"JetpackKama",
-	/*22*/	"NCOPauldronLeft",
-	/*23*/	"NCOPauldronSmallRight",
-	/*24*/	"PauldronBase",
-	/*25*/	"SuspenderLeft",
-	/*26*/	"SuspenderCross",
-	/*27*/	"SuspenderRight",
-	/*28*/	"ArmStrapLeft",
-	/*29*/	"ArmStrapRight",
-	/*30*/	"AirbornePieces",
-	/*31*/	"AirborneBag",
-	/*32*/	"CorporalPauldron",
-	/*33*/	"Buttbag",
-	/*34*/	"LRpack",
-	/*35*/	"CorporalPauldron2",
-	/*36*/	"CrossClip",
-	/*37*/	"ChestGuard"
-		};
-		hiddenSelectionsTextures[]=
-		{
-	/*1*/	"",
-	/*2*/	"",
-	/*3*/	"\885_Armor\885_Armor\Vests\Standard\RIG_co.paa",
-	/*4*/	"",
-	/*5*/	"885_Armor\885_Armor\Customs\ONI\RIG_co.paa",
-	/*6*/	"",
-	/*7*/	"",
-	/*8*/	"885_Armor\885_Armor\Customs\ONI\RIG_co.paa",
-	/*9*/	"",
-	/*10*/	"",
-	/*11*/	"885_Armor\885_Armor\Customs\ONI\RIG_co.paa",
-	/*12*/	"",
-	/*13*/	"",
-	/*14*/	"",
-	/*15*/	"",
-	/*16*/	"885_Armor\885_Armor\Customs\ONI\ONI_ARCVest_co.paa",
-	/*17*/	"\885_Armor\885_Armor\Vests\Standard\ARCVest_co.paa",
-	/*18*/	"",
-	/*19*/	"",
-	/*20*/	"",
-	/*21*/	"885_Armor\885_Armor\Customs\ONI\Kama2_co.paa",
-	/*22*/	"885_Armor\885_Armor\Customs\ONI\NCOPauldron_co.paa",
-	/*23*/	"885_Armor\885_Armor\Customs\ONI\NCOPauldron_co.paa",
-	/*24*/	"\885_Armor\885_Armor\Vests\Standard\NCOPauldron_co.paa",
-	/*25*/	"885_Armor\885_Armor\Customs\ONI\Suspenders&Straps_co.paa",
-	/*26*/	"",
-	/*27*/	"",
-	/*28*/	"885_Armor\885_Armor\Customs\ONI\Suspenders&Straps_co.paa",
-	/*29*/	"885_Armor\885_Armor\Customs\ONI\Suspenders&Straps_co.paa",
-	/*30*/	"",
-	/*31*/	"",
-	/*32*/	"",
-	/*33*/	"",
-	/*34*/	"",
-	/*35*/	"",
-	/*36*/	"",
-	/*37*/	""
-		};
-		hiddenSelectionsMaterials[]=
-		{
-	/*1*/	"",
-	/*2*/	"",
-	/*3*/	"\885_Armor\885_Armor\Vests\Standard\RIG.rvmat",
-	/*4*/	"",
-	/*5*/	"\885_Armor\885_Armor\Vests\Standard\RIG.rvmat",
-	/*6*/	"",
-	/*7*/	"",
-	/*8*/	"885_Armor\885_Armor\Customs\ONI\RIG.rvmat",
-	/*9*/	"",
-	/*10*/	"",
-	/*11*/	"885_Armor\885_Armor\Customs\ONI\RIG.rvmat",
-	/*12*/	"",
-	/*13*/	"",
-	/*14*/	"",
-	/*15*/	"",
-	/*16*/	"885_Armor\885_Armor\Customs\ONI\ARCPlating.rvmat",
-	/*17*/	"\885_Armor\885_Armor\Vests\Standard\ARCVest.rvmat",
-	/*18*/	"",
-	/*19*/	"",
-	/*20*/	"",
-	/*21*/	"885_Armor\885_Armor\Customs\ONI\Kama2.rvmat",
-	/*22*/	"\885_Armor\885_Armor\Vests\Standard\NCOPauldron.rvmat",
-	/*23*/	"\885_Armor\885_Armor\Vests\Standard\NCOPauldron.rvmat",
-	/*24*/  "\885_Armor\885_Armor\Vests\Standard\NCOPauldron.rvmat",
-	/*25*/	"885_Armor\885_Armor\Customs\ONI\Suspenders&Straps.rvmat",
-	/*26*/	"",
-	/*27*/	"",
-	/*28*/	"885_Armor\885_Armor\Customs\ONI\Suspenders&Straps.rvmat",
-	/*29*/	"885_Armor\885_Armor\Customs\ONI\Suspenders&Straps.rvmat",
-	/*30*/	"",
-	/*31*/	"",
-	/*32*/	"",
-	/*33*/	"",
-	/*34*/	"",
-	/*35*/	"",
-	/*36*/	"",
-	/*37*/	""
-		};
-		class ItemInfo: VestItem
-		{
-			uniformModel="\ShadowLegion_Aux\Data\CustomVests\V4\models\VESTV4_VestRig_HolsterSingle.p3d";
-			hiddenSelections[]=
-			{
-				"VibrobladeLeft",
-				"VibrobladeRight",
-				"Grenades",
-				"RigLower",
-				"ShoulderPouches",
-				"ShoulderAntennaRight",
-				"ShoulderAntennaLeft",
-				"HolsterRight",
-				"HolsterLeft",
-				"CartridgesTopRight",
-				"ArmPouchLeft",
-				"ArmCatridgesRight",
-				"SuspenderPouchesFront",
-				"SuspenderPouchesBack",
-				"ARCPlating",
-				"ARCBracers",
-				"KamaPouches",
-				"ARCKama",
-				"ARCPauldronLeft",
-				"ARCPauldronRight",
-				"JetpackKama",
-				"NCOPauldronLeft",
-				"NCOPauldronSmallRight",
-				"PauldronBase",
-				"SuspenderLeft",
-				"SuspenderCross",
-				"SuspenderRight",
-				"ArmStrapLeft",
-				"ArmStrapRight",
-				"AirbornePieces",
-				"AirborneBag",
-				"CorporalPauldron",
-				"Buttbag",
-				"LRpack",
-				"CorporalPauldron2",
-				"CrossClip",
-				"ChestGuard"
-			};
-			vestType="Rebreather";
-			containerClass="Supply250";
-			mass=70;
-			class HitpointsProtectionInfo
-			{
-				class Chest
-				{
-					HitpointName="HitChest";
-					armor=18;
-					PassThrough=0.15;
-				};
-				class Diaphragm
-				{
-					HitpointName="HitDiaphragm";
-					armor=18;
-					PassThrough=0.15;
-				};
-				class Abdomen
-				{
-					hitpointName="HitAbdomen";
-					armor=16;
-					passThrough=0.2;
-				};
-				class Body
-				{
-					hitpointName="HitBody";
-					armor=16;
-					passThrough=0.2;
-				};
-				class Arms
-				{
-					hitpointName="HitArms";
-					armor=8;
-					passThrough=0.4;
-				};
-				class Legs
-				{
-					hitpointName="HitLegs";
-					armor=8;
-					passThrough=0.4;
-				};
-			};
-		};
-	};
 	class 885th_Cust_VestV4_Rig_Stormer: Vest_Camo_Base
 	{
 		author="Antauri + 885th Bloodpack Division";
@@ -8428,7 +8259,7 @@ class CfgWeapons
 	class 885th_Cust_VestV4_Rig_Rios: Vest_Camo_Base
 	{
 		author="Antauri + 885th Bloodpack Division";
-		scope=0;
+		scope=2;
 		displayName="[885th] Rios's ARC Rig";
 		picture="\SWLB_clones\data\ui\icon_SWLB_clone_uniform_ca.paa";
 		model="\ShadowLegion_Aux\Data\CustomVests\V4\models\VESTV4_VestRig_HolsterDouble.p3d";
@@ -8474,8 +8305,8 @@ class CfgWeapons
 		};
 		hiddenSelectionsTextures[]=
 		{
-	/*1*/	"885_Armor\885_Armor\Customs\Rios\RIG_co.paa",
-	/*2*/	"",
+	/*1*/	"",
+	/*2*/	"885_Armor\885_Armor\Customs\Rios\RIG_co.paa",
 	/*3*/	"885_Armor\885_Armor\Customs\Rios\RIG_co.paa",
 	/*4*/	"885_Armor\885_Armor\Customs\Rios\RIG_co.paa",
 	/*5*/	"",
@@ -8489,15 +8320,15 @@ class CfgWeapons
 	/*13*/	"",
 	/*14*/	"885_Armor\885_Armor\Customs\Rios\RIG_co.paa",
 	/*15*/	"885_Armor\885_Armor\Customs\Rios\ARCVest_co.paa",
-	/*16*/	"885_Armor\885_Armor\Customs\Rios\ARCVest_co.paa",
+	/*16*/	"",
 	/*17*/	"885_Armor\885_Armor\Customs\Rios\ARCVest_co.paa",
-	/*18*/	"885_Armor\885_Armor\Customs\Rios\ARCVest_co.paa",
+	/*18*/	"",
 	/*19*/	"",
 	/*20*/	"",
-	/*21*/	"",
-	/*22*/	"",
+	/*21*/	"885_Armor\885_Armor\Customs\Rios\Kama2_co.paa",
+	/*22*/	"885_Armor\885_Armor\Customs\Rios\NCOPauldron_co.paa",
 	/*23*/	"",
-	/*24*/	"",
+	/*24*/	"885_Armor\885_Armor\Customs\Rios\NCOPauldron_co.paa",
 	/*25*/	"885_Armor\885_Armor\Customs\Rios\Suspenders&Straps_co.paa",
 	/*26*/	"",
 	/*27*/	"885_Armor\885_Armor\Customs\Rios\Suspenders&Straps_co.paa",
@@ -8514,8 +8345,8 @@ class CfgWeapons
 		};
 		hiddenSelectionsMaterials[]=
 		{
-	/*1*/	"885_Armor\885_Armor\Customs\Rios\RIG.rvmat",
-	/*2*/	"",
+	/*1*/	"",
+	/*2*/	"885_Armor\885_Armor\Customs\Rios\RIG.rvmat",
 	/*3*/	"885_Armor\885_Armor\Customs\Rios\RIG.rvmat",
 	/*4*/	"885_Armor\885_Armor\Customs\Rios\RIG.rvmat",
 	/*5*/	"",
@@ -8529,15 +8360,15 @@ class CfgWeapons
 	/*13*/	"",
 	/*14*/	"885_Armor\885_Armor\Customs\Rios\RIG.rvmat",
 	/*15*/	"885_Armor\885_Armor\Customs\Rios\ARCPlating.rvmat",
-	/*16*/	"885_Armor\885_Armor\Customs\Rios\ARCPlating.rvmat",
+	/*16*/	"",
 	/*17*/	"885_Armor\885_Armor\Customs\Rios\ARCVest.rvmat",
-	/*18*/	"885_Armor\885_Armor\Customs\Rios\ARCVest.rvmat",
+	/*18*/	"",
 	/*19*/	"",
 	/*20*/	"",
 	/*21*/	"",
-	/*22*/	"",
+	/*22*/	"885_Armor\885_Armor\Customs\Rios\NCOPauldron.rvmat",
 	/*23*/	"",
-	/*24*/  "",
+	/*24*/  "885_Armor\885_Armor\Customs\Rios\NCOPauldron.rvmat",
 	/*25*/	"885_Armor\885_Armor\Customs\Rios\Suspenders&Straps.rvmat",
 	/*26*/	"",
 	/*27*/	"885_Armor\885_Armor\Customs\Rios\Suspenders&Straps.rvmat",
@@ -8635,6 +8466,213 @@ class CfgWeapons
 					hitpointName="HitLegs";
 					armor=8;
 					passThrough=0.4;
+				};
+			};
+		};
+	};
+	class 885th_Cust_VestV4_Rig_Charge: Vest_Camo_Base
+	{
+		author="Antauri + 885th Bloodpack Division";
+		scope=2;
+		displayName="[885th] Charge's SL Rig";
+		picture="\SWLB_clones\data\ui\icon_SWLB_clone_uniform_ca.paa";
+		model="\ShadowLegion_Aux\Data\CustomVests\V4\models\VESTV4_VestRig_HolsterSingle.p3d";
+		hiddenSelections[]=
+		{
+	/*1*/	"VibrobladeLeft",
+	/*2*/	"VibrobladeRight",
+	/*3*/	"Grenades",
+	/*4*/	"RigLower",
+	/*5*/	"ShoulderPouches",
+	/*6*/	"ShoulderAntennaRight",
+	/*7*/	"ShoulderAntennaLeft",
+	/*8*/	"HolsterRight",
+	/*9*/	"HolsterLeft",
+	/*10*/	"CartridgesTopRight",
+	/*11*/	"ArmPouchLeft",
+	/*12*/	"ArmCatridgesRight",
+	/*13*/	"SuspenderPouchesFront",
+	/*14*/	"SuspenderPouchesBack",
+	/*15*/	"ARCPlating",
+	/*16*/	"ARCBracers",
+	/*17*/	"KamaPouches",
+	/*18*/	"ARCKama",
+	/*19*/	"ARCPauldronLeft",
+	/*20*/	"ARCPauldronRight",
+	/*21*/	"JetpackKama",
+	/*22*/	"NCOPauldronLeft",
+	/*23*/	"NCOPauldronSmallRight",
+	/*24*/	"PauldronBase",
+	/*25*/	"SuspenderLeft",
+	/*26*/	"SuspenderCross",
+	/*27*/	"SuspenderRight",
+	/*28*/	"ArmStrapLeft",
+	/*29*/	"ArmStrapRight",
+	/*30*/	"AirbornePieces",
+	/*31*/	"AirborneBag",
+	/*32*/	"CorporalPauldron",
+	/*33*/	"Buttbag",
+	/*34*/	"LRpack",
+	/*35*/	"CorporalPauldron2",
+	/*36*/	"CrossClip",
+	/*37*/	"ChestGuard"
+		};
+		hiddenSelectionsTextures[]=
+		{
+	/*1*/	"",
+	/*2*/	"",
+	/*3*/	"",
+	/*4*/	"",
+	/*5*/	"",
+	/*6*/	"",
+	/*7*/	"885_Armor\885_Armor\Customs\Charge\Charge_Custom_Rig_CO.paa",
+	/*8*/	"885_Armor\885_Armor\Customs\Charge\Charge_Custom_Rig_CO.paa",
+	/*9*/	"",
+	/*10*/	"",
+	/*11*/	"885_Armor\885_Armor\Customs\Charge\Charge_Custom_Rig_CO.paa",
+	/*12*/	"885_Armor\885_Armor\Customs\Charge\Charge_Custom_Rig_CO.paa",
+	/*13*/	"",
+	/*14*/	"",
+	/*15*/	"",
+	/*16*/	"",
+	/*17*/	"",
+	/*18*/	"",
+	/*19*/	"",
+	/*20*/	"",
+	/*21*/	"",
+	/*22*/	"",
+	/*23*/	"885_Armor\885_Armor\Customs\Charge\Charge_Custom_Pauldron_co.paa",
+	/*24*/	"885_Armor\885_Armor\Customs\Charge\Charge_Custom_Pauldron_co.paa",
+	/*25*/	"885_Armor\885_Armor\Customs\Charge\Charge_Custom_Suspenders_CO.paa",
+	/*26*/	"",
+	/*27*/	"885_Armor\885_Armor\Customs\Charge\Charge_Custom_Suspenders_CO.paa",
+	/*28*/	"",
+	/*29*/	"",
+	/*30*/	"",
+	/*31*/	"885_Armor\885_Armor\Customs\Charge\Charge_Custom_Airborne_Bag_CO.paa",
+	/*32*/	"",
+	/*33*/	"",
+	/*34*/	"",
+	/*35*/	"",
+	/*36*/	"",
+	/*37*/	""
+		};
+		hiddenSelectionsMaterials[]=
+		{
+	/*1*/	"",
+	/*2*/	"",
+	/*3*/	"",
+	/*4*/	"",
+	/*5*/	"",
+	/*6*/	"",
+	/*7*/	"885_Armor\885_Armor\Customs\Charge\RIG.rvmat",
+	/*8*/	"885_Armor\885_Armor\Customs\Charge\RIG.rvmat",
+	/*9*/	"",
+	/*10*/	"",
+	/*11*/	"885_Armor\885_Armor\Customs\Charge\RIG.rvmat",
+	/*12*/	"885_Armor\885_Armor\Customs\Charge\RIG.rvmat",
+	/*13*/	"",
+	/*14*/	"",
+	/*15*/	"",
+	/*16*/	"",
+	/*17*/	"",
+	/*18*/	"",
+	/*19*/	"",
+	/*20*/	"",
+	/*21*/	"",
+	/*22*/	"",
+	/*23*/	"885_Armor\885_Armor\Customs\Charge\NCOPauldron.rvmat",
+	/*24*/  "885_Armor\885_Armor\Customs\Charge\NCOPauldron.rvmat",
+	/*25*/	"885_Armor\885_Armor\Customs\Charge\Suspenders&Straps.rvmat",
+	/*26*/	"",
+	/*27*/	"885_Armor\885_Armor\Customs\Charge\Suspenders&Straps.rvmat",
+	/*28*/	"",
+	/*29*/	"",
+	/*30*/	"",
+	/*31*/	"885_Armor\885_Armor\Customs\Charge\AirborneBag.rvmat",
+	/*32*/	"",
+	/*33*/	"",
+	/*34*/	"",
+	/*35*/	"",
+	/*36*/	"",
+	/*37*/	""
+		};
+		class ItemInfo: VestItem
+		{
+			uniformModel="\ShadowLegion_Aux\Data\CustomVests\V4\models\VESTV4_VestRig_HolsterSingle.p3d";
+			hiddenSelections[]=
+			{
+				"VibrobladeLeft",
+				"VibrobladeRight",
+				"Grenades",
+				"RigLower",
+				"ShoulderPouches",
+				"ShoulderAntennaRight",
+				"ShoulderAntennaLeft",
+				"HolsterRight",
+				"HolsterLeft",
+				"CartridgesTopRight",
+				"ArmPouchLeft",
+				"ArmCatridgesRight",
+				"SuspenderPouchesFront",
+				"SuspenderPouchesBack",
+				"ARCPlating",
+				"ARCBracers",
+				"KamaPouches",
+				"ARCKama",
+				"ARCPauldronLeft",
+				"ARCPauldronRight",
+				"JetpackKama",
+				"NCOPauldronLeft",
+				"NCOPauldronSmallRight",
+				"PauldronBase",
+				"SuspenderLeft",
+				"SuspenderCross",
+				"SuspenderRight",
+				"ArmStrapLeft",
+				"ArmStrapRight",
+				"AirbornePieces",
+				"AirborneBag",
+				"CorporalPauldron",
+				"Buttbag",
+				"LRpack",
+				"CorporalPauldron2",
+				"CrossClip",
+				"ChestGuard"
+			};
+			vestType="Rebreather";
+			containerClass="Supply250";
+			mass=70;
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					HitpointName="HitChest";
+					armor=16;
+					PassThrough=0.30000001;
+				};
+				class Diaphragm
+				{
+					HitpointName="HitDiaphragm";
+					armor=16;
+					PassThrough=0.30000001;
+				};
+				class Abdomen
+				{
+					hitpointName="HitAbdomen";
+					armor=16;
+					passThrough=0.30000001;
+				};
+				class Body
+				{
+					hitpointName="HitBody";
+					passThrough=0.30000001;
+				};
+				class Legs
+				{
+					hitpointName="HitLegs";
+					armor=6;
+					passThrough=0.30000001;
 				};
 			};
 		};
@@ -12225,23 +12263,7 @@ class CfgVehicles
 	//LS Gear
 	
 	//3AS Gear
-	class 885th_3as_Charge_Backpack: 3AS_B_CloneTrooper_Rocket_F
-	{
-		author="885th Bloodpack Division";
-		scope=2;
-		picture="";
-		displayName="[885th] Charge Anti-Tank Backpack";
-		maximumload = 700;
-
-		hiddenSelections[]=
-		{
-			"Backpack"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"\885_Armor\885_Armor\Customs\Charge\Charge_AT_Backpack.paa"
-		};
-	};
+	
 	//20th Gear
 	class 885th_Cust_RTO_Buttbag2_Bandit: B_AssaultPack_blk
 	{
@@ -12304,7 +12326,38 @@ class CfgVehicles
 		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
 		tf_encryptionCode="tf_west_radio_code";
 		tf_hasLRradio=1;
-		tf_range=40000;
+		tf_range=100000;
+		tf_subtype="digital_lr";
+		JLTS_isJumppack=0;
+		sc_jumppack=1;
+		sc_particles[]=
+		{
+			{0,-0.3,-0.1}
+		};
+		maximumload=600;
+		mass = 15;
+	};
+
+	class 885th_ONI_cdv: JLTS_Clone_jumppack_mc
+	{
+		scope=2;
+		author="885th BPD + Legion Studios";
+		displayName="[885th] ONI Emergency Descent Pack";
+		picture="\MRC\JLTS\characters\CloneArmor\data\ui\Clone_jumppack_mc_ui_ca.paa";
+		model="\MRC\JLTS\characters\CloneArmor\CloneJumppackMC.p3d";
+		hiddenSelections[]=
+		{
+			"camo1"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\ONI\ONI_Jumpack_co.paa"
+		};
+		tf_dialog="JLTS_clone_lr_programmer_radio_dialog";
+		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
+		tf_encryptionCode="tf_west_radio_code";
+		tf_hasLRradio=1;
+		tf_range=100000;
 		tf_subtype="digital_lr";
 		JLTS_isJumppack=0;
 		sc_jumppack=1;
@@ -12417,6 +12470,43 @@ class CfgVehicles
 			"",
 			"",
 			"885_Armor\885_Armor\Customs\Nightfall\LRBag.rvmat"
+		};
+		maximumload=350;
+		tf_dialog="JLTS_clone_lr_programmer_radio_dialog";
+		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
+		tf_encryptionCode="tf_west_radio_code";
+		tf_hasLRradio=1;
+		tf_range=40000;
+		tf_subtype="digital_lr";
+		mass=22;
+	};
+	class 885th_Cust_RTO_Buttbag2_Charge: B_AssaultPack_blk
+	{
+		author="Antauri + 885thBPD";
+		scope=2;
+		picture="\MRC\JLTS\characters\CloneArmor\data\ui\Clone_RTO_pack_ui_ca.paa";
+		displayName="[885th] Charge Buttbag and LR Pack + Pouches";
+		model = "\ShadowLegion_Aux\Data\CustomVests\V5\models\VESTV5_LR_Backpack.p3d";
+		hiddenSelections[]=
+		{
+			"KamaPouches",
+			"AirborneBag",
+			"Buttbag",
+			"LRpack"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"",
+			"",
+			"885_Armor\885_Armor\Customs\Charge\Charge_Custom_LR_Buttbag_CO.paa",
+			"885_Armor\885_Armor\Customs\Charge\Charge_Custom_LR_Buttbag_CO.paa"
+		};
+		hiddenSelectionsMaterials[]=
+		{
+			"",
+			"",
+			"885_Armor\885_Armor\Customs\Charge\LRBag.rvmat",
+			"885_Armor\885_Armor\Customs\Charge\LRBag.rvmat"
 		};
 		maximumload=350;
 		tf_dialog="JLTS_clone_lr_programmer_radio_dialog";
