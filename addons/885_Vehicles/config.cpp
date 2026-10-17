@@ -1382,6 +1382,12 @@ class CfgVehicles
 		explosiveResistance = 15
 		fuelExplosionPower= 0;
 		cost=600000;
+		ls_canLift = 1;
+        ls_liftVars[] = {0, -6.0, -4.8}; // {X, Y, Z} offsets directly as an array
+
+        // Fallback / Cross-compatibility for 3AS/TAS scripts
+        tas_canBlift = 1;
+        tas_liftVars = "[[[[0, -6.0, -4.8]]], [-0.001], [-0.4]]";
 		transportMaxBackpacks=4;
 		transportSoldier=8;
 		hideWeaponsCargo=1;
