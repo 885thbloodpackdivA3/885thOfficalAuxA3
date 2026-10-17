@@ -190,6 +190,7 @@ class XtdGearModels
 					"Crimz",
 					"Crusader",
 					"Crow",
+					"Cypher",
 					"Drip",
 					"Gooner",
 					"Kit",
@@ -438,6 +439,7 @@ class XtdGearModels
 					"Screwball",
 					"Scorch",
 					"Smith",
+					"Stormer",
 					"Sytha",
 					"Thunder"
 				};
@@ -936,6 +938,10 @@ class XtdGearInfos
 			variant="P2";
 			camo="P2";
 		};
+		class 885th_Cypher_P2_Helm
+		{
+			model="Trooper_Custom_Helmets";
+			rank="Cypher";
 		class 885th_Drip_P2_Helm
 		{
 			model="Trooper_Custom_Helmets";
@@ -1310,6 +1316,11 @@ class XtdGearInfos
 		{
 			model="Custom_Uniforms";
 			rank="Smith";
+		};
+		class 885th_Stormer_Uniform
+		{
+			model="Custom_Uniforms";
+			rank="Stormer";
 		};
 		class 885th_Sytha_Uniform
 		{
