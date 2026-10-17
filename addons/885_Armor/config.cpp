@@ -964,27 +964,6 @@ class CfgWeapons
 			"885_Armor\885_Armor\Customs\Crusader\Crusader_P2_Helm_co.paa",
         };
 	};
-	class 885th_Vulkan_P2_Helm: 885th_P2_V2_Helmet
-	{
-		author="885th Bloodpack Division";
-		displayName="[885th] Vulkan Custom P2 Helm";
-		picture="";
-		hiddenSelections[]=
-		{
-			"Camo",
-			"Visor",
-        };
-        hiddenSelectionsTextures[]=
-        {
-			"885_Armor\885_Armor\Customs\Vulkan\Vulkan_P2_Helm_co.paa",
-			"885_Armor\885_Armor\Customs\Vulkan\Vulkan_P2_Helm_co.paa",
-        };
-		hiddenSelectionsMaterials[]=
-        {
-            "",
-            "885_Armor\885_Armor\Customs\Vulkan\vulkan_P2_Helmet_Visor.rvmat",
-        };
-	};
 	class 885th_Oxlong_P2_Helm: 885th_P2_V2_Helmet
 	{
 		author="885th Bloodpack Division";
@@ -1025,6 +1004,61 @@ class CfgWeapons
 			"",
             "885_Armor\885_Armor\Customs\Charge\P2_Helmet_Visor.rvmat",
         };
+	};
+	class 885th_Drip_P2_Helm: H_HelmetO_ViperSP_hex_F
+	{
+		author="885th Bloodpack Division - ONI"; 
+        displayName="[885th] Drip's P2 Helmet";
+		scope=2;
+		ace_hearing_protection=1;
+		ace_hearing_lowerVolume=0;
+		picture="\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\P2_Helmet_UI.paa";
+		model="\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_Clone_P2_Helmet.p3d";
+		hiddenselections[]=
+		{
+			"Camo",
+			"visor"
+		};
+		 hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Drip\P2_Helmet_co.paa",
+			"885_Armor\885_Armor\Customs\Drip\P2_Helmet_co.paa",
+		};
+        hiddenSelectionsMaterials[]=
+        {
+			"885_Armor\885_Armor\Customs\Drip\Helmet.rvmat",
+            "885_Armor\885_Armor\Customs\Drip\Visor.rvmat",
+        };
+		subItems[]={};
+		class Iteminfo: HeadgearItem
+		{
+			uniformModel="\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_Clone_P2_Helmet.p3d";
+			mass=15;
+			hiddenselections[]=
+			{
+				"Camo",
+				"visor"
+			};
+			allowedSlots[]={801,901,701,605};
+			modelSides[]={6};
+			class HitpointsProtectionInfo
+			{
+				class Head
+				{
+					hitpointname="HitHead";
+					armor=12;
+					visual="injury_Head";
+					PassThrough=0.089749999;
+				};
+				class Face
+				{
+					hitpointName="HitFace";
+					armor=7;
+					visual="injury_Head";
+					PassThrough=0.089749999;
+				};
+			};
+		};
 	};
 	class 885th_Bandit_P2_Helm: H_HelmetB_black
 	{
@@ -1762,6 +1796,51 @@ class CfgWeapons
         {
             "885_Armor\885_Armor\Customs\Kit\helmet.rvmat",
             "885_Armor\885_Armor\Customs\Kit\visor.rvmat"
+        };
+		subItems[]=
+		{
+			"Integrated_NVG_TI_0_F"
+		};
+		class ItemInfo: ItemInfo
+		{
+			mass=10;
+			uniformModel="\ls\core\addons\characters_clone_legacy\helmets\phase2SpecOp\ls_sob_phase2SpecOp_helmet.p3d";
+			hiddenSelections[]=
+			{
+				"camo1",
+				"visor"
+			};
+			class HitpointsProtectionInfo
+			{
+				class Head
+				{
+					hitpointName="HitHead";
+					armor=50;
+					passThrough=0.5;
+				};
+			};
+		};
+	};
+	class 885th_Titan_phase2SpecOp_helmet: H_HelmetO_ViperSP_hex_F
+	{
+		scope=2;
+		author="Legion Studios + 885th Bloodpack Division";
+		displayName="Titan's Spec-Ops P2 Helmet";
+		model="\ls\core\addons\characters_clone_legacy\helmets\phase2SpecOp\ls_sob_phase2SpecOp_helmet.p3d";
+		hiddenSelections[]=
+		{
+			"camo1",
+			"visor"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Customs\Titan\helmet_co.paa",
+			"885_Armor\885_Armor\Customs\Titan\visor_co.paa"
+		};
+		 hiddenSelectionsMaterials[]=
+        {
+            "885_Armor\885_Armor\Customs\Titan\helmet.rvmat",
+            "885_Armor\885_Armor\Customs\Titan\visor.rvmat"
         };
 		subItems[]=
 		{
@@ -13042,11 +13121,6 @@ class CfgVehicles
 			"885_Armor\885_Armor\Customs\Ares\885th_Ares_Upper_co.paa",
 			"885_Armor\885_Armor\Customs\Ares\885th_Ares_Lower_co.paa"
 		};
-		hiddenSelectionsMaterials[]=
-        {
-			"885_Armor\885_Armor\Customs\Ares\P2_BodyUpper.rvmat",
-            "885_Armor\885_Armor\Customs\Ares\P2_Bodylower.rvmat"
-        };
 	};
 	
 	class 885th_Bandit_Trooper : 885th_Vornskr_Trooper {

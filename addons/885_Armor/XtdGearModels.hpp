@@ -190,6 +190,7 @@ class XtdGearModels
 					"Crimz",
 					"Crusader",
 					"Crow",
+					"Drip",
 					"Gooner",
 					"Kit",
 					"Kings",
@@ -207,6 +208,7 @@ class XtdGearModels
 					"Sunshine",
 					"Stormer",
 					"Sushi",
+					"Titan",
 					"Thunder",
 					"Wrath",
 					"Vulkan"
@@ -932,6 +934,13 @@ class XtdGearInfos
 			variant="P2";
 			camo="P2";
 		};
+		class 885th_Drip_P2_Helm
+		{
+			model="Trooper_Custom_Helmets";
+			rank="Drip";
+			variant="P2";
+			camo="P2";
+		};
 		class 885th_Gooner_Scout_Helm
 		{
 			model="Trooper_Custom_Helmets";
@@ -1057,6 +1066,13 @@ class XtdGearInfos
 			rank="Sushi";
 			variant="ARF";
 			camo="ARF";
+		};
+		class 885th_Titan_phase2SpecOp_helmet
+		{
+			model="Trooper_Custom_Helmets";
+			rank="Titan";
+			variant="P2";
+			camo="P2";
 		};
 		class 885th_Thunder_P2_BARC_Helm
 		{
