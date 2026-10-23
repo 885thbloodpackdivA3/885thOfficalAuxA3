@@ -3483,7 +3483,7 @@ class CfgWeapons
 	{	
 		scope = 1;
 		author="885th Bloodpack Division";
-		displayName="[885th] Platoon Clone Visor";
+		displayName="[885th] Plated Clone Visor - SL ";
 		modelOptics="\MRC\JLTS\Core_mod\nvg_optic_dummy.p3d";
 		model="\MRC\JLTS\characters\CloneArmor\CloneNVGCC.p3d";
 		hiddenSelections[]=
