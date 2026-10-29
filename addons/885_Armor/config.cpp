@@ -4174,6 +4174,7 @@ class CfgWeapons
 			mass = 40;
 		};
 	};
+	// QRF - PLACEHOLDER NAME 
 	class 885th_Gryphon_QRF_Uniform: 885th_Vornskr_Uniform
 	{
 		displayName = "[885th] Gryphon Airborne Armor";
