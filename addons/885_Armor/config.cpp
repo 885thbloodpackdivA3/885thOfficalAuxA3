@@ -4081,6 +4081,18 @@ class CfgWeapons
 			mass = 40;
 		};
 	};
+	class 885th_Maverick_Uniform: 885th_Vornskr_Uniform
+	{
+		displayName = "[885th] Maverick Custom P2 Armor";
+		class ItemInfo: UniformItem
+		{
+			uniformModel = "";
+			uniformClass = "885th_Maverick_Trooper";
+			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
+			containerClass = "Supply300";
+			mass = 40;
+		};
+	};
 	class 885th_Crimz_Uniform: ls_cloneUniform_scout
 	{
 		displayName = "[885th] Crimz Custom P2 Armor";
@@ -13280,7 +13292,20 @@ class CfgVehicles
             "885_Armor\885_Armor\Customs\Bandit\P2_Bodylower.rvmat"
         };
 	};
-	
+
+	class 885th_Maverick_Trooper : 885th_Vornskr_Trooper {
+		scope=1;
+		scopeCurator=1;
+		scopeArsenal=2;
+		side=1;
+		uniformClass = "885th_Maverick_Uniform";
+		hiddenSelections[] = {"Camo1","Camo2"};
+		hiddenSelectionsTextures[] = {
+			"885_Armor\885_Armor\Customs\Maverick\Maverick_Armor_Upper_co.paa",
+			"885_Armor\885_Armor\Customs\Maverick\Maverick_Armor_Lower_co.paa"
+		};
+	};
+
 	class 885th_Nightfall_Trooper : 885th_Vornskr_Trooper {
 		scope=1;
 		scopeCurator=1;
