@@ -1,9 +1,3 @@
-// ACE Extended Arsenal (ACEAX) weapon groupings.
-// Same layout as addons\885_Armor\XtdGearModels.hpp:
-//   XtdGearModels  -> defines each arsenal group and its option values
-//   XtdGearInfos   -> maps every weapon class to a group + option values
-// Every model/variant combination inside a group must be unique.
-// Keep primaries and handguns in separate groups (different arsenal tabs).
 class XtdGearModels
 {
 	class CfgWeapons
@@ -28,9 +22,7 @@ class XtdGearModels
 					"DC-15S Elite",
 					"DC-15C",
 					"DC-15C MKII",
-					"DC-19",
-					"Westar-M5",
-					"Westar-M5 MKII"
+					"DC-19"
 				};
 			};
 			class variant
@@ -61,14 +53,37 @@ class XtdGearModels
 					"DC-15A",
 					"DC-15A MKII",
 					"DC-15BR",
-					"DW-32S",
 					"DX36C",
 					"DC-15LE Heavy",
-					"DC-15LE",
-					"DC-17M",
-					"Valken-38X",
-					"Valken-38R",
 					"Valken-38A"
+				};
+			};
+			class variant
+			{
+				label="Variant";
+				values[]=
+				{
+					"Standard",
+					"GL"
+				};
+				alwaysSelectable=1;
+			};
+		};
+		class 885th_ARC
+		{
+			options[]=
+			{
+				"weapon",
+				"variant"
+			};
+			label="885th Westar Platforms";
+			class weapon
+			{
+				label="Weapon";
+				values[]=
+				{
+					"Westar-M5",
+					"Westar-M5 MKII"
 				};
 			};
 			class variant
@@ -94,8 +109,43 @@ class XtdGearModels
 				label="Weapon";
 				values[]=
 				{
-					"DC-15L MKII",
+					"DC-15LE",
+					"DW-32S",
+					"Valken-38X",
+					"Valken-38R"
+				};
+			};
+		};
+		class 885th_Republic_Snipers
+		{
+			options[]=
+			{
+				"weapon"
+			};
+			label="885th Republic Snipers";
+			class weapon
+			{
+				label="Weapon";
+				values[]=
+				{
+					"DC-15X Sharpshooter",
 					"DC-15X"
+				};
+			};
+		};
+		class 885th_DC17M
+		{
+			options[]=
+			{
+				"weapon"
+			};
+			label="885th DC-17M";
+			class weapon
+			{
+				label="Configuration";
+				values[]=
+				{
+					"Blaster"
 				};
 			};
 		};
@@ -165,7 +215,8 @@ class XtdGearModels
 					"Z8",
 					"M-41",
 					"EPL2",
-					"MPL"
+					"MPL",
+					"DC-15L MKII"
 				};
 			};
 		};
@@ -324,21 +375,22 @@ class XtdGearInfos
 			weapon="DC-19";
 			variant="FS";
 		};
+		//Westar Platforms
 		class 885th_WestarM5_F
 		{
-			model="885th_Carbines";
+			model="885th_ARC";
 			weapon="Westar-M5";
 			variant="Standard";
 		};
 		class 885th_WestarM5_GL
 		{
-			model="885th_Carbines";
+			model="885th_ARC";
 			weapon="Westar-M5";
 			variant="GL";
 		};
 		class 885th_WestarM5MKII_F
 		{
-			model="885th_Carbines";
+			model="885th_ARC";
 			weapon="Westar-M5 MKII";
 			variant="Standard";
 		};
@@ -367,12 +419,6 @@ class XtdGearInfos
 			weapon="DC-15BR";
 			variant="Standard";
 		};
-		class 885th_DW32S
-		{
-			model="885th_Rifles";
-			weapon="DW-32S";
-			variant="Standard";
-		};
 		class 885th_DX36C_F
 		{
 			model="885th_Rifles";
@@ -385,30 +431,6 @@ class XtdGearInfos
 			weapon="DC-15LE Heavy";
 			variant="Standard";
 		};
-		class 885th_DC15LEMKII
-		{
-			model="885th_Rifles";
-			weapon="DC-15LE";
-			variant="Standard";
-		};
-		class 885th_DC17M_F
-		{
-			model="885th_Rifles";
-			weapon="DC-17M";
-			variant="Standard";
-		};
-		class 885th_DC15HR
-		{
-			model="885th_Rifles";
-			weapon="Valken-38X";
-			variant="Standard";
-		};
-		class 885th_Valken38XMKII
-		{
-			model="885th_Rifles";
-			weapon="Valken-38R";
-			variant="Standard";
-		};
 		class 885th_Valken38A_F
 		{
 			model="885th_Rifles";
@@ -418,13 +440,46 @@ class XtdGearInfos
 		//Marksman Rifles
 		class 885th_DC15LMKII_F
 		{
-			model="885th_Marksman";
+			model="885th_Heavy_Weapons";
 			weapon="DC-15L MKII";
 		};
-		class 885th_DC15XS
+		class 885th_DC15LEMKII
 		{
 			model="885th_Marksman";
+			weapon="DC-15LE";
+		};
+		//Republic Snipers
+		class 885th_DC15XS
+		{
+			model="885th_Republic_Snipers";
+			weapon="DC-15X Sharpshooter";
+		};
+		class JLTS_DC15X
+		{
+			model="885th_Republic_Snipers";
 			weapon="DC-15X";
+		};
+		//DC-17M (Sniper/Launcher configs are scope=1, reached via the in-game switch)
+		class 885th_DC17M_F
+		{
+			model="885th_DC17M";
+			weapon="Blaster";
+		};
+		//Marksman Rifles
+		class 885th_DW32S
+		{
+			model="885th_Marksman";
+			weapon="DW-32S";
+		};
+		class 885th_DC15HR
+		{
+			model="885th_Marksman";
+			weapon="Valken-38X";
+		};
+		class 885th_Valken38XMKII
+		{
+			model="885th_Marksman";
+			weapon="Valken-38R";
 		};
 		//773 Platform
 		class 885th_773_BR
