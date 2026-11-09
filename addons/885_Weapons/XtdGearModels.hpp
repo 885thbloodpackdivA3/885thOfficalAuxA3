@@ -260,6 +260,37 @@ class XtdGearModels
 			};
 		};
 
+		// ---------------- Launchers ----------------
+		class 885th_Launchers
+		{
+			options[]=
+			{
+				"weapon",
+				"variant"
+			};
+			label="885th Launchers";
+			class weapon
+			{
+				label="Weapon";
+				values[]=
+				{
+					"PLX",
+					"RPS-6"
+				};
+			};
+			class variant
+			{
+				label="Type";
+				values[]=
+				{
+					"Reusable",
+					"Disposable",
+					"Disposable Guided"
+				};
+				alwaysSelectable=1;
+			};
+		};
+
 		// ---------------- Handguns ----------------
 		class 885th_Pistols
 		{
@@ -727,6 +758,31 @@ class XtdGearInfos
 		{
 			model="885th_Melee";
 			weapon="Vibroblade Reversed";
+		};
+		//Launchers (RPS-6 classes are defined in 885_3AS_Experimental)
+		class 885th_launch_PLX_F
+		{
+			model="885th_Launchers";
+			weapon="PLX";
+			variant="Reusable";
+		};
+		class 885th_RPS6
+		{
+			model="885th_Launchers";
+			weapon="RPS-6";
+			variant="Reusable";
+		};
+		class 885th_RPS6_Dispo
+		{
+			model="885th_Launchers";
+			weapon="RPS-6";
+			variant="Disposable";
+		};
+		class 885th_RPS6_G_Dispo
+		{
+			model="885th_Launchers";
+			weapon="RPS-6";
+			variant="Disposable Guided";
 		};
 	};
 };
