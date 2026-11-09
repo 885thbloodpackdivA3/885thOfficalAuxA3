@@ -296,6 +296,25 @@ class XtdGearModels
 				};
 			};
 		};
+
+		// ---------------- Melee ----------------
+		class 885th_Melee
+		{
+			options[]=
+			{
+				"weapon"
+			};
+			label="885th Melee";
+			class weapon
+			{
+				label="Weapon";
+				values[]=
+				{
+					"Vibroblade",
+					"Vibroblade Reversed"
+				};
+			};
+		};
 	};
 };
 class XtdGearInfos
@@ -674,6 +693,17 @@ class XtdGearInfos
 		{
 			model="885th_NonRepublic_Pistols";
 			weapon="S-5";
+		};
+		//Melee
+		class 885th_Vibroblade_r
+		{
+			model="885th_Melee";
+			weapon="Vibroblade";
+		};
+		class 885th_Vibroblade_rotated_r
+		{
+			model="885th_Melee";
+			weapon="Vibroblade Reversed";
 		};
 	};
 };
