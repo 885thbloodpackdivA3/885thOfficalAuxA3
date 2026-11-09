@@ -214,10 +214,25 @@ class XtdGearModels
 					"Z-6 Para",
 					"Z8",
 					"M-41",
-					"EPL2",
-					"MPL",
 					"DC-15L MKII",
 					"DC-15L LMG"
+				};
+			};
+		};
+		class 885th_Explosive_Weapons
+		{
+			options[]=
+			{
+				"weapon"
+			};
+			label="885th Explosive Weapons";
+			class weapon
+			{
+				label="Weapon";
+				values[]=
+				{
+					"MPL",
+					"EPL2"
 				};
 			};
 		};
@@ -586,14 +601,15 @@ class XtdGearInfos
 			model="885th_Heavy_Weapons";
 			weapon="M-41";
 		};
+		//Explosive Weapons
 		class 885th_EPL2
 		{
-			model="885th_Heavy_Weapons";
+			model="885th_Explosive_Weapons";
 			weapon="EPL2";
 		};
 		class 885th_MPL_F
 		{
-			model="885th_Heavy_Weapons";
+			model="885th_Explosive_Weapons";
 			weapon="MPL";
 		};
 		//Non-Republic Weapons
