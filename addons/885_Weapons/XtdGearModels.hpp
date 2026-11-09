@@ -54,7 +54,6 @@ class XtdGearModels
 					"DC-15A MKII",
 					"DC-15BR",
 					"DX36C",
-					"DC-15LE Heavy",
 					"Valken-38A"
 				};
 			};
@@ -111,7 +110,6 @@ class XtdGearModels
 				{
 					"DC-15LE",
 					"DW-32S",
-					"Valken-38X",
 					"Valken-38R"
 				};
 			};
@@ -215,7 +213,9 @@ class XtdGearModels
 					"Z8",
 					"M-41",
 					"DC-15L MKII",
-					"DC-15L LMG"
+					"DC-15L LMG",
+					"DC-15LE Heavy",
+					"Valken-38X"
 				};
 			};
 		};
@@ -462,9 +462,8 @@ class XtdGearInfos
 		};
 		class 885th_DC15LEHB_F
 		{
-			model="885th_Rifles";
+			model="885th_Heavy_Weapons";
 			weapon="DC-15LE Heavy";
-			variant="Standard";
 		};
 		class 885th_Valken38A_F
 		{
@@ -515,7 +514,7 @@ class XtdGearInfos
 		};
 		class 885th_DC15HR
 		{
-			model="885th_Marksman";
+			model="885th_Heavy_Weapons";
 			weapon="Valken-38X";
 		};
 		class 885th_Valken38XMKII
