@@ -216,7 +216,8 @@ class XtdGearModels
 					"M-41",
 					"EPL2",
 					"MPL",
-					"DC-15L MKII"
+					"DC-15L MKII",
+					"DC-15L LMG"
 				};
 			};
 		};
@@ -462,6 +463,12 @@ class XtdGearInfos
 			model="885th_Heavy_Weapons";
 			weapon="DC-15L MKII";
 		};
+		// defined in 885_3AS_Experimental
+		class 885th_DC15L_F
+		{
+			model="885th_Heavy_Weapons";
+			weapon="DC-15L LMG";
+		};
 		class 885th_DC15LEMKII
 		{
 			model="885th_Marksman";
@@ -473,7 +480,8 @@ class XtdGearInfos
 			model="885th_Republic_Snipers";
 			weapon="DC-15X Sharpshooter";
 		};
-		class JLTS_DC15X
+		// defined in 885_3AS_Experimental
+		class 885th_DC15X_F
 		{
 			model="885th_Republic_Snipers";
 			weapon="DC-15X";
