@@ -1,0 +1,624 @@
+// ACE Extended Arsenal (ACEAX) weapon groupings.
+// Same layout as addons\885_Armor\XtdGearModels.hpp:
+//   XtdGearModels  -> defines each arsenal group and its option values
+//   XtdGearInfos   -> maps every weapon class to a group + option values
+// Every model/variant combination inside a group must be unique.
+// Keep primaries and handguns in separate groups (different arsenal tabs).
+class XtdGearModels
+{
+	class CfgWeapons
+	{
+		// ---------------- Primary weapons ----------------
+		class 885th_Carbines
+		{
+			options[]=
+			{
+				"weapon",
+				"variant"
+			};
+			label="885th Carbines";
+			class weapon
+			{
+				label="Weapon";
+				values[]=
+				{
+					"DC-15S",
+					"DC-15S MKII",
+					"DC-15SE",
+					"DC-15S Elite",
+					"DC-15C",
+					"DC-15C MKII",
+					"DC-19",
+					"Westar-M5",
+					"Westar-M5 MKII"
+				};
+			};
+			class variant
+			{
+				label="Variant";
+				values[]=
+				{
+					"Standard",
+					"GL",
+					"FS"
+				};
+				alwaysSelectable=1;
+			};
+		};
+		class 885th_Rifles
+		{
+			options[]=
+			{
+				"weapon",
+				"variant"
+			};
+			label="885th Rifles";
+			class weapon
+			{
+				label="Weapon";
+				values[]=
+				{
+					"DC-15A",
+					"DC-15A MKII",
+					"DC-15BR",
+					"DW-32S",
+					"DX36C",
+					"DC-15LE Heavy",
+					"DC-15LE",
+					"DC-17M",
+					"Valken-38X",
+					"Valken-38R",
+					"Valken-38A"
+				};
+			};
+			class variant
+			{
+				label="Variant";
+				values[]=
+				{
+					"Standard",
+					"GL"
+				};
+				alwaysSelectable=1;
+			};
+		};
+		class 885th_Marksman
+		{
+			options[]=
+			{
+				"weapon"
+			};
+			label="885th Marksman Rifles";
+			class weapon
+			{
+				label="Weapon";
+				values[]=
+				{
+					"DC-15L MKII",
+					"DC-15X"
+				};
+			};
+		};
+		class 885th_773_Platform
+		{
+			options[]=
+			{
+				"weapon",
+				"variant"
+			};
+			label="885th 773 Platform";
+			class weapon
+			{
+				label="Weapon";
+				values[]=
+				{
+					"773BR",
+					"Fire Puncher",
+					"FireSpitter"
+				};
+			};
+			class variant
+			{
+				label="Mark";
+				values[]=
+				{
+					"MKI",
+					"MKII"
+				};
+				alwaysSelectable=1;
+			};
+		};
+		class 885th_Scatterguns
+		{
+			options[]=
+			{
+				"weapon"
+			};
+			label="885th Scatterguns";
+			class weapon
+			{
+				label="Weapon";
+				values[]=
+				{
+					"DP-23",
+					"DX-23",
+					"DC-23"
+				};
+			};
+		};
+		class 885th_Heavy_Weapons
+		{
+			options[]=
+			{
+				"weapon"
+			};
+			label="885th Heavy Weapons";
+			class weapon
+			{
+				label="Weapon";
+				values[]=
+				{
+					"T-15 LIR",
+					"T-15",
+					"Z-6",
+					"Z-6 Para",
+					"Z8",
+					"M-41",
+					"EPL2",
+					"MPL"
+				};
+			};
+		};
+		class 885th_NonRepublic_Weapons
+		{
+			options[]=
+			{
+				"weapon"
+			};
+			label="885th Non-Republic Weapons";
+			class weapon
+			{
+				label="Weapon";
+				values[]=
+				{
+					"E-5",
+					"E-5C",
+					"E-5S",
+					"Wrist Blaster",
+					"Galaar-15",
+					"Galaar-90",
+					"FA-11",
+					"SPA-K12"
+				};
+			};
+		};
+
+		// ---------------- Handguns ----------------
+		class 885th_Pistols
+		{
+			options[]=
+			{
+				"weapon",
+				"variant"
+			};
+			label="885th Blaster Pistols";
+			class weapon
+			{
+				label="Weapon";
+				values[]=
+				{
+					"DC-17",
+					"DC-17A",
+					"DC-17S",
+					"DC-15P",
+					"DC-15SA",
+					"DC-21",
+					"DC-FG"
+				};
+			};
+			class variant
+			{
+				label="Variant";
+				values[]=
+				{
+					"Single",
+					"Dual"
+				};
+				alwaysSelectable=1;
+			};
+		};
+		class 885th_NonRepublic_Pistols
+		{
+			options[]=
+			{
+				"weapon"
+			};
+			label="885th Non-Republic Pistols";
+			class weapon
+			{
+				label="Weapon";
+				values[]=
+				{
+					"Westar-35",
+					"A180",
+					"S-5"
+				};
+			};
+		};
+	};
+};
+class XtdGearInfos
+{
+	class CfgWeapons
+	{
+		//Carbines
+		class 885th_DC15S
+		{
+			model="885th_Carbines";
+			weapon="DC-15S";
+			variant="Standard";
+		};
+		class 885th_DC15SMKII_F
+		{
+			model="885th_Carbines";
+			weapon="DC-15S MKII";
+			variant="Standard";
+		};
+		class 885th_DC15SMKII_GL
+		{
+			model="885th_Carbines";
+			weapon="DC-15S MKII";
+			variant="GL";
+		};
+		class 885th_DC15SE
+		{
+			model="885th_Carbines";
+			weapon="DC-15SE";
+			variant="Standard";
+		};
+		class 885th_DC15SE_GL
+		{
+			model="885th_Carbines";
+			weapon="DC-15SE";
+			variant="GL";
+		};
+		class 885th_Modified_DC15S
+		{
+			model="885th_Carbines";
+			weapon="DC-15S Elite";
+			variant="Standard";
+		};
+		class 885th_DC15C_F
+		{
+			model="885th_Carbines";
+			weapon="DC-15C";
+			variant="Standard";
+		};
+		class 885th_DC15C_GL
+		{
+			model="885th_Carbines";
+			weapon="DC-15C";
+			variant="GL";
+		};
+		class 885th_DC15CMK2
+		{
+			model="885th_Carbines";
+			weapon="DC-15C MKII";
+			variant="Standard";
+		};
+		class 885th_DC15CMK2_GL
+		{
+			model="885th_Carbines";
+			weapon="DC-15C MKII";
+			variant="GL";
+		};
+		class 885th_DC19
+		{
+			model="885th_Carbines";
+			weapon="DC-19";
+			variant="Standard";
+		};
+		class 885th_DC19FS
+		{
+			model="885th_Carbines";
+			weapon="DC-19";
+			variant="FS";
+		};
+		class 885th_WestarM5_F
+		{
+			model="885th_Carbines";
+			weapon="Westar-M5";
+			variant="Standard";
+		};
+		class 885th_WestarM5_GL
+		{
+			model="885th_Carbines";
+			weapon="Westar-M5";
+			variant="GL";
+		};
+		class 885th_WestarM5MKII_F
+		{
+			model="885th_Carbines";
+			weapon="Westar-M5 MKII";
+			variant="Standard";
+		};
+		//Rifles
+		class 885th_DC15A
+		{
+			model="885th_Rifles";
+			weapon="DC-15A";
+			variant="Standard";
+		};
+		class 885th_DC15AMKII_F
+		{
+			model="885th_Rifles";
+			weapon="DC-15A MKII";
+			variant="Standard";
+		};
+		class 885th_DC15AMKII_GL
+		{
+			model="885th_Rifles";
+			weapon="DC-15A MKII";
+			variant="GL";
+		};
+		class 885th_DC15BR
+		{
+			model="885th_Rifles";
+			weapon="DC-15BR";
+			variant="Standard";
+		};
+		class 885th_DW32S
+		{
+			model="885th_Rifles";
+			weapon="DW-32S";
+			variant="Standard";
+		};
+		class 885th_DX36C_F
+		{
+			model="885th_Rifles";
+			weapon="DX36C";
+			variant="Standard";
+		};
+		class 885th_DC15LEHB_F
+		{
+			model="885th_Rifles";
+			weapon="DC-15LE Heavy";
+			variant="Standard";
+		};
+		class 885th_DC15LEMKII
+		{
+			model="885th_Rifles";
+			weapon="DC-15LE";
+			variant="Standard";
+		};
+		class 885th_DC17M_F
+		{
+			model="885th_Rifles";
+			weapon="DC-17M";
+			variant="Standard";
+		};
+		class 885th_DC15HR
+		{
+			model="885th_Rifles";
+			weapon="Valken-38X";
+			variant="Standard";
+		};
+		class 885th_Valken38XMKII
+		{
+			model="885th_Rifles";
+			weapon="Valken-38R";
+			variant="Standard";
+		};
+		class 885th_Valken38A_F
+		{
+			model="885th_Rifles";
+			weapon="Valken-38A";
+			variant="Standard";
+		};
+		//Marksman Rifles
+		class 885th_DC15LMKII_F
+		{
+			model="885th_Marksman";
+			weapon="DC-15L MKII";
+		};
+		class 885th_DC15XS
+		{
+			model="885th_Marksman";
+			weapon="DC-15X";
+		};
+		//773 Platform
+		class 885th_773_BR
+		{
+			model="885th_773_Platform";
+			weapon="773BR";
+			variant="MKI";
+		};
+		class 885th_773_Firepuncher
+		{
+			model="885th_773_Platform";
+			weapon="Fire Puncher";
+			variant="MKI";
+		};
+		class 885th_773_Firepuncher_MKII
+		{
+			model="885th_773_Platform";
+			weapon="Fire Puncher";
+			variant="MKII";
+		};
+		class 885th_773_FireSpitter
+		{
+			model="885th_773_Platform";
+			weapon="FireSpitter";
+			variant="MKI";
+		};
+		class 885th_773_FireSpitter_MKII
+		{
+			model="885th_773_Platform";
+			weapon="FireSpitter";
+			variant="MKII";
+		};
+		//Scatterguns
+		class 885th_DP23_F
+		{
+			model="885th_Scatterguns";
+			weapon="DP-23";
+		};
+		class 885th_DX23_F
+		{
+			model="885th_Scatterguns";
+			weapon="DX-23";
+		};
+		class 885th_DC23
+		{
+			model="885th_Scatterguns";
+			weapon="DC-23";
+		};
+		//Heavy Weapons
+		class 885th_T15LIR
+		{
+			model="885th_Heavy_Weapons";
+			weapon="T-15 LIR";
+		};
+		class 885th_T15
+		{
+			model="885th_Heavy_Weapons";
+			weapon="T-15";
+		};
+		class 885th_Z6
+		{
+			model="885th_Heavy_Weapons";
+			weapon="Z-6";
+		};
+		class 885th_Z6Para_F
+		{
+			model="885th_Heavy_Weapons";
+			weapon="Z-6 Para";
+		};
+		class 885th_Z8_Experimental_F
+		{
+			model="885th_Heavy_Weapons";
+			weapon="Z8";
+		};
+		class 885th_M41
+		{
+			model="885th_Heavy_Weapons";
+			weapon="M-41";
+		};
+		class 885th_EPL2
+		{
+			model="885th_Heavy_Weapons";
+			weapon="EPL2";
+		};
+		class 885th_MPL_F
+		{
+			model="885th_Heavy_Weapons";
+			weapon="MPL";
+		};
+		//Non-Republic Weapons
+		class 885th_E5
+		{
+			model="885th_NonRepublic_Weapons";
+			weapon="E-5";
+		};
+		class 885th_E5C
+		{
+			model="885th_NonRepublic_Weapons";
+			weapon="E-5C";
+		};
+		class 885th_E5S
+		{
+			model="885th_NonRepublic_Weapons";
+			weapon="E-5S";
+		};
+		class 885th_WristBlaster
+		{
+			model="885th_NonRepublic_Weapons";
+			weapon="Wrist Blaster";
+		};
+		class 885th_Galaar15
+		{
+			model="885th_NonRepublic_Weapons";
+			weapon="Galaar-15";
+		};
+		class 885th_Galaar90
+		{
+			model="885th_NonRepublic_Weapons";
+			weapon="Galaar-90";
+		};
+		class 885th_FA11
+		{
+			model="885th_NonRepublic_Weapons";
+			weapon="FA-11";
+		};
+		class 885th_SPAK15
+		{
+			model="885th_NonRepublic_Weapons";
+			weapon="SPA-K12";
+		};
+		//Blaster Pistols
+		class 885th_DC17
+		{
+			model="885th_Pistols";
+			weapon="DC-17";
+			variant="Single";
+		};
+		class 885th_DC17A
+		{
+			model="885th_Pistols";
+			weapon="DC-17A";
+			variant="Single";
+		};
+		class 885th_DC17S_F
+		{
+			model="885th_Pistols";
+			weapon="DC-17S";
+			variant="Single";
+		};
+		class 885th_DC17S_Dual_F
+		{
+			model="885th_Pistols";
+			weapon="DC-17S";
+			variant="Dual";
+		};
+		class 885th_DC15P
+		{
+			model="885th_Pistols";
+			weapon="DC-15P";
+			variant="Single";
+		};
+		class 885th_DC15SA_F
+		{
+			model="885th_Pistols";
+			weapon="DC-15SA";
+			variant="Single";
+		};
+		class 885th_DC21
+		{
+			model="885th_Pistols";
+			weapon="DC-21";
+			variant="Single";
+		};
+		class 885th_DCFG
+		{
+			model="885th_Pistols";
+			weapon="DC-FG";
+			variant="Single";
+		};
+		//Non-Republic Pistols
+		class 885th_Westar35
+		{
+			model="885th_NonRepublic_Pistols";
+			weapon="Westar-35";
+		};
+		class 885th_A180
+		{
+			model="885th_NonRepublic_Pistols";
+			weapon="A180";
+		};
+		class 885th_S5Security
+		{
+			model="885th_NonRepublic_Pistols";
+			weapon="S-5";
+		};
+	};
+};
