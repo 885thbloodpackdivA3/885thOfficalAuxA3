@@ -274,7 +274,6 @@ class XtdGearModels
 				label="Weapon";
 				values[]=
 				{
-					"PLX",
 					"RPS-6"
 				};
 			};
@@ -288,6 +287,22 @@ class XtdGearModels
 					"Disposable Guided"
 				};
 				alwaysSelectable=1;
+			};
+		};
+		class 885th_ADV_AT
+		{
+			options[]=
+			{
+				"weapon"
+			};
+			label="885th ADV AT";
+			class weapon
+			{
+				label="Weapon";
+				values[]=
+				{
+					"PLX"
+				};
 			};
 		};
 
@@ -759,13 +774,13 @@ class XtdGearInfos
 			model="885th_Melee";
 			weapon="Vibroblade Reversed";
 		};
-		//Launchers (RPS-6 classes are defined in 885_3AS_Experimental)
+		//ADV AT
 		class 885th_launch_PLX_F
 		{
-			model="885th_Launchers";
+			model="885th_ADV_AT";
 			weapon="PLX";
-			variant="Standard";
 		};
+		//Launchers (RPS-6 classes are defined in 885_3AS_Experimental)
 		class 885th_RPS6
 		{
 			model="885th_Launchers";
