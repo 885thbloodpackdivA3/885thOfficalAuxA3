@@ -283,7 +283,7 @@ class XtdGearModels
 				label="Type";
 				values[]=
 				{
-					"Reusable",
+					"Standard",
 					"Disposable",
 					"Disposable Guided"
 				};
@@ -764,13 +764,13 @@ class XtdGearInfos
 		{
 			model="885th_Launchers";
 			weapon="PLX";
-			variant="Reusable";
+			variant="Standard";
 		};
 		class 885th_RPS6
 		{
 			model="885th_Launchers";
 			weapon="RPS-6";
-			variant="Reusable";
+			variant="Standard";
 		};
 		class 885th_RPS6_Dispo
 		{
