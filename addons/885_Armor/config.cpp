@@ -4220,12 +4220,38 @@ class CfgWeapons
 	class 885th_Officer_MCVisor: NVGoggles
 	{
 		author = "Antauri + 885th Bloodpack Division";
-		displayName = "[885th] Officer Visor";
+		displayName = "[885th] Plated Clone Visor - SL";
 		modelOptics="";
 		model="\ShadowLegion_Aux\Data\Accessory\MCVisor\model\Clone_officer_visor.p3d";
 		picture="\MRC\JLTS\characters\CloneArmor\data\ui\Clone_nvg_ui_ca.paa";
 		hiddenSelections[] = {"camo"};
 		hiddenSelectionsTextures[] = {"885_Armor\885_Armor\NVG\885th_Officer_Visor_co.paa"};
+        hiddenSelectionsMaterials[]={};
+		visionMode[] = {"Normal","NVG","TI"};
+		thermalMode[]={2,3};
+		ace_nightvision_border = "";
+		ace_nightvision_bluRadius = 0;
+		ace_nightvision_colorPreset[] = {0,{0,0,0,0},{1.3,1.2,0,0.9},{6,1,1,0}};
+		ace_nightvision_eyeCups = 1;
+		ace_nightvision_generation = 4;
+		class ItemInfo
+		{
+			type=616;
+			uniformModel="\ShadowLegion_Aux\Data\Accessory\MCVisor\model\Clone_officer_visor.p3d";
+			modelOff="\ShadowLegion_Aux\Data\Accessory\MCVisor\model\Clone_officer_visor.p3d";
+			mass=20;
+			hiddenSelections[]={"camo"};
+		};
+	};
+ 	class 885th_Nightfall_Visor: NVGoggles
+	{
+		author = "Antauri + 885th Bloodpack Division";
+		displayName = "[885th] Nightfall Custom Plated Visor";
+		modelOptics="";
+		model="\ShadowLegion_Aux\Data\Accessory\MCVisor\model\Clone_officer_visor.p3d";
+		picture="\MRC\JLTS\characters\CloneArmor\data\ui\Clone_nvg_ui_ca.paa";
+		hiddenSelections[] = {"camo"};
+		hiddenSelectionsTextures[] = {"885_Armor\885_Armor\Customs\Nightfall\Nightfalls_Custom_NVG_CO.paa"};
         hiddenSelectionsMaterials[]={};
 		visionMode[] = {"Normal","NVG","TI"};
 		thermalMode[]={2,3};
