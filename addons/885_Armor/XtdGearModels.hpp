@@ -903,12 +903,12 @@ class XtdGearInfos
 			variant="P2";
 			camo="P2";
 		};
-		class 885th_Bullets_EngineerV2_Helm
+		class 885th_Bullets_P2_Helmet
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Bullets";
-			variant="Engineer";
-			camo="Engineer";
+			variant="P2";
+			camo="P2";
 		};
 		class  885th_Cerberus_P3_Pilot_Helm
 		{
