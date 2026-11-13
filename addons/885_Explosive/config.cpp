@@ -11,7 +11,9 @@ class CfgPatches
 			"A3_weapons_F",
 			"A3_characters_F",
 			"JLTS_weapons_EPL2",
-			"885th_Weapons"
+			"885th_Weapons",
+			"cba_main",
+			"cba_xeh"
 		};
 		weapons[]={};
 		units[]={};
@@ -23,6 +25,13 @@ class CfgPatches
 		{
 			"885th_grenade_emp_ammo"
 		};
+	};
+};
+class Extended_PostInit_EventHandlers
+{
+	class 885th_emp_droidCompat_postInit
+	{
+		init="call compile preprocessFileLineNumbers '\885_Explosive\XEH_postInit.sqf'";
 	};
 };
 class CfgAmmo
