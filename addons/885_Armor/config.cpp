@@ -823,59 +823,7 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_Bullets_EngineerV2_Helm: H_HelmetO_ViperSP_hex_F
-	{
-		author="885th Bloodpack Division";
-		weaponPoolAvailable=1;
-		scope=2;
-		displayName="[885th] Bullets Engineer Helm V2";
-		picture="\A3\characters_f\Data\UI\icon_H_helmet_plain_ca.paa";
-		model="\3AS\3AS_Republic_Characters\Headgear\3AS_Clonetrooper_Engineer_Helmet.p3d";
-		hiddenSelections[]=
-		{
-			"Helmet",
-			"Visor"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Bullets\885th_Bullets_Engi_Helmet.paa",
-			"885_Armor\885_Armor\Customs\Bullets\885th_Bullets_Engi_Helmet.paa"
-		};
-		hiddenSelectionsMaterials[]=
-		{
-			"\3AS\3AS_Republic_Characters\Headgear\data\Clonetrooper_Engineer_Helmet\Clonetrooper_Engineer_Helmet.rvmat",
-			"\3AS\3AS_Republic_Characters\Headgear\data\Clonetrooper_Engineer_Helmet\Clonetrooper_Engineer_Helmet_Visor.rvmat"
-		};
-		subItems[] = {"Integrated_NVG_TI_0_F"};
-			ace_hearing_lowerVolume=0;
-		ace_hearing_protection=1;
-		class ItemInfo: HeadgearItem
-		{
-			mass=30;
-			uniformModel="\3AS\3AS_Republic_Characters\Headgear\3AS_Clonetrooper_Engineer_Helmet.p3d";
-			modelSides[]={1};
-			hiddenSelections[]=
-			{
-				"Helmet",
-				"Visor"
-			};
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName="HitHead";
-					armor=17;
-					passThrough=0.5;
-				};
-				class Face
-				{
-					hitpointName="HitFace";
-					armor=12;
-					passThrough=0.5;
-				};
-			};
-		};
-	};
+	
 	class 885th_Sunshine_P2_Helm: 885th_P2_V2_Helmet
 	{
 		author="885th Bloodpack Division";
@@ -911,6 +859,26 @@ class CfgWeapons
         {
             "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
             "885_Armor\885_Armor\Customs\Rios\Rios_P2_Helmet_Visor.rvmat",
+        };
+    };
+	class 885th_Bullets_P2_Helmet: 885th_P2_V2_Helmet
+    {
+        author="885th Bloodpack Division";
+        displayName="[885th] Bullets Custom P2 Helmet";
+        hiddenselections[]=
+        {
+            "Camo", 
+            "Visor",
+        };
+        hiddenSelectionsTextures[]=
+        {
+            "885_Armor\885_Armor\Customs\Bullets\Bullets_Custom_revised_P2_CO.paa",
+			"885_Armor\885_Armor\Customs\Bullets\Bullets_Custom_revised_P2_CO.paa",
+        };
+        hiddenSelectionsMaterials[]=
+        {
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat",
+            "885_Armor\885_Armor\Customs\Bullets\Bullets_P2_Helmet_Visor.rvmat",
         };
     };
 	class 885th_Nightfall_P2_Helm: 885th_P2_V2_Helmet
