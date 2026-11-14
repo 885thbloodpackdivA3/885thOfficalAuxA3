@@ -20136,6 +20136,8 @@ class CfgFunctions
     };
 };
 
+#include "XtdGearModels.hpp"
+
 class CfgSounds
 {
 	sounds[] = {};
