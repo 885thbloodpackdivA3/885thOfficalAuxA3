@@ -111,6 +111,24 @@
     true
 ] call CBA_fnc_addSetting;
 
+// EMP knockout - any EMP ammo (JLTS_isEMPAmmo = 1) detonating within its blast
+// radius of a Katarn wearer drains the shield to 0 and locks out recharge.
+[
+    "AUX_885th_Shield_EMP_Enabled", "CHECKBOX",
+    ["EMP Knocks Out Shields", "When on, Katarn shields caught in an EMP blast are drained to 0 and can't recharge for the lockout time."],
+    "885th Katarn Shield",
+    true,
+    true
+] call CBA_fnc_addSetting;
+
+[
+    "AUX_885th_Shield_EMP_Lockout", "SLIDER",
+    ["EMP Recharge Lockout", "Seconds an EMP blocks shield recharge, added on top of the normal recharge delay."],
+    "885th Katarn Shield",
+    [0, 60, 10, 0],
+    true
+] call CBA_fnc_addSetting;
+
 // NEW - shield HUD screen position. Personal display preference, so this is
 // a per-client setting (isForced = false), unlike everything else in this
 // file which is server-controlled. Each player picks their own placement.

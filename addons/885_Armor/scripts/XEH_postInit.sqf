@@ -17,6 +17,10 @@
 BPD_fnc_shieldHitFX = compile preprocessFileLineNumbers "\885_Armor\scripts\fn_shieldHitFX.sqf";
 BPD_fnc_shieldWoundHandler = compile preprocessFileLineNumbers "\885_Armor\scripts\fn_shieldACEHandler.sqf";
 
+// EMP knockout - also needed on every machine: the EMP detector has to run
+// wherever the projectile is local, which for AI is usually the server.
+call compile preprocessFileLineNumbers "\885_Armor\scripts\fn_shieldEMP.sqf";
+
 // Everything below this point is player-facing only (HUD, menu, the
 // per-frame engine that drives the player's own shield) - correctly stays
 // gated to machines with an actual interface.
