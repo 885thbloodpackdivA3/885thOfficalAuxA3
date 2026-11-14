@@ -43,10 +43,14 @@ class Cfgpatches
 			"885th_Fyrnock_VCT_Uniform",
 			"885th_Fyrnock_Officer_Uniform",
 			"885th_Fyrnock_Medic_Trooper",
+			"885th_Fyrnock_QRF_Uniform",
+			"885th_Fyrnock_QRF_Trooper",
 			"885th_Nexu_Trooper",
 			"885th_Nexu_Vct_Uniform",
 			"885th_Nexu_Officer_Uniform",
 			"885th_Nexu_Medic_Trooper",
+			"885th_Nexu_QRF_Uniform",
+			"885th_Nexu_QRF_Trooper",
 			"885th_Cust_RTO_Buttbag2_Bandit"
 		};
 		weapons[] = {
@@ -151,6 +155,10 @@ class Cfgpatches
 			"885th_Fyrnock_VCT_P2_Helm",
 			"885th_Fyrnock_Officer_P2_Helm",
 			"885th_Fyrnock_Medic_P2_Helm",
+			"885th_Fyrnock_QRF_Air_Helm",
+			"885th_Fyrnock_QRF_P2_Helm",
+			"885th_Nexu_QRF_Air_Helm",
+			"885th_Nexu_QRF_P2_Helm",
 			"885th_Fyrnock_Uniform",
 			"885th_Fyrnock_Medic_Uniform",
 			"885th_Nexu_P2_Uniform",
@@ -1197,6 +1205,26 @@ class CfgWeapons
         {
            "885_Armor\885_Armor\Nexu\885th_Nexu_Medic_P2_Helm_co.paa",
 		   "885_Armor\885_Armor\Nexu\885th_Nexu_Medic_P2_Helm_co.paa",
+        };
+        hiddenSelectionsMaterials[]=
+        {
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat", //Currently pathed to IDA for your convenience
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet_Visor.rvmat",
+        };
+    };
+	class 885th_Nexu_QRF_P2_Helm: 885th_P2_V2_Helmet
+	{
+		author="885th Bloodpack Division"; //Hit Ctrl+F and replace "Smegus the destroyer" with your name
+        displayName="[885th] Nexu QRF P2 Helmet";
+        hiddenselections[]= //DONT TOUCH hiddenselections, lest you explode
+        {
+            "Camo", 
+            "Visor",
+        };
+        hiddenSelectionsTextures[]=
+        {
+           "885_Armor\885_Armor\Medic\Nexu_QRF_P2_Helm_co.paa",
+		   "885_Armor\885_Armor\Medic\Nexu_QRF_P2_Helm_co.paa",
         };
         hiddenSelectionsMaterials[]=
         {
@@ -2309,10 +2337,10 @@ class CfgWeapons
 			};
 		};
 	};
-	class 885th_Medic_AB_Helm: 885th_AB_Helm
+	class 885th_Fyrnock_QRF_Air_Helm: 885th_AB_Helm
 	{
 		author = "885th Bloodpack Division";
-		displayName = "[885th] QRF Airborne Helmet";
+		displayName = "[885th] Fyrnock QRF Airborne Helmet";
 		hiddenselections[] =
 		{
 			"Camo",
@@ -2320,8 +2348,23 @@ class CfgWeapons
 		};
 		hiddenSelectionsTextures[] =
 		{
-			"885_Armor\885_Armor\Vornskr\Airborne\885th_Medic_Airborne_Helm_co.paa",
-			"885_Armor\885_Armor\Vornskr\Airborne\885th_Medic_Airborne_Helm_co.paa"
+			"885_Armor\885_Armor\Medic\Fyrnock_QRF_Air_Helm_co.paa",
+			"885_Armor\885_Armor\Medic\Fyrnock_QRF_Air_Helm_co.paa"
+		};
+	};
+	class 885th_Nexu_QRF_Air_Helm: 885th_AB_Helm
+	{
+		author = "885th Bloodpack Division";
+		displayName = "[885th] Nexu QRF Airborne Helmet";
+		hiddenselections[] =
+		{
+			"Camo",
+			"visor"
+		};
+		hiddenSelectionsTextures[] =
+		{
+			"885_Armor\885_Armor\Medic\Nexu_QRF_Air_Helm_co.paa",
+			"885_Armor\885_Armor\Medic\Nexu_QRF_Air_Helm_co.paa"
 		};
 	};
 	class 885th_Vornskr_Hazard_Helm_Base: H_HelmetO_ViperSP_hex_F
@@ -2691,6 +2734,27 @@ class CfgWeapons
         {
 			"885_Armor\885_Armor\Fyrnock\885th_Fyrnock_Medic_Helmet.paa",
 			"885_Armor\885_Armor\Fyrnock\885th_Fyrnock_Medic_Helmet.paa",
+        };
+        hiddenSelectionsMaterials[]=
+        {
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet.rvmat", //Currently pathed to IDA for your convenience
+            "\Indecisive_Armoury_units\REPUBLIC\Clone_P2_Helmet\IDA_P2_Helmet_Visor.rvmat",
+        };
+    };
+	class 885th_Fyrnock_QRF_P2_Helm: 885th_P2_V2_Helmet
+	{
+		author="885th Bloodpack Division";
+		displayName="[885th] Fyrnock QRF P2 Helmet";
+		picture="";
+		hiddenSelections[]=
+		{
+			"Camo",
+			"Visor",
+        };
+        hiddenSelectionsTextures[]=
+        {
+			"885_Armor\885_Armor\Medic\Fyrnock_QRF_P2_Helm_co.paa",
+			"885_Armor\885_Armor\Medic\Fyrnock_QRF_P2_Helm_co.paa",
         };
         hiddenSelectionsMaterials[]=
         {
@@ -3764,6 +3828,30 @@ class CfgWeapons
 		{
 			uniformModel = "";
 			uniformClass = "885th_Medic_Trooper";
+			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
+			containerClass = "Supply250";
+			mass = 40;
+		};
+	};
+	class 885th_Fyrnock_QRF_Uniform: 885th_Vornskr_Uniform
+	{
+		displayName = "[885th]  Fyrnock QRF P2 Armor";
+		class ItemInfo: UniformItem
+		{
+			uniformModel = "";
+			uniformClass = "885th_Fyrnock_QRF_Trooper";
+			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
+			containerClass = "Supply250";
+			mass = 40;
+		};
+	};
+	class 885th_Nexu_QRF_Uniform: 885th_Vornskr_Uniform
+	{
+		displayName = "[885th]  Nexu QRF P2 Armor";
+		class ItemInfo: UniformItem
+		{
+			uniformModel = "";
+			uniformClass = "885th_Nexu_QRF_Trooper";
 			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
 			containerClass = "Supply250";
 			mass = 40;
@@ -12430,6 +12518,66 @@ class CfgVehicles
 		maximumload=600;
 		mass = 15;
 	};
+	class 885th_Fyrnock_Cdv: JLTS_Clone_jumppack_mc
+	{
+		scope=2;
+		author="885th BPD + Legion Studios";
+		displayName="[885th] Fyrnock QRF Jump pack";
+		picture="\MRC\JLTS\characters\CloneArmor\data\ui\Clone_jumppack_mc_ui_ca.paa";
+		model="\MRC\JLTS\characters\CloneArmor\CloneJumppackMC.p3d";
+		hiddenSelections[]=
+		{
+			"camo1"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Medic\Fyrnock_Jumpack_co.paa"
+		};
+		tf_dialog="JLTS_clone_lr_programmer_radio_dialog";
+		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
+		tf_encryptionCode="tf_west_radio_code";
+		tf_hasLRradio=1;
+		tf_range=25000;
+		tf_subtype="digital_lr";
+		JLTS_isJumppack=0;
+		sc_jumppack=1;
+		sc_particles[]=
+		{
+			{0,-0.3,-0.1}
+		};
+		maximumload=300;
+		mass = 15;
+	};
+	class 885th_Nexu_Cdv: JLTS_Clone_jumppack_mc
+	{
+		scope=2;
+		author="885th BPD + Legion Studios";
+		displayName="[885th] Nexu QRF Jump pack";
+		picture="\MRC\JLTS\characters\CloneArmor\data\ui\Clone_jumppack_mc_ui_ca.paa";
+		model="\MRC\JLTS\characters\CloneArmor\CloneJumppackMC.p3d";
+		hiddenSelections[]=
+		{
+			"camo1"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"885_Armor\885_Armor\Medic\Nexu_Jumpack_co.paa"
+		};
+		tf_dialog="JLTS_clone_lr_programmer_radio_dialog";
+		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
+		tf_encryptionCode="tf_west_radio_code";
+		tf_hasLRradio=1;
+		tf_range=25000;
+		tf_subtype="digital_lr";
+		JLTS_isJumppack=0;
+		sc_jumppack=1;
+		sc_particles[]=
+		{
+			{0,-0.3,-0.1}
+		};
+		maximumload=300;
+		mass = 15;
+	};
 	
 	class 885th_Cust_RTO_Buttbag2_Rios: B_AssaultPack_blk
 	{
@@ -13179,6 +13327,19 @@ class CfgVehicles
 			"885_Armor\885_Armor\Fyrnock\885th_Fyrnock Medic_Armor_Lower.paa"
 		};
 	};
+	class 885th_Fyrnock_QRF_Trooper : 885th_Vornskr_Trooper {
+		scope=1;
+		scopeCurator=1;
+		scopeArsenal=2;
+		side=1;
+		uniformClass = "885th_Fyrnock_QRF_Uniform";
+		hiddenSelections[] = {"Camo1","Camo2"};
+		hiddenSelectionsTextures[] = {
+			"\885_Armor\885_Armor\Medic\Fyrnock_QRF_Upper_co.paa",
+			"\885_Armor\885_Armor\Medic\Fyrnock_QRF_Lower_co.paa"
+		};
+	};
+
 	class 885th_Nexu_Trooper : 885th_Vornskr_Trooper {
 		scope=1;
 		scopeCurator=1;
@@ -13227,6 +13388,18 @@ class CfgVehicles
 			"885_Armor\885_Armor\Nexu\Nexu_Medic_Armor_Lower_co.paa"
 		};
 	};
+	class 885th_Nexu_QRF_Trooper : 885th_Vornskr_Trooper {
+		scope=1;
+		scopeCurator=1;
+		scopeArsenal=2;
+		side=1;
+		uniformClass = "885th_Nexu_QRF_Uniform";
+		hiddenSelections[] = {"Camo1","Camo2"};
+		hiddenSelectionsTextures[] = {
+			"\885_Armor\885_Armor\Medic\Nexu_QRF_Upper_co.paa",
+			"\885_Armor\885_Armor\Medic\Nexu_QRF_Lower_co.paa"
+		};
+	};
 	
 	class 885th_ONI_MC_Trooper: JLTS_Clone_P2_marshalcommander
 	{
@@ -13251,14 +13424,14 @@ class CfgVehicles
         class HitHead     { armor = 16; material = -1; name = "head";      passThrough = 0.60; radius = 0.2;  };
 
         // Torso: Heavy Katarn chestplate absorbs repeated plasma and slugthrower hits
-        class HitPelvis   { armor = 15; material = -1; name = "pelvis";    passThrough = 0.60; radius = 0.24; };
-        class HitAbdomen  { armor = 15; material = -1; name = "spine1";    passThrough = 0.60; radius = 0.16; };
-        class HitDiaphragm{ armor = 18; material = -1; name = "spine2";    passThrough = 0.70; radius = 0.18; };
-        class HitChest    { armor = 18; material = -1; name = "spine3";    passThrough = 0.60; radius = 0.18; };
-        class HitBody     { armor = 16; material = -1; name = "body";      passThrough = 0.60; radius = 0.16; };	
+        class HitPelvis   { armor = 5; material = -1; name = "pelvis";    passThrough = 0.60; radius = 0.24; };
+        class HitAbdomen  { armor = 5; material = -1; name = "spine1";    passThrough = 0.60; radius = 0.16; };
+        class HitDiaphragm{ armor = 10; material = -1; name = "spine2";    passThrough = 0.70; radius = 0.18; };
+        class HitChest    { armor = 15; material = -1; name = "spine3";    passThrough = 0.60; radius = 0.18; };
+        class HitBody     { armor = 11; material = -1; name = "body";      passThrough = 0.60; radius = 0.16; };	
 
-		class HitArms     { armor = 12; material = -1; name = "arms"; visual = "arms"; explosionShielding = 0.45; passThrough = 0.90; radius = 0.16; };
-		class HitLegs	  {armor = 12; material = -1; name = "legs"; visual = "legs"; explosionShielding = 0.45; passThrough = 0.90; radius = 0.16; };
+		class HitArms     { armor = 12; material = -1; name = "arms"; visual = "arms"; explosionShielding = 0.45; passThrough = 0.10; radius = 0.16; };
+		class HitLegs	  {armor = 12; material = -1; name = "legs"; visual = "legs"; explosionShielding = 0.45; passThrough = 0.10; radius = 0.16; };
 		};
 	};
 	class 885th_Ares_Trooper : 885th_Vornskr_Trooper {

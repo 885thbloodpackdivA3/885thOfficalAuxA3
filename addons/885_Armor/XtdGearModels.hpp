@@ -91,8 +91,6 @@ class XtdGearModels
 					"EOD",
                     "MG",
 					"Armored",
-                    "QRF",
-					"QRF Medic",
                     "Hazard",
 					"Hazard Vet",
 					"Hazard CO"
@@ -105,14 +103,13 @@ class XtdGearModels
 				{
 					"EOD",
                     "Heavy",
-                    "QRF",
                     "Hazard"
 				};
 			};
             	class camo
             {
 				label="Variant";
-                values[] = {"EOD","Heavy","QRF","Hazard"}; // Always computed, do not acebi
+                values[] = {"EOD","Heavy","Hazard"}; // Always computed, do not acebi
                 alwaysSelectable=1;
             };
 		};
@@ -253,7 +250,9 @@ class XtdGearModels
                     "Standard",
                     "VCT",
                     "Officer",
-					"Medic"
+					"Medic",
+					"QRF",
+					"QRF Alt"
                 };
             };
             class variant
@@ -309,7 +308,8 @@ class XtdGearModels
 					"CT",
 					"VCT",
 					"Officer",
-					"Medic"
+					"Medic",
+					"QRF"
 				};
 			};
 			 class variant
@@ -594,6 +594,8 @@ class XtdGearModels
 					"Company",
 					"Hazard",
 					"Hazard CO",
+					"QRF 1-1",
+					"QRF 1-2",
 					"Mortar"
 				};
 			};
@@ -614,9 +616,7 @@ class XtdGearModels
 					"Scout A",
 					"Scout B",
 					"Katarn Pack",
-					"Jump CO",
 					"Light Jump",
-					"Med Jump",
 					"ARC Pack"
 				};
 			};
@@ -783,20 +783,6 @@ class XtdGearInfos
 			variant="Heavy";
 			camo="Heavy";
 		};
-		class 885th_AB_Helm
-		{
-			model="Trooper_Special_Helmets";
-			rank="QRF";
-			variant="QRF";
-			camo="QRF";
-		};
-		class 885th_Medic_AB_Helm
-		{
-			model="Trooper_Special_Helmets";
-			rank="QRF Medic";
-			variant="QRF";
-			camo="QRF";
-		};
 		class 885th_Vornskr_Hazard_Helm_Base
 		{
 			model="Trooper_Special_Helmets";
@@ -853,6 +839,20 @@ class XtdGearInfos
 			variant="1-1";
 			camo="1-1";
 		};
+		class 885th_Fyrnock_QRF_Air_Helm
+		{
+			model="Trooper_Squad_Helmets";
+			rank="QRF";
+			variant="1-1";
+			camo="1-1";
+		};
+		class 885th_Fyrnock_QRF_P2_Helm
+		{
+			model="Trooper_Squad_Helmets";
+			rank="QRF Alt";
+			variant="1-1";
+			camo="1-1";
+		};
 		class 885th_Nexu_P2_Helm
 		{
 			model="Trooper_Squad_Helmets";
@@ -878,6 +878,20 @@ class XtdGearInfos
 		{
 			model="Trooper_Squad_Helmets";
 			rank="Medic";
+			variant="1-2";
+			camo="1-2";
+		};
+		class 885th_Nexu_QRF_Air_Helm
+		{
+			model="Trooper_Squad_Helmets";
+			rank="QRF";
+			variant="1-2";
+			camo="1-2";
+		};
+		class 885th_Nexu_QRF_P2_Helm
+		{
+			model="Trooper_Squad_Helmets";
+			rank="QRF Alt";
 			variant="1-2";
 			camo="1-2";
 		};
@@ -1162,6 +1176,13 @@ class XtdGearInfos
 			variant="1-1";
 			camo="1-1";
 		};
+		class  885th_Fyrnock_QRF_Uniform
+		{
+			model="Squad_Uniforms";
+			rank="QRF";
+			variant="1-1";
+			camo="1-1";
+		};
 		class 885th_Nexu_Uniform
 		{
 			model="Squad_Uniforms";
@@ -1187,6 +1208,13 @@ class XtdGearInfos
 		{
 			model="Squad_Uniforms";
 			rank="Medic";
+			variant="1-2";
+			camo="1-2";
+		};
+		class 885th_Nexu_QRF_Uniform
+		{
+			model="Squad_Uniforms";
+			rank="QRF";
 			variant="1-2";
 			camo="1-2";
 		};
@@ -1645,6 +1673,16 @@ class XtdGearInfos
 			model="Vornskr_Backpacks";
 			backpack="Hazard CO";
 		};
+		class 885th_Fyrnock_Cdv
+		{
+			model="Vornskr_Backpacks";
+			backpack="QRF 1-1";
+		};
+		class 885th_Nexu_Cdv
+		{
+			model="Vornskr_Backpacks";
+			backpack="QRF 1-2";
+		};
 		class 885th_Republic_Mortar_Bag
 		{
 			model="Vornskr_Backpacks";
@@ -1671,20 +1709,10 @@ class XtdGearInfos
 			model="Detachment_Backpacks";
 			backpack="Katarn Pack";
 		};
-		class 885th_company_Jumppack
-		{
-			model="Detachment_Backpacks";
-			backpack="Jump CO";
-		};
 		class 885th_Jumppack
 		{
 			model="Detachment_Backpacks";
 			backpack="Light Jump";
-		};
-		class 885th_medic_Jumppack
-		{
-			model="Detachment_Backpacks";
-			backpack="Med Jump";
 		};
 		class 885th_Arc_Pack
 		{
