@@ -3,13 +3,14 @@ class Cfgpatches
 	class 885th_Vehicles
 	{
 		author = "885th Bloodpack Div";
-		requiredAddons[] = {"A3_Data_F", "A3_Weapons_F", "A3_Characters_F", "3AS_LAAT", "3AS_ARC_170", "3AS_Republic_Heli_LAS", "3AS_ITT", "TKE_Ext_Core_V", "ls_core"};
+		requiredAddons[] = {"A3_Data_F", "A3_Weapons_F", "A3_Characters_F", "3AS_LAAT", "3AS_ARC_170", "3AS_Republic_Heli_LAS", "3AS_ITT", "TKE_Ext_Core_V", "ls_core", "FIR_AirWeaponSystem_US"};
 		requiredVersion = 0.1;
 		units[] = {
 			"885th_LSV_base_F",
 			"885th_LSV_EWeb",
 			"885th_LAAT_Transport",
 			"885th_LAAT_Gunship",
+			"885th_Cerberus_LAAT_Gunship",
 			"885th_ITT_Base",
 			"885th_ITT",
 			"885th_Draco_Base",
@@ -487,19 +488,18 @@ class CfgVehicles
 		class UserActions
 		{
 		};
+		class Components;
 	};
 	class 3AS_LAAT_Mk2 : 3AS_laat_Base
 	{
 		class UserActions
 		{
 		};
+		class Components;
 	};
 	class 885th_LAAT_Transport : 3AS_LAAT_Mk2
 	{
-		class EventHandlers
-		{
-			postInit = "[(_this select 0),""yes""] execVM '\FIR_AirWeaponSystem_US\Script\init\init.sqf';";
-		};
+		// No FIR AWS init/AMS on the transport (gunships only); its FIR Hydras and AIM-9X still work as normal weapons
 		class UserActions : UserActions
 		{
 			class ls_impulsor_impulse
@@ -519,6 +519,9 @@ class CfgVehicles
 		};
 		class ls_impulsor: ls_impulsor_base
 		{
+			// Quick-response transport: faster impulse than the gunships (Legion Studios defaults 400 / 600 km/h)
+			speed = 600;			// km/h, impulse
+			overchargeSpeed = 900;	// km/h, overcharge
 		};
 		ls_hasImpulse = 1;
 		_mainBladeCenter = "rotor_center";
@@ -534,18 +537,27 @@ class CfgVehicles
 		attendant = 1;
 		airBrakeFrictionCoef = 3;
 		airCapacity = 10;
-        maxSpeed = 500;          // Max speed in km/h the AI and SFM will try to achieve
-        rotorBigSpeed = 1.6;     // Multiplier for main rotor speed/force (Default is usually 1.0)
-        enginePower = 1800;      // Engine power in kW. Increase this to accelerate faster.
-        liftFactor = 1.3;        // Increases overall lift generation
-        cyclicalAsideForce = 1.5; // Increases roll/bank authority (helps maintain speed in turns)
-        cyclicalForwardForce = 1.8; // Crucial: Allows the nose to pitch down harder for forward speed
-		armor = 180;
-		armorLights = 0.4;
-		armorStructural = 1.5;
-		armorFuel = 2.0;
-		armorEngine = 1.5;
-		armorAvionics = 2.0;
+		class Components: Components
+		{
+			class TransportPylonsComponent
+			{
+				UIPicture = "3as\3AS_LAAT\LAATI\data\ui\pylon_laat.paa";
+				class pylons {};
+				class presets {};
+			};
+		};
+		// Light quick-response handling: faster top speed, more pitch/roll authority than the gunships (3AS defaults: 600 / 2.0 / 2.8 / 3.0)
+		maxSpeed = 600;					// km/h
+		cyclicForwardForceCoef = 2.4;	// nose-down authority -> reaches top speed faster
+		cyclicAsideForceCoef = 3.2;		// roll/bank authority
+		liftForceCoef = 3.3;			// extra lift for a lighter feel
+		// Lore: same LAAT/i airframe as the gunship, so same armor
+		armor = 250;
+		armorLights = 0.8;
+		armorStructural = 1.6;
+		armorFuel = 2.5;
+		armorEngine = 1.8;
+		armorAvionics = 2.5;
 		audible = 50;
 		availableforsupporttypes[] = {"CAS_Heli", "Transport", "Drop"};
 		commanderCanSee = 31;					// default
@@ -583,7 +595,8 @@ class CfgVehicles
 		icon = "\3AS\3AS_Laat\LAATI\data\ui\Map_laat_CA.paa";
 		mainBladeCenter = "rotor_center";
 		LockDetectionSystem = "1 + 2 + 4 + 8 + 16 + 32";
-		magazines[] = {"1000Rnd_20mm_shells", "Laserbatteries", "3AS_PylonMissile_LAAT_8Rnd_Missile_AA", "3AS_PylonMissile_LAAT_8Rnd_Missile_AA", "3AS_PylonMissile_LAAT_8Rnd_Missile_AA", "3AS_LAAT_8Rnd_Missile_AGM", "3AS_LAAT_8Rnd_Missile_AGM", "3AS_LAAT_8Rnd_Missile_AGM", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells"};
+		// Pilot loadout: 2x FIR Hydra M282 MPP 38-rocket pods (76) + 2x 3AS Torrent AGM (16) + 12 air-to-air rockets (FIR AIM-9X, 3x4)
+		magazines[] = {"1000Rnd_20mm_shells", "Laserbatteries", "FIR_Hydra_M282_P_38rnd_M", "FIR_Hydra_M282_P_38rnd_M", "3AS_LAAT_8Rnd_Missile_AGM", "3AS_LAAT_8Rnd_Missile_AGM","FIR_AIM9X_EWP_4rnd_M", "FIR_AIM9X_EWP_4rnd_M", "FIR_AIM9X_EWP_4rnd_M", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells"};
 		model = "3as\3AS_laat\LAATi\model\tcw_laat.p3d";
 		nameSound = "veh_helicopter_s";
 		picture = "3AS\3AS_Laat\LAATI\data\ui\LAAT_Profile_ca.paa";
@@ -597,7 +610,7 @@ class CfgVehicles
 		slingLoadMemoryPoint = "sling";
 		slingLoadMinCargoMass = 0;
 		typicalcargo[] = {"885th_Pilot"};
-		weapons[] = {"3as_LAAT_Medium_Canon", "3AS_LAAT_Missile_AGM", "3AS_LAAT_Missile_AA", "CMFlareLauncher","Laserdesignator_pilotCamera"};
+		weapons[] = {"3as_LAAT_Medium_Canon", "FIR_RKT_Launcher", "3AS_LAAT_Missile_AGM", "FIR_AIM9X", "CMFlareLauncher","Laserdesignator_pilotCamera"};
 		weaponsGroup1 = "1 + 2";
 		weaponsGroup2 = 4;
 		weaponsGroup3 = "8 + 	16 + 	32";
@@ -625,6 +638,18 @@ class CfgVehicles
 				priority = 6;
 				hideOnUse = 1;
 			};
+			// FIR full AMS (needs class AMSData below). Same range/conditions as AMS Lite; no shortcut so User3 stays on AMS Lite.
+			class AMSOpen
+			{
+				displayName = "<t color='#739eff'>Open AMS</t>";
+				position = "pos cano";
+				radius = 15;
+				condition = "player in this and (speed this < 1)";
+				statement = "this execVM '\FIR_AirWeaponSystem_US_Cfg\sqs\AMS\AMS_GUI_Open.sqf';";
+				onlyforplayer = "false";
+				priority = 6;
+				hideOnUse = 1;
+			};
 			class ls_impulsor_impulse
 			{
 				displayName="Impulse";
@@ -646,7 +671,11 @@ class CfgVehicles
 		ls_hasImpulse = 1;
 		_mainBladeCenter = "rotor_center";
 		author = "3rd Army Studios + 885th BPD";
-		acceleration = 450;
+		// Heavy gunship handling: slower top speed, less pitch/roll authority than the transport (3AS defaults: 600 / 2.0 / 2.8)
+		acceleration = 400;
+		maxSpeed = 500;				// km/h
+		cyclicForwardForceCoef = 1.8;
+		cyclicAsideForceCoef = 2.4;
 		ace_cargo_hasCargo = 1;
 		ace_cargo_space = 8;
 		ace_fastroping_enabled = 1;
@@ -657,9 +686,56 @@ class CfgVehicles
 		attendant = 1;
 		airBrakeFrictionCoef = 3;
 		airCapacity = 10;
-		armor = 250;
+		// Pylons for FIR AMS Lite: same 4 slots/positions as 3AS, but empty by default (no 3AS High Energy / Concussion missiles)
+		// and with FIR + vanilla BLUFOR hardpoints added so FIR weapons can be loaded. Sensors/displays still inherited.
+		class Components: Components
+		{
+			class TransportPylonsComponent
+			{
+				UIPicture = "3as\3AS_LAAT\LAATI\data\ui\pylon_laat.paa";
+				class pylons
+				{
+					class pylons1
+					{
+						hardpoints[] = {"B_BIM9X_DUAL_RAIL", "B_BIM9X_RAIL", "B_AMRAAM_D_RAIL", "B_AMRAAM_D_DUAL_RAIL", "B_AGM65_RAIL", "B_AGM65_DUAL_RAIL", "B_MISSILE_PYLON", "FIR_BLUFOR_AA_HP", "FIR_BLUFOR_Combined_HP"};
+						attachment = "";
+						priority = 10;
+						maxweight = 300;
+						UIposition[] = {0.5, 0.25};
+					};
+					class pylons2: pylons1
+					{
+						UIposition[] = {0.15, 0.25};
+						mirroredMissilePos = 1;
+					};
+					class pylons3
+					{
+						hardpoints[] = {"B_AMRAAM_D_RAIL", "B_AMRAAM_D_DUAL_RAIL", "B_AGM65_RAIL", "B_AGM65_DUAL_RAIL", "B_MISSILE_PYLON", "B_BOMB_PYLON", "FIR_BLUFOR_AG_HP", "FIR_BLUFOR_Combined_HP"};
+						attachment = "";
+						priority = 9;
+						maxweight = 2500;
+						UIposition[] = {0.55, 0.35};
+					};
+					class pylons4: pylons3
+					{
+						UIposition[] = {0.1, 0.35};
+						mirroredMissilePos = 3;
+					};
+				};
+				class presets
+				{
+					class empty
+					{
+						displayName = "$STR_empty";
+						attachment[] = {};
+					};
+				};
+			};
+		};
+		// Heavier gunship plating: a bit tougher than the transport (250 / 1.6), trading speed for survivability
+		armor = 280;
 		armorLights = 0.8;
-		armorStructural = 1.6;
+		armorStructural = 1.7;
 		armorFuel = 2.5;
 		armorEngine = 1.8;
 		armorAvionics = 2.5;
@@ -675,6 +751,14 @@ class CfgVehicles
 		crewCrashProtection = 0;
 		crewVulnerable = 1;
 		displayname = "[885th] LAAT/I Mk.2 Gunship";
+		// FIR full AMS, generic mode (AMSEnabled = 0): builds the loadout menu from this vehicle's pylons
+		class AMSData
+		{
+			AMSEnabled = 0;
+			DialogClass = "AMS_New_GUI";
+			AircraftBase = "885th_LAAT_Gunship";
+			CustomPreset_Hashmap = "885th_LAAT_Gunship_CustomPreset_Hashmap";
+		};
 		driverAction = "LAAT_Pilot";
 		driverCompartments = "Compartment1";
 		editorpreview = "\3AS\3AS_Laat\LAATI\data\editorpreview\3AS_laat.jpg";
@@ -700,7 +784,8 @@ class CfgVehicles
 		icon = "\3AS\3AS_Laat\LAATI\data\ui\Map_laat_CA.paa";
 		mainBladeCenter = "rotor_center";
 		LockDetectionSystem = "1 + 2 + 4 + 8 + 16 + 32";
-		magazines[] = {"1000Rnd_20mm_shells", "1000Rnd_20mm_shells", "Laserbatteries", "3AS_PylonMissile_LAAT_8Rnd_Missile_AA", "3AS_PylonMissile_LAAT_8Rnd_Missile_AA", "3AS_PylonMissile_LAAT_8Rnd_Missile_AA", "3AS_LAAT_8Rnd_Missile_AGM", "3AS_LAAT_8Rnd_Missile_AGM", "3AS_LAAT_8Rnd_Missile_AGM", "3AS_LAAT_8Rnd_Missile_AGM", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells"};
+		// Pilot loadout: 2x FIR Hydra M229 HE 38-rocket pods (76) + 8 air-to-air rockets (FIR AIM-9X, 2x4)
+		magazines[] = {"1000Rnd_20mm_shells", "1000Rnd_20mm_shells", "Laserbatteries", "FIR_Hydra_M229_P_38rnd_M", "FIR_Hydra_M229_P_38rnd_M", "FIR_AIM9X_EWP_4rnd_M", "FIR_AIM9X_EWP_4rnd_M", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells"};
 		model = "3as\3AS_laat\LAATi\model\tcw_laat.p3d";
 		nameSound = "veh_helicopter_s";
 		picture = "3AS\3AS_Laat\LAATI\data\ui\LAAT_Profile_ca.paa";
@@ -714,7 +799,203 @@ class CfgVehicles
 		slingLoadMemoryPoint = "sling";
 		slingLoadMinCargoMass = 0;
 		typicalcargo[] = {"885th_Pilot"};
-		weapons[] = {"3as_LAAT_Medium_Canon", "3AS_LAAT_Missile_AGM", "3AS_LAAT_Missile_AA", "CMFlareLauncher","Laserdesignator_pilotCamera"};
+		weapons[] = {"3as_LAAT_Medium_Canon", "FIR_RKT_Launcher", "FIR_AIM9X", "CMFlareLauncher","Laserdesignator_pilotCamera"};
+		weaponsGroup1 = "1 + 2";
+		weaponsGroup2 = 4;
+		weaponsGroup3 = "8 + 	16 + 	32";
+		weaponsGroup4 = "64 + 		128";
+		weaponSlots = 0;
+	};
+
+	class 885th_Cerberus_LAAT_Gunship : 3AS_LAAT_Mk1
+	{
+		class EventHandlers
+		{
+			postInit = "[(_this select 0),""yes""] execVM '\FIR_AirWeaponSystem_US\Script\init\init.sqf';";
+		};
+		class UserActions : UserActions
+		{
+			class AMS_LiteOpen
+			{
+				displayName = "<t color='#739eff'>Open AMS Lite</t>";
+				position = "pos cano";
+				radius = 15;
+				shortcut = "User3";
+				condition = "player in this and (speed this < 1)";
+				statement = "this execVM '\FIR_AirWeaponSystem_US\Script\AMS\AMS_Lite\AMS_Lite_GUI_Open.sqf';";
+				onlyforplayer = "false";
+				priority = 6;
+				hideOnUse = 1;
+			};
+			// FIR full AMS (needs class AMSData below). Same range/conditions as AMS Lite; no shortcut so User3 stays on AMS Lite.
+			class AMSOpen
+			{
+				displayName = "<t color='#739eff'>Open AMS</t>";
+				position = "pos cano";
+				radius = 15;
+				condition = "player in this and (speed this < 1)";
+				statement = "this execVM '\FIR_AirWeaponSystem_US_Cfg\sqs\AMS\AMS_GUI_Open.sqf';";
+				onlyforplayer = "false";
+				priority = 6;
+				hideOnUse = 1;
+			};
+			class ls_impulsor_impulse
+			{
+				displayName="Impulse";
+				position="pilotview";
+				radius=5;
+				onlyForPlayer=0;
+				condition="ls_player == currentPilot this and {this call ls_impulsor_fnc_canImpulse}";
+				statement="[this, 1] call ls_impulsor_fnc_impulse";
+			};
+			class ls_impulsor_repulse: ls_impulsor_impulse
+			{
+				displayName="Repulse";
+				statement="[this, -1] call ls_impulsor_fnc_impulse";
+			};
+		};
+		class ls_impulsor: ls_impulsor_base
+		{
+		};
+		ls_hasImpulse = 1;
+		_mainBladeCenter = "rotor_center";
+		author = "3rd Army Studios + 885th BPD";
+		// Heavy gunship handling: slower top speed, less pitch/roll authority than the transport (3AS defaults: 600 / 2.0 / 2.8)
+		acceleration = 400;
+		maxSpeed = 500;				// km/h
+		cyclicForwardForceCoef = 1.8;
+		cyclicAsideForceCoef = 2.4;
+		ace_cargo_hasCargo = 1;
+		ace_cargo_space = 8;
+		ace_fastroping_enabled = 1;
+		ace_interaction_bodyWidth = 3;
+		ace_refuel_canReceive = 1;
+		ace_refuel_flowRate = 8;
+		ace_tagging_canTag = 1;
+		attendant = 1;
+		airBrakeFrictionCoef = 3;
+		airCapacity = 10;
+		// Pylons for FIR AMS Lite: same 4 slots/positions as 3AS, but empty by default (no 3AS High Energy / Concussion missiles)
+		// and with FIR + vanilla BLUFOR hardpoints added so FIR weapons can be loaded. Sensors/displays still inherited.
+		class Components: Components
+		{
+			class TransportPylonsComponent
+			{
+				UIPicture = "3as\3AS_LAAT\LAATI\data\ui\pylon_laat.paa";
+				class pylons
+				{
+					class pylons1
+					{
+						hardpoints[] = {"B_BIM9X_DUAL_RAIL", "B_BIM9X_RAIL", "B_AMRAAM_D_RAIL", "B_AMRAAM_D_DUAL_RAIL", "B_AGM65_RAIL", "B_AGM65_DUAL_RAIL", "B_MISSILE_PYLON", "FIR_BLUFOR_AA_HP", "FIR_BLUFOR_Combined_HP"};
+						attachment = "";
+						priority = 10;
+						maxweight = 300;
+						UIposition[] = {0.5, 0.25};
+					};
+					class pylons2: pylons1
+					{
+						UIposition[] = {0.15, 0.25};
+						mirroredMissilePos = 1;
+					};
+					class pylons3
+					{
+						hardpoints[] = {"B_AMRAAM_D_RAIL", "B_AMRAAM_D_DUAL_RAIL", "B_AGM65_RAIL", "B_AGM65_DUAL_RAIL", "B_MISSILE_PYLON", "B_BOMB_PYLON", "FIR_BLUFOR_AG_HP", "FIR_BLUFOR_Combined_HP"};
+						attachment = "";
+						priority = 9;
+						maxweight = 2500;
+						UIposition[] = {0.55, 0.35};
+					};
+					class pylons4: pylons3
+					{
+						UIposition[] = {0.1, 0.35};
+						mirroredMissilePos = 3;
+					};
+				};
+				class presets
+				{
+					class empty
+					{
+						displayName = "$STR_empty";
+						attachment[] = {};
+					};
+				};
+			};
+		};
+		// Heavier gunship plating: a bit tougher than the transport (250 / 1.6), trading speed for survivability
+		armor = 280;
+		armorLights = 0.8;
+		armorStructural = 1.7;
+		armorFuel = 2.5;
+		armorEngine = 1.8;
+		armorAvionics = 2.5;
+		audible = 50;
+		availableforsupporttypes[] = {"CAS_Heli", "Transport", "Drop"};
+		commanderCanSee = 31;					
+		gunnerCanSee = 1 + 2 + 4 + 8 + 16 + 32; 
+		driverCanSee = 2 + 8 + 16 + 32;			
+		cost = 3000;
+		camouflage = 10.0;
+		canFloat = 1;
+		crew = "885th_Pilot";
+		crewCrashProtection = 0;
+		crewVulnerable = 1;
+		displayname = "[885th] UMBRA LAAT/I Gunship";
+		// FIR full AMS, generic mode (AMSEnabled = 0): builds the loadout menu from this vehicle's pylons
+		class AMSData
+		{
+			AMSEnabled = 0;
+			DialogClass = "AMS_New_GUI";
+			AircraftBase = "885th_Cerberus_LAAT_Gunship";
+			CustomPreset_Hashmap = "885th_Cerberus_LAAT_CustomPreset_Hashmap";
+		};
+		// FIR AIM-9X Sidewinder x4 (EWP), fired by FIR_AIM9X in weapons[] below; 6 mags = 24 missiles
+		magazines[] = {"1000Rnd_20mm_shells", "1000Rnd_20mm_shells", "Laserbatteries", "FIR_Hydra_M229_P_38rnd_M", "FIR_Hydra_M229_P_38rnd_M", "FIR_AIM9X_EWP_4rnd_M", "FIR_AIM9X_EWP_4rnd_M", "FIR_AIM9X_EWP_4rnd_M", "FIR_AIM9X_EWP_4rnd_M", "FIR_AIM9X_EWP_4rnd_M", "FIR_AIM9X_EWP_4rnd_M", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "240Rnd_CMFlare_Chaff_Magazine", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells", "3as_LAAT_1000Rnd_Medium_shells"};
+		driverAction = "LAAT_Pilot";
+		driverCompartments = "Compartment1";
+		editorpreview = "\3AS\3AS_Laat\LAATI\data\editorpreview\3AS_laat.jpg";
+		enableGPS = 1;
+		enableManualFire = 1;
+		enableRadio = 1;
+		side = 1;
+		faction = "885th_Faction";
+		editorSubcategory = "Sub885thNS";
+		gearDown[] = {"gearDownInt", "gearDownExt"};
+		gearDownExt[] = {"3AS\3as_Laat\sounds\LaatdoorOPEN.ogg", 1, 1, 1000};
+		gearDownInt[] = {"3AS\3as_Laat\sounds\LaatdoorOPEN.ogg", 1, 1, 100};
+		gearUp[] = {"gearUpInt", "gearUpExt"};
+		gearUpExt[] = {"3AS\3as_Laat\sounds\LaatdoorOPEN.ogg", 1, 0.8, 1000};
+		gearUpInt[] = {"3AS\3as_Laat\sounds\LaatdoorOPEN.ogg", 1, 1, 100};
+		getOutAction = "GetOutLow";
+		getInRadius = 10;
+		hiddenSelections[] = {"camo", "camo1", "camo2", "camo3", "camo4"};
+		hiddenSelectionsMaterials[] = {};
+		hiddenSelectionsTextures[] = 
+		{
+			"885_Vehicles\textures\laat\Cerberus\Hull_CO.paa",
+			"885_Vehicles\textures\laat\Cerberus\Wings_CO.paa",
+			"885_Vehicles\textures\laat\Cerberus\Weapons_CO.paa",
+			"885_Vehicles\textures\laat\Cerberus\Weapon_Details_CO.paa",
+			"885_Vehicles\textures\laat\Cerberus\Interior_CO.paa"
+		};
+		hiddenUnderwaterSelections[] = {};
+		hiddenUnderwaterSelectionsTextures[] = {};
+		icon = "\3AS\3AS_Laat\LAATI\data\ui\Map_laat_CA.paa";
+		mainBladeCenter = "rotor_center";
+		LockDetectionSystem = "1 + 2 + 4 + 8 + 16 + 32";
+		model = "3as\3AS_laat\LAATi\model\tcw_laat.p3d";
+		nameSound = "veh_helicopter_s";
+		picture = "3AS\3AS_Laat\LAATI\data\ui\LAAT_Profile_ca.paa";
+		receiveRemoteTargets = true;
+		reportRemoteTargets = true;
+		reportOwnPosition = true;
+		showAllTargets = 2;
+		showCrewAim = 4;
+		scope = 2;
+		slingLoadMaxCargoMass = 50000;
+		slingLoadMemoryPoint = "sling";
+		slingLoadMinCargoMass = 0;
+		typicalcargo[] = {"885th_Pilot"};
+		weapons[] = {"3as_LAAT_Medium_Canon", "FIR_RKT_Launcher", "FIR_AIM9X", "CMFlareLauncher","Laserdesignator_pilotCamera"};
 		weaponsGroup1 = "1 + 2";
 		weaponsGroup2 = 4;
 		weaponsGroup3 = "8 + 	16 + 	32";
@@ -1048,6 +1329,18 @@ class CfgVehicles
 				priority = 6;
 				hideOnUse = 1;
 			};
+			// FIR full AMS (uses class AMSData below). No shortcut so User3 stays on AMS Lite.
+			class AMSOpen
+			{
+				displayName = "<t color='#739eff'>Open AMS</t>";
+				position = "pos cano";
+				radius = 15;
+				condition = "player in this and (speed this < 1)";
+				statement = "this execVM '\FIR_AirWeaponSystem_US_Cfg\sqs\AMS\AMS_GUI_Open.sqf';";
+				onlyforplayer = "false";
+				priority = 6;
+				hideOnUse = 1;
+			};
 			class deploySfoils
 			{
 				displayName="Fold S-Foils";
@@ -1068,6 +1361,15 @@ class CfgVehicles
 		scope = 2;
 		scopeCurator = 2;
 		displayname = "[885th] ARC-170 Mk.1";
+		// FIR full AMS, generic mode: builds the loadout menu from the ARC's 6 pylons.
+		// Overrides the Gryphon AMSData FIR adds to the base so ARC presets are stored separately.
+		class AMSData
+		{
+			AMSEnabled = 0;
+			DialogClass = "AMS_New_GUI";
+			AircraftBase = "885th_ARC170";
+			CustomPreset_Hashmap = "885th_ARC170_CustomPreset_Hashmap";
+		};
 		side = 1;
 		faction = "885th_Faction";
 		editorSubcategory = "Sub885thLWFighters";
