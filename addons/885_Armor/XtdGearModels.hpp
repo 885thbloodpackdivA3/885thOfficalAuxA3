@@ -179,7 +179,6 @@ class XtdGearModels
                 values[]=
                 {
 					"Ares",
-                    "Bandit",
 					"Bright",
 					"Bullets",
 					"Charge",
@@ -429,7 +428,6 @@ class XtdGearModels
 				values[]=
 				{
 					"Ares",
-					"Bandit",
 					"Cerberus",
 					"Crimz",
 					"Crow",
@@ -551,7 +549,6 @@ class XtdGearModels
 				values[]=
 				{	
 					"Ares",
-					"Bandit",
 					"Charge",
 					"Crimz",
 					"Kit",
@@ -636,7 +633,6 @@ class XtdGearModels
 				values[]=
 				{	
 					"Ares",
-					"Bandit",
 					"Charge",
 					"Nightfall",
 					"Oxlong",
@@ -904,13 +900,6 @@ class XtdGearInfos
 			rank="Ares";
 			variant="ARF";
 			camo="ARF";
-		};
-		class 885th_Bandit_P2_Helm
-		{
-			model="Trooper_Custom_Helmets";
-			rank="Bandit";
-			variant="P2";
-			camo="P2";
 		};
 		class 885th_Bright_P2_Helmet
 		{
@@ -1300,11 +1289,6 @@ class XtdGearInfos
 			model="Custom_Uniforms";
 			rank="Ares";
 		};
-		class 885th_Bandit_Uniform
-		{
-			model="Custom_Uniforms";
-			rank="Bandit";
-		};
 		class 885th_Cerberus_Uniform
 		{
 			model="Custom_Uniforms";
@@ -1546,11 +1530,6 @@ class XtdGearInfos
 			model="Custom_Vest";
 			vest="Ares";
 		};
-		class 885th_Cust_VestV4_Rig_Bandit
-		{
-			model="Custom_Vest";
-			vest="Bandit";
-		};
 		class 885th_Cust_VestV4_Rig_Charge
 		{
 			model="Custom_Vest";
@@ -1736,11 +1715,6 @@ class XtdGearInfos
 		{
 			model="Custom_Backpacks";
 			backpack="Ares";
-		};
-		class 885th_Bandit_cdv
-		{
-			model="Custom_Backpacks";
-			backpack="Bandit";
 		};
 		class 885th_Cust_RTO_Buttbag2_Charge
 		{

@@ -24,7 +24,6 @@ class Cfgpatches
 			"885th_Kusak_RC_Trooper",
 			"885th_ONI_Trooper",
 			"885th_ONI_MC_Trooper",
-			"885th_Bandit_Trooper",
 			"885th_Screwball_Trooper",
 			"885th_Crimz_Trooper",
 			"885th_Rios_Trooper",
@@ -50,8 +49,7 @@ class Cfgpatches
 			"885th_Nexu_Officer_Uniform",
 			"885th_Nexu_Medic_Trooper",
 			"885th_Nexu_QRF_Uniform",
-			"885th_Nexu_QRF_Trooper",
-			"885th_Cust_RTO_Buttbag2_Bandit"
+			"885th_Nexu_QRF_Trooper"
 		};
 		weapons[] = {
 			"885th_P2_V2_Helmet",
@@ -102,7 +100,6 @@ class Cfgpatches
 			"885th_Thunder_P2_BARC_Helm",
 			"885th_BARC_Helm",
 			"885th_Kusak_Katarn_Helmet",
-			"885th_Bandit_BARC_Helm",
 			"885th_Crow_Kusak_Helm",
 			"Phantom_Kusak_Katarn_Helm",
 			"Scorch_Kusak_Katarn_Helm",
@@ -136,7 +133,6 @@ class Cfgpatches
 			"885th_Rios_Uniform",
 			"885th_ONI_Uniform",
 			"885th_ONI_MC_Uniform",
-			"885th_Bandit_Uniform",
 			"885th_Nightfall_Uniform",
 			"885th_Screwball_Uniform",
 			"885th_Crimz_Uniform",
@@ -166,7 +162,6 @@ class Cfgpatches
 			"885th_Nexu_Vct_P2_Helm",
 			"885th_Nexu_Officer_P2_Helm",
 			"885th_Nexu_Medic_P2_Uniform",
-			"885th_Cust_VestV4_Rig_Bandit",
 			"885th_Cust_VestV4_Rig_ONI"
 		};
     };
@@ -1069,53 +1064,6 @@ class CfgWeapons
 					armor=7;
 					visual="injury_Head";
 					PassThrough=0.089749999;
-				};
-			};
-		};
-	};
-	class 885th_Bandit_P2_Helm: H_HelmetB_black
-	{
-		scope=2;
-		author="Legion Studios + 885th Bloodpack Division";
-		displayName="[885th] Bandit's Modified P2 Helmet";
-		model="\ls\core\addons\characters_clone_legacy\helmets\rex\ls_gar_rex_helmet.p3d";
-		hiddenSelections[]=
-		{
-			"camo1",
-			"visor"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Bandit\Bandit_Helmet_co.paa",
-			"885_Armor\885_Armor\Customs\Bandit\visor_co.paa"
-		};
-        hiddenSelectionsMaterials[]=
-        {
-			"885_Armor\885_Armor\Customs\Bandit\Bandit_Helmet.rvmat",
-            "885_Armor\885_Armor\Customs\Bandit\visor.rvmat"
-        };
-		picture="\ls\core\addons\characters_clone_legacy\_ui\rex_helmet_ui_ca.paa";
-		class ItemInfo: ItemInfo
-		{
-			uniformModel="\ls\core\addons\characters_clone_legacy\helmets\rex\ls_gar_rex_helmet.p3d";
-			hiddenSelections[]=
-			{
-				"camo1",
-				"visor"
-			};
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName="HitHead";
-					armor=17;
-					passThrough=0.2;
-				};
-				class Face
-				{
-					hitpointName="HitFace";
-					armor=10;
-					passThrough=0.2;
 				};
 			};
 		};
@@ -4170,18 +4118,6 @@ class CfgWeapons
 		{
 			uniformModel = "";
 			uniformClass = "885th_Cerberus_Trooper";
-			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
-			containerClass = "Supply300";
-			mass = 40;
-		};
-	};
-	class 885th_Bandit_Uniform: 885th_Vornskr_Uniform
-	{
-		displayName = "[885th] Bandit's Custom P2 Armor";
-		class ItemInfo: UniformItem
-		{
-			uniformModel = "";
-			uniformClass = "885th_Bandit_Trooper";
 			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
 			containerClass = "Supply300";
 			mass = 40;
@@ -7953,259 +7889,7 @@ class CfgWeapons
 	};
 	
 	//Custom NVG
-	class 885th_bandit_tanker_nvg: NVGoggles
-	{
-		scope=2;
-		author="885th Bloodpack Division + Legion Studios";
-		displayName="[885th] Bandit's Armored Plating";
-		model="\ls\core\addons\characters_clone_legacy\equipment\nvgs\tanker\lsd_gar_tanker_nvg.p3d";
-		hiddenSelections[]=
-		{
-			"camo1"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Bandit\Bandit_Tanker_Attachment_co.paa"
-		};
-		 hiddenSelectionsMaterials[]=
-        {
-            "885_Armor\885_Armor\Customs\Bandit\Bandit_Tanker_Attachment.rvmat"
-        };
-		modelOptics="\ls\core\addons\characters\equipment\nvg\ls_optic_dummy.p3d";
-		picture="\ls\core\addons\characters_clone_legacy\_ui\icon_cloneVisor_ca.paa";
-		visionMode[] = {"Normal","NVG","TI"};
-		thermalMode[]={2,3};
-		ace_nightvision_border = "";
-		ace_nightvision_bluRadius = 0;
-		ace_nightvision_colorPreset[] = {0,{0,0,0,0},{1.3,1.2,0,0.9},{6,1,1,0}};
-		ace_nightvision_eyeCups = 1;
-		ace_nightvision_generation = 4;
-		class ItemInfo: ItemInfo
-		{
-			uniformModel="\ls\core\addons\characters_clone_legacy\equipment\nvgs\tanker\lsd_gar_tanker_nvg.p3d";
-			modelOff="\ls\core\addons\characters_clone_legacy\equipment\nvgs\tanker\lsd_gar_tanker_nvg.p3d";
-			mass=20;
-			hiddenSelections[]=
-			{
-				"camo1"
-			};
-		};
-	};
 	//Custom Rigs
-	class 885th_Cust_VestV4_Rig_Bandit: Vest_Camo_Base
-	{
-		author="Antauri + 885th Bloodpack Division";
-		scope=2;
-		displayName="[885th] Bandit's Heavy Platoon Rig";
-		picture="\SWLB_clones\data\ui\icon_SWLB_clone_uniform_ca.paa";
-		model="\ShadowLegion_Aux\Data\CustomVests\V4\models\VESTV4_VestRig_HolsterDouble.p3d";
-		hiddenSelections[]=
-		{
-	/*1*/	"VibrobladeLeft",
-	/*2*/	"VibrobladeRight",
-	/*3*/	"Grenades",
-	/*4*/	"RigLower",
-	/*5*/	"ShoulderPouches",
-	/*6*/	"ShoulderAntennaRight",
-	/*7*/	"ShoulderAntennaLeft",
-	/*8*/	"HolsterRight",
-	/*9*/	"HolsterLeft",
-	/*10*/	"CartridgesTopRight",
-	/*11*/	"ArmPouchLeft",
-	/*12*/	"ArmCatridgesRight",
-	/*13*/	"SuspenderPouchesFront",
-	/*14*/	"SuspenderPouchesBack",
-	/*15*/	"ARCPlating",
-	/*16*/	"ARCBracers",
-	/*17*/	"KamaPouches",
-	/*18*/	"ARCKama",
-	/*19*/	"ARCPauldronLeft",
-	/*20*/	"ARCPauldronRight",
-	/*21*/	"JetpackKama",
-	/*22*/	"NCOPauldronLeft",
-	/*23*/	"NCOPauldronSmallRight",
-	/*24*/	"PauldronBase",
-	/*25*/	"SuspenderLeft",
-	/*26*/	"SuspenderCross",
-	/*27*/	"SuspenderRight",
-	/*28*/	"ArmStrapLeft",
-	/*29*/	"ArmStrapRight",
-	/*30*/	"AirbornePieces",
-	/*31*/	"AirborneBag",
-	/*32*/	"CorporalPauldron",
-	/*33*/	"Buttbag",
-	/*34*/	"LRpack",
-	/*35*/	"CorporalPauldron2",
-	/*36*/	"CrossClip",
-	/*37*/	"ChestGuard"
-		};
-		hiddenSelectionsTextures[]=
-		{
-	/*1*/	"885_Armor\885_Armor\Customs\Bandit\RIG_co.paa",
-	/*2*/	"",
-	/*3*/	"885_Armor\885_Armor\Customs\Bandit\RIG_co.paa",
-	/*4*/	"885_Armor\885_Armor\Customs\Bandit\RIG_co.paa",
-	/*5*/	"885_Armor\885_Armor\Customs\Bandit\RIG_co.paa",
-	/*6*/	"",
-	/*7*/	"",
-	/*8*/	"885_Armor\885_Armor\Customs\Bandit\RIG_co.paa",
-	/*9*/	"885_Armor\885_Armor\Customs\Bandit\RIG_co.paa",
-	/*10*/	"",
-	/*11*/	"885_Armor\885_Armor\Customs\Bandit\RIG_co.paa",
-	/*12*/	"",
-	/*13*/	"",
-	/*14*/	"885_Armor\885_Armor\Customs\Bandit\RIG_co.paa",
-	/*15*/	"885_Armor\885_Armor\Customs\Bandit\ARCVest_co.paa",
-	/*16*/	"",
-	/*17*/	"885_Armor\885_Armor\Customs\Bandit\ARCVest_co.paa",
-	/*18*/	"",
-	/*19*/	"",
-	/*20*/	"",
-	/*21*/	"885_Armor\885_Armor\Customs\Bandit\Kama2_co.paa",
-	/*22*/	"",
-	/*23*/	"",
-	/*24*/	"",
-	/*25*/	"885_Armor\885_Armor\Customs\Bandit\Suspenders&Straps_co.paa",
-	/*26*/	"885_Armor\885_Armor\Customs\Bandit\Suspenders&Straps_co.paa",
-	/*27*/	"885_Armor\885_Armor\Customs\Bandit\Suspenders&Straps_co.paa",
-	/*28*/	"885_Armor\885_Armor\Customs\Bandit\Suspenders&Straps_co.paa",
-	/*29*/	"885_Armor\885_Armor\Customs\Bandit\Suspenders&Straps_co.paa",
-	/*30*/	"",
-	/*31*/	"",
-	/*32*/	"885_Armor\885_Armor\Customs\Bandit\AirbornePauldron_co.paa",
-	/*33*/	"",
-	/*34*/	"",
-	/*35*/	"885_Armor\885_Armor\Customs\Bandit\AirbornePauldron_co.paa",
-	/*36*/	"",
-	/*37*/	"885_Armor\885_Armor\Customs\Bandit\AirbornePauldron_co.paa"
-		};
-		hiddenSelectionsMaterials[]=
-		{
-	/*1*/	"885_Armor\885_Armor\Customs\Bandit\RIG.rvmat",
-	/*2*/	"",
-	/*3*/	"885_Armor\885_Armor\Customs\Bandit\RIG.rvmat",
-	/*4*/	"885_Armor\885_Armor\Customs\Bandit\RIG.rvmat",
-	/*5*/	"885_Armor\885_Armor\Customs\Bandit\RIG.rvmat",
-	/*6*/	"",
-	/*7*/	"",
-	/*8*/	"885_Armor\885_Armor\Customs\Bandit\RIG.rvmat",
-	/*9*/	"885_Armor\885_Armor\Customs\Bandit\RIG.rvmat",
-	/*10*/	"",
-	/*11*/	"885_Armor\885_Armor\Customs\Bandit\RIG.rvmat",
-	/*12*/	"",
-	/*13*/	"",
-	/*14*/	"885_Armor\885_Armor\Customs\Bandit\RIG.rvmat",
-	/*15*/	"885_Armor\885_Armor\Customs\Bandit\ARCPlating.rvmat",
-	/*16*/	"",
-	/*17*/	"885_Armor\885_Armor\Customs\Bandit\ARCVest.rvmat",
-	/*18*/	"",
-	/*19*/	"",
-	/*20*/	"",
-	/*21*/	"885_Armor\885_Armor\Customs\Bandit\Kama2.rvmat",
-	/*22*/	"",
-	/*23*/	"",
-	/*24*/  "",
-	/*25*/	"885_Armor\885_Armor\Customs\Bandit\Suspenders&Straps.rvmat",
-	/*26*/	"885_Armor\885_Armor\Customs\Bandit\Suspenders&Straps.rvmat",
-	/*27*/	"885_Armor\885_Armor\Customs\Bandit\Suspenders&Straps.rvmat",
-	/*28*/	"885_Armor\885_Armor\Customs\Bandit\Suspenders&Straps.rvmat",
-	/*29*/	"885_Armor\885_Armor\Customs\Bandit\Suspenders&Straps.rvmat",
-	/*30*/	"",
-	/*31*/	"",
-	/*32*/	"885_Armor\885_Armor\Customs\Bandit\AirbornePauldron.rvmat",
-	/*33*/	"",
-	/*34*/	"",
-	/*35*/	"885_Armor\885_Armor\Customs\Bandit\AirbornePauldron.rvmat",
-	/*36*/	"",
-	/*37*/	"885_Armor\885_Armor\Customs\Bandit\AirbornePauldron.rvmat"
-		};
-		class ItemInfo: VestItem
-		{
-			uniformModel="\ShadowLegion_Aux\Data\CustomVests\V4\models\VESTV4_VestRig_HolsterDouble.p3d";
-			hiddenSelections[]=
-			{
-				"VibrobladeLeft",
-				"VibrobladeRight",
-				"Grenades",
-				"RigLower",
-				"ShoulderPouches",
-				"ShoulderAntennaRight",
-				"ShoulderAntennaLeft",
-				"HolsterRight",
-				"HolsterLeft",
-				"CartridgesTopRight",
-				"ArmPouchLeft",
-				"ArmCatridgesRight",
-				"SuspenderPouchesFront",
-				"SuspenderPouchesBack",
-				"ARCPlating",
-				"ARCBracers",
-				"KamaPouches",
-				"ARCKama",
-				"ARCPauldronLeft",
-				"ARCPauldronRight",
-				"JetpackKama",
-				"NCOPauldronLeft",
-				"NCOPauldronSmallRight",
-				"PauldronBase",
-				"SuspenderLeft",
-				"SuspenderCross",
-				"SuspenderRight",
-				"ArmStrapLeft",
-				"ArmStrapRight",
-				"AirbornePieces",
-				"AirborneBag",
-				"CorporalPauldron",
-				"Buttbag",
-				"LRpack",
-				"CorporalPauldron2",
-				"CrossClip",
-				"ChestGuard"
-			};
-			vestType="Rebreather";
-			containerClass="Supply250";
-			mass=70;
-			class HitpointsProtectionInfo
-			{
-				class Chest
-				{
-					HitpointName="HitChest";
-					armor=18;
-					PassThrough=0.15;
-				};
-				class Diaphragm
-				{
-					HitpointName="HitDiaphragm";
-					armor=18;
-					PassThrough=0.15;
-				};
-				class Abdomen
-				{
-					hitpointName="HitAbdomen";
-					armor=16;
-					passThrough=0.2;
-				};
-				class Body
-				{
-					hitpointName="HitBody";
-					armor=16;
-					passThrough=0.2;
-				};
-				class Arms
-				{
-					hitpointName="HitArms";
-					armor=8;
-					passThrough=0.4;
-				};
-				class Legs
-				{
-					hitpointName="HitLegs";
-					armor=8;
-					passThrough=0.4;
-				};
-			};
-		};
-	};
 	class 885th_Cust_VestV4_Rig_Stormer: Vest_Camo_Base
 	{
 		author="Antauri + 885th Bloodpack Division";
@@ -12597,78 +12281,7 @@ class CfgVehicles
 	//3AS Gear
 	
 	//20th Gear
-	class 885th_Cust_RTO_Buttbag2_Bandit: B_AssaultPack_blk
-	{
-		author="Antauri + 885thBPD";
-		scope=0;
-		picture="\MRC\JLTS\characters\CloneArmor\data\ui\Clone_RTO_pack_ui_ca.paa";
-		displayName="[885th] Bandit Buttbag and Pouches RTO Pack";
-		model = "\ShadowLegion_Aux\Data\CustomVests\V5\models\VESTV5_LR_Backpack.p3d";
-		hiddenSelections[]=
-		{
-			"KamaPouches",
-			"AirborneBag",
-			"Buttbag",
-			"LRpack"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"",
-			"",
-			"885_Armor\885_Armor\Customs\Bandit\LRBag_co.paa",
-			"885_Armor\885_Armor\Customs\Bandit\LRBag_co.paa"
-		};
-		hiddenSelectionsMaterials[]=
-		{
-			"",
-			"",
-			"885_Armor\885_Armor\Customs\Bandit\LRBag.rvmat",
-			"885_Armor\885_Armor\Customs\Bandit\LRBag.rvmat"
-		};
-		maximumload=600;
-		tf_dialog="JLTS_clone_lr_programmer_radio_dialog";
-		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
-		tf_encryptionCode="tf_west_radio_code";
-		tf_hasLRradio=1;
-		tf_range=40000;
-		tf_subtype="digital_lr";
-		mass=22;
-	};
 	class JLTS_Clone_jumppack_mc;
-	class 885th_Bandit_cdv: JLTS_Clone_jumppack_mc
-	{
-		scope=2;
-		author="885th BPD + Legion Studios";
-		displayName="[885th] Bandit Emergency Descent Pack";
-		picture="\MRC\JLTS\characters\CloneArmor\data\ui\Clone_jumppack_mc_ui_ca.paa";
-		model="\MRC\JLTS\characters\CloneArmor\CloneJumppackMC.p3d";
-		hiddenSelections[]=
-		{
-			"camo1"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Bandit\camo1_co.paa"
-		};
-		hiddenSelectionsMaterials[]=
-		{
-			"885_Armor\885_Armor\Customs\Bandit\camo1.rvmat"
-		};
-		tf_dialog="JLTS_clone_lr_programmer_radio_dialog";
-		tf_dialogUpdate="call TFAR_fnc_updateLRDialogToChannel;";
-		tf_encryptionCode="tf_west_radio_code";
-		tf_hasLRradio=1;
-		tf_range=100000;
-		tf_subtype="digital_lr";
-		JLTS_isJumppack=0;
-		sc_jumppack=1;
-		sc_particles[]=
-		{
-			{0,-0.3,-0.1}
-		};
-		maximumload=600;
-		mass = 15;
-	};
 
 	class 885th_ONI_cdv: JLTS_Clone_jumppack_mc
 	{
@@ -13634,23 +13247,6 @@ class CfgVehicles
 		};
 	};
 	
-	class 885th_Bandit_Trooper : 885th_Vornskr_Trooper {
-		scope=1;
-		scopeCurator=1;
-		scopeArsenal=2;
-		side=1;
-		uniformClass = "885th_Bandit_Uniform";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {
-			"\885_Armor\885_Armor\Customs\Bandit\P2_BodyUpper_co.paa",
-			"\885_Armor\885_Armor\Customs\Bandit\P2_BodyLower_co.paa"
-		};
-		hiddenSelectionsMaterials[]=
-        {
-			"885_Armor\885_Armor\Customs\Bandit\P2_BodyUpper.rvmat",
-            "885_Armor\885_Armor\Customs\Bandit\P2_Bodylower.rvmat"
-        };
-	};
 
 	class 885th_Maverick_Trooper : 885th_Vornskr_Trooper {
 		scope=1;
