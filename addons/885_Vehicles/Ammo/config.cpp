@@ -39,9 +39,7 @@ class CfgPatches
             "885th_Fighter_20mm_Cannon",
             "885th_Fighter_30mm_Cannon",
             "885th_Fighter_AMRAAM",
-            "885th_Fighter_AGM",
-            "885th_ATRT_Cannon",
-            "885th_ATRT_Launcher"
+            "885th_Fighter_AGM"
         };
         magazines[]=
         {
@@ -54,9 +52,7 @@ class CfgPatches
             "885th_Fighter_20mm_Mag",
             "885th_Fighter_30mm_Mag",
             "885th_Fighter_AMRAAM_Mag",
-            "885th_Fighter_AGM_Mag",
-            "885th_ATRT_Cannon_Mag",
-            "885th_ATRT_Launcher_Mag"
+            "885th_Fighter_AGM_Mag"
         };
         ammo[]=
         {
@@ -144,7 +140,7 @@ class CfgAmmo
 		hit=85;
 		indirectHit=35;
 		indirectHitRange=7;
-		explosive=1
+		explosive=1;
 		warheadName="HEAT";
 		effectFly="3AS_PlasmaBolt_Yellow_Fly";
         typicalSpeed= 400;
