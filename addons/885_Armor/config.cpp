@@ -12930,9 +12930,12 @@ class CfgVehicles
 	class 885th_Vornskr_Trooper: B_Soldier_f
 	{
 		author="885th Bloodpack Division + Indecisive Armoury Team";
-		scope=2;
-		scopeCurator=2;
+		// Uniform carrier only - must stay hidden (scope=1) or every uniform below shows up in Eden/Zeus
+		// as "Rifleman" (displayName inherited from B_Soldier_F). Placeable units live in 885_Units.
+		scope=1;
+		scopeCurator=1;
 		scopearsenal=2;
+		displayName="[885th] Vornskr Trooper (Uniform)";
 		side=1;
 		faction="885th_Faction";
 		editorSubcategory="Sub885thTroopers";
