@@ -30,7 +30,6 @@ class Cfgpatches
 			"885th_Crow_RC_Trooper",
 			"885th_Phantom_RC_Trooper",
 			"885th_Scorch_RC_Trooper",
-			"885th_Smith_Trooper",
 			"885th_Stormer_Trooper",
 			"885th_Thunder_Trooper",
 			"885th_Vornskr_Hazard_Trooper",
@@ -60,7 +59,6 @@ class Cfgpatches
 			"885th_ONI_MC_Helmet",
 			"885th_Bright_P2_Helmet",
 			"885th_Screwball_P1_ARF_Helm",
-			"885th_Sushi_P2_ARF_Helm",
 			"885th_Sunshine_P2_Helm",
 			"885th_Stormer_P2_Helmet",
 			"885th_Charge_P2_Helm",
@@ -81,7 +79,6 @@ class Cfgpatches
 			"885th_Nightsingers_P3_Senior_Pilot_Helm",
 			"885th_Nightsingers_P3_Officer_Pilot_Helm",
 			"885th_Nightsingers_Armor_Crew_Helmet",
-			"885th_Smith_Engi_Helm",
 			"885th_Kit_phase2SpecOp_helmet",
 			"885th_Owl_Pilot_Helm",
 			"885th_Kings_Pilot_Helm",
@@ -138,7 +135,6 @@ class Cfgpatches
 			"885th_Crimz_Uniform",
 			"885th_Cerberus_Uniform",
 			"885th_Sytha_Uniform",
-			"885th_Smith_Uniform",
 			"885th_Thunder_Uniform",
 			"885th_Hazard_Trooper_Uniform",
 			"885th_Hazard_Veteran_Uniform",
@@ -765,59 +761,6 @@ class CfgWeapons
 			"",
             "885_Armor\885_Armor\Customs\Sytha\P2_Helmet_Visor.rvmat",
         };
-	};
-	class 885th_Smith_EngineerV2_Helm: H_HelmetO_ViperSP_hex_F
-	{
-		author="885th Bloodpack Division";
-		weaponPoolAvailable=1;
-		scope=2;
-		displayName="[885th] Smith Engineer Helm V2";
-		picture="\A3\characters_f\Data\UI\icon_H_helmet_plain_ca.paa";
-		model="\3AS\3AS_Republic_Characters\Headgear\3AS_Clonetrooper_Engineer_Helmet.p3d";
-		hiddenSelections[]=
-		{
-			"Helmet",
-			"Visor"
-		};
-		hiddenSelectionsTextures[]=
-		{
-			"885_Armor\885_Armor\Customs\Smith\885th_Smith_Engi_Helmet_Custom.paa",
-			"885_Armor\885_Armor\Customs\Smith\885th_Smith_Engi_Helmet_Custom.paa"
-		};
-		hiddenSelectionsMaterials[]=
-		{
-			"\3AS\3AS_Republic_Characters\Headgear\data\Clonetrooper_Engineer_Helmet\Clonetrooper_Engineer_Helmet.rvmat",
-			"\3AS\3AS_Republic_Characters\Headgear\data\Clonetrooper_Engineer_Helmet\Clonetrooper_Engineer_Helmet_Visor.rvmat"
-		};
-		subItems[] = {"Integrated_NVG_TI_0_F"};
-			ace_hearing_lowerVolume=0;
-		ace_hearing_protection=1;
-		class ItemInfo: HeadgearItem
-		{
-			mass=30;
-			uniformModel="\3AS\3AS_Republic_Characters\Headgear\3AS_Clonetrooper_Engineer_Helmet.p3d";
-			modelSides[]={1};
-			hiddenSelections[]=
-			{
-				"Helmet",
-				"Visor"
-			};
-			class HitpointsProtectionInfo
-			{
-				class Head
-				{
-					hitpointName="HitHead";
-					armor=17;
-					passThrough=0.5;
-				};
-				class Face
-				{
-					hitpointName="HitFace";
-					armor=12;
-					passThrough=0.5;
-				};
-			};
-		};
 	};
 	
 	class 885th_Sunshine_P2_Helm: 885th_P2_V2_Helmet
@@ -2070,31 +2013,6 @@ class CfgWeapons
 			"885_Armor\885_Armor\Customs\Ares\Ares_ARF_P2_Helmet.rvmat",
 			"",
 			"885_Armor\885_Armor\Customs\Ares\visor.rvmat"
-		};
-    };
-	class 885th_Sushi_P2_ARF_Helm: 885th_Najax_ARF_P2_Helm
-	{
-        author="885th Bloodpack Division";
-        displayName="[885th] Sushi's ARF P2 Helm";
-        scope=2;
-        picture="";
-        hiddenSelections[]=
-        {
-            "camo1",
-            "camo2",
-            "visor"
-        };
-        hiddenSelectionsTextures[]=
-        {
-            "885_Armor\885_Armor\Customs\Sushi\885th_Sushi_P2_ARF_Helm_co.paa",
-            "",
-            "885_Armor\885_Armor\Customs\Sushi\sushi_visor_co.paa"
-        };
-		hiddenSelectionsMaterials[] = 
-		{
-			"885_Armor\885_Armor\Najax\885TH_ARF_P2_Helmet.rvmat",
-			"",
-			"885_Armor\885_Armor\Customs\Sushi\visor.rvmat"
 		};
     };
 	class 885th_BARC_Helm: IDA_BARC_Helmet
@@ -4166,18 +4084,6 @@ class CfgWeapons
 		{
 			uniformModel = "";
 			uniformClass = "885th_Rios_Trooper";
-			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
-			containerClass = "Supply300";
-			mass = 40;
-		};
-	};
-	class 885th_Smith_Uniform: 885th_Vornskr_Uniform
-	{
-		displayName = "[885th] Smith Custom P2 Armor";
-		class ItemInfo: UniformItem
-		{
-			uniformModel = "";
-			uniformClass = "885th_Smith_Trooper";
 			picture = "\Clone_Armor_Unit\ui\Clone_Armor_ca.paa";
 			containerClass = "Supply300";
 			mass = 40;
@@ -8365,7 +8271,7 @@ class CfgWeapons
 	/*2*/	"885_Armor\885_Armor\Customs\Crimz\Crimz_Custom_Rig_CO.paa",
 	/*3*/	"885_Armor\885_Armor\Customs\Crimz\Crimz_Custom_Rig_CO.paa",
 	/*4*/	"885_Armor\885_Armor\Customs\Crimz\Crimz_Custom_Rig_CO.paa",
-	/*5*/	"885_Armor\885_Armor\Customs\Crimz\Crimz_Custom_Rig_CO.paa",
+	/*5*/	"",
 	/*6*/	"",
 	/*7*/	"885_Armor\885_Armor\Customs\Crimz\Crimz_Custom_Rig_CO.paa",
 	/*8*/	"885_Armor\885_Armor\Customs\Crimz\Crimz_Custom_Rig_CO.paa",
@@ -13334,18 +13240,6 @@ class CfgVehicles
 		hiddenSelectionsTextures[] = {
 			"885_Armor\885_Armor\Customs\Rios\P2_BodyUpper_Base_co.paa",
 			"885_Armor\885_Armor\Customs\Rios\P2_BodyLower_Base_co.paa"
-		};
-	};
-	class 885th_Smith_Trooper : 885th_Vornskr_Trooper {
-		scope=1;
-		scopeCurator=1;
-		scopeArsenal=2;
-		side=1;
-		uniformClass = "885th_Smith_Uniform";
-		hiddenSelections[] = {"Camo1","Camo2"};
-		hiddenSelectionsTextures[] = {
-			"885_Armor\885_Armor\Customs\Smith\Smith_Armor_Upper_co.paa",
-			"885_Armor\885_Armor\Customs\Smith\Smith_Armor_Lower_co.paa"
 		};
 	};
 	class 885th_Stormer_Trooper : 885th_Vornskr_Trooper {
