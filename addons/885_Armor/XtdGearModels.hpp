@@ -430,6 +430,7 @@ class XtdGearModels
 				{
 					"Ares",
 					"Bandit",
+					"Cerberus",
 					"Crimz",
 					"Crow",
 					"Nightfall",
@@ -552,6 +553,7 @@ class XtdGearModels
 					"Ares",
 					"Bandit",
 					"Charge",
+					"Crimz",
 					"Kit",
 					"Maverick",
 					"Nightfall",
@@ -938,12 +940,12 @@ class XtdGearInfos
 			variant="P2";
 			camo="P2";
 		};
-		class 885th_Crimz_Scout_Helm
+		class 885th_Crimz_BARC_Helm
 		{
 			model="Trooper_Custom_Helmets";
 			rank="Crimz";
-			variant="Scout";
-			camo="Scout";
+			variant="BARC";
+			camo="BARC";
 		};
 		class 885th_Crusader_P2_Helm
 		{
@@ -1303,6 +1305,11 @@ class XtdGearInfos
 			model="Custom_Uniforms";
 			rank="Bandit";
 		};
+		class 885th_Cerberus_Uniform
+		{
+			model="Custom_Uniforms";
+			rank="Cerberus";
+		};
 		class 885th_Crimz_Uniform
 		{
 			model="Custom_Uniforms";
@@ -1548,6 +1555,11 @@ class XtdGearInfos
 		{
 			model="Custom_Vest";
 			vest="Charge";
+		};
+		class 885th_Cust_VestV4_Rig_Crimz
+		{
+			model="Custom_Vest";
+			vest="Crimz";
 		};
 		class 885th_Cust_VestV4_Rig_Kit
 		{
