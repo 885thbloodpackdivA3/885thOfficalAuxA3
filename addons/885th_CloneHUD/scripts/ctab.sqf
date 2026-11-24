@@ -1,0 +1,396 @@
+/*
+	885th Bloodpack Division - Clone HUD - cTab Link
+	---------------------------------------------------------------
+	Ties the Clone HUD to the 885th cTab (885_SW_cTab, CfgPatches "cTab").
+	Soft dependency - everything here checks for cTab first and quietly
+	falls back when it isn't loaded.
+
+	1. Clone helmets ARE helmet cams. Every helmet in the three Clone HUD
+	   helmet lists is added to cTab_helmetClass_has_HCam on every client
+	   (BPD_CloneHUD_CTAB_HELMETCAMS, forced/global so everyone agrees),
+	   so clones show up in the cTab Tablet's HCAM list without needing
+	   an ItemcTabHCam in their pack.
+
+	2. Tactical link panel (layout key FEED). Header line shows which
+	   cTab devices you're carrying (TAB / ANDR / DAGR / HCAM) and which
+	   link mode is active. In HELM CAM mode the panel body shows a live
+	   picture-in-picture feed from a squadmate's helmet.
+
+	3. Link cycling (CBA keybinds, rebindable):
+	     Shift+H  Cycle Tactical Link:  cTab -> DAGR -> Helm Cam -> off
+	              (skips anything you don't carry)
+	     Shift+J  Next Helm Cam feed (starts Helm Cam mode if it's off)
+	   cTab and DAGR open the real 885th cTab interfaces (Tablet dialog
+	   or Android, MicroDAGR overlay) through cTab's own cTab_fnc_open,
+	   so they behave exactly like opening them with H / Ctrl+H.
+
+	Link mode is read back from what's actually open (cTabIfOpen / our
+	camera), so closing the tablet with Esc or cTab's own keys never
+	leaves the HUD out of sync.
+*/
+
+BPD_CloneHUD_ctabLoaded = isClass (configFile >> "CfgPatches" >> "cTab");
+BPD_CloneHUD_hcamTarget = objNull;
+BPD_CloneHUD_hcam = [];          // [camera, aim helper, host] while a feed is live
+BPD_CloneHUD_hcamActive = false;  // HELM CAM link mode on
+BPD_CloneHUD_hcamRT = "bpd_clonehud_rt";
+
+// ------------------------------------------------------------
+//  Gear checks
+// ------------------------------------------------------------
+BPD_CloneHUD_fnc_hasItem = {
+	params ["_items"];
+	if (!isNil "cTab_fnc_checkGear") exitWith { [player, _items] call cTab_fnc_checkGear };
+	private _all = (items player) + (assignedItems player) + [goggles player];
+	({_x in _all} count _items) > 0
+};
+
+BPD_CloneHUD_fnc_deviceState = {
+	[
+		["TAB",  [["ItemcTab"]] call BPD_CloneHUD_fnc_hasItem],
+		["ANDR", [["ItemAndroid"]] call BPD_CloneHUD_fnc_hasItem],
+		["DAGR", [["ItemMicroDAGR"]] call BPD_CloneHUD_fnc_hasItem],
+		["HCAM", (headgear player in (missionNamespace getVariable ["HUD_helmets", []])) || {[["ItemcTabHCam"]] call BPD_CloneHUD_fnc_hasItem}]
+	]
+};
+
+// ------------------------------------------------------------
+//  1. Register clone helmets as cTab helmet cams
+// ------------------------------------------------------------
+BPD_CloneHUD_fnc_registerHelmetCams = {
+	if (!BPD_CloneHUD_ctabLoaded) exitWith {};
+	if (!(missionNamespace getVariable ["BPD_CloneHUD_CTAB_HELMETCAMS", true])) exitWith {};
+	[] spawn {
+		// cTab's player_init builds and de-duplicates its list during
+		// postInit; wait for that so ours isn't overwritten.
+		private _timeout = diag_tickTime + 60;
+		waitUntil { sleep 0.5; (!isNil "cTab_helmetClass_has_HCam" && {!isNil "cTab_fnc_updateLists"}) || {diag_tickTime > _timeout} };
+		if (isNil "cTab_helmetClass_has_HCam") exitWith {
+			diag_log "885th_CloneHUD: cTab helmet cam list never appeared - clone helmets not registered as helmet cams.";
+		};
+		private _added = 0;
+		{
+			if (!(_x in cTab_helmetClass_has_HCam) && {isClass (configFile >> "CfgWeapons" >> _x)}) then {
+				cTab_helmetClass_has_HCam pushBack _x;
+				_added = _added + 1;
+			};
+		} forEach (missionNamespace getVariable ["HUD_helmets", []]);
+		diag_log format ["885th_CloneHUD: registered %1 clone helmets as cTab helmet cams.", _added];
+		if (_added > 0) then { call cTab_fnc_updateLists; };
+	};
+};
+
+// ------------------------------------------------------------
+//  Current link mode, read from reality
+// ------------------------------------------------------------
+BPD_CloneHUD_fnc_linkMode = {
+	if (!isNil "cTabIfOpen") exitWith {
+		if ((cTabIfOpen select 1) in ["cTab_microDAGR_dsp","cTab_microDAGR_dlg"]) then {"DAGR"} else {"CTAB"}
+	};
+	if (BPD_CloneHUD_hcamActive) exitWith {"HCAM"};
+	"OFF"
+};
+
+BPD_CloneHUD_fnc_availableModes = {
+	private _modes = [];
+	if (BPD_CloneHUD_ctabLoaded && {[["ItemcTab","ItemAndroid"]] call BPD_CloneHUD_fnc_hasItem}) then { _modes pushBack "CTAB"; };
+	if (BPD_CloneHUD_ctabLoaded && {[["ItemMicroDAGR"]] call BPD_CloneHUD_fnc_hasItem}) then { _modes pushBack "DAGR"; };
+	private _needDevice = missionNamespace getVariable ["BPD_CloneHUD_HCAM_REQUIRE_DEVICE", false];
+	if (!_needDevice || {[["ItemcTab","ItemAndroid","ItemMicroDAGR"]] call BPD_CloneHUD_fnc_hasItem}) then { _modes pushBack "HCAM"; };
+	_modes
+};
+
+// ------------------------------------------------------------
+//  cTab interfaces
+// ------------------------------------------------------------
+// Opens a cTab interface the same way cTab's own key handlers do:
+// close whatever's open, then queue the open until cTab has finished
+// tearing the old one down.
+BPD_CloneHUD_fnc_openCtab = {
+	params ["_ifType", "_displayName"];
+	if (isNil "cTab_fnc_open") exitWith {false};
+	if (!isNil "cTabIfOpen") then { call cTab_fnc_close; };
+	if (_displayName find "microDAGR" > -1) then {
+		cTabMicroDAGRmode = if ([["ItemcTab"]] call BPD_CloneHUD_fnc_hasItem) then {0} else {2};
+	};
+	private _unit = if (isNil "cTab_player" || {isNull cTab_player}) then {player} else {cTab_player};
+	[{
+		params ["_args", "_pfh"];
+		_args params ["_open", "_deadline"];
+		if (diag_tickTime > _deadline) exitWith { [_pfh] call CBA_fnc_removePerFrameHandler; };
+		if (isNil "cTabIfOpen" && {!cTabIfOpenStart}) then {
+			[_pfh] call CBA_fnc_removePerFrameHandler;
+			_open call cTab_fnc_open;
+		};
+	}, 0, [[_ifType, _displayName, _unit, vehicle _unit], diag_tickTime + 3]] call CBA_fnc_addPerFrameHandler;
+	true
+};
+
+BPD_CloneHUD_fnc_enterMode = {
+	params ["_mode"];
+	switch (_mode) do {
+		case "CTAB": {
+			// Tablet if carried (full dialog with BFT / UAV / HCAM / messages),
+			// otherwise the Android as a hands-free overlay.
+			if ([["ItemcTab"]] call BPD_CloneHUD_fnc_hasItem) then {
+				[1, "cTab_Tablet_dlg"] call BPD_CloneHUD_fnc_openCtab;
+			} else {
+				[0, "cTab_Android_dsp"] call BPD_CloneHUD_fnc_openCtab;
+			};
+			["Tactical link: cTab", "bpdLinkMode", 3] call HUD_fnc_addSystemMessage;
+		};
+		case "DAGR": {
+			[0, "cTab_microDAGR_dsp"] call BPD_CloneHUD_fnc_openCtab;
+			["Tactical link: MicroDAGR", "bpdLinkMode", 3] call HUD_fnc_addSystemMessage;
+		};
+		case "HCAM": {
+			[objNull] call BPD_CloneHUD_fnc_startHcam;
+		};
+		default {
+			["Tactical link: standby", "bpdLinkMode", 3] call HUD_fnc_addSystemMessage;
+		};
+	};
+};
+
+BPD_CloneHUD_fnc_exitMode = {
+	params ["_mode"];
+	switch (_mode) do {
+		case "CTAB";
+		case "DAGR": { if (!isNil "cTab_fnc_close") then { call cTab_fnc_close; }; };
+		case "HCAM": { call BPD_CloneHUD_fnc_stopHcam; };
+	};
+};
+
+// Shift+H
+BPD_CloneHUD_fnc_cycleLink = {
+	if (!(headgear player in (missionNamespace getVariable ["HUD_helmets", []]))) exitWith {false};
+	if (!alive player || {!isNull (findDisplay 312)}) exitWith {false};
+	if (!isNil "cTabIfOpenStart" && {cTabIfOpenStart}) exitWith {false};
+
+	private _cycle = (call BPD_CloneHUD_fnc_availableModes) + ["OFF"];
+	private _current = call BPD_CloneHUD_fnc_linkMode;
+	private _idx = _cycle find _current;
+	private _next = _cycle select ((_idx + 1) mod (count _cycle));
+
+	[_current] call BPD_CloneHUD_fnc_exitMode;
+	[_next] call BPD_CloneHUD_fnc_enterMode;
+	playSound "click";
+	true
+};
+
+// ------------------------------------------------------------
+//  Helm cam feed (picture-in-picture on the HUD)
+// ------------------------------------------------------------
+BPD_CloneHUD_fnc_hcamCandidates = {
+	private _list = if (!isNil "cTabHcamlist") then {
+		+cTabHcamlist
+	} else {
+		(units group player) select { headgear _x in (missionNamespace getVariable ["HUD_helmets", []]) }
+	};
+	private _grp = group player;
+	_list = _list select { alive _x && {_x != player} };
+	if (missionNamespace getVariable ["BPD_CloneHUD_HCAM_SQUAD_ONLY", false]) then {
+		_list = _list select { group _x isEqualTo _grp };
+	};
+	// own squad first, then nearest
+	private _own = _list select { group _x isEqualTo _grp };
+	private _other = _list - _own;
+	_own = [_own, [], { player distance _x }, "ASCEND"] call BIS_fnc_sortBy;
+	_other = [_other, [], { player distance _x }, "ASCEND"] call BIS_fnc_sortBy;
+	_own + _other
+};
+
+BPD_CloneHUD_fnc_destroyHcamCamera = {
+	if (count BPD_CloneHUD_hcam > 0) then {
+		BPD_CloneHUD_hcam params ["_cam", "_helper"];
+		if (!isNull _cam) then {
+			_cam cameraEffect ["TERMINATE", "BACK", BPD_CloneHUD_hcamRT];
+			camDestroy _cam;
+		};
+		if (!isNull _helper) then { deleteVehicle _helper; };
+	};
+	BPD_CloneHUD_hcam = [];
+};
+
+// Builds the camera on _unit, same mounting cTab uses for its own
+// helmet cams (head-mounted on foot; chase cam on a vehicle only when
+// 3rd person is allowed, otherwise no signal).
+BPD_CloneHUD_fnc_attachHcam = {
+	params ["_unit"];
+	call BPD_CloneHUD_fnc_destroyHcamCamera;
+	BPD_CloneHUD_hcamTarget = _unit;
+	if (isNull _unit) exitWith {false};
+
+	private _host = _unit;
+	private _camOffset = [0.12, 0, 0.15];
+	private _targetOffset = [0, 8, 1];
+	if !(vehicle _unit isKindOf "CAManBase") then {
+		if (difficultyEnabled "3rdPersonView") then {
+			_host = vehicle _unit;
+			_camOffset = [0, -8, 4];
+			_targetOffset = [0, 8, 2];
+		} else {
+			_host = objNull;
+		};
+	};
+	if (isNull _host) exitWith {false};
+
+	private _helper = "Sign_Sphere10cm_F" createVehicleLocal (getPosATL _host);
+	hideObject _helper;
+	_helper attachTo [_host, _targetOffset];
+
+	private _cam = "camera" camCreate (getPosATL _host);
+	_cam camPrepareFov 0.7;
+	_cam camPrepareTarget _helper;
+	_cam camCommitPrepared 0;
+	if (_host == _unit) then {
+		_cam attachTo [_host, _camOffset, "Head"];
+	} else {
+		_cam attachTo [_host, _camOffset];
+	};
+	_cam cameraEffect ["INTERNAL", "BACK", BPD_CloneHUD_hcamRT];
+	BPD_CloneHUD_hcam = [_cam, _helper, _host];
+	true
+};
+
+BPD_CloneHUD_fnc_startHcam = {
+	params [["_preferred", objNull]];
+	private _candidates = call BPD_CloneHUD_fnc_hcamCandidates;
+	if (count _candidates == 0) exitWith {
+		BPD_CloneHUD_hcamActive = false;
+		["Helm cam: no signals in range", "bpdLinkMode", 4] call HUD_fnc_addSystemMessage;
+		false
+	};
+	private _target = if (!isNull _preferred && {_preferred in _candidates}) then {_preferred} else {
+		if (BPD_CloneHUD_hcamTarget in _candidates) then {BPD_CloneHUD_hcamTarget} else {_candidates select 0}
+	};
+	BPD_CloneHUD_hcamActive = true;
+	[_target] call BPD_CloneHUD_fnc_attachHcam;
+	[format ["Helm cam: %1", name _target], "bpdLinkMode", 3] call HUD_fnc_addSystemMessage;
+	call BPD_CloneHUD_fnc_updateFeedPanel;
+	true
+};
+
+BPD_CloneHUD_fnc_stopHcam = {
+	BPD_CloneHUD_hcamActive = false;
+	call BPD_CloneHUD_fnc_destroyHcamCamera;
+	call BPD_CloneHUD_fnc_updateFeedPanel;
+};
+
+// Shift+J
+BPD_CloneHUD_fnc_nextHcam = {
+	if (!(headgear player in (missionNamespace getVariable ["HUD_helmets", []]))) exitWith {false};
+	if (!alive player || {!isNull (findDisplay 312)}) exitWith {false};
+	if (!("HCAM" in (call BPD_CloneHUD_fnc_availableModes))) exitWith {
+		["Helm cam: needs a cTab device", "bpdLinkMode", 4] call HUD_fnc_addSystemMessage;
+		false
+	};
+	if (!BPD_CloneHUD_hcamActive) exitWith {
+		[call BPD_CloneHUD_fnc_linkMode] call BPD_CloneHUD_fnc_exitMode;
+		[objNull] call BPD_CloneHUD_fnc_startHcam;
+		playSound "click";
+		true
+	};
+	private _candidates = call BPD_CloneHUD_fnc_hcamCandidates;
+	if (count _candidates == 0) exitWith { call BPD_CloneHUD_fnc_stopHcam; false };
+	private _idx = _candidates find BPD_CloneHUD_hcamTarget;
+	private _next = _candidates select ((_idx + 1) mod (count _candidates));
+	[_next] call BPD_CloneHUD_fnc_startHcam;
+	playSound "click";
+	true
+};
+
+// ------------------------------------------------------------
+//  Panel drawing
+// ------------------------------------------------------------
+BPD_CloneHUD_fnc_updateFeedPanel = {
+	if (isNil "HUD_feedPicture") exitWith {};
+	private _ctrls = [HUD_feedBack#0, HUD_feedHeader#0, HUD_feedPicture#0, HUD_feedLabel#0];
+	if (isNull (_ctrls select 0)) exitWith {};
+
+	private _visible = (missionNamespace getVariable ["BPD_CloneHUD_FEED_ENABLED", true])
+		&& {alive player}
+		&& {player getVariable ["HUD_bootComplete", false]}
+		&& {HUD_hasHelmet}
+		&& {isNull (findDisplay 312)};
+
+	if (!_visible) exitWith {
+		{ _x ctrlShow false; } forEach _ctrls;
+	};
+
+	private _s = missionNamespace getVariable ["BPD_CloneHUD_feedTextScale", 1];
+	private _onHex = [INTERIOR_OVERLAY_COLOR] call HUD_fnc_colorToHex;
+	private _mode = call BPD_CloneHUD_fnc_linkMode;
+
+	private _strip = "";
+	{
+		_x params ["_label", "_has"];
+		_strip = _strip + format ["<t color='%1'>%2</t>  ", if (_has) then {_onHex} else {"#4d4d4d"}, _label];
+	} forEach (call BPD_CloneHUD_fnc_deviceState);
+	private _modeText = switch (_mode) do {
+		case "CTAB": {"CTAB"};
+		case "DAGR": {"DAGR"};
+		case "HCAM": {"HELM CAM"};
+		default {"STANDBY"};
+	};
+	(HUD_feedHeader#0) ctrlSetStructuredText parseText format [
+		"<t size='%1' align='left' font='RobotoCondensed'>%2</t><t size='%1' align='right' color='#ffffff' font='RobotoCondensedBold'>%3</t>",
+		0.85 * _s, _strip, _modeText
+	];
+
+	private _hcamOn = _mode == "HCAM";
+	(HUD_feedBack#0) ctrlShow true;
+	(HUD_feedHeader#0) ctrlShow true;
+	(HUD_feedPicture#0) ctrlShow (_hcamOn && {count BPD_CloneHUD_hcam > 0} && {isPiPEnabled});
+	(HUD_feedLabel#0) ctrlShow _hcamOn;
+
+	if (_hcamOn) then {
+		private _t = BPD_CloneHUD_hcamTarget;
+		private _label = call {
+			if (!isPiPEnabled) exitWith {"ENABLE PIP IN VIDEO OPTIONS"};
+			if (isNull _t) exitWith {"NO SIGNAL"};
+			if (count BPD_CloneHUD_hcam == 0) exitWith {format ["%1 - NO SIGNAL", toUpper name _t]};
+			format ["%1  %2m", toUpper name _t, round (player distance _t)]
+		};
+		(HUD_feedLabel#0) ctrlSetStructuredText parseText format ["<t size='%1' align='center'>%2</t>", 0.8 * _s, _label];
+	};
+
+	// Collapse the panel to just the header strip when there's no feed.
+	private _back = ctrlPosition (HUD_feedBack#0);
+	private _hdr = ctrlPosition (HUD_feedHeader#0);
+	private _pic = ctrlPosition (HUD_feedPicture#0);
+	_back set [3, if (_hcamOn) then {(_hdr select 3) + (_pic select 3)} else {_hdr select 3}];
+	(HUD_feedBack#0) ctrlSetPosition _back;
+	{ _x ctrlCommit 0; } forEach _ctrls;
+};
+
+// Session-wide loop (survives respawn). Keeps the panel current, drops
+// a feed whose wearer died / left, and tears the camera down whenever
+// the HUD isn't up so it never renders in the background.
+if (isNil "BPD_CloneHUD_feedLoop") then {
+	BPD_CloneHUD_feedLoop = [] spawn {
+		waitUntil { sleep 1; !isNull player && {!isNil "HUD_hasHelmet"} };
+		while {true} do {
+			private _hudUp = alive player && {player getVariable ["HUD_bootComplete", false]} && {HUD_hasHelmet};
+			if (BPD_CloneHUD_hcamActive) then {
+				if (!_hudUp) then {
+					call BPD_CloneHUD_fnc_stopHcam;
+				} else {
+					private _t = BPD_CloneHUD_hcamTarget;
+					if (isNull _t || {!alive _t} || {!(_t in (call BPD_CloneHUD_fnc_hcamCandidates))}) then {
+						["Helm cam: signal lost", "bpdLinkMode", 3] call HUD_fnc_addSystemMessage;
+						if !([objNull] call BPD_CloneHUD_fnc_startHcam) then { call BPD_CloneHUD_fnc_stopHcam; };
+					} else {
+						// wearer got in/out of a vehicle - remount the camera
+						private _wantHost = if (vehicle _t isKindOf "CAManBase") then {_t} else {vehicle _t};
+						if (count BPD_CloneHUD_hcam == 0 || {(BPD_CloneHUD_hcam select 2) != _wantHost}) then {
+							[_t] call BPD_CloneHUD_fnc_attachHcam;
+						};
+					};
+				};
+			};
+			call BPD_CloneHUD_fnc_updateFeedPanel;
+			sleep 0.5;
+		};
+	};
+};
