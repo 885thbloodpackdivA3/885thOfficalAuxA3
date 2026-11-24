@@ -152,6 +152,9 @@ HUD_fnc_updateTeamList = {
 	if (!(player getVariable ["HUD_bootComplete",false])) exitWith {};
 
 	private _aceEnhanced = (missionnamespace getVariable ["BPD_CloneHUD_ACE_COMPACT_ENABLED", false]) && {HUD_aceMedicalLoaded};
+	// Squad medical: 0 off, 1 status word, 2 status + detail flags
+	private _medMode = missionNamespace getVariable ["BPD_CloneHUD_SQUAD_MEDICAL", 2];
+	private _showDetail = if (isNil "BPD_CloneHUD_fnc_medShowDetail") then {false} else {call BPD_CloneHUD_fnc_medShowDetail};
 	private _grp = group player;
 	private _squadLeader = leader _grp;
 	private _squadName = groupId _grp;
@@ -189,19 +192,30 @@ HUD_fnc_updateTeamList = {
 
 		private _statusText = "OK";
 		private _statusColor = "#3cb371";
-		if (!_isAlive) then {
-			_statusText = "KIA";
-			_statusColor = "#ff3b30";
+		private _medFlags = [];
+		if (_medMode > 0 && {!isNil "BPD_CloneHUD_fnc_medStatus"}) then {
+			// Real squad medical state - ACE / KAT aware, see squadMed.sqf.
+			private _med = [_x] call BPD_CloneHUD_fnc_medStatus;
+			_statusText = _med select 1;
+			_statusColor = _med select 2;
+			if (_showDetail) then { _medFlags = _med select 3; };
+			[_x, _med] call BPD_CloneHUD_fnc_medAlert;
+			// Name takes the medical color whenever it isn't plain OK:
+			// red / orange / yellow while they need a medic, green once
+			// they've been TREATED. Healthy members keep their normal color.
+			if ((missionNamespace getVariable ["BPD_CloneHUD_SQUAD_MEDICAL_NAMECOLOR", true]) && {_statusText != "OK"}) then {
+				_nameColor = _statusColor;
+			};
 		} else {
-			// WOUNDED covers both the ACE-tracked bleeding/damaged
-			// states and, when ACE isn't enabled, a plain vanilla
-			// damage check - so the status still means something
-			// either way rather than just being OK/KIA with nothing
-			// in between.
-			private _isWounded = if (_aceEnhanced) then {_woundState != "clear"} else {(damage _x) > 0};
-			if (_isWounded) then {
-				_statusText = "WOUNDED";
-				_statusColor = "#ffa500";
+			if (!_isAlive) then {
+				_statusText = "KIA";
+				_statusColor = "#ff3b30";
+			} else {
+				private _isWounded = if (_aceEnhanced) then {_woundState != "clear"} else {(damage _x) > 0};
+				if (_isWounded) then {
+					_statusText = "WOUNDED";
+					_statusColor = "#ffa500";
+				};
 			};
 		};
 
@@ -219,6 +233,13 @@ HUD_fnc_updateTeamList = {
 			"<t size='%9' align='left' color='%1'>%2</t>%3 <t size='%10' align='left' color='#cccccc'>%4</t> <t size='%10' align='left' color='%5'>%6</t> <t size='%9' align='left' color='%7'>%8m</t><br/>",
 			_nameColor, name _x, _leaderTag, _role, _statusColor, _statusText, _distColor, _distance, _s, 0.9 * _s
 		];
+		// Medical detail flags on their own indented line under the member.
+		if (count _medFlags > 0) then {
+			_lines = _lines + format ["<t size='%1' align='left'>&#160;&#160;&#160;%2</t><br/>",
+				0.8 * _s,
+				(_medFlags apply { format ["<t color='%1'>%2</t>", _x select 1, _x select 0] }) joinString " · "
+			];
+		};
 	} forEach _members;
 
 	(HUD_teamList#0) ctrlSetStructuredText parseText _lines;

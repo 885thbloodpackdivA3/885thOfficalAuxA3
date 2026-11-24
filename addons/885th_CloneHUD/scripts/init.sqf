@@ -39,6 +39,7 @@ execVM "\885th_CloneHUD\scripts\hudBootUp.sqf";
 execVM "\885th_CloneHUD\scripts\hudInit.sqf";
 execVM "\885th_CloneHUD\scripts\systemMessages.sqf";
 execVM "\885th_CloneHUD\scripts\updateDamageIndicator.sqf";
+execVM "\885th_CloneHUD\scripts\squadMed.sqf";
 execVM "\885th_CloneHUD\scripts\teamList.sqf";
 execVM "\885th_CloneHUD\scripts\radar.sqf";
 execVM "\885th_CloneHUD\scripts\system.sqf";

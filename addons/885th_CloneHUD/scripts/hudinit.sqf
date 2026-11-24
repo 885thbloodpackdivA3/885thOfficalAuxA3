@@ -49,12 +49,17 @@ HUD_fnc_hudInit = {
 		HUD_visorEffect = _displayHUD ctrlCreate ["RscPicture", 27646];
 		HUD_teamList = _displayHUD ctrlCreate ["RscStructuredText", 27650];
 
+		// creation order = draw order: disc, rings, blips, own marker, labels
+		HUD_radarDisc = _displayHUD ctrlCreate ["RscPicture", 27675];
 		HUD_radarBackground = _displayHUD ctrlCreate ["RscPicture", 27651];
 		private _radarBlipPool = [];
 		for "_i" from 0 to 19 do {
 			_radarBlipPool pushBack (_displayHUD ctrlCreate ["RscPicture", 27652 + _i]);
 		};
 		uiNamespace setVariable ["HUD_radarBlips", _radarBlipPool];
+		HUD_radarSelf = _displayHUD ctrlCreate ["RscPicture", 27676];
+		HUD_radarNorth = _displayHUD ctrlCreate ["RscStructuredText", 27677];
+		HUD_radarRange = _displayHUD ctrlCreate ["RscStructuredText", 27678];
 
 		// Tactical link panel (cTab device strip + helm cam feed) - see ctab.sqf
 		HUD_feedBack = _displayHUD ctrlCreate ["RscText", 27680];
@@ -101,6 +106,10 @@ HUD_fnc_hudInit = {
 	HUD_teamList = [uiNamespace getVariable "HUD_teamList"];
 	HUD_radarBackground = [uiNamespace getVariable "HUD_radarBackground"];
 	HUD_radarBlips = uiNamespace getVariable "HUD_radarBlips";
+	HUD_radarDisc = [uiNamespace getVariable "HUD_radarDisc"];
+	HUD_radarSelf = [uiNamespace getVariable "HUD_radarSelf"];
+	HUD_radarNorth = [uiNamespace getVariable "HUD_radarNorth"];
+	HUD_radarRange = [uiNamespace getVariable "HUD_radarRange"];
 
 	HUD_feedBack = [uiNamespace getVariable "HUD_feedBack"];
 	HUD_feedPicture = [uiNamespace getVariable "HUD_feedPicture"];
@@ -132,12 +141,21 @@ HUD_fnc_hudInit = {
 
 	(HUD_teamList#0) ctrlSetStructuredText parseText "";
 
+	// Radar dial, built from vanilla UI textures (ui_f_data). The 1.0
+	// build used an RscPicture with NO texture and only a background
+	// color - pictures don't draw a background, so the dial never showed
+	// at all, only blips (and only with a scanned unit in line of sight).
 	private _radarCustomTexture = missionnamespace getVariable ["RADAR_BACKGROUND_TEXTURE", ""];
-	// Blank = plain panel (see the RADAR_BACKGROUND_TEXTURE setting).
-	(HUD_radarBackground#0) ctrlSetText _radarCustomTexture;
-	(HUD_radarBackground#0) ctrlSetTextColor [0,0,0,0];
-	(HUD_radarBackground#0) ctrlSetBackgroundColor [0,0,0,0];
-	(HUD_radarBackground#0) ctrlCommit 0;
+	(HUD_radarDisc#0) ctrlSetText "\A3\ui_f\data\IGUI\RscCustomInfo\Sensors\SENSCircles_ca.paa";
+	(HUD_radarBackground#0) ctrlSetText (if (_radarCustomTexture != "") then {_radarCustomTexture} else {"\A3\ui_f\data\IGUI\Cfg\SquadRadar\SquadRadarBackgroundTexture_ca.paa"});
+	(HUD_radarSelf#0) ctrlSetText "\A3\ui_f\data\map\markers\military\triangle_CA.paa";
+	{
+		(_x#0) ctrlSetTextColor [0,0,0,0];
+		(_x#0) ctrlSetBackgroundColor [0,0,0,0];
+		(_x#0) ctrlCommit 0;
+	} forEach [HUD_radarDisc, HUD_radarBackground, HUD_radarSelf, HUD_radarNorth, HUD_radarRange];
+	(HUD_radarNorth#0) ctrlSetStructuredText parseText "";
+	(HUD_radarRange#0) ctrlSetStructuredText parseText "";
 	{
 		_x ctrlSetTextColor [0,0,0,0];
 		_x ctrlCommit 0;

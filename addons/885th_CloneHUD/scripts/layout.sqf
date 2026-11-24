@@ -50,7 +50,11 @@ BPD_CloneHUD_fnc_layoutPos = {
 	params ["_key", "_w", "_h"];
 	private _preset = missionNamespace getVariable [format ["BPD_CloneHUD_LAYOUT_%1_POS", _key], 0];
 	private _mx = 0.012 * safezoneW;
-	private _my = 0.015 * safezoneH;
+	// Edge presets keep clear of the blue visor bands drawn into the
+	// interior overlay art (top arc ~5% of the screen, bottom bands ~9%).
+	// Measured off an in-game 2000x1125 screenshot.
+	private _topClear = 0.05 * safezoneH;
+	private _bottomClear = 0.095 * safezoneH;
 	// The center column keeps clear of the P2 heading/range readouts
 	// that are baked into the info display art (top and bottom center).
 	private _centerClear = 0.14 * safezoneH;
@@ -58,8 +62,8 @@ BPD_CloneHUD_fnc_layoutPos = {
 	private _left   = safezoneX + _mx;
 	private _right  = safezoneX + safezoneW - _w - _mx;
 	private _cx     = safezoneX + ((safezoneW - _w) / 2);
-	private _top    = safezoneY + _my;
-	private _bottom = safezoneY + safezoneH - _h - _my;
+	private _top    = safezoneY + _topClear;
+	private _bottom = safezoneY + safezoneH - _h - _bottomClear;
 	private _mid    = safezoneY + ((safezoneH - _h) / 2);
 
 	switch (_preset) do {
@@ -129,6 +133,14 @@ BPD_CloneHUD_fnc_applyLayout = {
 	HUD_radarRect = [_rx, _ry, _rW, _rH];
 	(HUD_radarBackground#0) ctrlSetPosition HUD_radarRect;
 	(HUD_radarBackground#0) ctrlCommit 0;
+	if (!isNil "HUD_radarDisc") then {
+		(HUD_radarDisc#0) ctrlSetPosition HUD_radarRect;
+		private _sW = 0.09 * _rW;
+		private _sH = 0.09 * _rH;
+		(HUD_radarSelf#0) ctrlSetPosition [_rx + (_rW / 2) - (_sW / 2), _ry + (_rH / 2) - (_sH / 2), _sW, _sH];
+		(HUD_radarRange#0) ctrlSetPosition [_rx, _ry + _rH, _rW, 0.16 * _rH];
+		{ (_x#0) ctrlCommit 0; } forEach [HUD_radarDisc, HUD_radarSelf, HUD_radarRange];
+	};
 
 	// ---- Tactical link / helm cam panel ----
 	if (!isNil "HUD_feedPicture") then {
