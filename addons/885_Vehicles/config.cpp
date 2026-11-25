@@ -3,7 +3,7 @@ class Cfgpatches
 	class 885th_Vehicles
 	{
 		author = "885th Bloodpack Div";
-		requiredAddons[] = {"A3_Data_F", "A3_Weapons_F", "A3_Characters_F", "3AS_LAAT", "3AS_ARC_170", "3AS_Republic_Heli_LAS", "3AS_ITT", "TKE_Ext_Core_V", "ls_core", "FIR_AirWeaponSystem_US"};
+		requiredAddons[] = {"A3_Data_F", "A3_Weapons_F", "A3_Characters_F", "3AS_LAAT", "3AS_ARC_170", "3AS_VehicleWeapons", "3AS_Republic_Heli_LAS", "3AS_ITT", "TKE_Ext_Core_V", "ls_core", "FIR_AirWeaponSystem_US"};
 		requiredVersion = 0.1;
 		units[] = {
 			"885th_LSV_base_F",
@@ -96,6 +96,24 @@ class CfgAmmo
 		caliber = 20;
 		coefGravity = 0.8;
 	};
+
+	// ARC-170 "CAS" light energy bolt: 3AS Z-95 light bolt visuals/impacts with the
+	// vanilla A-10 GAU-8 round's ballistics and damage (Gatling_30mm_HE_Plane_CAS_01_F).
+	class 3as_Z95_Light_Energy_shell;
+	class 885th_ARC170_CAS_Energy_shell : 3as_Z95_Light_Energy_shell
+	{
+		displayname = "CAS Energy";
+		hit = 180;
+		indirectHit = 4;
+		indirectHitRange = 3;
+		caliber = 15; // A-10 is 5 (~84mm); 15 ~= 250mm at 1120 m/s, matching the old Z-95 light bolt
+		explosive = 0.4;
+		deflecting = 5;
+		fuseDistance = 10;
+		airFriction = -0.00036;
+		typicalSpeed = 960;
+		aiAmmoUsageFlags = "64 + 128 + 256";
+	};
 };
 
 class CfgMagazines
@@ -123,6 +141,20 @@ class CfgMagazines
 		ammo = "885th_blasterbolt_bHigh";
 		tracersEvery = 1;
 	};
+
+	// ARC-170 main gun magazine, A-10 equivalent (1000Rnd_Gatling_30mm_Plane_CAS_01_F).
+	class 3as_Z95_1000Rnd_Light_shells;
+	class 885th_ARC170_1000Rnd_CAS_shells : 3as_Z95_1000Rnd_Light_shells
+	{
+		displayName = "[885th] CAS Energy Cell";
+		displayNameShort = "CAS";
+		descriptionShort = "1000 rounds, A-10 equivalent light energy bolts.";
+		ammo = "885th_ARC170_CAS_Energy_shell";
+		count = 1000;
+		initSpeed = 1120;
+		maxLeadSpeed = 83.3333;
+		tracersEvery = 1;
+	};
 };
 
 class CfgWeapons
@@ -131,6 +163,36 @@ class CfgWeapons
 	class HMG_127;
 	class 3AS_ITT_Turret_MG;
 	class 3AS_FF4_Blaster_20mm;
+
+	// ARC-170 main gun at the A-10 GAU-8 fire rate (0.03s = 2000 rpm) and spread.
+	// Inherits the 3AS LEC95 sounds/lock; AI modes come from the vanilla Neophron cannon.
+	class 3as_ARC_Light_Canon;
+	class 3as_Z95_Light_Cannon : 3as_ARC_Light_Canon
+	{
+		class LowROF;
+		class close;
+		class short;
+		class medium;
+		class far;
+	};
+	class 885th_ARC170_CAS_Cannon : 3as_Z95_Light_Cannon
+	{
+		displayName = "[885th] Blastech LEC170-C CAS Cannon";
+		magazines[] = {"885th_ARC170_1000Rnd_CAS_shells", "3as_Z95_1000Rnd_Light_shells", "3as_Z95_750Rnd_Light_shells"};
+		reloadTime = 0.03;
+		class LowROF : LowROF
+		{
+			displayName = "[885th] Blastech LEC170-C CAS Cannon";
+			reloadTime = 0.03;
+			dispersion = 0.0095;
+			burst = 1;
+		};
+		class close : close { reloadTime = 0.03; dispersion = 0.0095; };
+		class short : short { reloadTime = 0.03; dispersion = 0.0095; };
+		class medium : medium { reloadTime = 0.03; dispersion = 0.0095; };
+		class far : far { reloadTime = 0.03; dispersion = 0.0095; };
+	};
+
 	class 885th_HRB_127 : HMG_127 {
 		displayName = "[885th] Heavy Repeating Blaster";
 		magazines[] = {885th_vehicle_battery};
@@ -1375,7 +1437,7 @@ class CfgVehicles
 		editorSubcategory = "Sub885thLWFighters";
 		camouflage = 6.0;
 		ejectSpeed[] = { 0, 60, 0 };
-		magazines[] ={"3as_Z95_1000Rnd_Light_shells","3as_Z95_1000Rnd_Light_shells","3AS_PylonWeapon_Z95_240Rnd_Heavy_Shells","3AS_PylonWeapon_Z95_240Rnd_Heavy_Shells","3AS_PylonWeapon_Z95_240Rnd_Heavy_Shells","120Rnd_CMFlare_Chaff_Magazine","Laserbatteries","120Rnd_CMFlare_Chaff_Magazine","120Rnd_CMFlare_Chaff_Magazine","120Rnd_CMFlare_Chaff_Magazine","120Rnd_CMFlare_Chaff_Magazine"};
+		magazines[] ={"885th_ARC170_1000Rnd_CAS_shells","885th_ARC170_1000Rnd_CAS_shells","3AS_PylonWeapon_Z95_240Rnd_Heavy_Shells","3AS_PylonWeapon_Z95_240Rnd_Heavy_Shells","3AS_PylonWeapon_Z95_240Rnd_Heavy_Shells","3AS_PylonWeapon_Z95_240Rnd_Heavy_Shells","3AS_PylonWeapon_Z95_240Rnd_Heavy_Shells","120Rnd_CMFlare_Chaff_Magazine","Laserbatteries","120Rnd_CMFlare_Chaff_Magazine","120Rnd_CMFlare_Chaff_Magazine","120Rnd_CMFlare_Chaff_Magazine","120Rnd_CMFlare_Chaff_Magazine"};
 		armor = 180;
 		armorLights = 0.5;
 		armorStructural = 2.0;
@@ -1384,7 +1446,7 @@ class CfgVehicles
 		armorAvionics = 2.0;
 		crew = "885th_Pilot";
 		cost = 1000;
-		weapons[] = {"3AS_Z95_Light_Cannon", "3as_Z95_Heavy_Cannon", "CMFlareLauncher", "Laserdesignator_pilotCamera"};
+		weapons[] = {"885th_ARC170_CAS_Cannon", "3as_Z95_Heavy_Cannon", "CMFlareLauncher", "Laserdesignator_pilotCamera"};
 		textureList[] = {
 			"885th_LC",
 			1,
