@@ -98,6 +98,26 @@ HUD_ENABLED = true; // safe default in case onChanged hasn't resolved yet by the
 ] call CBA_fnc_addSetting;
 
 [
+	"BPD_CloneHUD_AMMO_STYLE",
+	"LIST",
+	["Ammo Counter Style","Default: the helmet's own info box. Style A (BF2 Classic): wide panel with health / stamina bars, weapon icon, rounds, spare mags and grenades. Style B (Classic Inspired): compact version of the same. Styles A/B are placed with 2. Layout - Ammo Counter."],
+	["885th Clone HUD","1. What's On Screen"],
+	[[0,1,2],["Default","Style A (BF2 Classic)","Style B (Classic Inspired)"],0],
+	nil,
+	{ if (!isNil "BPD_CloneHUD_fnc_ammoLayout") then { BPD_CloneHUD_ammoShownStyle = -1; call BPD_CloneHUD_fnc_ammoLayout; }; }
+] call CBA_fnc_addSetting;
+
+[
+	"BPD_CloneHUD_AMMO_VITALS",
+	"LIST",
+	["Ammo Counter Vitals","Style A / B only. Vitals: a bar + status line read from ACE / KAT medical - blood volume and SpO2 fill the bar; unconscious, cardiac arrest, bleeding, airway, pneumothorax, internal bleeding, tourniquets, fractures and pain show as status (same reading as the squad list). Off: weapon / ammo / grenades only, smaller panel."],
+	["885th Clone HUD","1. What's On Screen"],
+	[[1,0],["Vitals (ACE / KAT medical)","Off"],0],
+	nil,
+	{ if (!isNil "BPD_CloneHUD_fnc_ammoLayout") then { BPD_CloneHUD_ammoShownStyle = -1; call BPD_CloneHUD_fnc_ammoLayout; }; }
+] call CBA_fnc_addSetting;
+
+[
 	"SYSTEM_MESSAGES",
 	"CHECKBOX",
 	["Show System Messages","Allows the HUD to display system messages."],
@@ -542,6 +562,15 @@ BPD_CloneHUD_ACE_COMPACT_ENABLED = false; // safe default in case onChanged hasn
 	nil,
 	{}
 ] call CBA_fnc_addSetting;
+
+{
+	_x params ["_var", "_title", "_path"];
+	[_var, "EDITBOX", [_title, "The stand/silhouette under the trooper. Full 2048x1024 canvas, same layout as the limb textures, so it moves with the trooper."], ["885th Clone HUD (Server & Advanced)","7. Textures"], _path, nil, {}] call CBA_fnc_addSetting;
+} forEach [
+	["P1_TROOPER_BASE", "Phase 1 - Trooper Stand Texture", "\885th_CloneHUD\textures\Phase1\P1_trooperBase.paa"],
+	["P2_TROOPER_BASE", "Phase 2 - Trooper Stand Texture", "\885th_CloneHUD\textures\Phase2\P2_trooperBase.paa"],
+	["RC_TROOPER_BASE", "RC - Trooper Stand Texture",      "\885th_CloneHUD\textures\RC\RC_trooperBase.paa"]
+];
 
 [
 	"P1_IND_HEAD",
@@ -1028,6 +1057,65 @@ BPD_CloneHUD_ACE_COMPACT_ENABLED = false; // safe default in case onChanged hasn
 	{}
 ] call CBA_fnc_addSetting;
 
+///////////////////
+// Squad Markers //
+///////////////////
+// Team labels on the 3D scanner markers over YOUR squadmates
+// ("Red Team 1", "Blue Team 2", "Medic 1"...). Numbered within each
+// fireteam (ACE / vanilla team colors). See BPD_CloneHUD_fnc_buildTeamLabels
+// in teamList.sqf. The names are server settings so the whole unit uses
+// the same callsigns.
+
+[
+	"BPD_CloneHUD_TEAM_LABELS",
+	"CHECKBOX",
+	["Show Team Labels on Squad Markers","Show your squadmates' fireteam label (e.g. Red Team 1, Medic 2) above their scanner markers. Only your own squad gets labels; other friendlies keep a plain marker."],
+	["885th Clone HUD","6. Squad Markers"],
+	true,
+	nil,
+	{}
+] call CBA_fnc_addSetting;
+
+{
+	_x params ["_team", "_title", "_default"];
+	[
+		format ["BPD_CloneHUD_TEAMNAME_%1", _team],
+		"EDITBOX",
+		[_title, format ["Label for squadmates assigned to this fireteam color. They're numbered in squad order: '%1 1', '%1 2'... Server setting.", _default]],
+		["885th Clone HUD","6. Squad Markers"],
+		_default,
+		true,
+		{}
+	] call CBA_fnc_addSetting;
+} forEach [
+	["RED",    "Red Team Name",           "Red Team"],
+	["BLUE",   "Blue Team Name",          "Blue Team"],
+	["GREEN",  "Green Team Name",         "Medic"],
+	["YELLOW", "Yellow Team Name",        "Yellow Team"],
+	["MAIN",   "Unassigned (White) Name", "Squad"]
+];
+
+[
+	"BPD_CloneHUD_TEAMNAME_LEAD",
+	"EDITBOX",
+	["Squad Leader Label","Label for the squad leader, whatever team they're in. Leave blank to number the leader inside their team like everyone else. Server setting."],
+	["885th Clone HUD","6. Squad Markers"],
+	"Lead",
+	true,
+	{}
+] call CBA_fnc_addSetting;
+
+/////////////////
+// Medic Pings //
+/////////////////
+["BPD_CloneHUD_MEDIC_PING","CHECKBOX",["Medic Pings","If you're a medic, get a MEDIC NEEDED alert (message, sound and a marker over them) when a trooper goes critical. Does nothing for non-medics."],["885th Clone HUD","7. Medic Pings"],true,nil,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_MEDIC_PING_THRESHOLD","LIST",["Ping When","How bad a trooper has to be before medics are pinged. Server setting."],["885th Clone HUD","7. Medic Pings"],[[3,2],["Down / cardiac arrest","Serious or worse (also heavy bleeding, airway, tension pneumo...)"],0],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_MEDIC_PING_SCOPE","LIST",["Who Medics Watch","Whose injuries ping medics. Server setting."],["885th Clone HUD","7. Medic Pings"],[[0,1,2],["Own squad only","All friendly players in range","All friendlies in range (players and AI)"],1],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_MEDIC_PING_RANGE","SLIDER",["Ping Range (m)","Casualties farther than this don't ping (not used for Own squad only). Server setting."],["885th Clone HUD","7. Medic Pings"],[100,5000,1000,0],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_MEDIC_PING_REPEAT","SLIDER",["Reminder Every (s)","Ping again while the trooper is still critical. 0 = only once."],["885th Clone HUD","7. Medic Pings"],[0,300,60,0],nil,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_MEDIC_PING_MARKER","CHECKBOX",["Marker Over Casualty","Pulsing medical marker with name, state and distance over the casualty until they're stabilized."],["885th Clone HUD","7. Medic Pings"],true,nil,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_MEDIC_PING_GREEN","CHECKBOX",["Green Team Counts as Medic","Anyone on Green Team gets pings too, even without the ACE medic role. Server setting."],["885th Clone HUD","7. Medic Pings"],true,true,{}] call CBA_fnc_addSetting;
+
 ////////////
 // Layout //
 ////////////
@@ -1084,7 +1172,8 @@ BPD_CloneHUD_fnc_relayout = {
 	["TROOPER", "Trooper Status",        "limb damage indicator (clone trooper)", 5,   0,    1,   0.8],
 	["SQUAD",   "Squad List",            "squad member list",                     3,   0,    0.5, 0.85],
 	["RADAR",   "Radar",                 "scanner radar",                         6,   0.5,  1,   0.8],
-	["FEED",    "Tactical Link Panel",   "cTab device strip / helm cam panel",    2,   1,    0,   0.9]
+	["FEED",    "Tactical Link Panel",   "cTab device strip / helm cam panel",    2,   1,    0,   0.9],
+	["AMMO",    "Ammo Counter",          "Style A / B ammo counter",              7,   1,    1,   1]
 ];
 
 //////////////

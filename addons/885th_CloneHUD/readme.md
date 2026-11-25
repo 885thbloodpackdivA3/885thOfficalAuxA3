@@ -114,6 +114,66 @@ The squad list now shows each member's real medical state
   unconscious, arrest, bleeding, wounds, tourniquets and fractures update
   immediately. Without ACE it falls back to vanilla damage.
 
+## 1.3.0 - Ammo counter styles, medic pings, movable trooper stand
+
+**Ammo Counter Style** (*885th Clone HUD > 1. What's On Screen*, per
+player): Default (the helmet's own info box), Style A (BF2 Classic - wide
+panel: weapon icon, rounds, spare mags, grenade icon + count) or Style B
+(Classic Inspired - compact: grenade badge, weapon plate). Placed with
+*2. Layout - Ammo Counter* (default Bottom Right). With A or B the helmet
+info box swaps to a version without its ammo column
+(`textures\ammo\*_ammoDisplay_noAmmo.paa`) and keeps heading/range.
+
+**Ammo Counter Vitals** (A/B only, default on): no generic health or
+stamina bars - the bar and status line use the same ACE / KAT reading
+as the squad list (`BPD_CloneHUD_fnc_medStatus`). Bar fill = worst of
+blood volume (full 6 L, empty 3 L) and SpO2 (full 100 %, empty 70 %;
+KAT's value when loaded); bar color + status word follow the medical
+state (OK / TREATED / WOUNDED / BLEEDING / CRITICAL / DOWN / ARREST +
+rhythm), followed by up to three tags (BLD %, AIRWAY, TENSION PTX, INT
+BLEED, SpO2, TQ, FRACTURE, PAIN). No ACE: 1 - damage. Off = a smaller
+panel without the bar (`*_panel_noBars.paa`). Panel art is
+original, drawn for this mod; source PNGs and mockups are in
+`previews/clonehud/`.
+
+**Medic pings** (*885th Clone HUD > 7. Medic Pings*). If you're a medic
+(ACE medic class / `attendant`, vanilla medic trait, or Green Team when
+that option is on) you get a **MEDIC NEEDED: name - state - 230m NE**
+message, a sound, and a pulsing medical marker over the casualty when a
+trooper reaches the ping threshold (default: down / cardiac arrest;
+optionally "serious or worse"). A reminder repeats every 60 s while they
+stay there, and the marker clears once they're stabilized. Scope: own
+squad, all friendly players in range (default, 1000 m), or all friendlies
+including AI. Each client reads the broadcast ACE/KAT variables itself,
+so nothing extra goes over the network. Falls back to systemChat when
+the HUD isn't up.
+
+**Trooper stand moves with the trooper.** The faint silhouette + base
+ring under the limb indicator was painted into the interior overlay
+textures, so it stayed in the corner when the trooper was moved. It's
+now split into its own textures (`P1/P2/RC_trooperBase.paa`, settings
+under *Server & Advanced > 7. Textures*) and drawn in the same rect as
+the limb art. The interior overlays no longer contain it.
+
+The trooper is placed under *885th Clone HUD > 2. Layout - Trooper
+Status* (Position presets or Custom + X/Y sliders, Scale).
+
+## Squad marker team labels
+
+Your own squadmates' 3D scanner markers carry their fireteam label above
+their head, in the team's color: `Red Team 1`, `Blue Team 2`, `Medic 1`...
+(*885th Clone HUD > 6. Squad Markers*).
+
+- Numbered within each team color, in squad order, from `assignedTeam`
+  (the same team colors ACE's team menu and DUI use).
+- Names per color are server settings (defaults: Red Team, Blue Team,
+  Medic for green, Yellow Team, Squad for unassigned) so the whole unit
+  shares callsigns. The squad leader shows as `Lead` (blank = numbered in
+  their team like everyone else).
+- Only your squad gets labels; other friendlies keep a plain marker.
+  Labels follow the scanner: they show for squadmates the scanner can see
+  (in range and line of sight) while scanner icons are on (Alt+T).
+
 ## cTab and helm cam notes
 
 - **`885_SW_cTab` must be packed with prefix `cTab`.** Its config loads

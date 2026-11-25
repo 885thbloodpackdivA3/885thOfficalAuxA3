@@ -1,6 +1,7 @@
 HUD_fnc_clearHud = {
 	private _hudElements = [
 		(HUD_interiorOverlay#0),
+		(HUD_trooperBase#0),
 		(HUD_pa_head#0),
 		(HUD_pa_torso#0),
 		(HUD_pa_armR#0),
@@ -21,6 +22,7 @@ HUD_fnc_clearHud = {
 	
 	private _P2hudElements = [
 		(HUD_interiorOverlay#0),
+		(HUD_trooperBase#0),
 		(HUD_pa_head#0),
 		(HUD_pa_torso#0),
 		(HUD_pa_armR#0),
@@ -42,6 +44,7 @@ HUD_fnc_clearHud = {
 	
 	private _RChudElements = [
 		(HUD_interiorOverlay#0),
+		(HUD_trooperBase#0),
 		(HUD_pa_head#0),
 		(HUD_pa_torso#0),
 		(HUD_pa_armR#0),
@@ -72,6 +75,7 @@ HUD_fnc_clearHud = {
 	(HUD_teamList#0) ctrlSetStructuredText parseText "";
 	(HUD_radarBackground#0) ctrlSetTextColor [0,0,0,0];
 	(HUD_radarBackground#0) ctrlSetBackgroundColor [0,0,0,0];
+	if (!isNil "BPD_CloneHUD_fnc_ammoHide") then { call BPD_CloneHUD_fnc_ammoHide; BPD_CloneHUD_ammoShownStyle = 0; };
 	{ _x ctrlSetTextColor [0,0,0,0]; } forEach HUD_radarBlips;
 	HUD_lowLight = false;
 	HUD_threatRange = 200;
@@ -110,6 +114,7 @@ HUD_fnc_hudBootUp = {
 
 	private _hudElements = [
 		(HUD_interiorOverlay#0),
+		(HUD_trooperBase#0),
 		(HUD_pa_head#0),
 		(HUD_pa_torso#0),
 		(HUD_pa_armR#0),
@@ -127,6 +132,7 @@ HUD_fnc_hudBootUp = {
 	
 	private _P2hudElements = [
 		(HUD_interiorOverlay#0),
+		(HUD_trooperBase#0),
 		(HUD_pa_head#0),
 		(HUD_pa_torso#0),
 		(HUD_pa_armR#0),
@@ -149,6 +155,7 @@ HUD_fnc_hudBootUp = {
 
 	private _RChudElements = [
 		(HUD_interiorOverlay#0),
+		(HUD_trooperBase#0),
 		(HUD_pa_head#0),
 		(HUD_pa_torso#0),
 		(HUD_pa_armR#0),
@@ -337,21 +344,21 @@ HUD_fnc_hudBootUp = {
 				private _maxAlpha = INTERIOR_OVERLAY_COLOR select 3;
 
 				private _effectColor = [_colorR,_colorG,_colorB,_colorA];
-				(HUD_interiorOverlay#0) ctrlSetTextColor _effectColor;
+				_effectColor call BPD_CloneHUD_fnc_interiorColor;
 				while {((_effectColor select 3) < _maxAlpha)} do {
 					
 					_effectColor set[3,(_effectColor select 3) + 0.1];
 					if (HUD_hasHelmet && HUD_firstPersonCheck) then {
-						(HUD_interiorOverlay#0) ctrlSetTextColor _effectColor;
+						_effectColor call BPD_CloneHUD_fnc_interiorColor;
 					} else {
-						(HUD_interiorOverlay#0) ctrlSetTextColor [0,0,0,0];
+						[0,0,0,0] call BPD_CloneHUD_fnc_interiorColor;
 					};
 					sleep 0.1;
 				};
 				if (HUD_hasHelmet && HUD_firstPersonCheck) then {
-					(HUD_interiorOverlay#0) ctrlSetTextColor INTERIOR_OVERLAY_COLOR;
+					INTERIOR_OVERLAY_COLOR call BPD_CloneHUD_fnc_interiorColor;
 				} else {
-					(HUD_interiorOverlay#0) ctrlSetTextColor [0,0,0,0];
+					[0,0,0,0] call BPD_CloneHUD_fnc_interiorColor;
 				};
 				player setvariable ["HUD_ACTIVE", true];
 				ppEffectDestroy _hudEffect;

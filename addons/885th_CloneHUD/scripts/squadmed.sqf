@@ -205,3 +205,115 @@ BPD_CloneHUD_fnc_medAlert = {
 		if (_level >= 3) then { playSound "glitch_short"; };
 	};
 };
+
+// ------------------------------------------------------------
+//  Medic pings
+// ------------------------------------------------------------
+// Runs on every client but only does anything while the player is a
+// medic (ACE medic class / vanilla medic trait, or Green Team if that
+// option is on). When a trooper in scope drops to the ping threshold
+// the medic gets a "MEDIC NEEDED" message with distance and bearing,
+// a sound, and a marker over the casualty that stays until they're
+// back above the threshold. Every client reads the broadcast ACE/KAT
+// variables itself, so nothing is sent over the network.
+
+BPD_CloneHUD_fnc_isMedic = {
+	// Same fallback ACE uses: the unit's config "attendant" value, plus
+	// the vanilla medic trait for non-ACE games.
+	private _cls = player getVariable ["ace_medical_medicClass", getNumber (configOf player >> "attendant")];
+	if (_cls isEqualType true) then { _cls = parseNumber _cls; };
+	if (_cls >= 1 || {player getUnitTrait "medic"}) exitWith {true};
+	(missionNamespace getVariable ["BPD_CloneHUD_MEDIC_PING_GREEN", true]) && {assignedTeam player == "GREEN"}
+};
+
+BPD_CloneHUD_fnc_medicPingCandidates = {
+	private _scope = missionNamespace getVariable ["BPD_CloneHUD_MEDIC_PING_SCOPE", 1];
+	private _range = missionNamespace getVariable ["BPD_CloneHUD_MEDIC_PING_RANGE", 1000];
+	private _pool = switch (_scope) do {
+		case 0: { units group player };
+		case 1: { (allPlayers - entities "HeadlessClient_F") + (units group player) };
+		default { allUnits };
+	};
+	private _side = side group player;
+	(_pool arrayIntersect _pool) select {
+		_x != player && {alive _x} && {_x isKindOf "CAManBase"}
+		&& {(side group _x) getFriend _side >= 0.6 || {group _x == group player}}
+		&& {_scope == 0 || {_x distance player <= _range}}
+	}
+};
+
+BPD_CloneHUD_fnc_medicPingNotify = {
+	params ["_unit", "_label", "_reminder"];
+	private _dist = round (player distance _unit);
+	private _dir = player getDir _unit;
+	private _card = ["N","NE","E","SE","S","SW","W","NW"] select (round (_dir / 45) mod 8);
+	private _who = name _unit;
+	if (group _unit != group player) then { _who = format ["%1 (%2)", _who, groupId group _unit]; };
+	private _msg = format ["%1MEDIC NEEDED: %2 - %3 - %4m %5", ["", "STILL "] select _reminder, _who, _label, _dist, _card];
+	if ((missionNamespace getVariable ["HUD_hasHelmet", false]) && {missionNamespace getVariable ["HUD_systemMessageAllowed", false]} && {missionNamespace getVariable ["SYSTEM_MESSAGES", true]}) then {
+		[_msg, "bpdMedic_" + (netId _unit), 10] call HUD_fnc_addSystemMessage;
+	} else {
+		systemChat _msg;
+	};
+	playSound "glitch_short";
+	if (!_reminder) then { playSound "threat_detector"; };
+};
+
+BPD_CloneHUD_medicPatients = createHashMap; // netId -> [unit, label, lastPingTime]
+
+BPD_CloneHUD_fnc_medicPingTick = {
+	if (!(missionNamespace getVariable ["BPD_CloneHUD_MEDIC_PING", true]) || {!(call BPD_CloneHUD_fnc_isMedic)} || {!alive player}) exitWith {
+		BPD_CloneHUD_medicPatients = createHashMap;
+	};
+	private _threshold = missionNamespace getVariable ["BPD_CloneHUD_MEDIC_PING_THRESHOLD", 3];
+	private _repeat = missionNamespace getVariable ["BPD_CloneHUD_MEDIC_PING_REPEAT", 60];
+	private _now = diag_tickTime;
+	private _seen = [];
+	{
+		private _status = [_x] call BPD_CloneHUD_fnc_medStatus;
+		_status params ["_level", "_label"];
+		if (_level >= _threshold) then {
+			private _id = netId _x;
+			_seen pushBack _id;
+			private _entry = BPD_CloneHUD_medicPatients getOrDefault [_id, []];
+			if (_entry isEqualTo []) then {
+				[_x, _label, false] call BPD_CloneHUD_fnc_medicPingNotify;
+				BPD_CloneHUD_medicPatients set [_id, [_x, _label, _now]];
+			} else {
+				_entry params ["", "", "_last"];
+				if (_repeat > 0 && {_now - _last >= _repeat}) then {
+					[_x, _label, true] call BPD_CloneHUD_fnc_medicPingNotify;
+					_last = _now;
+				};
+				BPD_CloneHUD_medicPatients set [_id, [_x, _label, _last]];
+			};
+		};
+	} forEach (call BPD_CloneHUD_fnc_medicPingCandidates);
+	// anyone no longer at the threshold (treated, out of range, died) drops off
+	{ if !(_x in _seen) then { BPD_CloneHUD_medicPatients deleteAt _x; }; } forEach (keys BPD_CloneHUD_medicPatients);
+};
+
+[] spawn {
+	waitUntil { sleep 1; !isNull player };
+	addMissionEventHandler ["Draw3D", {
+		if (count BPD_CloneHUD_medicPatients == 0) exitWith {};
+		if !(missionNamespace getVariable ["BPD_CloneHUD_MEDIC_PING_MARKER", true]) exitWith {};
+		{
+			_y params ["_unit", "_label"];
+			if (!isNull _unit && {alive _unit}) then {
+				private _pos = _unit modelToWorldVisual ((_unit selectionPosition "spine3") vectorAdd [0, 0, 0.6]);
+				private _pulse = 0.6 + 0.4 * abs (sin (diag_tickTime * 240));
+				drawIcon3D [
+					"\A3\ui_f\data\IGUI\Cfg\Actions\heal_ca.paa",
+					[1, 0.23, 0.19, _pulse], _pos, 1, 1, 0,
+					format ["%1 - %2 (%3m)", name _unit, _label, round (player distance _unit)],
+					2, 0.035, "RobotoCondensedBold", "center", true
+				];
+			};
+		} forEach BPD_CloneHUD_medicPatients;
+	}];
+	while {true} do {
+		call BPD_CloneHUD_fnc_medicPingTick;
+		sleep 1;
+	};
+};

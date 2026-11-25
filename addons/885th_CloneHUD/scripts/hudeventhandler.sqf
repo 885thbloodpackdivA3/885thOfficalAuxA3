@@ -165,6 +165,9 @@ HUD_fnc_addTargetingEventhandler = {
 
 	["TARGETING_HUD", "onEachFrame",{
 		if (HUD_showIcons && isNull(findDisplay 312)) then {
+			private _drawLabels = (missionNamespace getVariable ["BPD_CloneHUD_TEAM_LABELS", true]) && {!isNil "BPD_CloneHUD_fnc_buildTeamLabels"};
+			private _myGroup = group player;
+			if (_drawLabels && {diag_tickTime > BPD_CloneHUD_teamLabelsNext}) then { call BPD_CloneHUD_fnc_buildTeamLabels; };
 			{
 				private _unit = _x;
 				private _distance = positionCameraToWorld [0,0,0] distance _unit;
@@ -219,6 +222,17 @@ HUD_fnc_addTargetingEventhandler = {
 					};
 				};
 				drawIcon3D [_icon,_color,_pos,_size,_size,0,"",0,0.04,"RobotoCondensed","center",false];
+
+				// Fireteam label above own squadmates' heads ("Red Team 1",
+				// "Medic 2"...), in the team's color. Labels themselves are
+				// rebuilt once a second, not every frame.
+				if (_drawLabels && {_unit isKindOf "MAN"} && {group _unit isEqualTo _myGroup}) then {
+					private _tl = _unit getVariable ["BPD_CloneHUD_teamLabel", []];
+					if (count _tl == 2) then {
+						private _headPos = _unit modelToWorldVisual ((_unit selectionPosition "head") vectorAdd [0, 0, 0.45]);
+						drawIcon3D ["", _tl select 1, _headPos, 0, 0, 0, _tl select 0, 2, 0.032, "RobotoCondensedBold", "center", false];
+					};
+				};
 			} forEach HUD_nearUnits;
 
 			private _grenades = nearestObjects [player,["Grenade"], 30];

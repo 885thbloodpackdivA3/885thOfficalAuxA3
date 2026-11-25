@@ -485,6 +485,15 @@ if (isNil "BPD_CloneHUD_ctabCheck" && {BPD_CloneHUD_ctabLoaded}) then {
 			if (count _mods > 1) then {
 				systemChat format ["[Clone HUD] More than one cTab mod is loaded (%1) - only one of them is actually in use. Load just the 885th one.", _mods joinString ", "];
 			};
+			// The 885th cTab and the original Steam @cTab share the "cTab"
+			// prefix and CfgPatches class, so with both in the mod list only
+			// one PBO loads - usually the original, which then shows up here
+			// as the ONLY source. Catch that case too.
+			if ((_mods findIf { "885" in toLower _x }) < 0) then {
+				private _msg = format ["cTab is coming from %1, not the 885th cTab. Remove the original @cTab from your mod list - the 885th Aux mod already includes cTab.", _mods joinString ", "];
+				systemChat ("[Clone HUD] " + _msg);
+				diag_log ("885th_CloneHUD: " + _msg);
+			};
 		};
 	};
 };

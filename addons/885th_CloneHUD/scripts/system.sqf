@@ -59,6 +59,8 @@ HUD_fnc_system =
 		private _p1_inhelmet = player getVariable ["P1_INHELMET",false];
 		private _p2_inhelmet = player getVariable ["P2_INHELMET",false];
 		private _rc_inhelmet = player getVariable ["RC_INHELMET",false];
+		// Ammo Counter Style A/B replaces the helmet box's ammo column
+		private _ammoStyled = (missionNamespace getVariable ["BPD_CloneHUD_AMMO_STYLE", 0]) > 0;
 
 		private _indicatorGateNow = HUD_hasHelmet && (player getVariable ["HUD_bootComplete",false]);
 		if (_indicatorGateNow != (missionNamespace getVariable ["HUD_indicatorGatePrev", !_indicatorGateNow])) then {
@@ -108,7 +110,7 @@ HUD_fnc_system =
 			if (HUD_hasHelmet && !(_hudCheck) && missionnamespace getvariable "SHOW_HUD_OVERLAY" && HUD_firstPersonCheck) then {
 				player setvariable ["HUD_ALLOWED", true];
 				HUD_helmetOverlayShown = true;
-				(HUD_interiorOverlay#0) ctrlSetTextColor INTERIOR_OVERLAY_COLOR;
+				INTERIOR_OVERLAY_COLOR call BPD_CloneHUD_fnc_interiorColor;
 				(HUD_visorEffect#0) ctrlSetTextColor [1,1,1,0.3];
 				call HUD_fnc_addHudEventhandler;
 				call HUD_fnc_addTargetingEventhandler;
@@ -146,11 +148,11 @@ HUD_fnc_system =
 					_cursor_distance = if (count _ins > 0) then [{(_ins select 0 select 0) vectorDistance (eyepos player)},{5000}];
 					_aim_dist_txt = if (count _ins > 0) then [{str(round _cursor_distance)},{"---"}];
 
-					_hudAmmo ctrlSetText format ["%1", _currentAmmo];
+					_hudAmmo ctrlSetText ([format ["%1", _currentAmmo], ""] select _ammoStyled);
 					_hudAmmo ctrlSetTextColor _infoColor;
 					_hudAmmo ctrlCommit 0;
 
-					_hudMags ctrlSetText format ["%1", _availableMagCount];
+					_hudMags ctrlSetText ([format ["%1", _availableMagCount], ""] select _ammoStyled);
 					_hudMags ctrlSetTextColor _infoColor;
 					_hudMags ctrlCommit 0;
 
@@ -210,11 +212,11 @@ HUD_fnc_system =
 					_cursor_distance = if (count _ins > 0) then [{(_ins select 0 select 0) vectorDistance (eyepos player)},{5000}];
 					_aim_dist_txt = if (count _ins > 0) then [{str(round _cursor_distance)},{"---"}];
 
-					_P2hudAmmo ctrlSetText format ["%1", _currentAmmo];
+					_P2hudAmmo ctrlSetText ([format ["%1", _currentAmmo], ""] select _ammoStyled);
 					_P2hudAmmo ctrlSetTextColor _infoColor;
 					_P2hudAmmo ctrlCommit 0;
 
-					_P2hudMags ctrlSetText format ["%1", _availableMagCount];
+					_P2hudMags ctrlSetText ([format ["%1", _availableMagCount], ""] select _ammoStyled);
 					_P2hudMags ctrlSetTextColor _infoColor;
 					_P2hudMags ctrlCommit 0;
 
@@ -274,11 +276,11 @@ HUD_fnc_system =
 					_cursor_distance = if (count _ins > 0) then [{(_ins select 0 select 0) vectorDistance (eyepos player)},{5000}];
 					_aim_dist_txt = if (count _ins > 0) then [{str(round _cursor_distance)},{"---"}];
 
-					_RChudAmmo ctrlSetText format ["%1", _currentAmmo];
+					_RChudAmmo ctrlSetText ([format ["%1", _currentAmmo], ""] select _ammoStyled);
 					_RChudAmmo ctrlSetTextColor _infoColor;
 					_RChudAmmo ctrlCommit 0;
 
-					_RChudMags ctrlSetText format ["%1", _availableMagCount];
+					_RChudMags ctrlSetText ([format ["%1", _availableMagCount], ""] select _ammoStyled);
 					_RChudMags ctrlSetTextColor _infoColor;
 					_RChudMags ctrlCommit 0;
 
@@ -313,10 +315,14 @@ HUD_fnc_system =
 				HUD_helmetOverlayShown = false;
 				call HUD_fnc_removeHudEventhandler;
 				(HUD_hudOverlay#0) ctrlSetTextColor [0,0,0,0];
-				(HUD_interiorOverlay#0) ctrlSetTextColor [0,0,0,0];
+				[0,0,0,0] call BPD_CloneHUD_fnc_interiorColor;
 				(HUD_visorEffect#0) ctrlSetTextColor [0,0,0,0];
 			};
 			
+		};
+
+		if (!isNil "BPD_CloneHUD_fnc_ammoUpdate") then {
+			[_hudActive && {HUD_hasHelmet} && {missionnamespace getvariable ["SHOW_HUD_OVERLAY", true]} && {player getVariable ["HUD_bootComplete",false]} && {missionNamespace getVariable ["DISPLAY_INFO", true]}] call BPD_CloneHUD_fnc_ammoUpdate;
 		};
 
 		if (!(HUD_hasHelmet) && _hudActive) then {

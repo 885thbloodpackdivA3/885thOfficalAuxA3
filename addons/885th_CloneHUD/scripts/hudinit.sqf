@@ -37,6 +37,9 @@ HUD_fnc_hudInit = {
 
 		HUD_startUpImage = _displayMessage ctrlCreate ["RscPicture", 10864];
 		HUD_interiorOverlay = _displayHelmet ctrlCreate ["RscPicture", 27637];
+		// The stand/silhouette the trooper sits on. Used to be baked into
+		// the interior overlay, so it stayed put when the trooper moved.
+		HUD_trooperBase = _displayHelmet ctrlCreate ["RscPicture", 27638];
 		HUD_pa_head = _displayHUD ctrlCreate ["RscPicture", 27639];
 		HUD_pa_torso = _displayHUD ctrlCreate ["RscPicture", 27640];
 		HUD_pa_armR = _displayHUD ctrlCreate ["RscPicture", 27641];
@@ -92,6 +95,9 @@ HUD_fnc_hudInit = {
 	RC_infoRange = [uiNamespace getVariable "RC_infoRange"];
 
 	HUD_interiorOverlay = [uiNamespace getVariable "HUD_interiorOverlay"];
+	HUD_trooperBase = [uiNamespace getVariable "HUD_trooperBase"];
+	(HUD_trooperBase#0) ctrlSetTextColor [0,0,0,0];
+	(HUD_trooperBase#0) ctrlCommit 0;
 	HUD_pa_head = [uiNamespace getVariable "HUD_pa_head"];
 	HUD_pa_torso = [uiNamespace getVariable "HUD_pa_torso"];
 	HUD_pa_armL = [uiNamespace getVariable "HUD_pa_armL"];
@@ -162,6 +168,7 @@ HUD_fnc_hudInit = {
 	} forEach HUD_radarBlips;
 
 	call BPD_CloneHUD_fnc_applyLayout;
+	if (!isNil "BPD_CloneHUD_fnc_ammoCreate") then { call BPD_CloneHUD_fnc_ammoCreate; };
 
 	(HUD_infoDisplay#0) ctrlSetPosition [safezoneX,safezoneY,safezoneW,safezoneH];
 	(HUD_infoDisplay#0) ctrlSetText TEXTURE_DATAOUTPUT;

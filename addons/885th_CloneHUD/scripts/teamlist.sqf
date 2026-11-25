@@ -129,6 +129,34 @@ HUD_fnc_teamColorFor = {
 	};
 };
 
+// Fireteam labels for the 3D squad markers: "Red Team 1", "Medic 2"...
+// Numbered within each team color in squad order; names come from the
+// BPD_CloneHUD_TEAMNAME_* settings, the leader gets
+// BPD_CloneHUD_TEAMNAME_LEAD (blank = numbered like everyone else).
+// Stored LOCALLY on each squad member (setVariable, not broadcast) as
+// [label, rgba] and rebuilt once a second from the marker draw handler.
+// assignedTeam is what ACE's team menu and DUI use too.
+BPD_CloneHUD_teamLabelsNext = 0;
+BPD_CloneHUD_fnc_buildTeamLabels = {
+	BPD_CloneHUD_teamLabelsNext = diag_tickTime + 1;
+	private _grp = group player;
+	private _lead = leader _grp;
+	private _leadName = missionNamespace getVariable ["BPD_CloneHUD_TEAMNAME_LEAD", "Lead"];
+	private _counts = createHashMap;
+	{
+		private _team = [assignedTeam _x] param [0, "MAIN"];
+		if (_team == "") then { _team = "MAIN"; };
+		private _label = if (_x == _lead && {_leadName != ""}) then {
+			_leadName
+		} else {
+			private _n = (_counts getOrDefault [_team, 0]) + 1;
+			_counts set [_team, _n];
+			format ["%1 %2", missionNamespace getVariable [format ["BPD_CloneHUD_TEAMNAME_%1", _team], _team], _n]
+		};
+		_x setVariable ["BPD_CloneHUD_teamLabel", [_label, [_x] call HUD_fnc_teamColorFor]];
+	} forEach units _grp;
+};
+
 // Loadout-based role, since there's no built-in "this unit's role is
 // AT/medic/rifleman" concept in vanilla Arma - inferred instead:
 // medic status first (checking ACE's own per-unit medic class

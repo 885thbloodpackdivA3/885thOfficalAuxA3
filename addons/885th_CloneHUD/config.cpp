@@ -10,9 +10,9 @@ class CfgPatches
 		weapons[] = {};
 		requiredAddons[] = {"cba_main"};
 		requiredVersion = 0.1;
-		version = 1.2;
-		versionStr = "1.2.0";
-		versionAr[] = {1,2,0};
+		version = 1.3;
+		versionStr = "1.3.0";
+		versionAr[] = {1,3,0};
 	};
 };
 

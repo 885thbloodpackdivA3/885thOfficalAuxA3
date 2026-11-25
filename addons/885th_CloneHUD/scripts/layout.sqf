@@ -38,6 +38,14 @@ BPD_CloneHUD_fnc_artBox = {
 	};
 };
 
+// Sets the interior overlay's color and keeps the trooper's stand
+// (split out of that overlay art) in step with it.
+BPD_CloneHUD_fnc_interiorColor = {
+	private _c = _this;
+	(HUD_interiorOverlay#0) ctrlSetTextColor _c;
+	if (!isNil "HUD_trooperBase") then { (HUD_trooperBase#0) ctrlSetTextColor _c; };
+};
+
 BPD_CloneHUD_fnc_currentTier = {
 	if (player getVariable ["RC_INHELMET", false]) exitWith {"RC"};
 	if (player getVariable ["P2_INHELMET", false]) exitWith {"P2"};
@@ -115,6 +123,13 @@ BPD_CloneHUD_fnc_applyLayout = {
 		[HUD_pa_legR#0,  HUD_TEXTURE_IND_LEG_R],
 		[HUD_pa_legL#0,  HUD_TEXTURE_IND_LEG_L]
 	];
+	// The trooper's stand is drawn on the same canvas as the limb art, so
+	// the same rect keeps it lined up under the trooper wherever it goes.
+	if (!isNil "HUD_trooperBase") then {
+		(HUD_trooperBase#0) ctrlSetText (missionNamespace getVariable ["HUD_TEXTURE_TROOPER_BASE", ""]);
+		(HUD_trooperBase#0) ctrlSetPosition _limbRect;
+		(HUD_trooperBase#0) ctrlCommit 0;
+	};
 	BPD_CloneHUD_trooperRect = [_tx, _ty, _artW, _artH];
 
 	// ---- Squad list ----
@@ -157,4 +172,7 @@ BPD_CloneHUD_fnc_applyLayout = {
 		{ (_x#0) ctrlCommit 0; } forEach [HUD_feedBack, HUD_feedHeader, HUD_feedPicture, HUD_feedLabel];
 		BPD_CloneHUD_feedTextScale = _fScale;
 	};
+
+	// ---- Ammo counter (Style A / B) ----
+	if (!isNil "BPD_CloneHUD_fnc_ammoLayout") then { call BPD_CloneHUD_fnc_ammoLayout; };
 };
