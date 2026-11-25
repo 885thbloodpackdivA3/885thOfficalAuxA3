@@ -1,9 +1,12 @@
+#include "scripts\jumplight\jumplight_actions.hpp"
+#include "scripts\atrtrack\atrtrack_actions.hpp"
+
 class Cfgpatches
 {
 	class 885th_Vehicles
 	{
 		author = "885th Bloodpack Div";
-		requiredAddons[] = {"A3_Data_F", "A3_Weapons_F", "A3_Characters_F", "3AS_LAAT", "3AS_ARC_170", "3AS_Republic_Heli_LAS", "3AS_ITT", "TKE_Ext_Core_V", "ls_core", "FIR_AirWeaponSystem_US"};
+		requiredAddons[] = {"A3_Data_F", "A3_Weapons_F", "A3_Characters_F", "3AS_LAAT", "3AS_LAAT_Cargo", "3AS_ARC_170", "3AS_Republic_Heli_LAS", "3AS_ITT", "TKE_Ext_Core_V", "ls_core", "FIR_AirWeaponSystem_US"};
 		requiredVersion = 0.1;
 		units[] = {
 			"885th_LSV_base_F",
@@ -513,7 +516,11 @@ class CfgVehicles
 				displayName="Repulse";
 				statement="[this, -1] call ls_impulsor_fnc_impulse";
 			};
+			BPD_JUMPLIGHT_ACTIONS
+			BPD_ATRTRACK_ACTIONS
 		};
+		// AT-RT rack (scripts\atrtrack): AT-RTs clamped in the troop bay
+		BPD_atrtRackMax = 2;
 		class ls_impulsor: ls_impulsor_base
 		{
 			// Quick-response transport: faster impulse than the gunships (Legion Studios defaults 400 / 600 km/h)
@@ -661,6 +668,7 @@ class CfgVehicles
 				displayName="Repulse";
 				statement="[this, -1] call ls_impulsor_fnc_impulse";
 			};
+			BPD_JUMPLIGHT_ACTIONS
 		};
 		class ls_impulsor: ls_impulsor_base
 		{
@@ -850,6 +858,7 @@ class CfgVehicles
 				displayName="Repulse";
 				statement="[this, -1] call ls_impulsor_fnc_impulse";
 			};
+			BPD_JUMPLIGHT_ACTIONS
 		};
 		class ls_impulsor: ls_impulsor_base
 		{
@@ -1000,7 +1009,11 @@ class CfgVehicles
 		weaponSlots = 0;
 	};
 
-	class 3AS_LAATC;
+	class 3AS_LAAT_Cargo_Base;
+	class 3AS_LAATC : 3AS_LAAT_Cargo_Base
+	{
+		class UserActions;
+	};
 	class 885th_LAATC_base_F : 3AS_LAATC
 	{
 		scope = 0;
@@ -1019,7 +1032,14 @@ class CfgVehicles
 					"885th_Faction"};
 			};
 		};
-		class UserActions {};
+		// Inherit 3AS's Load Vehicle / Unload Vehicles (TAS_fnc_MagLift / MagDrop).
+		// A bare "class UserActions {};" here used to wipe them. The 3AS afterburner
+		// actions are still removed: the 885th LAAT/C uses the Legion Studios impulsor.
+		class UserActions : UserActions
+		{
+			delete afterburnerMk1_turn_on;
+			delete afterburnerMk1_turn_off;
+		};
 	};
 	class 885th_LAAT_C : 885th_LAATC_base_F
 	{
@@ -1077,7 +1097,11 @@ class CfgVehicles
 			"885_Vehicles\textures\LAATC\LAAT_C_Detail_Front_co.paa",
 		};
 	};
-	class 3AS_Rep_LAS_F;
+	class 3AS_LAS_Transport_Base_F;
+	class 3AS_Rep_LAS_F: 3AS_LAS_Transport_Base_F
+	{
+		class UserActions;
+	};
 	class 885th_LAS_Base_F: 3AS_Rep_LAS_F
 	{
 		scope = 0;
@@ -1097,7 +1121,13 @@ class CfgVehicles
 					"885th_Faction"};
 			};
 		};
-		class UserActions {};
+		// Inherit the 3AS actions (a bare "class UserActions {};" wiped them), minus the
+		// 3AS impulse: the 885th LAS uses the Legion Studios impulsor instead.
+		class UserActions : UserActions
+		{
+			delete impulseOn;
+			delete impulseOff;
+		};
 	};
 
 	class 885th_LAS_F: 885th_LAS_Base_F
@@ -1179,7 +1209,11 @@ class CfgVehicles
 		};
 	};
 
-	class 3AS_Rep_LAS_Z6_F;
+	class 3AS_LAS_Z6_Base_F;
+	class 3AS_Rep_LAS_Z6_F: 3AS_LAS_Z6_Base_F
+	{
+		class UserActions;
+	};
 	class 885th_LAS_Z6_Base_F: 3AS_Rep_LAS_Z6_F
 	{
 		scope = 0;
@@ -1199,7 +1233,12 @@ class CfgVehicles
 					"885th_Faction"};
 			};
 		};
-		class UserActions {};
+		// See 885th_LAS_Base_F: inherit 3AS actions, drop only the 3AS impulse.
+		class UserActions : UserActions
+		{
+			delete impulseOn;
+			delete impulseOff;
+		};
 	};
 
 	class 885th_LAS_Z6_F: 885th_LAS_Z6_Base_F
@@ -1646,6 +1685,10 @@ class CfgVehicles
 		scopeCurator=1;
 		author="885th Bloodpack Division + LUCA";
 		displayName="[885th] APC BASE";
+		// LAAT/C mag-lift (3AS TAS_fnc_MagLift): 1 = must be the first vehicle clamped.
+		// Hang offset is a first guess (between the Saber -6 and the AT-TE -9); tune Z in-game.
+		tas_canBlift = 1;
+		tas_liftVars = "[[[[0,-4,-7.5]]], [0], [0]]";
 		side=1;
 		faction = "885th_Faction";
 		crew = "885th_Pilot";
@@ -3630,6 +3673,70 @@ class CfgVehicles
 			"3as\3as_rebel_armor\px10_cav\textures\px10cavintfront_co.paa",
 			"885_Vehicles\textures\REAVER\885th_Reaver_Fuel_co.paa",
 			"885_Vehicles\textures\REAVER\885th_Reaver_Crane_co.paa"
+		};
+	};
+};
+
+// ---------------------------------------------------------------------------
+// LAAT jump light (RED stand by / GREEN dismount), see scripts\jumplight\
+// ---------------------------------------------------------------------------
+class CfgFunctions
+{
+	class BPD
+	{
+		tag = "BPD";
+		class JumpLight
+		{
+			file = "885_Vehicles\scripts\jumplight";
+			class jumpLightSet {};
+			class jumpLightCanUse {};
+			class jumpLightClient { postInit = 1; };
+		};
+		class ATRTRack
+		{
+			file = "885_Vehicles\scripts\atrtrack";
+			class atrtRackSlots {};
+			class atrtRackCan {};
+			class atrtRackLoad {};
+			class atrtRackAttach {};
+			class atrtRackRelease {};
+			class atrtRackDrop {};
+		};
+	};
+};
+
+class RscTitles
+{
+	class BPD_JumpLight_Indicator
+	{
+		idd = -1;
+		movingEnable = 0;
+		fadeIn = 0;
+		fadeOut = 0;
+		duration = 1e+011;
+		onLoad = "uiNamespace setVariable ['BPD_JumpLight_Indicator', _this select 0]";
+		onUnload = "uiNamespace setVariable ['BPD_JumpLight_Indicator', displayNull]";
+		class Controls
+		{
+			// Top-centre banner, below the Clone HUD's top-centre readouts
+			class Banner
+			{
+				type = 0;
+				idc = 77010;
+				style = 2;
+				x = "0.4 * safezoneW + safezoneX";
+				y = "0.17 * safezoneH + safezoneY";
+				w = "0.2 * safezoneW";
+				h = "0.035 * safezoneH";
+				font = "RobotoCondensedBold";
+				sizeEx = "0.028 * safezoneH";
+				colorText[] = {1, 1, 1, 1};
+				colorBackground[] = {0, 0, 0, 0.6};
+				text = "";
+				shadow = 1;
+				fixedWidth = 0;
+				lineSpacing = 1;
+			};
 		};
 	};
 };
