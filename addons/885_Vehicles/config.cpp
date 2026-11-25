@@ -1443,7 +1443,6 @@ class CfgVehicles
 				priority = 6;
 				hideOnUse = 1;
 			};
-			// FIR full AMS (uses class AMSData below). No shortcut so User3 stays on AMS Lite.
 			class AMSOpen
 			{
 				displayName = "<t color='#739eff'>Open AMS</t>";
