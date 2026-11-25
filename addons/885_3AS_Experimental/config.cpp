@@ -31,7 +31,8 @@ class CfgPatches
 		};
 		requiredAddons[] = {
 			"3AS_Weapons_Republic",
-			"3AS_Weapons_Republic_DC15C"
+			"3AS_Weapons_Republic_DC15C",
+			"885th_Weapons"
 		};
 	};
 };
@@ -358,21 +359,28 @@ class CfgWeapons
 		ace_barrelLength = 0;
 		ace_barrelTwist = 0;
 		scope = 2;
-		displayName = "[885th] DC-15X Sniper Rifle";
-		magazines[] = {"885th_dc15xsniper_ap_cell","885th_dc15xsniper_over_cell"};
+		displayName = "[885th] DC-15X Heavy Sniper Rifle";
+		descriptionShort = "Heavy anti-personnel / anti-materiel sniper rifle. Takes 5 round heavy cells and 5 round AM overcharge cells.";
+		// Heavy cell is the main round; AM is the one-shot overcharge. Old AP / Overcharged cells still fit for existing loadouts.
+		magazines[] = {"885th_dc15x_heavy_cell","885th_dc15x_am_cell"};
 		magazineWell[] = {};
 		muzzles[] = {"this"};
 		fireLightDiffuse[]={0.1,0.25,1};
+		recoil = "885_recoil_DC15X_Heavy";
+		// Heavy to swing around, steady once set (use the bipod)
+		inertia = 1.0;
+		dexterity = 1.1;
+		aimTransitionSpeed = 0.5;
 		modes[] = {"Single"};
 		class Single: Mode_SemiAuto
 		{
-			reloadTime=1.3;
-			dispersion = 0.0004;
+			reloadTime=1.6;              // heavy bolt cycle
+			dispersion = 0.00008;        // ~0.3 MOA, pinpoint
 			minRange=200;
 			minRangeProbab=0.5;
-			midRange=500;
+			midRange=900;
 			midRangeProbab=0.69999999;
-			maxRange=800;
+			maxRange=2000;
 			maxRangeProbab=0.30000001;
 			soundContinuous=0;
 			soundBurst=0;
@@ -500,18 +508,34 @@ class CfgWeapons
 				};
 			};
 		};
+		// Spawns with the 885th Heavy Sniper scope fitted (replaces the 3AS scope + bipod defaults)
+		class LinkedItems
+		{
+			class LinkedItemsOptic
+			{
+				slot = "CowsSlot";
+				item = "885th_DC15X_scope_Heavy";
+			};
+		};
 		class WeaponSlotsInfo : WeaponSlotsInfo {
-			mass = 65;
+			mass = 150;
+			// 3AS defines these slots' compatibleItems as a class (3AS_optic_DC15X_F=1 / 3AS_bipod_DC15X_F=1), which
+			// takes priority over an array, so they're overridden as classes too. Without this the engine only saw
+			// the 3AS scope as compatible and dropped the linked 885th scope at spawn.
 			class CowsSlot : CowsSlot
 			{
-				compatibleItems[] = {"3AS_optic_DC15X_F","JLTS_DC15X_scope","optic_KHS_blk"};
+				class compatibleItems
+				{
+					885th_DC15X_scope_Heavy = 1;   // 885th Heavy Sniper scope only
+					3AS_optic_DC15X_F = 0;
+				};
 			};
 			class MuzzleSlot : MuzzleSlot
-			{	
+			{
 				iconPosition[]={0,0.44999999};
 				iconScale=0.2;
 				linkProxy="\A3\data_f\proxies\weapon_slots\MUZZLE";
-				compatibleItems[] = {"ShadwCmpany_Suppresor_Module_DC15"};
+				class compatibleItems {};   // no suppressor
 			};
 			class PointerSlot : PointerSlot
 			{	
@@ -520,7 +544,12 @@ class CfgWeapons
 			};
 			class UnderBarrelSlot : UnderBarrelSlot
 			{
-				compatibleItems[] = {"3AS_Bipod_VK38X_f","ShdwCmpny_Bipod_Valken"};
+				class compatibleItems
+				{
+					3AS_Bipod_VK38X_f = 1;
+					ShdwCmpny_Bipod_Valken = 1;
+					3AS_bipod_DC15X_F = 0;
+				};
 			};
 		};
 	};

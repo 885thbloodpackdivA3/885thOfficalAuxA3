@@ -393,8 +393,8 @@ class CfgVehicles
 		uniformClass = "885th_Najax_Uniform";
 		hiddenSelectionsTextures[] = {"\885_Armor\885_Armor\Najax\885th_Najax_P2_Upper_co.paa","\885_Armor\885_Armor\Najax\885th_Najax_P2_Lower_co.paa"};
 		weapons[] += {"885th_DC15X_F"};
-		magazines[] += {MAG_8("885th_dc15xsniper_ap_cell")};
-		respawnMagazines[] += {MAG_8("885th_dc15xsniper_ap_cell")};
+		magazines[] += {MAG_6("885th_dc15x_heavy_cell"), MAG_2("885th_dc15x_am_cell")};
+		respawnMagazines[] += {MAG_6("885th_dc15x_heavy_cell"), MAG_2("885th_dc15x_am_cell")};
 		linkedItems[] += {"885th_Najax_P1_ARF_Helm","885th_vest_base"};
 		respawnLinkedItems[] += {"885th_Najax_P1_ARF_Helm","885th_vest_base"};
 	};
