@@ -53,7 +53,6 @@ class XtdGearModels
 					"DC-15A",
 					"DC-15A MKII",
 					"DC-15BR",
-					"DX36C",
 					"Valken-38A"
 				};
 			};
@@ -498,12 +497,6 @@ class XtdGearInfos
 		{
 			model="885th_Rifles";
 			weapon="DC-15BR";
-			variant="Standard";
-		};
-		class 885th_DX36C_F
-		{
-			model="885th_Rifles";
-			weapon="DX36C";
 			variant="Standard";
 		};
 		class 885th_DC15LEHB_F
