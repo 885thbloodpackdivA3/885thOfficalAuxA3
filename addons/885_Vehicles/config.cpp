@@ -669,7 +669,10 @@ class CfgVehicles
 				statement="[this, -1] call ls_impulsor_fnc_impulse";
 			};
 			BPD_JUMPLIGHT_ACTIONS
+			BPD_ATRTRACK_ACTIONS
 		};
+		// AT-RT rack (scripts\atrtrack): AT-RTs clamped in the troop bay
+		BPD_atrtRackMax = 2;
 		class ls_impulsor: ls_impulsor_base
 		{
 		};
@@ -859,7 +862,10 @@ class CfgVehicles
 				statement="[this, -1] call ls_impulsor_fnc_impulse";
 			};
 			BPD_JUMPLIGHT_ACTIONS
+			BPD_ATRTRACK_ACTIONS
 		};
+		// AT-RT rack (scripts\atrtrack): AT-RTs clamped in the troop bay
+		BPD_atrtRackMax = 2;
 		class ls_impulsor: ls_impulsor_base
 		{
 		};
