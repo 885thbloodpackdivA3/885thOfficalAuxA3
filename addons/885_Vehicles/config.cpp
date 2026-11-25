@@ -483,18 +483,15 @@ class CfgVehicles
 	};
 
 	class 3AS_laat_Base;
+	// Reference only: keeps 3AS_laat_Base's Ramp Open/Close + Activate/Deactivate Impulse on every LAAT/i
 	class 3AS_LAAT_Mk1 : 3AS_laat_Base
 	{
-		class UserActions
-		{
-		};
+		class UserActions;
 		class Components;
 	};
 	class 3AS_LAAT_Mk2 : 3AS_laat_Base
 	{
-		class UserActions
-		{
-		};
+		class UserActions;
 		class Components;
 	};
 	class 885th_LAAT_Transport : 3AS_LAAT_Mk2
@@ -1287,7 +1284,11 @@ class CfgVehicles
 		};
 	};
 
-	class 3AS_ARC_170_Base;
+	class Plane_Fighter_03_dynamicLoadout_base_F;
+	class 3AS_ARC_170_Base: Plane_Fighter_03_dynamicLoadout_base_F
+	{
+		class UserActions;
+	};
 	class 885th_ARC170_Base: 3AS_ARC_170_Base
 	{
 		scope = 0;
@@ -1307,7 +1308,6 @@ class CfgVehicles
 					"885th_Faction"};
 			};
 		};
-		class UserActions {};
 	};
 	class 885th_ARC170: 885th_ARC170_Base
 	{
@@ -1418,7 +1418,6 @@ class CfgVehicles
 					"885th_Faction"};
 			};
 		};
-		class UserActions {};
 	};
 	class 885th_ATTE: 885th_ATTE_base
 	{
@@ -1476,7 +1475,6 @@ class CfgVehicles
 					"885th_Faction"};
 			};
 		};
-		class UserActions {};
 	};
 	class 885th_VWING: 885th_VWING_Base
 	{
