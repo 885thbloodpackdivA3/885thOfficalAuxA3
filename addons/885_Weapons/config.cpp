@@ -334,6 +334,11 @@ class Flame_Explosion
 		lifeTime=20;
 	};
 };
+// Sensor templates live at the config ROOT in vanilla Arma. Declared inside CfgAmmo
+// they were empty classes, so the missile IR seekers built on them got no defaults.
+class SensorTemplateIR;
+class SensorTemplateVisual;
+class SensorTemplateLaser;
 class CfgAmmo
 {
 	class G_40mm_HE;
@@ -361,10 +366,6 @@ class CfgAmmo
 	{
 		class Components;
 	};
-	class SensorTemplateIR;
-	class SensorTemplateVisual;
-	class SensorTemplateLaser;
-	class SensorTemplateData;
 	class Components;
 	class 885th_blasterbolt: BulletBase
 	{

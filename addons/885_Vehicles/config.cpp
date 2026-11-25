@@ -216,6 +216,26 @@ class CfgWeapons
 	};
 };
 
+// Sensor + vehicle-display templates live at the config ROOT in vanilla Arma.
+// Declaring them inside CfgVehicles made empty classes, so sensors built on them
+// had no entries ("No entry ...DataLinkSensorComponent.AirTarget" on the Reaver).
+class SensorTemplatePassiveRadar;
+class SensorTemplateAntiRadiation;
+class SensorTemplateActiveRadar;
+class SensorTemplateIR;
+class SensorTemplateVisual;
+class SensorTemplateMan;
+class SensorTemplateLaser;
+class SensorTemplateNV;
+class SensorTemplateDataLink;
+
+class VehicleSystemsTemplateLeftDriver;
+class VehicleSystemsTemplateRightDriver;
+class VehicleSystemsTemplateLeftCommander;
+class VehicleSystemsTemplateRightCommander;
+class VehicleSystemsTemplateLeftGunner;
+class VehicleSystemsTemplateRightGunner;
+
 class CfgVehicles
 {
 	class Turrets;
@@ -237,24 +257,6 @@ class CfgVehicles
 	class HitFuel;
 	class MarkerLights;
 	class ViewPilot;
-
-	// Sensor Template classes
-	class SensorTemplatePassiveRadar;
-	class SensorTemplateAntiRadiation;
-	class SensorTemplateActiveRadar;
-	class SensorTemplateIR;
-	class SensorTemplateVisual;
-	class SensorTemplateMan;
-	class SensorTemplateLaser;
-	class SensorTemplateNV;
-	class SensorTemplateDataLink;
-
-	class VehicleSystemsTemplateLeftDriver;
-	class VehicleSystemsTemplateRightDriver;
-	class VehicleSystemsTemplateLeftCommander;
-	class VehicleSystemsTemplateRightCommander;
-	class VehicleSystemsTemplateLeftGunner;
-	class VehicleSystemsTemplateRightGunner;
 	
 	class All
 	{
@@ -1019,6 +1021,7 @@ class CfgVehicles
 	class 3AS_LAATC : 3AS_LAAT_Cargo_Base
 	{
 		class UserActions;
+		class Components;
 	};
 	class 885th_LAATC_base_F : 3AS_LAATC
 	{
@@ -1075,6 +1078,28 @@ class CfgVehicles
 		ls_hasImpulse = 1;
 		ace_cargo_hasCargo = 0;
 		ace_cargo_space = 0;
+		// Armament: Medium Energy Cannons + countermeasures only.
+		// 3AS gives it AGM + AA missiles, and 4 missile pylons from the LAAT/i base.
+		weapons[] = {"3as_LAAT_Medium_Canon", "CMFlareLauncher"};
+		magazines[] = {
+			"3as_LAAT_1000Rnd_Medium_shells",
+			"3as_LAAT_1000Rnd_Medium_shells",
+			"3as_LAAT_1000Rnd_Medium_shells",
+			"3as_LAAT_1000Rnd_Medium_shells",
+			"240Rnd_CMFlare_Chaff_Magazine",
+			"240Rnd_CMFlare_Chaff_Magazine",
+			"240Rnd_CMFlare_Chaff_Magazine",
+			"240Rnd_CMFlare_Chaff_Magazine"};
+		class Components : Components
+		{
+			// Replaces (not inherits) the LAAT/i base's 4 missile pylons with none,
+			// so nothing can be mounted, from the editor or AMS.
+			class TransportPylonsComponent
+			{
+				class pylons {};
+				class presets {};
+			};
+		};
 		author = "AifeSupport";
 		scope = 2;
 		scopeCurator = 2;
@@ -1692,9 +1717,10 @@ class CfgVehicles
 		author="885th Bloodpack Division + LUCA";
 		displayName="[885th] APC BASE";
 		// LAAT/C mag-lift (3AS TAS_fnc_MagLift): 1 = must be the first vehicle clamped.
-		// Hang offset is a first guess (between the Saber -6 and the AT-TE -9); tune Z in-game.
+		// Hang offset [side, fwd/back, up/down] from the LAAT/C centre. -4,-7.5 hung it
+		// behind the clamp and low in-game (2026-11-24); moved forward 1.75 m and up 1 m.
 		tas_canBlift = 1;
-		tas_liftVars = "[[[[0,-4,-7.5]]], [0], [0]]";
+		tas_liftVars = "[[[[0,-2.25,-6.5]]], [0], [0]]";
 		side=1;
 		faction = "885th_Faction";
 		crew = "885th_Pilot";
