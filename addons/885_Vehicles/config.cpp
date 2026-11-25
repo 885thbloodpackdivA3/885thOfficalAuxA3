@@ -1470,8 +1470,6 @@ class CfgVehicles
 				condition="(this animationSourcePhase ""SFoil"" == 1) AND (currentPilot this isEqualTo player) AND (alive this)";
 				statement="this animateSource [""SFoil"",0]";
 			};
-			// Deflector power routing (scripts\arc170). Bind Custom Controls
-			// "Use Action 11/12/13" for hands-on-stick switching.
 			class BPD_PowerBalanced
 			{
 				displayName="<t color='#9fdcff'>Power: Balanced</t>";
