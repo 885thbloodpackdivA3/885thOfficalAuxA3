@@ -83,16 +83,24 @@ BPD_CloneHUD_fnc_registerHelmetCams = {
 // ------------------------------------------------------------
 //  Current link mode, read from reality
 // ------------------------------------------------------------
+BPD_CloneHUD_tacmapActive = false; // TAC MAP link mode on
+
 BPD_CloneHUD_fnc_linkMode = {
 	if (!isNil "cTabIfOpen") exitWith {
 		if ((cTabIfOpen select 1) in ["cTab_microDAGR_dsp","cTab_microDAGR_dlg"]) then {"DAGR"} else {"CTAB"}
 	};
+	if (BPD_CloneHUD_tacmapActive) exitWith {"TACMAP"};
 	if (BPD_CloneHUD_hcamActive) exitWith {"HCAM"};
 	"OFF"
 };
 
 BPD_CloneHUD_fnc_availableModes = {
 	private _modes = [];
+	// Tac Map first - it's the one that lives in the HUD itself
+	if (BPD_CloneHUD_ctabLoaded && {!isNil "cTab_fnc_drawBftMarkers"}
+		&& {!(missionNamespace getVariable ["BPD_CloneHUD_TACMAP_REQUIRE_DEVICE", true]) || {[["ItemcTab","ItemAndroid","ItemMicroDAGR"]] call BPD_CloneHUD_fnc_hasItem}}) then {
+		_modes pushBack "TACMAP";
+	};
 	if (BPD_CloneHUD_ctabLoaded && {[["ItemcTab","ItemAndroid"]] call BPD_CloneHUD_fnc_hasItem}) then { _modes pushBack "CTAB"; };
 	if (BPD_CloneHUD_ctabLoaded && {[["ItemMicroDAGR"]] call BPD_CloneHUD_fnc_hasItem}) then { _modes pushBack "DAGR"; };
 	private _needDevice = missionNamespace getVariable ["BPD_CloneHUD_HCAM_REQUIRE_DEVICE", false];
@@ -163,6 +171,11 @@ BPD_CloneHUD_fnc_enterMode = {
 		case "HCAM": {
 			[objNull] call BPD_CloneHUD_fnc_startHcam;
 		};
+		case "TACMAP": {
+			BPD_CloneHUD_tacmapActive = true;
+			["Tactical link: Tac Map"] call BPD_CloneHUD_fnc_linkNotice;
+			call BPD_CloneHUD_fnc_updateFeedPanel;
+		};
 		default {
 			["Tactical link: standby"] call BPD_CloneHUD_fnc_linkNotice;
 		};
@@ -175,7 +188,36 @@ BPD_CloneHUD_fnc_exitMode = {
 		case "CTAB";
 		case "DAGR": { if (!isNil "cTab_fnc_close") then { call cTab_fnc_close; }; };
 		case "HCAM": { call BPD_CloneHUD_fnc_stopHcam; };
+		case "TACMAP": { BPD_CloneHUD_tacmapActive = false; call BPD_CloneHUD_fnc_updateFeedPanel; };
 	};
+};
+
+// ------------------------------------------------------------
+//  Tac Map (BFT mini-map in the HUD panel)
+// ------------------------------------------------------------
+// Map control "Draw" handler (hooked in hudInit). Keeps the map centered
+// on the player at the chosen zoom and draws cTab's own BFT + user
+// markers with cTab's own functions, so it matches the tablet; plus the
+// HUD's pings / intel markers. Datalink jammed: own position only.
+BPD_CloneHUD_fnc_tacmapDraw = {
+	params ["_map"];
+	if (!BPD_CloneHUD_tacmapActive) exitWith {};
+	private _zoom = missionNamespace getVariable ["BPD_CloneHUD_TACMAP_ZOOM", 0.06];
+	_map ctrlMapAnimAdd [0, _zoom, getPosASL (vehicle player)];
+	ctrlMapAnimCommit _map;
+	private _jammed = (missionNamespace getVariable ["BPD_CloneHUD_jamTier", 0]) >= 2;
+	if (!_jammed && {!isNil "cTabIconSize"} && {!isNil "cTabBFTmembers"}) then {
+		[_map, 0] call cTab_fnc_drawBftMarkers;
+		if (!isNil "cTabUserMarkerList") then { [_map, false] call cTab_fnc_drawUserMarkers; };
+	};
+	if (!_jammed && {!isNil "BPD_CloneHUD_intelMarkers"}) then {
+		{
+			_y params ["_pos", "_icon", "_rgba", "_label"];
+			_map drawIcon [_icon, _rgba, _pos, 20, 20, 0, "", 0, 0.03, "RobotoCondensedBold", "right"];
+		} forEach BPD_CloneHUD_intelMarkers;
+	};
+	// self
+	_map drawIcon ["\A3\ui_f\data\map\VehicleIcons\iconmanvirtual_ca.paa", [1, 0.85, 0.2, 1], getPosASL (vehicle player), 22, 22, getDirVisual (vehicle player), "", 0, 0.03, "RobotoCondensedBold", "right"];
 };
 
 // Feedback that reaches the player even before the HUD has booted
@@ -194,6 +236,10 @@ BPD_CloneHUD_fnc_setLink = {
 	params ["_mode"];
 	private _current = call BPD_CloneHUD_fnc_linkMode;
 	if (_mode == _current) exitWith {};
+	if (_mode == "HCAM" && {(missionNamespace getVariable ["BPD_CloneHUD_jamTier", 0]) >= 2}) exitWith {
+		["<t color='#ff3b30'>NO SIGNAL</t> - helm cam feed jammed", "bpdJamHcam", 4] call HUD_fnc_addSystemMessage;
+		playSound "glitch_short";
+	};
 	[_current] call BPD_CloneHUD_fnc_exitMode;
 	[_mode] call BPD_CloneHUD_fnc_enterMode;
 	playSound "click";
@@ -240,11 +286,15 @@ BPD_CloneHUD_fnc_addAceMenu = {
 		private _a = [_id, _name, "", _statement, _condition] call ace_interact_menu_fnc_createAction;
 		["CAManBase", 1, ["ACE_SelfActions", "BPD_CloneHUD"], _a, true] call ace_interact_menu_fnc_addActionToClass;
 	} forEach [
+		["BPD_CloneHUD_tacmap", "Tac Map",        { ["TACMAP"] call BPD_CloneHUD_fnc_setLink; }, { "TACMAP" in (call BPD_CloneHUD_fnc_availableModes) && {(call BPD_CloneHUD_fnc_linkMode) != "TACMAP"} }],
 		["BPD_CloneHUD_ctab", "Open cTab",        { ["CTAB"] call BPD_CloneHUD_fnc_setLink; }, { "CTAB" in (call BPD_CloneHUD_fnc_availableModes) && {(call BPD_CloneHUD_fnc_linkMode) != "CTAB"} }],
 		["BPD_CloneHUD_dagr", "Open MicroDAGR",   { ["DAGR"] call BPD_CloneHUD_fnc_setLink; }, { "DAGR" in (call BPD_CloneHUD_fnc_availableModes) && {(call BPD_CloneHUD_fnc_linkMode) != "DAGR"} }],
 		["BPD_CloneHUD_hcam", "Helm Cam",         { ["HCAM"] call BPD_CloneHUD_fnc_setLink; }, { "HCAM" in (call BPD_CloneHUD_fnc_availableModes) && {(call BPD_CloneHUD_fnc_linkMode) != "HCAM"} }],
 		["BPD_CloneHUD_next", "Next Helm Cam",    { call BPD_CloneHUD_fnc_nextHcam; },         { (call BPD_CloneHUD_fnc_linkMode) == "HCAM" }],
-		["BPD_CloneHUD_off",  "Close Link",       { ["OFF"] call BPD_CloneHUD_fnc_setLink; },  { (call BPD_CloneHUD_fnc_linkMode) != "OFF" }]
+		["BPD_CloneHUD_off",  "Close Link",       { ["OFF"] call BPD_CloneHUD_fnc_setLink; },  { (call BPD_CloneHUD_fnc_linkMode) != "OFF" }],
+		["BPD_CloneHUD_sendIntel", "Send Intel...", { call BPD_CloneHUD_fnc_intelDialogPlayer; }, { !isNil "BPD_CloneHUD_fnc_canSendIntel" && {call BPD_CloneHUD_fnc_canSendIntel} }],
+		["BPD_CloneHUD_intelLog",  "Intel Log",     { call BPD_CloneHUD_fnc_intelShowLog; },     { !isNil "BPD_CloneHUD_fnc_intelShowLog" }],
+		["BPD_CloneHUD_kills",     "Kill Counter",  { call BPD_CloneHUD_fnc_killToggle; },       { !isNil "BPD_CloneHUD_fnc_killToggle" && {missionNamespace getVariable ["BPD_CloneHUD_KILLS_ENABLED", true]} }]
 	];
 	diag_log "885th_CloneHUD: ACE self-interaction 'Clone HUD' menu added.";
 };
@@ -413,8 +463,12 @@ BPD_CloneHUD_fnc_updateFeedPanel = {
 		&& {HUD_hasHelmet}
 		&& {isNull (findDisplay 312)};
 
+	private _mapCtrl = if (isNil "HUD_feedMap") then {controlNull} else {HUD_feedMap#0};
+	private _frameCtrl = if (isNil "HUD_feedFrame") then {controlNull} else {HUD_feedFrame#0};
 	if (!_visible) exitWith {
 		{ _x ctrlShow false; } forEach _ctrls;
+		_mapCtrl ctrlShow false;
+		_frameCtrl ctrlShow false;
 	};
 
 	private _s = missionNamespace getVariable ["BPD_CloneHUD_feedTextScale", 1];
@@ -430,6 +484,7 @@ BPD_CloneHUD_fnc_updateFeedPanel = {
 		case "CTAB": {"CTAB"};
 		case "DAGR": {"DAGR"};
 		case "HCAM": {"HELM CAM"};
+		case "TACMAP": {"TAC MAP"};
 		default {"STANDBY"};
 	};
 	(HUD_feedHeader#0) ctrlSetStructuredText parseText format [
@@ -438,10 +493,70 @@ BPD_CloneHUD_fnc_updateFeedPanel = {
 	];
 
 	private _hcamOn = _mode == "HCAM";
+	private _mapOn = _mode == "TACMAP" && {!isNull _mapCtrl};
 	(HUD_feedBack#0) ctrlShow true;
 	(HUD_feedHeader#0) ctrlShow true;
 	(HUD_feedPicture#0) ctrlShow (_hcamOn && {count BPD_CloneHUD_hcam > 0} && {isPiPEnabled});
-	(HUD_feedLabel#0) ctrlShow _hcamOn;
+	(HUD_feedLabel#0) ctrlShow (_hcamOn || _mapOn);
+	_mapCtrl ctrlShow _mapOn;
+
+	// 885th cTab device frame around the Tac Map (TACMAP_FRAME).
+	// Each entry, as fractions of the square 2048 texture:
+	// [texture, device left, right, top, bottom, screen left, right, top, bottom]
+	// The device is scaled so its width matches the panel; the map fills
+	// the frame's screen opening.
+	private _frameSel = missionNamespace getVariable ["BPD_CloneHUD_TACMAP_FRAME", 0];
+	if (_frameSel == 0) then {
+		private _dev = call BPD_CloneHUD_fnc_deviceState;
+		_frameSel = call {
+			if ((_dev select 0) select 1) exitWith {3};
+			if ((_dev select 1) select 1) exitWith {2};
+			if ((_dev select 2) select 1) exitWith {1};
+			1 // Tac Map without a device (Require Device off): DAGR look
+		};
+	};
+	private _frame = [
+		[],
+		["\cTab\img\microdagr_background_ca.paa", 0.034, 0.841, 0.0, 1.0, 0.282, 0.738, 0.155, 0.785],
+		["\cTab\img\android_background_ca.paa", 0.14, 0.845, 0.30, 0.93, 0.205, 0.745, 0.36, 0.655],
+		["\cTab\img\tablet_background_ca.paa", 0.023, 0.877, 0.008, 0.792, 0.1475, 0.753, 0.259, 0.704],
+		[]
+	] param [_frameSel, []];
+	private _framed = _mapOn && {count _frame > 0} && {!isNull _frameCtrl};
+	if (_mapOn) then {
+		private _hp = ctrlPosition (HUD_feedHeader#0);
+		private _top = (_hp select 1) + (_hp select 3);
+		private _w = _hp select 2;
+		private _sq = pixelH / pixelW; // width -> height for a square on screen
+		if (_framed) then {
+			_frame params ["_tex", "_dx0", "_dx1", "_dy0", "_dy1", "_sx0", "_sx1", "_sy0", "_sy1"];
+			private _iw = _w / (_dx1 - _dx0);
+			private _ih = _iw * _sq;
+			private _ix = (_hp select 0) - _dx0 * _iw;
+			private _iy = _top - _dy0 * _ih;
+			if (ctrlText _frameCtrl != _tex) then { _frameCtrl ctrlSetText _tex; };
+			_frameCtrl ctrlSetPosition [_ix, _iy, _iw, _ih];
+			_mapCtrl ctrlSetPosition [_ix + _sx0 * _iw, _iy + _sy0 * _ih, (_sx1 - _sx0) * _iw, (_sy1 - _sy0) * _ih];
+			BPD_CloneHUD_feedMapH = (_dy1 - _dy0) * _ih;
+		} else {
+			private _mh = _w * _sq * (missionNamespace getVariable ["BPD_CloneHUD_TACMAP_ASPECT", 1]);
+			_mapCtrl ctrlSetPosition [_hp select 0, _top, _w, _mh];
+			BPD_CloneHUD_feedMapH = _mh;
+		};
+		_frameCtrl ctrlCommit 0;
+		_mapCtrl ctrlCommit 0;
+	};
+	_frameCtrl ctrlShow _framed;
+
+	if (_mapOn) then {
+		private _jammed = (missionNamespace getVariable ["BPD_CloneHUD_jamTier", 0]) >= 2;
+		private _label = if (_jammed) then {"<t color='#ff3b30'>DATALINK LOST</t>"} else {
+			format ["GRID %1  %2°", mapGridPosition player, round getDir (vehicle player)]
+		};
+		private _mp = ctrlPosition _mapCtrl;
+		(HUD_feedLabel#0) ctrlSetPosition [_mp select 0, (_mp select 1) + (_mp select 3) - (0.03 * safezoneH * _s), _mp select 2, 0.03 * safezoneH * _s];
+		(HUD_feedLabel#0) ctrlSetStructuredText parseText format ["<t size='%1' align='center'>%2</t>", 0.8 * _s, _label];
+	};
 
 	if (_hcamOn) then {
 		private _t = BPD_CloneHUD_hcamTarget;
@@ -458,7 +573,12 @@ BPD_CloneHUD_fnc_updateFeedPanel = {
 	private _back = ctrlPosition (HUD_feedBack#0);
 	private _hdr = ctrlPosition (HUD_feedHeader#0);
 	private _pic = ctrlPosition (HUD_feedPicture#0);
-	_back set [3, if (_hcamOn) then {(_hdr select 3) + (_pic select 3)} else {_hdr select 3}];
+	_back set [3, call {
+		if (_hcamOn) exitWith {(_hdr select 3) + (_pic select 3)};
+		if (_framed) exitWith {_hdr select 3}; // the device is the panel - no dark box behind it
+		if (_mapOn) exitWith {(_hdr select 3) + (missionNamespace getVariable ["BPD_CloneHUD_feedMapH", _pic select 3])};
+		_hdr select 3
+	}];
 	(HUD_feedBack#0) ctrlSetPosition _back;
 	{ _x ctrlCommit 0; } forEach _ctrls;
 };

@@ -262,7 +262,9 @@ BPD_CloneHUD_fnc_medicPingNotify = {
 BPD_CloneHUD_medicPatients = createHashMap; // netId -> [unit, label, lastPingTime]
 
 BPD_CloneHUD_fnc_medicPingTick = {
-	if (!(missionNamespace getVariable ["BPD_CloneHUD_MEDIC_PING", true]) || {!(call BPD_CloneHUD_fnc_isMedic)} || {!alive player}) exitWith {
+	if (!(missionNamespace getVariable ["BPD_CloneHUD_MEDIC_PING", true]) || {!(call BPD_CloneHUD_fnc_isMedic)} || {!alive player}
+		|| {(missionNamespace getVariable ["BPD_CloneHUD_jamTier", 0]) >= 2}) exitWith { // datalink jammed
+
 		BPD_CloneHUD_medicPatients = createHashMap;
 	};
 	private _threshold = missionNamespace getVariable ["BPD_CloneHUD_MEDIC_PING_THRESHOLD", 3];

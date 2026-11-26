@@ -102,15 +102,24 @@ BPD_CloneHUD_fnc_applyLayout = {
 	if (isNil "HUD_TEXTURE_IND_HEAD") exitWith {}; // no helmet tier resolved yet
 
 	// ---- Trooper (limb damage indicator) ----
-	// Scale is normalized to the art's HEIGHT, so all three tiers come
-	// out the same size on screen even though the RC art is drawn
-	// smaller on its canvas than the P1/P2 art.
+	// Every tier is fitted into the SAME on-screen box: the Phase 1 trooper
+	// at 0.22 safezoneH tall sets both the width and the height. Width and
+	// height are scaled separately, so the slimmer RC art is widened to
+	// match the P1 / P2 troopers' build instead of coming out narrower or
+	// taller. Role figures (ARF / Scout / BARC / Pilot) are drawn on the P2
+	// figure, so the tier's box fits them too.
 	([call BPD_CloneHUD_fnc_currentTier] call BPD_CloneHUD_fnc_artBox) params ["_ax", "_ay", "_aw", "_ah"];
+	(["P1"] call BPD_CloneHUD_fnc_artBox) params ["", "", "_refW", "_refH"];
 	private _artH = 0.22 * safezoneH * (["TROOPER"] call BPD_CloneHUD_fnc_layoutScale);
-	private _k = _artH / (_ah * safezoneH);
-	private _artW = _k * _aw * safezoneW;
+	private _artW = _artH * (_refW * safezoneW) / (_refH * safezoneH);
+	private _kx = _artW / (_aw * safezoneW);
+	private _ky = _artH / (_ah * safezoneH);
 	(["TROOPER", _artW, _artH] call BPD_CloneHUD_fnc_layoutPos) params ["_tx", "_ty"];
-	private _limbRect = [_tx - (_k * _ax * safezoneW), _ty - (_k * _ay * safezoneH), _k * safezoneW, _k * safezoneH];
+	// RC gets an extra 5% width, kept centred on the same spot
+	private _wide = [1, 1.05] select ((call BPD_CloneHUD_fnc_currentTier) == "RC");
+	_kx = _kx * _wide;
+	_tx = _tx - (_artW * (_wide - 1) / 2);
+	private _limbRect = [_tx - (_kx * _ax * safezoneW), _ty - (_ky * _ay * safezoneH), _kx * safezoneW, _ky * safezoneH];
 	{
 		(_x#0) ctrlSetText (_x#1);
 		(_x#0) ctrlSetPosition _limbRect;
@@ -130,7 +139,7 @@ BPD_CloneHUD_fnc_applyLayout = {
 		(HUD_trooperBase#0) ctrlSetPosition _limbRect;
 		(HUD_trooperBase#0) ctrlCommit 0;
 	};
-	BPD_CloneHUD_trooperRect = [_tx, _ty, _artW, _artH];
+	BPD_CloneHUD_trooperRect = [_tx, _ty, _artW * _wide, _artH];
 
 	// ---- Squad list ----
 	private _sqScale = ["SQUAD"] call BPD_CloneHUD_fnc_layoutScale;
@@ -171,8 +180,18 @@ BPD_CloneHUD_fnc_applyLayout = {
 		(HUD_feedLabel#0) ctrlSetPosition [_fx, _fy + _headerH + _picH - (0.03 * safezoneH * _fScale), _fW, 0.03 * safezoneH * _fScale];
 		{ (_x#0) ctrlCommit 0; } forEach [HUD_feedBack, HUD_feedHeader, HUD_feedPicture, HUD_feedLabel];
 		BPD_CloneHUD_feedTextScale = _fScale;
+		// Tac Map: square (in real pixels) under the header
+		if (!isNil "HUD_feedMap" && {!isNull (HUD_feedMap#0)}) then {
+			private _mapH = _fW * (pixelH / pixelW) * (missionNamespace getVariable ["BPD_CloneHUD_TACMAP_ASPECT", 1]);
+			(HUD_feedMap#0) ctrlSetPosition [_fx, _fy + _headerH, _fW, _mapH];
+			(HUD_feedMap#0) ctrlCommit 0;
+			BPD_CloneHUD_feedMapH = _mapH;
+		};
 	};
 
 	// ---- Ammo counter (Style A / B) ----
 	if (!isNil "BPD_CloneHUD_fnc_ammoLayout") then { call BPD_CloneHUD_fnc_ammoLayout; };
+	if (!isNil "BPD_CloneHUD_fnc_commsLayout") then { call BPD_CloneHUD_fnc_commsLayout; };
+	if (!isNil "BPD_CloneHUD_fnc_intelLogLayout") then { call BPD_CloneHUD_fnc_intelLogLayout; };
+	if (!isNil "BPD_CloneHUD_fnc_killLayout") then { call BPD_CloneHUD_fnc_killLayout; };
 };

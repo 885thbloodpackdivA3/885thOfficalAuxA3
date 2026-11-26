@@ -190,6 +190,13 @@ HUD_fnc_updateTeamList = {
 	private _s = missionNamespace getVariable ["BPD_CloneHUD_teamListTextScale", 1];
 	private _lines = format ["<t size='%2' align='left'>%1</t><br/>", _squadName, 1.1 * _s];
 
+	// Jammed (jamming.sqf tier 2+): datalink down - no member data.
+	if ((missionNamespace getVariable ["BPD_CloneHUD_jamTier", 0]) >= 2) exitWith {
+		(HUD_teamList#0) ctrlSetStructuredText parseText (_lines + format [
+			"<t size='%1' align='left' color='#ff3b30' font='PuristaBold'>DATALINK LOST</t><br/><t size='%2' align='left' color='#8aa0a8'>squad data unavailable - jamming</t>",
+			_s, 0.8 * _s]);
+	};
+
 	// Cap at 12 - a full vanilla Arma squad - so a larger custom group
 	// can't overflow the list box. Squad leader goes first regardless
 	// of their position in the group's own internal member order.
@@ -255,6 +262,10 @@ HUD_fnc_updateTeamList = {
 		};
 		if (_x == player) then {
 			_leaderTag = _leaderTag + " <t align='left' color='#00bfff'>(You)</t>";
+		};
+		// radio icon + channel while this member transmits (9. Radio Comms)
+		if (!isNil "BPD_CloneHUD_fnc_commsUnitTag") then {
+			_leaderTag = _leaderTag + ([_x] call BPD_CloneHUD_fnc_commsUnitTag);
 		};
 
 		_lines = _lines + format [

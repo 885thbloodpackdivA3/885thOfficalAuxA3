@@ -120,8 +120,14 @@ HUD_fnc_radarLoop = {
 	while {alive player && (player getvariable ["HUD_hasUniform",false]) && !(player getVariable "HUD_suitDisabled")} do {
 		waitUntil {sleep 0.5; !(alive player) || {player getVariable ["HUD_bootComplete",false]}};
 		while {player getVariable ["HUD_bootComplete",false]} do {
-			call HUD_fnc_radarUpdate;
-			sleep 0.1;
+			// tier 3 jamming (jamming.sqf) knocks the radar out
+			if ((missionNamespace getVariable ["BPD_CloneHUD_jamTier", 0]) >= 3) then {
+				call HUD_fnc_radarHide;
+				sleep 0.5;
+			} else {
+				call HUD_fnc_radarUpdate;
+				sleep 0.1;
+			};
 		};
 		call HUD_fnc_radarHide;
 	};

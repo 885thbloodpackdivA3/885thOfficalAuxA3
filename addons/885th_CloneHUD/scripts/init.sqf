@@ -33,19 +33,22 @@ if ((missionNamespace getVariable ["BPD_CloneHUD_ACE_COMPACT_ENABLED", false]) &
 	systemChat "[885th BPD Clone HUD] ACE/KAT Medical Compact is enabled in Addon Options, but ACE Medical isn't loaded - falling back to vanilla damage tracking for the compact.";
 };
 
-execVM "\885th_CloneHUD\scripts\layout.sqf";
-execVM "\885th_CloneHUD\scripts\ammoStyle.sqf";
-execVM "\885th_CloneHUD\scripts\hudEventhandler.sqf";
-execVM "\885th_CloneHUD\scripts\hudBootUp.sqf";
-execVM "\885th_CloneHUD\scripts\hudInit.sqf";
-execVM "\885th_CloneHUD\scripts\systemMessages.sqf";
-execVM "\885th_CloneHUD\scripts\updateDamageIndicator.sqf";
-execVM "\885th_CloneHUD\scripts\squadMed.sqf";
-execVM "\885th_CloneHUD\scripts\teamList.sqf";
-execVM "\885th_CloneHUD\scripts\radar.sqf";
-execVM "\885th_CloneHUD\scripts\system.sqf";
-execVM "\885th_CloneHUD\scripts\vanillaHud.sqf";
-execVM "\885th_CloneHUD\scripts\ctab.sqf";
+// Load every script in order, in ONE unscheduled block. With execVM they
+// all loaded in parallel, so a loop in one file could run before another
+// file had defined the function it calls ("Undefined variable in
+// expression: hud_fnc_removehudeventhandler", system.sqf). None of these
+// files sleeps / waits at top level (their loops live in spawn blocks),
+// so loading them unscheduled is safe; the spawned loops start after.
+isNil {
+	{
+		call compile preprocessFileLineNumbers format ["\885th_CloneHUD\scripts\%1.sqf", _x];
+	} forEach [
+		"layout", "ammoStyle", "hudEventhandler", "hudBootUp", "hudInit",
+		"systemMessages", "updateDamageIndicator", "squadMed", "teamList",
+		"radar", "system", "vanillaHud", "ctab", "intel", "comms", "jamming",
+		"mineDetect", "visorCrack", "killCounter"
+	];
+};
 
 targetingSystemSoundOn = "threat_detector";
 
@@ -184,6 +187,31 @@ HUD_SUIT_LABEL = "[UNKNOWN]";
 	call BPD_CloneHUD_fnc_nextHcam
 }, "", [0x24, [true, false, false]]] call CBA_fnc_addKeybind;
 
+["885th BPD Clone HUD","BPD_CloneHUD_pingKey", "Spot / Ping Target", {
+	if (isNil "BPD_CloneHUD_fnc_pingSend") exitWith {false};
+	call BPD_CloneHUD_fnc_pingSend
+}, "", [0x14, [true, false, false]]] call CBA_fnc_addKeybind;
+
+["885th BPD Clone HUD","BPD_CloneHUD_intelLogKey", "Show / Hide Intel Log", {
+	if (isNil "BPD_CloneHUD_fnc_intelShowLog") exitWith {false};
+	call BPD_CloneHUD_fnc_intelShowLog
+}, "", [0, [false, false, false]]] call CBA_fnc_addKeybind; // unbound by default - set one in Controls
+
+["885th BPD Clone HUD","BPD_CloneHUD_mineKey", "Toggle Mine Detector", {
+	if (isNil "BPD_CloneHUD_fnc_mdToggle") exitWith {false};
+	call BPD_CloneHUD_fnc_mdToggle
+}, "", [0, [false, false, false]]] call CBA_fnc_addKeybind; // unbound by default
+
+["885th BPD Clone HUD","BPD_CloneHUD_wipeVisorKey", "Wipe Visor (RC helmets)", {
+	if (isNil "BPD_CloneHUD_fnc_crackWipe") exitWith {false};
+	call BPD_CloneHUD_fnc_crackWipe
+}, "", [0, [false, false, false]]] call CBA_fnc_addKeybind; // unbound by default
+
+["885th BPD Clone HUD","BPD_CloneHUD_killKey", "Show / Hide Kill Counter", {
+	if (isNil "BPD_CloneHUD_fnc_killToggle") exitWith {false};
+	call BPD_CloneHUD_fnc_killToggle
+}, "", [0, [false, false, false]]] call CBA_fnc_addKeybind; // unbound by default
+
 // ============================================================
 //  Damage Indicator hit hook (real health, no armor pool)
 //  "Dammaged" fires AFTER the engine applies damage, so this
@@ -278,6 +306,44 @@ HUD_fnc_getHelmetOverlay = {
 			HUD_TEXTURE_IND_LEG_L = RC_IND_LEG_L;
 			HUD_SUIT_LABEL = "Republic Commando Armor";
 		};
+	};
+
+	// Role life indicators: swap only the trooper figure, keeping the
+	// tier's visor frame / info display. The art sits on the same canvas
+	// spot as the P1 / P2 trooper, so the layout's art box still fits.
+	private _hg = headgear player;
+	private _role = "";
+	call HUD_merge_helmet_arrays; // re-read the role lists every time
+	private _hgLow = toLower _hg;
+	{
+		private _list = (missionNamespace getVariable [format ["BPD_CloneHUD_roleList_%1", _x], []]) apply { toLower _x };
+		if (_hgLow in _list) exitWith { _role = _x; };
+	} forEach ["ARF", "Scout", "BARC", "Pilot", "Airborne", "Engineer"];
+	// Fallback: an unlisted helmet whose classname names the role
+	// (e.g. a new 885th_..._Pilot_Helm) still gets that role's figure.
+	if (_role == "") then {
+		{
+			_x params ["_needle", "_r"];
+			if ((_hgLow find _needle) >= 0) exitWith { _role = _r; };
+		} forEach [["pilot", "Pilot"], ["barc", "BARC"], ["scout", "Scout"], ["_arf", "ARF"], ["engineer", "Engineer"], ["_ab_", "Airborne"]];
+	};
+	// no art packed for this role yet -> keep the tier's normal trooper
+	if (_role != "" && {!fileExists format ["\885th_CloneHUD\textures\%1\%1_pa_head.paa", _role]}) then { _role = ""; };
+	BPD_CloneHUD_indicatorRole = _role;
+	if (_hg != (missionNamespace getVariable ["BPD_CloneHUD_lastRoleHelmet", ""])) then {
+		BPD_CloneHUD_lastRoleHelmet = _hg;
+		diag_log format ["885th_CloneHUD: life indicator for %1 - tier %2, role '%3'.", _hg, [player getVariable ["P1_INHELMET", false], player getVariable ["P2_INHELMET", false], player getVariable ["RC_INHELMET", false]], _role];
+	};
+	if (_role != "" && {!(player getVariable ["RC_INHELMET", false])}) then {
+		private _p = format ["\885th_CloneHUD\textures\%1\%1_", _role];
+		HUD_TEXTURE_IND_HEAD  = _p + "pa_head.paa";
+		HUD_TEXTURE_IND_TORSO = _p + "pa_torso.paa";
+		HUD_TEXTURE_IND_ARM_R = _p + "pa_armR.paa";
+		HUD_TEXTURE_IND_ARM_L = _p + "pa_armL.paa";
+		HUD_TEXTURE_IND_LEG_R = _p + "pa_legR.paa";
+		HUD_TEXTURE_IND_LEG_L = _p + "pa_legL.paa";
+		HUD_TEXTURE_TROOPER_BASE = _p + "trooperBase.paa";
+		HUD_SUIT_LABEL = format ["%1 (%2)", missionNamespace getVariable ["HUD_SUIT_LABEL", "Armor"], toUpper _role];
 	};
 };
 
@@ -403,6 +469,16 @@ player addEventHandler ["respawn", {
 	};
 }];
 
+// ACE / vanilla Arsenal and setUnitLoadout swap gear without Take / Put /
+// inventory events - CBA's loadout event catches those, so a helmet swap
+// there re-skins the trooper (role figure) like a normal pickup does.
+if (!isNil "CBA_fnc_addPlayerEventHandler") then {
+	["loadout", {
+		params ["_unit", "_new", "_old"];
+		if ((_new param [6, ""]) isEqualTo (_old param [6, ""])) exitWith {}; // headgear unchanged
+		call HUD_updateGearVariables;
+	}] call CBA_fnc_addPlayerEventHandler;
+};
 player addEventHandler ["Take", { call HUD_updateGearVariables; }];
 player addEventHandler ["Put", { call HUD_updateGearVariables; }];
 player addEventHandler ["InventoryOpened", { call HUD_updateGearVariables; }];

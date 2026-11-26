@@ -10,9 +10,9 @@ class CfgPatches
 		weapons[] = {};
 		requiredAddons[] = {"cba_main"};
 		requiredVersion = 0.1;
-		version = 1.3;
-		versionStr = "1.3.0";
-		versionAr[] = {1,3,0};
+		version = 1.4;
+		versionStr = "1.4.0";
+		versionAr[] = {1,4,0};
 	};
 };
 
@@ -55,6 +55,32 @@ class CfgSettings
 				};
 			};
 		};
+	};
+};
+
+// Orbitron (Matt McInerney, SIL Open Font License 1.1), converted with
+// Arma 3 Tools FontToTGA. Used by the Kill Counter (scripts/killCounter.sqf).
+// Named BPD_Orbitron so it can't clash with another mod's "Orbitron".
+class CfgFontFamilies
+{
+	class BPD_Orbitron
+	{
+		fonts[] = {
+			"\885th_CloneHUD\fonts\Orbitron\Orbitron12",
+			"\885th_CloneHUD\fonts\Orbitron\Orbitron14",
+			"\885th_CloneHUD\fonts\Orbitron\Orbitron16",
+			"\885th_CloneHUD\fonts\Orbitron\Orbitron18",
+			"\885th_CloneHUD\fonts\Orbitron\Orbitron20",
+			"\885th_CloneHUD\fonts\Orbitron\Orbitron22",
+			"\885th_CloneHUD\fonts\Orbitron\Orbitron24",
+			"\885th_CloneHUD\fonts\Orbitron\Orbitron28",
+			"\885th_CloneHUD\fonts\Orbitron\Orbitron32",
+			"\885th_CloneHUD\fonts\Orbitron\Orbitron36",
+			"\885th_CloneHUD\fonts\Orbitron\Orbitron40",
+			"\885th_CloneHUD\fonts\Orbitron\Orbitron46"
+		};
+		spaceWidth = 0.7;
+		spacing = 0.13;
 	};
 };
 
@@ -167,6 +193,20 @@ class RscTitles
 		w = "safeZoneW";
 		h = "safeZoneH";
 		onLoad = "uiNamespace setVariable ['BPD_CloneHUD_INDICATOR_BASE',_this select 0]";
+	};
+	// Cracked visor (visorcrack.sqf) - its own layer so cracks sit on top
+	// of every HUD element and survive the HUD being switched off.
+	class BPD_CloneHUD_CRACK_BASE
+	{
+		idd = 2077006;
+		fadeIn = 0;
+		fadeOut = 0;
+		duration = 9.9999998e+010;
+		x = "safeZoneX";
+		y = "safeZoneY";
+		w = "safeZoneW";
+		h = "safeZoneH";
+		onLoad = "uiNamespace setVariable ['BPD_CloneHUD_CRACK_BASE',_this select 0]";
 	};
 	class HUD_BOOTUP
 	{

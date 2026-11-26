@@ -69,6 +69,11 @@ HUD_fnc_hudInit = {
 		HUD_feedPicture = _displayHUD ctrlCreate ["RscPicture", 27681];
 		HUD_feedHeader = _displayHUD ctrlCreate ["RscStructuredText", 27682];
 		HUD_feedLabel = _displayHUD ctrlCreate ["RscStructuredText", 27683];
+		// Tac Map link mode (ctab.sqf) - BFT mini-map in the same panel.
+		// The 885th cTab device frame is created first so the map draws
+		// on top of it, inside the frame's screen opening.
+		HUD_feedFrame = _displayHUD ctrlCreate ["RscPicture", 27686];
+		HUD_feedMap = _displayHUD ctrlCreate ["RscMapControl", 27685];
 	};
 
 	HUD_hudOverlay = [uiNamespace getVariable "HUD_hudOverlay"];
@@ -126,6 +131,16 @@ HUD_fnc_hudInit = {
 	(HUD_feedHeader#0) ctrlSetBackgroundColor [0,0,0,0];
 	(HUD_feedLabel#0) ctrlSetBackgroundColor [0,0,0,0.4];
 	{ (_x#0) ctrlShow false; (_x#0) ctrlCommit 0; } forEach [HUD_feedBack, HUD_feedPicture, HUD_feedHeader, HUD_feedLabel];
+	HUD_feedFrame = [uiNamespace getVariable ["HUD_feedFrame", controlNull]];
+	if (!isNull (HUD_feedFrame#0)) then { (HUD_feedFrame#0) ctrlShow false; (HUD_feedFrame#0) ctrlCommit 0; };
+	HUD_feedMap = [uiNamespace getVariable ["HUD_feedMap", controlNull]];
+	if (!isNull (HUD_feedMap#0)) then {
+		(HUD_feedMap#0) ctrlShow false;
+		(HUD_feedMap#0) ctrlCommit 0;
+		if (!isNil "BPD_CloneHUD_fnc_tacmapDraw") then {
+			(HUD_feedMap#0) ctrlAddEventHandler ["Draw", { with missionNamespace do { _this call BPD_CloneHUD_fnc_tacmapDraw; }; }];
+		};
+	};
 
 	(HUD_startUpImage#0) ctrlSetPosition [safezoneX,safezoneY,safezoneW,safezoneH];
 	(HUD_startUpImage#0) ctrlSetText HUD_START_IMAGE;
@@ -169,6 +184,9 @@ HUD_fnc_hudInit = {
 
 	call BPD_CloneHUD_fnc_applyLayout;
 	if (!isNil "BPD_CloneHUD_fnc_ammoCreate") then { call BPD_CloneHUD_fnc_ammoCreate; };
+	if (!isNil "BPD_CloneHUD_fnc_commsCreate") then { call BPD_CloneHUD_fnc_commsCreate; };
+	if (!isNil "BPD_CloneHUD_fnc_intelLogCreate") then { call BPD_CloneHUD_fnc_intelLogCreate; };
+	if (!isNil "BPD_CloneHUD_fnc_killCreate") then { call BPD_CloneHUD_fnc_killCreate; };
 
 	(HUD_infoDisplay#0) ctrlSetPosition [safezoneX,safezoneY,safezoneW,safezoneH];
 	(HUD_infoDisplay#0) ctrlSetText TEXTURE_DATAOUTPUT;

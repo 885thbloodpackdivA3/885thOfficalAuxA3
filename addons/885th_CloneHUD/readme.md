@@ -76,7 +76,8 @@ mission setup required.
   bottom-left, squad list middle-left, radar bottom-center, link panel
   top-right. The trooper is placed by the measured bounds of its art
   (`BPD_CloneHUD_fnc_artBox` in `scripts/layout.sqf`), not by its
-  full-screen canvas, so all three armor tiers land on the same spot.
+  full-screen canvas, so all three armor tiers land on the same spot
+  at the same size (the slimmer RC trooper is widened to match).
 - **cTab link** (*885th Clone HUD > 5. cTab Link* and *Server & Advanced > 1. Server*, needs the 885th cTab):
   - Clone HUD helmets are registered as cTab helmet cams.
   - Tactical link panel shows TAB / ANDR / DAGR / HCAM status and the
@@ -114,11 +115,191 @@ The squad list now shows each member's real medical state
   unconscious, arrest, bleeding, wounds, tourniquets and fractures update
   immediately. Without ACE it falls back to vanilla damage.
 
+## 1.4.0 - Jamming, Tac Map, Intel Log panel, comms wording
+
+- **Jamming** (`scripts/jamming.sqf`, *8. Intel & Jamming*). Sources:
+  Crows EW jammers (`crowsew_main_jamMap`), 885th HUD jammers placed by
+  Zeus (ZEN *885th Clone HUD > Add / Remove HUD Jammer*, falloff +
+  effective radius; they also cut TFAR range like Crows EW), and any
+  other TFAR jamming read back from `tf_sending/receivingDistance-
+  Multiplicator`. Tiers: 20 % COMMS DEGRADED (warning), 50 % COMMS
+  LOST (datalink down: radio rows, squad list data -> "DATALINK LOST",
+  pings / intel, medic pings, helm cam), 85 % SENSORS JAMMED (scanner
+  markers + radar off). Warning shows in the comms list area even with
+  the comms display off; optional visor film-grain static.
+- **Tac Map** link mode (*Shift+H* cycle / ACE *Clone HUD > Tac Map*):
+  BFT mini-map in the tactical link panel, centered on you, drawn with
+  cTab's own `cTab_fnc_drawBftMarkers` / `drawUserMarkers` plus HUD
+  pings / intel markers; grid + heading under it. Needs a cTab device
+  (server setting). Zoom / height in *5. Helm Cam & cTab*. Jammed:
+  own position only, DATALINK LOST.
+- **Intel Log** is now a HUD panel (*2. Layout - Intel Log*), open from
+  the ACE menu or the *Show / Hide Intel Log* keybind (unbound by
+  default), stays up *Intel Log Time* seconds (0 = toggle).
+- **Comms rows** read "Sending... <your radio>" / "Receiving... <your
+  radio it came in on>  <who>  <channel>", then "Sent" / "Received"
+  dimmed after release.
+- **Jammer devices** (ZEN *885th Clone HUD > Place Jammer Device*): a
+  physical jammer troopers must find and kill to get their HUD back.
+  Pick a prop (data terminal, assembled device, antenna, server, computer,
+  generator, radio mast, the object you dropped it on, or any custom
+  classname), falloff / effective radius, hits to destroy, disable time,
+  and who can disable it (anyone / engineers + EOD). Killed by direct hits
+  (explosive rounds kill outright), grenades / launchers / placed charges
+  within their blast, the prop itself being destroyed, or *Disable Jammer*
+  (ACE interaction, hold action without ACE). Smoke + flash, "JAMMER
+  DESTROYED / DISABLED by <name>" for everyone it affected, then COMMS
+  RESTORED. Eden: in the object's init,
+  `this setVariable ["BPD_CloneHUD_jammer", [600, 200]]; this setVariable ["BPD_CloneHUD_jamDevice", [10, 8, 0]];`
+  ([falloff, effective], [hits, disable seconds, 0 anyone / 1 engineers]).
+- **Scanner line of sight** (Server & Advanced > 4. Scanner Icons):
+  scanner icons need real visibility (`checkVisibility` - smoke, foliage,
+  buildings), not just a clear geometry line. When sight is lost a faded
+  "?" icon stays at the last known position for *Last Known Position
+  Time* (default 10 s) and fades out. *Visibility Needed* (0.3) sets how
+  thick the smoke has to be. Turn *Scanner Needs Line of Sight* off for
+  the old walls/terrain-only check.
+- **Mine Detector** (10. Mine Detector, `scripts/minedetect.sqf`): an
+  engineer role function like medic pings. Only an engineer / EOD carrying
+  a mine detector (vanilla MineDetector, ACE VMM3 / VMH3, or Extra Detector
+  Classes) gets it, unless the server loosens *Who Gets It*. Scans
+  *Detection Range* around the trooper without holding the detector:
+  "MINE DETECTED - 8m NE" message + tone, the mine is revealed, a
+  "MINE 6m" marker (red + pulsing inside *Danger Distance*), proximity
+  beeps, and found mines shared to the squad's HUDs. Jamming tier 3
+  knocks it out; tier 2+ stops squad sharing. *Toggle Mine Detector*
+  keybind is unbound by default.
+- **Tac Map Device Frame** (5. Helm Cam & cTab): the Tac Map sits inside
+  the 885th cTab device art (`\cTab\img\*_background_ca.paa`) - Auto
+  picks the device carried (Tablet > Holo-pad > DAGR), or force DAGR /
+  Holo-pad / Tablet / None. The device is scaled to the panel width and
+  the map fills its screen opening; Tac Map Height only applies to None.
+- **Comms List Style** (9. Radio Comms): *Default* (one row per
+  transmission) or *Grouped* - one vertical block with a **Sending**
+  heading over your transmissions and a **Receiving** heading over
+  incoming ones. Jamming shows on the headings: RANGE REDUCED / DEGRADED
+  at tier 1, JAMMED / COMMS LOST + "No signal" at tier 2+, and both
+  headings stay up while jammed. Rows setting counts per heading.
+- **Role life indicators** (Server & Advanced > 8. Helmet Lists): ARF,
+  Scout, BARC, Pilot, Airborne and Engineer troopers get their own trooper
+  figure (`textures\<Role>`) while keeping their Phase 1 / Phase 2 visor
+  frame. Six lists pick the helmets (an unlisted helmet whose classname
+  says pilot / BARC / scout / _ARF / engineer / _AB_ falls back to that
+  role); a helmet still has to be in a P1 / P2 list to get the HUD. The
+  figure refreshes on any helmet swap, ACE Arsenal included. All six are the P2 figure with a helmet traced from a reference
+  image (Pilot also has the chest life-support box), so they use the P2
+  art box and come out the same size.
+- **885th helmets only**: every helmet list ships with 885th helmets
+  only (3AS stock helmets were removed). Add a 3AS classname to a list
+  in Addon Options to give it the HUD again.
+- **Cracked Visor** (11. Cracked Visor, `scripts/visorcrack.sqf`), Republic
+  Commando style: a critical headshot (one head hit at or over *Headshot
+  Threshold*) or an explosion that does at least *Blast Threshold* to your
+  body cracks your clone helmet's visor, with an armored-glass hit sound.
+  Cracks are random - 19 textures in `textures/crack/` (3 bullet
+  spiderwebs, 2 small chips, 2 long stress fractures, 2 rim impacts,
+  2 star bursts, 2 full shatters, 2 blaster-volley clusters, 2 glancing
+  grazes, 2 edge-to-edge splits) at a random spot, size and rotation.
+  Headshots favour webs / stars / grazes near the middle, blasts favour
+  rim impacts, clusters, shatters and splits (1-2 at once). They stack up to
+  *Max Cracks*, sit above every HUD element on their own layer
+  (`BPD_CloneHUD_CRACK_BASE`), and hide in third person / map / Zeus.
+  Only **Republic Commando helmets** (the RC helmet list) can wipe: the
+  *Wipe Visor (RC helmets)* keybind (unbound), ACE self-interaction >
+  Equipment > Wipe Visor, or the scroll action without ACE - and on their
+  own *RC Auto Wipe After* seconds (default 20) after the last crack. A
+  wiper sweeps across (at 0.8x speed, `_speed` in `crackWipe`) and clears
+  it; *Wipe Cooldown* (default 5 s) spaces wipes. Phase 1 / 2 cracks stay until a helmet swap or
+  respawn, or *Non-RC Cracks Last* seconds. **Engineers can repair any
+  tier's visor**: ACE interact with the trooper > *Repair Visor* (or self
+  > Equipment > Repair Visor), with a progress bar of *Repair Time*
+  (default 8 s); without ACE it's a hold action while looking at them.
+  *Who Can Repair* (Nobody / Engineers / Anyone) and *Repair Needs
+  Toolkit* are server settings. The trooper's machine shares a public
+  `BPD_CloneHUD_cracked` flag so the action only shows when there's
+  something to fix. Damage comes from the ACE
+  `ace_medical_woundReceived` event (old and 3.16+ formats), or a
+  `Dammaged` handler without ACE medical. Debug console test:
+  `["head"] call BPD_CloneHUD_fnc_crackAdd;` / `["blast"] call ...`.
+- **Cover** (*Cover Blocks Blast Cracks*, on): a blast with walls,
+  floors or terrain between your eyes and where it went off doesn't crack
+  the visor, so a mortar outside your building no longer does. Blast spot
+  unknown + under a building roof = double *Blast Threshold*.
+- **Visor dirt** (*Visor Dirt*, on): every explosive that goes off near
+  you in the open (2x its blast radius, max 35 m, no cover between) throws
+  1-2 of 10 random dirt overlays (`textures/dirt/`: mud splatter, dust,
+  smear, water spots, corner grime, sand spray, mud drip, soot, clumps,
+  dust film), hurt or not. *Max Dirt* (3), *Dirt Lasts* (90 s, any
+  helmet), *Dirt Opacity*. RC wipes and repairs clear it with the cracks;
+  dirt alone doesn't offer a repair. Detection: `ProjectileCreated`
+  mission event + projectile `Explode` handler, with the player's
+  `Explosion` handler as a fallback. Test: `[2] call BPD_CloneHUD_fnc_dirtAdd;`.
+- **Repair Visor** now plays the same wiper sweep as the RC wipe.
+
+## 1.4.0 - Kill Counter
+
+- Counts the enemies you kill this mission, per enemy type (vehicle
+  turret kills count; friendlies, civilians and your own death don't).
+  Totals survive respawns and reset with a new mission.
+- Press **Show / Hide Kill Counter** (unbound by default) or ACE self >
+  Clone HUD > Kill Counter. It types in "> READING COMBAT LOG..." /
+  "> CONFIRMED KILLS", an INFANTRY / VEHICLES total line, then your
+  top 4 as name and total, in Orbitron. Vehicle crew killed inside
+  count as infantry, the vehicle itself as a vehicle.
+- Fades after **Kill Counter Time** (default 15 s, 0 = until the key
+  is pressed again). Press the key again to hide it early. **Kill
+  Counter** checkbox turns the feature off.
+- Survives leaving and rejoining the same mission: totals are saved
+  as a public mission variable per player UID (every 5 s after a new
+  kill), which Arma re-sends to joining players. No server script.
+- Everything (on/off, time, position, scale) is on one page:
+  **2. Layout - Kill Counter**.
+- Font: Orbitron by Matt McInerney, SIL Open Font License 1.1,
+  converted with Arma 3 Tools FontToTGA and registered as `BPD_Orbitron`.
+
+## 1.4.0 - Intel: spotting pings + broadcasts
+
+See the header of `scripts/intel.sqf`. Settings: *885th Clone HUD > 8.
+Intel*.
+
+- **Spot / Ping Target** (keybind, default Shift+T, needs a booted
+  HUD): marks what you aim at. Own squad (or friendlies in range) gets
+  a HUD line - CONTACT / FRIENDLY / CIVILIAN / MARK, what it is ("3x
+  Infantry", vehicle name), distance + bearing from *their* position,
+  and who called it (fireteam label for own squad) - plus a 3D marker
+  where it was spotted, fading after 20 s. The marker stays at the
+  spotted position (callout, not a tracker). One ping per sender.
+- **Send Intel...** (ACE self-interaction *Clone HUD*; squad leaders +
+  Zeus by default): typed message as INTEL / PRIORITY / OBJECTIVE to
+  own squad or all friendlies, optional marker at your aim point.
+  Zeus gets the ZEN module *885th Clone HUD > Send HUD Intel* (targets
+  a side, everyone, or the squad of the unit it's placed on; marker at
+  the module position). Players without a booted HUD get chat + hint.
+- **Intel Log** (same ACE menu): last 10 pings / intel received.
+- Sent with remoteExec to the clients in scope only, data only.
+- **Radio comms strip** (TFAR; `scripts/comms.sqf`): up to 4 rows -
+  RX/TX, who (fireteam label for own squad), the SR/LR channel number
+  it came in on *for you* (ALT = additional channel), frequency name
+  (from *Frequency Names*, e.g. `31=Platoon, 40=Air`) and frequency.
+  Only shown to players with a radio on that frequency + encryption
+  code and within the sender's radio range (straight-line, no terrain).
+  Rows dim and drop a few seconds after release. Hooks TFAR's
+  `OnTangent` event on the sender; nothing happens without TFAR.
+  Every trooper picks their own displays in *9. Radio Comms*: Comms
+  List (default on, *2. Layout - Radio Comms*, 1-6 rows), One-Line
+  Ticker (*2. Layout - Radio Ticker*), Speaker Tag over the
+  transmitter's head (range-limited), Radio Icon in the Squad List;
+  plus Channel Label format (name + channel + freq / name only /
+  channel + freq), show own TX, linger time. Only Frequency Names is a
+  server setting. Hiding comms on your own HUD never stops others
+  seeing your transmissions.
+
 ## 1.3.0 - Ammo counter styles, medic pings, movable trooper stand
 
 **Ammo Counter Style** (*885th Clone HUD > 1. What's On Screen*, per
 player): Default (the helmet's own info box), Style A (BF2 Classic - wide
-panel: weapon icon, rounds, spare mags, grenade icon + count) or Style B
+panel: weapon icon, rounds, spare mags, grenade icon + how many of the
+selected throwable you carry) or Style B
 (Classic Inspired - compact: grenade badge, weapon plate). Placed with
 *2. Layout - Ammo Counter* (default Bottom Right). With A or B the helmet
 info box swaps to a version without its ammo column
@@ -133,8 +314,7 @@ state (OK / TREATED / WOUNDED / BLEEDING / CRITICAL / DOWN / ARREST +
 rhythm), followed by up to three tags (BLD %, AIRWAY, TENSION PTX, INT
 BLEED, SpO2, TQ, FRACTURE, PAIN). No ACE: 1 - damage. Off = a smaller
 panel without the bar (`*_panel_noBars.paa`). Panel art is
-original, drawn for this mod; source PNGs and mockups are in
-`previews/clonehud/`.
+original, drawn for this mod.
 
 **Medic pings** (*885th Clone HUD > 7. Medic Pings*). If you're a medic
 (ACE medic class / `attendant`, vanilla medic trait, or Green Team when
@@ -278,6 +458,8 @@ back to the generic form.
     vanillaHud.sqf         (hides/restores the vanilla HUD it replaces)
     layout.sqf             (per-player element placement)
     ctab.sqf               (cTab link: helmet cams, link cycling, PiP feed)
+    killCounter.sqf        (per-mission kill counter panel)
+  fonts/Orbitron/         (Orbitron 12-46, FontToTGA output, font BPD_Orbitron)
   textures/               (helmet overlays, indicator icons, scanner icons)
   sounds/                 (typing, glitch, glitch_short, threat_detector)
 ```

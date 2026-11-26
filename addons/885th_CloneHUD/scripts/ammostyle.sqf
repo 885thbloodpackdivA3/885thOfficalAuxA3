@@ -126,7 +126,8 @@ BPD_CloneHUD_fnc_ammoLayout = {
 				_c ctrlSetFontHeight (((_r select 3) min ((((_rects get "ammo") call _toScreen) select 3))) * 0.85);
 			};
 			if (_x == "stat") then { _c ctrlSetFontHeight ((_r select 3) * ([0.7, 0.62] select (_style == 2))); };
-			_c ctrlShow (BPD_CloneHUD_ammoShownStyle > 0);
+			// layout can run (settings / layout change) before ammoCreate set this
+			_c ctrlShow ((missionNamespace getVariable ["BPD_CloneHUD_ammoShownStyle", 0]) > 0);
 		};
 		_c ctrlCommit 0;
 	} forEach ["vit", "stat", "weap", "ammo", "mags", "gren", "grenN"];
@@ -265,14 +266,16 @@ BPD_CloneHUD_fnc_ammoUpdate = {
 	(_ctrls get "ammo") ctrlSetStructuredText parseText format ["<t align='right' valign='middle' font='PuristaBold' color='%2'>%1</t>", _rounds, ["#ebf0f2", "#ff5a4a"] select _lowAmmo];
 	(_ctrls get "mags") ctrlSetStructuredText parseText format ["<t align='right' valign='middle' font='PuristaMedium' color='#b4c8cd'>x %1</t>", _mags];
 
-	// grenades / throwables
-	private _throw = throwables player;
+	// grenades / throwables: icon and count of the SELECTED throwable only
+	// (e.g. 3 blue smokes -> 3), not every throwable you carry
 	private _cur = currentThrowable player;
-	private _gPic = if (count _cur > 0) then { getText (configFile >> "CfgMagazines" >> (_cur select 0) >> "picture") } else { "" };
+	private _cls = _cur param [0, ""];
+	private _gCount = if (_cls == "") then { 0 } else { { _x == _cls } count (magazines player) };
+	private _gPic = if (_cls != "") then { getText (configFile >> "CfgMagazines" >> _cls >> "picture") } else { "" };
 	if (_gPic != (_ctrls get "gren") getVariable ["bpdPic", "?"]) then {
 		(_ctrls get "gren") ctrlSetText _gPic;
 		(_ctrls get "gren") setVariable ["bpdPic", _gPic];
 	};
-	(_ctrls get "gren") ctrlSetTextColor [1, 1, 1, [_alpha, 0.35 * _alpha] select (count _throw == 0)];
-	(_ctrls get "grenN") ctrlSetStructuredText parseText format ["<t align='right' valign='middle' font='PuristaBold' color='#ebf0f2'>%1</t>", count _throw];
+	(_ctrls get "gren") ctrlSetTextColor [1, 1, 1, [_alpha, 0.35 * _alpha] select (_gCount == 0)];
+	(_ctrls get "grenN") ctrlSetStructuredText parseText format ["<t align='right' valign='middle' font='PuristaBold' color='#ebf0f2'>%1</t>", _gCount];
 };

@@ -36,6 +36,20 @@ HUD_merge_helmet_arrays = {
 		BPD_CloneHUD_RC_helmets = BPD_CloneHUD_RC_HELMETS splitString ",";
 	};
 	HUD_helmets = BPD_CloneHUD_P1_helmets + BPD_CloneHUD_P2_helmets + BPD_CloneHUD_RC_helmets;
+	// Role life indicators (ARF / Scout / BARC) only swap the trooper art;
+	// the helmet still needs to be in a P1 / P2 list to get the HUD at all.
+	// SQF variable names are case-insensitive, so the parsed arrays live
+	// under their own name (BPD_CloneHUD_roleList_<Role>) - writing them to
+	// BPD_CloneHUD_<Role>_helmets would overwrite the CBA setting itself.
+	{
+		private _raw = missionNamespace getVariable [format ["BPD_CloneHUD_%1_HELMETS", toUpper _x], ""];
+		private _list = switch (true) do {
+			case (_raw isEqualType ""): { _raw splitString ", " };
+			case (_raw isEqualType []): { _raw };
+			default { [] };
+		};
+		missionNamespace setVariable [format ["BPD_CloneHUD_roleList_%1", _x], _list];
+	} forEach ["ARF", "Scout", "BARC", "Pilot", "Airborne", "Engineer"];
 };
 
 // ============================================================
@@ -408,6 +422,10 @@ BPD_CloneHUD_ACE_COMPACT_ENABLED = false; // safe default in case onChanged hasn
 	nil,
 	{}
 ] call CBA_fnc_addSetting;
+
+["BPD_CloneHUD_SCAN_LOS","CHECKBOX",["Scanner Needs Line of Sight","Scanner icons only show while you can actually see the unit - smoke, foliage and buildings hide it (a B1 inside a smoke cloud drops off the scanner). Off = only walls and terrain block it, smoke doesn't. Server setting."],["885th Clone HUD (Server & Advanced)","4. Scanner Icons"],true,true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_SCAN_LKP_TIME","SLIDER",["Last Known Position Time (s)","After losing sight, a faded '?' icon stays where the unit was last seen for this long (it does not follow them). 0 = icon just disappears. Server setting."],["885th Clone HUD (Server & Advanced)","4. Scanner Icons"],[0,60,10,0],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_SCAN_LOS_MIN","SLIDER",["Visibility Needed","How visible a unit has to be to show (0-1). Lower = thin smoke / light brush still lets it through; higher = any haze hides it. Server setting."],["885th Clone HUD (Server & Advanced)","4. Scanner Icons"],[0.05,0.9,0.3,2],true,{}] call CBA_fnc_addSetting;
 
 [
 	"HUD_FRIENDLY_COLOR",
@@ -822,8 +840,9 @@ BPD_CloneHUD_ACE_COMPACT_ENABLED = false; // safe default in case onChanged hasn
 	"EDITBOX",
 	"Phase 1 helmets | comma-separated classnames",
 	["885th Clone HUD (Server & Advanced)","8. Helmet Lists"],
-	// 3AS stock helmets, then every wearable 885th Phase 1 helmet from 885_Armor.
-	"3as_P1_Base,3as_P1_Sgt,3as_P1_LT,3as_P1_CPT,3as_P1_CC,3as_P1_Pilot_helmet,885th_Nightsingers_P1_Pilot_Helm,885th_Nightsingers_Senior_Pilot_Helm,885th_Nightsingers_Officer_Pilot_Helm,885th_Owl_Pilot_Helm,885th_Najax_P1_ARF_Helm,885th_Najax_Recruit_ARF_Helm",
+	// 885th helmets only (no 3AS stock): every wearable 885th Phase 1 helmet
+	// from 885_Armor.
+	"885th_Nightsingers_P1_Pilot_Helm,885th_Nightsingers_Senior_Pilot_Helm,885th_Nightsingers_Officer_Pilot_Helm,885th_Owl_Pilot_Helm,885th_Najax_P1_ARF_Helm,885th_Najax_Recruit_ARF_Helm",
 	True,
 	{
 		call HUD_merge_helmet_arrays;
@@ -836,10 +855,11 @@ BPD_CloneHUD_ACE_COMPACT_ENABLED = false; // safe default in case onChanged hasn
 	"EDITBOX",
 	"Phase 2 helmets | comma-separated classnames",
 	["885th Clone HUD (Server & Advanced)","8. Helmet Lists"],
-	// 3AS stock helmet, then every wearable 885th Phase 2 helmet from 885_Armor
-	// (also ARF/BARC/Airborne/Scout/Engineer/Hazard/Spec-Ops/pilot and the
-	// P3 pilot helm, which have no overlay of their own and share the P2 one).
-	"3as_Engineer_Helmet,885th_P2_V2_Helmet,885th_P2_VCT_Helmet,885th_P2_Officer_Helmet,885th_Vornskr_Engineer_Helm,885th_Vornskr_EngineerV2_Helm,885th_ONI_MC_Helmet,885th_Stormer_P2_Helmet,885th_Wrath_P2_Helmet,885th_Bright_P2_Helmet,885th_Sytha_P2_Helm,885th_Smith_EngineerV2_Helm,885th_Sunshine_P2_Helm,885th_Rios_P2_Helmet,885th_Bullets_P2_Helmet,885th_Nightfall_P2_Helm,885th_Recruit_P2_Helm,885th_Crusader_P2_Helm,885th_Cypher_P2_Helm,885th_Vulkan_P2_Helm,885th_Oxlong_P2_Helm,885th_Charge_P2_Helm,885th_Drip_P2_Helm,885th_Bandit_P2_Helm,885th_EOD_Helm,885th_Medic_P2_Helm,885th_Nexu_Medic_P2_Helm,885th_Nexu_QRF_P2_Helm,885th_Nightsingers_Armor_Crew_Helmet,885th_Nightsingers_P2_Pilot_Helm,885th_Nightsingers_P2_Pilot_Senior_Helm,885th_Nightsingers_P2_Pilot_Officer_Helm,885th_Kings_Pilot_Helm,885th_Cerberus_P3_Pilot_Helm,885th_Kit_phase2SpecOp_helmet,885th_Titan_phase2SpecOp_helmet,885th_Najax_Scout_P2_Helm,885th_Crimz_Scout_Helm,885th_Gooner_Scout_Helm,885th_Najax_ARF_P2_Recruit_Helm,885th_Najax_ARF_P2_Helm,885th_Screwball_P2_ARF_Helm,885th_Ares_P2_ARF_Helm,885th_Sushi_P2_ARF_Helm,885th_BARC_Helm,885th_Maverick_BARC_Helm,885th_Thunder_P2_BARC_Helm,885th_AB_Helm,885th_Fyrnock_QRF_Air_Helm,885th_Nexu_QRF_Air_Helm,885th_Vornskr_Hazard_Helm_Base,885th_Vornskr_Hazard_Helm_Vet,885th_Vornskr_Hazard_Helm_COM,885th_P2_MG_Helmet,885th_Fyrnock_P2_Helm,885th_Fyrnock_VCT_P2_Helm,885th_Fyrnock_Officer_P2_Helm,885th_Fyrnock_Medic_P2_Helm,885th_Fyrnock_QRF_P2_Helm,885th_Nexu_P2_Helm,885th_Nexu_Vct_P2_Helm,885th_Nexu_Officer_P2_Helm",
+	// 885th helmets only (no 3AS stock): every wearable 885th Phase 2 helmet
+	// from 885_Armor (also ARF/BARC/Airborne/Scout/Engineer/Hazard/Spec-Ops/
+	// pilot and the P3 pilot helms, which have no overlay of their own and
+	// share the P2 one). P1 pilots are in the Phase 1 list.
+	"885th_P2_V2_Helmet,885th_P2_VCT_Helmet,885th_P2_Officer_Helmet,885th_Vornskr_Engineer_Helm,885th_Vornskr_EngineerV2_Helm,885th_ONI_MC_Helmet,885th_Stormer_P2_Helmet,885th_Wrath_P2_Helmet,885th_Bright_P2_Helmet,885th_Sytha_P2_Helm,885th_Smith_EngineerV2_Helm,885th_Sunshine_P2_Helm,885th_Rios_P2_Helmet,885th_Bullets_P2_Helmet,885th_Nightfall_P2_Helm,885th_Recruit_P2_Helm,885th_Crusader_P2_Helm,885th_Cypher_P2_Helm,885th_Vulkan_P2_Helm,885th_Oxlong_P2_Helm,885th_Charge_P2_Helm,885th_Drip_P2_Helm,885th_Bandit_P2_Helm,885th_EOD_Helm,885th_Medic_P2_Helm,885th_Nexu_Medic_P2_Helm,885th_Nexu_QRF_P2_Helm,885th_Nightsingers_Armor_Crew_Helmet,885th_Nightsingers_P2_Pilot_Helm,885th_Nightsingers_P2_Pilot_Senior_Helm,885th_Nightsingers_P2_Pilot_Officer_Helm,885th_Kings_Pilot_Helm,885th_Cerberus_P3_Pilot_Helm,885th_Nightsingers_P3_Pilot_Helm,885th_Nightsingers_P3_Senior_Pilot_Helm,885th_Nightsingers_P3_Officer_Pilot_Helm,885th_Kit_phase2SpecOp_helmet,885th_Titan_phase2SpecOp_helmet,885th_Najax_Scout_P2_Helm,885th_Gooner_Scout_Helm,885th_Najax_ARF_P2_Recruit_Helm,885th_Najax_ARF_P2_Helm,885th_Screwball_P2_ARF_Helm,885th_Ares_P2_ARF_Helm,885th_BARC_Helm,885th_Maverick_BARC_Helm,885th_Crimz_BARC_Helm,885th_Thunder_P2_BARC_Helm,885th_AB_Helm,885th_Fyrnock_QRF_Air_Helm,885th_Nexu_QRF_Air_Helm,885th_Vornskr_Hazard_Helm_Base,885th_Vornskr_Hazard_Helm_Vet,885th_Vornskr_Hazard_Helm_COM,885th_P2_MG_Helmet,885th_Fyrnock_P2_Helm,885th_Fyrnock_VCT_P2_Helm,885th_Fyrnock_Officer_P2_Helm,885th_Fyrnock_Medic_P2_Helm,885th_Fyrnock_QRF_P2_Helm,885th_Nexu_P2_Helm,885th_Nexu_Vct_P2_Helm,885th_Nexu_Officer_P2_Helm",
 	True,
 	{
 		call HUD_merge_helmet_arrays;
@@ -852,14 +872,52 @@ BPD_CloneHUD_ACE_COMPACT_ENABLED = false; // safe default in case onChanged hasn
 	"EDITBOX",
 	"Republic Commando helmets | comma-separated classnames",
 	["885th Clone HUD (Server & Advanced)","8. Helmet Lists"],
-	// 3AS stock helmet, then every wearable 885th Katarn (RC) helmet from 885_Armor.
-	"3AS_H_Katarn_Helmet,885th_Kusak_Katarn_Helmet,Crow_Kusak_Katarn_Helm,Phantom_Kusak_Katarn_Helm,Scorch_Kusak_Katarn_Helm",
+	// 885th helmets only (no 3AS stock): every wearable 885th Katarn (RC)
+	// helmet from 885_Armor (Kusak base plus the Crow / Phantom / Scorch kits).
+	"885th_Kusak_Katarn_Helmet,Crow_Kusak_Katarn_Helm,Phantom_Kusak_Katarn_Helm,Scorch_Kusak_Katarn_Helm",
 	True,
 	{
 		call HUD_merge_helmet_arrays;
 	},
 	True
 ] call CBA_fnc_addSetting;
+
+// Role life indicators: these helmets keep their Phase 1 / Phase 2 HUD and
+// visor frame, but the trooper figure is swapped for the ARF / Scout / BARC
+// art (textures\ARF, textures\Scout, textures\BARC). Leave a list empty to
+// turn that role's figure off.
+{
+	_x params ["_var", "_title", "_tip", "_default"];
+	[
+		_var,
+		"EDITBOX",
+		[_title, _tip],
+		["885th Clone HUD (Server & Advanced)","8. Helmet Lists"],
+		_default,
+		True,
+		{ call HUD_merge_helmet_arrays; },
+		True
+	] call CBA_fnc_addSetting;
+} forEach [
+	["BPD_CloneHUD_ARF_HELMETS", "ARF life indicator helmets | comma-separated classnames",
+		"Troopers in these helmets get the ARF figure (ARF helmet on Phase 2 armor) as their life indicator. The helmet must also be in the Phase 1 or Phase 2 list.",
+		"885th_Najax_P1_ARF_Helm,885th_Najax_Recruit_ARF_Helm,885th_Najax_ARF_P2_Recruit_Helm,885th_Najax_ARF_P2_Helm,885th_Screwball_P2_ARF_Helm,885th_Ares_P2_ARF_Helm"],
+	["BPD_CloneHUD_SCOUT_HELMETS", "Scout life indicator helmets | comma-separated classnames",
+		"Troopers in these helmets get the Scout figure (scout helmet on Phase 2 armor) as their life indicator. The helmet must also be in the Phase 1 or Phase 2 list.",
+		"885th_Najax_Scout_P2_Helm,885th_Gooner_Scout_Helm"],
+	["BPD_CloneHUD_BARC_HELMETS", "BARC life indicator helmets | comma-separated classnames",
+		"Troopers in these helmets get the BARC figure (BARC helmet on Phase 2 armor) as their life indicator. The helmet must also be in the Phase 1 or Phase 2 list.",
+		"885th_BARC_Helm,885th_Maverick_BARC_Helm,885th_Thunder_P2_BARC_Helm,885th_Crimz_BARC_Helm"],
+	["BPD_CloneHUD_PILOT_HELMETS", "Pilot life indicator helmets | comma-separated classnames",
+		"Troopers in these helmets get the Pilot figure (pilot helmet and chest life-support box on Phase 2 armor) as their life indicator. The helmet must also be in the Phase 1 or Phase 2 list.",
+		"885th_Nightsingers_P1_Pilot_Helm,885th_Nightsingers_Senior_Pilot_Helm,885th_Nightsingers_Officer_Pilot_Helm,885th_Owl_Pilot_Helm,885th_Nightsingers_P2_Pilot_Helm,885th_Nightsingers_P2_Pilot_Senior_Helm,885th_Nightsingers_P2_Pilot_Officer_Helm,885th_Kings_Pilot_Helm,885th_Cerberus_P3_Pilot_Helm,885th_Nightsingers_P3_Pilot_Helm,885th_Nightsingers_P3_Senior_Pilot_Helm,885th_Nightsingers_P3_Officer_Pilot_Helm"],
+	["BPD_CloneHUD_AIRBORNE_HELMETS", "Airborne life indicator helmets | comma-separated classnames",
+		"Troopers in these helmets get the Airborne figure (airborne helmet on Phase 2 armor) as their life indicator. The helmet must also be in the Phase 1 or Phase 2 list.",
+		"885th_AB_Helm"],
+	["BPD_CloneHUD_ENGINEER_HELMETS", "Engineer life indicator helmets | comma-separated classnames",
+		"Troopers in these helmets get the Engineer figure (engineer helmet on Phase 2 armor) as their life indicator. The helmet must also be in the Phase 1 or Phase 2 list.",
+		"885th_Vornskr_Engineer_Helm,885th_Vornskr_EngineerV2_Helm,885th_Smith_EngineerV2_Helm"]
+];
 
 // Team member list - sits under the damage indicator, shows squad name,
 // distance, and role (vanilla rank) for each squad member. Team color
@@ -1105,6 +1163,53 @@ BPD_CloneHUD_ACE_COMPACT_ENABLED = false; // safe default in case onChanged hasn
 	{}
 ] call CBA_fnc_addSetting;
 
+///////////
+// Intel //
+///////////
+["BPD_CloneHUD_PING_ENABLED","CHECKBOX",["Spotting Pings","Allow the Spot / Ping Target key (default Shift+T): marks what you aim at on your squad's HUD with a short callout. Server setting."],["885th Clone HUD","8. Intel & Jamming"],true,true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_PING_SCOPE","LIST",["Who Sees Pings","Server setting."],["885th Clone HUD","8. Intel & Jamming"],[[0,1],["Own squad","All friendlies in range"],0],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_PING_RANGE","SLIDER",["Ping Range (m)","For 'All friendlies in range': how far from the pinged spot you can be and still get it. Server setting."],["885th Clone HUD","8. Intel & Jamming"],[100,3000,800,0],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_PING_DURATION","SLIDER",["Ping Marker Time (s)","How long a ping marker stays up. Server setting."],["885th Clone HUD","8. Intel & Jamming"],[5,60,20,0],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_INTEL_SENDERS","LIST",["Who Can Send Intel","Who gets 'Send Intel' in the Clone HUD ACE menu (Zeus can always use the ZEN module). Server setting."],["885th Clone HUD","8. Intel & Jamming"],[[0,1],["Squad leaders + Zeus","Everyone"],0],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_INTEL_MSG_TIME","SLIDER",["Intel Message Time (s)","How long an intel broadcast stays in the HUD message feed."],["885th Clone HUD","8. Intel & Jamming"],[5,60,20,0],nil,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_INTEL_MARKER_TIME","SLIDER",["Intel Marker Time (s)","How long an intel marker stays up. Server setting."],["885th Clone HUD","8. Intel & Jamming"],[10,900,120,0],true,{}] call CBA_fnc_addSetting;
+
+["BPD_CloneHUD_INTEL_LOG_TIME","SLIDER",["Intel Log Time (s)","How long the Intel Log panel stays up after you open it. 0 = until you open it again (it toggles). Placed with 2. Layout - Intel Log."],["885th Clone HUD","8. Intel & Jamming"],[0,120,15,0],nil,{}] call CBA_fnc_addSetting;
+
+// Tac Map (feed panel link mode, ctab.sqf)
+["BPD_CloneHUD_TACMAP_ZOOM","SLIDER",["Tac Map Zoom","Map scale of the Tac Map in the tactical link panel - lower = closer in."],["885th Clone HUD","5. Helm Cam & cTab"],[0.01,0.4,0.06,2],nil,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_TACMAP_FRAME","LIST",["Tac Map Device Frame","Show the Tac Map inside an 885th cTab device, like the real cTab screen. Auto uses the device you carry (Tablet > Holo-pad > DAGR). The frame sets the map's shape, so Tac Map Height only applies with no frame."],["885th Clone HUD","5. Helm Cam & cTab"],[[0,1,2,3,4],["Auto (device carried)","DAGR","Holo-pad (Android)","Tablet","None (plain panel)"],0],nil,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_TACMAP_ASPECT","SLIDER",["Tac Map Height","Tac Map height relative to its width (1 = square)."],["885th Clone HUD","5. Helm Cam & cTab"],[0.5,1.5,1,2],nil,{ if (!isNil "BPD_CloneHUD_fnc_applyLayout") then { call BPD_CloneHUD_fnc_applyLayout; }; }] call CBA_fnc_addSetting;
+["BPD_CloneHUD_TACMAP_REQUIRE_DEVICE","CHECKBOX",["Tac Map Needs a cTab Device","ON: the Tac Map link mode needs a Tablet, Android or MicroDAGR. OFF: any Clone HUD helmet. Server setting."],["885th Clone HUD","5. Helm Cam & cTab"],true,true,{}] call CBA_fnc_addSetting;
+
+/////////////
+// Jamming //
+/////////////
+// See scripts/jamming.sqf.
+["BPD_CloneHUD_JAM_ENABLED","CHECKBOX",["Jamming Affects the HUD","Crows EW jammers, 885th HUD jammers (Zeus) and any TFAR jamming show COMMS DEGRADED / COMMS LOST, and the HUD loses functions closer to the source. Server setting."],["885th Clone HUD","8. Intel & Jamming"],true,true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_JAM_DEGRADE","CHECKBOX",["Jamming Knocks Out HUD Functions","ON: 50%+ jamming = datalink down (radio rows, squad data, pings / intel, medic pings, helm cam); 85%+ = scanner and radar too. OFF: warnings only. Server setting."],["885th Clone HUD","8. Intel & Jamming"],true,true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_JAM_TFAR","CHECKBOX",["HUD Jammers Also Jam TFAR","885th HUD jammers placed by Zeus also cut TFAR range (like Crows EW does). Server setting."],["885th Clone HUD","8. Intel & Jamming"],true,true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_JAM_STATIC","CHECKBOX",["Visor Static When Jammed","Film-grain static on the visor at 50%+ jamming, stronger closer in."],["885th Clone HUD","8. Intel & Jamming"],true,nil,{}] call CBA_fnc_addSetting;
+
+/////////////////
+// Radio Comms //
+/////////////////
+// Per-trooper choices (except Frequency Names) - each player picks
+// which displays they want. See scripts/comms.sqf. Needs TFAR.
+private _rc = ["885th Clone HUD","9. Radio Comms"];
+["BPD_CloneHUD_COMMS_ENABLED","CHECKBOX",["Radio Comms (TFAR)","Master switch: show who is transmitting on a channel you can hear. The displays below pick HOW it's shown."],_rc,true,nil,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_COMMS_SHOW_LIST","CHECKBOX",["Comms List","Rows like 'Sending... AN/PRC-152  SR CH2' / 'Receiving... AN/PRC-152  Red Team 2  SR CH2'. Placed with 2. Layout - Radio Comms."],_rc,true,nil,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_COMMS_LIST_STYLE","LIST",["Comms List Style","Default: one row per transmission, newest first.\nGrouped: one block - a 'Sending' heading over your transmissions and a 'Receiving' heading over what's coming in. Jamming shows on the headings (DEGRADED / COMMS LOST)."],_rc,[[0,1],["Default (one row each)","Grouped (Sending / Receiving)"],0],nil,{ if (!isNil "BPD_CloneHUD_fnc_commsLayout") then { call BPD_CloneHUD_fnc_commsLayout; }; }] call CBA_fnc_addSetting;
+["BPD_CloneHUD_COMMS_LIST_ROWS","SLIDER",["Comms List Rows","How many transmissions the list shows at once (Grouped: per heading)."],_rc,[1,6,4,0],nil,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_COMMS_SHOW_TICKER","CHECKBOX",["One-Line Ticker","A single line with only the latest transmission. Placed with 2. Layout - Radio Ticker."],_rc,false,nil,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_COMMS_SHOW_3D","CHECKBOX",["Speaker Tag Over Head","While someone you can see transmits, a radio tag with the channel floats above their head."],_rc,false,nil,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_COMMS_3D_RANGE","SLIDER",["Speaker Tag Range (m)","Speaker tags only for transmitters closer than this."],_rc,[25,1000,300,0],nil,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_COMMS_SHOW_SQUAD","CHECKBOX",["Radio Icon in Squad List","A radio icon + channel next to a squadmate's name in the squad list while they transmit."],_rc,false,nil,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_COMMS_LABEL","LIST",["Channel Label","How the channel is written in every display."],_rc,[[0,1,2],["Name + channel + frequency  (SR CH2 Squad (152.4))","Name only  (Squad - falls back to SR CH2)","Channel + frequency  (SR CH2 (152.4))"],0],nil,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_COMMS_SHOW_OWN","CHECKBOX",["Show My Own Transmissions","Include your own 'Sending...' rows in the list and ticker."],_rc,true,nil,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_COMMS_LINGER","SLIDER",["Linger After Release (s)","How long a transmission stays (dimmed) after the key is released."],_rc,[0,15,4,0],nil,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_COMMS_FREQNAMES","EDITBOX",["Frequency Names","Names for frequencies, e.g. '31=Platoon, 40=Air, 152.4=Hawk Squad'. Server setting - the same names for everyone."],_rc,"",true,{}] call CBA_fnc_addSetting;
+
 /////////////////
 // Medic Pings //
 /////////////////
@@ -1115,6 +1220,37 @@ BPD_CloneHUD_ACE_COMPACT_ENABLED = false; // safe default in case onChanged hasn
 ["BPD_CloneHUD_MEDIC_PING_REPEAT","SLIDER",["Reminder Every (s)","Ping again while the trooper is still critical. 0 = only once."],["885th Clone HUD","7. Medic Pings"],[0,300,60,0],nil,{}] call CBA_fnc_addSetting;
 ["BPD_CloneHUD_MEDIC_PING_MARKER","CHECKBOX",["Marker Over Casualty","Pulsing medical marker with name, state and distance over the casualty until they're stabilized."],["885th Clone HUD","7. Medic Pings"],true,nil,{}] call CBA_fnc_addSetting;
 ["BPD_CloneHUD_MEDIC_PING_GREEN","CHECKBOX",["Green Team Counts as Medic","Anyone on Green Team gets pings too, even without the ACE medic role. Server setting."],["885th Clone HUD","7. Medic Pings"],true,true,{}] call CBA_fnc_addSetting;
+
+// Mine detector (minedetect.sqf) - engineer role function, like medic pings
+private _md = ["885th Clone HUD","10. Mine Detector"];
+["BPD_CloneHUD_MINE_ENABLED","CHECKBOX",["Mine Detector","Built-in helmet mine detector. Only works for troopers who meet 'Who Gets It' (default: engineer carrying a mine detector) - does nothing for anyone else. Also toggled with the 'Toggle Mine Detector' keybind."],_md,true,nil,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_MINE_REQUIRE","LIST",["Who Gets It","Server setting."],_md,[[0,1,2,3],["Engineer / EOD carrying a mine detector","Anyone carrying a mine detector","Any engineer / EOD (no detector needed)","Everyone"],0],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_MINE_RANGE","SLIDER",["Detection Range (m)","How close a mine has to be to get picked up. Server setting."],_md,[5,50,15,0],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_MINE_SHARE","CHECKBOX",["Share With Squad","Mines you find are marked on your squad's HUDs too (needs the datalink - not while COMMS LOST). Server setting."],_md,true,true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_MINE_DETECTORS","EDITBOX",["Extra Detector Classes","Comma-separated item / weapon classnames that also count as a mine detector (vanilla MineDetector and ACE VMM3 / VMH3 always count). Server setting."],_md,"",true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_MINE_MARKERS","CHECKBOX",["Markers Over Mines","'MINE 6m' marker over each found mine."],_md,true,nil,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_MINE_MARKER_RANGE","SLIDER",["Marker Range (m)","Markers only for found mines closer than this."],_md,[10,300,75,0],nil,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_MINE_DANGER","SLIDER",["Danger Distance (m)","Inside this the marker turns red and pulses."],_md,[1,15,5,0],nil,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_MINE_BEEP","CHECKBOX",["Proximity Beep","Beeps while a mine is in detection range, faster as you get closer."],_md,true,nil,{}] call CBA_fnc_addSetting;
+
+// Cracked visor (visorcrack.sqf) - Republic Commando style
+private _vc = ["885th Clone HUD","11. Cracked Visor"];
+["BPD_CloneHUD_CRACK_ENABLED","CHECKBOX",["Cracked Visor","A critical headshot or a blast on your body cracks your clone helmet's visor. Only Republic Commando helmets can wipe it clean. Server setting."],_vc,true,true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_CRACK_HEAD","SLIDER",["Headshot Threshold","How hard a single head hit has to be to crack the visor (ACE wound damage; without ACE, head hitpoint damage 0-1). Lower = cracks more easily. Server setting."],_vc,[0.05,2,0.5,2],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_CRACK_BLAST","SLIDER",["Blast Threshold","Total damage one explosion has to do to you to crack the visor. Lower = cracks more easily. Server setting."],_vc,[0.05,3,0.3,2],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_CRACK_MAX","SLIDER",["Max Cracks","Cracks stack up to this many."],_vc,[1,6,4,0],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_CRACK_WIPE_TIME","SLIDER",["Wipe Cooldown (s)","RC helmets: time between wipes (manual or automatic)."],_vc,[0,30,5,0],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_CRACK_AUTO_WIPE","SLIDER",["RC Auto Wipe After (s)","RC helmets wipe the visor on their own this long after the last crack. A new crack restarts the timer. 0 = manual wipe only. Server setting."],_vc,[0,120,20,0],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_CRACK_LAST","SLIDER",["Non-RC Cracks Last (s)","Phase 1 / Phase 2 helmets can't wipe. Their cracks stay until they swap helmets or respawn, or clear on their own after this long. 0 = until swap / respawn. Server setting."],_vc,[0,1800,0,0],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_CRACK_REPAIR","LIST",["Who Can Repair","Repair Visor interaction (ACE: interact with the trooper, or self > Equipment; no ACE: hold action while looking at them). Works on every helmet tier. Server setting."],_vc,[[0,1,2],["Nobody","Engineers / EOD","Anyone"],1],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_CRACK_REPAIR_TIME","SLIDER",["Repair Time (s)","How long an engineer takes to repair a visor. Server setting."],_vc,[1,60,8,0],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_CRACK_REPAIR_KIT","CHECKBOX",["Repair Needs Toolkit","The repairer must carry a ToolKit (vanilla or ACE). Server setting."],_vc,false,true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_CRACK_OPACITY","SLIDER",["Crack Opacity","How strongly the cracks show (per player)."],_vc,[0.2,1,0.85,2],nil,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_CRACK_COVER","CHECKBOX",["Cover Blocks Blast Cracks","ON: a blast with walls, floors or terrain between your eyes and where it went off doesn't crack or dirty the visor (a mortar outside your building won't). If the blast spot isn't known, being under a building roof doubles the Blast Threshold instead. Server setting."],_vc,true,true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_CRACK_DIRT","CHECKBOX",["Visor Dirt","Explosives going off near you in the open (within 2x their blast radius, max 35 m) throw dirt on your visor, hurt or not. RC wipes and engineer repairs clear it too. Server setting."],_vc,true,true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_CRACK_DIRT_MAX","SLIDER",["Max Dirt","Dirt overlays stack up to this many (the oldest drops off)."],_vc,[1,6,3,0],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_CRACK_DIRT_LAST","SLIDER",["Dirt Lasts (s)","Dirt clears on its own after this long, on every helmet. 0 = until wiped, repaired, helmet swap or respawn. Server setting."],_vc,[0,600,90,0],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_CRACK_DIRT_OPACITY","SLIDER",["Dirt Opacity","How strongly the dirt shows (per player)."],_vc,[0.2,1,0.8,2],nil,{}] call CBA_fnc_addSetting;
 
 ////////////
 // Layout //
@@ -1173,8 +1309,15 @@ BPD_CloneHUD_fnc_relayout = {
 	["SQUAD",   "Squad List",            "squad member list",                     3,   0,    0.5, 0.85],
 	["RADAR",   "Radar",                 "scanner radar",                         6,   0.5,  1,   0.8],
 	["FEED",    "Tactical Link Panel",   "cTab device strip / helm cam panel",    2,   1,    0,   0.9],
-	["AMMO",    "Ammo Counter",          "Style A / B ammo counter",              7,   1,    1,   1]
+	["AMMO",    "Ammo Counter",          "Style A / B ammo counter",              7,   1,    1,   1],
+	["COMMS",   "Radio Comms",           "radio comms list (who's talking)",      4,   1,    0.5, 1],
+	["TICKER",  "Radio Ticker",          "one-line radio ticker",                 1,   0.5,  0,   1],
+	["INTEL",   "Intel Log",             "intel log panel",                       1,   0.5,  0.2, 1],
+	["KILLS",   "Kill Counter",          "kill counter panel",                    8,   1,    0.25, 0.85]
 ];
+
+["BPD_CloneHUD_KILLS_ENABLED","CHECKBOX",["Kill Counter","Counts the enemies you kill this mission, per enemy type. Press 'Show / Hide Kill Counter' (Controls > Configure Addons > 885th BPD Clone HUD) to see your top 4. Position / size are on this same page."],["885th Clone HUD","2. Layout - Kill Counter"],true,nil,{ if (!_this && {!isNil "BPD_CloneHUD_fnc_killHide"}) then { call BPD_CloneHUD_fnc_killHide; }; }] call CBA_fnc_addSetting;
+["BPD_CloneHUD_KILLS_TIME","SLIDER",["Kill Counter Time (s)","How long the Kill Counter stays up after it finishes typing, then it fades. 0 = until you press the key again."],["885th Clone HUD","2. Layout - Kill Counter"],[0,60,15,0],nil,{}] call CBA_fnc_addSetting;
 
 //////////////
 // cTab Link //

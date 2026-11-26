@@ -139,14 +139,58 @@ HUD_fnc_addHudEventhandler = {
 
 HUD_throttleTime = 0.3;
 
+// Builds HUD_nearUnits (drawn live) and HUD_lastKnown (drawn as faded
+// "last known" ghosts). With BPD_CloneHUD_SCAN_LOS on, a unit only shows
+// while the trooper can actually see it - checkVisibility counts smoke,
+// foliage and buildings, so a B1 inside a smoke cloud drops off. For
+// BPD_CloneHUD_SCAN_LKP_TIME seconds after losing sight, a faded marker
+// stays where it was last seen (it does NOT follow the unit).
+HUD_lastKnown = [];
 HUD_nearUnitsHandler = {
-	private _filteredUnits = [];
 	private _nearUnits = nearestObjects [player, ["MAN","CAR","TANK","AIR","StaticWeapon"], HUD_threatRange, true];
+	private _veh = vehicle player;
+	private _eye = eyePos player;
 
-	HUD_nearUnits = _nearUnits select {
-		private _unitBlocked = lineIntersects [eyePos player, eyePos _x, player, _x] OR terrainIntersectASL [eyepos player, eyepos _x];
-		alive _x && vehicle _x != vehicle player && !_unitBlocked;
+	if !(missionNamespace getVariable ["BPD_CloneHUD_SCAN_LOS", true]) exitWith {
+		// old behavior: only hard cover (walls, terrain) blocks the scanner
+		HUD_nearUnits = _nearUnits select {
+			private _unitBlocked = lineIntersects [_eye, eyePos _x, player, _x] OR terrainIntersectASL [_eye, eyepos _x];
+			alive _x && vehicle _x != _veh && !_unitBlocked;
+		};
+		HUD_lastKnown = [];
 	};
+
+	private _lkpTime = missionNamespace getVariable ["BPD_CloneHUD_SCAN_LKP_TIME", 10];
+	private _need = missionNamespace getVariable ["BPD_CloneHUD_SCAN_LOS_MIN", 0.3];
+	private _now = diag_tickTime;
+	private _seen = [];
+	private _lost = [];
+	{
+		private _u = _x;
+		if (alive _u && {vehicle _u != _veh}) then {
+			private _aim = aimPos _u;
+			// head OR body visible counts (someone peeking over cover)
+			private _terrain = terrainIntersectASL [_eye, _aim] && {!(_u isKindOf "MAN") || {terrainIntersectASL [_eye, eyePos _u]}};
+			private _vis = if (_terrain) then {0} else {
+				private _v = [_veh, "VIEW", _u] checkVisibility [_eye, _aim];
+				if (_v < _need && {_u isKindOf "MAN"}) then { _v = _v max ([_veh, "VIEW", _u] checkVisibility [_eye, eyePos _u]); };
+				_v
+			};
+			if (_vis >= _need) then {
+				_seen pushBack _u;
+				_u setVariable ["BPD_CloneHUD_lastSeen", [ASLToAGL _aim, _now]]; // local only
+			} else {
+				if (_lkpTime > 0) then {
+					private _lk = _u getVariable ["BPD_CloneHUD_lastSeen", []];
+					if (count _lk == 2 && {_now - (_lk select 1) <= _lkpTime}) then {
+						_lost pushBack [_u, _lk select 0, _lk select 1];
+					};
+				};
+			};
+		};
+	} forEach _nearUnits;
+	HUD_nearUnits = _seen;
+	HUD_lastKnown = _lost;
 };
 
 HUD_fnc_addTargetingEventhandler = {
@@ -164,7 +208,8 @@ HUD_fnc_addTargetingEventhandler = {
 	};
 
 	["TARGETING_HUD", "onEachFrame",{
-		if (HUD_showIcons && isNull(findDisplay 312)) then {
+		// tier 3 jamming (jamming.sqf) knocks the scanner out
+		if (HUD_showIcons && {isNull (findDisplay 312)} && {(missionNamespace getVariable ["BPD_CloneHUD_jamTier", 0]) < 3}) then {
 			private _drawLabels = (missionNamespace getVariable ["BPD_CloneHUD_TEAM_LABELS", true]) && {!isNil "BPD_CloneHUD_fnc_buildTeamLabels"};
 			private _myGroup = group player;
 			if (_drawLabels && {diag_tickTime > BPD_CloneHUD_teamLabelsNext}) then { call BPD_CloneHUD_fnc_buildTeamLabels; };
@@ -234,6 +279,34 @@ HUD_fnc_addTargetingEventhandler = {
 					};
 				};
 			} forEach HUD_nearUnits;
+
+			// Last known positions: faded icon frozen where the unit was last
+			// seen, fading out over the Last Known time, with a "?" tag.
+			private _lkpTime = (missionNamespace getVariable ["BPD_CloneHUD_SCAN_LKP_TIME", 10]) max 1;
+			private _fovLk = getObjectFOV vehicle player;
+			private _camPos = positionCameraToWorld [0,0,0];
+			{
+				_x params ["_unit", "_lkPos", "_lkTick"];
+				if (alive _unit) then {
+					private _side = side _unit;
+					private _col = +(call {
+						if (_side == civilian || {lifeState _unit == "INCAPACITATED"}) exitWith {HUD_NEUTRAL_COLOR};
+						if ((side player getFriend _side) < 0.6) exitWith {HUD_ENEMY_COLOR};
+						if (group player isEqualTo group _unit) exitWith {HUD_GROUP_COLOR};
+						HUD_FRIENDLY_COLOR
+					});
+					private _fade = 1 - ((diag_tickTime - _lkTick) / _lkpTime);
+					_col set [3, ((_col select 3) * (0.15 + 0.4 * _fade)) max 0.1];
+					private _d = (_camPos distance _lkPos) max 1;
+					private _iconSize = call {
+						if (_unit isKindOf "MAN") exitWith {[HUD_HUMAN_ICON, HUD_HUMAN_SIZE]};
+						if (_unit isKindOf "StaticWeapon") exitWith {[HUD_STATIC_ICON, HUD_STATIC_SIZE]};
+						[HUD_VEHICLE_ICON, HUD_VEHICLE_SIZE]
+					};
+					private _sz = ((_iconSize select 1) / tan (_fovLk / 2) / _d) max 0.5;
+					drawIcon3D [_iconSize select 0, _col, _lkPos, _sz, _sz, 0, "?", 2, 0.03, "RobotoCondensedBold", "center", false];
+				};
+			} forEach HUD_lastKnown;
 
 			private _grenades = nearestObjects [player,["Grenade"], 30];
 			{
