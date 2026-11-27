@@ -12192,8 +12192,8 @@ class CfgVehicles
 	class 885th_ONI_cdv: JLTS_Clone_jumppack_mc
 	{
 		scope=2;
-		author="885th BPD + Legion Studios";
-		displayName="[885th] ONI Emergency Descent Pack";
+		author="885th BPD";
+		displayName="[885th] ONI Commander-Issued CDV";
 		picture="\MRC\JLTS\characters\CloneArmor\data\ui\Clone_jumppack_mc_ui_ca.paa";
 		model="\MRC\JLTS\characters\CloneArmor\CloneJumppackMC.p3d";
 		hiddenSelections[]=
@@ -12211,11 +12211,26 @@ class CfgVehicles
 		tf_range=100000;
 		tf_subtype="digital_lr";
 		JLTS_isJumppack=0;
-		sc_jumppack=1;
-		sc_particles[]=
-		{
-			{0,-0.3,-0.1}
-		};
+		JLTS_recharge=0;
+
+		// ---- Centurios Jetpack System (cjetpack_main) ----
+		CJETPACK_isJetpack=1;
+		// NOTE: never set a *Coef AND its fixed values together (e.g. speedCoef + flySpeed) - the mod disables the pack.
+		CJETPACK_flySpeed=50;			
+		CJETPACK_climbSpeed=12;			
+		CJETPACK_boostCoef=2;			
+		CJETPACK_canBoost=1;
+		CJETPACK_fuelCapacity=6;		
+		CJETPACK_fuelCoef=1.1;			
+		CJETPACK_heatTimeCoef=0.85;		
+		CJETPACK_coolTime=75;			
+		CJETPACK_crashSpeedCoef=1;		
+		CJETPACK_smoke=1;				
+		// Nozzle/flame values below come from in-game Tuning Mode
+		CJETPACK_nozzleCount=1;			// single centre flame (mod averages the model's nozzle memory points)
+		CJETPACK_nozzleOffsetLeft[]={0,0.01,0.07};	// metres [x,y,z]; with 1 nozzle this moves the flame
+		CJETPACK_flameScale=1.5;		// 0.1 - 5
+		CJETPACK_flameColor[]={255,143,43};	// RGB 0-255 (or 0-1); this is the mod default orange
 		maximumload=600;
 		mass = 15;
 	};
@@ -12241,6 +12256,7 @@ class CfgVehicles
 		tf_range=25000;
 		tf_subtype="digital_lr";
 		JLTS_isJumppack=0;
+		JLTS_recharge=0;	// strip inherited JLTS energy recharge; Scion Conflict handles the jump
 		sc_jumppack=1;
 		sc_particles[]=
 		{
@@ -12271,6 +12287,7 @@ class CfgVehicles
 		tf_range=25000;
 		tf_subtype="digital_lr";
 		JLTS_isJumppack=0;
+		JLTS_recharge=0;	// strip inherited JLTS energy recharge; Scion Conflict handles the jump
 		sc_jumppack=1;
 		sc_particles[]=
 		{
