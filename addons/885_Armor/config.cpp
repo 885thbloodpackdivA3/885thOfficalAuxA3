@@ -143,7 +143,6 @@ class Cfgpatches
 			"885th_AB_Helm",
 			"885th_Medic_AB_Helm",
 			"885th_Nexu_P2_Helm",
-			"885th_Crimz_Scout_Helm",
 			"885th_Fyrnock_P2_Helm",
 			"885th_Fyrnock_VCT_P2_Helm",
 			"885th_Fyrnock_Officer_P2_Helm",
