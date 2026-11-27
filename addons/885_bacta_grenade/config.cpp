@@ -4,7 +4,8 @@ class CfgPatches
     {
         requiredAddons[]=
         {
-            "A3_Weapons_F", "ace_medical", "cba_main", "cba_xeh"
+            // ACE is optional: fn_bactaHealUnit checks for ace_medical at runtime
+            "A3_Weapons_F", "cba_main", "cba_xeh"
         };
         requiredVersion=0.1;
         units[]={};

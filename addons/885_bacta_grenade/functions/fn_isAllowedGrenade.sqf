@@ -13,10 +13,12 @@ private _ammoL = toLower _ammoClass;
 if (_magL in _list) exitWith { true };
 if (_ammoL in _list) exitWith { true };
 
-// Inheritance match (works for base classes like SmokeShell)
-{
-  if (_magClass isKindOf _x) exitWith { true };
-  if (_ammoClass isKindOf _x) exitWith { true };
-} forEach _list;
+// Inheritance match (works for base classes like SmokeShell).
+// exitWith inside forEach only leaves the loop, so the result is the
+// findIf index rather than a value returned from inside the loop.
+private _cfgMags = configFile >> "CfgMagazines";
+private _cfgAmmo = configFile >> "CfgAmmo";
 
-false
+(_list findIf {
+  (_magClass isKindOf [_x, _cfgMags]) || {_ammoClass isKindOf [_x, _cfgAmmo]}
+}) != -1

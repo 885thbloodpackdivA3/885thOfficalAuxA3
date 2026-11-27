@@ -6,7 +6,7 @@ if (isNull _u) exitWith {};
 if (!alive _u) exitWith {};
 if (!local _u) exitWith {}; // safety net — should always be true given how this is dispatched
 
-private _dStep    = (missionNamespace getVariable ["bacta_damageStep", 0.05]) min 0.15;
+private _dStep    = missionNamespace getVariable ["bacta_damageStep", 0.05];
 private _bandage  = missionNamespace getVariable ["bacta_bandageType", "ACE_fieldDressing"];
 private _doStitch = missionNamespace getVariable ["bacta_doStitch", true];
 private _doSplint = missionNamespace getVariable ["bacta_doSplint", true];
@@ -91,7 +91,23 @@ if (_useACE) then {
     };
   };
 
-  if ((damage _u) < 0.3 && {_u getVariable ["ACE_isUnconscious", false]}) then {
-    [_u, false] call ace_medical_fnc_setUnconscious;
+  // WAKE UP: only a small chance per heal tick, so medics still have to do
+  // proper checks. Up to bacta_wakeChance (default 5 %) for a lightly hurt
+  // trooper, less the more wounds they've taken (open + bandaged):
+  //   chance = base / (1 + 0.25 * wounds)  ->  0 wounds 5 %, 4 wounds 2.5 %,
+  //   12 wounds ~1.25 %. Never while still bleeding. ACE's own state machine
+  //   still keeps someone down whose vitals aren't stable.
+  if (_u getVariable ["ACE_isUnconscious", false]) then {
+    private _stillBleeding = (_bps findIf { (count ([_u, _x] call ace_medical_fnc_getOpenWounds)) > 0 }) != -1;
+    if (!_stillBleeding) then {
+      private _wounds = 0;
+      {
+        _wounds = _wounds + (count ([_u, _x] call ace_medical_fnc_getOpenWounds)) + (count ([_u, _x] call ace_medical_fnc_getBandagedWounds));
+      } forEach _bps;
+      private _base = missionNamespace getVariable ["bacta_wakeChance", 0.05];
+      if (random 1 < (_base / (1 + 0.25 * _wounds))) then {
+        [_u, false] call ace_medical_fnc_setUnconscious;
+      };
+    };
   };
 };

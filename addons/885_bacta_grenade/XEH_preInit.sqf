@@ -72,6 +72,15 @@
 ] call CBA_fnc_addSetting;
 
 [
+  "bacta_wakeChance",
+  "SLIDER",
+  ["Wake-Up Chance (ACE)", "Chance per heal tick that an unconscious, no-longer-bleeding patient wakes up. This is the best case; it drops the more wounds they've taken (4 wounds = half, 12 wounds = a quarter). 0 = bacta never wakes anyone."],
+  ["Bacta", "ACE/KAT"],
+  [0, 0.25, 0.05, 0, true],
+  1
+] call CBA_fnc_addSetting;
+
+[
   "bacta_doSplint",
   "CHECKBOX",
   ["Enable Splinting (ACE)", "If enabled, the bacta effect will apply splints to fractured limbs (ACE/KAT)."],
