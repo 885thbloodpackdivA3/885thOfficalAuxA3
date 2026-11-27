@@ -267,6 +267,15 @@ class CfgSoundShaders
 		range = 200;
 		rangeCurve = "closeShotCurve";
 	};
+	// Stealth Carbine Suppressor shaders: suppressed samples, heard out to 60-80 m instead of 150-200 m
+	class 885th_EliteDC15S_C3Stealth_SoundShader: 885th_EliteDC15S_C3Silenced_SoundShader
+	{
+		range = 80;
+	};
+	class 885th_EliteDC15S_Stealth_SoundShader: 885th_EliteDC15S_Silenced_SoundShader
+	{
+		range = 60;
+	};
 };
 class CfgSoundSets
 {
@@ -301,7 +310,7 @@ class CfgSoundSets
 	class 885th_EliteDC15S_C3Single_SoundSet
 	{
 		soundShaders[] = {"885th_EliteDC15S_C3Single_SoundShader"};
-		volumeFactor = 1.17;
+		volumeFactor = 0.85;
 		frequencyFactor = 1;
 		frequencyRandomizer = 1;
 		volumeCurve = "InverseSquare2Curve";
@@ -320,7 +329,7 @@ class CfgSoundSets
 	class 885th_EliteDC15S_C3Silenced_SoundSet
 	{
 		soundShaders[] = {"885th_EliteDC15S_C3Silenced_SoundShader"};
-		volumeFactor = 0.99;
+		volumeFactor = 0.75;
 		frequencyFactor = 1;
 		frequencyRandomizer = 1;
 		volumeCurve = "InverseSquare2Curve";
@@ -334,7 +343,7 @@ class CfgSoundSets
 	class 885th_EliteDC15S_Shot_SoundSet
 	{
 		soundShaders[] = {"885th_EliteDC15S_Bolt_SoundShader"};
-		volumeFactor = 1.35;
+		volumeFactor = 1.0;
 		frequencyFactor = 0.93;
 		frequencyRandomizer = 1;
 		volumeCurve = "InverseSquare2Curve";
@@ -349,17 +358,17 @@ class CfgSoundSets
 	class 885th_EliteDC15S_Thump_SoundSet: 885th_EliteDC15S_Shot_SoundSet
 	{
 		soundShaders[] = {"885th_EliteDC15S_Thump_SoundShader"};
-		volumeFactor = 0.495;
+		volumeFactor = 0.4;
 		frequencyFactor = 0.65;
 	};
 	class 885th_EliteDC15S_Tail_SoundSet: MX_Tail_SoundSet
 	{
-		volumeFactor = 0.72;
+		volumeFactor = 0.5;
 	};
 	class 885th_EliteDC15S_Silenced_SoundSet
 	{
 		soundShaders[] = {"885th_EliteDC15S_Silenced_SoundShader"};
-		volumeFactor = 0.99;
+		volumeFactor = 0.75;
 		frequencyFactor = 0.88;
 		frequencyRandomizer = 1;
 		volumeCurve = "InverseSquare2Curve";
@@ -372,7 +381,18 @@ class CfgSoundSets
 	};
 	class 885th_EliteDC15S_SilencedTail_SoundSet: MX_silencerTail_SoundSet
 	{
-		volumeFactor = 0.54;
+		volumeFactor = 0.4;
+	};
+	// Stealth Carbine Suppressor: same samples as the suppressed shot, quieter and heard over a much shorter range
+	class 885th_EliteDC15S_C3Stealth_SoundSet: 885th_EliteDC15S_C3Silenced_SoundSet
+	{
+		soundShaders[] = {"885th_EliteDC15S_C3Stealth_SoundShader"};
+		volumeFactor = 0.5;
+	};
+	class 885th_EliteDC15S_Stealth_SoundSet: 885th_EliteDC15S_Silenced_SoundSet
+	{
+		soundShaders[] = {"885th_EliteDC15S_Stealth_SoundShader"};
+		volumeFactor = 0.5;
 	};
 };
 class CfgRecoils
@@ -5101,8 +5121,8 @@ class CfgAmmo
 	// DC-15X Heavy Sniper: .50-cal class bolt. Fast, flat and hard-hitting out to ~2 km, punches through cover.
 	class 885th_blasterbolt_Sniper_Heavy: 885th_blasterbolt_Sniper_AP
 	{
-		hit=48;
-		caliber=9;                  // good penetration (AP cell is 6)
+		hit=75;                     // WBK B2 (300 health): 4 hits
+		caliber=2;                  // ~33 mm RHA at 1100 m/s (.50 ball class)
 		typicalSpeed=1100;
 		coefGravity=0.03;           // very little drop
 		airFriction=-0.00006;       // holds its speed at range
@@ -5128,9 +5148,10 @@ class CfgAmmo
 	class 885th_blasterbolt_Sniper_AM: 885th_blasterbolt_Sniper_Heavy
 	{
 		hit=180;
-		indirectHit=12;
-		indirectHitRange=0.6;       // small overcharge burst at the point of impact
-		caliber=18;                 // anti-materiel penetration (Amp M41 bolt is 20)
+		indirectHit=45;
+		indirectHitRange=1.5;       // overcharge burst: ~11% on a 400-armour static wherever the bolt lands
+		caliber=3.2;                // ~96 mm RHA at 2000 m/s: through B2/BX and light armour, stops inside the target
+		explosive=0.2;              // 20% of the damage counts as explosive
 		warheadName="AP";
 		aiAmmoUsageFlags="64 + 128 + 256 + 512";
 		typicalSpeed=2000;          // near-instant: reads as a beam, not a bolt
@@ -6982,16 +7003,16 @@ class CfgMagazines
 	// DC-15X Heavy Sniper cells
 	class 885th_dc15x_heavy_cell : 885th_cell
 	{
-		count = 5;
+		count = 10;
 		displayName = "[885th] DC15X Heavy Sniper Cell";
 		displayNameShort = "DC15X Heavy";
-		descriptionShort = "5 round capacity, .50 calibre-class heavy precision bolts.";
+		descriptionShort = "10 round capacity, .50 calibre-class heavy precision bolts.";
 		ammo = "885th_blasterbolt_Sniper_Heavy";
 		initSpeed = 1100;
 		tracersEvery = 1;
 		mass = 30;
 	};
-	// Overcharged anti-materiel rounds. Firing one also plays the overcharge crack and beam (see BPD_fnc_dc15xAMFired).
+	// Overcharged Anti-Materiel rounds. Firing one also plays the overcharge crack and beam.
 	class 885th_dc15x_am_cell : 885th_cell
 	{
 		count = 5;
@@ -7001,7 +7022,7 @@ class CfgMagazines
 		ammo = "885th_blasterbolt_Sniper_AM";
 		initSpeed = 2000;
 		tracersEvery = 1;
-		mass = 50;                  // 5 lb (mass is in 0.1 lb)
+		mass = 100;                  
 	};
 
 	//885th T-15 Blaster Cannon Magazines
@@ -10975,7 +10996,8 @@ class CfgWeapons
 				linkProxy="\A3\data_f\proxies\weapon_slots\MUZZLE";
 				compatibleItems[]=
 				{
-					"885th_Suppressor_Module_DC15_LowFlash"
+					"885th_FlashHider_DC15",
+					"885th_Suppressor_Module_DC15_Stealth"
 				};
 			};
 		};
@@ -11008,7 +11030,7 @@ class CfgWeapons
 			maxRangeProbab = 0.5;
 			soundContinuous=0;
 			soundBurst=0;
-			sounds[] = {"StandardSound","SilencedSound"};
+			sounds[] = {"StandardSound","SilencedSound","StealthSound"};
 			class BaseSoundModeType
 			{
 				weaponSoundEffect = "";
@@ -11030,6 +11052,13 @@ class CfgWeapons
 				beginwater1[] = {"ShadowLegion_Weapons\data\surpressed_1.ogg", 1, 1, 100};
 				soundBeginWater[] = {"beginwater1", 0.5};
 			};
+			class StealthSound : BaseSoundModeType   // Stealth Carbine Suppressor (soundTypeIndex 2): quieter, short range, no echo
+			{
+				weaponSoundEffect = "";
+				soundSetShot[] = {"885th_EliteDC15S_C3Stealth_SoundSet","885th_EliteDC15S_Stealth_SoundSet"};
+				beginwater1[] = {"ShadowLegion_Weapons\data\surpressed_1.ogg", 0.7, 1, 60};
+				soundBeginWater[] = {"beginwater1", 0.5};
+			};
 		};
 		class FullAuto : Mode_FullAuto
 		{
@@ -11043,7 +11072,7 @@ class CfgWeapons
 			maxRangeProbab = 0.1;
 			soundContinuous=0;
 			soundBurst=0;
-			sounds[] = {"StandardSound","SilencedSound"};
+			sounds[] = {"StandardSound","SilencedSound","StealthSound"};
 			class BaseSoundModeType
 			{
 				weaponSoundEffect = "";
@@ -11063,6 +11092,13 @@ class CfgWeapons
 				weaponSoundEffect = "";
 				soundSetShot[] = {"885th_EliteDC15S_C3Silenced_SoundSet","885th_EliteDC15S_Silenced_SoundSet","885th_EliteDC15S_SilencedTail_SoundSet"};
 				beginwater1[] = {"ShadowLegion_Weapons\data\surpressed_1.ogg", 1, 1, 100};
+				soundBeginWater[] = {"beginwater1", 0.5};
+			};
+			class StealthSound : BaseSoundModeType   // Stealth Carbine Suppressor (soundTypeIndex 2): quieter, short range, no echo
+			{
+				weaponSoundEffect = "";
+				soundSetShot[] = {"885th_EliteDC15S_C3Stealth_SoundSet","885th_EliteDC15S_Stealth_SoundSet"};
+				beginwater1[] = {"ShadowLegion_Weapons\data\surpressed_1.ogg", 0.7, 1, 60};
 				soundBeginWater[] = {"beginwater1", 0.5};
 			};
 		};
@@ -20479,6 +20515,7 @@ class CfgWeapons
 	};
 	//Attachments
 	class InventoryMuzzleItem_Base_F;
+	class 3AS_muzzle_DC15LE_F;
 	class 885th_Barrel_Module_DC21: ItemCore
 	{
 		author="SL Mod Dev Team + 885th Bloodapack Division";
@@ -20573,6 +20610,79 @@ class CfgWeapons
 				dispersionCoef=0.80000001;
 				artilleryDispersionCoef=1;
 				fireLightCoef=0.1;          // muzzle light at 10% of the weapon's value
+				recoilCoef=1;
+				recoilProneCoef=1;
+				minRangeCoef=1;
+				minRangeProbabCoef=1;
+				midRangeCoef=1;
+				midRangeProbabCoef=1;
+				maxRangeCoef=1;
+				maxRangeProbabCoef=1;
+			};
+		};
+	};
+	// Stealth version: AI hear it at roughly 1/5 the distance of the Tactical suppressor (audibleFire 0.04 vs 0.2,
+	// same as the vanilla 6.5 mm suppressor), almost no muzzle light, and its own quieter sound slot
+	// (soundTypeIndex 2 -> "StealthSound"). Trade-offs: heavier, slightly slower bolt (a touch less punch).
+	class 885th_Suppressor_Module_DC15_Stealth: 885th_Suppressor_Module_DC15_LowFlash
+	{
+		_generalMacro="885th_Suppressor_Module_DC15_Stealth";
+		displayName="[885th] Stealth Carbine Suppressor";
+		class ItemInfo: ItemInfo
+		{
+			mass=14;
+			soundTypeIndex=2;
+			class MagazineCoef: MagazineCoef
+			{
+				initSpeed=0.95;
+			};
+			class AmmoCoef: AmmoCoef
+			{
+				audibleFire=0.04;
+				audibleFireTime=0.1;
+				visibleFire=0;
+				visibleFireTime=0.05;
+			};
+			class MuzzleCoef: MuzzleCoef
+			{
+				fireLightCoef=0.03;
+			};
+		};
+	};
+	// Flash hider on the 3AS DC-15LE muzzle model. Normal (unsuppressed) sound and AI hearing; only the
+	// flash is cut. The 3AS original adds +25% bolt speed, which is set back to 1 here to keep the Elite's
+	// subsonic 310 m/s ballistics.
+	class 885th_FlashHider_DC15: 3AS_muzzle_DC15LE_F
+	{
+		author="3AS + 885th Bloodpack Division";
+		_generalMacro="885th_FlashHider_DC15";
+		displayName="[885th] Carbine Flash Hider";
+		class ItemInfo: InventoryMuzzleItem_Base_F
+		{
+			mass=6;
+			soundTypeIndex=0;
+			muzzleEnd="zaslehPoint";
+			alternativeFire="Zasleh2";
+			class MagazineCoef
+			{
+				initSpeed=1;
+			};
+			class AmmoCoef
+			{
+				hit=1;
+				typicalSpeed=1;
+				airFriction=1;
+				visibleFire=0.3;      // AI spot the shot at ~30% of normal range
+				audibleFire=1;
+				visibleFireTime=0.3;
+				audibleFireTime=1;
+				cost=1;
+			};
+			class MuzzleCoef
+			{
+				dispersionCoef=0.80000001;
+				artilleryDispersionCoef=1;
+				fireLightCoef=0.15;   // muzzle light at 15%
 				recoilCoef=1;
 				recoilProneCoef=1;
 				minRangeCoef=1;
