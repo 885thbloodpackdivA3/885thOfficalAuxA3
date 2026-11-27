@@ -132,6 +132,56 @@ HUD_ENABLED = true; // safe default in case onChanged hasn't resolved yet by the
 ] call CBA_fnc_addSetting;
 
 [
+	"BPD_CloneHUD_AMMO_FIREMODE",
+	"CHECKBOX",
+	["Show Fire Mode","Shows the current fire mode (SEMI / BURST / AUTO) on the ammo counter - under the rounds on the Default info box, under the weapon picture on Style A / B."],
+	["885th Clone HUD","1. What's On Screen"],
+	true,
+	nil,
+	{}
+] call CBA_fnc_addSetting;
+
+[
+	"BPD_CloneHUD_AMMO_ZEROING",
+	"CHECKBOX",
+	["Show Zeroing","Style A / B: shows the weapon's current zeroing (e.g. 300 m) above the weapon picture."],
+	["885th Clone HUD","1. What's On Screen"],
+	true,
+	nil,
+	{}
+] call CBA_fnc_addSetting;
+
+[
+	"BPD_CloneHUD_FLASH",
+	"LIST",
+	["Flashing Effects","How much the glitch / static effects flicker (Haywire When Down, Vital Signs Lost, helm cam signal loss). Reduced: slow, smooth changes with no blackout frames. Off: no flicker at all - effects fade in and out steadily. Pick Off or Reduced if flashing lights bother you."],
+	["885th Clone HUD","1. What's On Screen"],
+	[[0, 1, 2], ["Off (no flicker)", "Reduced", "Full"], 1],
+	nil,
+	{}
+] call CBA_fnc_addSetting;
+
+[
+	"BPD_CloneHUD_DOWN_FX",
+	"CHECKBOX",
+	["Haywire When Down","While you're down (unconscious / incapacitated) the HUD glitches and flickers; when you're back up it does a fast reboot of its systems."],
+	["885th Clone HUD","1. What's On Screen"],
+	true,
+	nil,
+	{}
+] call CBA_fnc_addSetting;
+
+[
+	"BPD_CloneHUD_KIA_FX",
+	"CHECKBOX",
+	["Vital Signs Lost","On KIA with the HUD up: static builds over the visor (VITAL SIGNS LOST) with a low flatline tone, then SIGNAL LOST, then it fades out - like losing a helm cam feed."],
+	["885th Clone HUD","1. What's On Screen"],
+	true,
+	nil,
+	{}
+] call CBA_fnc_addSetting;
+
+[
 	"SYSTEM_MESSAGES",
 	"CHECKBOX",
 	["Show System Messages","Allows the HUD to display system messages."],
@@ -140,7 +190,6 @@ HUD_ENABLED = true; // safe default in case onChanged hasn't resolved yet by the
 	nil,
 	{}
 ] call CBA_fnc_addSetting;
-
 [
 	"ALLOW_LOWLIGHT",
 	"CHECKBOX",
@@ -913,7 +962,7 @@ BPD_CloneHUD_ACE_COMPACT_ENABLED = false; // safe default in case onChanged hasn
 		"885th_Nightsingers_P1_Pilot_Helm,885th_Nightsingers_Senior_Pilot_Helm,885th_Nightsingers_Officer_Pilot_Helm,885th_Owl_Pilot_Helm,885th_Nightsingers_P2_Pilot_Helm,885th_Nightsingers_P2_Pilot_Senior_Helm,885th_Nightsingers_P2_Pilot_Officer_Helm,885th_Kings_Pilot_Helm,885th_Cerberus_P3_Pilot_Helm,885th_Nightsingers_P3_Pilot_Helm,885th_Nightsingers_P3_Senior_Pilot_Helm,885th_Nightsingers_P3_Officer_Pilot_Helm"],
 	["BPD_CloneHUD_AIRBORNE_HELMETS", "Airborne life indicator helmets | comma-separated classnames",
 		"Troopers in these helmets get the Airborne figure (airborne helmet on Phase 2 armor) as their life indicator. The helmet must also be in the Phase 1 or Phase 2 list.",
-		"885th_AB_Helm"],
+		"885th_AB_Helm,885th_Fyrnock_QRF_Air_Helm,885th_Nexu_QRF_Air_Helm"],
 	["BPD_CloneHUD_ENGINEER_HELMETS", "Engineer life indicator helmets | comma-separated classnames",
 		"Troopers in these helmets get the Engineer figure (engineer helmet on Phase 2 armor) as their life indicator. The helmet must also be in the Phase 1 or Phase 2 list.",
 		"885th_Vornskr_Engineer_Helm,885th_Vornskr_EngineerV2_Helm,885th_Smith_EngineerV2_Helm"]

@@ -16,6 +16,7 @@ HUD_fnc_parseText = {
 
 HUD_fnc_addSystemMessage = {
 	params ["_text","_messageID","_lifeTime"];
+	_lifeTime = 30; // every HUD message fades after 30 s
 
 	if (!SYSTEM_MESSAGES OR !HUD_systemMessageAllowed OR !HUD_hasHelmet) exitWith {};
 

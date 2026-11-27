@@ -208,6 +208,19 @@ class RscTitles
 		h = "safeZoneH";
 		onLoad = "uiNamespace setVariable ['BPD_CloneHUD_CRACK_BASE',_this select 0]";
 	};
+	// KIA static (downed.sqf) - full-screen signal loss when killed
+	class BPD_CloneHUD_KIA_BASE
+	{
+		idd = 2077007;
+		fadeIn = 0;
+		fadeOut = 0;
+		duration = 9.9999998e+010;
+		x = "safeZoneX";
+		y = "safeZoneY";
+		w = "safeZoneW";
+		h = "safeZoneH";
+		onLoad = "uiNamespace setVariable ['BPD_CloneHUD_KIA_BASE',_this select 0]";
+	};
 	class HUD_BOOTUP
 	{
 		idd = 9999;
@@ -308,6 +321,12 @@ class CfgSounds
 	class glitch_short
 	{
 		sound[] = { "\885th_CloneHUD\sounds\hud_glitch_short_2.ogg", 0.5, 1 };
+		titles[] = {};
+	};
+	// low monitor flatline under the Vital Signs Lost static (downed.sqf)
+	class BPD_CloneHUD_flatline
+	{
+		sound[] = { "\885th_CloneHUD\sounds\hud_flatline.wav", 0.25, 1 };
 		titles[] = {};
 	};
 };

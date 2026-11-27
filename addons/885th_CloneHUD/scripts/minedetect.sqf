@@ -65,10 +65,10 @@ BPD_CloneHUD_fnc_mdQualified = {
 
 BPD_CloneHUD_fnc_mdMessage = {
 	params ["_msg", "_id", ["_time", 6]];
+	// HUD messages only - no side-chat fallback (it fired whenever the HUD
+	// went down, e.g. "MINE DETECTOR OFFLINE" with raw <t> tags in chat)
 	if ((missionNamespace getVariable ["HUD_hasHelmet", false]) && {missionNamespace getVariable ["HUD_systemMessageAllowed", false]} && {missionNamespace getVariable ["SYSTEM_MESSAGES", true]}) then {
 		[_msg, _id, _time] call HUD_fnc_addSystemMessage;
-	} else {
-		systemChat _msg;
 	};
 };
 

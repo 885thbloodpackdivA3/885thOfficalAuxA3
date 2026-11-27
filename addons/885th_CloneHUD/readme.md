@@ -189,6 +189,21 @@ The squad list now shows each member's real medical state
   figure refreshes on any helmet swap, ACE Arsenal included. All six are the P2 figure with a helmet traced from a reference
   image (Pilot also has the chest life-support box), so they use the P2
   art box and come out the same size.
+- **Fire mode and zeroing** (1. What's On Screen): SEMI / BURST / AUTO
+  under the weapon picture and the zeroing (e.g. 300 m) above it on
+  Style A / B; fire mode under the box on the Default info display.
+- **Haywire When Down** (`scripts\downed.sqf`): while you're unconscious
+  the HUD glitches; on waking it does a fast reboot (layers back one by
+  one, "SUIT SYSTEMS RESTORED"). **Vital Signs Lost**: on KIA, full-screen
+  static (`textures\hcam\kia_static_*`) with a low flatline
+  (`sounds\hud_flatline.wav`), then SIGNAL LOST, then fade out.
+- **Helm cam signal loss**: when the trooper you're watching goes down,
+  the feed breaks up into static, shows SIGNAL LOST and moves to the
+  next trooper; downed troopers are skipped when cycling.
+- **Flashing Effects** (Off / Reduced / Full, default Reduced, per player)
+  controls how much those glitch / static effects flicker.
+- **System messages** all stay 30 s. Mine detector messages no longer
+  fall back to side chat.
 - **885th helmets only**: every helmet list ships with 885th helmets
   only (3AS stock helmets were removed). Add a 3AS classname to a list
   in Addon Options to give it the HUD again.

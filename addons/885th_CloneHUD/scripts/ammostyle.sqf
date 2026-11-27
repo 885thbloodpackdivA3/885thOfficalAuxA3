@@ -63,7 +63,48 @@ BPD_CloneHUD_ammoArt = [
 	]
 ];
 
-BPD_CloneHUD_ammoKeys = ["panel", "vit", "stat", "weap", "ammo", "mags", "gren", "grenN"];
+// "mode" = fire mode on Style A / B (shares the mags box, left-aligned);
+// "dmode" = fire mode on the Default info box (placed per helmet tier).
+BPD_CloneHUD_ammoKeys = ["panel", "vit", "stat", "weap", "ammo", "mags", "gren", "grenN", "mode", "dmode", "zero"];
+
+// Current zeroing in metres for the weapon in hand (0 = none / unknown).
+BPD_CloneHUD_fnc_zeroing = {
+	// on foot (or firing from a vehicle seat with your own weapon) only
+	private _z = if (vehicle player != player && {(weaponState player) select 0 == ""}) then {0} else {
+		if (currentWeapon player == "") then {0} else { currentZeroing player }
+	};
+	if (_z isEqualType []) then { _z = _z param [0, 0]; };
+	round _z
+};
+
+// Default info box: fire mode spot per tier, in safezone fractions -
+// just under the box (P1 / P2) or inside the big ring under the rounds (RC).
+BPD_CloneHUD_modeDefaultRects = createHashMapFromArray [
+	["P1", [0.855781, 0.943, 0.04125, 0.026]],
+	["P2", [0.878646, 0.906, 0.04125, 0.026]],
+	["RC", [0.855781, 0.821, 0.04125, 0.026]]
+];
+
+// Short fire mode label for whatever the player is firing:
+// AUTO (autoFire), BURST (burst > 1), SEMI, or "" for no weapon /
+// binoculars / throwables.
+BPD_CloneHUD_fnc_fireMode = {
+	private _veh = vehicle player;
+	private _ws = if (_veh != player) then {
+		weaponState [_veh, (assignedVehicleRole player) param [1, [-1]]]
+	} else {
+		weaponState player
+	};
+	_ws params [["_weap", ""], ["_muzzle", ""], ["_mode", ""]];
+	if (_weap == "") exitWith {""};
+	private _cfg = configFile >> "CfgWeapons" >> _weap;
+	if (getNumber (_cfg >> "type") == 4096) exitWith {""}; // binoculars / designators
+	if (_muzzle != "" && {_muzzle != _weap} && {_muzzle != "this"}) then { _cfg = _cfg >> _muzzle; };
+	if (_mode != "" && {_mode != "this"} && {_mode != _muzzle} && {isClass (_cfg >> _mode)}) then { _cfg = _cfg >> _mode; };
+	if (getNumber (_cfg >> "autoFire") == 1) exitWith {"AUTO"};
+	if (getNumber (_cfg >> "burst") > 1) exitWith {"BURST"};
+	"SEMI"
+};
 
 BPD_CloneHUD_fnc_ammoVitalsOn = {
 	(missionNamespace getVariable ["BPD_CloneHUD_AMMO_VITALS", 1]) > 0
@@ -114,13 +155,23 @@ BPD_CloneHUD_fnc_ammoLayout = {
 	_panel ctrlCommit 0;
 	{
 		private _c = _ctrls get _x;
-		private _rect = _rects getOrDefault [_x, []];
+		// fire mode sits in the empty strip under the weapon picture
+		// ...and zeroing in the strip above it
+		private _rect = if (_x in ["mode", "zero"]) then {
+			(_rects getOrDefault ["weap", []]) params [["_wx", 0], ["_wy", 0], ["_ww", 0], ["_wh", 0]];
+			if (_ww == 0) then { [] } else {
+				if (_x == "mode") then { [_wx, _wy + _wh * 0.74, _ww, _wh * 0.26] } else { [_wx, _wy, _ww, _wh * 0.26] }
+			}
+		} else {
+			_rects getOrDefault [_x, []]
+		};
 		if (_rect isEqualTo []) then {
 			_c ctrlShow false; // not part of this variant (vitals off)
 		} else {
 			private _r = _rect call _toScreen;
 			_c ctrlSetPosition _r;
 			if (_x in ["ammo", "mags"]) then { _c ctrlSetFontHeight ((_r select 3) * 0.85); };
+			if (_x in ["mode", "zero"]) then { _c ctrlSetFontHeight ((_r select 3) * 0.9); };
 			// grenade count matches the rounds number, but never outgrows its own box
 			if (_x == "grenN") then {
 				_c ctrlSetFontHeight (((_r select 3) min ((((_rects get "ammo") call _toScreen) select 3))) * 0.85);
@@ -130,7 +181,7 @@ BPD_CloneHUD_fnc_ammoLayout = {
 			_c ctrlShow ((missionNamespace getVariable ["BPD_CloneHUD_ammoShownStyle", 0]) > 0);
 		};
 		_c ctrlCommit 0;
-	} forEach ["vit", "stat", "weap", "ammo", "mags", "gren", "grenN"];
+	} forEach ["vit", "stat", "weap", "ammo", "mags", "gren", "grenN", "mode", "zero"];
 	// full vitals bar width, used by the update to size the fill
 	BPD_CloneHUD_ammoBarFull = if (_vitals) then { ((_rects get "vit") call _toScreen) select 2 } else { 0 };
 	BPD_CloneHUD_ammoLayoutVitals = _vitals;
@@ -199,7 +250,27 @@ BPD_CloneHUD_fnc_ammoState = {
 
 BPD_CloneHUD_fnc_ammoHide = {
 	private _ctrls = uiNamespace getVariable ["BPD_CloneHUD_ammoCtrls", createHashMap];
-	{ _y ctrlShow false; } forEach _ctrls;
+	{ if (_x != "dmode") then { _y ctrlShow false; }; } forEach _ctrls; // dmode is managed by ammoUpdate
+};
+
+// Fire mode on the Default info box (Ammo Counter Style = Default).
+BPD_CloneHUD_fnc_modeDefault = {
+	params ["_ctrls", "_on", "_label"];
+	private _c = _ctrls getOrDefault ["dmode", controlNull];
+	if (isNull _c) exitWith {};
+	if (!_on || {_label == ""}) exitWith { if (ctrlShown _c) then { _c ctrlShow false; }; };
+	private _tier = call BPD_CloneHUD_fnc_currentTier;
+	if (_tier != (_c getVariable ["bpdTier", ""])) then {
+		_c setVariable ["bpdTier", _tier];
+		(BPD_CloneHUD_modeDefaultRects get _tier) params ["_rx", "_ry", "_w", "_h"];
+		_c ctrlSetPosition [safezoneX + _rx * safezoneW, safezoneY + _ry * safezoneH, _w * safezoneW, _h * safezoneH];
+		_c ctrlSetFontHeight (_h * safezoneH * 0.8);
+		_c ctrlCommit 0;
+	};
+	private _col = missionNamespace getVariable ["INFO_TEXT_COLOR", [1,1,1,1]];
+	_c ctrlSetStructuredText parseText format ["<t align='center' valign='middle' font='PuristaBold'>%1</t>", _label];
+	_c ctrlSetTextColor _col;
+	if (!ctrlShown _c) then { _c ctrlShow true; };
 };
 
 // Swaps the helmet info box between the full art and the version with
@@ -225,6 +296,9 @@ BPD_CloneHUD_fnc_ammoUpdate = {
 	if (count _ctrls == 0) exitWith {};
 	private _style = missionNamespace getVariable ["BPD_CloneHUD_AMMO_STYLE", 0];
 	[_style > 0] call BPD_CloneHUD_fnc_ammoInfoArt;
+	private _modeOn = missionNamespace getVariable ["BPD_CloneHUD_AMMO_FIREMODE", true];
+	private _modeLabel = if (_show && {_modeOn}) then { call BPD_CloneHUD_fnc_fireMode } else { "" };
+	[_ctrls, _show && {_modeOn} && {_style == 0}, _modeLabel] call BPD_CloneHUD_fnc_modeDefault;
 	if (!_show || {_style < 1}) exitWith {
 		if (BPD_CloneHUD_ammoShownStyle != 0) then {
 			call BPD_CloneHUD_fnc_ammoHide;
@@ -265,6 +339,11 @@ BPD_CloneHUD_fnc_ammoUpdate = {
 	private _lowAmmo = (_rounds isEqualType 0) && {_weap != ""} && {_rounds <= 0};
 	(_ctrls get "ammo") ctrlSetStructuredText parseText format ["<t align='right' valign='middle' font='PuristaBold' color='%2'>%1</t>", _rounds, ["#ebf0f2", "#ff5a4a"] select _lowAmmo];
 	(_ctrls get "mags") ctrlSetStructuredText parseText format ["<t align='right' valign='middle' font='PuristaMedium' color='#b4c8cd'>x %1</t>", _mags];
+	(_ctrls get "mode") ctrlSetStructuredText parseText format ["<t align='center' valign='middle' font='PuristaBold' color='#7fb8e6'>%1</t>", _modeLabel];
+	private _zero = if (_weap != "" && {missionNamespace getVariable ["BPD_CloneHUD_AMMO_ZEROING", true]}) then { call BPD_CloneHUD_fnc_zeroing } else { 0 };
+	(_ctrls get "zero") ctrlSetStructuredText parseText (if (_zero > 0) then {
+		format ["<t align='center' valign='middle' font='PuristaBold' color='#7fb8e6'>%1 m</t>", _zero]
+	} else { "" });
 
 	// grenades / throwables: icon and count of the SELECTED throwable only
 	// (e.g. 3 blue smokes -> 3), not every throwable you carry

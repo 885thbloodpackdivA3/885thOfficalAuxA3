@@ -123,9 +123,17 @@ BPD_CloneHUD_fnc_openCtab = {
 	};
 	private _unit = if (isNil "cTab_player" || {isNull cTab_player}) then {player} else {cTab_player};
 	diag_log format ["885th_CloneHUD: cTab link - opening %1 (interface %2) for %3. cTabIfOpen nil=%4, cTabIfOpenStart=%5.", _displayName, _ifType, _unit, isNil "cTabIfOpen", missionNamespace getVariable ["cTabIfOpenStart", "nil"]];
+	// each request gets a token; a newer request (cycling on, closing)
+	// cancels the pending open and the "didn't open" warning for this one
+	BPD_CloneHUD_ctabReq = (missionNamespace getVariable ["BPD_CloneHUD_ctabReq", 0]) + 1;
+	private _req = BPD_CloneHUD_ctabReq;
 	[{
 		params ["_args", "_pfh"];
-		_args params ["_open", "_deadline"];
+		_args params ["_open", "_deadline", "_req", "_notBefore"];
+		if (_req != BPD_CloneHUD_ctabReq) exitWith { [_pfh] call CBA_fnc_removePerFrameHandler; };
+		// short delay so the ACE menu (or key) that asked for it has fully
+		// closed first - opening a dialog in the same frame gets it closed
+		if (diag_tickTime < _notBefore) exitWith {};
 		if (diag_tickTime > _deadline) exitWith {
 			[_pfh] call CBA_fnc_removePerFrameHandler;
 			diag_log format ["885th_CloneHUD: cTab link - gave up opening %1: cTab still busy after 3s (cTabIfOpen nil=%2, cTabIfOpenStart=%3).", _open select 1, isNil "cTabIfOpen", cTabIfOpenStart];
@@ -135,12 +143,14 @@ BPD_CloneHUD_fnc_openCtab = {
 			private _ok = _open call cTab_fnc_open;
 			diag_log format ["885th_CloneHUD: cTab link - cTab_fnc_open %1 returned %2.", _open select 1, _ok];
 		};
-	}, 0, [[_ifType, _displayName, _unit, vehicle _unit], diag_tickTime + 3]] call CBA_fnc_addPerFrameHandler;
+	}, 0, [[_ifType, _displayName, _unit, vehicle _unit], diag_tickTime + 3, _req, diag_tickTime + 0.2]] call CBA_fnc_addPerFrameHandler;
 
-	// Tell the player if it didn't come up, instead of failing silently.
-	[_displayName] spawn {
-		params ["_displayName"];
-		sleep 2;
+	// Tell the player if it didn't come up, instead of failing silently -
+	// unless they've already moved on to another mode.
+	[_displayName, _req] spawn {
+		params ["_displayName", "_req"];
+		sleep 2.5;
+		if (_req != BPD_CloneHUD_ctabReq) exitWith {};
 		if (isNil "cTabIfOpen" || {(cTabIfOpen select 1) != _displayName}) then {
 			private _msg = format ["cTab did not open (%1) - see RPT", _displayName];
 			[_msg, "bpdLinkErr", 6] call HUD_fnc_addSystemMessage;
@@ -186,7 +196,10 @@ BPD_CloneHUD_fnc_exitMode = {
 	params ["_mode"];
 	switch (_mode) do {
 		case "CTAB";
-		case "DAGR": { if (!isNil "cTab_fnc_close") then { call cTab_fnc_close; }; };
+		case "DAGR": {
+			BPD_CloneHUD_ctabReq = (missionNamespace getVariable ["BPD_CloneHUD_ctabReq", 0]) + 1; // cancel a pending open
+			if (!isNil "cTab_fnc_close") then { call cTab_fnc_close; };
+		};
 		case "HCAM": { call BPD_CloneHUD_fnc_stopHcam; };
 		case "TACMAP": { BPD_CloneHUD_tacmapActive = false; call BPD_CloneHUD_fnc_updateFeedPanel; };
 	};
@@ -309,6 +322,12 @@ call BPD_CloneHUD_fnc_addAceMenu;
 // cam (ItemcTabHCam / cTab's own helmet classes). The old version used
 // ONLY cTab's list, so whenever cTab's scripts weren't running - e.g. the
 // local 885_SW_cTab.pbo built without its "cTab" prefix - nobody showed up.
+// Wearer can't send a feed: dead, ACE unconscious or vanilla incapacitated.
+BPD_CloneHUD_fnc_hcamDown = {
+	params ["_u"];
+	isNull _u || {!alive _u} || {lifeState _u == "INCAPACITATED"} || {_u getVariable ["ACE_isUnconscious", false]}
+};
+
 BPD_CloneHUD_fnc_hcamCandidates = {
 	private _helmets = missionNamespace getVariable ["HUD_helmets", []];
 	private _mySide = side group player;
@@ -318,7 +337,7 @@ BPD_CloneHUD_fnc_hcamCandidates = {
 	};
 	if (!isNil "cTabHcamlist") then { _list = _list arrayIntersect _list; { _list pushBackUnique _x; } forEach cTabHcamlist; };
 	private _grp = group player;
-	_list = _list select { alive _x && {_x != player} };
+	_list = _list select { _x != player && {!([_x] call BPD_CloneHUD_fnc_hcamDown)} };
 	if (missionNamespace getVariable ["BPD_CloneHUD_HCAM_SQUAD_ONLY", false]) then {
 		_list = _list select { group _x isEqualTo _grp };
 	};
@@ -418,7 +437,95 @@ BPD_CloneHUD_fnc_startHcam = {
 	true
 };
 
+// ------------------------------------------------------------
+//  Signal loss: static -> SIGNAL LOST -> next trooper
+// ------------------------------------------------------------
+// Static overlay over the feed picture (created on first use).
+BPD_CloneHUD_fnc_hcamStaticCtrl = {
+	private _c = uiNamespace getVariable ["BPD_CloneHUD_hcamStatic", controlNull];
+	if (isNil "HUD_feedPicture") exitWith {controlNull};
+	private _pic = HUD_feedPicture#0;
+	if (isNull _pic) exitWith {controlNull};
+	if (isNull _c || {ctrlParent _c != ctrlParent _pic}) then {
+		_c = (ctrlParent _pic) ctrlCreate ["RscPicture", 27730];
+		uiNamespace setVariable ["BPD_CloneHUD_hcamStatic", _c];
+	};
+	_c ctrlSetPosition (ctrlPosition _pic);
+	_c ctrlCommit 0;
+	_c
+};
+
+// Static at strength _a (0..1); 0 hides it. Swaps the noise frame each call.
+BPD_CloneHUD_fnc_hcamStaticShow = {
+	params ["_a"];
+	private _c = call BPD_CloneHUD_fnc_hcamStaticCtrl;
+	if (isNull _c) exitWith {};
+	if (_a <= 0) exitWith { _c ctrlShow false; };
+	// Flashing Effects: full = new noise frame every call, reduced ~2.5/s, off = one still frame
+	private _mode = (missionNamespace getVariable ["BPD_CloneHUD_FLASH", 1]) min 2 max 0;
+	private _every = [1e9, 0.4, 0] select _mode;
+	if (ctrlText _c == "" || {diag_tickTime - (_c getVariable ["bpdSwap", -1e9]) >= _every}) then {
+		_c setVariable ["bpdSwap", diag_tickTime];
+		_c ctrlSetText format ["\885th_CloneHUD\textures\hcam\hcam_static_%1_ca.paa", 1 + floor random 4];
+	};
+	_c ctrlSetTextColor [1, 1, 1, _a];
+	_c ctrlShow true;
+};
+
+// Feed wearer went down / dropped off: ~1.2 s of rising static on the
+// live feed, ~1 s of full static + SIGNAL LOST, then the next trooper
+// with the static clearing. Nobody left: helm cam closes.
+BPD_CloneHUD_fnc_hcamSignalLoss = {
+	if (missionNamespace getVariable ["BPD_CloneHUD_hcamLosing", false]) exitWith {};
+	BPD_CloneHUD_hcamLosing = true;
+	[] spawn {
+		private _t = BPD_CloneHUD_hcamTarget;
+		private _name = if (isNull _t) then {"FEED"} else {toUpper name _t};
+		playSound "glitch_short";
+		// 1) feed breaking up
+		BPD_CloneHUD_hcamStatus = format ["<t color='#ffb347'>%1 - SIGNAL DEGRADED</t>", _name];
+		call BPD_CloneHUD_fnc_updateFeedPanel;
+		private _end = diag_tickTime + 1.2;
+		while { diag_tickTime < _end && {BPD_CloneHUD_hcamActive} } do {
+			private _k = 1 - ((_end - diag_tickTime) / 1.2);
+			private _jit = if ((missionNamespace getVariable ["BPD_CloneHUD_FLASH", 1]) >= 2) then { 0.7 + random 0.3 } else { 1 };
+			[(0.25 + 0.6 * _k) * _jit] call BPD_CloneHUD_fnc_hcamStaticShow;
+			sleep 0.06;
+		};
+		// 2) signal lost
+		if (BPD_CloneHUD_hcamActive) then {
+			call BPD_CloneHUD_fnc_destroyHcamCamera;
+			playSound "glitch_short";
+			["Helm cam: " + _name + " - signal lost", "bpdLinkMode", 3] call HUD_fnc_addSystemMessage;
+			BPD_CloneHUD_hcamStatus = "<t color='#ff3b30'>SIGNAL LOST</t>";
+			call BPD_CloneHUD_fnc_updateFeedPanel;
+			_end = diag_tickTime + 1;
+			while { diag_tickTime < _end && {BPD_CloneHUD_hcamActive} } do {
+				[0.95] call BPD_CloneHUD_fnc_hcamStaticShow;
+				sleep 0.06;
+			};
+		};
+		// 3) next trooper, static clearing
+		BPD_CloneHUD_hcamStatus = "";
+		if (BPD_CloneHUD_hcamActive) then {
+			if ([objNull] call BPD_CloneHUD_fnc_startHcam) then {
+				_end = diag_tickTime + 0.5;
+				while { diag_tickTime < _end && {BPD_CloneHUD_hcamActive} } do {
+					[0.8 * ((_end - diag_tickTime) / 0.5)] call BPD_CloneHUD_fnc_hcamStaticShow;
+					sleep 0.06;
+				};
+			} else {
+				call BPD_CloneHUD_fnc_stopHcam;
+			};
+		};
+		[0] call BPD_CloneHUD_fnc_hcamStaticShow;
+		BPD_CloneHUD_hcamLosing = false;
+	};
+};
+
 BPD_CloneHUD_fnc_stopHcam = {
+	[0] call BPD_CloneHUD_fnc_hcamStaticShow;
+	BPD_CloneHUD_hcamStatus = "";
 	BPD_CloneHUD_hcamActive = false;
 	call BPD_CloneHUD_fnc_destroyHcamCamera;
 	call BPD_CloneHUD_fnc_updateFeedPanel;
@@ -561,6 +668,8 @@ BPD_CloneHUD_fnc_updateFeedPanel = {
 	if (_hcamOn) then {
 		private _t = BPD_CloneHUD_hcamTarget;
 		private _label = call {
+			private _st = missionNamespace getVariable ["BPD_CloneHUD_hcamStatus", ""];
+			if (_st != "") exitWith {_st};
 			if (!isPiPEnabled) exitWith {"ENABLE PIP IN VIDEO OPTIONS"};
 			if (isNull _t) exitWith {"NO SIGNAL"};
 			if (count BPD_CloneHUD_hcam == 0) exitWith {format ["%1 - NO SIGNAL", toUpper name _t]};
@@ -631,16 +740,17 @@ if (isNil "BPD_CloneHUD_feedLoop") then {
 					call BPD_CloneHUD_fnc_stopHcam;
 				} else {
 					private _t = BPD_CloneHUD_hcamTarget;
-					if (isNull _t || {!alive _t} || {!(_t in (call BPD_CloneHUD_fnc_hcamCandidates))}) then {
-						["Helm cam: signal lost", "bpdLinkMode", 3] call HUD_fnc_addSystemMessage;
-						if !([objNull] call BPD_CloneHUD_fnc_startHcam) then { call BPD_CloneHUD_fnc_stopHcam; };
+					if (missionNamespace getVariable ["BPD_CloneHUD_hcamLosing", false]) then {
+						// signal-loss sequence is running - leave the feed alone
+					} else { if ([_t] call BPD_CloneHUD_fnc_hcamDown || {!(_t in (call BPD_CloneHUD_fnc_hcamCandidates))}) then {
+						call BPD_CloneHUD_fnc_hcamSignalLoss;
 					} else {
 						// wearer got in/out of a vehicle - remount the camera
 						private _wantHost = if (vehicle _t isKindOf "CAManBase") then {_t} else {vehicle _t};
 						if (count BPD_CloneHUD_hcam == 0 || {(BPD_CloneHUD_hcam select 2) != _wantHost}) then {
 							[_t] call BPD_CloneHUD_fnc_attachHcam;
 						};
-					};
+					}; };
 				};
 			};
 			call BPD_CloneHUD_fnc_updateFeedPanel;
