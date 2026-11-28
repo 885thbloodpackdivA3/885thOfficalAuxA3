@@ -362,7 +362,7 @@ class CfgAmmo
 	class SensorTemplateLaser;
 	class SensorTemplateData;
 	class Components;
-	class 885th_blasterbolt: BulletBase
+	class 313th_blasterbolt: BulletBase
 	{
 		visibleFire=5;
 		audibleFire=20;
