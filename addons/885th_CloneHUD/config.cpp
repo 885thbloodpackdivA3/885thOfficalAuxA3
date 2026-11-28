@@ -195,7 +195,8 @@ class RscTitles
 		onLoad = "uiNamespace setVariable ['BPD_CloneHUD_INDICATOR_BASE',_this select 0]";
 	};
 	// Cracked visor (visorcrack.sqf) - its own layer so cracks sit on top
-	// of every HUD element and survive the HUD being switched off.
+	// of every HUD element. Hidden (not cleared) while the HUD is switched
+	// off; they show again when it's turned back on.
 	class BPD_CloneHUD_CRACK_BASE
 	{
 		idd = 2077006;
@@ -207,6 +208,19 @@ class RscTitles
 		w = "safeZoneW";
 		h = "safeZoneH";
 		onLoad = "uiNamespace setVariable ['BPD_CloneHUD_CRACK_BASE',_this select 0]";
+	};
+	// EMP outage (emp.sqf) - static burst + offline countdown
+	class BPD_CloneHUD_EMP_BASE
+	{
+		idd = 2077008;
+		fadeIn = 0;
+		fadeOut = 0;
+		duration = 9.9999998e+010;
+		x = "safeZoneX";
+		y = "safeZoneY";
+		w = "safeZoneW";
+		h = "safeZoneH";
+		onLoad = "uiNamespace setVariable ['BPD_CloneHUD_EMP_BASE',_this select 0]";
 	};
 	// KIA static (downed.sqf) - full-screen signal loss when killed
 	class BPD_CloneHUD_KIA_BASE

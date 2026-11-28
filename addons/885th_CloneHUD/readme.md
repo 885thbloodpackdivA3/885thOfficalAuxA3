@@ -200,6 +200,19 @@ The squad list now shows each member's real medical state
 - **Helm cam signal loss**: when the trooper you're watching goes down,
   the feed breaks up into static, shows SIGNAL LOST and moves to the
   next trooper; downed troopers are skipped when cycling.
+- **HUD crosshair** (`scripts\crosshair.sqf`, 1. What's On Screen): Off /
+  Segmented Ring / Broken Ring / Plain Ring (`textures\crosshair`), with
+  size and opacity. First person with a weapon up, hidden when aiming
+  down sights, on the map, in Zeus or when the HUD isn't booted.
+- **EMP** (`scripts\emp.sqf`, settings 12. EMP): caught in an EMP blast
+  (via 885_Armor's EMP detector) with the HUD up - static burst, then the
+  HUD goes haywire with an offline countdown while every suit system is
+  down (radar, scanner, low light, mine detector, squad list, pings, Tac
+  Map, cTab link, helm cam), then the fast reboot. RC helmets are
+  hardened (x0.5), Phase 1 takes longer (x1.25). ACE "Emergency Suit
+  Reboot" (self, 3 s) and engineer "Reboot Suit" (4 s) cut it short.
+  Small chance of an electric burn on the visor (`textures\emp`).
+  Test: `[player] call BPD_CloneHUD_fnc_empHit;`
 - **Flashing Effects** (Off / Reduced / Full, default Reduced, per player)
   controls how much those glitch / static effects flicker.
 - **System messages** all stay 30 s. Mine detector messages no longer

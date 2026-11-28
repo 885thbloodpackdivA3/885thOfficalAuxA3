@@ -142,6 +142,66 @@ HUD_ENABLED = true; // safe default in case onChanged hasn't resolved yet by the
 ] call CBA_fnc_addSetting;
 
 [
+	"BPD_CloneHUD_CROSSHAIR",
+	"LIST",
+	["HUD Crosshair","Crosshair while the HUD is up (weapon up; hidden when aiming down sights). Vanilla Crosshair: no HUD crosshair and Arma's own crosshair stays on while the HUD is active. Off: no crosshair at all (if Hide Vanilla Crosshair is on)."],
+	["885th Clone HUD","1. What's On Screen"],
+	[[0, 1, 2, 3, 4], ["Off", "Segmented Ring", "Broken Ring", "Plain Ring", "Vanilla Crosshair"], 1],
+	nil,
+	{}
+] call CBA_fnc_addSetting;
+
+[
+	"BPD_CloneHUD_CROSSHAIR_3RD",
+	"CHECKBOX",
+	["HUD Crosshair in 3rd Person","Also show the HUD crosshair in third person, placed where your weapon is pointing (like the vanilla one)."],
+	["885th Clone HUD","1. What's On Screen"],
+	true,
+	nil,
+	{}
+] call CBA_fnc_addSetting;
+
+[
+	"BPD_CloneHUD_CROSSHAIR_SIZE",
+	"SLIDER",
+	["HUD Crosshair Size","Height as a share of the screen."],
+	["885th Clone HUD","1. What's On Screen"],
+	[0.02, 0.2, 0.06, 0, true],
+	nil,
+	{}
+] call CBA_fnc_addSetting;
+
+[
+	"BPD_CloneHUD_CROSSHAIR_COLOR_MODE",
+	"LIST",
+	["HUD Crosshair Color","Match HUD Color: follows 'HUD Color' (4. Look & Colors), so it changes with the rest of the HUD. Own Color: uses the colour below."],
+	["885th Clone HUD","1. What's On Screen"],
+	[[0, 1], ["Match HUD Color", "Own Color"], 0],
+	nil,
+	{}
+] call CBA_fnc_addSetting;
+
+[
+	"BPD_CloneHUD_CROSSHAIR_COLOR",
+	"COLOR",
+	["HUD Crosshair Own Color","Used when HUD Crosshair Color is set to Own Color."],
+	["885th Clone HUD","1. What's On Screen"],
+	[1, 1, 1],
+	nil,
+	{}
+] call CBA_fnc_addSetting;
+
+[
+	"BPD_CloneHUD_CROSSHAIR_OPACITY",
+	"SLIDER",
+	["HUD Crosshair Opacity","How strongly the crosshair shows."],
+	["885th Clone HUD","1. What's On Screen"],
+	[0.1, 1, 0.8, 0, true],
+	nil,
+	{}
+] call CBA_fnc_addSetting;
+
+[
 	"BPD_CloneHUD_AMMO_ZEROING",
 	"CHECKBOX",
 	["Show Zeroing","Style A / B: shows the weapon's current zeroing (e.g. 300 m) above the weapon picture."],
@@ -1089,6 +1149,16 @@ BPD_CloneHUD_ACE_COMPACT_ENABLED = false; // safe default in case onChanged hasn
 ] call CBA_fnc_addSetting;
 
 [
+	"BPD_CloneHUD_HIDE_CURSORS",
+	"CHECKBOX",
+	["Hide Vanilla Crosshair","Arma's own weapon crosshair while the Clone HUD is up, on foot (the HUD Crosshair replaces it). Vehicle gunner crosshairs are never hidden."],
+	["885th Clone HUD","3. Vanilla HUD"],
+	true,
+	nil,
+	{}
+] call CBA_fnc_addSetting;
+
+[
 	"BPD_CloneHUD_HIDE_DUI",
 	"CHECKBOX",
 	["Hide DUI Squad Radar","If DUI - Squad Radar is loaded, hide its compass and name list while the Clone HUD is up (the Clone HUD has its own squad list and radar). Restored to however you had it afterwards. Does nothing without DUI."],
@@ -1300,6 +1370,16 @@ private _vc = ["885th Clone HUD","11. Cracked Visor"];
 ["BPD_CloneHUD_CRACK_DIRT_MAX","SLIDER",["Max Dirt","Dirt overlays stack up to this many (the oldest drops off)."],_vc,[1,6,3,0],true,{}] call CBA_fnc_addSetting;
 ["BPD_CloneHUD_CRACK_DIRT_LAST","SLIDER",["Dirt Lasts (s)","Dirt clears on its own after this long, on every helmet. 0 = until wiped, repaired, helmet swap or respawn. Server setting."],_vc,[0,600,90,0],true,{}] call CBA_fnc_addSetting;
 ["BPD_CloneHUD_CRACK_DIRT_OPACITY","SLIDER",["Dirt Opacity","How strongly the dirt shows (per player)."],_vc,[0.2,1,0.8,2],nil,{}] call CBA_fnc_addSetting;
+
+// EMP (emp.sqf) - needs 885_Armor's EMP detector (same mod)
+private _emp = ["885th Clone HUD","12. EMP"];
+["BPD_CloneHUD_EMP_ENABLED","CHECKBOX",["EMP Knocks Out the Suit","Caught in an EMP blast (885th EMP grenade / launcher, JLTS EMP ammo) with the HUD up: static burst, the HUD goes haywire and every suit system (radar, scanner, low light, mine detector, squad list, pings, Tac Map, cTab link, helm cam) is offline until it reboots. Server setting."],_emp,true,true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_EMP_TIME","SLIDER",["Outage (s)","How long the suit stays offline (Phase 2). A second EMP while offline extends it. Server setting."],_emp,[2,60,10,0],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_EMP_RC_MULT","SLIDER",["RC Hardening","Republic Commando (Katarn) helmets: outage x this. 0.5 = half as long. Server setting."],_emp,[0.1,1.5,0.5,2],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_EMP_P1_MULT","SLIDER",["Phase 1 Multiplier","Phase 1 helmets (older kit): outage x this. Server setting."],_emp,[0.5,3,1.25,2],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_EMP_SELF_REBOOT","CHECKBOX",["Emergency Suit Reboot","ACE self action (Equipment) while offline: 3 s, then the suit reboots right away. Server setting."],_emp,true,true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_EMP_REBOOT_WHO","LIST",["Who Can Reboot Others","ACE interact 'Reboot Suit' on an EMP'd trooper (4 s). Server setting."],_emp,[[0,1,2],["Nobody","Engineers / EOD","Anyone"],1],true,{}] call CBA_fnc_addSetting;
+["BPD_CloneHUD_EMP_BURN_CHANCE","SLIDER",["Electric Burn Chance","Chance an EMP hit leaves an electrical burn on the visor (cleared like dirt: RC wipe, engineer repair or the dirt timer). Server setting."],_emp,[0,1,0.1,0,true],true,{}] call CBA_fnc_addSetting;
 
 ////////////
 // Layout //

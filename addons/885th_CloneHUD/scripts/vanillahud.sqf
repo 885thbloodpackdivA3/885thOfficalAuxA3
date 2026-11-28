@@ -25,9 +25,9 @@
 	  6  group       squad bar                  BPD_CloneHUD_HIDE_GROUP
 	  8  panels      vehicle panels / GPS       BPD_CloneHUD_HIDE_PANELS
 	  9  kills       "x killed by y" messages   BPD_CloneHUD_HIDE_KILLS
+	  7  cursors     weapon crosshair (on foot) BPD_CloneHUD_HIDE_CURSORS
 	Never touched: 0 (scripted HUD - would hide the Clone HUD's own
-	3D icons), 5 (scroll/action menu - "Activate HUD" lives there),
-	7 (weapon cursors).
+	3D icons), 5 (scroll/action menu - "Activate HUD" lives there).
 
 	DUI Squad Radar isn't part of showHUD - BPD_CloneHUD_HIDE_DUI flips
 	DUI's own toggle (diwako_dui_main_toggled_off) and restores whatever
@@ -64,6 +64,11 @@ BPD_CloneHUD_fnc_vanillaMask = {
 	if (missionNamespace getVariable ["BPD_CloneHUD_HIDE_GROUP", true]) then { _m set [6, false]; };
 	if (missionNamespace getVariable ["BPD_CloneHUD_HIDE_PANELS", false]) then { _m set [8, false]; };
 	if (missionNamespace getVariable ["BPD_CloneHUD_HIDE_KILLS", false]) then { _m set [9, false]; };
+	// weapon crosshair - on foot only, so vehicle gunner sights keep theirs
+	// ("Vanilla Crosshair" picked as the HUD Crosshair keeps Arma's own)
+	if ((missionNamespace getVariable ["BPD_CloneHUD_HIDE_CURSORS", true])
+		&& {(missionNamespace getVariable ["BPD_CloneHUD_CROSSHAIR", 1]) != 4}
+		&& {vehicle player == player}) then { _m set [7, false]; };
 	_m
 };
 
@@ -187,6 +192,33 @@ BPD_CloneHUD_fnc_hideVanillaHud = {
 	};
 };
 
+// Per-frame enforcer. Some mods force showHUD back on EVERY frame from a
+// CBA per-frame handler (Shadow Legion Armory: ShadowLegion_fnc_updateHUD
+// runs showHUD [true,..,true] each frame, turning the crosshair, compass
+// etc. back on). CBA runs per-frame handlers in the order they were added,
+// so this one - added a couple of seconds into the mission, after theirs -
+// switches our hidden elements off again in the SAME frame, before anything
+// is drawn. No fight, no strobe, and the stomp detector above stays quiet.
+// Only switches things off; does nothing while we aren't hiding anything.
+if (hasInterface && {isNil "BPD_CloneHUD_vanillaPFH"}) then {
+	BPD_CloneHUD_vanillaPFH = -1;
+	[] spawn {
+		waitUntil { sleep 1; time > 2 };
+		BPD_CloneHUD_vanillaPFH = [{
+			if (!BPD_CloneHUD_vanillaHudApplied) exitWith {};
+			private _mask = BPD_CloneHUD_vanillaHudMask;
+			if (_mask isEqualTo []) exitWith {};
+			private _live = shownHUD;
+			private _need = false;
+			{ if (!_x && {_live param [_forEachIndex, false]}) exitWith { _need = true; }; } forEach _mask;
+			if (!_need) exitWith {};
+			private _new = (+_live) select [0, 10];
+			{ if (!_x) then { _new set [_forEachIndex, false]; }; } forEach _mask;
+			showHUD _new;
+		}, 0] call CBA_fnc_addPerFrameHandler;
+	};
+};
+
 BPD_CloneHUD_fnc_restoreDui = {
 	if (isNil "BPD_CloneHUD_duiSaved") exitWith {};
 	if (!isNil "diwako_dui_main_toggled_off" && {diwako_dui_main_toggled_off isNotEqualTo BPD_CloneHUD_duiSaved}) then {
@@ -218,7 +250,8 @@ BPD_CloneHUD_fnc_shouldReplaceVanillaHud = {
 	if (!(missionNamespace getVariable ["BPD_CloneHUD_REPLACE_VANILLA_HUD", true])) exitWith {false};
 	if (!alive player) exitWith {false};
 	if (!(headgear player in (missionNamespace getVariable ["HUD_helmets", []]))) exitWith {false};
-	if (!(player getVariable ["HUD_bootComplete", false])) exitWith {false};
+	// an EMP outage holds HUD_bootComplete false - the vanilla HUD stays hidden
+	if (!(player getVariable ["HUD_bootComplete", false]) && {!(missionNamespace getVariable ["BPD_CloneHUD_empOffline", false])}) exitWith {false};
 	if (!isNull (findDisplay 312)) exitWith {false}; // Zeus
 	if (!(cameraView in ["INTERNAL","GUNNER"]) && {!(missionNamespace getVariable ["BPD_CloneHUD_REPLACE_VANILLA_HUD_3RD", true])}) exitWith {false};
 	if ((vehicle player != player) && {!(missionNamespace getVariable ["BPD_CloneHUD_REPLACE_VANILLA_HUD_VEHICLES", false])}) exitWith {false};

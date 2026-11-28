@@ -217,7 +217,8 @@ if (isNil "BPD_CloneHUD_downLoop") then {
 				case 1: {
 					if (!alive player || {!_hud} || {!_on}) then {
 						// died / HUD went down / turned off - just put it back
-						call BPD_CloneHUD_fnc_downRestoreNow;
+						// (an EMP outage owns the HUD fades itself - leave them)
+						if !(missionNamespace getVariable ["BPD_CloneHUD_empOffline", false]) then { call BPD_CloneHUD_fnc_downRestoreNow; };
 						BPD_CloneHUD_downState = 0;
 					} else {
 						if (_down) then {

@@ -340,16 +340,21 @@ BPD_CloneHUD_fnc_crackTick = {
 	};
 	if (BPD_CloneHUD_crackList isEqualTo []) exitWith {};
 
+	// HUD switched off (Deactivate HUD): cracks + dirt are kept but hidden,
+	// and come back as soon as the HUD is turned on again (boot-up start).
+	private _hudOn = player getVariable ["HUD_hudInitiated", false];
+
 	// RC helmets wipe on their own once the newest crack is AUTO_WIPE old
+	// (paused while the HUD is off, so the visor is as you left it)
 	private _auto = ["AUTO_WIPE", 20] call BPD_CloneHUD_fnc_crackOpt;
-	if (_auto > 0 && {alive player} && {call BPD_CloneHUD_fnc_crackIsRC}) then {
+	if (_hudOn && {_auto > 0} && {alive player} && {call BPD_CloneHUD_fnc_crackIsRC}) then {
 		private _newest = 0;
 		{ _newest = _newest max (_x select 6) } forEach BPD_CloneHUD_crackList;
 		if (diag_tickTime - _newest >= _auto) then { call BPD_CloneHUD_fnc_crackWipe; };
 	};
 	if (BPD_CloneHUD_crackWiping) exitWith {};
 
-	private _show = alive player && {call BPD_CloneHUD_fnc_crackIsClone} && {cameraView in ["INTERNAL", "GUNNER"]} && {!visibleMap} && {isNull curatorCamera};
+	private _show = _hudOn && {alive player} && {call BPD_CloneHUD_fnc_crackIsClone} && {cameraView in ["INTERNAL", "GUNNER"]} && {!visibleMap} && {isNull curatorCamera};
 	private _d = call BPD_CloneHUD_fnc_crackDisplay;
 	if (isNull _d) exitWith {};
 	private _alphaCrack = ["OPACITY", 0.85] call BPD_CloneHUD_fnc_crackOpt;

@@ -46,7 +46,7 @@ isNil {
 		"layout", "ammoStyle", "hudEventhandler", "hudBootUp", "hudInit",
 		"systemMessages", "updateDamageIndicator", "squadMed", "teamList",
 		"radar", "system", "vanillaHud", "ctab", "intel", "comms", "jamming",
-		"mineDetect", "visorCrack", "killCounter", "downed"
+		"mineDetect", "visorCrack", "killCounter", "downed", "emp", "crosshair"
 	];
 };
 
