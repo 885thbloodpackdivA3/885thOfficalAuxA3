@@ -1,6 +1,6 @@
-// Runs on the SERVER only (called from fn_bactaProjectileLoop.sqf).
-// Finds everyone in radius with full authority, then hands each unit off
-// to its own owning machine to actually be treated.
+// Runs on the thrower's machine (called from fn_bactaProjectileLoop.sqf).
+// Finds every player in radius, then hands each unit off to its own owning
+// machine to actually be treated.
 params ["_center"];
 
 private _radius = missionNamespace getVariable ["bacta_radius", 10];

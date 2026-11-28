@@ -12829,24 +12829,35 @@ class CfgVehicles
 		armor=5;
 		armorStructural=4;
 		explosionShielding=0.10;
-		class HitPoints
-    	{
-        // Visor & Head: Can take multiple blaster hits, but heavy sniper rounds remain lethal
-        class HitFace     { armor = 6; material = -1; name = "face_head"; passThrough = 0.6; radius = 0.08; };
-        class HitNeck     { armor = 6; material = -1; name = "neck";      passThrough = 0.6; radius = 0.1;  };
-        class HitHead     { armor = 5; material = -1; name = "head";      passThrough = 0.6; radius = 0.2;  };
+		// Must inherit (": HitPoints") or the parent's hitpoints are wiped - including the
+		// HitLeftArm/HitRightArm/HitLeftLeg/HitRightLeg that ACE uses for limb wounds.
+		// Effective armor = unit armor (5) x hitpoint armor. Vornskr limbs are 2 x 6 = 12.
+		class HitPoints: HitPoints
+		{
+			// Visor & Head
+			class HitFace { armor = 6; material = -1; name = "face_hub"; passThrough = 0.6; radius = 0.08; explosionShielding = 0.1; minimalHit = 0.01; };
+			class HitNeck: HitFace { armor = 6; name = "neck"; passThrough = 0.6; radius = 0.1; explosionShielding = 0.5; };
+			class HitHead: HitNeck { armor = 5; name = "head"; passThrough = 0.6; radius = 0.2; explosionShielding = 0.5; depends = "HitFace max HitNeck"; };
 
-        // Torso: Heavy Katarn chestplate absorbs repeated plasma and slugthrower hits
-        class HitPelvis   { armor = 7; material = -1; name = "pelvis";    passThrough = 0.60; radius = 0.24; };
-        class HitAbdomen  { armor = 7; material = -1; name = "spine1";    passThrough = 0.60; radius = 0.16; };
-        class HitDiaphragm{ armor = 5; material = -1; name = "spine2";    passThrough = 0.70; radius = 0.18; };
-        class HitChest    { armor = 10; material = -1; name = "spine3";    passThrough = 0.60; radius = 0.18; };
-        class HitBody     { armor = 10; material = -1; name = "body";      passThrough = 0.60; radius = 0.16; };
+			// Torso
+			class HitPelvis: HitHead { armor = 7; name = "pelvis"; passThrough = 0.60; radius = 0.24; explosionShielding = 3; visual = "injury_body"; depends = ""; };
+			class HitAbdomen: HitPelvis { armor = 7; name = "spine1"; passThrough = 0.60; radius = 0.16; };
+			class HitDiaphragm: HitAbdomen { armor = 5; name = "spine2"; passThrough = 0.70; radius = 0.18; explosionShielding = 6; };
+			class HitChest: HitDiaphragm { armor = 10; name = "spine3"; passThrough = 0.60; radius = 0.18; };
+			class HitBody: HitChest { armor = 1000; name = "body"; passThrough = 1; radius = 0; depends = "HitPelvis max HitAbdomen max HitDiaphragm max HitChest"; };
 
-        // Limbs: Plated protection allows mobility while resisting shrapnel and small arms
-        class HitArms     { armor = 2; material = -1; name = "arms";      passThrough = 0.80; radius = 0.1;  };
-        class HitLegs     { armor = 2; material = -1; name = "legs";      passThrough = 0.80; radius = 0.1;  };
-    	};
+			// Limbs: light scout plating - 5 x 2 = 10, a touch under a standard trooper's 12
+			class HitArms: HitBody { armor = 2; name = "arms"; passThrough = 0.8; radius = 0.1; explosionShielding = 3; visual = "injury_hands"; depends = "0"; };
+			class HitHands: HitArms { armor = 2; name = "hands"; explosionShielding = 1; depends = "HitArms"; };
+			class HitLegs: HitHands { armor = 2; name = "legs"; radius = 0.14; explosionShielding = 3; visual = "injury_legs"; depends = "0"; };
+			class Incapacitated: HitLegs { armor = 1000; name = "body"; passThrough = 1; radius = 0; explosionShielding = 3; visual = ""; minimalHit = 0; depends = "(((Total - 0.25) max 0) + ((HitHead - 0.25) max 0) + ((HitBody - 0.25) max 0)) * 2"; };
+
+			// ACE limb hitpoints - these are what actually receive limb wounds
+			class HitLeftArm { armor = 2; material = -1; name = "hand_l"; passThrough = 0.8; radius = 0.08; explosionShielding = 3; visual = "injury_hands"; minimalHit = 0.01; };
+			class HitRightArm: HitLeftArm { name = "hand_r"; };
+			class HitLeftLeg { armor = 2; material = -1; name = "leg_l"; passThrough = 0.8; radius = 0.1; explosionShielding = 3; visual = "injury_legs"; minimalHit = 0.01; };
+			class HitRightLeg: HitLeftLeg { name = "leg_r"; };
+		};
 	};
 	class 885th_Najax_Scout_Trooper_undersuit: 885th_Najax_Scout_Trooper
 	{
@@ -13156,22 +13167,35 @@ class CfgVehicles
 		armor=1;
 		armorStructural=3;
 		explosionShielding=0.50;
-		class HitPoints
-    	{
-        // Visor & Head: Can take multiple blaster hits, but heavy sniper rounds remain lethal
-        class HitFace     { armor = 12; material = -1; name = "face_head"; passThrough = 0.80; radius = 0.08; };
-        class HitNeck     { armor = 12; material = -1; name = "neck";      passThrough = 0.60; radius = 0.1;  };
-        class HitHead     { armor = 16; material = -1; name = "head";      passThrough = 0.60; radius = 0.2;  };
+		// Must inherit (": HitPoints") or the parent's hitpoints are wiped - including the
+		// HitLeftArm/HitRightArm/HitLeftLeg/HitRightLeg that ACE uses for limb wounds.
+		// Effective armor = unit armor (1) x hitpoint armor. Vornskr limbs are 2 x 6 = 12.
+		class HitPoints: HitPoints
+		{
+			// Visor & Head: Can take multiple blaster hits, but heavy sniper rounds remain lethal
+			class HitFace { armor = 12; material = -1; name = "face_hub"; passThrough = 0.80; radius = 0.08; explosionShielding = 0.1; minimalHit = 0.01; };
+			class HitNeck: HitFace { armor = 12; name = "neck"; passThrough = 0.60; radius = 0.1; explosionShielding = 0.5; };
+			class HitHead: HitNeck { armor = 16; name = "head"; passThrough = 0.60; radius = 0.2; explosionShielding = 0.5; depends = "HitFace max HitNeck"; };
 
-        // Torso: Heavy Katarn chestplate absorbs repeated plasma and slugthrower hits
-        class HitPelvis   { armor = 5; material = -1; name = "pelvis";    passThrough = 0.60; radius = 0.24; };
-        class HitAbdomen  { armor = 5; material = -1; name = "spine1";    passThrough = 0.60; radius = 0.16; };
-        class HitDiaphragm{ armor = 10; material = -1; name = "spine2";    passThrough = 0.70; radius = 0.18; };
-        class HitChest    { armor = 15; material = -1; name = "spine3";    passThrough = 0.60; radius = 0.18; };
-        class HitBody     { armor = 11; material = -1; name = "body";      passThrough = 0.60; radius = 0.16; };	
+			// Torso
+			class HitPelvis: HitHead { armor = 5; name = "pelvis"; passThrough = 0.60; radius = 0.24; explosionShielding = 3; visual = "injury_body"; depends = ""; };
+			class HitAbdomen: HitPelvis { armor = 5; name = "spine1"; passThrough = 0.60; radius = 0.16; };
+			class HitDiaphragm: HitAbdomen { armor = 10; name = "spine2"; passThrough = 0.70; radius = 0.18; explosionShielding = 6; };
+			class HitChest: HitDiaphragm { armor = 15; name = "spine3"; passThrough = 0.60; radius = 0.18; };
+			class HitBody: HitChest { armor = 1000; name = "body"; passThrough = 1; radius = 0; depends = "HitPelvis max HitAbdomen max HitDiaphragm max HitChest"; };
 
-		class HitArms     { armor = 12; material = -1; name = "arms"; visual = "arms"; explosionShielding = 0.45; passThrough = 0.10; radius = 0.16; };
-		class HitLegs	  {armor = 12; material = -1; name = "legs"; visual = "legs"; explosionShielding = 0.45; passThrough = 0.10; radius = 0.16; };
+			// Limbs: heavy pauldrons make the arms tougher than a trooper's; legs a step behind.
+			// passThrough 0.5 = half of limb damage still counts toward overall health.
+			class HitArms: HitBody { armor = 15; name = "arms"; passThrough = 0.5; radius = 0.1; explosionShielding = 2; visual = "injury_hands"; depends = "0"; };
+			class HitHands: HitArms { armor = 15; name = "hands"; explosionShielding = 1; depends = "HitArms"; };
+			class HitLegs: HitHands { armor = 13; name = "legs"; radius = 0.14; explosionShielding = 2; visual = "injury_legs"; depends = "0"; };
+			class Incapacitated: HitLegs { armor = 1000; name = "body"; passThrough = 1; radius = 0; explosionShielding = 3; visual = ""; minimalHit = 0; depends = "(((Total - 0.25) max 0) + ((HitHead - 0.25) max 0) + ((HitBody - 0.25) max 0)) * 2"; };
+
+			// ACE limb hitpoints - these are what actually receive limb wounds
+			class HitLeftArm { armor = 15; material = -1; name = "hand_l"; passThrough = 0.5; radius = 0.08; explosionShielding = 2; visual = "injury_hands"; minimalHit = 0.01; };
+			class HitRightArm: HitLeftArm { name = "hand_r"; };
+			class HitLeftLeg { armor = 13; material = -1; name = "leg_l"; passThrough = 0.5; radius = 0.1; explosionShielding = 2; visual = "injury_legs"; minimalHit = 0.01; };
+			class HitRightLeg: HitLeftLeg { name = "leg_r"; };
 		};
 	};
 	class 885th_Ares_Trooper : 885th_Vornskr_Trooper {
