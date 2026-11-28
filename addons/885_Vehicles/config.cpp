@@ -1,3 +1,6 @@
+#include "scripts\jumplight\jumplight_actions.hpp"
+#include "scripts\atrtrack\atrtrack_actions.hpp"
+
 class Cfgpatches
 {
 	class 885th_Vehicles
@@ -275,6 +278,26 @@ class CfgWeapons
 	};
 };
 
+// Sensor + vehicle-display templates live at the config ROOT in vanilla Arma.
+// Declaring them inside CfgVehicles made empty classes, so sensors built on them
+// had no entries ("No entry ...DataLinkSensorComponent.AirTarget" on the Reaver).
+class SensorTemplatePassiveRadar;
+class SensorTemplateAntiRadiation;
+class SensorTemplateActiveRadar;
+class SensorTemplateIR;
+class SensorTemplateVisual;
+class SensorTemplateMan;
+class SensorTemplateLaser;
+class SensorTemplateNV;
+class SensorTemplateDataLink;
+
+class VehicleSystemsTemplateLeftDriver;
+class VehicleSystemsTemplateRightDriver;
+class VehicleSystemsTemplateLeftCommander;
+class VehicleSystemsTemplateRightCommander;
+class VehicleSystemsTemplateLeftGunner;
+class VehicleSystemsTemplateRightGunner;
+
 class CfgVehicles
 {
 	class Turrets;
@@ -296,24 +319,6 @@ class CfgVehicles
 	class HitFuel;
 	class MarkerLights;
 	class ViewPilot;
-
-	// Sensor Template classes
-	class SensorTemplatePassiveRadar;
-	class SensorTemplateAntiRadiation;
-	class SensorTemplateActiveRadar;
-	class SensorTemplateIR;
-	class SensorTemplateVisual;
-	class SensorTemplateMan;
-	class SensorTemplateLaser;
-	class SensorTemplateNV;
-	class SensorTemplateDataLink;
-
-	class VehicleSystemsTemplateLeftDriver;
-	class VehicleSystemsTemplateRightDriver;
-	class VehicleSystemsTemplateLeftCommander;
-	class VehicleSystemsTemplateRightCommander;
-	class VehicleSystemsTemplateLeftGunner;
-	class VehicleSystemsTemplateRightGunner;
 	
 	class All
 	{
@@ -545,18 +550,15 @@ class CfgVehicles
 	};
 
 	class 3AS_laat_Base;
+	// Reference only: keeps 3AS_laat_Base's Ramp Open/Close + Activate/Deactivate Impulse on every LAAT/i
 	class 3AS_LAAT_Mk1 : 3AS_laat_Base
 	{
-		class UserActions
-		{
-		};
+		class UserActions;
 		class Components;
 	};
 	class 3AS_LAAT_Mk2 : 3AS_laat_Base
 	{
-		class UserActions
-		{
-		};
+		class UserActions;
 		class Components;
 	};
 	class 885th_LAAT_Transport : 3AS_LAAT_Mk2
@@ -578,7 +580,11 @@ class CfgVehicles
 				displayName="Repulse";
 				statement="[this, -1] call ls_impulsor_fnc_impulse";
 			};
+			BPD_JUMPLIGHT_ACTIONS
+			BPD_ATRTRACK_ACTIONS
 		};
+		// AT-RT rack (scripts\atrtrack): AT-RTs clamped in the troop bay
+		BPD_atrtRackMax = 2;
 		class ls_impulsor: ls_impulsor_base
 		{
 			// Quick-response transport: faster impulse than the gunships (Legion Studios defaults 400 / 600 km/h)
@@ -715,7 +721,11 @@ class CfgVehicles
 				displayName="Repulse";
 				statement="[this, -1] call ls_impulsor_fnc_impulse";
 			};
+			BPD_JUMPLIGHT_ACTIONS
+			BPD_ATRTRACK_ACTIONS
 		};
+		// AT-RT rack (scripts\atrtrack): AT-RTs clamped in the troop bay
+		BPD_atrtRackMax = 2;
 		class ls_impulsor: ls_impulsor_base
 		{
 		};
@@ -893,7 +903,11 @@ class CfgVehicles
 				displayName="Repulse";
 				statement="[this, -1] call ls_impulsor_fnc_impulse";
 			};
+			BPD_JUMPLIGHT_ACTIONS
+			BPD_ATRTRACK_ACTIONS
 		};
+		// AT-RT rack (scripts\atrtrack): AT-RTs clamped in the troop bay
+		BPD_atrtRackMax = 2;
 		class ls_impulsor: ls_impulsor_base
 		{
 		};
@@ -1043,7 +1057,12 @@ class CfgVehicles
 		weaponSlots = 0;
 	};
 
-	class 3AS_LAATC;
+	class 3AS_LAAT_Cargo_Base;
+	class 3AS_LAATC : 3AS_LAAT_Cargo_Base
+	{
+		class UserActions;
+		class Components;
+	};
 	class 885th_LAATC_base_F : 3AS_LAATC
 	{
 		scope = 0;
@@ -1062,7 +1081,14 @@ class CfgVehicles
 					"885th_Faction"};
 			};
 		};
-		class UserActions {};
+		// Inherit 3AS's Load Vehicle / Unload Vehicles (TAS_fnc_MagLift / MagDrop).
+		// A bare "class UserActions {};" here used to wipe them. The 3AS afterburner
+		// actions are still removed: the 885th LAAT/C uses the Legion Studios impulsor.
+		class UserActions : UserActions
+		{
+			delete afterburnerMk1_turn_on;
+			delete afterburnerMk1_turn_off;
+		};
 	};
 	class 885th_LAAT_C : 885th_LAATC_base_F
 	{
@@ -1080,6 +1106,28 @@ class CfgVehicles
 		ls_hasImpulse = 1;
 		ace_cargo_hasCargo = 0;
 		ace_cargo_space = 0;
+		// Armament: Medium Energy Cannons + countermeasures only.
+		// 3AS gives it AGM + AA missiles, and 4 missile pylons from the LAAT/i base.
+		weapons[] = {"3as_LAAT_Medium_Canon", "CMFlareLauncher"};
+		magazines[] = {
+			"3as_LAAT_1000Rnd_Medium_shells",
+			"3as_LAAT_1000Rnd_Medium_shells",
+			"3as_LAAT_1000Rnd_Medium_shells",
+			"3as_LAAT_1000Rnd_Medium_shells",
+			"240Rnd_CMFlare_Chaff_Magazine",
+			"240Rnd_CMFlare_Chaff_Magazine",
+			"240Rnd_CMFlare_Chaff_Magazine",
+			"240Rnd_CMFlare_Chaff_Magazine"};
+		class Components : Components
+		{
+			// Replaces (not inherits) the LAAT/i base's 4 missile pylons with none,
+			// so nothing can be mounted, from the editor or AMS.
+			class TransportPylonsComponent
+			{
+				class pylons {};
+				class presets {};
+			};
+		};
 		author = "AifeSupport";
 		scope = 2;
 		scopeCurator = 2;
@@ -1108,7 +1156,11 @@ class CfgVehicles
 			"885_Vehicles\textures\LAATC\LAAT_C_Detail_Front_co.paa",
 		};
 	};
-	class 3AS_Rep_LAS_F;
+	class 3AS_LAS_Transport_Base_F;
+	class 3AS_Rep_LAS_F: 3AS_LAS_Transport_Base_F
+	{
+		class UserActions;
+	};
 	class 885th_LAS_Base_F: 3AS_Rep_LAS_F
 	{
 		scope = 0;
@@ -1128,7 +1180,13 @@ class CfgVehicles
 					"885th_Faction"};
 			};
 		};
-		class UserActions {};
+		// Inherit the 3AS actions (a bare "class UserActions {};" wiped them), minus the
+		// 3AS impulse: the 885th LAS uses the Legion Studios impulsor instead.
+		class UserActions : UserActions
+		{
+			delete impulseOn;
+			delete impulseOff;
+		};
 	};
 
 	class 885th_LAS_F: 885th_LAS_Base_F
@@ -1210,7 +1268,11 @@ class CfgVehicles
 		};
 	};
 
-	class 3AS_Rep_LAS_Z6_F;
+	class 3AS_LAS_Z6_Base_F;
+	class 3AS_Rep_LAS_Z6_F: 3AS_LAS_Z6_Base_F
+	{
+		class UserActions;
+	};
 	class 885th_LAS_Z6_Base_F: 3AS_Rep_LAS_Z6_F
 	{
 		scope = 0;
@@ -1230,7 +1292,12 @@ class CfgVehicles
 					"885th_Faction"};
 			};
 		};
-		class UserActions {};
+		// See 885th_LAS_Base_F: inherit 3AS actions, drop only the 3AS impulse.
+		class UserActions : UserActions
+		{
+			delete impulseOn;
+			delete impulseOff;
+		};
 	};
 
 	class 885th_LAS_Z6_F: 885th_LAS_Z6_Base_F
@@ -1315,57 +1382,10 @@ class CfgVehicles
 		};
 	};
 
-	// Forward declarations of the 3AS HUD classes that arc170_hud.hpp extends
-	// (merges into the real 3AS class - parent must stay the same as theirs).
 	class Plane_Fighter_03_dynamicLoadout_base_F;
 	class 3AS_ARC_170_Base: Plane_Fighter_03_dynamicLoadout_base_F
 	{
-		class MFD
-		{
-			class AirplaneHUD
-			{
-				// The MFD reader only draws child classes written directly in a
-				// Draw class - inherited children are skipped (values do inherit).
-				// So every stock element the 885th HUD keeps is re-stated in
-				// arc170_hud.hpp, and each needs declaring here.
-				class Draw
-				{
-					class VelocityLine;
-					class SpeedNumber;
-					class HeadingNumber;
-					class HeadingScale;
-					class HorizonBanking;
-					class CurrentWeapon;
-					class CurrentAmmo;
-					class RadarBoxes;
-					class ThrustVectoring { class VectorigNumber; class VectoringArrow; };
-					class ThrustVectoringAuto { class VectorigNumber; };
-					class HeadingRotationArrow { class HeadingArrow; };
-					class HeadingRotation { class HeadingHeadNumber; class HeadingArrow; };
-					class LightsGroup { class LightsText; };
-					class CollisionLights { class CollisionLightsText; };
-					class WeaponsLocking { class Text; };
-					class TargetInfo { class TargetLockedText; class TimeOfFlightText; class DistanceText; class TOF_source; class TargetDistance; };
-					class IncomingMissile { class Text; };
-					class GearGroup { class GearText; };
-					class ILS { class Glideslope { class ILS; class airport; }; };
-					class MGun { class Cross; class Circle; class Circle_Min_Range; class Distance; };
-					class Rockets { class Cross; class Circle; class Circle_Min_Range; class Distance; };
-					class BombCrosshairGroup { class BombCrosshair; class Distance; };
-					class WP { class WPdist; class WPstatic; class WPIndex; class WP; };
-					class TargetDiamond { class shape; };
-					class TargetLocked { class shape; };
-				};
-			};
-			class HMD_CMPilot: AirplaneHUD
-			{
-				class Draw
-				{
-					class CMName;
-					class CMCount;
-				};
-			};
-		};
+		class UserActions;
 	};
 	class 885th_ARC170_Base: 3AS_ARC_170_Base
 	{
@@ -1387,7 +1407,6 @@ class CfgVehicles
 					"885th_Faction"};
 			};
 		};
-		class UserActions {};
 	};
 	class 885th_ARC170: 885th_ARC170_Base
 	{
@@ -1536,7 +1555,6 @@ class CfgVehicles
 					"885th_Faction"};
 			};
 		};
-		class UserActions {};
 	};
 	class 885th_ATTE: 885th_ATTE_base
 	{
@@ -1594,7 +1612,6 @@ class CfgVehicles
 					"885th_Faction"};
 			};
 		};
-		class UserActions {};
 	};
 	class 885th_VWING: 885th_VWING_Base
 	{
@@ -1785,6 +1802,11 @@ class CfgVehicles
 		scopeCurator=1;
 		author="885th Bloodpack Division + LUCA";
 		displayName="[885th] APC BASE";
+		// LAAT/C mag-lift (3AS TAS_fnc_MagLift): 1 = must be the first vehicle clamped.
+		// Hang offset [side, fwd/back, up/down] from the LAAT/C centre. -4,-7.5 hung it
+		// behind the clamp and low in-game (2026-11-24); moved forward 1.75 m and up 1 m.
+		tas_canBlift = 1;
+		tas_liftVars = "[[[[0,-2.25,-6.5]]], [0], [0]]";
 		side=1;
 		faction = "885th_Faction";
 		crew = "885th_Pilot";
@@ -3774,35 +3796,66 @@ class CfgVehicles
 	};
 };
 
-// --- ARC-170 deflector shields / power routing / engine boost (scripts\arc170) ---
-class Extended_PreInit_EventHandlers
+// ---------------------------------------------------------------------------
+// LAAT jump light (RED stand by / GREEN dismount), see scripts\jumplight\
+// ---------------------------------------------------------------------------
+class CfgFunctions
 {
-	class 885th_ARC170_PreInit
+	class BPD
 	{
-		init = "call compile preprocessFileLineNumbers '\885_Vehicles\scripts\arc170\XEH_preInit.sqf'";
-	};
-};
-class Extended_PostInit_EventHandlers
-{
-	class 885th_ARC170_PostInit
-	{
-		init = "call compile preprocessFileLineNumbers '\885_Vehicles\scripts\arc170\XEH_postInit.sqf'";
-	};
-};
-class Extended_Init_EventHandlers
-{
-	class 885th_ARC170
-	{
-		class 885th_ARC170_Shields
+		tag = "BPD";
+		class JumpLight
 		{
-			init = "[_this select 0] call BPD_fnc_arcInit";
+			file = "885_Vehicles\scripts\jumplight";
+			class jumpLightSet {};
+			class jumpLightCanUse {};
+			class jumpLightClient { postInit = 1; };
+		};
+		class ATRTRack
+		{
+			file = "885_Vehicles\scripts\atrtrack";
+			class atrtRackSlots {};
+			class atrtRackCan {};
+			class atrtRackLoad {};
+			class atrtRackAttach {};
+			class atrtRackRelease {};
+			class atrtRackDrop {};
 		};
 	};
-	class 885th_VWING
+};
+
+class RscTitles
+{
+	class BPD_JumpLight_Indicator
 	{
-		class 885th_VWING_Repair
+		idd = -1;
+		movingEnable = 0;
+		fadeIn = 0;
+		fadeOut = 0;
+		duration = 1e+011;
+		onLoad = "uiNamespace setVariable ['BPD_JumpLight_Indicator', _this select 0]";
+		onUnload = "uiNamespace setVariable ['BPD_JumpLight_Indicator', displayNull]";
+		class Controls
 		{
-			init = "[_this select 0] call BPD_fnc_vwingInit";
+			// Top-centre banner, below the Clone HUD's top-centre readouts
+			class Banner
+			{
+				type = 0;
+				idc = 77010;
+				style = 2;
+				x = "0.4 * safezoneW + safezoneX";
+				y = "0.17 * safezoneH + safezoneY";
+				w = "0.2 * safezoneW";
+				h = "0.035 * safezoneH";
+				font = "RobotoCondensedBold";
+				sizeEx = "0.028 * safezoneH";
+				colorText[] = {1, 1, 1, 1};
+				colorBackground[] = {0, 0, 0, 0.6};
+				text = "";
+				shadow = 1;
+				fixedWidth = 0;
+				lineSpacing = 1;
+			};
 		};
 	};
 };
