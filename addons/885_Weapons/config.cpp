@@ -8363,7 +8363,7 @@ class CfgWeapons
 		UiPicture="\ShadowLegion_Weapons\data\DC21\UI\DC21_UI.paa";
 		displayName = "[885th] DC-21 Blaster Pistol";
 		descriptionShort = "Modular and Compact Pistol.";
-		drySound[] = {"885_Weapons\DX36C\drysound.ogg", 5, 1, 20};
+		drySound[] = {"\Indecisive_Armoury_Sounds\weapon_dry.ogg", 5, 1, 20};
 		magazines[] = {"885th_dc21_cell","885th_dc21_tracerless_cell"};
 		magazineWell[] = {};
 		muzzles[] = {"this", "Stun"};
@@ -8710,7 +8710,7 @@ class CfgWeapons
 		magazines[] = {"885th_dc15se_cell"};
 		magazineWell[] = {};
 		fireLightDiffuse[] = {0.1, 0.25, 1};
-		drySound[] = {"885_Weapons\DX36C\drysound.ogg", 5, 1, 20};
+		drySound[] = {"\Indecisive_Armoury_Sounds\weapon_dry.ogg", 5, 1, 20};
 		ace_clearJamAction = "";
 		reloadAction="3AS_GestureReloadDC15S";
 		reloadMagazineSound[] = {"\ShadowLegion_Weapons\data\reloads\sounds\Reload_1.ogg", 1, 1, 30};
@@ -10315,7 +10315,7 @@ class CfgWeapons
 		ace_overheating_slowdownFactor=1;
 		ace_overheating_allowSwapBarrel=0;
 		ace_overheating_dispersion=0.75;
-	};	
+	};
 	class 885th_WestarM5_F: Rifle_Base_F
 	{	
 		scope=2;
