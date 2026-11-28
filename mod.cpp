@@ -1,0 +1,10 @@
+name = "885th Bloodpack Division Aux";
+author = "OniBushido & AifeSupport";
+logo = "files\icon.paa";
+logoOver = "files\icon.paa";
+tooltipOwned = "885th Auxiliary mod; remaking weapons, vehicles, and armor.";
+picture = "";
+overview = "885th Auxiliary mod; remaking weapons, vehicles, and armor.";
+hideName = 0;
+hidePicture = 1;
+logoSmall = "files\iconSmall.paa";
