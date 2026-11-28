@@ -4,10 +4,12 @@ class CfgPatches
 	{
 		author = "885th Bloodpack Division + Indecisive Armoury Team";
 		name = "885th REP Weapons";
-		requiredAddons[] = {"A3_data_F", "A3_anims_F", "A3_weapons_F", "A3_characters_F", "A3_Characters_F_Proxies","cba_main","cba_jr","cba_xeh","3AS_Weapons_Republic","3AS_Weapons","3AS_Weapons_DC15SA","3AS_Weapons_Republic_DP23","3AS_Weapons_Republic_DC17S"};
+		requiredAddons[] = {"A3_data_F", "A3_anims_F", "A3_Sounds_F", "A3_weapons_F", "A3_characters_F", "A3_Characters_F_Proxies","cba_main","cba_jr","cba_xeh","3AS_Weapons_Republic","3AS_Weapons","3AS_Weapons_DC15SA","3AS_Weapons_Republic_DP23","3AS_Weapons_Republic_DC17S","3AS_Weapons_ACC","JLTS_weapons_DC15X"};
 		units[] = {};
 		weapons[] = {
-			"885th_A180", 
+			"885th_A180",
+			"885th_DC15X_scope_BF2",
+			"885th_DC15X_scope_Heavy",
 			"885th_Burn", 
 			"885th_DC15A",
 			"885th_DC15BR",
@@ -136,6 +138,8 @@ class CfgPatches
 			"885th_dc15xsniper_cell",
 			"885th_dc15xsniper_ap_cell",
 			"885th_dc15xsniper_over_cell",
+			"885th_dc15x_heavy_cell",
+			"885th_dc15x_am_cell",
 			"885th_Westarm5mkii_Ap_cell_blue",
 			"885th_Valken38A_HighPower_Cell",
 			"885th_Valken38R_HighPower_Cell",
@@ -183,6 +187,210 @@ class CfgPatches
 		};
 	};
 };
+class CfgSoundShaders
+{
+	class 885th_EliteDC15S_Bolt_SoundShader
+	{
+		samples[] = {{"885_Sounds\modifieddc15s.ogg", 1}};
+		volume = 1;
+		range = 1800;
+	};
+	class 885th_EliteDC15S_Thump_SoundShader
+	{
+		samples[] = {{"885_Sounds\modifieddc15s.ogg", 1}};
+		volume = 1;
+		range = 250;
+		rangeCurve = "closeShotCurve";
+	};
+	class 885th_EliteDC15S_Silenced_SoundShader
+	{
+		samples[] =
+		{
+			{"ShadowLegion_Weapons\data\surpressed_1.ogg", 1},
+			{"ShadowLegion_Weapons\data\surpressed_2.ogg", 1}
+		};
+		volume = 1;
+		range = 150;
+		rangeCurve = "closeShotCurve";
+	};
+	class 885th_EliteDC15S_C3Single_SoundShader
+	{
+		samples[] =
+		{
+			{"ShadowLegion_Weapons\data\DC15\DC15C2\DC15A3_1.ogg", 1},
+			{"ShadowLegion_Weapons\data\DC15\DC15C2\DC15A3_2.ogg", 1},
+			{"ShadowLegion_Weapons\data\DC15\DC15C2\DC15A3_3.ogg", 1},
+			{"ShadowLegion_Weapons\data\DC15\DC15C2\DC15A3_4.ogg", 1}
+		};
+		volume = 1;
+		range = 900;
+	};
+	class 885th_EliteDC15S_C3Auto_SoundShader
+	{
+		samples[] =
+		{
+			{"ShadowLegion_Weapons\data\DC15\DC15C2\DC15A3_Auto_1.ogg", 1},
+			{"ShadowLegion_Weapons\data\DC15\DC15C2\DC15A3_Auto_2.ogg", 1},
+			{"ShadowLegion_Weapons\data\DC15\DC15C2\DC15A3_Auto_3.ogg", 1},
+			{"ShadowLegion_Weapons\data\DC15\DC15C2\DC15A3_Auto_4.ogg", 1}
+		};
+		volume = 1;
+		range = 900;
+	};
+	// DC15X Sharpshooter layered shot: 885th DC15XOG zap on top, JLTS DC15X body underneath
+	class 885th_DC15X_Main_SoundShader
+	{
+		samples[] = {{"885_Sounds\DC15XOG.ogg", 1}};
+		volume = 1;
+		range = 1800;
+	};
+	class 885th_DC15X_Body_SoundShader
+	{
+		samples[] = {{"MRC\JLTS\weapons\DC15X\sounds\dc15x_fire", 1}};
+		volume = 1;
+		range = 1200;
+	};
+	class 885th_EliteDC15S_C3Silenced_SoundShader
+	{
+		samples[] =
+		{
+			{"ShadowLegion_Weapons\data\DC15\DC15C2\DC15A3_Suppresed_1.ogg", 1},
+			{"ShadowLegion_Weapons\data\DC15\DC15C2\DC15A3_Suppresed_2.ogg", 1},
+			{"ShadowLegion_Weapons\data\DC15\DC15C2\DC15A3_Suppresed_3.ogg", 1},
+			{"ShadowLegion_Weapons\data\DC15\DC15C2\DC15A3_Suppresed_4.ogg", 1}
+		};
+		volume = 1;
+		range = 200;
+		rangeCurve = "closeShotCurve";
+	};
+	// Stealth Carbine Suppressor shaders: suppressed samples, heard out to 60-80 m instead of 150-200 m
+	class 885th_EliteDC15S_C3Stealth_SoundShader: 885th_EliteDC15S_C3Silenced_SoundShader
+	{
+		range = 80;
+	};
+	class 885th_EliteDC15S_Stealth_SoundShader: 885th_EliteDC15S_Silenced_SoundShader
+	{
+		range = 60;
+	};
+};
+class CfgSoundSets
+{
+	class MX_Tail_SoundSet;
+	class MX_silencerTail_SoundSet;
+	class DMR01_Tail_SoundSet;
+	class 885th_DC15X_Main_SoundSet
+	{
+		soundShaders[] = {"885th_DC15X_Main_SoundShader"};
+		volumeFactor = 1.3;
+		frequencyFactor = 1.04;          // a touch sharper zap
+		frequencyRandomizer = 1;
+		volumeCurve = "InverseSquare2Curve";
+		sound3DProcessingType = "WeaponMediumShot3DProcessingType";
+		distanceFilter = "weaponShotDistanceFreqAttenuationFilter";
+		occlusionFactor = 0.5;
+		obstructionFactor = 0.3;
+		spatial = 1;
+		doppler = 0;
+		loop = 0;
+	};
+	class 885th_DC15X_Body_SoundSet: 885th_DC15X_Main_SoundSet
+	{
+		soundShaders[] = {"885th_DC15X_Body_SoundShader"};
+		volumeFactor = 0.7;
+		frequencyFactor = 0.85;          // JLTS DC15X pitched down for weight under the zap
+	};
+	class 885th_DC15X_Tail_SoundSet: DMR01_Tail_SoundSet
+	{
+		volumeFactor = 0.9;              // long rolling echo, like a sniper crack across the map
+	};
+	class 885th_EliteDC15S_C3Single_SoundSet
+	{
+		soundShaders[] = {"885th_EliteDC15S_C3Single_SoundShader"};
+		volumeFactor = 0.85;
+		frequencyFactor = 1;
+		frequencyRandomizer = 1;
+		volumeCurve = "InverseSquare2Curve";
+		sound3DProcessingType = "WeaponMediumShot3DProcessingType";
+		distanceFilter = "weaponShotDistanceFreqAttenuationFilter";
+		occlusionFactor = 0.5;
+		obstructionFactor = 0.3;
+		spatial = 1;
+		doppler = 0;
+		loop = 0;
+	};
+	class 885th_EliteDC15S_C3Auto_SoundSet: 885th_EliteDC15S_C3Single_SoundSet
+	{
+		soundShaders[] = {"885th_EliteDC15S_C3Auto_SoundShader"};
+	};
+	class 885th_EliteDC15S_C3Silenced_SoundSet
+	{
+		soundShaders[] = {"885th_EliteDC15S_C3Silenced_SoundShader"};
+		volumeFactor = 0.75;
+		frequencyFactor = 1;
+		frequencyRandomizer = 1;
+		volumeCurve = "InverseSquare2Curve";
+		sound3DProcessingType = "WeaponMediumShot3DProcessingType";
+		occlusionFactor = 0.5;
+		obstructionFactor = 0.3;
+		spatial = 1;
+		doppler = 0;
+		loop = 0;
+	};
+	class 885th_EliteDC15S_Shot_SoundSet
+	{
+		soundShaders[] = {"885th_EliteDC15S_Bolt_SoundShader"};
+		volumeFactor = 1.0;
+		frequencyFactor = 0.93;
+		frequencyRandomizer = 1;
+		volumeCurve = "InverseSquare2Curve";
+		sound3DProcessingType = "WeaponMediumShot3DProcessingType";
+		distanceFilter = "weaponShotDistanceFreqAttenuationFilter";
+		occlusionFactor = 0.5;
+		obstructionFactor = 0.3;
+		spatial = 1;
+		doppler = 0;
+		loop = 0;
+	};
+	class 885th_EliteDC15S_Thump_SoundSet: 885th_EliteDC15S_Shot_SoundSet
+	{
+		soundShaders[] = {"885th_EliteDC15S_Thump_SoundShader"};
+		volumeFactor = 0.4;
+		frequencyFactor = 0.65;
+	};
+	class 885th_EliteDC15S_Tail_SoundSet: MX_Tail_SoundSet
+	{
+		volumeFactor = 0.5;
+	};
+	class 885th_EliteDC15S_Silenced_SoundSet
+	{
+		soundShaders[] = {"885th_EliteDC15S_Silenced_SoundShader"};
+		volumeFactor = 0.75;
+		frequencyFactor = 0.88;
+		frequencyRandomizer = 1;
+		volumeCurve = "InverseSquare2Curve";
+		sound3DProcessingType = "WeaponMediumShot3DProcessingType";
+		occlusionFactor = 0.5;
+		obstructionFactor = 0.3;
+		spatial = 1;
+		doppler = 0;
+		loop = 0;
+	};
+	class 885th_EliteDC15S_SilencedTail_SoundSet: MX_silencerTail_SoundSet
+	{
+		volumeFactor = 0.4;
+	};
+	// Stealth Carbine Suppressor: same samples as the suppressed shot, quieter and heard over a much shorter range
+	class 885th_EliteDC15S_C3Stealth_SoundSet: 885th_EliteDC15S_C3Silenced_SoundSet
+	{
+		soundShaders[] = {"885th_EliteDC15S_C3Stealth_SoundShader"};
+		volumeFactor = 0.5;
+	};
+	class 885th_EliteDC15S_Stealth_SoundSet: 885th_EliteDC15S_Silenced_SoundSet
+	{
+		soundShaders[] = {"885th_EliteDC15S_Stealth_SoundShader"};
+		volumeFactor = 0.5;
+	};
+};
 class CfgRecoils
 {
 	class recoil_default;
@@ -198,12 +406,34 @@ class CfgRecoils
 		kickBack[] = {0.02, 0.03};
 		temporary = 0.0095;
 	};
+	class 885_recoil_DC15S_Elite : 885_recoil_DC15S
+	{
+		muzzleOuter[] = {0, 0.45, 0.35, 0.3};
+		kickBack[] = {0.03, 0.045};
+		temporary = 0.011;
+	};
 	class 885_recoil_DC15X : recoil_default
 	{
 		muzzleOuter[] = {0, 3, 0.2, 0.2};
 		kickBack[] = {0.06, 0.06};
 		permanent = 0;
 		temporary = 0.005;
+	};
+	// BF2 (2005) sharpshooter feel: short sharp kick that settles back on target fast
+	class 885_recoil_DC15X_BF2 : 885_recoil_DC15X
+	{
+		muzzleOuter[] = {0, 1.5, 0.15, 0.15};
+		kickBack[] = {0.05, 0.06};
+		permanent = 0;
+		temporary = 0.003;
+	};
+	// DC-15X Heavy Sniper: .50-cal style shove that takes a moment to settle (close to vanilla GM6 Lynx)
+	class 885_recoil_DC15X_Heavy : 885_recoil_DC15X
+	{
+		muzzleOuter[] = {0.4, 3.2, 0.5, 0.35};
+		kickBack[] = {0.08, 0.1};
+		permanent = 0.1;
+		temporary = 0.01;
 	};
 	class 885_recoil_DC17 : recoil_default
 	{
@@ -297,6 +527,366 @@ class CfgCloudlets
 		damageTime=0.25;
 		constantDistance=1.6;
 		damageType="Fire";
+	};
+
+	// ---- DC-15X Anti-Materiel overcharge bolt (built the same way as the Indecisive Armoury blaster effects, recoloured blue) ----
+	class Default;
+	// White-blue spark spray (IDA_ImpactSparks1 style)
+	class 885th_AM_Sparks: Default
+	{
+		interval=0.0005;
+		circleRadius=0;
+		circleVelocity[]={0,0,0};
+		particleShape="\A3\data_f\ParticleEffects\Universal\Universal";
+		particleFSNtieth=16;
+		particleFSIndex=0;
+		particleFSFrameCount=1;
+		particleFSLoop=0;
+		angleVar=360;
+		animationName="";
+		particleType="Billboard";
+		timerPeriod=3;
+		lifeTime=0.2;
+		moveVelocity[]={0,6,0};
+		rotationVelocity=1;
+		weight=100;
+		volume=0.0099999998;
+		rubbing=3e-006;
+		size[]={0.07,0};
+		sizeCoef=0.5;
+		color[]={{0.55,0.8,1,-50}};
+		colorCoef[]={1,1,1,1};
+		emissiveColor[]={{2,5,10,1}};
+		animationSpeed[]={1000};
+		animationSpeedCoef=1;
+		randomDirectionPeriod=0;
+		randomDirectionIntensity=0;
+		onTimerScript="";
+		beforeDestroyScript="";
+		blockAIVisibility=0;
+		bounceOnSurface=0.2;
+		bounceOnSurfaceVar=0.1;
+		lifeTimeVar=1.2;
+		position[]={0,0,0};
+		positionVar[]={0.02,0.02,0.02};
+		moveVelocityVar[]={4,5,4};
+		rotationVelocityVar=0;
+		sizeVar=0.02;
+		colorVar[]={0.05,0.05,0.05,5};
+		randomDirectionPeriodVar=0;
+		randomDirectionIntensityVar=0;
+		ignoreWind="true";
+	};
+	// Heavier glowing embers that drop and bounce (IDA_ImpactSparks2 style, no lingering fire)
+	class 885th_AM_Embers: 885th_AM_Sparks
+	{
+		interval=0.02;
+		particleFSIndex=5;
+		particleFSFrameCount=32;
+		particleFSLoop=1;
+		lifeTime=0.5;
+		moveVelocity[]={0,2,0};
+		weight=1000;
+		volume=1e-006;
+		size[]={0.22,0};
+		sizeCoef=1;
+		lifeTimeVar=1;
+		moveVelocityVar[]={2,3,2};
+	};
+	// Blue overcharge fireball / flash at the impact point (IDA_FireBall style, smaller and tinted)
+	class 885th_AM_Flash: Default
+	{
+		interval=0.02;
+		circleRadius=0;
+		circleVelocity[]={0,0,0};
+		particleShape="\A3\data_f\ParticleEffects\Universal\Universal";
+		particleFSNtieth=16;
+		particleFSIndex=0;
+		particleFSFrameCount=32;
+		particleFSLoop=0;
+		angleVar=360;
+		animationName="";
+		particleType="Billboard";
+		timerPeriod=1;
+		lifeTime=0.18;
+		moveVelocity[]={0,0.5,0};
+		rotationVelocity=0;
+		weight=0.04;
+		volume=0.04;
+		rubbing=0.1;
+		size[]={0.8,2.6};
+		color[]=
+		{
+			{0.35,0.65,1,-4},
+			{0.35,0.65,1,-3},
+			{0.35,0.65,1,-2},
+			{0.35,0.65,1,-1},
+			{0.35,0.65,1,0}
+		};
+		emissiveColor[]={{1,3,10,1}};
+		animationSpeed[]={0.6};
+		randomDirectionPeriod=0.2;
+		randomDirectionIntensity=0.2;
+		onTimerScript="";
+		beforeDestroyScript="";
+		lifeTimeVar=0.05;
+		positionVar[]={0.2,0.2,0.2};
+		moveVelocityVar[]={0.5,0.5,0.5};
+		rotationVelocityVar=0;
+		sizeVar=0.3;
+		colorVar[]={0,0,0,1};
+		randomDirectionPeriodVar=0;
+		randomDirectionIntensityVar=0;
+		ignoreWind="true";
+	};
+	// Pale blue-grey ion smoke that hangs for a couple of seconds
+	class 885th_AM_IonSmoke: Default
+	{
+		interval=0.03;
+		circleRadius=0;
+		circleVelocity[]={0,0,0};
+		particleShape="\A3\data_f\ParticleEffects\Universal\Universal";
+		particleFSNtieth=16;
+		particleFSIndex=7;
+		particleFSFrameCount=48;
+		particleFSLoop=1;
+		angleVar=0.1;
+		animationName="";
+		particleType="Billboard";
+		timerPeriod=1;
+		lifeTime=2.5;
+		moveVelocity[]={0,0.4,0};
+		rotationVelocity=10;
+		weight=1.2;
+		volume=1;
+		rubbing=0.1;
+		size[]={0.5,1.4,2.2};
+		color[]=
+		{
+			{0.6,0.75,0.9,0.35},
+			{0.6,0.7,0.8,0.15},
+			{0.6,0.7,0.8,0}
+		};
+		animationSpeed[]={1.5,0.5};
+		randomDirectionPeriod=1;
+		randomDirectionIntensity=0.04;
+		onTimerScript="";
+		beforeDestroyScript="";
+		lifeTimeVar=0.8;
+		positionVar[]={0.15,0.15,0.15};
+		moveVelocityVar[]={0.3,0.3,0.3};
+		rotationVelocityVar=20;
+		sizeVar=0.3;
+		colorVar[]={0,0,0,0.1};
+		randomDirectionPeriodVar=0;
+		randomDirectionIntensityVar=0;
+	};
+	// Beam: particles dropped so densely behind the 2000 m/s round (one every ~0.8 m) that they merge into
+	// one continuous streak. They hang still, then fade from the back, so you see a beam that fades out behind the shot.
+	// Core: thin white-hot centre line
+	class 885th_AM_BeamCore: Default
+	{
+		interval=0.0004;
+		circleRadius=0;
+		circleVelocity[]={0,0,0};
+		particleShape="\A3\data_f\ParticleEffects\Universal\Universal";
+		particleFSNtieth=16;
+		particleFSIndex=0;
+		particleFSFrameCount=1;
+		particleFSLoop=0;
+		angleVar=0;
+		animationName="";
+		particleType="Billboard";
+		timerPeriod=1;
+		lifeTime=0.18;
+		moveVelocity[]={0,0,0};
+		rotationVelocity=0;
+		weight=1;
+		volume=1;                   // weight = volume: floats in place, no drop
+		rubbing=0;
+		size[]={0.12,0.08,0};
+		sizeCoef=1;
+		color[]=
+		{
+			{0.85,0.95,1,-50},
+			{0.6,0.85,1,-20},
+			{0.3,0.6,1,0}
+		};
+		colorCoef[]={1,1,1,1};
+		emissiveColor[]={{6,8,10,1},{2,5,10,1},{0,0,0,0}};
+		animationSpeed[]={1000};
+		animationSpeedCoef=1;
+		randomDirectionPeriod=0;
+		randomDirectionIntensity=0;
+		onTimerScript="";
+		beforeDestroyScript="";
+		blockAIVisibility=0;
+		lifeTimeVar=0;
+		position[]={0,0,0};
+		positionVar[]={0,0,0};
+		moveVelocityVar[]={0,0,0};
+		rotationVelocityVar=0;
+		sizeVar=0;
+		colorVar[]={0,0,0,0};
+		randomDirectionPeriodVar=0;
+		randomDirectionIntensityVar=0;
+		ignoreWind="true";
+	};
+	// Glow: wider blue haze around the core that lingers a little longer
+	class 885th_AM_BeamGlow: 885th_AM_BeamCore
+	{
+		interval=0.0008;
+		lifeTime=0.4;
+		size[]={0.45,0.35,0};
+		color[]=
+		{
+			{0.25,0.55,1,-8},
+			{0.2,0.45,1,-3},
+			{0.2,0.4,1,0}
+		};
+		emissiveColor[]={{1,3,10,1},{0.5,1.5,8,1},{0,0,0,0}};
+	};
+	// Muzzle burst, spawned by BPD_fnc_dc15xAMFired (only for the AM cell)
+	class 885th_AM_MuzzleFlash: 885th_AM_Flash
+	{
+		lifeTime=0.1;
+		size[]={0.3,0.9};
+		positionVar[]={0.05,0.05,0.05};
+	};
+	class 885th_AM_MuzzleSparks: 885th_AM_Sparks
+	{
+		interval=0.002;
+		size[]={0.04,0};
+		moveVelocity[]={0,1,0};
+		moveVelocityVar[]={2.5,2.5,2.5};
+		lifeTime=0.12;
+		lifeTimeVar=0.1;
+	};
+};
+
+class CfgLights
+{
+	// Big bolt glow + lens flare in flight (IDA_Large_BlasterboltLight_Blue, a touch brighter)
+	class 885th_AM_BoltLight
+	{
+		color[]={0,0,0,0};
+		diffuse[]={0,60,255,1};
+		ambient[]={0,0,0,0.5};
+		intensity=300000;
+		class Attenuation
+		{
+			start=0;
+			constant=0;
+			linear=0;
+			quadratic=255;
+			hardLimitStart="1e20 * 0.7";
+			hardLimitEnd=1e+020;
+		};
+		dayLight=1;
+		useFlare=1;
+		flareSize=1.4;
+		flareMaxDistance=6000;
+		position[]={0,0,0};
+	};
+	// Blue flash that lights up the surroundings on impact (IDA_ImpactLight, recoloured and stronger)
+	class 885th_AM_ImpactLight
+	{
+		diffuse[]={0.3,0.6,1};
+		color[]={0.3,0.6,1};
+		ambient[]={0,0,0,0};
+		brightness=10;
+		size=1;
+		intensity=25000;
+		drawLight=0;
+		blinking=1;
+		dayLight=1;
+		class Attenuation
+		{
+			start=0;
+			constant=0;
+			linear=0;
+			quadratic=2.2;
+			hardLimitStart=500;
+			hardLimitEnd=1000;
+		};
+		position[]={0,1.5,0};
+	};
+};
+
+// Effect groups used by 885th_blasterbolt_Sniper_AM (effectFly / ExplosionEffects)
+class 885th_DC15X_AM_Fly
+{
+	class Light
+	{
+		simulation="light";
+		type="885th_AM_BoltLight";
+		position[]={0,0,0};
+	};
+	class BeamCore
+	{
+		simulation="particles";
+		type="885th_AM_BeamCore";
+		position[]={0,0,0};
+		intensity=1;
+		interval=1;
+		qualityLevel=-1;
+	};
+	class BeamGlow
+	{
+		simulation="particles";
+		type="885th_AM_BeamGlow";
+		position[]={0,0,0};
+		intensity=1;
+		interval=1;
+		qualityLevel=-1;
+	};
+};
+class 885th_DC15X_AM_ImpactEffect
+{
+	class Light1
+	{
+		simulation="light";
+		type="885th_AM_ImpactLight";
+		position[]={0,0,0};
+		intensity=1;
+		interval=1;
+		lifeTime=0.4;
+	};
+	class Flash
+	{
+		simulation="particles";
+		type="885th_AM_Flash";
+		position[]={0,0,0};
+		intensity=1;
+		interval=1;
+		lifeTime=0.06;
+	};
+	class Sparks
+	{
+		simulation="particles";
+		type="885th_AM_Sparks";
+		position[]={0,0,0};
+		intensity=1;
+		interval=1;
+		lifeTime=0.25;
+	};
+	class Embers
+	{
+		simulation="particles";
+		type="885th_AM_Embers";
+		position[]={0,0,0};
+		intensity=1;
+		interval=1;
+		lifeTime=0.2;
+	};
+	class IonSmoke
+	{
+		simulation="particles";
+		type="885th_AM_IonSmoke";
+		position[]={0,0,0};
+		intensity=1;
+		interval=1;
+		lifeTime=0.15;
 	};
 };
 
@@ -4466,11 +5056,11 @@ class CfgAmmo
 		cost=5;
 		airLock=1;
 		caliber=4.48;
-		coefGravity=0.050000001;
-		typicalSpeed=750;
+		coefGravity=0.02;            // BF2-style ruler-flat bolt
+		typicalSpeed=1000;
 		model="\3AS\3AS_Weapons\Data\tracer_blue.p3d";
 		tracerScale=2.24;
-		airFriction=-0.00011;
+		airFriction=0;
 		effectFly="3AS_PlasmaBolt_Blue_Fly";
 		class CamShakeExplode
 		{
@@ -4525,7 +5115,72 @@ class CfgAmmo
 			distance=1;
 		};
 	};
-	
+	// DC-15X Heavy Sniper: .50-cal class bolt. Fast, flat and hard-hitting out to ~2 km, punches through cover.
+	class 885th_blasterbolt_Sniper_Heavy: 885th_blasterbolt_Sniper_AP
+	{
+		hit=75;                     // WBK B2 (300 health): 4 hits
+		caliber=2;                  // ~33 mm RHA at 1100 m/s (.50 ball class)
+		typicalSpeed=1100;
+		coefGravity=0.03;           // very little drop
+		airFriction=-0.00006;       // holds its speed at range
+		audibleFire=150;
+		dangerRadiusBulletClose=16;
+		dangerRadiusHit=22;
+		suppressionRadiusBulletClose=12;
+		suppressionRadiusHit=16;
+		cost=8;
+		model="\Indecisive_Armoury_Ammos\Data\Tracers\IDA_Blasterbolt_Blue.p3d";
+		effectFly="IDA_BlasterBoltGlow_Medium_Blue_Fly";   // IDA medium glow, a step up from the normal sniper bolt
+		tracerScale=2.8;
+		class CamShakeHit
+		{
+			power=18;
+			duration=0.5;
+			frequency=20;
+			distance=1;
+		};
+	};
+	// DC-15X Anti-Materiel overcharge bolt: precision beam shot for droids, light vehicles and hardened targets.
+	// No splash worth speaking of; the damage is in the hit and the penetration.
+	class 885th_blasterbolt_Sniper_AM: 885th_blasterbolt_Sniper_Heavy
+	{
+		hit=180;
+		indirectHit=45;
+		indirectHitRange=1.5;       // overcharge burst: ~11% on a 400-armour static wherever the bolt lands
+		caliber=3.2;                // ~96 mm RHA at 2000 m/s: through B2/BX and light armour, stops inside the target
+		explosive=0.2;              // 20% of the damage counts as explosive
+		warheadName="AP";
+		aiAmmoUsageFlags="64 + 128 + 256 + 512";
+		typicalSpeed=2000;          // near-instant: reads as a beam, not a bolt
+		coefGravity=0;              // dead straight, no drop
+		airFriction=0;
+		audibleFire=220;
+		visibleFire=8;
+		dangerRadiusBulletClose=20;
+		dangerRadiusHit=26;
+		suppressionRadiusBulletClose=16;
+		suppressionRadiusHit=22;
+		cost=20;
+		model="\Indecisive_Armoury_Ammos\Data\Tracers\IDA_Blasterbolt_Blue.p3d";
+		effectFly="885th_DC15X_AM_Fly";                       // big glow + flare + energy trail
+		ExplosionEffects="885th_DC15X_AM_ImpactEffect";       // blue flash, sparks, embers, light burst, ion smoke
+		tracerScale=4;
+		class CamShakeExplode
+		{
+			power=6;
+			duration=1;
+			frequency=20;
+			distance=15;
+		};
+		class CamShakeHit
+		{
+			power=25;
+			duration=0.6;
+			frequency=20;
+			distance=1;
+		};
+	};
+
 	// Westar-M5 & Westar-M5 MKII Ammo
 	class 885th_blasterbolt_Rifle_HP_AP: 885th_blasterbolt_Rifle_Standard
 	{
@@ -4833,12 +5488,24 @@ class CfgAmmo
 	};
 	class 885th_blasterbolt_blue_dc15mod_300AAC: 885th_blasterbolt
 	{
-		hit = 20;                  
-		indirectHit = 0;           
+		hit = 13;
+		indirectHit = 0;
 		indirectHitRange = 0;
 		airFriction = -0.00045;
-		caliber = 2.4;            
+		caliber = 2.3;             
 		typicalSpeed = 310;
+		coefGravity = 0.15;        
+		dangerRadiusBulletClose = 10;
+		dangerRadiusHit = 14;
+		suppressionRadiusBulletClose = 8;
+		suppressionRadiusHit = 10;
+		class CamShakeHit
+		{
+			power = 6.5;
+			duration = 0.2;
+			frequency = 20;
+			distance = 1;
+		};
 		model= "\Indecisive_Armoury_Ammos\Data\Tracers\IDA_Blasterbolt_Blue.p3d";
 		effectFly= "IDA_BlasterBoltGlow_Medium_Blue_Fly";
 		timeToLive = 3;
@@ -5644,15 +6311,15 @@ class CfgMagazines
 	class 885th_elite_300_dc_cell: CA_Magazine
 	{
 		scope = 2;
-		count = 60;
-		displayName = "[885th] DC15S Elite Cell";
-		displayNameShort = "Elite Cell";
-		descriptionShort = "60 round cells, modified blaster bolts";
+		count = 80;
+		displayName = "[885th] DC15S AP Elite Cell";
+		displayNameShort = "DC15EC-AP";
+		descriptionShort = "80 round AP cells, modified blaster bolts";
 		picture = "\MRC\JLTS\weapons\DC15A\data\ui\DC15A_mag_ui_ca.paa";
 		ammo = "885th_blasterbolt_blue_dc15mod_300AAC";
-		modelSpecial="\ShadowLegion_Weapons\data\Magazines\DC15S\DC15S_Mag.p3d";
+		modelSpecial="\ShadowLegion_Weapons\data\Magazines\DC15C2\Model\DC15C2_Mag.p3d"; 
 		modelSpecialIsProxy=1;
-		tracerEvery = 1;
+		tracersEvery = 1;
 		lastRoundsTracer=60;
 		initSpeed = 310;
 		mass=10;
@@ -6188,21 +6855,21 @@ class CfgMagazines
 	//885th Sniper Magazines
 	class 885th_dc15xsniper_cell: 885th_cell
 	{
-		count = 20;
+		count = 5;
 		displayName = "[885th] DC15X Sniper Cell";
 		displayNameShort = "DC15X Cell";
-		descriptionShort = "20 round capacity, heavy prcision bolts.";
+		descriptionShort = "5 round capacity, heavy precision bolts.";
 		ammo = "885th_blasterbolt_Sniper_Standard";
-		initSpeed=750;
+		initSpeed=1000;
 		tracersEvery = 1;
 		mass = 20;
 	};
 	class 885th_dc15xsniper_ap_cell : 885th_cell
 	{
-		count = 5;
+		count = 3;
 		displayName = "[885th] DC15X AP Sniper Cell";
 		displayNameShort = "DC15X AP";
-		descriptionShort = "5 round capacity, heavy armor piercing sniper bolts.";
+		descriptionShort = "3 round capacity, heavy armor piercing sniper bolts.";
 		ammo = "885th_blasterbolt_Sniper_AP";
 		initSpeed=815;
 		tracersEvery = 1;
@@ -6219,7 +6886,31 @@ class CfgMagazines
 		tracersEvery = 1;
 		mass = 5;
 	};
-	
+	// DC-15X Heavy Sniper cells
+	class 885th_dc15x_heavy_cell : 885th_cell
+	{
+		count = 10;
+		displayName = "[885th] DC15X Heavy Sniper Cell";
+		displayNameShort = "DC15X Heavy";
+		descriptionShort = "10 round capacity, .50 calibre-class heavy precision bolts.";
+		ammo = "885th_blasterbolt_Sniper_Heavy";
+		initSpeed = 1100;
+		tracersEvery = 1;
+		mass = 30;
+	};
+	// Overcharged Anti-Materiel rounds. Firing one also plays the overcharge crack and beam.
+	class 885th_dc15x_am_cell : 885th_cell
+	{
+		count = 5;
+		displayName = "[885th] DC15X Anti-Materiel Overcharge Cell";
+		displayNameShort = "DC15X AM";
+		descriptionShort = "5 round capacity. Overcharged anti-materiel beam for droids, light vehicles and hardened targets. Two hits disable a vehicle.";
+		ammo = "885th_blasterbolt_Sniper_AM";
+		initSpeed = 2000;
+		tracersEvery = 1;
+		mass = 100;                  
+	};
+
 	//885th T-15 Blaster Cannon Magazines
 	class 885th_t15_coil_cell : 885th_cell
 	{
@@ -10130,8 +10821,8 @@ class CfgWeapons
 		Scope=0;
 		author="885th Bloodpack Division + Antauri";
 		magazines[]={"885th_elite_300_dc_cell"};
-		reloadAction = "GestureReload_JLTS_DC15S";
-		recoil= "recoil_akm";
+		reloadAction = "3AS_GestureReloadDC15S";   // same reload gesture as the DC-15C M3 FS
+		recoil= "885_recoil_DC15S_Elite";
 		magazineReloadSwitchPhase=0.40000001;
 		discreteDistanceInitIndex=0;
 		canShootInWater=1;
@@ -10161,7 +10852,13 @@ class CfgWeapons
 				linkProxy="\A3\data_f\proxies\weapon_slots\TOP";
 				compatibleItems[]=
 				{
-					"ShadwCmpany_optic_E5"
+					"ShadwCmpany_optic_Acog",
+					"3AS_optic_DC15LE_F",
+					"ShadwCmpany_optic_Reflex_Mk1_Alt2",
+					"optic_MRCO",
+					"ShadwCmpany_773_Hybrid_Magnifier_Holo",
+					"ShadwCmpany_773_Hybrid_Magnifier_Magnified",
+					"ShdwCmpny_Optic_Valken"
 				};
 			};
 			class PointerSlot: PointerSlot
@@ -10183,19 +10880,24 @@ class CfgWeapons
 				iconPosition[]={0,0.44999999};
 				iconScale=0.2;
 				linkProxy="\A3\data_f\proxies\weapon_slots\MUZZLE";
-				compatibleItems[]={};
+				compatibleItems[]=
+				{
+					"885th_FlashHider_DC15",
+					"885th_Suppressor_Module_DC15_Stealth"
+				};
 			};
 		};
 		opticsZoomMin=0.25;
 		opticsZoomMax=1.25;
 		opticsZoomInit=0.75;
-		distanceZoomMin=200;
-		distanceZoomMax=200;
+		discreteDistance[]={100,200,300,400};   // iron-sight zeroing starts at 100 (InitIndex=0 set above)
+		distanceZoomMin=100;
+		distanceZoomMax=100;
 		descriptionShort="Field modified DC15S tuned for close-quarters with heavy bolt assembly";
 		handAnim[]=
 		{
 			"OFP2_ManSkeleton",
-			"ShadowLegion_Weapons\data\DC15\DC15S\anim\ReloadBASE_DC15S.rtm"
+			"\A3\Weapons_F_beta\Rifles\MK20\Data\Anim\mk20G.rtm"   // matches the DC-15C M3 FS model grip
 		};
 		selectionFireAnim="zasleh";
 		flash="gunfire";
@@ -10214,7 +10916,7 @@ class CfgWeapons
 			maxRangeProbab = 0.5;
 			soundContinuous=0;
 			soundBurst=0;
-			sounds[] = {"StandardSound"};
+			sounds[] = {"StandardSound","SilencedSound","StealthSound"};
 			class BaseSoundModeType
 			{
 				weaponSoundEffect = "";
@@ -10225,20 +10927,29 @@ class CfgWeapons
 			class StandardSound : BaseSoundModeType
 			{
 				weaponSoundEffect = "";
-				begin1[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 1, 1800};
-				begin2[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 1.015, 1800};
-				begin3[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 0.985, 1800};
-				begin4[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 1.01, 1800};
-				begin5[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 0.995, 1800};
-				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
+				soundSetShot[] = {"885th_EliteDC15S_C3Single_SoundSet","885th_EliteDC15S_Shot_SoundSet","885th_EliteDC15S_Thump_SoundSet","885th_EliteDC15S_Tail_SoundSet"};
 				beginwater1[] = {"885_Sounds\modifieddc15s.ogg", 1, 1, 400};
+				soundBeginWater[] = {"beginwater1", 0.5};
+			};
+			class SilencedSound : BaseSoundModeType
+			{
+				weaponSoundEffect = "";
+				soundSetShot[] = {"885th_EliteDC15S_C3Silenced_SoundSet","885th_EliteDC15S_Silenced_SoundSet","885th_EliteDC15S_SilencedTail_SoundSet"};
+				beginwater1[] = {"ShadowLegion_Weapons\data\surpressed_1.ogg", 1, 1, 100};
+				soundBeginWater[] = {"beginwater1", 0.5};
+			};
+			class StealthSound : BaseSoundModeType   // Stealth Carbine Suppressor (soundTypeIndex 2): quieter, short range, no echo
+			{
+				weaponSoundEffect = "";
+				soundSetShot[] = {"885th_EliteDC15S_C3Stealth_SoundSet","885th_EliteDC15S_Stealth_SoundSet"};
+				beginwater1[] = {"ShadowLegion_Weapons\data\surpressed_1.ogg", 0.7, 1, 60};
 				soundBeginWater[] = {"beginwater1", 0.5};
 			};
 		};
 		class FullAuto : Mode_FullAuto
 		{
 			reloadTime = 0.085;
-			dispersion = 0.0018;
+			dispersion = 0.0014;
 			minRange = 0;
 			minRangeProbab = 0.9;
 			midRange = 50;
@@ -10247,7 +10958,7 @@ class CfgWeapons
 			maxRangeProbab = 0.1;
 			soundContinuous=0;
 			soundBurst=0;
-			sounds[] = {"StandardSound"};
+			sounds[] = {"StandardSound","SilencedSound","StealthSound"};
 			class BaseSoundModeType
 			{
 				weaponSoundEffect = "";
@@ -10258,13 +10969,22 @@ class CfgWeapons
 			class StandardSound : BaseSoundModeType
 			{
 				weaponSoundEffect = "";
-				begin1[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 1, 1800};
-				begin2[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 1.015, 1800};
-				begin3[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 0.985, 1800};
-				begin4[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 1.01, 1800};
-				begin5[] = {"885_Sounds\modifieddc15s.ogg", 1.25, 0.995, 1800};
-				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
+				soundSetShot[] = {"885th_EliteDC15S_C3Auto_SoundSet","885th_EliteDC15S_Shot_SoundSet","885th_EliteDC15S_Thump_SoundSet","885th_EliteDC15S_Tail_SoundSet"};
 				beginwater1[] = {"885_Sounds\modifieddc15s.ogg", 1, 1, 400};
+				soundBeginWater[] = {"beginwater1", 0.5};
+			};
+			class SilencedSound : BaseSoundModeType
+			{
+				weaponSoundEffect = "";
+				soundSetShot[] = {"885th_EliteDC15S_C3Silenced_SoundSet","885th_EliteDC15S_Silenced_SoundSet","885th_EliteDC15S_SilencedTail_SoundSet"};
+				beginwater1[] = {"ShadowLegion_Weapons\data\surpressed_1.ogg", 1, 1, 100};
+				soundBeginWater[] = {"beginwater1", 0.5};
+			};
+			class StealthSound : BaseSoundModeType   // Stealth Carbine Suppressor (soundTypeIndex 2): quieter, short range, no echo
+			{
+				weaponSoundEffect = "";
+				soundSetShot[] = {"885th_EliteDC15S_C3Stealth_SoundSet","885th_EliteDC15S_Stealth_SoundSet"};
+				beginwater1[] = {"ShadowLegion_Weapons\data\surpressed_1.ogg", 0.7, 1, 60};
 				soundBeginWater[] = {"beginwater1", 0.5};
 			};
 		};
@@ -10304,9 +11024,9 @@ class CfgWeapons
 	{
 		scope=2;
 		displayName="[885th] DC15S Elite Carbine";
-		model="\ShadowLegion_Weapons\data\DC15\DC15S\model\DC15_S.p3d";
-		picture="\ShadowLegion_Weapons\data\DC15\DC15S\UI\DC15S_UI.paa";
-		UiPicture="\ShadowLegion_Weapons\data\DC15\DC15S\UI\DC15S_UI.paa";
+		model="\ShadowLegion_Weapons\data\DC15\DC15C3\model\DC15_C3_Retracted.p3d";
+		picture="\ShadowLegion_Weapons\data\DC15\DC15C3\UI\DC15C3_FS_UI.paa";
+		UiPicture="\ShadowLegion_Weapons\data\DC15\DC15C3\UI\DC15C3_FS_UI.paa";
 		weaponInfoType="RscWeaponZeroing";
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
@@ -13795,6 +14515,96 @@ class CfgWeapons
 		};
 	};
 	class JLTS_DC15X;
+	class JLTS_DC15X_scope;
+	// BF2 (2005) style DC15X scope: same JLTS model, two fixed zoom steps (~4x / ~12x), zeroing from 100
+	class 885th_DC15X_scope_BF2: JLTS_DC15X_scope
+	{
+		author = "MrClock + 885th Bloodpack Division";
+		scope = 2;
+		displayName = "[885th] DC15X Sharpshooter Scope";
+		descriptionShort = "Two-step sharpshooter scope (4x / 12x).";
+		weaponInfoType = "885th_RscOptics_DC15X_BF2";   // BF2-style reticle + ammo notches, shown only while scoped
+		class ItemInfo: InventoryOpticsItem_Base_F
+		{
+			mass = 16;
+			opticType = 2;
+			weaponInfoType = "RscWeaponRangeZeroingFOV";
+			optics = 1;
+			modelOptics = "\A3\Weapons_F\empty";
+			class OpticsModes
+			{
+				class Snip
+				{
+					opticsID = 1;
+					opticsDisplayName = "WFOV";
+					useModelOptics = 1;
+					opticsPPEffects[] = {"OpticsCHAbera1","OpticsBlur1"};
+					opticsZoomMin = 0.0208;          // ~12x
+					opticsZoomMax = 0.0625;          // ~4x
+					opticsZoomInit = 0.0625;
+					discretefov[] = {0.0625, 0.0208};
+					discreteInitIndex = 0;
+					discreteDistance[] = {100,200,300,400,500,600,700,800,900,1000};
+					discreteDistanceInitIndex = 1;
+					distanceZoomMin = 100;
+					distanceZoomMax = 1000;
+					memoryPointCamera = "opticView";
+					modelOptics[] = {"\A3\Weapons_F\empty","\A3\Weapons_F\empty"};   // reticle is drawn by the overlay, not the model
+					visionMode[] = {"Normal","NVG","TI"};
+					thermalMode[] = {0,1};           // white-hot, black-hot
+					opticsFlare = 1;
+					opticsDisablePeripherialVision = 1;
+					cameraDir = "";
+				};
+			};
+		};
+	};
+	// DC-15X Heavy Sniper scope: built on the 3AS DC-15X scope (3AS model and inventory icon), with the 885th
+	// BF2 reticle overlay (ammo notches, rangefinder, Orbitron readouts) instead of the 3AS 3D reticle,
+	// three zoom steps (~5x / 10x / 20x) and zeroing out to 2000 m for the heavy and anti-materiel bolts.
+	class 3AS_optic_DC15X_F;
+	class 885th_DC15X_scope_Heavy: 3AS_optic_DC15X_F
+	{
+		author = "3AS + 885th Bloodpack Division";
+		scope = 2;
+		displayName = "[885th] DC15X Heavy Sniper Scope";
+		descriptionShort = "Three-step heavy sniper scope (5x / 10x / 20x), zeroing 100-2000 m.";
+		weaponInfoType = "885th_RscOptics_DC15X_BF2";   // 885th reticle + ammo notches, shown only while scoped
+		class ItemInfo: InventoryOpticsItem_Base_F
+		{
+			mass = 22;
+			opticType = 2;
+			weaponInfoType = "RscWeaponRangeZeroingFOV";
+			optics = 1;
+			modelOptics = "\A3\Weapons_F\empty";
+			class OpticsModes
+			{
+				class Snip
+				{
+					opticsID = 1;
+					opticsDisplayName = "WFOV";
+					useModelOptics = 1;
+					opticsPPEffects[] = {"OpticsCHAbera1","OpticsBlur1"};
+					opticsZoomMin = 0.0125;          // ~20x
+					opticsZoomMax = 0.05;            // ~5x
+					opticsZoomInit = 0.05;
+					discretefov[] = {0.05, 0.025, 0.0125};
+					discreteInitIndex = 0;
+					discreteDistance[] = {100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000};
+					discreteDistanceInitIndex = 2;   // 300 m
+					distanceZoomMin = 100;
+					distanceZoomMax = 2000;
+					memoryPointCamera = "opticView";
+					modelOptics[] = {"\A3\Weapons_F\empty","\A3\Weapons_F\empty","\A3\Weapons_F\empty"};   // reticle is drawn by the overlay
+					visionMode[] = {"Normal","NVG","TI"};
+					thermalMode[] = {0,1};           // white-hot, black-hot
+					opticsFlare = 1;
+					opticsDisablePeripherialVision = 1;
+					cameraDir = "";
+				};
+			};
+		};
+	};
 	class 885th_DC15XS: JLTS_DC15X
 	{
 		baseWeapon = "885th_DC15XS";
@@ -13805,7 +14615,8 @@ class CfgWeapons
 		magazines[] = {"885th_dc15xsniper_cell"};
 		ace_clearJamAction = "";
 		reloadAction = "GestureReload_IDA_Reload_Blaster";
-		recoil = "885_recoil_DC15X";
+		recoil = "885_recoil_DC15X_BF2";
+		maxRecoilSway = 0.004;            // steady scope between shots
 		magazineWell[] = {};
 		fireLightDiffuse[] = {0.1,0.25,1};
 		drySound[] = {"\Indecisive_Armoury_Sounds\weapon_dry.ogg",5,1,10};
@@ -13814,7 +14625,7 @@ class CfgWeapons
 		modes[] = {"Single"};
 		class Single: Mode_SemiAuto
 		{
-			sounds[]={"StandardSound","SilencedSound"};
+			sounds[]={"StandardSound"};
 			class BaseSoundModeType
 			{
 				weaponSoundEffect = "";
@@ -13824,29 +14635,12 @@ class CfgWeapons
 			};
 			class StandardSound: BaseSoundModeType
 			{
-				begin1[]={"885_Sounds\DC15XOG.ogg",1.25, 1, 1800};
-				begin2[] = {"885_Sounds\DC15XOG.ogg", 1.25, 1.015, 1800};
-				begin3[] = {"885_Sounds\DC15XOG.ogg", 1.25, 0.985, 1800};
-				begin4[] = {"885_Sounds\DC15XOG.ogg", 1.25, 1.01, 1800};
-				begin5[] = {"885_Sounds\DC15XOG.ogg", 1.25, 0.995, 1800};
-				soundBegin[] = {"begin1", 0.2, "begin2", 0.2, "begin3", 0.2, "begin4", 0.2, "begin5", 0.2};
+				soundSetShot[] = {"885th_DC15X_Main_SoundSet","885th_DC15X_Body_SoundSet","885th_DC15X_Tail_SoundSet"};
 				beginwater1[]={"\ShadowLegion_Weapons\data\Underwater_Firing.ogg",1,1,200};
 				soundBeginWater[]={"beginwater1",0.5};
 			};
-			class SilencedSound: BaseSoundModeType
-            {
-                begin1[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
-                begin2[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
-                begin3[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
-                begin4[]={"ShadowLegion_Weapons\data\surpressed_2.ogg",1,1,100};
-                begin5[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
-                begin6[]={"ShadowLegion_Weapons\data\surpressed_1.ogg",1,1,100};
-                soundBegin[]={"begin1",0.5,"begin2",0.5,"begin3",0.5,"begin4",0.5,"begin5",0.5,"begin6",0.5};
-                beginwater1[]={"\ShadowLegion_Weapons\data\Underwater_Firing.ogg",1,1,200};
-                soundBeginWater[]={"beginwater1",0.5};
-            };
-			reloadTime = 0.40;
-			dispersion = 0.0003;
+			reloadTime = 1.0;             
+			dispersion = 0.0001;          // pinpoint
 			minRange = 2;
 			minRangeProbab = 0.5;
 			midRange = 100;
@@ -13859,14 +14653,14 @@ class CfgWeapons
 			mass = 120;
 			class CowsSlot: CowsSlot
 			{
-				compatibleItems[] = {"JLTS_DC15X_scope","ShadwCmpany_optic_Acog","ShdwCmpny_Optic_LEScope_DC15A"};
+				compatibleItems[] = {"885th_DC15X_scope_BF2"};
 			};
 			class MuzzleSlot : MuzzleSlot
-			{	
+			{
 				iconPosition[]={0,0.44999999};
 				iconScale=0.2;
 				linkProxy="\A3\data_f\proxies\weapon_slots\MUZZLE";
-				compatibleItems[] = {"ShadwCmpany_Suppresor_Module_DC15"};
+				compatibleItems[] = {};
 			};
 			class PointerSlot: PointerSlot
 			{
@@ -19106,6 +19900,7 @@ class CfgWeapons
 	};
 	//Attachments
 	class InventoryMuzzleItem_Base_F;
+	class 3AS_muzzle_DC15LE_F;
 	class 885th_Barrel_Module_DC21: ItemCore
 	{
 		author="SL Mod Dev Team + 885th Bloodapack Division";
@@ -19158,6 +19953,131 @@ class CfgWeapons
 			};
 		};
 		inertia=1.2;
+	};
+	// Low-flash copy of the ShadowLegion DC15 suppressor (the original keeps full muzzle light, fireLightCoef=1)
+	class 885th_Suppressor_Module_DC15_LowFlash: ItemCore
+	{
+		author="SL Mod Dev Team + 885th Bloodpack Division";
+		_generalMacro="885th_Suppressor_Module_DC15_LowFlash";
+		htMin=1;
+		htMax=600;
+		afMax=0;
+		mfMax=0;
+		mFact=1;
+		tBody=100;
+		scope=2;
+		displayName="[885th] Tactical Carbine Supressor";
+		picture="\a3\Weapons_F\acc\Data\UI\icon_muzzle_snds_H_ca.paa";
+		model="\ShadowLegion_Weapons\data\Acc\DC15Suppressor\models\DC15_Suppressor.p3d";
+		class ItemInfo: InventoryMuzzleItem_Base_F
+		{
+			mass=10;
+			soundTypeIndex=1;
+			muzzleEnd="zaslehPoint";
+			alternativeFire="Zasleh2";
+			class MagazineCoef
+			{
+				initSpeed=1;
+			};
+			class AmmoCoef
+			{
+				hit=1;
+				typicalSpeed=1;
+				airFriction=1;
+				visibleFire=0;
+				audibleFire=0.2;
+				visibleFireTime=0.1;
+				audibleFireTime=0.2;
+				cost=1;
+			};
+			class MuzzleCoef
+			{
+				dispersionCoef=0.80000001;
+				artilleryDispersionCoef=1;
+				fireLightCoef=0.1;          // muzzle light at 10% of the weapon's value
+				recoilCoef=1;
+				recoilProneCoef=1;
+				minRangeCoef=1;
+				minRangeProbabCoef=1;
+				midRangeCoef=1;
+				midRangeProbabCoef=1;
+				maxRangeCoef=1;
+				maxRangeProbabCoef=1;
+			};
+		};
+	};
+	// Stealth version: AI hear it at roughly 1/5 the distance of the Tactical suppressor (audibleFire 0.04 vs 0.2,
+	// same as the vanilla 6.5 mm suppressor), almost no muzzle light, and its own quieter sound slot
+	// (soundTypeIndex 2 -> "StealthSound"). Trade-offs: heavier, slightly slower bolt (a touch less punch).
+	class 885th_Suppressor_Module_DC15_Stealth: 885th_Suppressor_Module_DC15_LowFlash
+	{
+		_generalMacro="885th_Suppressor_Module_DC15_Stealth";
+		displayName="[885th] Stealth Carbine Suppressor";
+		class ItemInfo: ItemInfo
+		{
+			mass=14;
+			soundTypeIndex=2;
+			class MagazineCoef: MagazineCoef
+			{
+				initSpeed=0.95;
+			};
+			class AmmoCoef: AmmoCoef
+			{
+				audibleFire=0.04;
+				audibleFireTime=0.1;
+				visibleFire=0;
+				visibleFireTime=0.05;
+			};
+			class MuzzleCoef: MuzzleCoef
+			{
+				fireLightCoef=0.03;
+			};
+		};
+	};
+	// Flash hider on the 3AS DC-15LE muzzle model. Normal (unsuppressed) sound and AI hearing; only the
+	// flash is cut. The 3AS original adds +25% bolt speed, which is set back to 1 here to keep the Elite's
+	// subsonic 310 m/s ballistics.
+	class 885th_FlashHider_DC15: 3AS_muzzle_DC15LE_F
+	{
+		author="3AS + 885th Bloodpack Division";
+		_generalMacro="885th_FlashHider_DC15";
+		displayName="[885th] Carbine Flash Hider";
+		class ItemInfo: InventoryMuzzleItem_Base_F
+		{
+			mass=6;
+			soundTypeIndex=0;
+			muzzleEnd="zaslehPoint";
+			alternativeFire="Zasleh2";
+			class MagazineCoef
+			{
+				initSpeed=1;
+			};
+			class AmmoCoef
+			{
+				hit=1;
+				typicalSpeed=1;
+				airFriction=1;
+				visibleFire=0.3;      // AI spot the shot at ~30% of normal range
+				audibleFire=1;
+				visibleFireTime=0.3;
+				audibleFireTime=1;
+				cost=1;
+			};
+			class MuzzleCoef
+			{
+				dispersionCoef=0.80000001;
+				artilleryDispersionCoef=1;
+				fireLightCoef=0.15;   // muzzle light at 15%
+				recoilCoef=1;
+				recoilProneCoef=1;
+				minRangeCoef=1;
+				minRangeProbabCoef=1;
+				midRangeCoef=1;
+				midRangeProbabCoef=1;
+				maxRangeCoef=1;
+				maxRangeProbabCoef=1;
+			};
+		};
 	};
 	class 885th_Muzzle_Module_Westarm5MKII: ItemCore
 	{
@@ -19488,6 +20408,23 @@ class Extended_PostInit_EventHandlers
     {
         init = "call compile preprocessFileLineNumbers '\885_Weapons\ion_ammo\XEH_postInit.sqf'";
     };
+	class BPD_DC15X_Post
+	{
+		init = "call compile preprocessFileLineNumbers '\885_Weapons\DC15X\XEH_postInit.sqf'";
+	};
+};
+// DC-15X anti-materiel cell: layer the overcharge crack on top of the rifle's normal shot.
+// A magazine can't carry its own firing sound, so this checks the magazine on every infantry shot (one string
+// compare) and only does work for the AM cell. FiredBIS runs on every machine, so each player plays it locally.
+class Extended_FiredBIS_EventHandlers
+{
+	class CAManBase
+	{
+		class BPD_DC15X_AM_Fired
+		{
+			firedBIS = "if ((_this select 5) isEqualTo '885th_dc15x_am_cell') then {_this call BPD_fnc_dc15xAMFired};";
+		};
+	};
 };
 
 class CfgFunctions
@@ -19508,6 +20445,16 @@ class CfgFunctions
 			class dc15saRecharge { file = "885_Weapons\DC15SA\scripts\functions\fnc_dc15saRecharge.sqf"; };
 		};
 	};
+	class BPD_DC15X_Scope
+	{
+		tag = "BPD";
+		class Weapons
+		{
+			class dc15xScopeNotches { file = "885_Weapons\scope\fnc_dc15xScopeNotches.sqf"; };
+			class dc15xAMFired { file = "885_Weapons\DC15X\fnc_dc15xAMFired.sqf"; };
+			class dc15xAMVehicleHit { file = "885_Weapons\DC15X\fnc_dc15xAMVehicleHit.sqf"; };
+		};
+	};
 	class 885th_ion_ammo
     {
         tag = "BPD";
@@ -19522,6 +20469,104 @@ class CfgFunctions
 };
 
 #include "XtdGearModels.hpp"
+
+// Orbitron (SIL Open Font License 1.1, see fonts\Orbitron\OFL.txt), basic ASCII only, for the DC15X scope readouts.
+// Built with Arma 3 Tools FontToTga; the engine picks the closest size for the screen resolution.
+class CfgFontFamilies
+{
+	class 885th_Orbitron
+	{
+		fonts[] =
+		{
+			"\885_Weapons\fonts\Orbitron\Orbitron16",
+			"\885_Weapons\fonts\Orbitron\Orbitron20",
+			"\885_Weapons\fonts\Orbitron\Orbitron24",
+			"\885_Weapons\fonts\Orbitron\Orbitron28",
+			"\885_Weapons\fonts\Orbitron\Orbitron32",
+			"\885_Weapons\fonts\Orbitron\Orbitron36",
+			"\885_Weapons\fonts\Orbitron\Orbitron40",
+			"\885_Weapons\fonts\Orbitron\Orbitron46",
+			"\885_Weapons\fonts\Orbitron\Orbitron52",
+			"\885_Weapons\fonts\Orbitron\Orbitron64"
+		};
+		spaceWidth = 0.7;
+		spacing = 0.13;
+	};
+};
+
+// BF2 (2005) style DC15X scope overlay: reticle + one ammo notch per round (rotated around the bezel)
+class RscPicture;
+class RscText;
+class RscInGameUI
+{
+	class RscUnitInfo;
+	class 885th_RscOptics_DC15X_BF2: RscUnitInfo
+	{
+		idd = 300;
+		onLoad = "_this call BPD_fnc_dc15xScopeNotches";
+		controls[] = {"Reticle","Notch0","Notch1","Notch2","Notch3","Notch4","VisionMode","AmmoType","Distance","OpticsZoom"};
+		// Readout column hugging the vertical crosshair, just below the mid ring: range, zoom, vision mode.
+		// All left-aligned on the same x. The engine fills 179 (vision mode: VIS / NV / TI) and 180 (zoom);
+		// the ammo type (1885111, above the range) and range (1885110) are set by BPD_fnc_dc15xScopeNotches.
+		class VisionMode: RscText
+		{
+			idc = 179;
+			style = 0;
+			shadow = 0;
+			font = "885th_Orbitron";
+			sizeEx = "0.02565 * safezoneH";
+			colorText[] = {0.85,0.87,0.9,0.85};
+			fade = 1;
+			text = "VIS";
+			x = "safezoneX + safezoneW / 2 + 0.0132 * safezoneH";
+			y = "safezoneY + (0.5 + 0.2144) * safezoneH";
+			w = "0.1 * safezoneH";
+			h = "0.026 * safezoneH";
+		};
+		class Distance: VisionMode
+		{
+			idc = 1885110;                   // own idc: range is measured by BPD_fnc_dc15xScopeNotches (engine idc 198 stayed blank)
+			colorText[] = {0.9,0.2,0.18,0.95};
+			sizeEx = "0.03078 * safezoneH";
+			text = "----";
+			y = "safezoneY + (0.5 + 0.1538) * safezoneH";
+			h = "0.031 * safezoneH";
+		};
+		class AmmoType: VisionMode
+		{
+			idc = 1885111;                   // loaded cell: HEAVY / AM / AP / OVR, set by BPD_fnc_dc15xScopeNotches
+			text = "----";
+			y = "safezoneY + (0.5 + 0.1213) * safezoneH";
+		};
+		class OpticsZoom: VisionMode
+		{
+			idc = 180;
+			text = "4x";
+			y = "safezoneY + (0.5 + 0.1863) * safezoneH";
+		};
+		class Reticle: RscPicture
+		{
+			idc = 1885099;
+			style = 48;
+			text = "\885_Weapons\scope\data\dc15x_bf2_reticle_ca.paa";
+			colorText[] = {1,1,1,1};
+			fade = 1;                        // hidden until the script sees you're looking through the scope
+			x = "safezoneX + (safezoneW - 0.675 * safezoneH) / 2";
+			y = "safezoneY + 0.05 * safezoneH";
+			w = "0.675 * safezoneH";
+			h = "0.9 * safezoneH";
+		};
+		class Notch0: Reticle
+		{
+			idc = 1885100;
+			text = "\885_Weapons\scope\data\dc15x_bf2_notch_lit_ca.paa";
+		};
+		class Notch1: Notch0 { idc = 1885101; };
+		class Notch2: Notch0 { idc = 1885102; };
+		class Notch3: Notch0 { idc = 1885103; };
+		class Notch4: Notch0 { idc = 1885104; };
+	};
+};
 
 class CfgSounds
 {
