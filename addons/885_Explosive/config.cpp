@@ -3,27 +3,49 @@ class CfgPatches
 	class 885th_weapons_Grenades
 	{
 		author="885th Bloodpack Division + MrClock";
-		name="885th Grenades";
+		name="885th Grenades & Explosives";
 		requiredAddons[]=
 		{
 			"A3_data_F",
 			"A3_anims_F",
 			"A3_weapons_F",
 			"A3_characters_F",
+			"A3_Weapons_F_Orange_Explosives",
 			"JLTS_weapons_EPL2",
 			"885th_Weapons",
 			"cba_main",
-			"cba_xeh"
+			"cba_xeh",
+			"ace_common",
+			"ace_explosives",
+			"ls_weapons_explosives",
+			"ls_compat_ace_explosives",
+			"3AS_Equipment"
 		};
 		weapons[]={};
 		units[]={};
 		magazines[]=
 		{
-			"885th_grenade_emp_mag"
+			"885th_grenade_emp_mag",
+			"885th_explosive_lowYield_mag",
+			"885th_explosive_highYield_mag",
+			"885th_explosive_atDetpack_mag",
+			"885th_explosive_seismic_mag",
+			"885th_explosive_breach_mag",
+			"885th_explosive_demoPack_mag",
+			"885th_explosive_mineDispenser_mag"
 		};
 		ammo[]=
 		{
-			"885th_grenade_emp_ammo"
+			"885th_grenade_emp_ammo",
+			"885th_explosive_lowYield_ammo",
+			"885th_explosive_highYield_ammo",
+			"885th_explosive_atDetpack_ammo",
+			"885th_explosive_seismic_ammo",
+			"885th_explosive_breach_ammo",
+			"885th_explosive_demoPack_ammo",
+			"885th_explosive_mineDispenser_ammo",
+			"885th_explosive_mineDispenser_deploy",
+			"885th_explosive_mineDispenser_mine_ammo"
 		};
 	};
 };
@@ -33,9 +55,15 @@ class Extended_PostInit_EventHandlers
 	{
 		init="call compile preprocessFileLineNumbers '\885_Explosive\XEH_postInit.sqf'";
 	};
+	class 885th_explosives_seismic_postInit
+	{
+		init="call compile preprocessFileLineNumbers '\885_Explosive\scripts\seismic_postInit.sqf'";
+	};
 };
 class CfgAmmo
 {
+	#include "explosives\CfgAmmo.hpp"
+
 	class GrenadeHand_stone;
 	class GrenadeHand;
 	class 885th_grenade_emp_ammo: GrenadeHand_stone
@@ -86,6 +114,7 @@ class CfgAmmo
 };
 class CfgMagazines
 {
+	#include "explosives\CfgMagazines.hpp"
 	class HandGrenade;
 	class 885th_grenade_emp_mag: HandGrenade
 	{
@@ -101,6 +130,7 @@ class CfgMagazines
 };
 class CfgWeapons
 {
+	#include "explosives\CfgWeapons.hpp"
 	class GrenadeLauncher;
 	class Throw: GrenadeLauncher
 	{
