@@ -1,3 +1,15 @@
+// HelmetFX - Beta voice presets (Workshop 3816210471, optional; ignored if not loaded).
+// Format: "stage:key=val,key=val|stage:key=val". Stages: lp hp bp eq ls hs gain comp dist crush ring comb reverb pitch noise limit.
+// Tune here only; helmets below reference these. Errors show in TeamSpeak's helmetfx_plugin.log.
+// HFX_TROOPER is the chain tested in-game on 885th_ONI_MC_Helmet (2026-11-23).
+// The other presets reuse it for now; give one its own string to make that group sound different.
+#define HFX_TROOPER  "comp:thr=-18,ratio=4|hp:hz=300|lp:hz=3200|dist:drive=3,mix=0.4"
+#define HFX_PILOT    HFX_TROOPER
+// Heavier sealed-commando voice: slightly lower pitch, more chest/low-end, darker top,
+// harder compression and grit, short metallic helmet resonance. Used by Katarn and ONI MC helms.
+#define HFX_COMMANDO "pitch:semi=-1|hp:hz=180|ls:hz=250,db=4|lp:hz=2800|comp:thr=-22,ratio=6|dist:drive=5,mix=0.5|comb:ms=3,fb=0.3|limit:ceil=-1"
+#define HFX_HAZARD   HFX_TROOPER
+
 class Cfgpatches
 {
     class 885th_Armor
@@ -448,6 +460,7 @@ class CfgWeapons
 	class 3AS_V_Katarn_Vest_Demo;
 	class 885th_P2_V2_Helmet: IDA_P2_Helmet
     {
+        HelmetFXChain = HFX_TROOPER;
         author="885th Bloodpack Division - ONI"; 
         displayName="[885th] Vornskr P2 v2 Helmet";
         hiddenselections[]= 
@@ -522,6 +535,7 @@ class CfgWeapons
     };
 	class 885th_Vornskr_Engineer_Helm: SEA_Helmet_Engineer_Base
 	{
+		HelmetFXChain = HFX_TROOPER;
 		author="885th Bloodpack Division";
 		displayName="[885th] Clone Engineer Helm";
 		picture="";
@@ -566,6 +580,7 @@ class CfgWeapons
 	};
 	class 885th_Vornskr_EngineerV2_Helm: H_HelmetO_ViperSP_hex_F
 	{
+		HelmetFXChain = HFX_TROOPER;
 		author="885th Bloodpack Division";
 		weaponPoolAvailable=1;
 		scope=2;
@@ -618,7 +633,8 @@ class CfgWeapons
 		};
 	};
 	class 885th_ONI_MC_Helmet_Base: JLTS_CloneHelmetP2MC
-	{	
+	{
+		HelmetFXChain = HFX_COMMANDO;
 		scope=0;
 		author = "885th Bloodpack Division";
 		picture="\MRC\JLTS\characters\CloneArmor\data\ui\CloneHelmetP2_ui_ca.paa";
@@ -958,6 +974,7 @@ class CfgWeapons
 	};
 	class 885th_Drip_P2_Helm: H_HelmetO_ViperSP_hex_F
 	{
+		HelmetFXChain = HFX_TROOPER;
 		author="885th Bloodpack Division - ONI"; 
         displayName="[885th] Drip's P2 Helmet";
 		scope=2;
@@ -1094,6 +1111,7 @@ class CfgWeapons
     };
 	class 885th_Nightsingers_P1_Pilot_Helm: LSEA_Helmet_Pilot_P1_Base
 	{
+		HelmetFXChain = HFX_PILOT;
 		scope=1;
 		author="885th Bloodpack Division";
 		displayName="[885th] Nightsingers Pilot Helm";
@@ -1183,6 +1201,7 @@ class CfgWeapons
 	};
 	class 885th_Nightsingers_Armor_Crew_Helmet_Base: H_HelmetO_ViperSP_hex_F
     {
+        HelmetFXChain = HFX_PILOT;
         scope=0;
         author="885th Bloodpack Division";
         hiddenSelections[]=
@@ -1271,6 +1290,7 @@ class CfgWeapons
 	};
 	class 885th_Nightsingers_P2_Pilot_Helm_Base: H_HelmetO_ViperSP_hex_F
 	{
+		HelmetFXChain = HFX_PILOT;
 		scope=0;
         author="885th Bloodpack Division";
         hiddenSelections[]=
@@ -1401,6 +1421,7 @@ class CfgWeapons
 	};
 	class 885th_Nightsingers_P3_Pilot_Helm: H_HelmetO_ViperSP_hex_F
 	{
+		HelmetFXChain = HFX_PILOT;
 		scope=0;
 		author="Antauri + Wess";
 		displayName="[885th] P3 Prototype Clone Pilot Helm";
@@ -1543,6 +1564,7 @@ class CfgWeapons
 	};
 	class 885th_Vornskr_P1_RTO_Helm: SEA_Helmet_SpecOps_SR_Base
 	{
+		HelmetFXChain = HFX_TROOPER;
 		scope=0;
 		author="885th Bloodpack Division";
 		displayName="[885th] Squad RTO P1 Helm";
@@ -1588,6 +1610,7 @@ class CfgWeapons
 	};
 	class 885th_Vornskr_P1_Advisor_Helm: SEA_Helmet_SpecOps_LR_Base
 	{
+		HelmetFXChain = HFX_TROOPER;
 		scope=0;
 		author="885th Bloodpack Division";
 		displayName="[885th] Advisor P1 Helm";
@@ -1633,6 +1656,7 @@ class CfgWeapons
 	class SEA_Helmet_ARF_Base;
 	class 885th_Najax_P1_ARF_Helm: SEA_Helmet_ARF_Base
 	{
+		HelmetFXChain = HFX_TROOPER;
 		scope=1;
 		author="885th Bloodpack Division";
 		displayName="[885th] Najax ARF Helm";
@@ -1702,6 +1726,7 @@ class CfgWeapons
 	};
 	class 885th_Kit_phase2SpecOp_helmet: H_HelmetO_ViperSP_hex_F
 	{
+		HelmetFXChain = HFX_TROOPER;
 		scope=2;
 		author="Legion Studios + 885th Bloodpack Division";
 		displayName="Kit's Spec-Ops P2 Helmet";
@@ -1747,6 +1772,7 @@ class CfgWeapons
 	};
 	class 885th_Titan_phase2SpecOp_helmet: H_HelmetO_ViperSP_hex_F
 	{
+		HelmetFXChain = HFX_TROOPER;
 		scope=2;
 		author="Legion Studios + 885th Bloodpack Division";
 		displayName="Titan's Spec-Ops P2 Helmet";
@@ -1792,6 +1818,7 @@ class CfgWeapons
 	};
 	class 885th_Najax_Scout_P2_Helm_Base: H_HelmetO_ViperSP_hex_F
 	{
+		HelmetFXChain = HFX_TROOPER;
 		scope=0;
 		author="885th Bloodpack Division";
 		hiddenSelections[]=
@@ -1872,6 +1899,7 @@ class CfgWeapons
 	};
 	class 885th_Najax_ARF_P2_Helm_Base: H_HelmetO_ViperSP_hex_F
     {
+        HelmetFXChain = HFX_TROOPER;
         scope=0;
         author="885th Bloodpack Division + Legion Studios";
         model="\ls\core\addons\characters_clone_legacy\helmets\arf\ls_gar_arf_helmet.p3d";
@@ -2017,6 +2045,7 @@ class CfgWeapons
     };
 	class 885th_BARC_Helm: IDA_BARC_Helmet
 	{
+		HelmetFXChain = HFX_TROOPER;
 		author="885th Bloodpack Division";
 		displayName="[885th] Advanced Recon BARC Helm";
 		picture="";
@@ -2123,6 +2152,7 @@ class CfgWeapons
 	};
 	class 885th_AB_Helm: IDA_AB_Helmet
 	{
+		HelmetFXChain = HFX_TROOPER;
 		author = "885th Bloodpack Division";
 		displayName = "[885th] Vornskr Paratrooper Helmet";
 		scope = 2;
@@ -2205,6 +2235,7 @@ class CfgWeapons
 	};
 	class 885th_Vornskr_Hazard_Helm_Base: H_HelmetO_ViperSP_hex_F
 	{
+		HelmetFXChain = HFX_HAZARD;
 		author="885th Bloodpack Division";
 		displayName="[885th] Vornksr Hazard Helm - Base";
 		picture="";
@@ -2253,6 +2284,7 @@ class CfgWeapons
 	};
 	class 885th_Vornskr_Hazard_Helm_Vet: H_HelmetO_ViperSP_hex_F
 	{
+		HelmetFXChain = HFX_HAZARD;
 		author="885th Bloodpack Division";
 		displayName="[885th] Vornksr Hazard Helm - Veteran";
 		picture="";
@@ -2301,6 +2333,7 @@ class CfgWeapons
 	};
 	class 885th_Vornskr_Hazard_Helm_COM: H_HelmetO_ViperSP_hex_F
 	{
+		HelmetFXChain = HFX_HAZARD;
 		author="885th Bloodpack Division";
 		displayName="[885th] Vornksr Hazard Helm - Officer";
 		picture="";
@@ -2349,6 +2382,7 @@ class CfgWeapons
 	};
 	class 885th_Kusak_Katarn_Helmet_Base: H_HelmetO_ViperSP_hex_F
 	{
+		HelmetFXChain = HFX_COMMANDO;
 		author="$STR_3as_Studio + 885th Bloodpack Division";
 		scope=0;
 		displayName="[885th] RC Katarn Helmet";
@@ -2443,6 +2477,7 @@ class CfgWeapons
 	};
 	class 885th_P2_MG_Helmet: H_HelmetO_ViperSP_hex_F
 	{
+		HelmetFXChain = HFX_TROOPER;
 		author="885th Bloodpack Division";
 		scope=2;
 		displayName="[885th] Vornskr P2 MG Helm";
