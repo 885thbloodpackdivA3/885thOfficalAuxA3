@@ -6,7 +6,7 @@ class Cfgpatches
 	class 885th_Vehicles
 	{
 		author = "885th Bloodpack Div";
-		requiredAddons[] = {"A3_Data_F", "A3_Weapons_F", "A3_Characters_F", "3AS_LAAT", "3AS_LAAT_Cargo", "3AS_ARC_170", "3AS_Republic_Heli_LAS", "3AS_ITT", "TKE_Ext_Core_V", "ls_core", "FIR_AirWeaponSystem_US"};
+		requiredAddons[] = {"A3_Data_F", "A3_Weapons_F", "A3_Characters_F", "3AS_LAAT", "3AS_ARC_170", "3AS_Republic_Heli_LAS", "3AS_ITT", "TKE_Ext_Core_V", "ls_core", "FIR_AirWeaponSystem_US", "cba_main", "885th_Armor"};
 		requiredVersion = 0.1;
 		units[] = {
 			"885th_LSV_base_F",
@@ -99,6 +99,24 @@ class CfgAmmo
 		caliber = 20;
 		coefGravity = 0.8;
 	};
+
+	// ARC-170 "CAS" light energy bolt: 3AS Z-95 light bolt visuals/impacts with the
+	// vanilla A-10 GAU-8 round's ballistics and damage (Gatling_30mm_HE_Plane_CAS_01_F).
+	class 3as_Z95_Light_Energy_shell;
+	class 885th_ARC170_CAS_Energy_shell : 3as_Z95_Light_Energy_shell
+	{
+		displayname = "CAS Energy";
+		hit = 180;
+		indirectHit = 4;
+		indirectHitRange = 3;
+		caliber = 15; // A-10 is 5 (~84mm); 15 ~= 250mm at 1120 m/s, matching the old Z-95 light bolt
+		explosive = 0.4;
+		deflecting = 5;
+		fuseDistance = 10;
+		airFriction = -0.00036;
+		typicalSpeed = 960;
+		aiAmmoUsageFlags = "64 + 128 + 256";
+	};
 };
 
 class CfgMagazines
@@ -126,6 +144,20 @@ class CfgMagazines
 		ammo = "885th_blasterbolt_bHigh";
 		tracersEvery = 1;
 	};
+
+	// ARC-170 main gun magazine, A-10 equivalent (1000Rnd_Gatling_30mm_Plane_CAS_01_F).
+	class 3as_Z95_1000Rnd_Light_shells;
+	class 885th_ARC170_1000Rnd_CAS_shells : 3as_Z95_1000Rnd_Light_shells
+	{
+		displayName = "[885th] CAS Energy Cell";
+		displayNameShort = "CAS";
+		descriptionShort = "1000 rounds, A-10 equivalent light energy bolts.";
+		ammo = "885th_ARC170_CAS_Energy_shell";
+		count = 1000;
+		initSpeed = 1120;
+		maxLeadSpeed = 83.3333;
+		tracersEvery = 1;
+	};
 };
 
 class CfgWeapons
@@ -134,6 +166,36 @@ class CfgWeapons
 	class HMG_127;
 	class 3AS_ITT_Turret_MG;
 	class 3AS_FF4_Blaster_20mm;
+
+	// ARC-170 main gun at the A-10 GAU-8 fire rate (0.03s = 2000 rpm) and spread.
+	// Inherits the 3AS LEC95 sounds/lock; AI modes come from the vanilla Neophron cannon.
+	class 3as_ARC_Light_Canon;
+	class 3as_Z95_Light_Cannon : 3as_ARC_Light_Canon
+	{
+		class LowROF;
+		class close;
+		class short;
+		class medium;
+		class far;
+	};
+	class 885th_ARC170_CAS_Cannon : 3as_Z95_Light_Cannon
+	{
+		displayName = "[885th] Blastech LEC170-C CAS Cannon";
+		magazines[] = {"885th_ARC170_1000Rnd_CAS_shells", "3as_Z95_1000Rnd_Light_shells", "3as_Z95_750Rnd_Light_shells"};
+		reloadTime = 0.03;
+		class LowROF : LowROF
+		{
+			displayName = "[885th] Blastech LEC170-C CAS Cannon";
+			reloadTime = 0.03;
+			dispersion = 0.0095;
+			burst = 1;
+		};
+		class close : close { reloadTime = 0.03; dispersion = 0.0095; };
+		class short : short { reloadTime = 0.03; dispersion = 0.0095; };
+		class medium : medium { reloadTime = 0.03; dispersion = 0.0095; };
+		class far : far { reloadTime = 0.03; dispersion = 0.0095; };
+	};
+
 	class 885th_HRB_127 : HMG_127 {
 		displayName = "[885th] Heavy Repeating Blaster";
 		magazines[] = {885th_vehicle_battery};
@@ -632,24 +694,13 @@ class CfgVehicles
 		};
 		class UserActions : UserActions
 		{
-			class AMS_LiteOpen
-			{
-				displayName = "<t color='#739eff'>Open AMS Lite</t>";
-				position = "pos cano";
-				radius = 15;
-				shortcut = "User3";
-				condition = "player in this and (speed this < 1)";
-				statement = "this execVM '\FIR_AirWeaponSystem_US\Script\AMS\AMS_Lite\AMS_Lite_GUI_Open.sqf';";
-				onlyforplayer = "false";
-				priority = 6;
-				hideOnUse = 1;
-			};
-			// FIR full AMS (needs class AMSData below). Same range/conditions as AMS Lite; no shortcut so User3 stays on AMS Lite.
+			// FIR full AMS (needs class AMSData below)
 			class AMSOpen
 			{
 				displayName = "<t color='#739eff'>Open AMS</t>";
 				position = "pos cano";
 				radius = 15;
+				shortcut = "User3";
 				condition = "player in this and (speed this < 1)";
 				statement = "this execVM '\FIR_AirWeaponSystem_US_Cfg\sqs\AMS\AMS_GUI_Open.sqf';";
 				onlyforplayer = "false";
@@ -696,7 +747,7 @@ class CfgVehicles
 		attendant = 1;
 		airBrakeFrictionCoef = 3;
 		airCapacity = 10;
-		// Pylons for FIR AMS Lite: same 4 slots/positions as 3AS, but empty by default (no 3AS High Energy / Concussion missiles)
+		// Pylons for FIR AMS: same 4 slots/positions as 3AS, but empty by default (no 3AS High Energy / Concussion missiles)
 		// and with FIR + vanilla BLUFOR hardpoints added so FIR weapons can be loaded. Sensors/displays still inherited.
 		class Components: Components
 		{
@@ -825,24 +876,13 @@ class CfgVehicles
 		};
 		class UserActions : UserActions
 		{
-			class AMS_LiteOpen
-			{
-				displayName = "<t color='#739eff'>Open AMS Lite</t>";
-				position = "pos cano";
-				radius = 15;
-				shortcut = "User3";
-				condition = "player in this and (speed this < 1)";
-				statement = "this execVM '\FIR_AirWeaponSystem_US\Script\AMS\AMS_Lite\AMS_Lite_GUI_Open.sqf';";
-				onlyforplayer = "false";
-				priority = 6;
-				hideOnUse = 1;
-			};
-			// FIR full AMS (needs class AMSData below). Same range/conditions as AMS Lite; no shortcut so User3 stays on AMS Lite.
+			// FIR full AMS (needs class AMSData below)
 			class AMSOpen
 			{
 				displayName = "<t color='#739eff'>Open AMS</t>";
 				position = "pos cano";
 				radius = 15;
+				shortcut = "User3";
 				condition = "player in this and (speed this < 1)";
 				statement = "this execVM '\FIR_AirWeaponSystem_US_Cfg\sqs\AMS\AMS_GUI_Open.sqf';";
 				onlyforplayer = "false";
@@ -889,7 +929,7 @@ class CfgVehicles
 		attendant = 1;
 		airBrakeFrictionCoef = 3;
 		airCapacity = 10;
-		// Pylons for FIR AMS Lite: same 4 slots/positions as 3AS, but empty by default (no 3AS High Energy / Concussion missiles)
+		// Pylons for FIR AMS: same 4 slots/positions as 3AS, but empty by default (no 3AS High Energy / Concussion missiles)
 		// and with FIR + vanilla BLUFOR hardpoints added so FIR weapons can be loaded. Sensors/displays still inherited.
 		class Components: Components
 		{
@@ -1054,22 +1094,10 @@ class CfgVehicles
 	{
 		class EventHandlers
 		{
-			postInit = "[(_this select 0)] spawn ls_vehicle_fnc_ImpulsorMonitor; [(_this select 0),""yes""] execVM '\FIR_AirWeaponSystem_US\Script\init\init.sqf';";
+			postInit = "[(_this select 0)] spawn ls_vehicle_fnc_ImpulsorMonitor;";	// no FIR AMS on the LAAT/C
 		};
 		class UserActions : UserActions
 		{
-			class AMS_LiteOpen
-			{
-				displayName = "<t color='#739eff'>Open AMS Lite</t>";
-				position = "pos cano";
-				radius = 15;
-				shortcut = "User3";
-				condition = "player in this and (speed this < 1)";
-				statement = "this execVM '\FIR_AirWeaponSystem_US\Script\AMS\AMS_Lite\AMS_Lite_GUI_Open.sqf';";
-				onlyforplayer = "false";
-				priority = 6;
-				hideOnUse = 1;
-			};
 		};
 		ls_impulsor_fuelDrain_1 = 0.0001;
 		ls_impulsor_fuelDrain_2 = 0.0003;
@@ -1362,6 +1390,7 @@ class CfgVehicles
 	class 885th_ARC170_Base: 3AS_ARC_170_Base
 	{
 		scope = 0;
+		#include "arc170_hud.hpp"
 		class textureSources
 		{
 			class 885th_LC
@@ -1387,24 +1416,13 @@ class CfgVehicles
 		};
 		class UserActions : UserActions
 		{
-			class AMS_LiteOpen
-			{
-				displayName = "<t color='#739eff'>Open AMS Lite</t>";
-				position = "pos cano";
-				radius = 15;
-				shortcut = "User3";
-				condition = "player in this and (speed this < 1)";
-				statement = "this execVM '\FIR_AirWeaponSystem_US\Script\AMS\AMS_Lite\AMS_Lite_GUI_Open.sqf';";
-				onlyforplayer = "false";
-				priority = 6;
-				hideOnUse = 1;
-			};
-			// FIR full AMS (uses class AMSData below). No shortcut so User3 stays on AMS Lite.
+			// FIR full AMS (uses class AMSData below)
 			class AMSOpen
 			{
 				displayName = "<t color='#739eff'>Open AMS</t>";
 				position = "pos cano";
 				radius = 15;
+				shortcut = "User3";
 				condition = "player in this and (speed this < 1)";
 				statement = "this execVM '\FIR_AirWeaponSystem_US_Cfg\sqs\AMS\AMS_GUI_Open.sqf';";
 				onlyforplayer = "false";
@@ -1426,11 +1444,48 @@ class CfgVehicles
 				condition="(this animationSourcePhase ""SFoil"" == 1) AND (currentPilot this isEqualTo player) AND (alive this)";
 				statement="this animateSource [""SFoil"",0]";
 			};
+			class BPD_PowerBalanced
+			{
+				displayName="<t color='#9fdcff'>Power: Balanced</t>";
+				position="action";
+				radius=10;
+				onlyForPlayer=0;
+				shortcut="User11";
+				priority=5;
+				showWindow=0;
+				hideOnUse=1;
+				condition="(driver this isEqualTo player) && {alive this} && {(this getVariable ['BPD_arc_power',0]) != 0} && {missionNamespace getVariable ['AUX_885th_ARC_Enabled',true]}";
+				statement="[this, 0] call BPD_fnc_arcSetPower";
+			};
+			class BPD_PowerShields: BPD_PowerBalanced
+			{
+				displayName="<t color='#40c8ff'>Power: Max Shields</t>";
+				shortcut="User12";
+				condition="(driver this isEqualTo player) && {alive this} && {(this getVariable ['BPD_arc_power',0]) != 1} && {missionNamespace getVariable ['AUX_885th_ARC_Enabled',true]}";
+				statement="[this, 1] call BPD_fnc_arcSetPower";
+			};
+			class BPD_PowerEngines: BPD_PowerBalanced
+			{
+				displayName="<t color='#ffb030'>Power: Max Engines</t>";
+				shortcut="User13";
+				condition="(driver this isEqualTo player) && {alive this} && {(this getVariable ['BPD_arc_power',0]) != 2} && {missionNamespace getVariable ['AUX_885th_ARC_Enabled',true]}";
+				statement="[this, 2] call BPD_fnc_arcSetPower";
+			};
+			// Emergency repair: patches hull + components up to the CBA cap (60%).
+			// Bindable as Custom Controls "Use Action 14".
+			class BPD_EmergencyRepair: BPD_PowerBalanced
+			{
+				displayName="<t color='#7dff9a'>Emergency Repair</t>";
+				shortcut="User14";
+				priority=4;
+				condition="(driver this isEqualTo player) && {alive this} && {!(this getVariable ['BPD_arc_repairing',false])} && {(this getVariable ['BPD_arc_repairCharges',0]) > 0} && {missionNamespace getVariable ['AUX_885th_ARC_RepairEnabled',true]} && {missionNamespace getVariable ['AUX_885th_ARC_Enabled',true]}";
+				statement="[this] call BPD_fnc_arcRepair";
+			};
 		};
 		author = "ONIBushido";
 		scope = 2;
 		scopeCurator = 2;
-		displayname = "[885th] ARC-170 Mk.1";
+		displayname = "[885th] ARC-170 Starfighter";
 		// FIR full AMS, generic mode: builds the loadout menu from the ARC's 6 pylons.
 		// Overrides the Gryphon AMSData FIR adds to the base so ARC presets are stored separately.
 		class AMSData
@@ -1439,13 +1494,25 @@ class CfgVehicles
 			DialogClass = "AMS_New_GUI";
 			AircraftBase = "885th_ARC170";
 			CustomPreset_Hashmap = "885th_ARC170_CustomPreset_Hashmap";
+			// AMS Refuel / Maintenance run this instead of a plain setFuel 1:
+			// it refuels AND reloads the emergency repair charge.
+			CustomFuelEnabled = 1;
+			CustomFuelScript = "\885_Vehicles\scripts\arc170\fn_arcAMSRefuel.sqf";
 		};
 		side = 1;
 		faction = "885th_Faction";
 		editorSubcategory = "Sub885thLWFighters";
 		camouflage = 6.0;
 		ejectSpeed[] = { 0, 60, 0 };
-		magazines[] ={"3as_Z95_1000Rnd_Light_shells","3as_Z95_1000Rnd_Light_shells","3AS_PylonWeapon_Z95_240Rnd_Heavy_Shells","3AS_PylonWeapon_Z95_240Rnd_Heavy_Shells","3AS_PylonWeapon_Z95_240Rnd_Heavy_Shells","120Rnd_CMFlare_Chaff_Magazine","Laserbatteries","120Rnd_CMFlare_Chaff_Magazine","120Rnd_CMFlare_Chaff_Magazine","120Rnd_CMFlare_Chaff_Magazine","120Rnd_CMFlare_Chaff_Magazine"};
+		maxSpeed = 738;                                                                      // 615
+		envelope[] = {0.1,0.21,0.814,1.78,2.452,4,5.622,7.646,9.38,9.56,9.4,8.52,8.12,8,8,8}; // {0.1,0.19,0.29,1.6,1.9,2.59,4,5.3,6.91,8.75,9.8,9.5,9.4,8.6,8.2,8}
+		thrustCoef[] = {1.8,1.91,1.97,2.3,2.9,3.5,2.4,1.88,1.58,1.18,1,1,1,1,1};              // {1.8,1.9,1.95,2,2.5,3,3.5,2.5,2,1.7,1.5,1.1,1,1,1}
+		elevatorCoef[] = {0.2,0.414,0.546,0.648,0.736,0.8,0.86,0.836,0.476,0.3,0.3};          // {0.2,0.39,0.51,0.6,0.68,0.75,0.8,0.85,0.9,0.74,0.3}
+		aileronCoef[] = {0.5,0.76,1,1.12,1.16,1.1,1.1};                                      // {0.5,0.7,1,1,1.2,1.15,1.1}
+		rudderCoef[] = {1.6,2,2.36,2.84,2.16,1,1};                                           // {1.6,2,2,2.9,2.8,2,1}
+		airFrictionCoefs1[] = {0.1,0.5,0.0055};                                              // {0.1,0.5,0.0066}
+		airFrictionCoefs2[] = {0.001,0.005,0.0000472};                                       // {0.001,0.005,0.000068}
+		magazines[] ={"885th_ARC170_1000Rnd_CAS_shells","885th_ARC170_1000Rnd_CAS_shells","3AS_PylonWeapon_Z95_240Rnd_Heavy_Shells","3AS_PylonWeapon_Z95_240Rnd_Heavy_Shells","3AS_PylonWeapon_Z95_240Rnd_Heavy_Shells","3AS_PylonWeapon_Z95_240Rnd_Heavy_Shells","3AS_PylonWeapon_Z95_240Rnd_Heavy_Shells","120Rnd_CMFlare_Chaff_Magazine","Laserbatteries","120Rnd_CMFlare_Chaff_Magazine","120Rnd_CMFlare_Chaff_Magazine","120Rnd_CMFlare_Chaff_Magazine","120Rnd_CMFlare_Chaff_Magazine"};
 		armor = 180;
 		armorLights = 0.5;
 		armorStructural = 2.0;
@@ -1454,7 +1521,7 @@ class CfgVehicles
 		armorAvionics = 2.0;
 		crew = "885th_Pilot";
 		cost = 1000;
-		weapons[] = {"3AS_Z95_Light_Cannon", "3as_Z95_Heavy_Cannon", "CMFlareLauncher", "Laserdesignator_pilotCamera"};
+		weapons[] = {"885th_ARC170_CAS_Cannon", "3as_Z95_Heavy_Cannon", "CMFlareLauncher", "Laserdesignator_pilotCamera"};
 		textureList[] = {
 			"885th_LC",
 			1,
@@ -1552,6 +1619,25 @@ class CfgVehicles
 		scope = 2;
 		scopeCurator = 2;
 		displayname = "[885th] V-WING Mk.1";
+		class UserActions : UserActions
+		{
+			// Emergency repair (scripts\arc170, shared with the ARC-170): patches hull +
+			// components up to the CBA cap. 1 charge, reloaded by refueling while landed.
+			// Bindable as Custom Controls "Use Action 14".
+			class BPD_EmergencyRepair
+			{
+				displayName="<t color='#7dff9a'>Emergency Repair</t>";
+				position="action";
+				radius=10;
+				onlyForPlayer=0;
+				shortcut="User14";
+				priority=4;
+				showWindow=0;
+				hideOnUse=1;
+				condition="(driver this isEqualTo player) && {alive this} && {!(this getVariable ['BPD_arc_repairing',false])} && {(this getVariable ['BPD_arc_repairCharges',0]) > 0} && {missionNamespace getVariable ['AUX_885th_ARC_RepairEnabled',true]}";
+				statement="[this] call BPD_fnc_arcRepair";
+			};
+		};
 		side = 1;
 		faction = "885th_Faction";
 		editorSubcategory = "Sub885thLWFighters";
@@ -3580,7 +3666,8 @@ class CfgVehicles
 		};
 		class Eventhandlers: Eventhandlers
 		{
-			postInit="if (local (_this select 0)) then { [(_this select 0), """", [], false] call BIS_fnc_initVehicle; };";
+			// Second part: knock down trees/bushes while driving (runs on every machine, acts where the Reaver is local)
+			postInit="if (local (_this select 0)) then { [(_this select 0), """", [], false] call BIS_fnc_initVehicle; }; [(_this select 0)] execVM '\885_Vehicles\scripts\reaver_bulldoze.sqf';";
 		};
 		class AnimationSources: AnimationSources
 		{
