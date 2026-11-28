@@ -953,7 +953,7 @@ class CfgAmmo
 		class Components;
 	};
 	class Components;
-	class 313th_blasterbolt: BulletBase
+	class 885th_blasterbolt: BulletBase
 	{
 		visibleFire=5;
 		audibleFire=20;

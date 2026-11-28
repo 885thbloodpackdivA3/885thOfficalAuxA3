@@ -266,7 +266,7 @@ HUD_fnc_addTargetingEventhandler = {
 						_size = (HUD_VEHICLE_SIZE / tan(_fov /2) / _distance) max 0.5;
 					};
 				};
-				drawIcon3D [_icon,_color,_pos,_size,_size,0,"",0,0.04,"RobotoCondensed","center",false];
+				[_icon,_color,_pos,_size,_size,0,"",0,0.04,"RobotoCondensed","center",false] call BPD_CloneHUD_fnc_drawIcon;
 
 				// Fireteam label above own squadmates' heads ("Red Team 1",
 				// "Medic 2"...), in the team's color. Labels themselves are
@@ -275,7 +275,7 @@ HUD_fnc_addTargetingEventhandler = {
 					private _tl = _unit getVariable ["BPD_CloneHUD_teamLabel", []];
 					if (count _tl == 2) then {
 						private _headPos = _unit modelToWorldVisual ((_unit selectionPosition "head") vectorAdd [0, 0, 0.45]);
-						drawIcon3D ["", _tl select 1, _headPos, 0, 0, 0, _tl select 0, 2, 0.032, "RobotoCondensedBold", "center", false];
+						["", _tl select 1, _headPos, 0, 0, 0, _tl select 0, 2, 0.032, "RobotoCondensedBold", "center", false] call BPD_CloneHUD_fnc_drawIcon;
 					};
 				};
 			} forEach HUD_nearUnits;
@@ -304,13 +304,13 @@ HUD_fnc_addTargetingEventhandler = {
 						[HUD_VEHICLE_ICON, HUD_VEHICLE_SIZE]
 					};
 					private _sz = ((_iconSize select 1) / tan (_fovLk / 2) / _d) max 0.5;
-					drawIcon3D [_iconSize select 0, _col, _lkPos, _sz, _sz, 0, "?", 2, 0.03, "RobotoCondensedBold", "center", false];
+					[_iconSize select 0, _col, _lkPos, _sz, _sz, 0, "?", 2, 0.03, "RobotoCondensedBold", "center", false] call BPD_CloneHUD_fnc_drawIcon;
 				};
 			} forEach HUD_lastKnown;
 
 			private _grenades = nearestObjects [player,["Grenade"], 30];
 			{
-				drawIcon3D [HUD_WARNING_ICON,HUD_WARNING_COLOR,getPosATLVisual _x,HUD_WARNING_SIZE,HUD_WARNING_SIZE,0,"",0,0.04,"RobotoCondensed","center",true];
+				[HUD_WARNING_ICON,HUD_WARNING_COLOR,getPosATLVisual _x,HUD_WARNING_SIZE,HUD_WARNING_SIZE,0,"",0,0.04,"RobotoCondensed","center",true] call BPD_CloneHUD_fnc_drawIcon;
 			} forEach _grenades;
 		};
 	}] call BIS_fnc_addStackedEventHandler;

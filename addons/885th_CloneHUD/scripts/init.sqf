@@ -43,7 +43,7 @@ isNil {
 	{
 		call compile preprocessFileLineNumbers format ["\885th_CloneHUD\scripts\%1.sqf", _x];
 	} forEach [
-		"layout", "ammoStyle", "hudEventhandler", "hudBootUp", "hudInit",
+		"icon2d", "layout", "ammoStyle", "hudEventhandler", "hudBootUp", "hudInit",
 		"systemMessages", "updateDamageIndicator", "squadMed", "teamList",
 		"radar", "system", "vanillaHud", "ctab", "intel", "comms", "jamming",
 		"mineDetect", "visorCrack", "killCounter", "downed", "emp", "crosshair"

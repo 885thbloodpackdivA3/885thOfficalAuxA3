@@ -363,9 +363,9 @@ BPD_CloneHUD_fnc_commsDraw3D = {
 		_y params ["_label", "_lr", "_ch", "_add", "_freq", "_self", "_start", "_end", "_unit"];
 		if (!_self && {_end < 0} && {!isNull _unit} && {alive _unit} && {_unit distance player < _range}) then {
 			private _pos = _unit modelToWorldVisual ((_unit selectionPosition "head") vectorAdd [0, 0, 0.8]);
-			drawIcon3D [BPD_CloneHUD_commsIcon, [0.24, 0.8, 0.45, 0.95], _pos, 0.7, 0.7, 0,
+			[BPD_CloneHUD_commsIcon, [0.24, 0.8, 0.45, 0.95], _pos, 0.7, 0.7, 0,
 				format ["%1  %2", _label, [_lr, _ch, _add, _freq, false] call BPD_CloneHUD_fnc_commsChanText],
-				2, 0.03, "RobotoCondensedBold", "center", false];
+				2, 0.03, "RobotoCondensedBold", "center", false] call BPD_CloneHUD_fnc_drawIcon;
 		};
 	} forEach BPD_CloneHUD_commsActive;
 };

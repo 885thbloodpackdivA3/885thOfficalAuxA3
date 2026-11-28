@@ -305,12 +305,12 @@ BPD_CloneHUD_fnc_medicPingTick = {
 			if (!isNull _unit && {alive _unit}) then {
 				private _pos = _unit modelToWorldVisual ((_unit selectionPosition "spine3") vectorAdd [0, 0, 0.6]);
 				private _pulse = 0.6 + 0.4 * abs (sin (diag_tickTime * 240));
-				drawIcon3D [
+				[
 					"\A3\ui_f\data\IGUI\Cfg\Actions\heal_ca.paa",
 					[1, 0.23, 0.19, _pulse], _pos, 1, 1, 0,
 					format ["%1 - %2 (%3m)", name _unit, _label, round (player distance _unit)],
 					2, 0.035, "RobotoCondensedBold", "center", true
-				];
+				] call BPD_CloneHUD_fnc_drawIcon;
 			};
 		} forEach BPD_CloneHUD_medicPatients;
 	}];

@@ -163,7 +163,7 @@ BPD_CloneHUD_fnc_mdDraw3D = {
 			if (_d <= _show) then {
 				private _col = if (_d <= _danger) then { [1, 0.23, 0.19, _pulse] } else { [1, 0.55, 0.1, 0.9] };
 				private _pos = (getPosATLVisual _m) vectorAdd [0, 0, 0.35];
-				drawIcon3D [BPD_CloneHUD_mdIcon, _col, _pos, 0.7, 0.7, 0, format ["MINE %1m", round _d], 2, 0.03, "RobotoCondensedBold", "center", _d <= _danger];
+				[BPD_CloneHUD_mdIcon, _col, _pos, 0.7, 0.7, 0, format ["MINE %1m", round _d], 2, 0.03, "RobotoCondensedBold", "center", _d <= _danger] call BPD_CloneHUD_fnc_drawIcon;
 			};
 		};
 	} forEach (BPD_CloneHUD_mdFound + BPD_CloneHUD_mdShared);
