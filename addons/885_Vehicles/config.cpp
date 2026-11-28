@@ -968,8 +968,51 @@ class CfgVehicles
 		getOutAction = "GetOutLow";
 		getInRadius = 10;
 		hiddenSelections[] = {"camo", "camo1", "camo2", "camo3", "camo4"};
-		hiddenSelectionsMaterials[] = {};
-		hiddenSelectionsTextures[] = 
+		// Own rvmats (NOHQ/AS/SMDI from the Substance export) for hull, wings, interior; weapons keep the 3AS materials ("" = model default)
+		hiddenSelectionsMaterials[] =
+		{
+			"885_Vehicles\textures\laat\Cerberus\Hull.rvmat",
+			"885_Vehicles\textures\laat\Cerberus\Wings.rvmat",
+			"",
+			"",
+			"885_Vehicles\textures\laat\Cerberus\Interior.rvmat"
+		};
+		// Damage swaps match the current material, so the custom rvmats need their own entries (3AS damage/destruct mats reused)
+		class Damage
+		{
+			tex[] = {};
+			mat[] =
+			{
+				"3AS\3AS_Laat\LAATI\data\Hull.rvmat",
+				"3as\3AS_LAAT\LAATI\data\damage\LAAT_Hull_damage.rvmat",
+				"A3\Air_F_Beta\Heli_Attack_01\Data\Heli_Attack_01_base_destruct.rvmat",
+				"885_Vehicles\textures\laat\Cerberus\Hull.rvmat",
+				"3as\3AS_LAAT\LAATI\data\damage\LAAT_Hull_damage.rvmat",
+				"A3\Air_F_Beta\Heli_Attack_01\Data\Heli_Attack_01_base_destruct.rvmat",
+				"3AS\3AS_Laat\LAATI\data\Interior.rvmat",
+				"3as\3AS_LAAT\LAATI\data\damage\LAAT_Int_damage.rvmat",
+				"A3\Air_F_Beta\Heli_Attack_01\Data\Heli_Attack_01_base_destruct.rvmat",
+				"885_Vehicles\textures\laat\Cerberus\Interior.rvmat",
+				"3as\3AS_LAAT\LAATI\data\damage\LAAT_Int_damage.rvmat",
+				"A3\Air_F_Beta\Heli_Attack_01\Data\Heli_Attack_01_base_destruct.rvmat",
+				"3AS\3AS_Laat\LAATI\data\Weapon_Details.rvmat",
+				"3as\3AS_LAAT\LAATI\data\damage\LAAT_Weapon_Details_damage.rvmat",
+				"A3\Air_F_Beta\Heli_Attack_01\Data\Heli_Attack_01_base_destruct.rvmat",
+				"3AS\3AS_Laat\LAATI\data\Weapons.rvmat",
+				"3as\3AS_LAAT\LAATI\data\damage\LAAT_Weapons_damage.rvmat",
+				"A3\Air_F_Beta\Heli_Attack_01\Data\Heli_Attack_01_base_destruct.rvmat",
+				"3AS\3AS_Laat\LAATI\data\Wings.rvmat",
+				"3as\3AS_LAAT\LAATI\data\damage\LAAT_Wings_damage.rvmat",
+				"A3\Air_F_Beta\Heli_Attack_01\Data\Heli_Attack_01_base_destruct.rvmat",
+				"885_Vehicles\textures\laat\Cerberus\Wings.rvmat",
+				"3as\3AS_LAAT\LAATI\data\damage\LAAT_Wings_damage.rvmat",
+				"A3\Air_F_Beta\Heli_Attack_01\Data\Heli_Attack_01_base_destruct.rvmat",
+				"A3\Air_F_Beta\Heli_Attack_01\Data\Heli_Attack_01_glass.rvmat",
+				"A3\Air_F_Beta\Heli_Attack_01\Data\Heli_Attack_01_glass_damage.rvmat",
+				"A3\Air_F_Beta\Heli_Attack_01\Data\Heli_Attack_01_glass_damage.rvmat"
+			};
+		};
+		hiddenSelectionsTextures[] =
 		{
 			"885_Vehicles\textures\laat\Cerberus\Hull_CO.paa",
 			"885_Vehicles\textures\laat\Cerberus\Wings_CO.paa",
