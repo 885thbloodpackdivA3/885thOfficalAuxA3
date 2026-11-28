@@ -42,8 +42,7 @@ BPD_CloneHUD_fnc_crosshairTick = {
 		&& {cameraView == "INTERNAL" || _third}
 		&& {_onFoot}
 		&& {currentWeapon player != ""}
-		&& {!visibleMap}
-		&& {isNull (findDisplay 312)}
+		&& {!visibleMap}		&& {isNull (findDisplay 312)}
 		&& {isNull curatorCamera};
 	if (!_show) exitWith { if (ctrlShown _c) then { _c ctrlShow false; }; };
 

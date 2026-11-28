@@ -66,8 +66,11 @@ BPD_CloneHUD_fnc_vanillaMask = {
 	if (missionNamespace getVariable ["BPD_CloneHUD_HIDE_KILLS", false]) then { _m set [9, false]; };
 	// weapon crosshair - on foot only, so vehicle gunner sights keep theirs
 	// ("Vanilla Crosshair" picked as the HUD Crosshair keeps Arma's own)
+	// The scroll/action menu draws in the "cursors" layer too, so it is let
+	// back on for a few seconds after any scroll / action key press.
 	if ((missionNamespace getVariable ["BPD_CloneHUD_HIDE_CURSORS", true])
 		&& {(missionNamespace getVariable ["BPD_CloneHUD_CROSSHAIR", 1]) != 4}
+		&& {diag_tickTime > (missionNamespace getVariable ["BPD_CloneHUD_actionMenuUntil", -1])}
 		&& {vehicle player == player}) then { _m set [7, false]; };
 	_m
 };
@@ -216,6 +219,27 @@ if (hasInterface && {isNil "BPD_CloneHUD_vanillaPFH"}) then {
 			{ if (!_x) then { _new set [_forEachIndex, false]; }; } forEach _mask;
 			showHUD _new;
 		}, 0] call CBA_fnc_addPerFrameHandler;
+	};
+};
+
+// Scroll / action menu: open it up again (see vanillaMask, cursors).
+BPD_CloneHUD_fnc_actionMenuUsed = {
+	BPD_CloneHUD_actionMenuUntil = diag_tickTime + 5;
+	if (BPD_CloneHUD_vanillaHudApplied) then {
+		private _mask = call BPD_CloneHUD_fnc_vanillaMask;
+		if !(_mask isEqualTo BPD_CloneHUD_vanillaHudMask) then {
+			BPD_CloneHUD_vanillaHudMask = _mask;           // the enforcer stops hiding cursors this frame
+			[_mask] call BPD_CloneHUD_fnc_pushVanillaMask;
+			private _new = (+shownHUD) select [0, 10];
+			_new set [7, true];
+			showHUD _new;
+			BPD_CloneHUD_vanillaLastPush = diag_tickTime;
+		};
+	};
+};
+if (hasInterface && {isNil "BPD_CloneHUD_actionMenuEHs"}) then {
+	BPD_CloneHUD_actionMenuEHs = ["nextAction", "prevAction", "Action", "ActionContext"] apply {
+		addUserActionEventHandler [_x, "Activate", { call BPD_CloneHUD_fnc_actionMenuUsed; }]
 	};
 };
 

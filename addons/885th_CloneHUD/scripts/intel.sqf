@@ -139,8 +139,8 @@ BPD_CloneHUD_fnc_senderLabel = {
 //  Spotting pings
 // ------------------------------------------------------------
 BPD_CloneHUD_fnc_pingSend = {
-	if !(missionNamespace getVariable ["BPD_CloneHUD_PING_ENABLED", true]) exitWith {false};
-	if !(call BPD_CloneHUD_fnc_hudUp) exitWith {false};
+	if !(missionNamespace getVariable ["BPD_CloneHUD_PING_ENABLED", true]) exitWith { systemChat "[Clone HUD] Pings are turned off (8. Intel settings)."; true };
+	if !(call BPD_CloneHUD_fnc_hudUp) exitWith { systemChat "[Clone HUD] Ping needs the HUD up."; true };
 	if (diag_tickTime < BPD_CloneHUD_pingNext) exitWith {true};
 	if ((missionNamespace getVariable ["BPD_CloneHUD_jamTier", 0]) >= 2) exitWith {
 		["<t color='#ff3b30'>DATALINK JAMMED</t> - ping not sent", "bpdPingFail", 3] call HUD_fnc_addSystemMessage;
@@ -367,23 +367,59 @@ BPD_CloneHUD_fnc_intelDialogPlayer = {
 
 [] spawn {
 	waitUntil { sleep 1; !isNull player };
+	// Drawn as 2D controls on the HUD indicator layer (projected with
+	// worldToScreen), NOT drawIcon3D: the engine hides drawIcon3D while
+	// showHUD "cursors" is off, which the HUD does to hide Arma's crosshair.
 	addMissionEventHandler ["Draw3D", {
-		if (count BPD_CloneHUD_intelMarkers == 0) exitWith {};
-		if !(call BPD_CloneHUD_fnc_hudUp) exitWith {};
-		private _now = diag_tickTime;
-		private _dead = [];
-		{
-			_y params ["_pos", "_icon", "_rgba", "_label", "_expiry"];
-			if (_now > _expiry) then { _dead pushBack _x; } else {
-				private _left = _expiry - _now;
-				private _col = +_rgba;
-				if (_left < 3) then { _col set [3, (_col select 3) * (_left / 3)]; }; // fade out
-				drawIcon3D [_icon, _col, ASLToAGL _pos, 0.9, 0.9, 0,
-					format ["%1  %2m", _label, round ((getPosASL player) distance _pos)],
-					2, 0.032, "RobotoCondensedBold", "center", true];
-			};
-		} forEach BPD_CloneHUD_intelMarkers;
-		{ BPD_CloneHUD_intelMarkers deleteAt _x; } forEach _dead;
+		private _pool = uiNamespace getVariable ["BPD_CloneHUD_intelMarkerCtrls", []];
+		if (count _pool > 0 && {isNull ((_pool select 0) select 0)}) then { _pool = []; uiNamespace setVariable ["BPD_CloneHUD_intelMarkerCtrls", _pool]; }; // layer was recreated
+		private _used = 0;
+		if (count BPD_CloneHUD_intelMarkers > 0 && {call BPD_CloneHUD_fnc_hudUp}) then {
+			private _disp = uiNamespace getVariable ["BPD_CloneHUD_INDICATOR_BASE", displayNull];
+			private _now = diag_tickTime;
+			private _dead = [];
+			{
+				_y params ["_pos", "_icon", "_rgba", "_label", "_expiry"];
+				if (_now > _expiry) then { _dead pushBack _x; } else {
+					private _scr = worldToScreen (ASLToAGL _pos);
+					if (!isNull _disp && {_scr isNotEqualTo []}) then {
+						private _left = _expiry - _now;
+						private _col = +_rgba;
+						if (_left < 3) then { _col set [3, (_col select 3) * (_left / 3)]; }; // fade out
+						if (_used >= count _pool) then {
+							private _p = _disp ctrlCreate ["RscPicture", -1];
+							private _t = _disp ctrlCreate ["RscStructuredText", -1];
+							_pool pushBack [_p, _t];
+							uiNamespace setVariable ["BPD_CloneHUD_intelMarkerCtrls", _pool];
+						};
+						(_pool select _used) params ["_p", "_t"];
+						_used = _used + 1;
+						private _h = 0.035 * safezoneH;
+						private _w = _h / pixelH * pixelW;
+						_scr params ["_sx", "_sy"];
+						_p ctrlSetText _icon;
+						_p ctrlSetTextColor _col;
+						_p ctrlSetPosition [_sx - _w / 2, _sy - _h / 2, _w, _h];
+						_p ctrlCommit 0;
+						_p ctrlShow true;
+						private _hex = (_col select [0, 3]) call BIS_fnc_colorRGBtoHTML;
+						_t ctrlSetStructuredText parseText format [
+							"<t align='center' font='RobotoCondensedBold' size='0.8' color='%1'>%2  %3m</t>",
+							_hex, _label, round ((getPosASL player) distance _pos)];
+						_t ctrlSetFade (1 - (_col select 3));
+						_t ctrlSetPosition [_sx - 0.15 * safezoneW, _sy + _h / 2, 0.3 * safezoneW, 0.03 * safezoneH];
+						_t ctrlCommit 0;
+						_t ctrlShow true;
+					};
+				};
+			} forEach BPD_CloneHUD_intelMarkers;
+			{ BPD_CloneHUD_intelMarkers deleteAt _x; } forEach _dead;
+		};
+		// hide unused controls from the pool
+		for "_i" from _used to (count _pool - 1) do {
+			(_pool select _i) params ["_p", "_t"];
+			if (ctrlShown _p) then { _p ctrlShow false; _t ctrlShow false; };
+		};
 	}];
 };
 
