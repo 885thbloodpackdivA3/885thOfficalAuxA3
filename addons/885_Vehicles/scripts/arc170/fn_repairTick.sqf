@@ -40,7 +40,10 @@ if (_done || {_elapsed > (_duration * 1.5) + 2}) then {
     _veh setVariable ["BPD_arc_repairing", false, true];
     private _targets = (crew _veh) select { isPlayer _x };
     if (_targets isNotEqualTo []) then {
-        [parseText format ["<t color='#7dff9a'>EMERGENCY REPAIR COMPLETE</t><br/><t size='0.8'>Systems restored to %1%2 - power returned</t>", round ((1 - _floor) * 100), "%"]]
+        // "power returned" only means something on the ARC-170 (power routing); the V-wing has none
+        [parseText format ["<t color='#7dff9a'>EMERGENCY REPAIR COMPLETE</t><br/><t size='0.8'>Systems restored to %1%2%3</t>",
+            round ((1 - _floor) * 100), "%",
+            ["", " - power returned"] select (_veh getVariable ["BPD_arc_registered", false])]]
             remoteExecCall ["hintSilent", _targets];
     };
 };
