@@ -193,6 +193,7 @@ class XtdGearModels
 					"Kings",
 					"Nightfall",
 					"Maverick",
+					"Cutler",
 					"ONI",
 					"Owl",
 					"Oxlong",
@@ -432,6 +433,8 @@ class XtdGearModels
 					"Crimz",
 					"Crow",
 					"Nightfall",
+					"Maverick",
+					"Charge",
 					"ONI",
 					"Phantom",
 					"Rios",
@@ -999,6 +1002,13 @@ class XtdGearInfos
 			variant="BARC";
 			camo="BARC";
 		};
+		class 885th_Cutler_P2_Helm
+		{
+			model="Trooper_Custom_Helmets";
+			rank="Cutler";
+			variant="P2";
+			camo="P2";
+		};
 		class 885th_ONI_MC_Helmet
 		{
 			model="Trooper_Custom_Helmets";
@@ -1303,6 +1313,16 @@ class XtdGearInfos
 		{
 			model="Custom_Uniforms";
 			rank="Crow";
+		};
+		class 885th_Maverick_Uniform
+		{
+			model="Custom_Uniforms";
+			rank="Maverick";
+		};
+		class 885th_Charge_Uniform
+		{
+			model="Custom_Uniforms";
+			rank="Charge";
 		};
 		class 885th_Nightfall_Uniform
 		{
