@@ -204,7 +204,6 @@ class XtdGearModels
 					"Sytha",
 					"Sunshine",
 					"Stormer",
-					"Sushi",
 					"Titan",
 					"Thunder",
 					"Wrath",
@@ -1075,13 +1074,6 @@ class XtdGearInfos
 			rank="Stormer";
 			variant="P2";
 			camo="P2";
-		};
-		class 885th_Sushi_P2_ARF_Helm
-		{
-			model="Trooper_Custom_Helmets";
-			rank="Sushi";
-			variant="ARF";
-			camo="ARF";
 		};
 		class 885th_Titan_phase2SpecOp_helmet
 		{
