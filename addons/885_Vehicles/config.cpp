@@ -688,24 +688,13 @@ class CfgVehicles
 		};
 		class UserActions : UserActions
 		{
-			class AMS_LiteOpen
-			{
-				displayName = "<t color='#739eff'>Open AMS Lite</t>";
-				position = "pos cano";
-				radius = 15;
-				shortcut = "User3";
-				condition = "player in this and (speed this < 1)";
-				statement = "this execVM '\FIR_AirWeaponSystem_US\Script\AMS\AMS_Lite\AMS_Lite_GUI_Open.sqf';";
-				onlyforplayer = "false";
-				priority = 6;
-				hideOnUse = 1;
-			};
-			// FIR full AMS (needs class AMSData below). Same range/conditions as AMS Lite; no shortcut so User3 stays on AMS Lite.
+			// FIR full AMS (needs class AMSData below)
 			class AMSOpen
 			{
 				displayName = "<t color='#739eff'>Open AMS</t>";
 				position = "pos cano";
 				radius = 15;
+				shortcut = "User3";
 				condition = "player in this and (speed this < 1)";
 				statement = "this execVM '\FIR_AirWeaponSystem_US_Cfg\sqs\AMS\AMS_GUI_Open.sqf';";
 				onlyforplayer = "false";
@@ -748,7 +737,7 @@ class CfgVehicles
 		attendant = 1;
 		airBrakeFrictionCoef = 3;
 		airCapacity = 10;
-		// Pylons for FIR AMS Lite: same 4 slots/positions as 3AS, but empty by default (no 3AS High Energy / Concussion missiles)
+		// Pylons for FIR AMS: same 4 slots/positions as 3AS, but empty by default (no 3AS High Energy / Concussion missiles)
 		// and with FIR + vanilla BLUFOR hardpoints added so FIR weapons can be loaded. Sensors/displays still inherited.
 		class Components: Components
 		{
@@ -877,24 +866,13 @@ class CfgVehicles
 		};
 		class UserActions : UserActions
 		{
-			class AMS_LiteOpen
-			{
-				displayName = "<t color='#739eff'>Open AMS Lite</t>";
-				position = "pos cano";
-				radius = 15;
-				shortcut = "User3";
-				condition = "player in this and (speed this < 1)";
-				statement = "this execVM '\FIR_AirWeaponSystem_US\Script\AMS\AMS_Lite\AMS_Lite_GUI_Open.sqf';";
-				onlyforplayer = "false";
-				priority = 6;
-				hideOnUse = 1;
-			};
-			// FIR full AMS (needs class AMSData below). Same range/conditions as AMS Lite; no shortcut so User3 stays on AMS Lite.
+			// FIR full AMS (needs class AMSData below)
 			class AMSOpen
 			{
 				displayName = "<t color='#739eff'>Open AMS</t>";
 				position = "pos cano";
 				radius = 15;
+				shortcut = "User3";
 				condition = "player in this and (speed this < 1)";
 				statement = "this execVM '\FIR_AirWeaponSystem_US_Cfg\sqs\AMS\AMS_GUI_Open.sqf';";
 				onlyforplayer = "false";
@@ -937,7 +915,7 @@ class CfgVehicles
 		attendant = 1;
 		airBrakeFrictionCoef = 3;
 		airCapacity = 10;
-		// Pylons for FIR AMS Lite: same 4 slots/positions as 3AS, but empty by default (no 3AS High Energy / Concussion missiles)
+		// Pylons for FIR AMS: same 4 slots/positions as 3AS, but empty by default (no 3AS High Energy / Concussion missiles)
 		// and with FIR + vanilla BLUFOR hardpoints added so FIR weapons can be loaded. Sensors/displays still inherited.
 		class Components: Components
 		{
@@ -1090,22 +1068,10 @@ class CfgVehicles
 	{
 		class EventHandlers
 		{
-			postInit = "[(_this select 0)] spawn ls_vehicle_fnc_ImpulsorMonitor; [(_this select 0),""yes""] execVM '\FIR_AirWeaponSystem_US\Script\init\init.sqf';";
+			postInit = "[(_this select 0)] spawn ls_vehicle_fnc_ImpulsorMonitor;";	// no FIR AMS on the LAAT/C
 		};
 		class UserActions : UserActions
 		{
-			class AMS_LiteOpen
-			{
-				displayName = "<t color='#739eff'>Open AMS Lite</t>";
-				position = "pos cano";
-				radius = 15;
-				shortcut = "User3";
-				condition = "player in this and (speed this < 1)";
-				statement = "this execVM '\FIR_AirWeaponSystem_US\Script\AMS\AMS_Lite\AMS_Lite_GUI_Open.sqf';";
-				onlyforplayer = "false";
-				priority = 6;
-				hideOnUse = 1;
-			};
 		};
 		ls_impulsor_fuelDrain_1 = 0.0001;
 		ls_impulsor_fuelDrain_2 = 0.0003;
@@ -1431,23 +1397,13 @@ class CfgVehicles
 		};
 		class UserActions : UserActions
 		{
-			class AMS_LiteOpen
-			{
-				displayName = "<t color='#739eff'>Open AMS Lite</t>";
-				position = "pos cano";
-				radius = 15;
-				shortcut = "User3";
-				condition = "player in this and (speed this < 1)";
-				statement = "this execVM '\FIR_AirWeaponSystem_US\Script\AMS\AMS_Lite\AMS_Lite_GUI_Open.sqf';";
-				onlyforplayer = "false";
-				priority = 6;
-				hideOnUse = 1;
-			};
+			// FIR full AMS (uses class AMSData below)
 			class AMSOpen
 			{
 				displayName = "<t color='#739eff'>Open AMS</t>";
 				position = "pos cano";
 				radius = 15;
+				shortcut = "User3";
 				condition = "player in this and (speed this < 1)";
 				statement = "this execVM '\FIR_AirWeaponSystem_US_Cfg\sqs\AMS\AMS_GUI_Open.sqf';";
 				onlyforplayer = "false";
@@ -3688,7 +3644,8 @@ class CfgVehicles
 		};
 		class Eventhandlers: Eventhandlers
 		{
-			postInit="if (local (_this select 0)) then { [(_this select 0), """", [], false] call BIS_fnc_initVehicle; };";
+			// Second part: knock down trees/bushes while driving (runs on every machine, acts where the Reaver is local)
+			postInit="if (local (_this select 0)) then { [(_this select 0), """", [], false] call BIS_fnc_initVehicle; }; [(_this select 0)] execVM '\885_Vehicles\scripts\reaver_bulldoze.sqf';";
 		};
 		class AnimationSources: AnimationSources
 		{

@@ -20,7 +20,7 @@ class CfgMovesAtrt_ls
 		class atrt_walkF;
 		class atrt_runF : atrt_walkF	// parent must be restated or the reopen drops it
 		{
-			speed = -0.447;	// 90 km/h. Raise toward -0.65 (LS default) if it is too fast on rough terrain.
+			speed = -0.503;	// 80 km/h (11.18 m stride / 22.2 m/s). 90 km/h = -0.447, LS default 62 km/h = -0.65.
 		};
 	};
 };
@@ -69,9 +69,9 @@ class CfgMagazines
 		scope = 2;
 		displayName = "[885th] ATRT Cannon Cell";
 		displayNameShort = "ATRT Cannon";
-		descriptionShort = "200 heavy blaster bolts for the ATRT Cannon.";
+		descriptionShort = "1000 heavy blaster bolts for the ATRT Cannon.";
 		ammo = "885th_ATRT_Laser_Bolt";
-		count = 200;
+		count = 1000;
 		initSpeed = 800;
 		tracersEvery = 1;
 		mass = 15;
@@ -175,11 +175,11 @@ class CfgVehicles
 		weapons[] = {"885th_ATRT_Cannon"};
 		respawnWeapons[] = {"885th_ATRT_Cannon"};
 		magazines[] = {
-			"885th_ATRT_Cannon_Mag", "885th_ATRT_Cannon_Mag", "885th_ATRT_Cannon_Mag", "885th_ATRT_Cannon_Mag",
+			"885th_ATRT_Cannon_Mag", "885th_ATRT_Cannon_Mag",
 			"885th_ATRT_Launcher_Mag", "885th_ATRT_Launcher_Mag", "885th_ATRT_Launcher_Mag"
 		};
 		respawnMagazines[] = {
-			"885th_ATRT_Cannon_Mag", "885th_ATRT_Cannon_Mag", "885th_ATRT_Cannon_Mag", "885th_ATRT_Cannon_Mag",
+			"885th_ATRT_Cannon_Mag", "885th_ATRT_Cannon_Mag",
 			"885th_ATRT_Launcher_Mag", "885th_ATRT_Launcher_Mag", "885th_ATRT_Launcher_Mag"
 		};
 	};
